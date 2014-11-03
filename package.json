@@ -1,0 +1,26 @@
+{
+  "name": "tsb",
+  "preferGlobal": true,
+  "version": "0.0.1",
+  "author": "Johannes Rieken <johannes.rieken@gmail.com>",
+  "description": "An incremental TypeScript builder for gulp",
+  "main": "./lib/index",
+  "keywords": [
+    "gulpplugin",
+    "typescript",
+    "javascript",
+    "cli",
+    "incremental"
+  ],
+  "dependencies": {
+    "gulp-util": "^3.0.1",
+    "through": "^2.3.6",
+    "vinyl": "^0.4.3"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "gulp": "^3.8.8",
+    "gulp-typescript": "^2.1.0",
+    "tsd": "^0.5.7"
+  }
+}

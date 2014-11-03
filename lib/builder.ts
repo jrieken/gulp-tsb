@@ -1,0 +1,389 @@
+/// <reference path="../typings/node/node.d.ts" />
+/// <reference path="../typings/vinyl/vinyl.d.ts" />
+/// <reference path="../typings/gulp-util/gulp-util.d.ts" />
+
+'use strict';
+
+import fs = require('fs');
+import vinyl = require('vinyl');
+import path = require('path');
+import utils = require('./utils');
+import gutil = require('gulp-util');
+import typescript = require('./typescript/typescriptServices');
+import ts = typescript.ts;
+
+export interface IConfiguration {
+    json: boolean;
+    verbose: boolean;
+	noLib: boolean;
+    target: string;
+    module: string;
+    noImplicitAny: boolean;
+    removeComments: boolean;
+    declaration: boolean;
+}
+
+export interface IFileDelta {
+	added?:vinyl[];
+	changed?:vinyl[];
+	deleted?:vinyl[];
+}
+
+export interface ITypeScriptBuilder {
+	build(out: (file:vinyl)=>void, onError:(err:any)=>void): void;
+	file(file: vinyl): void;
+}
+
+export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuilder {
+	
+	var host = new LanguageServiceHost(createCompilationSettings(config)),
+		languageService = ts.createLanguageService(host, ts.createDocumentRegistry()),
+		oldErrors: { [path:string]: ts.Diagnostic[] } = Object.create(null);
+	
+	function createCompilationSettings(config:IConfiguration): ts.CompilerOptions {
+    
+		var result: ts.CompilerOptions = {
+			noLib: config.noLib,
+			removeComments: config.removeComments,
+			generateDeclarationFiles: config.declaration,
+			noImplicitAny: config.noImplicitAny,
+			target: ts.ScriptTarget.ES5,
+			module: ts.ModuleKind.None
+		};
+		
+		// language version
+		if(config.target && config.target.toLowerCase() === 'es5') {
+			result.target = ts.ScriptTarget.ES5;
+		}
+
+		// module generation
+		if(config.module) {
+			switch(config.module.toLowerCase()) {
+				case 'commonjs':
+					result.module = ts.ModuleKind.CommonJS;
+					break;
+				case 'amd':
+					result.module = ts.ModuleKind.AMD;
+					break;
+			}
+		}
+		return result;
+	}
+	
+	function printDiagnostic(diag:ts.Diagnostic, onError:(err:any)=>void):void {
+	
+		var lineAndCh = diag.file.getLineAndCharacterFromPosition(diag.start),
+			message:string;
+			
+		if(!config.json) {
+			message = utils.strings.format('{0}({1},{2}): {3}', 
+				diag.file.filename, 
+				lineAndCh.line, 
+				lineAndCh.character, 
+				diag.messageText);
+				
+		} else {
+			message = JSON.stringify({
+				filename: diag.file.filename,
+				offset: diag.start,
+				length: diag.length,
+				message: diag.messageText
+			});
+		}
+	
+		onError(message);
+	}
+	
+	if(!host.getCompilationSettings().noLib) {
+		var defaultLib = host.getDefaultLibFilename();
+		host.addScriptSnapshot(defaultLib, new ScriptSnapshot(fs.readFileSync(defaultLib), fs.statSync(defaultLib)));
+	}
+	
+	return {
+		build: (out: (file:vinyl)=>void, onError: (err: any) => void) => { 
+
+			var task = host.createSnapshotAndAdviseValidation(),
+				newErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null),
+				t1 = Date.now();
+			
+			if(config.verbose) {
+				gutil.log(gutil.colors.cyan(task.changed.length.toString()), 'files that need a syntax check and be emitted\n\t' 
+					+ gutil.colors.magenta(task.changed.join('\n\t')));
+				gutil.log(gutil.colors.cyan(task.changedOrDependencyChanged.length.toString()), 'files that need a semantic check\n\t' 
+					+ gutil.colors.magenta(task.changedOrDependencyChanged.join('\n\t')));
+			}
+			
+			// (1) check for syntax errors
+			task.changed.forEach(fileName => { 
+
+				delete oldErrors[fileName];
+				
+				languageService.getSyntacticDiagnostics(fileName).forEach(diag => {
+					printDiagnostic(diag, onError);
+					utils.collections.lookupOrInsert(newErrors, fileName, []).push(diag);
+				});
+			});
+			
+			// (2) emit
+			task.changed.forEach(fileName => { 
+				var output = languageService.getEmitOutput(fileName);
+				if(output.outputFiles.length > 0) {
+					out(new vinyl({
+						path: output.outputFiles[0].name,
+						contents: new Buffer(output.outputFiles[0].text)
+					}));
+				}
+			});
+
+			// (3) semantic check
+			task.changedOrDependencyChanged.forEach(fileName => { 
+
+				delete oldErrors[fileName];
+				
+				languageService.getSemanticDiagnostics(fileName).forEach(diag => { 
+					printDiagnostic(diag, onError);
+					utils.collections.lookupOrInsert(newErrors, fileName, []).push(diag);
+				});
+			});
+
+			// (4) dump old errors
+			utils.collections.forEach(oldErrors, entry => { 
+				entry.value.forEach(diag => printDiagnostic(diag, onError));
+			});
+
+			oldErrors = newErrors;
+			
+			if(config.verbose) {
+				gutil.log('Finished after', gutil.colors.yellow((Date.now() - t1) + 'ms'));
+			}
+		},
+		
+		file: (file) => { 
+			var snapshot = new ScriptSnapshot(file.contents, file.stat);
+			host.addScriptSnapshot(file.path, snapshot);
+		}
+	};
+}
+
+class ScriptSnapshot implements typescript.TypeScript.IScriptSnapshot {
+
+	private _text: string;
+	private _mtime: Date;
+	
+    constructor(buffer:Buffer, stat:fs.Stats) {
+		this._text = buffer.toString();
+		this._mtime = stat.mtime;
+    }
+	
+	public getVersion():string {
+		return this._mtime.toUTCString();
+	}
+	
+    public getText(start: number, end: number): string {
+        return this._text.substring(start, end);
+    }
+
+    public getLength(): number {
+        return this._text.length;
+    }
+
+    public getLineStartPositions(): number[] {
+        return typescript.TypeScript.TextUtilities.parseLineStarts(this._text);
+    }
+	
+    public getChangeRange(oldSnapshot:typescript.TypeScript.IScriptSnapshot):typescript.TypeScript.TextChangeRange {
+		return null;
+	}
+}
+
+interface IValidationTask {
+	changed: string[];
+	changedOrDependencyChanged: string[];
+}
+
+class ProjectSnapshot {
+
+	private _dependencies: utils.graph.Graph<string>;
+	private _versions: { [path: string]: string; };
+	
+	constructor(host:ts.LanguageServiceHost) {
+		this._captureState(host);
+	}
+	
+	private _captureState(host:ts.LanguageServiceHost):void {
+		
+		this._dependencies = new utils.graph.Graph<string>(s => s);
+		this._versions = Object.create(null);
+		
+		host.getScriptFileNames().forEach(fileName => { 
+			
+			fileName = ts.normalizePath(fileName);
+
+			// (1) paths and versions
+			this._versions[fileName] = host.getScriptVersion(fileName);
+			
+			
+			// (2) dependency graph for *.ts files
+			if(!fileName.match(/.*\.d\.ts$/)) { 
+				
+				var snapshot = host.getScriptSnapshot(fileName),
+					info = typescript.TypeScript.preProcessFile(fileName, snapshot, true);
+
+				info.referencedFiles.forEach(ref => { 
+					
+					var resolvedPath = path.resolve(path.dirname(fileName), ref.path),
+						normalizedPath = ts.normalizePath(resolvedPath);
+					
+					this._dependencies.inertEdge(fileName, normalizedPath);
+//					console.log(fileName + ' -> ' + normalizedPath);
+				});
+				
+				info.importedFiles.forEach(ref => { 
+					
+					var stopDirname = ts.normalizePath(host.getCurrentDirectory()),
+						dirname = fileName;
+					
+					while(dirname.indexOf(stopDirname) === 0) {
+
+						dirname = path.dirname(dirname);
+						
+						var resolvedPath = path.resolve(dirname, ref.path),
+							normalizedPath = ts.normalizePath(resolvedPath);
+
+						// try .ts
+						if (['.ts', '.d.ts'].some(suffix => {
+							var candidate = normalizedPath + suffix;
+							if (host.getScriptSnapshot(candidate)) {
+								this._dependencies.inertEdge(fileName, candidate);
+								//							console.log(fileName + ' -> ' + candidate);
+								return true;
+							}
+							return false;
+						})) {
+							// found, ugly code!
+							break;
+						};
+					}
+				});
+			}
+		});
+	}
+	
+	public whatToValidate(host: ts.LanguageServiceHost):IValidationTask {
+
+		var changed: string[] = [],
+			added: string[] = [],
+			removed: string[] = [];
+			
+		// compile file delta (changed, added, removed)
+		var idx: { [path: string]: string } = Object.create(null);
+		host.getScriptFileNames().forEach(fileName => idx[fileName] = host.getScriptVersion(fileName));
+		utils.collections.forEach(this._versions, entry => { 
+			var versionNow = idx[entry.key];
+			if(typeof versionNow === 'undefined') {
+				// removed
+				removed.push(entry.key);
+			} else if(typeof versionNow === 'string' && versionNow !== entry.value) {
+				// changed
+				changed.push(entry.key);
+			}
+			delete idx[entry.key];
+		});
+		// cos we removed all we saw earlier
+		added = Object.keys(idx);
+
+		// what to validate?
+		var syntax = changed.concat(added),
+			semantic: string[] = [];
+		
+		if(removed.length > 0 || added.length > 0) {
+			semantic = host.getScriptFileNames();
+		} else {
+			// validate every change file *plus* the files
+			// that depend on the changed file 
+			changed.forEach(fileName => this._dependencies.traverse(fileName, false, data => semantic.push(data)));
+		}
+		
+		return {
+			changed: syntax,
+			changedOrDependencyChanged: semantic
+		};
+	}
+}
+
+class LanguageServiceHost implements ts.LanguageServiceHost {
+
+	private _settings: ts.CompilationSettings;
+	private _snapshots: { [path: string]: ScriptSnapshot };
+	private _defaultLib: string;
+	private _projectSnapshot: ProjectSnapshot;
+	
+	constructor(settings:ts.CompilationSettings) {
+		this._settings = settings;
+		this._snapshots = Object.create(null);
+		this._defaultLib = ts.normalizePath(path.join(__dirname, 'typescript', 'lib.d.ts'));
+	}
+	
+	log(s: string): void { 
+		// nothing
+	}
+	
+	getCompilationSettings(): ts.CompilerOptions {
+		return this._settings;
+	}
+	
+    getScriptFileNames(): string[] {
+		return Object.keys(this._snapshots);
+	}
+	
+    getScriptVersion(fileName: string): string {
+		fileName = ts.normalizePath(fileName);
+		return this._snapshots[fileName].getVersion();
+	}
+	
+    getScriptIsOpen(fileName: string): boolean {
+		return false;
+	}
+	
+    getScriptSnapshot(fileName: string): typescript.TypeScript.IScriptSnapshot {
+		fileName = ts.normalizePath(fileName);
+		return this._snapshots[fileName];
+	}
+	
+	addScriptSnapshot(fileName:string, snapshot:ScriptSnapshot):ScriptSnapshot {
+		fileName = ts.normalizePath(fileName);
+		var old = this._snapshots[fileName];
+		this._snapshots[fileName] = snapshot;
+		return old;
+	}
+	
+    getLocalizedDiagnosticMessages(): any {
+		return null;
+	}
+	
+    getCancellationToken(): ts.CancellationToken {
+		return { isCancellationRequested: () => false };
+	}
+    
+	getCurrentDirectory(): string {
+		return process.cwd();
+	}
+	
+    getDefaultLibFilename(): string {
+		return this._defaultLib;
+	}
+	
+	createSnapshotAndAdviseValidation():IValidationTask {
+		var ret: IValidationTask;
+		if(!this._projectSnapshot) {
+			ret = {
+				changed: this.getScriptFileNames(),
+				changedOrDependencyChanged: this.getScriptFileNames()
+			};
+		} else {
+			ret = this._projectSnapshot.whatToValidate(this);
+		}
+		this._projectSnapshot = new ProjectSnapshot(this);
+		return ret;
+	}
+}

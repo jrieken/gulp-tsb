@@ -1,0 +1,65 @@
+# es6-shim 0.9.1 (28 October 2013)
+* Added `Array#copyWithin` and `Number.MIN_SAFE_INTEGER`
+* Big speed-up of Maps / Sets for string / number keys:
+  they are O(1) now.
+* Changed `Math.hypot` according to spec.
+* Other small fixes.
+
+# es6-shim 0.9.0 (30 August 2013)
+* Added Array iteration methods: `Array#keys`, `Array#values`, `Array#entries`, which return an `ArrayIterator`
+* Changed `Map` and `Set` constructors to conform to spec when called without `new`
+* Added `Math.imul`
+* Per spec, removed `Number.toInteger`, `Number.isInteger`, and `Number.MAX_INTEGER`; added `Number.isSafeInteger`, `Number.MAX_SAFE_INTEGER`
+* Added extensive additional tests for many methods
+
+# es6-shim 0.8.0 (8 June 2013)
+* Added `Object.setPrototypeOf`, `Set#keys`, `Set#values`, `Map#keys`, `Map#values`, `Map#entries`, `Set#entries`.
+* Fixed `String#repeat` according to spec.
+
+# es6-shim 0.7.0 (2 April 2013)
+* Added `Array#find`, `Array#findIndex`, `Object.assign`, `Object.mixin`,
+  `Math.cbrt`, `String.fromCodePoint`, `String#codePointAt`.
+* Removed `Object.isnt`.
+* Made Math functions fully conform spec.
+
+# es6-shim 0.6.0 (15 January 2013)
+* Added `Map#keys`, `Map#values`, `Map#size`, `Set#size`, `Set#clear`.
+
+# es6-shim 0.5.3 (2 September 2012)
+* Made `String#startsWith`, `String#endsWith` fully conform spec.
+
+# es6-shim 0.5.2 (17 June 2012)
+* Removed `String#toArray` and `Object.isObject` as per spec updates.
+
+# es6-shim 0.5.1 (14 June 2012)
+* Made Map and Set follow Spidermonkey implementation instead of V8.
+`var m = Map(); m.set('key', void 0); m.has('key');` now gives true.
+
+# es6-shim 0.5.0 (13 June 2012)
+* Added Number.MAX_INTEGER, Number.EPSILON, Number.parseInt,
+Number.parseFloat, Number.prototype.clz, Object.isObject.
+
+# es6-shim 0.4.1 (11 May 2012)
+* Fixed boundary checking in Number.isInteger.
+
+# es6-shim 0.4.0 (8 February 2012)
+* Added Math.log10, Math.log2, Math.log1p, Math.expm1, Math.cosh,
+Math.sinh, Math.tanh, Math.acosh, Math.asinh, Math.atanh, Math.hypot,
+Math.trunc.
+
+# es6-shim 0.3.1 (30 January 2012)
+* Added IE8 support.
+
+# es6-shim 0.3.0 (27 January 2012)
+* Added Number.isFinite() and Object.isnt().
+
+# es6-shim 0.2.1 (7 January 2012)
+* Fixed a bug in String#endsWith().
+
+# es6-shim 0.2.0 (25 December 2011)
+* Added browser support.
+* Added tests.
+* Added Math.sign().
+
+# es6-shim 0.1.0 (25 December 2011)
+* Initial release
