@@ -1,33 +1,6 @@
-/// <reference path="typings/node/node.d.ts" />
 
 var gulp = require('gulp');
-var ts = require('gulp-typescript');
-
-var tsProject = ts.createProject({
-    declarationFiles: false,
-    noExternalResolve: true,
-	module: 'commonjs',
-	target: 'es5'
-});
-
-gulp.task('scripts', function() {
-    var tsResult = gulp.src([
-		'lib/**/*.ts',
-		'typings/**/*.ts',
-		'!lib/typescript/lib*.ts'
-		]).pipe(ts(tsProject));
-
-	tsResult.js.pipe(gulp.dest('lib'));
-});
-
-gulp.task('watch', ['scripts'], function() {
-    gulp.watch('lib/*.ts', ['scripts']);
-});
-
-gulp.task('default', ['scripts', 'watch']);
-
-
-var tsb = require('./lib');
+var tsb = require('./lib/src');
 
 var compilation = tsb.create({
 	verbose: true,
@@ -35,17 +8,36 @@ var compilation = tsb.create({
 	module: 'commonjs'
 });
 
-gulp.task('scripts2', function() {
-	
-	gulp.src([
-		'lib/**/*.ts',
-		'typings/**/*.ts',
-		'!lib/typescript/lib*.ts'
-	])
-	.pipe(compilation())
-	.pipe(gulp.dest('lib-alt'));
+var sources = [
+	'src/**/*.ts',
+	'typings/**/*.ts',
+	'!src/typescript/lib*.ts'
+];
+
+var target = '/';
+
+gulp.task('build', function() {
+	return gulp.src(sources)
+		.pipe(compilation())
+		.pipe(gulp.dest(target));
 });
 
-gulp.task('watch2', ['scripts2'], function() {
-    gulp.watch('lib/*.ts', ['scripts2']);
+gulp.task('pre_release', function() { 
+	target = 'lib';
 });
+
+gulp.task('post_release', function() { 
+	target = '/';
+});
+
+gulp.task('release', ['pre_release', 'build', 'post_release'], function() { 
+	gulp.src('src/typescript/**.*')
+		.pipe(gulp.dest('lib/src/typescript'));	
+});
+
+
+gulp.task('dev', ['build'], function() {
+    gulp.watch(sources, ['build']);
+});
+
+gulp.task('default', ['dev']);
