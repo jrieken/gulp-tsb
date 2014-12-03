@@ -315,12 +315,12 @@ class ProjectSnapshot {
 
 class LanguageServiceHost implements ts.LanguageServiceHost {
 
-	private _settings: ts.CompilationSettings;
+	private _settings: ts.CompilerOptions;
 	private _snapshots: { [path: string]: ScriptSnapshot };
 	private _defaultLib: string;
 	private _projectSnapshot: ProjectSnapshot;
 	
-	constructor(settings:ts.CompilationSettings) {
+	constructor(settings:ts.CompilerOptions) {
 		this._settings = settings;
 		this._snapshots = Object.create(null);
 		this._defaultLib = ts.normalizePath(path.join(__dirname, 'typescript', 'lib.d.ts'));
