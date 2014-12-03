@@ -13,6 +13,7 @@
         "autoClosingBrackets": true,
         "formatOnType": true,
         "suggestOnTriggerCharacters": true,
+        "selectionHighlight": true,
         "overviewRulerLanes": 3,
         "hideCursorInOverviewRuler": false
     },

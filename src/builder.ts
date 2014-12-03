@@ -9,8 +9,8 @@ import vinyl = require('vinyl');
 import path = require('path');
 import utils = require('./utils');
 import gutil = require('gulp-util');
-import typescript = require('./typescript/typescriptServices');
-import ts = typescript.ts;
+import ts = require('./typescript/typescriptServices');
+//import ts = typescript.ts;
 
 export interface IConfiguration {
     json: boolean;
@@ -165,13 +165,15 @@ export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuild
 	};
 }
 
-class ScriptSnapshot implements typescript.TypeScript.IScriptSnapshot {
+class ScriptSnapshot implements ts.IScriptSnapshot {
 
 	private _text: string;
+	private _lineStarts: number[];
 	private _mtime: Date;
 	
     constructor(buffer:Buffer, stat:fs.Stats) {
 		this._text = buffer.toString();
+		this._lineStarts = ts.computeLineStarts(this._text);
 		this._mtime = stat.mtime;
     }
 	
@@ -188,10 +190,10 @@ class ScriptSnapshot implements typescript.TypeScript.IScriptSnapshot {
     }
 
     public getLineStartPositions(): number[] {
-        return typescript.TypeScript.TextUtilities.parseLineStarts(this._text);
+		return this._lineStarts;
     }
 	
-    public getChangeRange(oldSnapshot:typescript.TypeScript.IScriptSnapshot):typescript.TypeScript.TextChangeRange {
+    public getChangeRange(oldSnapshot:ts.IScriptSnapshot):ts.TextChangeRange {
 		return null;
 	}
 }
@@ -227,11 +229,11 @@ class ProjectSnapshot {
 			if(!fileName.match(/.*\.d\.ts$/)) { 
 				
 				var snapshot = host.getScriptSnapshot(fileName),
-					info = typescript.TypeScript.preProcessFile(fileName, snapshot, true);
+					info = ts.preProcessFile(snapshot.getText(0, snapshot.getLength()), true);
 
 				info.referencedFiles.forEach(ref => { 
 					
-					var resolvedPath = path.resolve(path.dirname(fileName), ref.path),
+					var resolvedPath = path.resolve(path.dirname(fileName), ref.filename),
 						normalizedPath = ts.normalizePath(resolvedPath);
 					
 					this._dependencies.inertEdge(fileName, normalizedPath);
@@ -247,7 +249,7 @@ class ProjectSnapshot {
 
 						dirname = path.dirname(dirname);
 						
-						var resolvedPath = path.resolve(dirname, ref.path),
+						var resolvedPath = path.resolve(dirname, ref.filename),
 							normalizedPath = ts.normalizePath(resolvedPath);
 
 						// try .ts
@@ -345,7 +347,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 		return false;
 	}
 	
-    getScriptSnapshot(fileName: string): typescript.TypeScript.IScriptSnapshot {
+    getScriptSnapshot(fileName: string): ts.IScriptSnapshot {
 		fileName = ts.normalizePath(fileName);
 		return this._snapshots[fileName];
 	}

@@ -7,15 +7,14 @@ var vinyl = require('vinyl');
 var path = require('path');
 var utils = require('./utils');
 var gutil = require('gulp-util');
-var typescript = require('./typescript/typescriptServices');
-var ts = typescript.ts;
+var ts = require('./typescript/typescriptServices');
 function createTypeScriptBuilder(config) {
     var host = new LanguageServiceHost(createCompilationSettings(config)), languageService = ts.createLanguageService(host, ts.createDocumentRegistry()), oldErrors = Object.create(null);
     function createCompilationSettings(config) {
         var result = {
             noLib: config.noLib,
             removeComments: config.removeComments,
-            generateDeclarationFiles: config.declaration,
+            declaration: config.declaration,
             noImplicitAny: config.noImplicitAny,
             target: 1 /* ES5 */,
             module: 0 /* None */
@@ -74,12 +73,12 @@ function createTypeScriptBuilder(config) {
             // (2) emit
             task.changed.forEach(function (fileName) {
                 var output = languageService.getEmitOutput(fileName);
-                if (output.outputFiles.length > 0) {
+                output.outputFiles.forEach(function (file) {
                     out(new vinyl({
-                        path: output.outputFiles[0].name,
-                        contents: new Buffer(output.outputFiles[0].text)
+                        path: file.name,
+                        contents: new Buffer(file.text)
                     }));
-                }
+                });
             });
             // (3) semantic check
             task.changedOrDependencyChanged.forEach(function (fileName) {
@@ -108,6 +107,7 @@ exports.createTypeScriptBuilder = createTypeScriptBuilder;
 var ScriptSnapshot = (function () {
     function ScriptSnapshot(buffer, stat) {
         this._text = buffer.toString();
+        this._lineStarts = ts.computeLineStarts(this._text);
         this._mtime = stat.mtime;
     }
     ScriptSnapshot.prototype.getVersion = function () {
@@ -120,7 +120,7 @@ var ScriptSnapshot = (function () {
         return this._text.length;
     };
     ScriptSnapshot.prototype.getLineStartPositions = function () {
-        return typescript.TypeScript.TextUtilities.parseLineStarts(this._text);
+        return this._lineStarts;
     };
     ScriptSnapshot.prototype.getChangeRange = function (oldSnapshot) {
         return null;
@@ -141,9 +141,9 @@ var ProjectSnapshot = (function () {
             _this._versions[fileName] = host.getScriptVersion(fileName);
             // (2) dependency graph for *.ts files
             if (!fileName.match(/.*\.d\.ts$/)) {
-                var snapshot = host.getScriptSnapshot(fileName), info = typescript.TypeScript.preProcessFile(fileName, snapshot, true);
+                var snapshot = host.getScriptSnapshot(fileName), info = ts.preProcessFile(snapshot.getText(0, snapshot.getLength()), true);
                 info.referencedFiles.forEach(function (ref) {
-                    var resolvedPath = path.resolve(path.dirname(fileName), ref.path), normalizedPath = ts.normalizePath(resolvedPath);
+                    var resolvedPath = path.resolve(path.dirname(fileName), ref.filename), normalizedPath = ts.normalizePath(resolvedPath);
                     _this._dependencies.inertEdge(fileName, normalizedPath);
                     //					console.log(fileName + ' -> ' + normalizedPath);
                 });
@@ -151,7 +151,7 @@ var ProjectSnapshot = (function () {
                     var stopDirname = ts.normalizePath(host.getCurrentDirectory()), dirname = fileName;
                     while (dirname.indexOf(stopDirname) === 0) {
                         dirname = path.dirname(dirname);
-                        var resolvedPath = path.resolve(dirname, ref.path), normalizedPath = ts.normalizePath(resolvedPath);
+                        var resolvedPath = path.resolve(dirname, ref.filename), normalizedPath = ts.normalizePath(resolvedPath);
                         // try .ts
                         if (['.ts', '.d.ts'].some(function (suffix) {
                             var candidate = normalizedPath + suffix;
