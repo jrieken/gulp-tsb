@@ -17,7 +17,7 @@ function createTypeScriptBuilder(config) {
             removeComments: config.removeComments,
             declaration: config.declaration,
             noImplicitAny: config.noImplicitAny,
-            preserveConstEnums: conifg.preserveConstEnums,
+            preserveConstEnums: config.preserveConstEnums,
             target: ts.ScriptTarget.ES5,
             module: ts.ModuleKind.None
         };
@@ -98,6 +98,7 @@ function createTypeScriptBuilder(config) {
             // (4) dump old errors
             utils.collections.forEach(oldErrors, function (entry) {
                 entry.value.forEach(function (diag) { return printDiagnostic(diag, onError); });
+                newErrors[entry.key] = entry.value;
             });
             oldErrors = newErrors;
             if (config.verbose) {

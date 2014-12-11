@@ -51,7 +51,7 @@ export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuild
 			removeComments: config.removeComments,
 			declaration: config.declaration,
 			noImplicitAny: config.noImplicitAny,
-			preserveConstEnums: conifg.preserveConstEnums,
+			preserveConstEnums: config.preserveConstEnums,
 			target: ts.ScriptTarget.ES5,
 			module: ts.ModuleKind.None
 		};
@@ -160,6 +160,7 @@ export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuild
 			// (4) dump old errors
 			utils.collections.forEach(oldErrors, entry => { 
 				entry.value.forEach(diag => printDiagnostic(diag, onError));
+				newErrors[entry.key] = entry.value;
 			});
 
 			oldErrors = newErrors;
