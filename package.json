@@ -17,6 +17,7 @@
     "vinyl": "^0.4.3"
   },
   "devDependencies": {
+    "gulp": "^3.8.10",
     "mocha": "*"
   }
 }

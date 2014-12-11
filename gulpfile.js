@@ -5,7 +5,8 @@ var tsb = require('./src');
 var compilation = tsb.create({
 	verbose: true,
 	target: 'es5',
-	module: 'commonjs'
+	module: 'commonjs',
+	declaration: true
 });
 
 var sources = [
