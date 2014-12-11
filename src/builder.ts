@@ -219,7 +219,7 @@ class ProjectSnapshot {
 		
 		host.getScriptFileNames().forEach(fileName => { 
 			
-			fileName = ts.normalizePath(fileName);
+			fileName = path.normalize(fileName);
 
 			// (1) paths and versions
 			this._versions[fileName] = host.getScriptVersion(fileName);
@@ -234,7 +234,7 @@ class ProjectSnapshot {
 				info.referencedFiles.forEach(ref => { 
 					
 					var resolvedPath = path.resolve(path.dirname(fileName), ref.filename),
-						normalizedPath = ts.normalizePath(resolvedPath);
+						normalizedPath = path.normalize(resolvedPath);
 					
 					this._dependencies.inertEdge(fileName, normalizedPath);
 //					console.log(fileName + ' -> ' + normalizedPath);
@@ -242,7 +242,7 @@ class ProjectSnapshot {
 				
 				info.importedFiles.forEach(ref => { 
 					
-					var stopDirname = ts.normalizePath(host.getCurrentDirectory()),
+					var stopDirname = path.normalize(host.getCurrentDirectory()),
 						dirname = fileName;
 					
 					while(dirname.indexOf(stopDirname) === 0) {
@@ -250,7 +250,7 @@ class ProjectSnapshot {
 						dirname = path.dirname(dirname);
 						
 						var resolvedPath = path.resolve(dirname, ref.filename),
-							normalizedPath = ts.normalizePath(resolvedPath);
+							normalizedPath = path.normalize(resolvedPath);
 
 						// try .ts
 						if (['.ts', '.d.ts'].some(suffix => {
@@ -323,7 +323,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 	constructor(settings:ts.CompilerOptions) {
 		this._settings = settings;
 		this._snapshots = Object.create(null);
-		this._defaultLib = ts.normalizePath(path.join(__dirname, 'typescript', 'lib.d.ts'));
+		this._defaultLib = path.normalize(path.join(__dirname, 'typescript', 'lib.d.ts'));
 	}
 	
 	log(s: string): void { 
@@ -339,7 +339,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 	}
 	
     getScriptVersion(fileName: string): string {
-		fileName = ts.normalizePath(fileName);
+		fileName = path.normalize(fileName);
 		return this._snapshots[fileName].getVersion();
 	}
 	
@@ -348,12 +348,12 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 	}
 	
     getScriptSnapshot(fileName: string): ts.IScriptSnapshot {
-		fileName = ts.normalizePath(fileName);
+		fileName = path.normalize(fileName);
 		return this._snapshots[fileName];
 	}
 	
 	addScriptSnapshot(fileName:string, snapshot:ScriptSnapshot):ScriptSnapshot {
-		fileName = ts.normalizePath(fileName);
+		fileName = path.normalize(fileName);
 		var old = this._snapshots[fileName];
 		this._snapshots[fileName] = snapshot;
 		return old;

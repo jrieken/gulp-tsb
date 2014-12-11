@@ -136,22 +136,22 @@ var ProjectSnapshot = (function () {
         this._dependencies = new utils.graph.Graph(function (s) { return s; });
         this._versions = Object.create(null);
         host.getScriptFileNames().forEach(function (fileName) {
-            fileName = ts.normalizePath(fileName);
+            fileName = path.normalize(fileName);
             // (1) paths and versions
             _this._versions[fileName] = host.getScriptVersion(fileName);
             // (2) dependency graph for *.ts files
             if (!fileName.match(/.*\.d\.ts$/)) {
                 var snapshot = host.getScriptSnapshot(fileName), info = ts.preProcessFile(snapshot.getText(0, snapshot.getLength()), true);
                 info.referencedFiles.forEach(function (ref) {
-                    var resolvedPath = path.resolve(path.dirname(fileName), ref.filename), normalizedPath = ts.normalizePath(resolvedPath);
+                    var resolvedPath = path.resolve(path.dirname(fileName), ref.filename), normalizedPath = path.normalize(resolvedPath);
                     _this._dependencies.inertEdge(fileName, normalizedPath);
                     //					console.log(fileName + ' -> ' + normalizedPath);
                 });
                 info.importedFiles.forEach(function (ref) {
-                    var stopDirname = ts.normalizePath(host.getCurrentDirectory()), dirname = fileName;
+                    var stopDirname = path.normalize(host.getCurrentDirectory()), dirname = fileName;
                     while (dirname.indexOf(stopDirname) === 0) {
                         dirname = path.dirname(dirname);
-                        var resolvedPath = path.resolve(dirname, ref.filename), normalizedPath = ts.normalizePath(resolvedPath);
+                        var resolvedPath = path.resolve(dirname, ref.filename), normalizedPath = path.normalize(resolvedPath);
                         // try .ts
                         if (['.ts', '.d.ts'].some(function (suffix) {
                             var candidate = normalizedPath + suffix;
@@ -211,7 +211,7 @@ var LanguageServiceHost = (function () {
     function LanguageServiceHost(settings) {
         this._settings = settings;
         this._snapshots = Object.create(null);
-        this._defaultLib = ts.normalizePath(path.join(__dirname, 'typescript', 'lib.d.ts'));
+        this._defaultLib = path.normalize(path.join(__dirname, 'typescript', 'lib.d.ts'));
     }
     LanguageServiceHost.prototype.log = function (s) {
         // nothing
@@ -223,18 +223,18 @@ var LanguageServiceHost = (function () {
         return Object.keys(this._snapshots);
     };
     LanguageServiceHost.prototype.getScriptVersion = function (fileName) {
-        fileName = ts.normalizePath(fileName);
+        fileName = path.normalize(fileName);
         return this._snapshots[fileName].getVersion();
     };
     LanguageServiceHost.prototype.getScriptIsOpen = function (fileName) {
         return false;
     };
     LanguageServiceHost.prototype.getScriptSnapshot = function (fileName) {
-        fileName = ts.normalizePath(fileName);
+        fileName = path.normalize(fileName);
         return this._snapshots[fileName];
     };
     LanguageServiceHost.prototype.addScriptSnapshot = function (fileName, snapshot) {
-        fileName = ts.normalizePath(fileName);
+        fileName = path.normalize(fileName);
         var old = this._snapshots[fileName];
         this._snapshots[fileName] = snapshot;
         return old;
