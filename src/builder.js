@@ -13,9 +13,11 @@ function createTypeScriptBuilder(config) {
     function createCompilationSettings(config) {
         var result = {
             noLib: config.noLib,
+            noResolve: config.noResolve,
             removeComments: config.removeComments,
             declaration: config.declaration,
             noImplicitAny: config.noImplicitAny,
+            preserveConstEnums: conifg.preserveConstEnums,
             target: ts.ScriptTarget.ES5,
             module: ts.ModuleKind.None
         };

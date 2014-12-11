@@ -13,14 +13,16 @@ import ts = require('./typescript/typescriptServices');
 //import ts = typescript.ts;
 
 export interface IConfiguration {
-    json: boolean;
-    verbose: boolean;
+	json: boolean;
+	verbose: boolean;
 	noLib: boolean;
-    target: string;
-    module: string;
-    noImplicitAny: boolean;
-    removeComments: boolean;
-    declaration: boolean;
+	noResolve: boolean;
+	target: string;
+	module: string;
+	noImplicitAny: boolean;
+	removeComments: boolean;
+	declaration: boolean;
+	preserveConstEnums: boolean;
 }
 
 export interface IFileDelta {
@@ -45,9 +47,11 @@ export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuild
     
 		var result: ts.CompilerOptions = {
 			noLib: config.noLib,
+			noResolve: config.noResolve,
 			removeComments: config.removeComments,
 			declaration: config.declaration,
 			noImplicitAny: config.noImplicitAny,
+			preserveConstEnums: conifg.preserveConstEnums,
 			target: ts.ScriptTarget.ES5,
 			module: ts.ModuleKind.None
 		};
