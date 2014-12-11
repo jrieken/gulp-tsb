@@ -6,7 +6,7 @@ var compilation = tsb.create({
 	verbose: true,
 	target: 'es5',
 	module: 'commonjs',
-	declaration: true
+	declaration: false
 });
 
 var sources = [
@@ -15,7 +15,7 @@ var sources = [
 	'!src/typescript/lib*.ts'
 ];
 
-var target = '/';
+var target = '';
 
 gulp.task('build', function() {
 	return gulp.src(sources)

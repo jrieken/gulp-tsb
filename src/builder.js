@@ -16,21 +16,21 @@ function createTypeScriptBuilder(config) {
             removeComments: config.removeComments,
             declaration: config.declaration,
             noImplicitAny: config.noImplicitAny,
-            target: 1 /* ES5 */,
-            module: 0 /* None */
+            target: ts.ScriptTarget.ES5,
+            module: ts.ModuleKind.None
         };
         // language version
         if (config.target && config.target.toLowerCase() === 'es5') {
-            result.target = 1 /* ES5 */;
+            result.target = ts.ScriptTarget.ES5;
         }
         // module generation
         if (config.module) {
             switch (config.module.toLowerCase()) {
                 case 'commonjs':
-                    result.module = 1 /* CommonJS */;
+                    result.module = ts.ModuleKind.CommonJS;
                     break;
                 case 'amd':
-                    result.module = 2 /* AMD */;
+                    result.module = ts.ModuleKind.AMD;
                     break;
             }
         }
