@@ -38,7 +38,8 @@ export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuild
 	
 	var host = new LanguageServiceHost(createCompilationSettings(config)),
 		languageService = ts.createLanguageService(host, ts.createDocumentRegistry()),
-		oldErrors: { [path:string]: ts.Diagnostic[] } = Object.create(null);
+		oldErrors: { [path:string]: ts.Diagnostic[] } = Object.create(null),
+		headUsed = process.memoryUsage().heapUsed;
 	
 	function createCompilationSettings(config:IConfiguration): ts.CompilerOptions {
     
@@ -106,16 +107,13 @@ export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuild
 				newErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null),
 				t1 = Date.now();
 			
-			if(config.verbose) {
-				gutil.log(gutil.colors.cyan(task.changed.length.toString()), 'files that need a syntax check and be emitted\n\t' 
-					+ gutil.colors.magenta(task.changed.join('\n\t')));
-				gutil.log(gutil.colors.cyan(task.changedOrDependencyChanged.length.toString()), 'files that need a semantic check\n\t' 
-					+ gutil.colors.magenta(task.changedOrDependencyChanged.join('\n\t')));
-			}
-			
 			// (1) check for syntax errors
 			task.changed.forEach(fileName => { 
-
+				
+				if(config.verbose) {
+					gutil.log(gutil.colors.cyan('[check syntax]'), fileName);
+				}
+				
 				delete oldErrors[fileName];
 				
 				languageService.getSyntacticDiagnostics(fileName).forEach(diag => {
@@ -126,6 +124,11 @@ export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuild
 			
 			// (2) emit
 			task.changed.forEach(fileName => { 
+				
+				if(config.verbose) {
+					gutil.log(gutil.colors.cyan('[emit code]'), fileName);
+				}
+				
 				var output = languageService.getEmitOutput(fileName);
 				output.outputFiles.forEach(file => { 
 					out(new vinyl({
@@ -137,7 +140,11 @@ export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuild
 
 			// (3) semantic check
 			task.changedOrDependencyChanged.forEach(fileName => { 
-
+					
+				if(config.verbose) {
+					gutil.log(gutil.colors.cyan('[check semantics]'), fileName);
+				}
+				
 				delete oldErrors[fileName];
 				
 				languageService.getSemanticDiagnostics(fileName).forEach(diag => { 
@@ -154,7 +161,16 @@ export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuild
 			oldErrors = newErrors;
 			
 			if(config.verbose) {
-				gutil.log('Finished after', gutil.colors.yellow((Date.now() - t1) + 'ms'));
+				var headNow = process.memoryUsage().heapUsed,
+					MB = 1024 * 1024;
+				gutil.log(
+					'[tsb]',
+					'time:', 
+					gutil.colors.yellow((Date.now() - t1) + 'ms'), 
+					'mem:', 
+					gutil.colors.cyan(Math.ceil(headNow / MB) + 'MB'),
+					gutil.colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
+				headUsed = headNow;
 			}
 		},
 		

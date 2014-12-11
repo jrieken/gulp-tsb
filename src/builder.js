@@ -9,7 +9,7 @@ var utils = require('./utils');
 var gutil = require('gulp-util');
 var ts = require('./typescript/typescriptServices');
 function createTypeScriptBuilder(config) {
-    var host = new LanguageServiceHost(createCompilationSettings(config)), languageService = ts.createLanguageService(host, ts.createDocumentRegistry()), oldErrors = Object.create(null);
+    var host = new LanguageServiceHost(createCompilationSettings(config)), languageService = ts.createLanguageService(host, ts.createDocumentRegistry()), oldErrors = Object.create(null), headUsed = process.memoryUsage().heapUsed;
     function createCompilationSettings(config) {
         var result = {
             noLib: config.noLib,
@@ -58,12 +58,11 @@ function createTypeScriptBuilder(config) {
     return {
         build: function (out, onError) {
             var task = host.createSnapshotAndAdviseValidation(), newErrors = Object.create(null), t1 = Date.now();
-            if (config.verbose) {
-                gutil.log(gutil.colors.cyan(task.changed.length.toString()), 'files that need a syntax check and be emitted\n\t' + gutil.colors.magenta(task.changed.join('\n\t')));
-                gutil.log(gutil.colors.cyan(task.changedOrDependencyChanged.length.toString()), 'files that need a semantic check\n\t' + gutil.colors.magenta(task.changedOrDependencyChanged.join('\n\t')));
-            }
             // (1) check for syntax errors
             task.changed.forEach(function (fileName) {
+                if (config.verbose) {
+                    gutil.log(gutil.colors.cyan('[check syntax]'), fileName);
+                }
                 delete oldErrors[fileName];
                 languageService.getSyntacticDiagnostics(fileName).forEach(function (diag) {
                     printDiagnostic(diag, onError);
@@ -72,6 +71,9 @@ function createTypeScriptBuilder(config) {
             });
             // (2) emit
             task.changed.forEach(function (fileName) {
+                if (config.verbose) {
+                    gutil.log(gutil.colors.cyan('[emit code]'), fileName);
+                }
                 var output = languageService.getEmitOutput(fileName);
                 output.outputFiles.forEach(function (file) {
                     out(new vinyl({
@@ -82,6 +84,9 @@ function createTypeScriptBuilder(config) {
             });
             // (3) semantic check
             task.changedOrDependencyChanged.forEach(function (fileName) {
+                if (config.verbose) {
+                    gutil.log(gutil.colors.cyan('[check semantics]'), fileName);
+                }
                 delete oldErrors[fileName];
                 languageService.getSemanticDiagnostics(fileName).forEach(function (diag) {
                     printDiagnostic(diag, onError);
@@ -94,7 +99,9 @@ function createTypeScriptBuilder(config) {
             });
             oldErrors = newErrors;
             if (config.verbose) {
-                gutil.log('Finished after', gutil.colors.yellow((Date.now() - t1) + 'ms'));
+                var headNow = process.memoryUsage().heapUsed, MB = 1024 * 1024;
+                gutil.log('[tsb]', 'time:', gutil.colors.yellow((Date.now() - t1) + 'ms'), 'mem:', gutil.colors.cyan(Math.ceil(headNow / MB) + 'MB'), gutil.colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
+                headUsed = headNow;
             }
         },
         file: function (file) {
