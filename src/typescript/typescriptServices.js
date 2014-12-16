@@ -1759,7 +1759,8 @@ var ts;
         Function_implicitly_has_return_type_any_because_it_does_not_have_a_return_type_annotation_and_is_referenced_directly_or_indirectly_in_one_of_its_return_expressions: { code: 7024, category: 1 /* Error */, key: "Function implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions." },
         You_cannot_rename_this_element: { code: 8000, category: 1 /* Error */, key: "You cannot rename this element." },
         yield_expressions_are_not_currently_supported: { code: 9000, category: 1 /* Error */, key: "'yield' expressions are not currently supported." },
-        generators_are_not_currently_supported: { code: 9001, category: 1 /* Error */, key: "'generators' are not currently supported." }
+        Generators_are_not_currently_supported: { code: 9001, category: 1 /* Error */, key: "Generators are not currently supported." },
+        Computed_property_names_are_not_currently_supported: { code: 9002, category: 1 /* Error */, key: "Computed property names are not currently supported." }
     };
 })(ts || (ts = {}));
 var ts;
@@ -6489,7 +6490,7 @@ var ts;
         }
         function checkForGenerator(node) {
             if (node.asteriskToken) {
-                return grammarErrorOnNode(node.asteriskToken, ts.Diagnostics.generators_are_not_currently_supported);
+                return grammarErrorOnNode(node.asteriskToken, ts.Diagnostics.Generators_are_not_currently_supported);
             }
         }
         function checkFunctionExpression(node) {
@@ -6891,6 +6892,7 @@ var ts;
             return checkForInitializerInAmbientContext(node);
         }
         function checkComputedPropertyName(node) {
+            return grammarErrorOnNode(node, ts.Diagnostics.Computed_property_names_are_not_currently_supported);
             if (languageVersion < 2 /* ES6 */) {
                 return grammarErrorOnNode(node, ts.Diagnostics.Computed_property_names_are_only_available_when_targeting_ECMAScript_6_and_higher);
             }
@@ -14904,12 +14906,18 @@ var ts;
             }
             return undefined;
         }
-        function getContextualTypeForArgument(node) {
-            var callExpression = node.parent;
-            var argIndex = ts.indexOf(callExpression.arguments, node);
+        function getContextualTypeForArgument(callTarget, arg) {
+            var args = getEffectiveCallArguments(callTarget);
+            var argIndex = ts.indexOf(args, arg);
             if (argIndex >= 0) {
-                var signature = getResolvedSignature(callExpression);
+                var signature = getResolvedSignature(callTarget);
                 return getTypeAtPosition(signature, argIndex);
+            }
+            return undefined;
+        }
+        function getContextualTypeForSubstitutionExpression(template, substitutionExpression) {
+            if (template.parent.kind === 147 /* TaggedTemplateExpression */) {
+                return getContextualTypeForArgument(template.parent, substitutionExpression);
             }
             return undefined;
         }
@@ -15015,7 +15023,7 @@ var ts;
                     return getContextualTypeForReturnExpression(node);
                 case 145 /* CallExpression */:
                 case 146 /* NewExpression */:
-                    return getContextualTypeForArgument(node);
+                    return getContextualTypeForArgument(parent, node);
                 case 148 /* TypeAssertionExpression */:
                     return getTypeFromTypeNode(parent.type);
                 case 157 /* BinaryExpression */:
@@ -15026,6 +15034,9 @@ var ts;
                     return getContextualTypeForElementExpression(node);
                 case 158 /* ConditionalExpression */:
                     return getContextualTypeForConditionalOperand(node);
+                case 162 /* TemplateSpan */:
+                    ts.Debug.assert(parent.parent.kind === 159 /* TemplateExpression */);
+                    return getContextualTypeForSubstitutionExpression(parent.parent, node);
             }
             return undefined;
         }
@@ -17703,6 +17714,8 @@ var ts;
                 case 145 /* CallExpression */:
                 case 146 /* NewExpression */:
                 case 147 /* TaggedTemplateExpression */:
+                case 159 /* TemplateExpression */:
+                case 162 /* TemplateSpan */:
                 case 148 /* TypeAssertionExpression */:
                 case 149 /* ParenthesizedExpression */:
                 case 153 /* TypeOfExpression */:
@@ -20766,13 +20779,19 @@ var ts;
                     var isTokenInRange = ts.rangeContainsRange(originalRange, currentTokenInfo.token);
                     var tokenStart = sourceFile.getLineAndCharacterFromPosition(currentTokenInfo.token.pos);
                     if (isTokenInRange) {
+                        var rangeHasError = rangeContainsError(currentTokenInfo.token);
                         var prevStartLine = previousRangeStartLine;
                         lineAdded = processRange(currentTokenInfo.token, tokenStart, parent, childContextNode, dynamicIndentation);
-                        if (lineAdded !== undefined) {
-                            indentToken = lineAdded;
+                        if (rangeHasError) {
+                            indentToken = false;
                         }
                         else {
-                            indentToken = lastTriviaWasNewLine && tokenStart.line !== prevStartLine;
+                            if (lineAdded !== undefined) {
+                                indentToken = lineAdded;
+                            }
+                            else {
+                                indentToken = lastTriviaWasNewLine && tokenStart.line !== prevStartLine;
+                            }
                         }
                     }
                     if (currentTokenInfo.trailingTrivia) {
@@ -21328,6 +21347,7 @@ var ts;
                     case 183 /* VariableDeclaration */:
                     case 192 /* ExportAssignment */:
                     case 174 /* ReturnStatement */:
+                    case 158 /* ConditionalExpression */:
                         return true;
                 }
                 return false;
@@ -25748,94 +25768,6 @@ var ts;
 var debugObjectHost = this;
 var ts;
 (function (ts) {
-    (function (LanguageVersion) {
-        LanguageVersion[LanguageVersion["EcmaScript3"] = 0] = "EcmaScript3";
-        LanguageVersion[LanguageVersion["EcmaScript5"] = 1] = "EcmaScript5";
-        LanguageVersion[LanguageVersion["EcmaScript6"] = 2] = "EcmaScript6";
-    })(ts.LanguageVersion || (ts.LanguageVersion = {}));
-    var LanguageVersion = ts.LanguageVersion;
-    (function (ModuleGenTarget) {
-        ModuleGenTarget[ModuleGenTarget["Unspecified"] = 0] = "Unspecified";
-        ModuleGenTarget[ModuleGenTarget["Synchronous"] = 1] = "Synchronous";
-        ModuleGenTarget[ModuleGenTarget["Asynchronous"] = 2] = "Asynchronous";
-    })(ts.ModuleGenTarget || (ts.ModuleGenTarget = {}));
-    var ModuleGenTarget = ts.ModuleGenTarget;
-    function languageVersionToScriptTarget(languageVersion) {
-        if (typeof languageVersion === "undefined")
-            return undefined;
-        switch (languageVersion) {
-            case 0 /* EcmaScript3 */: return 0 /* ES3 */;
-            case 1 /* EcmaScript5 */: return 1 /* ES5 */;
-            case 2 /* EcmaScript6 */: return 2 /* ES6 */;
-            default: throw Error("unsupported LanguageVersion value: " + languageVersion);
-        }
-    }
-    function moduleGenTargetToModuleKind(moduleGenTarget) {
-        if (typeof moduleGenTarget === "undefined")
-            return undefined;
-        switch (moduleGenTarget) {
-            case 2 /* Asynchronous */: return 2 /* AMD */;
-            case 1 /* Synchronous */: return 1 /* CommonJS */;
-            case 0 /* Unspecified */: return 0 /* None */;
-            default: throw Error("unsupported ModuleGenTarget value: " + moduleGenTarget);
-        }
-    }
-    function scriptTargetTolanguageVersion(scriptTarget) {
-        if (typeof scriptTarget === "undefined")
-            return undefined;
-        switch (scriptTarget) {
-            case 0 /* ES3 */: return 0 /* EcmaScript3 */;
-            case 1 /* ES5 */: return 1 /* EcmaScript5 */;
-            case 2 /* ES6 */: return 2 /* EcmaScript6 */;
-            default: throw Error("unsupported ScriptTarget value: " + scriptTarget);
-        }
-    }
-    function moduleKindToModuleGenTarget(moduleKind) {
-        if (typeof moduleKind === "undefined")
-            return undefined;
-        switch (moduleKind) {
-            case 2 /* AMD */: return 2 /* Asynchronous */;
-            case 1 /* CommonJS */: return 1 /* Synchronous */;
-            case 0 /* None */: return 0 /* Unspecified */;
-            default: throw Error("unsupported ModuleKind value: " + moduleKind);
-        }
-    }
-    function compilationSettingsToCompilerOptions(settings) {
-        var options = {};
-        options.removeComments = settings.removeComments;
-        options.noResolve = settings.noResolve;
-        options.noImplicitAny = settings.noImplicitAny;
-        options.noLib = settings.noLib;
-        options.target = languageVersionToScriptTarget(settings.codeGenTarget);
-        options.module = moduleGenTargetToModuleKind(settings.moduleGenTarget);
-        options.out = settings.outFileOption;
-        options.outDir = settings.outDirOption;
-        options.sourceMap = settings.mapSourceFiles;
-        options.mapRoot = settings.mapRoot;
-        options.sourceRoot = settings.sourceRoot;
-        options.declaration = settings.generateDeclarationFiles;
-        options.codepage = settings.codepage;
-        options.emitBOM = settings.emitBOM;
-        return options;
-    }
-    function compilerOptionsToCompilationSettings(options) {
-        var settings = {};
-        settings.removeComments = options.removeComments;
-        settings.noResolve = options.noResolve;
-        settings.noImplicitAny = options.noImplicitAny;
-        settings.noLib = options.noLib;
-        settings.codeGenTarget = scriptTargetTolanguageVersion(options.target);
-        settings.moduleGenTarget = moduleKindToModuleGenTarget(options.module);
-        settings.outFileOption = options.out;
-        settings.outDirOption = options.outDir;
-        settings.mapSourceFiles = options.sourceMap;
-        settings.mapRoot = options.mapRoot;
-        settings.sourceRoot = options.sourceRoot;
-        settings.generateDeclarationFiles = options.declaration;
-        settings.codepage = options.codepage;
-        settings.emitBOM = options.emitBOM;
-        return settings;
-    }
     function logInternalError(logger, err) {
         logger.log("*INTERNAL ERROR* - Exception in typescript services: " + err.message);
     }
@@ -25880,8 +25812,7 @@ var ts;
                 throw Error("LanguageServiceShimHostAdapter.getCompilationSettings: empty compilationSettings");
                 return null;
             }
-            var options = compilationSettingsToCompilerOptions(JSON.parse(settingsJson));
-            return options;
+            return JSON.parse(settingsJson);
         };
         LanguageServiceShimHostAdapter.prototype.getScriptFileNames = function () {
             var encoded = this.shimHost.getScriptFileNames();
@@ -26241,7 +26172,7 @@ var ts;
         };
         CoreServicesShimObject.prototype.getDefaultCompilationSettings = function () {
             return this.forwardJSONCall("getDefaultCompilationSettings()", function () {
-                return compilerOptionsToCompilationSettings(ts.getDefaultCompilerOptions());
+                return ts.getDefaultCompilerOptions();
             });
         };
         return CoreServicesShimObject;

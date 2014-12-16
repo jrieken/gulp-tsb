@@ -6,7 +6,8 @@ var compilation = tsb.create({
 	verbose: true,
 	target: 'es5',
 	module: 'commonjs',
-	declaration: false
+	declaration: false,
+	preserveConstEnums: true
 });
 
 var sources = [
