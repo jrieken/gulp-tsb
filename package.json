@@ -1,6 +1,5 @@
 {
   "name": "tsb",
-  "preferGlobal": true,
   "version": "0.0.1",
   "author": "Johannes Rieken <johannes.rieken@gmail.com>",
   "description": "An incremental TypeScript builder for gulp",
