@@ -5,6 +5,10 @@
   "author": "Johannes Rieken <johannes.rieken@gmail.com>",
   "description": "An incremental TypeScript builder for gulp",
   "main": "./src/index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jrieken/gulp-tsb.git"
+  },
   "keywords": [
     "gulpplugin",
     "typescript",
