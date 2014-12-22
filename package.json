@@ -1,6 +1,6 @@
 {
   "name": "gulp-tsb",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": "Johannes Rieken <johannes.rieken@gmail.com>",
   "description": "An incremental TypeScript builder for gulp",
   "main": "./src/index",
