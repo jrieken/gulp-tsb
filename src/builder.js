@@ -15,13 +15,13 @@ function createTypeScriptBuilder(config) {
         if (!config['target']) {
             config['target'] = ts.ScriptTarget.ES3;
         }
-        else if (/ES3/i.test(String(config['config']))) {
+        else if (/ES3/i.test(String(config['target']))) {
             config['target'] = ts.ScriptTarget.ES3;
         }
-        else if (/ES5/i.test(String(config['config']))) {
+        else if (/ES5/i.test(String(config['target']))) {
             config['target'] = ts.ScriptTarget.ES5;
         }
-        else if (/ES6/i.test(String(config['config']))) {
+        else if (/ES6/i.test(String(config['target']))) {
             config['target'] = ts.ScriptTarget.ES6;
         }
         // module generation
