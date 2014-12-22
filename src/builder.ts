@@ -10,19 +10,11 @@ import path = require('path');
 import utils = require('./utils');
 import gutil = require('gulp-util');
 import ts = require('./typescript/typescriptServices');
-//import ts = typescript.ts;
 
 export interface IConfiguration {
 	json: boolean;
 	verbose: boolean;
-	noLib: boolean;
-	noResolve: boolean;
-	target: string;
-	module: string;
-	noImplicitAny: boolean;
-	removeComments: boolean;
-	declaration: boolean;
-	preserveConstEnums: boolean;
+	[option: string]: string | number | boolean;
 }
 
 export interface IFileDelta {
@@ -44,41 +36,29 @@ export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuild
 		headUsed = process.memoryUsage().heapUsed;
 	
 	function createCompilationSettings(config:IConfiguration): ts.CompilerOptions {
-    
-		var result: ts.CompilerOptions = {
-			noLib: config.noLib,
-			noResolve: config.noResolve,
-			removeComments: config.removeComments,
-			declaration: config.declaration,
-			noImplicitAny: config.noImplicitAny,
-			preserveConstEnums: config.preserveConstEnums,
-			target: ts.ScriptTarget.ES3,
-			module: ts.ModuleKind.None
-		};
-		
+    	
 		// language version
-		if(config.target) {
-			switch(config.target.toLowerCase()) {
-				case 'es5':
-					result.target = ts.ScriptTarget.ES5;
-					break;
-				case 'es6':
-					result.target = ts.ScriptTarget.ES6;
-					break;
-			}
+		if(!config['target']) {
+			config['target'] = ts.ScriptTarget.ES3;
+		} else if(/ES3/i.test(String(config['config']))) {
+			config['target'] = ts.ScriptTarget.ES3;
+		} else if(/ES5/i.test(String(config['config']))) {
+			config['target'] = ts.ScriptTarget.ES5;
+		} else if(/ES6/i.test(String(config['config']))) {
+			config['target'] = ts.ScriptTarget.ES6;
 		}
-
+		
 		// module generation
-		if(config.module) {
-			switch(config.module.toLowerCase()) {
-				case 'commonjs':
-					result.module = ts.ModuleKind.CommonJS;
-					break;
-				case 'amd':
-					result.module = ts.ModuleKind.AMD;
-					break;
-			}
+		if (/commonjs/i.test(String(config['module']))) {
+			config['module'] = ts.ModuleKind.CommonJS;
+		} else if (/amd/i.test(String(config['module']))) {
+			config['module'] = ts.ModuleKind.AMD;
 		}
+		
+		var result = <ts.CompilerOptions> config;
+//		if(config.verbose) {
+//			gutil.log(JSON.stringify(result));
+//		}
 		return result;
 	}
 	
