@@ -52,13 +52,20 @@ export function createTypeScriptBuilder(config:IConfiguration): ITypeScriptBuild
 			declaration: config.declaration,
 			noImplicitAny: config.noImplicitAny,
 			preserveConstEnums: config.preserveConstEnums,
-			target: ts.ScriptTarget.ES5,
+			target: ts.ScriptTarget.ES3,
 			module: ts.ModuleKind.None
 		};
 		
 		// language version
-		if(config.target && config.target.toLowerCase() === 'es5') {
-			result.target = ts.ScriptTarget.ES5;
+		if(config.target) {
+			switch(config.target.toLowerCase()) {
+				case 'es5':
+					result.target = ts.ScriptTarget.ES5;
+					break;
+				case 'es6':
+					result.target = ts.ScriptTarget.ES6;
+					break;
+			}
 		}
 
 		// module generation
