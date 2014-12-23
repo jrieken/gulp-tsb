@@ -3,39 +3,24 @@
 /// <reference path="../typings/gulp-util/gulp-util.d.ts" />
 'use strict';
 var fs = require('fs');
-var vinyl = require('vinyl');
 var path = require('path');
+var crypto = require('crypto');
 var utils = require('./utils');
 var gutil = require('gulp-util');
 var ts = require('./typescript/typescriptServices');
+var Vinyl = require('vinyl');
 function createTypeScriptBuilder(config) {
-    var host = new LanguageServiceHost(createCompilationSettings(config)), languageService = ts.createLanguageService(host, ts.createDocumentRegistry()), oldErrors = Object.create(null), headUsed = process.memoryUsage().heapUsed;
-    function createCompilationSettings(config) {
-        // language version
-        if (!config['target']) {
-            config['target'] = ts.ScriptTarget.ES3;
+    var settings = createCompilationSettings(config), host = new LanguageServiceHost(settings), service = ts.createLanguageService(host, ts.createDocumentRegistry()), lastBuildVersion = Object.create(null), lastDtsHash = Object.create(null), userWantsDeclarations = settings.declaration, oldErrors = Object.create(null), headUsed = process.memoryUsage().heapUsed;
+    // always emit declaraction files
+    host.getCompilationSettings().declaration = true;
+    if (!host.getCompilationSettings().noLib) {
+        var defaultLib = host.getDefaultLibFilename();
+        host.addScriptSnapshot(defaultLib, new ScriptSnapshot(fs.readFileSync(defaultLib), fs.statSync(defaultLib)));
+    }
+    function log(topic, message) {
+        if (config.verbose) {
+            gutil.log(gutil.colors.cyan(topic), message);
         }
-        else if (/ES3/i.test(String(config['target']))) {
-            config['target'] = ts.ScriptTarget.ES3;
-        }
-        else if (/ES5/i.test(String(config['target']))) {
-            config['target'] = ts.ScriptTarget.ES5;
-        }
-        else if (/ES6/i.test(String(config['target']))) {
-            config['target'] = ts.ScriptTarget.ES6;
-        }
-        // module generation
-        if (/commonjs/i.test(String(config['module']))) {
-            config['module'] = ts.ModuleKind.CommonJS;
-        }
-        else if (/amd/i.test(String(config['module']))) {
-            config['module'] = ts.ModuleKind.AMD;
-        }
-        var result = config;
-        //		if(config.verbose) {
-        //			gutil.log(JSON.stringify(result));
-        //		}
-        return result;
     }
     function printDiagnostic(diag, onError) {
         var lineAndCh = diag.file.getLineAndCharacterFromPosition(diag.start), message;
@@ -52,67 +37,164 @@ function createTypeScriptBuilder(config) {
         }
         onError(message);
     }
-    if (!host.getCompilationSettings().noLib) {
-        var defaultLib = host.getDefaultLibFilename();
-        host.addScriptSnapshot(defaultLib, new ScriptSnapshot(fs.readFileSync(defaultLib), fs.statSync(defaultLib)));
+    function file(file) {
+        var snapshot = new ScriptSnapshot(file.contents, file.stat);
+        host.addScriptSnapshot(file.path, snapshot);
+    }
+    function build(out, onError) {
+        var filenames = host.getScriptFileNames(), newErrors = Object.create(null), checkedThisRound = Object.create(null), filesWithShapeChanges = [], t1 = Date.now();
+        function shouldCheck(filename) {
+            if (checkedThisRound[filename]) {
+                return false;
+            }
+            else {
+                checkedThisRound[filename] = true;
+                return true;
+            }
+        }
+        for (var i = 0, len = filenames.length; i < len; i++) {
+            var filename = filenames[i], version = host.getScriptVersion(filename);
+            if (lastBuildVersion[filename] === version) {
+                continue;
+            }
+            var output = service.getEmitOutput(filename), checkSyntax = false, checkSemantics = false, dtsHash = undefined;
+            // emit output has fast as possible
+            output.outputFiles.forEach(function (file) {
+                if (/\.d\.ts$/.test(file.name)) {
+                    dtsHash = crypto.createHash('md5').update(file.text).digest('base64');
+                    if (!userWantsDeclarations) {
+                        // don't leak .d.ts files if users don't want them
+                        return;
+                    }
+                }
+                log('[emit output]', file.name);
+                out(new Vinyl({
+                    path: file.name,
+                    contents: new Buffer(file.text)
+                }));
+            });
+            switch (output.emitOutputStatus) {
+                case ts.EmitReturnStatus.Succeeded:
+                    break;
+                case ts.EmitReturnStatus.AllOutputGenerationSkipped:
+                    log('[syntax errors]', filename);
+                    checkSyntax = true;
+                    break;
+                case ts.EmitReturnStatus.JSGeneratedWithSemanticErrors:
+                case ts.EmitReturnStatus.DeclarationGenerationSkipped:
+                    log('[semantic errors]', filename);
+                    checkSemantics = true;
+                    break;
+                default:
+                    console.debug('NOT prepared for this emit status: ' + output.emitOutputStatus);
+                    break;
+            }
+            // print and store syntax and semantic errors
+            delete oldErrors[filename];
+            var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []);
+            if (checkSyntax) {
+                diagnostics.push.apply(diagnostics, service.getSyntacticDiagnostics(filename));
+            }
+            if (checkSemantics) {
+                diagnostics.push.apply(diagnostics, service.getSemanticDiagnostics(filename));
+            }
+            diagnostics.forEach(function (diag) {
+                printDiagnostic(diag, onError);
+            });
+            // dts comparing
+            if (dtsHash && lastDtsHash[filename] !== dtsHash) {
+                lastDtsHash[filename] = dtsHash;
+                if (service.getSourceFile(filename).externalModuleIndicator) {
+                    filesWithShapeChanges.push(filename);
+                }
+                else {
+                    filesWithShapeChanges.unshift(filename);
+                }
+            }
+            lastBuildVersion[filename] = version;
+            checkedThisRound[filename] = true;
+        }
+        if (filesWithShapeChanges.length === 0) {
+        }
+        else if (!service.getSourceFile(filesWithShapeChanges[0]).externalModuleIndicator) {
+            // at least one internal module changes which means that
+            // we have to type check all others
+            log('[shape changes]', 'internal module changed → FULL check required');
+            host.getScriptFileNames().forEach(function (filename) {
+                if (!shouldCheck(filename)) {
+                    return;
+                }
+                log('[semantic check*]', filename);
+                var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []);
+                service.getSemanticDiagnostics(filename).forEach(function (diag) {
+                    diagnostics.push(diag);
+                    printDiagnostic(diag, onError);
+                });
+            });
+        }
+        else {
+            // reverse dependencies
+            log('[shape changes]', 'external module changed → check REVERSE dependencies');
+            var needsSemanticCheck = [];
+            filesWithShapeChanges.forEach(function (filename) { return host.collectDependents(filename, needsSemanticCheck); });
+            while (needsSemanticCheck.length) {
+                var filename = needsSemanticCheck.pop();
+                if (!shouldCheck(filename)) {
+                    continue;
+                }
+                log('[semantic check*]', filename);
+                var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []), hasSemanticErrors = false;
+                service.getSemanticDiagnostics(filename).forEach(function (diag) {
+                    diagnostics.push(diag);
+                    printDiagnostic(diag, onError);
+                    hasSemanticErrors = true;
+                });
+                if (!hasSemanticErrors) {
+                    host.collectDependents(filename, needsSemanticCheck);
+                }
+            }
+        }
+        // (4) dump old errors
+        utils.collections.forEach(oldErrors, function (entry) {
+            entry.value.forEach(function (diag) { return printDiagnostic(diag, onError); });
+            newErrors[entry.key] = entry.value;
+        });
+        oldErrors = newErrors;
+        if (config.verbose) {
+            var headNow = process.memoryUsage().heapUsed, MB = 1024 * 1024;
+            gutil.log('[tsb]', 'time:', gutil.colors.yellow((Date.now() - t1) + 'ms'), 'mem:', gutil.colors.cyan(Math.ceil(headNow / MB) + 'MB'), gutil.colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
+            headUsed = headNow;
+        }
     }
     return {
-        build: function (out, onError) {
-            var task = host.createSnapshotAndAdviseValidation(), newErrors = Object.create(null), t1 = Date.now();
-            // (1) check for syntax errors
-            task.changed.forEach(function (fileName) {
-                if (config.verbose) {
-                    gutil.log(gutil.colors.cyan('[check syntax]'), fileName);
-                }
-                delete oldErrors[fileName];
-                languageService.getSyntacticDiagnostics(fileName).forEach(function (diag) {
-                    printDiagnostic(diag, onError);
-                    utils.collections.lookupOrInsert(newErrors, fileName, []).push(diag);
-                });
-            });
-            // (2) emit
-            task.changed.forEach(function (fileName) {
-                if (config.verbose) {
-                    gutil.log(gutil.colors.cyan('[emit code]'), fileName);
-                }
-                var output = languageService.getEmitOutput(fileName);
-                output.outputFiles.forEach(function (file) {
-                    out(new vinyl({
-                        path: file.name,
-                        contents: new Buffer(file.text)
-                    }));
-                });
-            });
-            // (3) semantic check
-            task.changedOrDependencyChanged.forEach(function (fileName) {
-                if (config.verbose) {
-                    gutil.log(gutil.colors.cyan('[check semantics]'), fileName);
-                }
-                delete oldErrors[fileName];
-                languageService.getSemanticDiagnostics(fileName).forEach(function (diag) {
-                    printDiagnostic(diag, onError);
-                    utils.collections.lookupOrInsert(newErrors, fileName, []).push(diag);
-                });
-            });
-            // (4) dump old errors
-            utils.collections.forEach(oldErrors, function (entry) {
-                entry.value.forEach(function (diag) { return printDiagnostic(diag, onError); });
-                newErrors[entry.key] = entry.value;
-            });
-            oldErrors = newErrors;
-            if (config.verbose) {
-                var headNow = process.memoryUsage().heapUsed, MB = 1024 * 1024;
-                gutil.log('[tsb]', 'time:', gutil.colors.yellow((Date.now() - t1) + 'ms'), 'mem:', gutil.colors.cyan(Math.ceil(headNow / MB) + 'MB'), gutil.colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
-                headUsed = headNow;
-            }
-        },
-        file: function (file) {
-            var snapshot = new ScriptSnapshot(file.contents, file.stat);
-            host.addScriptSnapshot(file.path, snapshot);
-        }
+        file: file,
+        build: build
     };
 }
 exports.createTypeScriptBuilder = createTypeScriptBuilder;
+function createCompilationSettings(config) {
+    // language version
+    if (!config['target']) {
+        config['target'] = ts.ScriptTarget.ES3;
+    }
+    else if (/ES3/i.test(String(config['target']))) {
+        config['target'] = ts.ScriptTarget.ES3;
+    }
+    else if (/ES5/i.test(String(config['target']))) {
+        config['target'] = ts.ScriptTarget.ES5;
+    }
+    else if (/ES6/i.test(String(config['target']))) {
+        config['target'] = ts.ScriptTarget.ES6;
+    }
+    // module generation
+    if (/commonjs/i.test(String(config['module']))) {
+        config['module'] = ts.ModuleKind.CommonJS;
+    }
+    else if (/amd/i.test(String(config['module']))) {
+        config['module'] = ts.ModuleKind.AMD;
+    }
+    return config;
+}
 var ScriptSnapshot = (function () {
     function ScriptSnapshot(buffer, stat) {
         this._text = buffer.toString();
@@ -136,91 +218,13 @@ var ScriptSnapshot = (function () {
     };
     return ScriptSnapshot;
 })();
-var ProjectSnapshot = (function () {
-    function ProjectSnapshot(host) {
-        this._captureState(host);
-    }
-    ProjectSnapshot.prototype._captureState = function (host) {
-        var _this = this;
-        this._dependencies = new utils.graph.Graph(function (s) { return s; });
-        this._versions = Object.create(null);
-        host.getScriptFileNames().forEach(function (fileName) {
-            fileName = path.normalize(fileName);
-            // (1) paths and versions
-            _this._versions[fileName] = host.getScriptVersion(fileName);
-            // (2) dependency graph for *.ts files
-            if (!fileName.match(/.*\.d\.ts$/)) {
-                var snapshot = host.getScriptSnapshot(fileName), info = ts.preProcessFile(snapshot.getText(0, snapshot.getLength()), true);
-                info.referencedFiles.forEach(function (ref) {
-                    var resolvedPath = path.resolve(path.dirname(fileName), ref.filename), normalizedPath = path.normalize(resolvedPath);
-                    _this._dependencies.inertEdge(fileName, normalizedPath);
-                    //					console.log(fileName + ' -> ' + normalizedPath);
-                });
-                info.importedFiles.forEach(function (ref) {
-                    var stopDirname = path.normalize(host.getCurrentDirectory()), dirname = fileName;
-                    while (dirname.indexOf(stopDirname) === 0) {
-                        dirname = path.dirname(dirname);
-                        var resolvedPath = path.resolve(dirname, ref.filename), normalizedPath = path.normalize(resolvedPath);
-                        // try .ts
-                        if (['.ts', '.d.ts'].some(function (suffix) {
-                            var candidate = normalizedPath + suffix;
-                            if (host.getScriptSnapshot(candidate)) {
-                                _this._dependencies.inertEdge(fileName, candidate);
-                                //							console.log(fileName + ' -> ' + candidate);
-                                return true;
-                            }
-                            return false;
-                        })) {
-                            break;
-                        }
-                        ;
-                    }
-                });
-            }
-        });
-    };
-    ProjectSnapshot.prototype.whatToValidate = function (host) {
-        var _this = this;
-        var changed = [], added = [], removed = [];
-        // compile file delta (changed, added, removed)
-        var idx = Object.create(null);
-        host.getScriptFileNames().forEach(function (fileName) { return idx[fileName] = host.getScriptVersion(fileName); });
-        utils.collections.forEach(this._versions, function (entry) {
-            var versionNow = idx[entry.key];
-            if (typeof versionNow === 'undefined') {
-                // removed
-                removed.push(entry.key);
-            }
-            else if (typeof versionNow === 'string' && versionNow !== entry.value) {
-                // changed
-                changed.push(entry.key);
-            }
-            delete idx[entry.key];
-        });
-        // cos we removed all we saw earlier
-        added = Object.keys(idx);
-        // what to validate?
-        var syntax = changed.concat(added), semantic = [];
-        if (removed.length > 0 || added.length > 0) {
-            semantic = host.getScriptFileNames();
-        }
-        else {
-            // validate every change file *plus* the files
-            // that depend on the changed file 
-            changed.forEach(function (fileName) { return _this._dependencies.traverse(fileName, false, function (data) { return semantic.push(data); }); });
-        }
-        return {
-            changed: syntax,
-            changedOrDependencyChanged: semantic
-        };
-    };
-    return ProjectSnapshot;
-})();
 var LanguageServiceHost = (function () {
     function LanguageServiceHost(settings) {
         this._settings = settings;
         this._snapshots = Object.create(null);
         this._defaultLib = path.normalize(path.join(__dirname, 'typescript', 'lib.d.ts'));
+        this._dependencies = new utils.graph.Graph(function (s) { return s; });
+        this._dependenciesRecomputeList = [];
     }
     LanguageServiceHost.prototype.log = function (s) {
         // nothing
@@ -231,21 +235,28 @@ var LanguageServiceHost = (function () {
     LanguageServiceHost.prototype.getScriptFileNames = function () {
         return Object.keys(this._snapshots);
     };
-    LanguageServiceHost.prototype.getScriptVersion = function (fileName) {
-        fileName = path.normalize(fileName);
-        return this._snapshots[fileName].getVersion();
+    LanguageServiceHost.prototype.getScriptVersion = function (filename) {
+        filename = path.normalize(filename);
+        return this._snapshots[filename].getVersion();
     };
-    LanguageServiceHost.prototype.getScriptIsOpen = function (fileName) {
+    LanguageServiceHost.prototype.getScriptIsOpen = function (filename) {
         return false;
     };
-    LanguageServiceHost.prototype.getScriptSnapshot = function (fileName) {
-        fileName = path.normalize(fileName);
-        return this._snapshots[fileName];
+    LanguageServiceHost.prototype.getScriptSnapshot = function (filename) {
+        filename = path.normalize(filename);
+        return this._snapshots[filename];
     };
-    LanguageServiceHost.prototype.addScriptSnapshot = function (fileName, snapshot) {
-        fileName = path.normalize(fileName);
-        var old = this._snapshots[fileName];
-        this._snapshots[fileName] = snapshot;
+    LanguageServiceHost.prototype.addScriptSnapshot = function (filename, snapshot) {
+        filename = path.normalize(filename);
+        var old = this._snapshots[filename];
+        if (!old || old.getVersion() !== snapshot.getVersion()) {
+            this._dependenciesRecomputeList.push(filename);
+            var node = this._dependencies.lookup(filename);
+            if (node) {
+                node.outgoing = Object.create(null);
+            }
+        }
+        this._snapshots[filename] = snapshot;
         return old;
     };
     LanguageServiceHost.prototype.getLocalizedDiagnosticMessages = function () {
@@ -260,19 +271,45 @@ var LanguageServiceHost = (function () {
     LanguageServiceHost.prototype.getDefaultLibFilename = function () {
         return this._defaultLib;
     };
-    LanguageServiceHost.prototype.createSnapshotAndAdviseValidation = function () {
-        var ret;
-        if (!this._projectSnapshot) {
-            ret = {
-                changed: this.getScriptFileNames(),
-                changedOrDependencyChanged: this.getScriptFileNames()
-            };
+    // ---- dependency management 
+    LanguageServiceHost.prototype.collectDependents = function (filename, target) {
+        while (this._dependenciesRecomputeList.length) {
+            this._processFile(this._dependenciesRecomputeList.pop());
         }
-        else {
-            ret = this._projectSnapshot.whatToValidate(this);
+        filename = path.normalize(filename);
+        var node = this._dependencies.lookup(filename);
+        if (node) {
+            utils.collections.forEach(node.incoming, function (entry) { return target.push(entry.key); });
         }
-        this._projectSnapshot = new ProjectSnapshot(this);
-        return ret;
+    };
+    LanguageServiceHost.prototype._processFile = function (filename) {
+        var _this = this;
+        if (filename.match(/.*\.d\.ts$/)) {
+            return;
+        }
+        filename = path.normalize(filename);
+        var snapshot = this.getScriptSnapshot(filename), info = ts.preProcessFile(snapshot.getText(0, snapshot.getLength()), true);
+        // (1) ///-references
+        info.referencedFiles.forEach(function (ref) {
+            var resolvedPath = path.resolve(path.dirname(filename), ref.filename), normalizedPath = path.normalize(resolvedPath);
+            _this._dependencies.inertEdge(filename, normalizedPath);
+        });
+        // (2) import-require statements
+        info.importedFiles.forEach(function (ref) {
+            var stopDirname = path.normalize(_this.getCurrentDirectory()), dirname = filename, found = false;
+            while (!found && dirname.indexOf(stopDirname) === 0) {
+                dirname = path.dirname(dirname);
+                var resolvedPath = path.resolve(dirname, ref.filename), normalizedPath = path.normalize(resolvedPath);
+                if (_this.getScriptSnapshot(normalizedPath + '.ts')) {
+                    _this._dependencies.inertEdge(filename, normalizedPath + '.ts');
+                    found = true;
+                }
+                else if (_this.getScriptSnapshot(normalizedPath + '.d.ts')) {
+                    _this._dependencies.inertEdge(filename, normalizedPath + '.d.ts');
+                    found = true;
+                }
+            }
+        });
     };
     return LanguageServiceHost;
 })();
