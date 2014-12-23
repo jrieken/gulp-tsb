@@ -85,8 +85,12 @@ function createTypeScriptBuilder(config) {
                     log('[semantic errors]', filename);
                     checkSemantics = true;
                     break;
+                case ts.EmitReturnStatus.EmitErrorsEncountered:
+                case ts.EmitReturnStatus.CompilerOptionsErrors:
                 default:
-                    console.debug('NOT prepared for this emit status: ' + output.emitOutputStatus);
+                    // don't really know what to do with these
+                    checkSyntax = true;
+                    checkSemantics = true;
                     break;
             }
             // print and store syntax and semantic errors
