@@ -3,7 +3,9 @@ gulp-tsb
 
 ## Information
 
-A gulp plugin for incremental TypeScript compilation. This plugin uses reverse dependencies of import-require statements and only works well with external modules (amd, commonjs).
+A gulp plugin for **very fast** TypeScript compilation. This plugin works by
+* keeping a compiler alive to improve speed (at the cost of memory)
+* always recompiling the smallest set of files possible
 
 ## Usage
 
