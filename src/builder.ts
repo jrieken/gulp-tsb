@@ -23,6 +23,10 @@ export interface ITypeScriptBuilder {
 	file(file: Vinyl): void;
 }
 
+function normalize(path: string): string { 
+	return path.replace(/\\/g, '/');
+}
+
 export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuilder {
 
 	var settings = createCompilationSettings(config),
@@ -194,6 +198,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 					return;
 				}
 				log('[semantic check*]', filename);
+				delete oldErrors[filename];
 				var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []);
 				service.getSemanticDiagnostics(filename).forEach(diag => {
 					diagnostics.push(diag);
@@ -211,6 +216,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 					continue;
 				}
 				log('[semantic check*]', filename);
+				delete oldErrors[filename];
 				var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []),
 					hasSemanticErrors = false;
 					
@@ -321,7 +327,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 	constructor(settings: ts.CompilerOptions) {
 		this._settings = settings;
 		this._snapshots = Object.create(null);
-		this._defaultLib = path.normalize(path.join(__dirname, 'typescript', 'lib.d.ts'));
+		this._defaultLib = normalize(path.join(__dirname, 'typescript', 'lib.d.ts'));
 		this._dependencies = new utils.graph.Graph<string>(s => s);
 		this._dependenciesRecomputeList = [];
 	}
@@ -339,7 +345,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 	}
 
     getScriptVersion(filename: string): string {
-		filename = path.normalize(filename);
+		filename = normalize(filename);
 		return this._snapshots[filename].getVersion();
 	}
 
@@ -348,12 +354,12 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 	}
 
     getScriptSnapshot(filename: string): ts.IScriptSnapshot {
-		filename = path.normalize(filename);
+		filename = normalize(filename);
 		return this._snapshots[filename];
 	}
 
 	addScriptSnapshot(filename: string, snapshot: ScriptSnapshot): ScriptSnapshot {
-		filename = path.normalize(filename);
+		filename = normalize(filename);
 		var old = this._snapshots[filename];
 		if(!old || old.getVersion() !== snapshot.getVersion()) {
 			this._dependenciesRecomputeList.push(filename);
@@ -388,7 +394,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 		while (this._dependenciesRecomputeList.length) {
 			this._processFile(this._dependenciesRecomputeList.pop());
 		}
-		filename = path.normalize(filename);
+		filename = normalize(filename);
 		var node = this._dependencies.lookup(filename);
 		if (node) {
 			utils.collections.forEach(node.incoming, entry => target.push(entry.key));
@@ -399,28 +405,28 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 		if(filename.match(/.*\.d\.ts$/)) {
 			return;
 		}
-		filename = path.normalize(filename);
+		filename = normalize(filename);
 		var snapshot = this.getScriptSnapshot(filename),
 			info = ts.preProcessFile(snapshot.getText(0, snapshot.getLength()), true);
 		
 		// (1) ///-references
 		info.referencedFiles.forEach(ref => {
 			var resolvedPath = path.resolve(path.dirname(filename), ref.filename),
-				normalizedPath = path.normalize(resolvedPath);
+				normalizedPath = normalize(resolvedPath);
 
 			this._dependencies.inertEdge(filename, normalizedPath);
 		});
 		
 		// (2) import-require statements
 		info.importedFiles.forEach(ref => {
-			var stopDirname = path.normalize(this.getCurrentDirectory()),
+			var stopDirname = normalize(this.getCurrentDirectory()),
 				dirname = filename,
 				found = false;
 
 			while (!found && dirname.indexOf(stopDirname) === 0) {
 				dirname = path.dirname(dirname);
 				var resolvedPath = path.resolve(dirname, ref.filename),
-					normalizedPath = path.normalize(resolvedPath);
+					normalizedPath = normalize(resolvedPath);
 					
 				if(this.getScriptSnapshot(normalizedPath + '.ts')) {
 					this._dependencies.inertEdge(filename, normalizedPath + '.ts');

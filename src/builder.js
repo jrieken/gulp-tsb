@@ -9,6 +9,9 @@ var utils = require('./utils');
 var gutil = require('gulp-util');
 var ts = require('./typescript/typescriptServices');
 var Vinyl = require('vinyl');
+function normalize(path) {
+    return path.replace(/\\/g, '/');
+}
 function createTypeScriptBuilder(config) {
     var settings = createCompilationSettings(config), host = new LanguageServiceHost(settings), service = ts.createLanguageService(host, ts.createDocumentRegistry()), lastBuildVersion = Object.create(null), lastDtsHash = Object.create(null), userWantsDeclarations = settings.declaration, oldErrors = Object.create(null), headUsed = process.memoryUsage().heapUsed;
     // always emit declaraction files
@@ -129,6 +132,7 @@ function createTypeScriptBuilder(config) {
                     return;
                 }
                 log('[semantic check*]', filename);
+                delete oldErrors[filename];
                 var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []);
                 service.getSemanticDiagnostics(filename).forEach(function (diag) {
                     diagnostics.push(diag);
@@ -147,6 +151,7 @@ function createTypeScriptBuilder(config) {
                     continue;
                 }
                 log('[semantic check*]', filename);
+                delete oldErrors[filename];
                 var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []), hasSemanticErrors = false;
                 service.getSemanticDiagnostics(filename).forEach(function (diag) {
                     diagnostics.push(diag);
@@ -226,7 +231,7 @@ var LanguageServiceHost = (function () {
     function LanguageServiceHost(settings) {
         this._settings = settings;
         this._snapshots = Object.create(null);
-        this._defaultLib = path.normalize(path.join(__dirname, 'typescript', 'lib.d.ts'));
+        this._defaultLib = normalize(path.join(__dirname, 'typescript', 'lib.d.ts'));
         this._dependencies = new utils.graph.Graph(function (s) { return s; });
         this._dependenciesRecomputeList = [];
     }
@@ -240,18 +245,18 @@ var LanguageServiceHost = (function () {
         return Object.keys(this._snapshots);
     };
     LanguageServiceHost.prototype.getScriptVersion = function (filename) {
-        filename = path.normalize(filename);
+        filename = normalize(filename);
         return this._snapshots[filename].getVersion();
     };
     LanguageServiceHost.prototype.getScriptIsOpen = function (filename) {
         return false;
     };
     LanguageServiceHost.prototype.getScriptSnapshot = function (filename) {
-        filename = path.normalize(filename);
+        filename = normalize(filename);
         return this._snapshots[filename];
     };
     LanguageServiceHost.prototype.addScriptSnapshot = function (filename, snapshot) {
-        filename = path.normalize(filename);
+        filename = normalize(filename);
         var old = this._snapshots[filename];
         if (!old || old.getVersion() !== snapshot.getVersion()) {
             this._dependenciesRecomputeList.push(filename);
@@ -280,7 +285,7 @@ var LanguageServiceHost = (function () {
         while (this._dependenciesRecomputeList.length) {
             this._processFile(this._dependenciesRecomputeList.pop());
         }
-        filename = path.normalize(filename);
+        filename = normalize(filename);
         var node = this._dependencies.lookup(filename);
         if (node) {
             utils.collections.forEach(node.incoming, function (entry) { return target.push(entry.key); });
@@ -291,19 +296,19 @@ var LanguageServiceHost = (function () {
         if (filename.match(/.*\.d\.ts$/)) {
             return;
         }
-        filename = path.normalize(filename);
+        filename = normalize(filename);
         var snapshot = this.getScriptSnapshot(filename), info = ts.preProcessFile(snapshot.getText(0, snapshot.getLength()), true);
         // (1) ///-references
         info.referencedFiles.forEach(function (ref) {
-            var resolvedPath = path.resolve(path.dirname(filename), ref.filename), normalizedPath = path.normalize(resolvedPath);
+            var resolvedPath = path.resolve(path.dirname(filename), ref.filename), normalizedPath = normalize(resolvedPath);
             _this._dependencies.inertEdge(filename, normalizedPath);
         });
         // (2) import-require statements
         info.importedFiles.forEach(function (ref) {
-            var stopDirname = path.normalize(_this.getCurrentDirectory()), dirname = filename, found = false;
+            var stopDirname = normalize(_this.getCurrentDirectory()), dirname = filename, found = false;
             while (!found && dirname.indexOf(stopDirname) === 0) {
                 dirname = path.dirname(dirname);
-                var resolvedPath = path.resolve(dirname, ref.filename), normalizedPath = path.normalize(resolvedPath);
+                var resolvedPath = path.resolve(dirname, ref.filename), normalizedPath = normalize(resolvedPath);
                 if (_this.getScriptSnapshot(normalizedPath + '.ts')) {
                     _this._dependencies.inertEdge(filename, normalizedPath + '.ts');
                     found = true;
