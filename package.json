@@ -4,6 +4,7 @@
   "author": "Johannes Rieken <johannes.rieken@gmail.com>",
   "description": "A gulp plugin for very fast TypeScript compilation.",
   "main": "./src/index",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/jrieken/gulp-tsb.git"
