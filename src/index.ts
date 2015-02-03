@@ -1,14 +1,19 @@
 /// <reference path="../typings/node/node.d.ts" />
 /// <reference path="../typings/vinyl/vinyl.d.ts" />
 /// <reference path="../typings/through/through.d.ts" />
+/// <reference path="../typings/clone/clone.d.ts" />
 
 import stream = require('stream');
 import builder = require('./builder');
 import vinyl = require('vinyl');
 import through = require('through');
+import clone = require('clone');
 
 export function create(config:builder.IConfiguration):()=>stream.Stream {
-
+    
+    // clone the configuration
+    config = clone(config);
+    
     var _builder = builder.createTypeScriptBuilder(config);
     
     function createStream():stream.Stream {

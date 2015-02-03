@@ -1,9 +1,13 @@
 /// <reference path="../typings/node/node.d.ts" />
 /// <reference path="../typings/vinyl/vinyl.d.ts" />
 /// <reference path="../typings/through/through.d.ts" />
+/// <reference path="../typings/clone/clone.d.ts" />
 var builder = require('./builder');
 var through = require('through');
+var clone = require('clone');
 function create(config) {
+    // clone the configuration
+    config = clone(config);
     var _builder = builder.createTypeScriptBuilder(config);
     function createStream() {
         return through(function (file) {
