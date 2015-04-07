@@ -9,28 +9,28 @@ import vinyl = require('vinyl');
 import through = require('through');
 import clone = require('clone');
 
-export function create(config:builder.IConfiguration):()=>stream.Stream {
+export function create(config: builder.IConfiguration): () => stream.Stream {
     
     // clone the configuration
     config = clone(config);
-    
-    var _builder = builder.createTypeScriptBuilder(config);
-    
-    function createStream():stream.Stream {
 
-        return through(function(file: vinyl) { 
+    var _builder = builder.createTypeScriptBuilder(config);
+
+    function createStream(): stream.Stream {
+
+        return through(function (file: vinyl) { 
             // give the file to the compiler
-            if(file.isStream()) {
+            if (file.isStream()) {
                 this.emit('error', 'no support for streams');
                 return;
             }
             _builder.file(file);
-            
+
         }, function () { 
-            // start the compilation process
-            _builder.build(file => this.queue(file), err => console.log(err));
-            this.queue(null);
-        });
+                // start the compilation process
+                _builder.build(file => this.queue(file), err => console.log(err));
+                this.queue(null);
+            });
     }
 
     return () => createStream();
