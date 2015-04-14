@@ -18249,7 +18249,7 @@ var ts;
         }
         function getConstantValue(node) {
             var symbol = getNodeLinks(node).resolvedSymbol;
-            if (symbol && (symbol.flags & 8 /* EnumMember */)) {
+            if (false && symbol && (symbol.flags & 8 /* EnumMember */)) {
                 var declaration = symbol.valueDeclaration;
                 var constantValue;
                 if (declaration.kind === 200 /* EnumMember */ && (constantValue = getNodeLinks(declaration).enumMemberValue) !== undefined) {
