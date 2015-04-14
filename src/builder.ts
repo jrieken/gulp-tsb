@@ -42,7 +42,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
     host.getCompilationSettings().declaration = true;
 
     if (!host.getCompilationSettings().noLib) {
-        var defaultLib = host.getDefaultLibFileName();
+        var defaultLib = host.getDefaultLibFilename();
         host.addScriptSnapshot(defaultLib, new ScriptSnapshot(fs.readFileSync(defaultLib), fs.statSync(defaultLib)));
     }
 
@@ -54,19 +54,19 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
     function printDiagnostic(diag: ts.Diagnostic, onError: (err: any) => void): void {
 
-        var lineAndCh = diag.file.getLineAndCharacterOfPosition(diag.start),
+        var lineAndCh = diag.file.getLineAndCharacterFromPosition(diag.start),
             message: string;
 
         if (!config.json) {
             message = utils.strings.format('{0}({1},{2}): {3}',
-                diag.file.fileName,
+                diag.file.filename,
                 lineAndCh.line,
                 lineAndCh.character,
                 diag.messageText);
 
         } else {
             message = JSON.stringify({
-                filename: diag.file.fileName,
+                filename: diag.file.filename,
                 offset: diag.start,
                 length: diag.length,
                 message: diag.messageText
@@ -255,6 +255,7 @@ function createCompilationSettings(config: IConfiguration): ts.CompilerOptions {
 class ScriptSnapshot implements ts.IScriptSnapshot {
 
     private _text: string;
+    private _lineStarts: number[];
     private _mtime: Date;
 
     constructor(buffer: Buffer, stat: fs.Stats) {
@@ -268,6 +269,13 @@ class ScriptSnapshot implements ts.IScriptSnapshot {
 
     public getText(start: number, end: number): string {
         return this._text.substring(start, end);
+    }
+
+    public getLineStartPositions(): number[]{
+        if (!this._lineStarts) {
+            this._lineStarts = ts.computeLineStarts(this._text); 
+        } 
+        return this._lineStarts;
     }
 
     public getLength(): number {
@@ -355,7 +363,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         return process.cwd();
     }
 
-    getDefaultLibFileName(): string {
+    getDefaultLibFilename(): string {
         return this._defaultLib;
     }
 	
@@ -382,7 +390,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 		
         // (1) ///-references
         info.referencedFiles.forEach(ref => {
-            var resolvedPath = path.resolve(path.dirname(filename), ref.fileName),
+            var resolvedPath = path.resolve(path.dirname(filename), ref.filename),
                 normalizedPath = normalize(resolvedPath);
 
             this._dependencies.inertEdge(filename, normalizedPath);
@@ -396,7 +404,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
             while (!found && dirname.indexOf(stopDirname) === 0) {
                 dirname = path.dirname(dirname);
-                var resolvedPath = path.resolve(dirname, ref.fileName),
+                var resolvedPath = path.resolve(dirname, ref.filename),
                     normalizedPath = normalize(resolvedPath);
 
                 if (this.getScriptSnapshot(normalizedPath + '.ts')) {

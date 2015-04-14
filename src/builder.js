@@ -17,7 +17,7 @@ function createTypeScriptBuilder(config) {
     // always emit declaraction files
     host.getCompilationSettings().declaration = true;
     if (!host.getCompilationSettings().noLib) {
-        var defaultLib = host.getDefaultLibFileName();
+        var defaultLib = host.getDefaultLibFilename();
         host.addScriptSnapshot(defaultLib, new ScriptSnapshot(fs.readFileSync(defaultLib), fs.statSync(defaultLib)));
     }
     function log(topic, message) {
@@ -26,13 +26,13 @@ function createTypeScriptBuilder(config) {
         }
     }
     function printDiagnostic(diag, onError) {
-        var lineAndCh = diag.file.getLineAndCharacterOfPosition(diag.start), message;
+        var lineAndCh = diag.file.getLineAndCharacterFromPosition(diag.start), message;
         if (!config.json) {
-            message = utils.strings.format('{0}({1},{2}): {3}', diag.file.fileName, lineAndCh.line, lineAndCh.character, diag.messageText);
+            message = utils.strings.format('{0}({1},{2}): {3}', diag.file.filename, lineAndCh.line, lineAndCh.character, diag.messageText);
         }
         else {
             message = JSON.stringify({
-                filename: diag.file.fileName,
+                filename: diag.file.filename,
                 offset: diag.start,
                 length: diag.length,
                 message: diag.messageText
@@ -58,16 +58,13 @@ function createTypeScriptBuilder(config) {
         for (var i = 0, len = filenames.length; i < len; i++) {
             var filename = filenames[i], version = host.getScriptVersion(filename);
             if (lastBuildVersion[filename] === version) {
-                // unchanged since the last time
                 continue;
             }
             var output = service.getEmitOutput(filename), dtsHash = undefined;
             // emit output has fast as possible
             output.outputFiles.forEach(function (file) {
                 if (/\.d\.ts$/.test(file.name)) {
-                    dtsHash = crypto.createHash('md5')
-                        .update(file.text)
-                        .digest('base64');
+                    dtsHash = crypto.createHash('md5').update(file.text).digest('base64');
                     if (!userWantsDeclarations) {
                         // don't leak .d.ts files if users don't want them
                         return;
@@ -161,23 +158,23 @@ exports.createTypeScriptBuilder = createTypeScriptBuilder;
 function createCompilationSettings(config) {
     // language version
     if (!config['target']) {
-        config['target'] = 0 /* ES3 */;
+        config['target'] = ts.ScriptTarget.ES3;
     }
     else if (/ES3/i.test(String(config['target']))) {
-        config['target'] = 0 /* ES3 */;
+        config['target'] = ts.ScriptTarget.ES3;
     }
     else if (/ES5/i.test(String(config['target']))) {
-        config['target'] = 1 /* ES5 */;
+        config['target'] = ts.ScriptTarget.ES5;
     }
     else if (/ES6/i.test(String(config['target']))) {
-        config['target'] = 2 /* ES6 */;
+        config['target'] = ts.ScriptTarget.ES6;
     }
     // module generation
     if (/commonjs/i.test(String(config['module']))) {
-        config['module'] = 1 /* CommonJS */;
+        config['module'] = ts.ModuleKind.CommonJS;
     }
     else if (/amd/i.test(String(config['module']))) {
-        config['module'] = 2 /* AMD */;
+        config['module'] = ts.ModuleKind.AMD;
     }
     return config;
 }
@@ -191,6 +188,12 @@ var ScriptSnapshot = (function () {
     };
     ScriptSnapshot.prototype.getText = function (start, end) {
         return this._text.substring(start, end);
+    };
+    ScriptSnapshot.prototype.getLineStartPositions = function () {
+        if (!this._lineStarts) {
+            this._lineStarts = ts.computeLineStarts(this._text);
+        }
+        return this._lineStarts;
     };
     ScriptSnapshot.prototype.getLength = function () {
         return this._text.length;
@@ -256,7 +259,7 @@ var LanguageServiceHost = (function () {
     LanguageServiceHost.prototype.getCurrentDirectory = function () {
         return process.cwd();
     };
-    LanguageServiceHost.prototype.getDefaultLibFileName = function () {
+    LanguageServiceHost.prototype.getDefaultLibFilename = function () {
         return this._defaultLib;
     };
     // ---- dependency management 
@@ -279,7 +282,7 @@ var LanguageServiceHost = (function () {
         var snapshot = this.getScriptSnapshot(filename), info = ts.preProcessFile(snapshot.getText(0, snapshot.getLength()), true);
         // (1) ///-references
         info.referencedFiles.forEach(function (ref) {
-            var resolvedPath = path.resolve(path.dirname(filename), ref.fileName), normalizedPath = normalize(resolvedPath);
+            var resolvedPath = path.resolve(path.dirname(filename), ref.filename), normalizedPath = normalize(resolvedPath);
             _this._dependencies.inertEdge(filename, normalizedPath);
         });
         // (2) import-require statements
@@ -287,7 +290,7 @@ var LanguageServiceHost = (function () {
             var stopDirname = normalize(_this.getCurrentDirectory()), dirname = filename, found = false;
             while (!found && dirname.indexOf(stopDirname) === 0) {
                 dirname = path.dirname(dirname);
-                var resolvedPath = path.resolve(dirname, ref.fileName), normalizedPath = normalize(resolvedPath);
+                var resolvedPath = path.resolve(dirname, ref.filename), normalizedPath = normalize(resolvedPath);
                 if (_this.getScriptSnapshot(normalizedPath + '.ts')) {
                     _this._dependencies.inertEdge(filename, normalizedPath + '.ts');
                     found = true;
