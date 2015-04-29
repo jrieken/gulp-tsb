@@ -1,5 +1,5 @@
 {
-	"compilationOptions": {
+	"compilerOptions": {
 		"module": "commonjs",
 		"target": "es5"
 	}
