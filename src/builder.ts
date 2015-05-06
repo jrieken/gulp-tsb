@@ -42,7 +42,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
     host.getCompilationSettings().declaration = true;
 
     if (!host.getCompilationSettings().noLib) {
-        var defaultLib = host.getDefaultLibFilename();
+        var defaultLib = host.getDefaultLibFileName();
         host.addScriptSnapshot(defaultLib, new ScriptSnapshot(fs.readFileSync(defaultLib), fs.statSync(defaultLib)));
     }
 
@@ -54,19 +54,19 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
     function printDiagnostic(diag: ts.Diagnostic, onError: (err: any) => void): void {
 
-        var lineAndCh = diag.file.getLineAndCharacterFromPosition(diag.start),
+        var lineAndCh = diag.file.getLineAndCharacterOfPosition(diag.start),
             message: string;
 
         if (!config.json) {
             message = utils.strings.format('{0}({1},{2}): {3}',
-                diag.file.filename,
-                lineAndCh.line,
-                lineAndCh.character,
+                diag.file.fileName,
+                lineAndCh.line + 1,
+                lineAndCh.character + 1,
                 diag.messageText);
 
         } else {
             message = JSON.stringify({
-                filename: diag.file.filename,
+                filename: diag.file.fileName,
                 offset: diag.start,
                 length: diag.length,
                 message: diag.messageText
@@ -97,7 +97,11 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                 return true;
             }
         }
-
+        
+        function isExternalModule(sourceFile: ts.SourceFile): boolean {
+            return !!(<any> sourceFile).externalModuleIndicator;
+        }
+        
         for (var i = 0, len = filenames.length; i < len; i++) {
 
             var filename = filenames[i],
@@ -144,7 +148,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
             // dts comparing
             if (dtsHash && lastDtsHash[filename] !== dtsHash) {
                 lastDtsHash[filename] = dtsHash;
-                if (service.getSourceFile(filename).externalModuleIndicator) {
+                if (isExternalModule(service.getSourceFile(filename))) {
                     filesWithShapeChanges.push(filename);
                 } else {
                     filesWithShapeChanges.unshift(filename);
@@ -158,7 +162,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         if (filesWithShapeChanges.length === 0) {
             // nothing to do here
 			
-        } else if (!service.getSourceFile(filesWithShapeChanges[0]).externalModuleIndicator) {
+        } else if (!isExternalModule(service.getSourceFile(filesWithShapeChanges[0]))) {
             // at least one internal module changes which means that
             // we have to type check all others
             log('[shape changes]', 'internal module changed → FULL check required');
@@ -255,7 +259,6 @@ function createCompilationSettings(config: IConfiguration): ts.CompilerOptions {
 class ScriptSnapshot implements ts.IScriptSnapshot {
 
     private _text: string;
-    private _lineStarts: number[];
     private _mtime: Date;
 
     constructor(buffer: Buffer, stat: fs.Stats) {
@@ -269,13 +272,6 @@ class ScriptSnapshot implements ts.IScriptSnapshot {
 
     public getText(start: number, end: number): string {
         return this._text.substring(start, end);
-    }
-
-    public getLineStartPositions(): number[]{
-        if (!this._lineStarts) {
-            this._lineStarts = ts.computeLineStarts(this._text); 
-        } 
-        return this._lineStarts;
     }
 
     public getLength(): number {
@@ -328,10 +324,6 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         return this._snapshots[filename].getVersion();
     }
 
-    getScriptIsOpen(filename: string): boolean {
-        return false;
-    }
-
     getScriptSnapshot(filename: string): ts.IScriptSnapshot {
         filename = normalize(filename);
         return this._snapshots[filename];
@@ -363,7 +355,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         return process.cwd();
     }
 
-    getDefaultLibFilename(): string {
+    getDefaultLibFileName(): string {
         return this._defaultLib;
     }
 	
@@ -390,7 +382,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 		
         // (1) ///-references
         info.referencedFiles.forEach(ref => {
-            var resolvedPath = path.resolve(path.dirname(filename), ref.filename),
+            var resolvedPath = path.resolve(path.dirname(filename), ref.fileName),
                 normalizedPath = normalize(resolvedPath);
 
             this._dependencies.inertEdge(filename, normalizedPath);
@@ -404,7 +396,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
             while (!found && dirname.indexOf(stopDirname) === 0) {
                 dirname = path.dirname(dirname);
-                var resolvedPath = path.resolve(dirname, ref.filename),
+                var resolvedPath = path.resolve(dirname, ref.fileName),
                     normalizedPath = normalize(resolvedPath);
 
                 if (this.getScriptSnapshot(normalizedPath + '.ts')) {
