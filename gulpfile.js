@@ -1,13 +1,10 @@
+/* global __dirname */
+
 var gulp = require('gulp');
+var path = require('path');
 var tsb = require('./src');
 
-var compilation = tsb.create({
-	verbose: true,
-	target: 'es5',
-	module: 'commonjs',
-	declaration: false,
-	preserveConstEnums: true
-});
+var compilation = tsb.create(path.join(__dirname, 'tsconfig.json'), true);
 
 var sources = [
 	'src/**/*.ts',

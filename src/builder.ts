@@ -29,12 +29,12 @@ function normalize(path: string): string {
 
 export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuilder {
 
-    var settings = createCompilationSettings(config),
-        host = new LanguageServiceHost(settings),
+    var compilerOptions = createCompilerOptions(config),
+        host = new LanguageServiceHost(compilerOptions),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
         lastDtsHash: { [path: string]: string } = Object.create(null),
-        userWantsDeclarations = settings.declaration,
+        userWantsDeclarations = compilerOptions.declaration,
         oldErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null),
         headUsed = process.memoryUsage().heapUsed;
 		
@@ -233,7 +233,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
     };
 }
 
-function createCompilationSettings(config: IConfiguration): ts.CompilerOptions {
+function createCompilerOptions(config: IConfiguration): ts.CompilerOptions {
 	
     // language version
     if (!config['target']) {

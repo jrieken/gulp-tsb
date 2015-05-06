@@ -8,11 +8,29 @@ import builder = require('./builder');
 import vinyl = require('vinyl');
 import through = require('through');
 import clone = require('clone');
+import fs = require('fs');
+import path = require('path');
 
-export function create(config: builder.IConfiguration): () => stream.Stream {
+export function create(configOrName: builder.IConfiguration|string, verbose?:boolean, json?:boolean): () => stream.Stream {
     
-    // clone the configuration
-    config = clone(config);
+    var config: builder.IConfiguration;
+    
+    if (typeof configOrName === 'string') {
+        try {
+            var buffer = fs.readFileSync(configOrName);
+            config = JSON.parse(buffer.toString())['compilerOptions'];
+        } catch (e) {
+            console.error(e);
+            throw e;
+        }
+    } else {
+        // clone the configuration
+        config = clone(configOrName);
+    }
+
+    // add those
+    config.verbose = config.verbose || verbose;
+    config.json = config.json || json;
 
     var _builder = builder.createTypeScriptBuilder(config);
 

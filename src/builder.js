@@ -13,7 +13,7 @@ function normalize(path) {
     return path.replace(/\\/g, '/');
 }
 function createTypeScriptBuilder(config) {
-    var settings = createCompilationSettings(config), host = new LanguageServiceHost(settings), service = ts.createLanguageService(host, ts.createDocumentRegistry()), lastBuildVersion = Object.create(null), lastDtsHash = Object.create(null), userWantsDeclarations = settings.declaration, oldErrors = Object.create(null), headUsed = process.memoryUsage().heapUsed;
+    var compilerOptions = createCompilerOptions(config), host = new LanguageServiceHost(compilerOptions), service = ts.createLanguageService(host, ts.createDocumentRegistry()), lastBuildVersion = Object.create(null), lastDtsHash = Object.create(null), userWantsDeclarations = compilerOptions.declaration, oldErrors = Object.create(null), headUsed = process.memoryUsage().heapUsed;
     // always emit declaraction files
     host.getCompilationSettings().declaration = true;
     if (!host.getCompilationSettings().noLib) {
@@ -161,7 +161,7 @@ function createTypeScriptBuilder(config) {
     };
 }
 exports.createTypeScriptBuilder = createTypeScriptBuilder;
-function createCompilationSettings(config) {
+function createCompilerOptions(config) {
     // language version
     if (!config['target']) {
         config['target'] = 0 /* ES3 */;

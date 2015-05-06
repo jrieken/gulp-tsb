@@ -5,9 +5,26 @@
 var builder = require('./builder');
 var through = require('through');
 var clone = require('clone');
-function create(config) {
-    // clone the configuration
-    config = clone(config);
+var fs = require('fs');
+function create(configOrName, verbose, json) {
+    var config;
+    if (typeof configOrName === 'string') {
+        try {
+            var buffer = fs.readFileSync(configOrName);
+            config = JSON.parse(buffer.toString())['compilerOptions'];
+        }
+        catch (e) {
+            console.error(e);
+            throw e;
+        }
+    }
+    else {
+        // clone the configuration
+        config = clone(configOrName);
+    }
+    // add those
+    config.verbose = config.verbose || verbose;
+    config.json = config.json || json;
     var _builder = builder.createTypeScriptBuilder(config);
     function createStream() {
         return through(function (file) {
