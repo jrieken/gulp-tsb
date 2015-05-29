@@ -5,6 +5,9 @@
   "description": "A gulp plugin for very fast TypeScript compilation.",
   "main": "./src/index",
   "license": "MIT",
+  "scripts": {
+    "test": "mocha src/tests"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/jrieken/gulp-tsb.git"
