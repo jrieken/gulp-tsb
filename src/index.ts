@@ -1,7 +1,4 @@
-/// <reference path="../typings/node/node.d.ts" />
-/// <reference path="../typings/vinyl/vinyl.d.ts" />
-/// <reference path="../typings/through/through.d.ts" />
-/// <reference path="../typings/clone/clone.d.ts" />
+'use strict';
 
 import stream = require('stream');
 import builder = require('./builder');

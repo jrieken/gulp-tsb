@@ -1,7 +1,3 @@
-/// <reference path="../typings/node/node.d.ts" />
-/// <reference path="../typings/vinyl/vinyl.d.ts" />
-/// <reference path="../typings/gulp-util/gulp-util.d.ts" />
-
 'use strict';
 
 import fs = require('fs');

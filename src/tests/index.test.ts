@@ -1,4 +1,4 @@
-/// <reference path="../../typings/mocha/mocha.d.ts" />
+'use strict';
 
 import index = require('../index');
 import builder = require('../builder');

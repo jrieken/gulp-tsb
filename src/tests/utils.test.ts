@@ -1,4 +1,4 @@
-/// <reference path="../../typings/mocha/mocha.d.ts" />
+'use strict';
 
 import utils = require('../utils');
 import assert = require('assert');
