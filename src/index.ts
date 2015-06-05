@@ -1,20 +1,19 @@
 'use strict';
 
-import stream = require('stream');
-import builder = require('./builder');
 import vinyl = require('vinyl');
-import through = require('through');
-import clone = require('clone');
-import fs = require('fs');
-import path = require('path');
-import ts = require('./typescript/typescriptServices');
+import * as through from 'through';
+import * as clone from 'clone';
+import * as builder from './builder';
+import {readConfigFile} from './typescript/typescriptServices';
+import {Stream} from 'stream';
 
-export function create(configOrName: builder.IConfiguration|string, verbose?: boolean, json?: boolean, onError?: (message: any) => void): () => stream.Stream {
+
+export function create(configOrName: builder.IConfiguration|string, verbose?: boolean, json?: boolean, onError?: (message: any) => void): () => Stream {
 
     var config: builder.IConfiguration;
 
     if (typeof configOrName === 'string') {
-        var parsed = ts.readConfigFile(configOrName);
+        var parsed = readConfigFile(configOrName);
         if (parsed.error) {
             console.error(parsed.error);
             return () => null;
@@ -36,7 +35,7 @@ export function create(configOrName: builder.IConfiguration|string, verbose?: bo
 
     var _builder = builder.createTypeScriptBuilder(config);
 
-    function createStream(): stream.Stream {
+    function createStream(): Stream {
 
         return through(function (file: vinyl) {
             // give the file to the compiler

@@ -1,4 +1,4 @@
-/// <reference path="../../typings/mocha/mocha.d.ts" />
+'use strict';
 var index = require('../index');
 var assert = require('assert');
 describe('options - test that', function () {

@@ -1,11 +1,11 @@
 'use strict';
 
-import fs = require('fs');
-import path = require('path');
-import crypto = require('crypto');
-import utils = require('./utils');
-import gutil = require('gulp-util');
-import ts = require('./typescript/typescriptServices');
+import {Stats, statSync, readFileSync} from 'fs';
+import * as path from 'path';
+import * as crypto from 'crypto';
+import * as utils from './utils';
+import {log, colors} from 'gulp-util';
+import * as ts from './typescript/typescriptServices';
 import Vinyl = require('vinyl');
 
 export interface IConfiguration {
@@ -33,18 +33,18 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         userWantsDeclarations = compilerOptions.declaration,
         oldErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null),
         headUsed = process.memoryUsage().heapUsed;
-		
+
     // always emit declaraction files
     host.getCompilationSettings().declaration = true;
 
     if (!host.getCompilationSettings().noLib) {
         var defaultLib = host.getDefaultLibFileName();
-        host.addScriptSnapshot(defaultLib, new ScriptSnapshot(fs.readFileSync(defaultLib), fs.statSync(defaultLib)));
+        host.addScriptSnapshot(defaultLib, new ScriptSnapshot(readFileSync(defaultLib), statSync(defaultLib)));
     }
 
-    function log(topic: string, message: string): void {
+    function _log(topic: string, message: string): void {
         if (config.verbose) {
-            gutil.log(gutil.colors.cyan(topic), message);
+            log(colors.cyan(topic), message);
         }
     }
 
@@ -93,11 +93,11 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                 return true;
             }
         }
-        
+
         function isExternalModule(sourceFile: ts.SourceFile): boolean {
             return !!(<any> sourceFile).externalModuleIndicator;
         }
-        
+
         for (var i = 0, len = filenames.length; i < len; i++) {
 
             var filename = filenames[i],
@@ -110,7 +110,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
             var output = service.getEmitOutput(filename),
                 dtsHash: string = undefined;
-			
+
             // emit output has fast as possible
             output.outputFiles.forEach(file => {
 
@@ -126,7 +126,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                     }
                 }
 
-                log('[emit output]', file.name);
+                _log('[emit output]', file.name);
 
                 out(new Vinyl({
                     path: file.name,
@@ -157,16 +157,16 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
         if (filesWithShapeChanges.length === 0) {
             // nothing to do here
-			
+
         } else if (!isExternalModule(service.getSourceFile(filesWithShapeChanges[0]))) {
             // at least one internal module changes which means that
             // we have to type check all others
-            log('[shape changes]', 'internal module changed → FULL check required');
+            _log('[shape changes]', 'internal module changed → FULL check required');
             host.getScriptFileNames().forEach(filename => {
                 if (!shouldCheck(filename)) {
                     return;
                 }
-                log('[semantic check*]', filename);
+                _log('[semantic check*]', filename);
                 delete oldErrors[filename];
                 var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []);
                 service.getSemanticDiagnostics(filename).forEach(diag => {
@@ -176,7 +176,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
             });
         } else {
             // reverse dependencies
-            log('[shape changes]', 'external module changed → check REVERSE dependencies');
+            _log('[shape changes]', 'external module changed → check REVERSE dependencies');
             var needsSemanticCheck: string[] = [];
             filesWithShapeChanges.forEach(filename => host.collectDependents(filename, needsSemanticCheck));
             while (needsSemanticCheck.length) {
@@ -184,7 +184,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                 if (!shouldCheck(filename)) {
                     continue;
                 }
-                log('[semantic check*]', filename);
+                _log('[semantic check*]', filename);
                 delete oldErrors[filename];
                 var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []),
                     hasSemanticErrors = false;
@@ -200,7 +200,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                 }
             }
         }
-		
+
         // (4) dump old errors
         utils.collections.forEach(oldErrors, entry => {
             entry.value.forEach(diag => printDiagnostic(diag, onError));
@@ -212,13 +212,13 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         if (config.verbose) {
             var headNow = process.memoryUsage().heapUsed,
                 MB = 1024 * 1024;
-            gutil.log(
+            log(
                 '[tsb]',
                 'time:',
-                gutil.colors.yellow((Date.now() - t1) + 'ms'),
+                colors.yellow((Date.now() - t1) + 'ms'),
                 'mem:',
-                gutil.colors.cyan(Math.ceil(headNow / MB) + 'MB'),
-                gutil.colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
+                colors.cyan(Math.ceil(headNow / MB) + 'MB'),
+                colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
             headUsed = headNow;
         }
     }
@@ -230,7 +230,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 }
 
 function createCompilerOptions(config: IConfiguration): ts.CompilerOptions {
-	
+
     // language version
     if (!config['target']) {
         config['target'] = ts.ScriptTarget.ES3;
@@ -241,7 +241,7 @@ function createCompilerOptions(config: IConfiguration): ts.CompilerOptions {
     } else if (/ES6/i.test(String(config['target']))) {
         config['target'] = ts.ScriptTarget.ES6;
     }
-	
+
     // module generation
     if (/commonjs/i.test(String(config['module']))) {
         config['module'] = ts.ModuleKind.CommonJS;
@@ -257,7 +257,7 @@ class ScriptSnapshot implements ts.IScriptSnapshot {
     private _text: string;
     private _mtime: Date;
 
-    constructor(buffer: Buffer, stat: fs.Stats) {
+    constructor(buffer: Buffer, stat: Stats) {
         this._text = buffer.toString();
         this._mtime = stat.mtime;
     }
@@ -295,7 +295,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         this._dependenciesRecomputeList = [];
     }
 
-    log(s: string): void { 
+    log(s: string): void {
         // nothing
     }
 
@@ -354,9 +354,9 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     getDefaultLibFileName(): string {
         return this._defaultLib;
     }
-	
-    // ---- dependency management 
-	
+
+    // ---- dependency management
+
     collectDependents(filename: string, target: string[]): void {
         while (this._dependenciesRecomputeList.length) {
             this._processFile(this._dependenciesRecomputeList.pop());
@@ -375,7 +375,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         filename = normalize(filename);
         var snapshot = this.getScriptSnapshot(filename),
             info = ts.preProcessFile(snapshot.getText(0, snapshot.getLength()), true);
-		
+
         // (1) ///-references
         info.referencedFiles.forEach(ref => {
             var resolvedPath = path.resolve(path.dirname(filename), ref.fileName),
@@ -383,7 +383,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
             this._dependencies.inertEdge(filename, normalizedPath);
         });
-		
+
         // (2) import-require statements
         info.importedFiles.forEach(ref => {
             var stopDirname = normalize(this.getCurrentDirectory()),

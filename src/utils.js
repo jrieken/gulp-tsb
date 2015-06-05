@@ -1,3 +1,4 @@
+'use strict';
 var collections;
 (function (collections) {
     var hasOwnProperty = Object.prototype.hasOwnProperty;

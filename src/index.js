@@ -1,15 +1,12 @@
-/// <reference path="../typings/node/node.d.ts" />
-/// <reference path="../typings/vinyl/vinyl.d.ts" />
-/// <reference path="../typings/through/through.d.ts" />
-/// <reference path="../typings/clone/clone.d.ts" />
-var builder = require('./builder');
+'use strict';
 var through = require('through');
 var clone = require('clone');
-var ts = require('./typescript/typescriptServices');
+var builder = require('./builder');
+var typescriptServices_1 = require('./typescript/typescriptServices');
 function create(configOrName, verbose, json, onError) {
     var config;
     if (typeof configOrName === 'string') {
-        var parsed = ts.readConfigFile(configOrName);
+        var parsed = typescriptServices_1.readConfigFile(configOrName);
         if (parsed.error) {
             console.error(parsed.error);
             return function () { return null; };
@@ -26,7 +23,6 @@ function create(configOrName, verbose, json, onError) {
     if (!onError) {
         onError = console.log.bind(console);
     }
-    console.log(config);
     var _builder = builder.createTypeScriptBuilder(config);
     function createStream() {
         return through(function (file) {

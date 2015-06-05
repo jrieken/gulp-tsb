@@ -1,4 +1,4 @@
-/// <reference path="../../typings/mocha/mocha.d.ts" />
+'use strict';
 var utils = require('../utils');
 var assert = require('assert');
 describe('graph - test that', function () {

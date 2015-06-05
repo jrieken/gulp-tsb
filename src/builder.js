@@ -1,12 +1,9 @@
-/// <reference path="../typings/node/node.d.ts" />
-/// <reference path="../typings/vinyl/vinyl.d.ts" />
-/// <reference path="../typings/gulp-util/gulp-util.d.ts" />
 'use strict';
-var fs = require('fs');
+var fs_1 = require('fs');
 var path = require('path');
 var crypto = require('crypto');
 var utils = require('./utils');
-var gutil = require('gulp-util');
+var gulp_util_1 = require('gulp-util');
 var ts = require('./typescript/typescriptServices');
 var Vinyl = require('vinyl');
 function normalize(path) {
@@ -18,11 +15,11 @@ function createTypeScriptBuilder(config) {
     host.getCompilationSettings().declaration = true;
     if (!host.getCompilationSettings().noLib) {
         var defaultLib = host.getDefaultLibFileName();
-        host.addScriptSnapshot(defaultLib, new ScriptSnapshot(fs.readFileSync(defaultLib), fs.statSync(defaultLib)));
+        host.addScriptSnapshot(defaultLib, new ScriptSnapshot(fs_1.readFileSync(defaultLib), fs_1.statSync(defaultLib)));
     }
-    function log(topic, message) {
+    function _log(topic, message) {
         if (config.verbose) {
-            gutil.log(gutil.colors.cyan(topic), message);
+            gulp_util_1.log(gulp_util_1.colors.cyan(topic), message);
         }
     }
     function printDiagnostic(diag, onError) {
@@ -76,7 +73,7 @@ function createTypeScriptBuilder(config) {
                         return;
                     }
                 }
-                log('[emit output]', file.name);
+                _log('[emit output]', file.name);
                 out(new Vinyl({
                     path: file.name,
                     contents: new Buffer(file.text)
@@ -106,12 +103,12 @@ function createTypeScriptBuilder(config) {
         else if (!isExternalModule(service.getSourceFile(filesWithShapeChanges[0]))) {
             // at least one internal module changes which means that
             // we have to type check all others
-            log('[shape changes]', 'internal module changed → FULL check required');
+            _log('[shape changes]', 'internal module changed → FULL check required');
             host.getScriptFileNames().forEach(function (filename) {
                 if (!shouldCheck(filename)) {
                     return;
                 }
-                log('[semantic check*]', filename);
+                _log('[semantic check*]', filename);
                 delete oldErrors[filename];
                 var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []);
                 service.getSemanticDiagnostics(filename).forEach(function (diag) {
@@ -122,7 +119,7 @@ function createTypeScriptBuilder(config) {
         }
         else {
             // reverse dependencies
-            log('[shape changes]', 'external module changed → check REVERSE dependencies');
+            _log('[shape changes]', 'external module changed → check REVERSE dependencies');
             var needsSemanticCheck = [];
             filesWithShapeChanges.forEach(function (filename) { return host.collectDependents(filename, needsSemanticCheck); });
             while (needsSemanticCheck.length) {
@@ -130,7 +127,7 @@ function createTypeScriptBuilder(config) {
                 if (!shouldCheck(filename)) {
                     continue;
                 }
-                log('[semantic check*]', filename);
+                _log('[semantic check*]', filename);
                 delete oldErrors[filename];
                 var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []), hasSemanticErrors = false;
                 service.getSemanticDiagnostics(filename).forEach(function (diag) {
@@ -151,7 +148,7 @@ function createTypeScriptBuilder(config) {
         oldErrors = newErrors;
         if (config.verbose) {
             var headNow = process.memoryUsage().heapUsed, MB = 1024 * 1024;
-            gutil.log('[tsb]', 'time:', gutil.colors.yellow((Date.now() - t1) + 'ms'), 'mem:', gutil.colors.cyan(Math.ceil(headNow / MB) + 'MB'), gutil.colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
+            gulp_util_1.log('[tsb]', 'time:', gulp_util_1.colors.yellow((Date.now() - t1) + 'ms'), 'mem:', gulp_util_1.colors.cyan(Math.ceil(headNow / MB) + 'MB'), gulp_util_1.colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
             headUsed = headNow;
         }
     }
@@ -259,7 +256,7 @@ var LanguageServiceHost = (function () {
     LanguageServiceHost.prototype.getDefaultLibFileName = function () {
         return this._defaultLib;
     };
-    // ---- dependency management 
+    // ---- dependency management
     LanguageServiceHost.prototype.collectDependents = function (filename, target) {
         while (this._dependenciesRecomputeList.length) {
             this._processFile(this._dependenciesRecomputeList.pop());
