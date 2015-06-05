@@ -5,18 +5,16 @@
 var builder = require('./builder');
 var through = require('through');
 var clone = require('clone');
-var fs = require('fs');
-function create(configOrName, verbose, json) {
+var ts = require('./typescript/typescriptServices');
+function create(configOrName, verbose, json, onError) {
     var config;
     if (typeof configOrName === 'string') {
-        try {
-            var buffer = fs.readFileSync(configOrName);
-            config = JSON.parse(buffer.toString())['compilerOptions'];
+        var parsed = ts.readConfigFile(configOrName);
+        if (parsed.error) {
+            console.error(parsed.error);
+            return function () { return null; };
         }
-        catch (e) {
-            console.error(e);
-            throw e;
-        }
+        config = parsed.config.compilerOptions;
     }
     else {
         // clone the configuration
@@ -25,6 +23,10 @@ function create(configOrName, verbose, json) {
     // add those
     config.verbose = config.verbose || verbose;
     config.json = config.json || json;
+    if (!onError) {
+        onError = console.log.bind(console);
+    }
+    console.log(config);
     var _builder = builder.createTypeScriptBuilder(config);
     function createStream() {
         return through(function (file) {
@@ -37,7 +39,7 @@ function create(configOrName, verbose, json) {
         }, function () {
             var _this = this;
             // start the compilation process
-            _builder.build(function (file) { return _this.queue(file); }, function (err) { return console.log(err); });
+            _builder.build(function (file) { return _this.queue(file); }, onError);
             this.queue(null);
         });
     }
