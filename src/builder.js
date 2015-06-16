@@ -146,6 +146,12 @@ function createTypeScriptBuilder(config) {
             newErrors[entry.key] = entry.value;
         });
         oldErrors = newErrors;
+        if (config._emitLanguageService) {
+            out({
+                languageService: service,
+                host: host
+            });
+        }
         if (config.verbose) {
             var headNow = process.memoryUsage().heapUsed, MB = 1024 * 1024;
             gulp_util_1.log('[tsb]', 'time:', gulp_util_1.colors.yellow((Date.now() - t1) + 'ms'), 'mem:', gulp_util_1.colors.cyan(Math.ceil(headNow / MB) + 'MB'), gulp_util_1.colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));

@@ -11,6 +11,7 @@ import Vinyl = require('vinyl');
 export interface IConfiguration {
     json: boolean;
     verbose: boolean;
+    _emitLanguageService?: boolean;
     [option: string]: string | number | boolean;
 }
 
@@ -208,6 +209,13 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         });
 
         oldErrors = newErrors;
+
+        if (config._emitLanguageService) {
+            out(<any> {
+                languageService: service,
+                host: host
+            });
+        }
 
         if (config.verbose) {
             var headNow = process.memoryUsage().heapUsed,

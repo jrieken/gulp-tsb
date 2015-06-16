@@ -21,7 +21,7 @@ function create(configOrName, verbose, json, onError) {
     config.verbose = config.verbose || verbose;
     config.json = config.json || json;
     if (!onError) {
-        onError = console.log.bind(console);
+        onError = function (err) { return console.log(JSON.stringify(err, null, 4)); };
     }
     var _builder = builder.createTypeScriptBuilder(config);
     function createStream() {

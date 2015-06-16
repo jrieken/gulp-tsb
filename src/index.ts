@@ -30,7 +30,7 @@ export function create(configOrName: builder.IConfiguration|string, verbose?: bo
     config.json = config.json || json;
     
     if (!onError) {
-        onError = console.log.bind(console);
+        onError = (err) => console.log(JSON.stringify(err, null, 4));
     }
 
     var _builder = builder.createTypeScriptBuilder(config);
