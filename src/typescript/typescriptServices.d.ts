@@ -56,8 +56,11 @@ declare namespace ts {
         LessThanToken = 24,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
         LessThanSlashToken = 25,
         GreaterThanToken = 26,
         LessThanEqualsToken = 27,
@@ -309,6 +312,9 @@ declare namespace ts {
         FirstTypeNode = 145,
         LastTypeNode = 153,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
 =======
         GreaterThanToken = 25,
         LessThanEqualsToken = 26,
@@ -559,12 +565,15 @@ declare namespace ts {
 =======
         LastToken = 127,
 >>>>>>> Updated compiler to emitDependencyFile branch
+<<<<<<< HEAD
 =======
         FirstPunctuation = 14,
         LastPunctuation = 65,
         FirstToken = 0,
         LastToken = 128,
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
         FirstTriviaToken = 2,
         LastTriviaToken = 6,
         FirstLiteralToken = 7,
@@ -572,6 +581,7 @@ declare namespace ts {
         FirstTemplateToken = 10,
         LastTemplateToken = 13,
         FirstBinaryOperator = 24,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         LastBinaryOperator = 65,
@@ -584,6 +594,14 @@ declare namespace ts {
         LastBinaryOperator = 65,
         FirstNode = 129,
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+        LastBinaryOperator = 65,
+        FirstNode = 129,
+=======
+        LastBinaryOperator = 64,
+        FirstNode = 128,
+>>>>>>> Updated compiler to emitDependencyFile branch
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     const enum NodeFlags {
         Export = 1,
@@ -896,8 +914,11 @@ declare namespace ts {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
     type AssertionExpression = TypeAssertion | AsExpression;
     interface JsxElement extends PrimaryExpression {
         openingElement: JsxOpeningElement;
@@ -931,10 +952,15 @@ declare namespace ts {
     }
     type JsxChild = JsxText | JsxExpression | JsxElement | JsxSelfClosingElement;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
 =======
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
+>>>>>>> Updated compiler to emitDependencyFile branch
     interface Statement extends Node {
         _statementBrand: any;
     }
@@ -1191,12 +1217,18 @@ declare namespace ts {
         referencedFiles: FileReference[];
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         languageVariant: LanguageVariant;
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
 =======
         languageVariant: LanguageVariant;
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+        languageVariant: LanguageVariant;
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
+>>>>>>> Updated compiler to emitDependencyFile branch
         /**
          * lib.d.ts should have a reference comment like
          *
@@ -1479,6 +1511,7 @@ declare namespace ts {
         localTypeParameters: TypeParameter[];
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         resolvedBaseConstructorType?: Type;
         resolvedBaseTypes: ObjectType[];
 =======
@@ -1490,6 +1523,15 @@ declare namespace ts {
         resolvedBaseConstructorType?: Type;
         resolvedBaseTypes: ObjectType[];
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+        resolvedBaseConstructorType?: Type;
+        resolvedBaseTypes: ObjectType[];
+=======
+    }
+    interface InterfaceTypeWithBaseTypes extends InterfaceType {
+        baseTypes: ObjectType[];
+>>>>>>> Updated compiler to emitDependencyFile branch
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     interface InterfaceTypeWithDeclaredMembers extends InterfaceType {
         declaredProperties: Symbol[];
@@ -1562,6 +1604,7 @@ declare namespace ts {
         allowNonTsExtensions?: boolean;
         charset?: string;
         declaration?: boolean;
+        dependency?: boolean;
         diagnostics?: boolean;
         emitBOM?: boolean;
         help?: boolean;
