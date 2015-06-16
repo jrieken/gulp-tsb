@@ -124,6 +124,7 @@ var ts;
         SyntaxKind[SyntaxKind["StaticKeyword"] = 110] = "StaticKeyword";
         SyntaxKind[SyntaxKind["YieldKeyword"] = 111] = "YieldKeyword";
         // Contextual keywords
+<<<<<<< HEAD
         SyntaxKind[SyntaxKind["AsKeyword"] = 112] = "AsKeyword";
         SyntaxKind[SyntaxKind["AnyKeyword"] = 113] = "AnyKeyword";
         SyntaxKind[SyntaxKind["BooleanKeyword"] = 114] = "BooleanKeyword";
@@ -308,10 +309,190 @@ var ts;
         SyntaxKind[SyntaxKind["LastFutureReservedWord"] = 111] = "LastFutureReservedWord";
         SyntaxKind[SyntaxKind["FirstTypeNode"] = 145] = "FirstTypeNode";
         SyntaxKind[SyntaxKind["LastTypeNode"] = 153] = "LastTypeNode";
+=======
+        SyntaxKind[SyntaxKind["AsKeyword"] = 111] = "AsKeyword";
+        SyntaxKind[SyntaxKind["AnyKeyword"] = 112] = "AnyKeyword";
+        SyntaxKind[SyntaxKind["BooleanKeyword"] = 113] = "BooleanKeyword";
+        SyntaxKind[SyntaxKind["ConstructorKeyword"] = 114] = "ConstructorKeyword";
+        SyntaxKind[SyntaxKind["DeclareKeyword"] = 115] = "DeclareKeyword";
+        SyntaxKind[SyntaxKind["GetKeyword"] = 116] = "GetKeyword";
+        SyntaxKind[SyntaxKind["IsKeyword"] = 117] = "IsKeyword";
+        SyntaxKind[SyntaxKind["ModuleKeyword"] = 118] = "ModuleKeyword";
+        SyntaxKind[SyntaxKind["NamespaceKeyword"] = 119] = "NamespaceKeyword";
+        SyntaxKind[SyntaxKind["RequireKeyword"] = 120] = "RequireKeyword";
+        SyntaxKind[SyntaxKind["NumberKeyword"] = 121] = "NumberKeyword";
+        SyntaxKind[SyntaxKind["SetKeyword"] = 122] = "SetKeyword";
+        SyntaxKind[SyntaxKind["StringKeyword"] = 123] = "StringKeyword";
+        SyntaxKind[SyntaxKind["SymbolKeyword"] = 124] = "SymbolKeyword";
+        SyntaxKind[SyntaxKind["TypeKeyword"] = 125] = "TypeKeyword";
+        SyntaxKind[SyntaxKind["FromKeyword"] = 126] = "FromKeyword";
+        SyntaxKind[SyntaxKind["OfKeyword"] = 127] = "OfKeyword";
+        // Parse tree nodes
+        // Names
+        SyntaxKind[SyntaxKind["QualifiedName"] = 128] = "QualifiedName";
+        SyntaxKind[SyntaxKind["ComputedPropertyName"] = 129] = "ComputedPropertyName";
+        // Signature elements
+        SyntaxKind[SyntaxKind["TypeParameter"] = 130] = "TypeParameter";
+        SyntaxKind[SyntaxKind["Parameter"] = 131] = "Parameter";
+        SyntaxKind[SyntaxKind["Decorator"] = 132] = "Decorator";
+        // TypeMember
+        SyntaxKind[SyntaxKind["PropertySignature"] = 133] = "PropertySignature";
+        SyntaxKind[SyntaxKind["PropertyDeclaration"] = 134] = "PropertyDeclaration";
+        SyntaxKind[SyntaxKind["MethodSignature"] = 135] = "MethodSignature";
+        SyntaxKind[SyntaxKind["MethodDeclaration"] = 136] = "MethodDeclaration";
+        SyntaxKind[SyntaxKind["Constructor"] = 137] = "Constructor";
+        SyntaxKind[SyntaxKind["GetAccessor"] = 138] = "GetAccessor";
+        SyntaxKind[SyntaxKind["SetAccessor"] = 139] = "SetAccessor";
+        SyntaxKind[SyntaxKind["CallSignature"] = 140] = "CallSignature";
+        SyntaxKind[SyntaxKind["ConstructSignature"] = 141] = "ConstructSignature";
+        SyntaxKind[SyntaxKind["IndexSignature"] = 142] = "IndexSignature";
+        // Type
+        SyntaxKind[SyntaxKind["TypePredicate"] = 143] = "TypePredicate";
+        SyntaxKind[SyntaxKind["TypeReference"] = 144] = "TypeReference";
+        SyntaxKind[SyntaxKind["FunctionType"] = 145] = "FunctionType";
+        SyntaxKind[SyntaxKind["ConstructorType"] = 146] = "ConstructorType";
+        SyntaxKind[SyntaxKind["TypeQuery"] = 147] = "TypeQuery";
+        SyntaxKind[SyntaxKind["TypeLiteral"] = 148] = "TypeLiteral";
+        SyntaxKind[SyntaxKind["ArrayType"] = 149] = "ArrayType";
+        SyntaxKind[SyntaxKind["TupleType"] = 150] = "TupleType";
+        SyntaxKind[SyntaxKind["UnionType"] = 151] = "UnionType";
+        SyntaxKind[SyntaxKind["ParenthesizedType"] = 152] = "ParenthesizedType";
+        // Binding patterns
+        SyntaxKind[SyntaxKind["ObjectBindingPattern"] = 153] = "ObjectBindingPattern";
+        SyntaxKind[SyntaxKind["ArrayBindingPattern"] = 154] = "ArrayBindingPattern";
+        SyntaxKind[SyntaxKind["BindingElement"] = 155] = "BindingElement";
+        // Expression
+        SyntaxKind[SyntaxKind["ArrayLiteralExpression"] = 156] = "ArrayLiteralExpression";
+        SyntaxKind[SyntaxKind["ObjectLiteralExpression"] = 157] = "ObjectLiteralExpression";
+        SyntaxKind[SyntaxKind["PropertyAccessExpression"] = 158] = "PropertyAccessExpression";
+        SyntaxKind[SyntaxKind["ElementAccessExpression"] = 159] = "ElementAccessExpression";
+        SyntaxKind[SyntaxKind["CallExpression"] = 160] = "CallExpression";
+        SyntaxKind[SyntaxKind["NewExpression"] = 161] = "NewExpression";
+        SyntaxKind[SyntaxKind["TaggedTemplateExpression"] = 162] = "TaggedTemplateExpression";
+        SyntaxKind[SyntaxKind["TypeAssertionExpression"] = 163] = "TypeAssertionExpression";
+        SyntaxKind[SyntaxKind["ParenthesizedExpression"] = 164] = "ParenthesizedExpression";
+        SyntaxKind[SyntaxKind["FunctionExpression"] = 165] = "FunctionExpression";
+        SyntaxKind[SyntaxKind["ArrowFunction"] = 166] = "ArrowFunction";
+        SyntaxKind[SyntaxKind["DeleteExpression"] = 167] = "DeleteExpression";
+        SyntaxKind[SyntaxKind["TypeOfExpression"] = 168] = "TypeOfExpression";
+        SyntaxKind[SyntaxKind["VoidExpression"] = 169] = "VoidExpression";
+        SyntaxKind[SyntaxKind["PrefixUnaryExpression"] = 170] = "PrefixUnaryExpression";
+        SyntaxKind[SyntaxKind["PostfixUnaryExpression"] = 171] = "PostfixUnaryExpression";
+        SyntaxKind[SyntaxKind["BinaryExpression"] = 172] = "BinaryExpression";
+        SyntaxKind[SyntaxKind["ConditionalExpression"] = 173] = "ConditionalExpression";
+        SyntaxKind[SyntaxKind["TemplateExpression"] = 174] = "TemplateExpression";
+        SyntaxKind[SyntaxKind["YieldExpression"] = 175] = "YieldExpression";
+        SyntaxKind[SyntaxKind["SpreadElementExpression"] = 176] = "SpreadElementExpression";
+        SyntaxKind[SyntaxKind["ClassExpression"] = 177] = "ClassExpression";
+        SyntaxKind[SyntaxKind["OmittedExpression"] = 178] = "OmittedExpression";
+        SyntaxKind[SyntaxKind["ExpressionWithTypeArguments"] = 179] = "ExpressionWithTypeArguments";
+        // Misc
+        SyntaxKind[SyntaxKind["TemplateSpan"] = 180] = "TemplateSpan";
+        SyntaxKind[SyntaxKind["SemicolonClassElement"] = 181] = "SemicolonClassElement";
+        // Element
+        SyntaxKind[SyntaxKind["Block"] = 182] = "Block";
+        SyntaxKind[SyntaxKind["VariableStatement"] = 183] = "VariableStatement";
+        SyntaxKind[SyntaxKind["EmptyStatement"] = 184] = "EmptyStatement";
+        SyntaxKind[SyntaxKind["ExpressionStatement"] = 185] = "ExpressionStatement";
+        SyntaxKind[SyntaxKind["IfStatement"] = 186] = "IfStatement";
+        SyntaxKind[SyntaxKind["DoStatement"] = 187] = "DoStatement";
+        SyntaxKind[SyntaxKind["WhileStatement"] = 188] = "WhileStatement";
+        SyntaxKind[SyntaxKind["ForStatement"] = 189] = "ForStatement";
+        SyntaxKind[SyntaxKind["ForInStatement"] = 190] = "ForInStatement";
+        SyntaxKind[SyntaxKind["ForOfStatement"] = 191] = "ForOfStatement";
+        SyntaxKind[SyntaxKind["ContinueStatement"] = 192] = "ContinueStatement";
+        SyntaxKind[SyntaxKind["BreakStatement"] = 193] = "BreakStatement";
+        SyntaxKind[SyntaxKind["ReturnStatement"] = 194] = "ReturnStatement";
+        SyntaxKind[SyntaxKind["WithStatement"] = 195] = "WithStatement";
+        SyntaxKind[SyntaxKind["SwitchStatement"] = 196] = "SwitchStatement";
+        SyntaxKind[SyntaxKind["LabeledStatement"] = 197] = "LabeledStatement";
+        SyntaxKind[SyntaxKind["ThrowStatement"] = 198] = "ThrowStatement";
+        SyntaxKind[SyntaxKind["TryStatement"] = 199] = "TryStatement";
+        SyntaxKind[SyntaxKind["DebuggerStatement"] = 200] = "DebuggerStatement";
+        SyntaxKind[SyntaxKind["VariableDeclaration"] = 201] = "VariableDeclaration";
+        SyntaxKind[SyntaxKind["VariableDeclarationList"] = 202] = "VariableDeclarationList";
+        SyntaxKind[SyntaxKind["FunctionDeclaration"] = 203] = "FunctionDeclaration";
+        SyntaxKind[SyntaxKind["ClassDeclaration"] = 204] = "ClassDeclaration";
+        SyntaxKind[SyntaxKind["InterfaceDeclaration"] = 205] = "InterfaceDeclaration";
+        SyntaxKind[SyntaxKind["TypeAliasDeclaration"] = 206] = "TypeAliasDeclaration";
+        SyntaxKind[SyntaxKind["EnumDeclaration"] = 207] = "EnumDeclaration";
+        SyntaxKind[SyntaxKind["ModuleDeclaration"] = 208] = "ModuleDeclaration";
+        SyntaxKind[SyntaxKind["ModuleBlock"] = 209] = "ModuleBlock";
+        SyntaxKind[SyntaxKind["CaseBlock"] = 210] = "CaseBlock";
+        SyntaxKind[SyntaxKind["ImportEqualsDeclaration"] = 211] = "ImportEqualsDeclaration";
+        SyntaxKind[SyntaxKind["ImportDeclaration"] = 212] = "ImportDeclaration";
+        SyntaxKind[SyntaxKind["ImportClause"] = 213] = "ImportClause";
+        SyntaxKind[SyntaxKind["NamespaceImport"] = 214] = "NamespaceImport";
+        SyntaxKind[SyntaxKind["NamedImports"] = 215] = "NamedImports";
+        SyntaxKind[SyntaxKind["ImportSpecifier"] = 216] = "ImportSpecifier";
+        SyntaxKind[SyntaxKind["ExportAssignment"] = 217] = "ExportAssignment";
+        SyntaxKind[SyntaxKind["ExportDeclaration"] = 218] = "ExportDeclaration";
+        SyntaxKind[SyntaxKind["NamedExports"] = 219] = "NamedExports";
+        SyntaxKind[SyntaxKind["ExportSpecifier"] = 220] = "ExportSpecifier";
+        SyntaxKind[SyntaxKind["MissingDeclaration"] = 221] = "MissingDeclaration";
+        // Module references
+        SyntaxKind[SyntaxKind["ExternalModuleReference"] = 222] = "ExternalModuleReference";
+        // Clauses
+        SyntaxKind[SyntaxKind["CaseClause"] = 223] = "CaseClause";
+        SyntaxKind[SyntaxKind["DefaultClause"] = 224] = "DefaultClause";
+        SyntaxKind[SyntaxKind["HeritageClause"] = 225] = "HeritageClause";
+        SyntaxKind[SyntaxKind["CatchClause"] = 226] = "CatchClause";
+        // Property assignments
+        SyntaxKind[SyntaxKind["PropertyAssignment"] = 227] = "PropertyAssignment";
+        SyntaxKind[SyntaxKind["ShorthandPropertyAssignment"] = 228] = "ShorthandPropertyAssignment";
+        // Enum
+        SyntaxKind[SyntaxKind["EnumMember"] = 229] = "EnumMember";
+        // Top-level nodes
+        SyntaxKind[SyntaxKind["SourceFile"] = 230] = "SourceFile";
+        // JSDoc nodes.
+        SyntaxKind[SyntaxKind["JSDocTypeExpression"] = 231] = "JSDocTypeExpression";
+        // The * type.
+        SyntaxKind[SyntaxKind["JSDocAllType"] = 232] = "JSDocAllType";
+        // The ? type.
+        SyntaxKind[SyntaxKind["JSDocUnknownType"] = 233] = "JSDocUnknownType";
+        SyntaxKind[SyntaxKind["JSDocArrayType"] = 234] = "JSDocArrayType";
+        SyntaxKind[SyntaxKind["JSDocUnionType"] = 235] = "JSDocUnionType";
+        SyntaxKind[SyntaxKind["JSDocTupleType"] = 236] = "JSDocTupleType";
+        SyntaxKind[SyntaxKind["JSDocNullableType"] = 237] = "JSDocNullableType";
+        SyntaxKind[SyntaxKind["JSDocNonNullableType"] = 238] = "JSDocNonNullableType";
+        SyntaxKind[SyntaxKind["JSDocRecordType"] = 239] = "JSDocRecordType";
+        SyntaxKind[SyntaxKind["JSDocRecordMember"] = 240] = "JSDocRecordMember";
+        SyntaxKind[SyntaxKind["JSDocTypeReference"] = 241] = "JSDocTypeReference";
+        SyntaxKind[SyntaxKind["JSDocOptionalType"] = 242] = "JSDocOptionalType";
+        SyntaxKind[SyntaxKind["JSDocFunctionType"] = 243] = "JSDocFunctionType";
+        SyntaxKind[SyntaxKind["JSDocVariadicType"] = 244] = "JSDocVariadicType";
+        SyntaxKind[SyntaxKind["JSDocConstructorType"] = 245] = "JSDocConstructorType";
+        SyntaxKind[SyntaxKind["JSDocThisType"] = 246] = "JSDocThisType";
+        SyntaxKind[SyntaxKind["JSDocComment"] = 247] = "JSDocComment";
+        SyntaxKind[SyntaxKind["JSDocTag"] = 248] = "JSDocTag";
+        SyntaxKind[SyntaxKind["JSDocParameterTag"] = 249] = "JSDocParameterTag";
+        SyntaxKind[SyntaxKind["JSDocReturnTag"] = 250] = "JSDocReturnTag";
+        SyntaxKind[SyntaxKind["JSDocTypeTag"] = 251] = "JSDocTypeTag";
+        SyntaxKind[SyntaxKind["JSDocTemplateTag"] = 252] = "JSDocTemplateTag";
+        // Synthesized list
+        SyntaxKind[SyntaxKind["SyntaxList"] = 253] = "SyntaxList";
+        // Enum value count
+        SyntaxKind[SyntaxKind["Count"] = 254] = "Count";
+        // Markers
+        SyntaxKind[SyntaxKind["FirstAssignment"] = 53] = "FirstAssignment";
+        SyntaxKind[SyntaxKind["LastAssignment"] = 64] = "LastAssignment";
+        SyntaxKind[SyntaxKind["FirstReservedWord"] = 66] = "FirstReservedWord";
+        SyntaxKind[SyntaxKind["LastReservedWord"] = 101] = "LastReservedWord";
+        SyntaxKind[SyntaxKind["FirstKeyword"] = 66] = "FirstKeyword";
+        SyntaxKind[SyntaxKind["LastKeyword"] = 127] = "LastKeyword";
+        SyntaxKind[SyntaxKind["FirstFutureReservedWord"] = 102] = "FirstFutureReservedWord";
+        SyntaxKind[SyntaxKind["LastFutureReservedWord"] = 110] = "LastFutureReservedWord";
+        SyntaxKind[SyntaxKind["FirstTypeNode"] = 144] = "FirstTypeNode";
+        SyntaxKind[SyntaxKind["LastTypeNode"] = 152] = "LastTypeNode";
+>>>>>>> Updated compiler to emitDependencyFile branch
         SyntaxKind[SyntaxKind["FirstPunctuation"] = 14] = "FirstPunctuation";
         SyntaxKind[SyntaxKind["LastPunctuation"] = 65] = "LastPunctuation";
         SyntaxKind[SyntaxKind["FirstToken"] = 0] = "FirstToken";
+<<<<<<< HEAD
         SyntaxKind[SyntaxKind["LastToken"] = 128] = "LastToken";
+=======
+        SyntaxKind[SyntaxKind["LastToken"] = 127] = "LastToken";
+>>>>>>> Updated compiler to emitDependencyFile branch
         SyntaxKind[SyntaxKind["FirstTriviaToken"] = 2] = "FirstTriviaToken";
         SyntaxKind[SyntaxKind["LastTriviaToken"] = 6] = "LastTriviaToken";
         SyntaxKind[SyntaxKind["FirstLiteralToken"] = 7] = "FirstLiteralToken";
@@ -319,8 +500,13 @@ var ts;
         SyntaxKind[SyntaxKind["FirstTemplateToken"] = 10] = "FirstTemplateToken";
         SyntaxKind[SyntaxKind["LastTemplateToken"] = 13] = "LastTemplateToken";
         SyntaxKind[SyntaxKind["FirstBinaryOperator"] = 24] = "FirstBinaryOperator";
+<<<<<<< HEAD
         SyntaxKind[SyntaxKind["LastBinaryOperator"] = 65] = "LastBinaryOperator";
         SyntaxKind[SyntaxKind["FirstNode"] = 129] = "FirstNode";
+=======
+        SyntaxKind[SyntaxKind["LastBinaryOperator"] = 64] = "LastBinaryOperator";
+        SyntaxKind[SyntaxKind["FirstNode"] = 128] = "FirstNode";
+>>>>>>> Updated compiler to emitDependencyFile branch
     })(ts.SyntaxKind || (ts.SyntaxKind = {}));
     var SyntaxKind = ts.SyntaxKind;
     (function (NodeFlags) {
@@ -347,6 +533,12 @@ var ts;
     /* @internal */
     (function (ParserContextFlags) {
         ParserContextFlags[ParserContextFlags["None"] = 0] = "None";
+<<<<<<< HEAD
+=======
+        // Set if this node was parsed in strict mode.  Used for grammar error checks, as well as
+        // checking if the node can be reused in incremental settings.
+        ParserContextFlags[ParserContextFlags["StrictMode"] = 1] = "StrictMode";
+>>>>>>> Updated compiler to emitDependencyFile branch
         // If this node was parsed in a context where 'in-expressions' are not allowed.
         ParserContextFlags[ParserContextFlags["DisallowIn"] = 2] = "DisallowIn";
         // If this node was parsed in the 'yield' context created when parsing a generator.
@@ -1405,8 +1597,13 @@ var ts;
     /**
      *  List of supported extensions in order of file resolution precedence.
      */
+<<<<<<< HEAD
     ts.supportedExtensions = [".tsx", ".ts", ".d.ts"];
     var extensionsToRemove = [".d.ts", ".ts", ".js", ".tsx", ".jsx"];
+=======
+    ts.supportedExtensions = [".ts", ".d.ts"];
+    var extensionsToRemove = [".d.ts", ".ts", ".js"];
+>>>>>>> Updated compiler to emitDependencyFile branch
     function removeFileExtension(path) {
         for (var _i = 0; _i < extensionsToRemove.length; _i++) {
             var ext = extensionsToRemove[_i];
@@ -1954,12 +2151,15 @@ var ts;
         An_export_declaration_can_only_be_used_in_a_module: { code: 1233, category: ts.DiagnosticCategory.Error, key: "An export declaration can only be used in a module." },
         An_ambient_module_declaration_is_only_allowed_at_the_top_level_in_a_file: { code: 1234, category: ts.DiagnosticCategory.Error, key: "An ambient module declaration is only allowed at the top level in a file." },
         A_namespace_declaration_is_only_allowed_in_a_namespace_or_module: { code: 1235, category: ts.DiagnosticCategory.Error, key: "A namespace declaration is only allowed in a namespace or module." },
+<<<<<<< HEAD
         The_return_type_of_a_property_decorator_function_must_be_either_void_or_any: { code: 1236, category: ts.DiagnosticCategory.Error, key: "The return type of a property decorator function must be either 'void' or 'any'." },
         The_return_type_of_a_parameter_decorator_function_must_be_either_void_or_any: { code: 1237, category: ts.DiagnosticCategory.Error, key: "The return type of a parameter decorator function must be either 'void' or 'any'." },
         Unable_to_resolve_signature_of_class_decorator_when_called_as_an_expression: { code: 1238, category: ts.DiagnosticCategory.Error, key: "Unable to resolve signature of class decorator when called as an expression." },
         Unable_to_resolve_signature_of_parameter_decorator_when_called_as_an_expression: { code: 1239, category: ts.DiagnosticCategory.Error, key: "Unable to resolve signature of parameter decorator when called as an expression." },
         Unable_to_resolve_signature_of_property_decorator_when_called_as_an_expression: { code: 1240, category: ts.DiagnosticCategory.Error, key: "Unable to resolve signature of property decorator when called as an expression." },
         Unable_to_resolve_signature_of_method_decorator_when_called_as_an_expression: { code: 1241, category: ts.DiagnosticCategory.Error, key: "Unable to resolve signature of method decorator when called as an expression." },
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
         Duplicate_identifier_0: { code: 2300, category: ts.DiagnosticCategory.Error, key: "Duplicate identifier '{0}'." },
         Initializer_of_instance_member_variable_0_cannot_reference_identifier_1_declared_in_the_constructor: { code: 2301, category: ts.DiagnosticCategory.Error, key: "Initializer of instance member variable '{0}' cannot reference identifier '{1}' declared in the constructor." },
         Static_members_cannot_reference_class_type_parameters: { code: 2302, category: ts.DiagnosticCategory.Error, key: "Static members cannot reference class type parameters." },
@@ -2152,6 +2352,7 @@ var ts;
         Cannot_find_namespace_0: { code: 2503, category: ts.DiagnosticCategory.Error, key: "Cannot find namespace '{0}'." },
         No_best_common_type_exists_among_yield_expressions: { code: 2504, category: ts.DiagnosticCategory.Error, key: "No best common type exists among yield expressions." },
         A_generator_cannot_have_a_void_type_annotation: { code: 2505, category: ts.DiagnosticCategory.Error, key: "A generator cannot have a 'void' type annotation." },
+<<<<<<< HEAD
         _0_is_referenced_directly_or_indirectly_in_its_own_base_expression: { code: 2506, category: ts.DiagnosticCategory.Error, key: "'{0}' is referenced directly or indirectly in its own base expression." },
         Type_0_is_not_a_constructor_function_type: { code: 2507, category: ts.DiagnosticCategory.Error, key: "Type '{0}' is not a constructor function type." },
         No_base_constructor_has_the_specified_number_of_type_arguments: { code: 2508, category: ts.DiagnosticCategory.Error, key: "No base constructor has the specified number of type arguments." },
@@ -2167,6 +2368,8 @@ var ts;
         JSX_element_class_does_not_support_attributes_because_it_does_not_have_a_0_property: { code: 2607, category: ts.DiagnosticCategory.Error, key: "JSX element class does not support attributes because it does not have a '{0}' property" },
         The_global_type_JSX_0_may_not_have_more_than_one_property: { code: 2608, category: ts.DiagnosticCategory.Error, key: "The global type 'JSX.{0}' may not have more than one property" },
         Cannot_emit_namespaced_JSX_elements_in_React: { code: 2650, category: ts.DiagnosticCategory.Error, key: "Cannot emit namespaced JSX elements in React" },
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
         Import_declaration_0_is_using_private_name_1: { code: 4000, category: ts.DiagnosticCategory.Error, key: "Import declaration '{0}' is using private name '{1}'." },
         Type_parameter_0_of_exported_class_has_or_is_using_private_name_1: { code: 4002, category: ts.DiagnosticCategory.Error, key: "Type parameter '{0}' of exported class has or is using private name '{1}'." },
         Type_parameter_0_of_exported_interface_has_or_is_using_private_name_1: { code: 4004, category: ts.DiagnosticCategory.Error, key: "Type parameter '{0}' of exported interface has or is using private name '{1}'." },
@@ -2329,7 +2532,10 @@ var ts;
         _0_implicitly_has_return_type_any_because_it_does_not_have_a_return_type_annotation_and_is_referenced_directly_or_indirectly_in_one_of_its_return_expressions: { code: 7023, category: ts.DiagnosticCategory.Error, key: "'{0}' implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions." },
         Function_implicitly_has_return_type_any_because_it_does_not_have_a_return_type_annotation_and_is_referenced_directly_or_indirectly_in_one_of_its_return_expressions: { code: 7024, category: ts.DiagnosticCategory.Error, key: "Function implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions." },
         Generator_implicitly_has_type_0_because_it_does_not_yield_any_values_Consider_supplying_a_return_type: { code: 7025, category: ts.DiagnosticCategory.Error, key: "Generator implicitly has type '{0}' because it does not yield any values. Consider supplying a return type." },
+<<<<<<< HEAD
         JSX_element_implicitly_has_type_any_because_no_interface_JSX_0_exists: { code: 7026, category: ts.DiagnosticCategory.Error, key: "JSX element implicitly has type 'any' because no interface 'JSX.{0}' exists" },
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
         You_cannot_rename_this_element: { code: 8000, category: ts.DiagnosticCategory.Error, key: "You cannot rename this element." },
         You_cannot_rename_elements_that_are_defined_in_the_standard_TypeScript_library: { code: 8001, category: ts.DiagnosticCategory.Error, key: "You cannot rename elements that are defined in the standard TypeScript library." },
         import_can_only_be_used_in_a_ts_file: { code: 8002, category: ts.DiagnosticCategory.Error, key: "'import ... =' can only be used in a .ts file." },
@@ -2348,12 +2554,16 @@ var ts;
         type_assertion_expressions_can_only_be_used_in_a_ts_file: { code: 8016, category: ts.DiagnosticCategory.Error, key: "'type assertion expressions' can only be used in a .ts file." },
         decorators_can_only_be_used_in_a_ts_file: { code: 8017, category: ts.DiagnosticCategory.Error, key: "'decorators' can only be used in a .ts file." },
         Only_identifiers_Slashqualified_names_with_optional_type_arguments_are_currently_supported_in_a_class_extends_clauses: { code: 9002, category: ts.DiagnosticCategory.Error, key: "Only identifiers/qualified-names with optional type arguments are currently supported in a class 'extends' clauses." },
+<<<<<<< HEAD
         class_expressions_are_not_currently_supported: { code: 9003, category: ts.DiagnosticCategory.Error, key: "'class' expressions are not currently supported." },
         JSX_attributes_must_only_be_assigned_a_non_empty_expression: { code: 17000, category: ts.DiagnosticCategory.Error, key: "JSX attributes must only be assigned a non-empty 'expression'." },
         JSX_elements_cannot_have_multiple_attributes_with_the_same_name: { code: 17001, category: ts.DiagnosticCategory.Error, key: "JSX elements cannot have multiple attributes with the same name." },
         Expected_corresponding_JSX_closing_tag_for_0: { code: 17002, category: ts.DiagnosticCategory.Error, key: "Expected corresponding JSX closing tag for '{0}'." },
         JSX_attribute_expected: { code: 17003, category: ts.DiagnosticCategory.Error, key: "JSX attribute expected." },
         Cannot_use_JSX_unless_the_jsx_flag_is_provided: { code: 17004, category: ts.DiagnosticCategory.Error, key: "Cannot use JSX unless the '--jsx' flag is provided." }
+=======
+        class_expressions_are_not_currently_supported: { code: 9003, category: ts.DiagnosticCategory.Error, key: "'class' expressions are not currently supported." }
+>>>>>>> Updated compiler to emitDependencyFile branch
     };
 })(ts || (ts = {}));
 /// <reference path="core.ts"/>
@@ -2361,6 +2571,7 @@ var ts;
 var ts;
 (function (ts) {
     var textToToken = {
+<<<<<<< HEAD
         "any": 113 /* AnyKeyword */,
         "as": 112 /* AsKeyword */,
         "boolean": 114 /* BooleanKeyword */,
@@ -2423,6 +2634,70 @@ var ts;
         "with": 102 /* WithKeyword */,
         "yield": 111 /* YieldKeyword */,
         "of": 128 /* OfKeyword */,
+=======
+        "any": 112 /* AnyKeyword */,
+        "as": 111 /* AsKeyword */,
+        "boolean": 113 /* BooleanKeyword */,
+        "break": 66 /* BreakKeyword */,
+        "case": 67 /* CaseKeyword */,
+        "catch": 68 /* CatchKeyword */,
+        "class": 69 /* ClassKeyword */,
+        "continue": 71 /* ContinueKeyword */,
+        "const": 70 /* ConstKeyword */,
+        "constructor": 114 /* ConstructorKeyword */,
+        "debugger": 72 /* DebuggerKeyword */,
+        "declare": 115 /* DeclareKeyword */,
+        "default": 73 /* DefaultKeyword */,
+        "delete": 74 /* DeleteKeyword */,
+        "do": 75 /* DoKeyword */,
+        "else": 76 /* ElseKeyword */,
+        "enum": 77 /* EnumKeyword */,
+        "export": 78 /* ExportKeyword */,
+        "extends": 79 /* ExtendsKeyword */,
+        "false": 80 /* FalseKeyword */,
+        "finally": 81 /* FinallyKeyword */,
+        "for": 82 /* ForKeyword */,
+        "from": 126 /* FromKeyword */,
+        "function": 83 /* FunctionKeyword */,
+        "get": 116 /* GetKeyword */,
+        "if": 84 /* IfKeyword */,
+        "implements": 102 /* ImplementsKeyword */,
+        "import": 85 /* ImportKeyword */,
+        "in": 86 /* InKeyword */,
+        "instanceof": 87 /* InstanceOfKeyword */,
+        "interface": 103 /* InterfaceKeyword */,
+        "is": 117 /* IsKeyword */,
+        "let": 104 /* LetKeyword */,
+        "module": 118 /* ModuleKeyword */,
+        "namespace": 119 /* NamespaceKeyword */,
+        "new": 88 /* NewKeyword */,
+        "null": 89 /* NullKeyword */,
+        "number": 121 /* NumberKeyword */,
+        "package": 105 /* PackageKeyword */,
+        "private": 106 /* PrivateKeyword */,
+        "protected": 107 /* ProtectedKeyword */,
+        "public": 108 /* PublicKeyword */,
+        "require": 120 /* RequireKeyword */,
+        "return": 90 /* ReturnKeyword */,
+        "set": 122 /* SetKeyword */,
+        "static": 109 /* StaticKeyword */,
+        "string": 123 /* StringKeyword */,
+        "super": 91 /* SuperKeyword */,
+        "switch": 92 /* SwitchKeyword */,
+        "symbol": 124 /* SymbolKeyword */,
+        "this": 93 /* ThisKeyword */,
+        "throw": 94 /* ThrowKeyword */,
+        "true": 95 /* TrueKeyword */,
+        "try": 96 /* TryKeyword */,
+        "type": 125 /* TypeKeyword */,
+        "typeof": 97 /* TypeOfKeyword */,
+        "var": 98 /* VarKeyword */,
+        "void": 99 /* VoidKeyword */,
+        "while": 100 /* WhileKeyword */,
+        "with": 101 /* WithKeyword */,
+        "yield": 110 /* YieldKeyword */,
+        "of": 127 /* OfKeyword */,
+>>>>>>> Updated compiler to emitDependencyFile branch
         "{": 14 /* OpenBraceToken */,
         "}": 15 /* CloseBraceToken */,
         "(": 16 /* OpenParenToken */,
@@ -2916,8 +3191,12 @@ var ts;
     ts.isIdentifierPart = isIdentifierPart;
     /* @internal */
     // Creates a scanner over a (possibly unspecified) range of a piece of text.
+<<<<<<< HEAD
     function createScanner(languageVersion, skipTrivia, languageVariant, text, onError, start, length) {
         if (languageVariant === void 0) { languageVariant = 0 /* Standard */; }
+=======
+    function createScanner(languageVersion, skipTrivia, text, onError, start, length) {
+>>>>>>> Updated compiler to emitDependencyFile branch
         // Current position (end position of text of current token)
         var pos;
         // end of text
@@ -3828,16 +4107,27 @@ var ts;
     function getModuleInstanceState(node) {
         // A module is uninstantiated if it contains only 
         // 1. interface declarations, type alias declarations
+<<<<<<< HEAD
         if (node.kind === 207 /* InterfaceDeclaration */ || node.kind === 208 /* TypeAliasDeclaration */) {
+=======
+        if (node.kind === 205 /* InterfaceDeclaration */ || node.kind === 206 /* TypeAliasDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             return 0 /* NonInstantiated */;
         }
         else if (ts.isConstEnumDeclaration(node)) {
             return 2 /* ConstEnumOnly */;
         }
+<<<<<<< HEAD
         else if ((node.kind === 214 /* ImportDeclaration */ || node.kind === 213 /* ImportEqualsDeclaration */) && !(node.flags & 1 /* Export */)) {
             return 0 /* NonInstantiated */;
         }
         else if (node.kind === 211 /* ModuleBlock */) {
+=======
+        else if ((node.kind === 212 /* ImportDeclaration */ || node.kind === 211 /* ImportEqualsDeclaration */) && !(node.flags & 1 /* Export */)) {
+            return 0 /* NonInstantiated */;
+        }
+        else if (node.kind === 209 /* ModuleBlock */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             var state = 0 /* NonInstantiated */;
             ts.forEachChild(node, function (n) {
                 switch (getModuleInstanceState(n)) {
@@ -3856,7 +4146,11 @@ var ts;
             });
             return state;
         }
+<<<<<<< HEAD
         else if (node.kind === 210 /* ModuleDeclaration */) {
+=======
+        else if (node.kind === 208 /* ModuleDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             return getModuleInstanceState(node.body);
         }
         else {
@@ -3934,10 +4228,17 @@ var ts;
         // unless it is a well known Symbol.
         function getDeclarationName(node) {
             if (node.name) {
+<<<<<<< HEAD
                 if (node.kind === 210 /* ModuleDeclaration */ && node.name.kind === 8 /* StringLiteral */) {
                     return '"' + node.name.text + '"';
                 }
                 if (node.name.kind === 130 /* ComputedPropertyName */) {
+=======
+                if (node.kind === 208 /* ModuleDeclaration */ && node.name.kind === 8 /* StringLiteral */) {
+                    return '"' + node.name.text + '"';
+                }
+                if (node.name.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var nameExpression = node.name.expression;
                     ts.Debug.assert(ts.isWellKnownSymbolSyntactically(nameExpression));
                     return ts.getPropertyNameForKnownSymbolName(nameExpression.name.text);
@@ -3945,6 +4246,7 @@ var ts;
                 return node.name.text;
             }
             switch (node.kind) {
+<<<<<<< HEAD
                 case 138 /* Constructor */:
                     return "__constructor";
                 case 146 /* FunctionType */:
@@ -3961,6 +4263,24 @@ var ts;
                     return node.isExportEquals ? "export=" : "default";
                 case 205 /* FunctionDeclaration */:
                 case 206 /* ClassDeclaration */:
+=======
+                case 137 /* Constructor */:
+                    return "__constructor";
+                case 145 /* FunctionType */:
+                case 140 /* CallSignature */:
+                    return "__call";
+                case 146 /* ConstructorType */:
+                case 141 /* ConstructSignature */:
+                    return "__new";
+                case 142 /* IndexSignature */:
+                    return "__index";
+                case 218 /* ExportDeclaration */:
+                    return "__export";
+                case 217 /* ExportAssignment */:
+                    return node.isExportEquals ? "export=" : "default";
+                case 203 /* FunctionDeclaration */:
+                case 204 /* ClassDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return node.flags & 256 /* Default */ ? "default" : undefined;
             }
         }
@@ -4023,7 +4343,11 @@ var ts;
         function declareModuleMember(node, symbolFlags, symbolExcludes) {
             var hasExportModifier = ts.getCombinedNodeFlags(node) & 1 /* Export */;
             if (symbolFlags & 8388608 /* Alias */) {
+<<<<<<< HEAD
                 if (node.kind === 222 /* ExportSpecifier */ || (node.kind === 213 /* ImportEqualsDeclaration */ && hasExportModifier)) {
+=======
+                if (node.kind === 220 /* ExportSpecifier */ || (node.kind === 211 /* ImportEqualsDeclaration */ && hasExportModifier)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return declareSymbol(container.symbol.exports, container.symbol, node, symbolFlags, symbolExcludes);
                 }
                 else {
@@ -4104,6 +4428,7 @@ var ts;
         }
         function getContainerFlags(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 178 /* ClassExpression */:
                 case 206 /* ClassDeclaration */:
                 case 207 /* InterfaceDeclaration */:
@@ -4135,6 +4460,39 @@ var ts;
                 case 212 /* CaseBlock */:
                     return 2 /* IsBlockScopedContainer */;
                 case 184 /* Block */:
+=======
+                case 177 /* ClassExpression */:
+                case 204 /* ClassDeclaration */:
+                case 205 /* InterfaceDeclaration */:
+                case 207 /* EnumDeclaration */:
+                case 148 /* TypeLiteral */:
+                case 157 /* ObjectLiteralExpression */:
+                    return 1 /* IsContainer */;
+                case 140 /* CallSignature */:
+                case 141 /* ConstructSignature */:
+                case 142 /* IndexSignature */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                case 203 /* FunctionDeclaration */:
+                case 137 /* Constructor */:
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                case 145 /* FunctionType */:
+                case 146 /* ConstructorType */:
+                case 165 /* FunctionExpression */:
+                case 166 /* ArrowFunction */:
+                case 208 /* ModuleDeclaration */:
+                case 230 /* SourceFile */:
+                case 206 /* TypeAliasDeclaration */:
+                    return 5 /* IsContainerWithLocals */;
+                case 226 /* CatchClause */:
+                case 189 /* ForStatement */:
+                case 190 /* ForInStatement */:
+                case 191 /* ForOfStatement */:
+                case 210 /* CaseBlock */:
+                    return 2 /* IsBlockScopedContainer */;
+                case 182 /* Block */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // do not treat blocks directly inside a function as a block-scoped-container.
                     // Locals that reside in this block should go to the function locals. Othewise 'x' 
                     // would not appear to be a redeclaration of a block scoped local in the following
@@ -4160,17 +4518,26 @@ var ts;
                 lastContainer.nextContainer = next;
             }
             lastContainer = next;
+<<<<<<< HEAD
         }
         function declareSymbolAndAddToSymbolTable(node, symbolFlags, symbolExcludes) {
             // Just call this directly so that the return type of this function stays "void".
             declareSymbolAndAddToSymbolTableWorker(node, symbolFlags, symbolExcludes);
         }
+=======
+        }
+        function declareSymbolAndAddToSymbolTable(node, symbolFlags, symbolExcludes) {
+            // Just call this directly so that the return type of this function stays "void".
+            declareSymbolAndAddToSymbolTableWorker(node, symbolFlags, symbolExcludes);
+        }
+>>>>>>> Updated compiler to emitDependencyFile branch
         function declareSymbolAndAddToSymbolTableWorker(node, symbolFlags, symbolExcludes) {
             switch (container.kind) {
                 // Modules, source files, and classes need specialized handling for how their
                 // members are declared (for example, a member of a class will go into a specific
                 // symbol table depending on if it is static or not). We defer to specialized
                 // handlers to take care of declaring these child members.
+<<<<<<< HEAD
                 case 210 /* ModuleDeclaration */:
                     return declareModuleMember(node, symbolFlags, symbolExcludes);
                 case 240 /* SourceFile */:
@@ -4183,12 +4550,27 @@ var ts;
                 case 149 /* TypeLiteral */:
                 case 158 /* ObjectLiteralExpression */:
                 case 207 /* InterfaceDeclaration */:
+=======
+                case 208 /* ModuleDeclaration */:
+                    return declareModuleMember(node, symbolFlags, symbolExcludes);
+                case 230 /* SourceFile */:
+                    return declareSourceFileMember(node, symbolFlags, symbolExcludes);
+                case 177 /* ClassExpression */:
+                case 204 /* ClassDeclaration */:
+                    return declareClassMember(node, symbolFlags, symbolExcludes);
+                case 207 /* EnumDeclaration */:
+                    return declareSymbol(container.symbol.exports, container.symbol, node, symbolFlags, symbolExcludes);
+                case 148 /* TypeLiteral */:
+                case 157 /* ObjectLiteralExpression */:
+                case 205 /* InterfaceDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // Interface/Object-types always have their children added to the 'members' of
                     // their container. They are only accessible through an instance of their
                     // container, and are never in scope otherwise (even inside the body of the
                     // object / type / interface declaring them). An exception is type parameters,
                     // which are in scope without qualification (similar to 'locals').
                     return declareSymbol(container.symbol.members, container.symbol, node, symbolFlags, symbolExcludes);
+<<<<<<< HEAD
                 case 146 /* FunctionType */:
                 case 147 /* ConstructorType */:
                 case 141 /* CallSignature */:
@@ -4203,6 +4585,22 @@ var ts;
                 case 166 /* FunctionExpression */:
                 case 167 /* ArrowFunction */:
                 case 208 /* TypeAliasDeclaration */:
+=======
+                case 145 /* FunctionType */:
+                case 146 /* ConstructorType */:
+                case 140 /* CallSignature */:
+                case 141 /* ConstructSignature */:
+                case 142 /* IndexSignature */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                case 137 /* Constructor */:
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                case 203 /* FunctionDeclaration */:
+                case 165 /* FunctionExpression */:
+                case 166 /* ArrowFunction */:
+                case 206 /* TypeAliasDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // All the children of these container types are never visible through another
                     // symbol (i.e. through another symbol's 'exports' or 'members').  Instead,
                     // they're only accessed 'lexically' (i.e. from code that exists underneath
@@ -4232,11 +4630,19 @@ var ts;
             return false;
         }
         function hasExportDeclarations(node) {
+<<<<<<< HEAD
             var body = node.kind === 240 /* SourceFile */ ? node : node.body;
             if (body.kind === 240 /* SourceFile */ || body.kind === 211 /* ModuleBlock */) {
                 for (var _i = 0, _a = body.statements; _i < _a.length; _i++) {
                     var stat = _a[_i];
                     if (stat.kind === 220 /* ExportDeclaration */ || stat.kind === 219 /* ExportAssignment */) {
+=======
+            var body = node.kind === 230 /* SourceFile */ ? node : node.body;
+            if (body.kind === 230 /* SourceFile */ || body.kind === 209 /* ModuleBlock */) {
+                for (var _i = 0, _a = body.statements; _i < _a.length; _i++) {
+                    var stat = _a[_i];
+                    if (stat.kind === 218 /* ExportDeclaration */ || stat.kind === 217 /* ExportAssignment */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                     }
                 }
@@ -4290,6 +4696,7 @@ var ts;
             addDeclarationToSymbol(typeLiteralSymbol, node, 2048 /* TypeLiteral */);
             typeLiteralSymbol.members = (_a = {}, _a[symbol.name] = symbol, _a);
             var _a;
+<<<<<<< HEAD
         }
         function bindObjectLiteralExpression(node) {
             var ElementKind;
@@ -4328,6 +4735,8 @@ var ts;
                 }
             }
             return bindAnonymousDeclaration(node, 4096 /* ObjectLiteral */, "__object");
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function bindAnonymousDeclaration(node, symbolFlags, name) {
             var symbol = createSymbol(symbolFlags, name);
@@ -4335,10 +4744,17 @@ var ts;
         }
         function bindBlockScopedDeclaration(node, symbolFlags, symbolExcludes) {
             switch (blockScopeContainer.kind) {
+<<<<<<< HEAD
                 case 210 /* ModuleDeclaration */:
                     declareModuleMember(node, symbolFlags, symbolExcludes);
                     break;
                 case 240 /* SourceFile */:
+=======
+                case 208 /* ModuleDeclaration */:
+                    declareModuleMember(node, symbolFlags, symbolExcludes);
+                    break;
+                case 230 /* SourceFile */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (ts.isExternalModule(container)) {
                         declareModuleMember(node, symbolFlags, symbolExcludes);
                         break;
@@ -4471,10 +4887,13 @@ var ts;
         }
         function bind(node) {
             node.parent = parent;
+<<<<<<< HEAD
             var savedInStrictMode = inStrictMode;
             if (!savedInStrictMode) {
                 updateStrictMode(node);
             }
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
             // First we bind declaration nodes to a symbol if possible.  We'll both create a symbol
             // and then potentially add the symbol to an appropriate symbol table. Possible 
             // destination symbol tables are:
@@ -4491,6 +4910,7 @@ var ts;
             // the current 'container' node when it changes.  This helps us know which symbol table
             // a local should go into for example.
             bindChildren(node);
+<<<<<<< HEAD
             inStrictMode = savedInStrictMode;
         }
         function updateStrictMode(node) {
@@ -4569,11 +4989,38 @@ var ts;
                     return declareSymbolAndAddToSymbolTable(node, 131072 /* Signature */, 0 /* None */);
                 case 137 /* MethodDeclaration */:
                 case 136 /* MethodSignature */:
+=======
+        }
+        function bindWorker(node) {
+            switch (node.kind) {
+                case 130 /* TypeParameter */:
+                    return declareSymbolAndAddToSymbolTable(node, 262144 /* TypeParameter */, 530912 /* TypeParameterExcludes */);
+                case 131 /* Parameter */:
+                    return bindParameter(node);
+                case 201 /* VariableDeclaration */:
+                case 155 /* BindingElement */:
+                    return bindVariableDeclarationOrBindingElement(node);
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                    return bindPropertyOrMethodOrAccessor(node, 4 /* Property */ | (node.questionToken ? 536870912 /* Optional */ : 0 /* None */), 107455 /* PropertyExcludes */);
+                case 227 /* PropertyAssignment */:
+                case 228 /* ShorthandPropertyAssignment */:
+                    return bindPropertyOrMethodOrAccessor(node, 4 /* Property */, 107455 /* PropertyExcludes */);
+                case 229 /* EnumMember */:
+                    return bindPropertyOrMethodOrAccessor(node, 8 /* EnumMember */, 107455 /* EnumMemberExcludes */);
+                case 140 /* CallSignature */:
+                case 141 /* ConstructSignature */:
+                case 142 /* IndexSignature */:
+                    return declareSymbolAndAddToSymbolTable(node, 131072 /* Signature */, 0 /* None */);
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // If this is an ObjectLiteralExpression method, then it sits in the same space
                     // as other properties in the object literal.  So we use SymbolFlags.PropertyExcludes
                     // so that it will conflict with any other object literal members with the same
                     // name.
                     return bindPropertyOrMethodOrAccessor(node, 8192 /* Method */ | (node.questionToken ? 536870912 /* Optional */ : 0 /* None */), ts.isObjectLiteralMethod(node) ? 107455 /* PropertyExcludes */ : 99263 /* MethodExcludes */);
+<<<<<<< HEAD
                 case 205 /* FunctionDeclaration */:
                     checkStrictModeFunctionName(node);
                     return declareSymbolAndAddToSymbolTable(node, 16 /* Function */, 106927 /* FunctionExcludes */);
@@ -4617,6 +5064,49 @@ var ts;
                 case 219 /* ExportAssignment */:
                     return bindExportAssignment(node);
                 case 240 /* SourceFile */:
+=======
+                case 203 /* FunctionDeclaration */:
+                    return declareSymbolAndAddToSymbolTable(node, 16 /* Function */, 106927 /* FunctionExcludes */);
+                case 137 /* Constructor */:
+                    return declareSymbolAndAddToSymbolTable(node, 16384 /* Constructor */, 0 /* None */);
+                case 138 /* GetAccessor */:
+                    return bindPropertyOrMethodOrAccessor(node, 32768 /* GetAccessor */, 41919 /* GetAccessorExcludes */);
+                case 139 /* SetAccessor */:
+                    return bindPropertyOrMethodOrAccessor(node, 65536 /* SetAccessor */, 74687 /* SetAccessorExcludes */);
+                case 145 /* FunctionType */:
+                case 146 /* ConstructorType */:
+                    return bindFunctionOrConstructorType(node);
+                case 148 /* TypeLiteral */:
+                    return bindAnonymousDeclaration(node, 2048 /* TypeLiteral */, "__type");
+                case 157 /* ObjectLiteralExpression */:
+                    return bindAnonymousDeclaration(node, 4096 /* ObjectLiteral */, "__object");
+                case 165 /* FunctionExpression */:
+                case 166 /* ArrowFunction */:
+                    return bindAnonymousDeclaration(node, 16 /* Function */, "__function");
+                case 177 /* ClassExpression */:
+                case 204 /* ClassDeclaration */:
+                    return bindClassLikeDeclaration(node);
+                case 205 /* InterfaceDeclaration */:
+                    return bindBlockScopedDeclaration(node, 64 /* Interface */, 792992 /* InterfaceExcludes */);
+                case 206 /* TypeAliasDeclaration */:
+                    return bindBlockScopedDeclaration(node, 524288 /* TypeAlias */, 793056 /* TypeAliasExcludes */);
+                case 207 /* EnumDeclaration */:
+                    return bindEnumDeclaration(node);
+                case 208 /* ModuleDeclaration */:
+                    return bindModuleDeclaration(node);
+                case 211 /* ImportEqualsDeclaration */:
+                case 214 /* NamespaceImport */:
+                case 216 /* ImportSpecifier */:
+                case 220 /* ExportSpecifier */:
+                    return declareSymbolAndAddToSymbolTable(node, 8388608 /* Alias */, 8388608 /* AliasExcludes */);
+                case 213 /* ImportClause */:
+                    return bindImportClause(node);
+                case 218 /* ExportDeclaration */:
+                    return bindExportDeclaration(node);
+                case 217 /* ExportAssignment */:
+                    return bindExportAssignment(node);
+                case 230 /* SourceFile */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return bindSourceFileIfExternalModule();
             }
         }
@@ -4631,7 +5121,11 @@ var ts;
                 // Export assignment in some sort of block construct
                 bindAnonymousDeclaration(node, 8388608 /* Alias */, getDeclarationName(node));
             }
+<<<<<<< HEAD
             else if (node.expression.kind === 66 /* Identifier */) {
+=======
+            else if (node.expression.kind === 65 /* Identifier */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // An export default clause with an identifier exports all meanings of that identifier
                 declareSymbol(container.symbol.exports, container.symbol, node, 8388608 /* Alias */, 107455 /* PropertyExcludes */ | 8388608 /* AliasExcludes */);
             }
@@ -4656,7 +5150,11 @@ var ts;
             }
         }
         function bindClassLikeDeclaration(node) {
+<<<<<<< HEAD
             if (node.kind === 206 /* ClassDeclaration */) {
+=======
+            if (node.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 bindBlockScopedDeclaration(node, 32 /* Class */, 899583 /* ClassExcludes */);
             }
             else {
@@ -4688,9 +5186,12 @@ var ts;
                 : bindBlockScopedDeclaration(node, 256 /* RegularEnum */, 899327 /* RegularEnumExcludes */);
         }
         function bindVariableDeclarationOrBindingElement(node) {
+<<<<<<< HEAD
             if (inStrictMode) {
                 checkStrictModeEvalOrArguments(node, node.name);
             }
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (!ts.isBindingPattern(node.name)) {
                 if (ts.isBlockOrCatchScoped(node)) {
                     bindBlockScopedVariableDeclaration(node);
@@ -4727,8 +5228,13 @@ var ts;
             // If this is a property-parameter, then also declare the property symbol into the 
             // containing class.
             if (node.flags & 112 /* AccessibilityModifier */ &&
+<<<<<<< HEAD
                 node.parent.kind === 138 /* Constructor */ &&
                 ts.isClassLike(node.parent.parent)) {
+=======
+                node.parent.kind === 137 /* Constructor */ &&
+                (node.parent.parent.kind === 204 /* ClassDeclaration */ || node.parent.parent.kind === 177 /* ClassExpression */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var classDeclaration = node.parent.parent;
                 declareSymbol(classDeclaration.symbol.members, classDeclaration.symbol, node, 4 /* Property */, 107455 /* PropertyExcludes */);
             }
@@ -4815,7 +5321,11 @@ var ts;
         }
     }
     function getSourceFileOfNode(node) {
+<<<<<<< HEAD
         while (node && node.kind !== 240 /* SourceFile */) {
+=======
+        while (node && node.kind !== 230 /* SourceFile */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             node = node.parent;
         }
         return node;
@@ -4927,6 +5437,7 @@ var ts;
                 return current;
             }
             switch (current.kind) {
+<<<<<<< HEAD
                 case 240 /* SourceFile */:
                 case 212 /* CaseBlock */:
                 case 236 /* CatchClause */:
@@ -4936,6 +5447,17 @@ var ts;
                 case 193 /* ForOfStatement */:
                     return current;
                 case 184 /* Block */:
+=======
+                case 230 /* SourceFile */:
+                case 210 /* CaseBlock */:
+                case 226 /* CatchClause */:
+                case 208 /* ModuleDeclaration */:
+                case 189 /* ForStatement */:
+                case 190 /* ForInStatement */:
+                case 191 /* ForOfStatement */:
+                    return current;
+                case 182 /* Block */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // function block is not considered block-scope container
                     // see comment in binder.ts: bind(...), case for SyntaxKind.Block
                     if (!isFunctionLike(current.parent)) {
@@ -4948,9 +5470,15 @@ var ts;
     ts.getEnclosingBlockScopeContainer = getEnclosingBlockScopeContainer;
     function isCatchClauseVariableDeclaration(declaration) {
         return declaration &&
+<<<<<<< HEAD
             declaration.kind === 203 /* VariableDeclaration */ &&
             declaration.parent &&
             declaration.parent.kind === 236 /* CatchClause */;
+=======
+            declaration.kind === 201 /* VariableDeclaration */ &&
+            declaration.parent &&
+            declaration.parent.kind === 226 /* CatchClause */;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isCatchClauseVariableDeclaration = isCatchClauseVariableDeclaration;
     // Return display name of an identifier
@@ -4989,7 +5517,11 @@ var ts;
     function getErrorSpanForNode(sourceFile, node) {
         var errorNode = node;
         switch (node.kind) {
+<<<<<<< HEAD
             case 240 /* SourceFile */:
+=======
+            case 230 /* SourceFile */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var pos_1 = ts.skipTrivia(sourceFile.text, 0, false);
                 if (pos_1 === sourceFile.text.length) {
                     // file is empty - return span for the beginning of the file
@@ -4998,6 +5530,7 @@ var ts;
                 return getSpanOfTokenAtPosition(sourceFile, pos_1);
             // This list is a work in progress. Add missing node kinds to improve their error
             // spans.
+<<<<<<< HEAD
             case 203 /* VariableDeclaration */:
             case 156 /* BindingElement */:
             case 206 /* ClassDeclaration */:
@@ -5008,6 +5541,18 @@ var ts;
             case 239 /* EnumMember */:
             case 205 /* FunctionDeclaration */:
             case 166 /* FunctionExpression */:
+=======
+            case 201 /* VariableDeclaration */:
+            case 155 /* BindingElement */:
+            case 204 /* ClassDeclaration */:
+            case 177 /* ClassExpression */:
+            case 205 /* InterfaceDeclaration */:
+            case 208 /* ModuleDeclaration */:
+            case 207 /* EnumDeclaration */:
+            case 229 /* EnumMember */:
+            case 203 /* FunctionDeclaration */:
+            case 165 /* FunctionExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 errorNode = node.name;
                 break;
         }
@@ -5031,11 +5576,19 @@ var ts;
     }
     ts.isDeclarationFile = isDeclarationFile;
     function isConstEnumDeclaration(node) {
+<<<<<<< HEAD
         return node.kind === 209 /* EnumDeclaration */ && isConst(node);
     }
     ts.isConstEnumDeclaration = isConstEnumDeclaration;
     function walkUpBindingElementsAndPatterns(node) {
         while (node && (node.kind === 156 /* BindingElement */ || isBindingPattern(node))) {
+=======
+        return node.kind === 207 /* EnumDeclaration */ && isConst(node);
+    }
+    ts.isConstEnumDeclaration = isConstEnumDeclaration;
+    function walkUpBindingElementsAndPatterns(node) {
+        while (node && (node.kind === 155 /* BindingElement */ || isBindingPattern(node))) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             node = node.parent;
         }
         return node;
@@ -5050,6 +5603,7 @@ var ts;
     function getCombinedNodeFlags(node) {
         node = walkUpBindingElementsAndPatterns(node);
         var flags = node.flags;
+<<<<<<< HEAD
         if (node.kind === 203 /* VariableDeclaration */) {
             node = node.parent;
         }
@@ -5058,6 +5612,16 @@ var ts;
             node = node.parent;
         }
         if (node && node.kind === 185 /* VariableStatement */) {
+=======
+        if (node.kind === 201 /* VariableDeclaration */) {
+            node = node.parent;
+        }
+        if (node && node.kind === 202 /* VariableDeclarationList */) {
+            flags |= node.flags;
+            node = node.parent;
+        }
+        if (node && node.kind === 183 /* VariableStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             flags |= node.flags;
         }
         return flags;
@@ -5072,12 +5636,20 @@ var ts;
     }
     ts.isLet = isLet;
     function isPrologueDirective(node) {
+<<<<<<< HEAD
         return node.kind === 187 /* ExpressionStatement */ && node.expression.kind === 8 /* StringLiteral */;
+=======
+        return node.kind === 185 /* ExpressionStatement */ && node.expression.kind === 8 /* StringLiteral */;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isPrologueDirective = isPrologueDirective;
     function getLeadingCommentRangesOfNode(node, sourceFileOfNode) {
         // If parameter/type parameter, the prev token trailing comments are part of this node too
+<<<<<<< HEAD
         if (node.kind === 132 /* Parameter */ || node.kind === 131 /* TypeParameter */) {
+=======
+        if (node.kind === 131 /* Parameter */ || node.kind === 130 /* TypeParameter */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             // e.g.   (/** blah */ a, /** blah */ b);
             // e.g.:     (
             //            /** blah */ a,
@@ -5101,6 +5673,7 @@ var ts;
     ts.getJsDocComments = getJsDocComments;
     ts.fullTripleSlashReferencePathRegEx = /^(\/\/\/\s*<reference\s+path\s*=\s*)('|")(.+?)\2.*?\/>/;
     function isTypeNode(node) {
+<<<<<<< HEAD
         if (145 /* FirstTypeNode */ <= node.kind && node.kind <= 153 /* LastTypeNode */) {
             return true;
         }
@@ -5135,6 +5708,42 @@ var ts;
                 ts.Debug.assert(node.kind === 66 /* Identifier */ || node.kind === 129 /* QualifiedName */ || node.kind === 159 /* PropertyAccessExpression */, "'node' was expected to be a qualified name, identifier or property access in 'isTypeNode'.");
                 var parent_1 = node.parent;
                 if (parent_1.kind === 148 /* TypeQuery */) {
+=======
+        if (144 /* FirstTypeNode */ <= node.kind && node.kind <= 152 /* LastTypeNode */) {
+            return true;
+        }
+        switch (node.kind) {
+            case 112 /* AnyKeyword */:
+            case 121 /* NumberKeyword */:
+            case 123 /* StringKeyword */:
+            case 113 /* BooleanKeyword */:
+            case 124 /* SymbolKeyword */:
+                return true;
+            case 99 /* VoidKeyword */:
+                return node.parent.kind !== 169 /* VoidExpression */;
+            case 8 /* StringLiteral */:
+                // Specialized signatures can have string literals as their parameters' type names
+                return node.parent.kind === 131 /* Parameter */;
+            case 179 /* ExpressionWithTypeArguments */:
+                return true;
+            // Identifiers and qualified names may be type nodes, depending on their context. Climb
+            // above them to find the lowest container
+            case 65 /* Identifier */:
+                // If the identifier is the RHS of a qualified name, then it's a type iff its parent is.
+                if (node.parent.kind === 128 /* QualifiedName */ && node.parent.right === node) {
+                    node = node.parent;
+                }
+                else if (node.parent.kind === 158 /* PropertyAccessExpression */ && node.parent.name === node) {
+                    node = node.parent;
+                }
+            // fall through
+            case 128 /* QualifiedName */:
+            case 158 /* PropertyAccessExpression */:
+                // At this point, node is either a qualified name or an identifier
+                ts.Debug.assert(node.kind === 65 /* Identifier */ || node.kind === 128 /* QualifiedName */ || node.kind === 158 /* PropertyAccessExpression */, "'node' was expected to be a qualified name, identifier or property access in 'isTypeNode'.");
+                var parent_1 = node.parent;
+                if (parent_1.kind === 147 /* TypeQuery */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return false;
                 }
                 // Do not recursively call isTypeNode on the parent. In the example:
@@ -5143,6 +5752,7 @@ var ts;
                 //
                 // Calling isTypeNode would consider the qualified name A.B a type node. Only C or
                 // A.B.C is a type node.
+<<<<<<< HEAD
                 if (145 /* FirstTypeNode */ <= parent_1.kind && parent_1.kind <= 153 /* LastTypeNode */) {
                     return true;
                 }
@@ -5175,6 +5785,40 @@ var ts;
                     case 162 /* NewExpression */:
                         return parent_1.typeArguments && ts.indexOf(parent_1.typeArguments, node) >= 0;
                     case 163 /* TaggedTemplateExpression */:
+=======
+                if (144 /* FirstTypeNode */ <= parent_1.kind && parent_1.kind <= 152 /* LastTypeNode */) {
+                    return true;
+                }
+                switch (parent_1.kind) {
+                    case 179 /* ExpressionWithTypeArguments */:
+                        return true;
+                    case 130 /* TypeParameter */:
+                        return node === parent_1.constraint;
+                    case 134 /* PropertyDeclaration */:
+                    case 133 /* PropertySignature */:
+                    case 131 /* Parameter */:
+                    case 201 /* VariableDeclaration */:
+                        return node === parent_1.type;
+                    case 203 /* FunctionDeclaration */:
+                    case 165 /* FunctionExpression */:
+                    case 166 /* ArrowFunction */:
+                    case 137 /* Constructor */:
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                        return node === parent_1.type;
+                    case 140 /* CallSignature */:
+                    case 141 /* ConstructSignature */:
+                    case 142 /* IndexSignature */:
+                        return node === parent_1.type;
+                    case 163 /* TypeAssertionExpression */:
+                        return node === parent_1.type;
+                    case 160 /* CallExpression */:
+                    case 161 /* NewExpression */:
+                        return parent_1.typeArguments && ts.indexOf(parent_1.typeArguments, node) >= 0;
+                    case 162 /* TaggedTemplateExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // TODO (drosen): TaggedTemplateExpressions may eventually support type arguments.
                         return false;
                 }
@@ -5188,6 +5832,7 @@ var ts;
         return traverse(body);
         function traverse(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 196 /* ReturnStatement */:
                     return visitor(node);
                 case 212 /* CaseBlock */:
@@ -5205,6 +5850,25 @@ var ts;
                 case 199 /* LabeledStatement */:
                 case 201 /* TryStatement */:
                 case 236 /* CatchClause */:
+=======
+                case 194 /* ReturnStatement */:
+                    return visitor(node);
+                case 210 /* CaseBlock */:
+                case 182 /* Block */:
+                case 186 /* IfStatement */:
+                case 187 /* DoStatement */:
+                case 188 /* WhileStatement */:
+                case 189 /* ForStatement */:
+                case 190 /* ForInStatement */:
+                case 191 /* ForOfStatement */:
+                case 195 /* WithStatement */:
+                case 196 /* SwitchStatement */:
+                case 223 /* CaseClause */:
+                case 224 /* DefaultClause */:
+                case 197 /* LabeledStatement */:
+                case 199 /* TryStatement */:
+                case 226 /* CatchClause */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return ts.forEachChild(node, traverse);
             }
         }
@@ -5213,6 +5877,7 @@ var ts;
     function forEachYieldExpression(body, visitor) {
         return traverse(body);
         function traverse(node) {
+<<<<<<< HEAD
             switch (node.kind) {
                 case 176 /* YieldExpression */:
                     visitor(node);
@@ -5245,6 +5910,38 @@ var ts;
                         // Also includes NodeArrays.
                         ts.forEachChild(node, traverse);
                     }
+=======
+            switch (node.kind) {
+                case 175 /* YieldExpression */:
+                    visitor(node);
+                    var operand = node.expression;
+                    if (operand) {
+                        traverse(operand);
+                    }
+                case 207 /* EnumDeclaration */:
+                case 205 /* InterfaceDeclaration */:
+                case 208 /* ModuleDeclaration */:
+                case 206 /* TypeAliasDeclaration */:
+                case 204 /* ClassDeclaration */:
+                    // These are not allowed inside a generator now, but eventually they may be allowed
+                    // as local types. Regardless, any yield statements contained within them should be
+                    // skipped in this traversal.
+                    return;
+                default:
+                    if (isFunctionLike(node)) {
+                        var name_4 = node.name;
+                        if (name_4 && name_4.kind === 129 /* ComputedPropertyName */) {
+                            // Note that we will not include methods/accessors of a class because they would require
+                            // first descending into the class. This is by design.
+                            traverse(name_4.expression);
+                            return;
+                        }
+                    }
+                    else if (!isTypeNode(node)) {
+                        // This is the general case, which should include mostly expressions and statements.
+                        // Also includes NodeArrays.
+                        ts.forEachChild(node, traverse);
+                    }
             }
         }
     }
@@ -5252,6 +5949,24 @@ var ts;
     function isVariableLike(node) {
         if (node) {
             switch (node.kind) {
+                case 155 /* BindingElement */:
+                case 229 /* EnumMember */:
+                case 131 /* Parameter */:
+                case 227 /* PropertyAssignment */:
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                case 228 /* ShorthandPropertyAssignment */:
+                case 201 /* VariableDeclaration */:
+                    return true;
+>>>>>>> Updated compiler to emitDependencyFile branch
+            }
+        }
+    }
+    ts.forEachYieldExpression = forEachYieldExpression;
+    function isVariableLike(node) {
+        if (node) {
+            switch (node.kind) {
+<<<<<<< HEAD
                 case 156 /* BindingElement */:
                 case 239 /* EnumMember */:
                 case 132 /* Parameter */:
@@ -5260,6 +5975,10 @@ var ts;
                 case 134 /* PropertySignature */:
                 case 238 /* ShorthandPropertyAssignment */:
                 case 203 /* VariableDeclaration */:
+=======
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
             }
         }
@@ -5271,12 +5990,19 @@ var ts;
     }
     ts.isAccessor = isAccessor;
     function isClassLike(node) {
+<<<<<<< HEAD
         return node && (node.kind === 206 /* ClassDeclaration */ || node.kind === 178 /* ClassExpression */);
+=======
+        if (node) {
+            return node.kind === 204 /* ClassDeclaration */ || node.kind === 177 /* ClassExpression */;
+        }
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isClassLike = isClassLike;
     function isFunctionLike(node) {
         if (node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 138 /* Constructor */:
                 case 166 /* FunctionExpression */:
                 case 205 /* FunctionDeclaration */:
@@ -5290,6 +6016,21 @@ var ts;
                 case 143 /* IndexSignature */:
                 case 146 /* FunctionType */:
                 case 147 /* ConstructorType */:
+=======
+                case 137 /* Constructor */:
+                case 165 /* FunctionExpression */:
+                case 203 /* FunctionDeclaration */:
+                case 166 /* ArrowFunction */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                case 140 /* CallSignature */:
+                case 141 /* ConstructSignature */:
+                case 142 /* IndexSignature */:
+                case 145 /* FunctionType */:
+                case 146 /* ConstructorType */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
             }
         }
@@ -5297,11 +6038,19 @@ var ts;
     }
     ts.isFunctionLike = isFunctionLike;
     function isFunctionBlock(node) {
+<<<<<<< HEAD
         return node && node.kind === 184 /* Block */ && isFunctionLike(node.parent);
     }
     ts.isFunctionBlock = isFunctionBlock;
     function isObjectLiteralMethod(node) {
         return node && node.kind === 137 /* MethodDeclaration */ && node.parent.kind === 158 /* ObjectLiteralExpression */;
+=======
+        return node && node.kind === 182 /* Block */ && isFunctionLike(node.parent);
+    }
+    ts.isFunctionBlock = isFunctionBlock;
+    function isObjectLiteralMethod(node) {
+        return node && node.kind === 136 /* MethodDeclaration */ && node.parent.kind === 157 /* ObjectLiteralExpression */;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isObjectLiteralMethod = isObjectLiteralMethod;
     function getContainingFunction(node) {
@@ -5329,12 +6078,20 @@ var ts;
                 return undefined;
             }
             switch (node.kind) {
+<<<<<<< HEAD
                 case 130 /* ComputedPropertyName */:
+=======
+                case 129 /* ComputedPropertyName */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // If the grandparent node is an object literal (as opposed to a class),
                     // then the computed property is not a 'this' container.
                     // A computed property name in a class needs to be a this container
                     // so that we can error on it.
+<<<<<<< HEAD
                     if (isClassLike(node.parent.parent)) {
+=======
+                    if (node.parent.parent.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return node;
                     }
                     // If this is a computed property, then the parent should not
@@ -5344,9 +6101,15 @@ var ts;
                     // the *body* of the container.
                     node = node.parent;
                     break;
+<<<<<<< HEAD
                 case 133 /* Decorator */:
                     // Decorators are always applied outside of the body of a class or method. 
                     if (node.parent.kind === 132 /* Parameter */ && isClassElement(node.parent.parent)) {
+=======
+                case 132 /* Decorator */:
+                    // Decorators are always applied outside of the body of a class or method. 
+                    if (node.parent.kind === 131 /* Parameter */ && isClassElement(node.parent.parent)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // If the decorator's parent is a Parameter, we resolve the this container from
                         // the grandparent class declaration.
                         node = node.parent.parent;
@@ -5357,11 +6120,16 @@ var ts;
                         node = node.parent;
                     }
                     break;
+<<<<<<< HEAD
                 case 167 /* ArrowFunction */:
+=======
+                case 166 /* ArrowFunction */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (!includeArrowFunctions) {
                         continue;
                     }
                 // Fall through
+<<<<<<< HEAD
                 case 205 /* FunctionDeclaration */:
                 case 166 /* FunctionExpression */:
                 case 210 /* ModuleDeclaration */:
@@ -5374,6 +6142,20 @@ var ts;
                 case 140 /* SetAccessor */:
                 case 209 /* EnumDeclaration */:
                 case 240 /* SourceFile */:
+=======
+                case 203 /* FunctionDeclaration */:
+                case 165 /* FunctionExpression */:
+                case 208 /* ModuleDeclaration */:
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                case 137 /* Constructor */:
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                case 207 /* EnumDeclaration */:
+                case 230 /* SourceFile */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return node;
             }
         }
@@ -5385,12 +6167,20 @@ var ts;
             if (!node)
                 return node;
             switch (node.kind) {
+<<<<<<< HEAD
                 case 130 /* ComputedPropertyName */:
+=======
+                case 129 /* ComputedPropertyName */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // If the grandparent node is an object literal (as opposed to a class),
                     // then the computed property is not a 'super' container.
                     // A computed property name in a class needs to be a super container
                     // so that we can error on it.
+<<<<<<< HEAD
                     if (isClassLike(node.parent.parent)) {
+=======
+                    if (node.parent.parent.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return node;
                     }
                     // If this is a computed property, then the parent should not
@@ -5400,9 +6190,15 @@ var ts;
                     // the *body* of the container.
                     node = node.parent;
                     break;
+<<<<<<< HEAD
                 case 133 /* Decorator */:
                     // Decorators are always applied outside of the body of a class or method. 
                     if (node.parent.kind === 132 /* Parameter */ && isClassElement(node.parent.parent)) {
+=======
+                case 132 /* Decorator */:
+                    // Decorators are always applied outside of the body of a class or method. 
+                    if (node.parent.kind === 131 /* Parameter */ && isClassElement(node.parent.parent)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // If the decorator's parent is a Parameter, we resolve the this container from
                         // the grandparent class declaration.
                         node = node.parent.parent;
@@ -5413,6 +6209,7 @@ var ts;
                         node = node.parent;
                     }
                     break;
+<<<<<<< HEAD
                 case 205 /* FunctionDeclaration */:
                 case 166 /* FunctionExpression */:
                 case 167 /* ArrowFunction */:
@@ -5426,13 +6223,32 @@ var ts;
                 case 138 /* Constructor */:
                 case 139 /* GetAccessor */:
                 case 140 /* SetAccessor */:
+=======
+                case 203 /* FunctionDeclaration */:
+                case 165 /* FunctionExpression */:
+                case 166 /* ArrowFunction */:
+                    if (!includeFunctions) {
+                        continue;
+                    }
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                case 137 /* Constructor */:
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return node;
             }
         }
     }
     ts.getSuperContainer = getSuperContainer;
     function getInvokedExpression(node) {
+<<<<<<< HEAD
         if (node.kind === 163 /* TaggedTemplateExpression */) {
+=======
+        if (node.kind === 162 /* TaggedTemplateExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             return node.tag;
         }
         // Will either be a CallExpression, NewExpression, or Decorator.
@@ -5441,6 +6257,7 @@ var ts;
     ts.getInvokedExpression = getInvokedExpression;
     function nodeCanBeDecorated(node) {
         switch (node.kind) {
+<<<<<<< HEAD
             case 206 /* ClassDeclaration */:
                 // classes are valid targets
                 return true;
@@ -5455,30 +6272,64 @@ var ts;
             case 137 /* MethodDeclaration */:
                 // if this method has a body and its parent is a class declaration, this is a valid target.
                 return node.body && node.parent.kind === 206 /* ClassDeclaration */;
+=======
+            case 204 /* ClassDeclaration */:
+                // classes are valid targets
+                return true;
+            case 134 /* PropertyDeclaration */:
+                // property declarations are valid if their parent is a class declaration.
+                return node.parent.kind === 204 /* ClassDeclaration */;
+            case 131 /* Parameter */:
+                // if the parameter's parent has a body and its grandparent is a class declaration, this is a valid target;
+                return node.parent.body && node.parent.parent.kind === 204 /* ClassDeclaration */;
+            case 138 /* GetAccessor */:
+            case 139 /* SetAccessor */:
+            case 136 /* MethodDeclaration */:
+                // if this method has a body and its parent is a class declaration, this is a valid target.
+                return node.body && node.parent.kind === 204 /* ClassDeclaration */;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         return false;
     }
     ts.nodeCanBeDecorated = nodeCanBeDecorated;
     function nodeIsDecorated(node) {
         switch (node.kind) {
+<<<<<<< HEAD
             case 206 /* ClassDeclaration */:
+=======
+            case 204 /* ClassDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (node.decorators) {
                     return true;
                 }
                 return false;
+<<<<<<< HEAD
             case 135 /* PropertyDeclaration */:
             case 132 /* Parameter */:
+=======
+            case 134 /* PropertyDeclaration */:
+            case 131 /* Parameter */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (node.decorators) {
                     return true;
                 }
                 return false;
+<<<<<<< HEAD
             case 139 /* GetAccessor */:
+=======
+            case 138 /* GetAccessor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (node.body && node.decorators) {
                     return true;
                 }
                 return false;
+<<<<<<< HEAD
             case 137 /* MethodDeclaration */:
             case 140 /* SetAccessor */:
+=======
+            case 136 /* MethodDeclaration */:
+            case 139 /* SetAccessor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (node.body && node.decorators) {
                     return true;
                 }
@@ -5489,10 +6340,17 @@ var ts;
     ts.nodeIsDecorated = nodeIsDecorated;
     function childIsDecorated(node) {
         switch (node.kind) {
+<<<<<<< HEAD
             case 206 /* ClassDeclaration */:
                 return ts.forEach(node.members, nodeOrChildIsDecorated);
             case 137 /* MethodDeclaration */:
             case 140 /* SetAccessor */:
+=======
+            case 204 /* ClassDeclaration */:
+                return ts.forEach(node.members, nodeOrChildIsDecorated);
+            case 136 /* MethodDeclaration */:
+            case 139 /* SetAccessor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return ts.forEach(node.parameters, nodeIsDecorated);
         }
         return false;
@@ -5510,6 +6368,7 @@ var ts;
             case 96 /* TrueKeyword */:
             case 81 /* FalseKeyword */:
             case 9 /* RegularExpressionLiteral */:
+<<<<<<< HEAD
             case 157 /* ArrayLiteralExpression */:
             case 158 /* ObjectLiteralExpression */:
             case 159 /* PropertyAccessExpression */:
@@ -5545,6 +6404,40 @@ var ts;
                 return node.parent.kind === 148 /* TypeQuery */;
             case 66 /* Identifier */:
                 if (node.parent.kind === 148 /* TypeQuery */) {
+=======
+            case 156 /* ArrayLiteralExpression */:
+            case 157 /* ObjectLiteralExpression */:
+            case 158 /* PropertyAccessExpression */:
+            case 159 /* ElementAccessExpression */:
+            case 160 /* CallExpression */:
+            case 161 /* NewExpression */:
+            case 162 /* TaggedTemplateExpression */:
+            case 163 /* TypeAssertionExpression */:
+            case 164 /* ParenthesizedExpression */:
+            case 165 /* FunctionExpression */:
+            case 177 /* ClassExpression */:
+            case 166 /* ArrowFunction */:
+            case 169 /* VoidExpression */:
+            case 167 /* DeleteExpression */:
+            case 168 /* TypeOfExpression */:
+            case 170 /* PrefixUnaryExpression */:
+            case 171 /* PostfixUnaryExpression */:
+            case 172 /* BinaryExpression */:
+            case 173 /* ConditionalExpression */:
+            case 176 /* SpreadElementExpression */:
+            case 174 /* TemplateExpression */:
+            case 10 /* NoSubstitutionTemplateLiteral */:
+            case 178 /* OmittedExpression */:
+            case 175 /* YieldExpression */:
+                return true;
+            case 128 /* QualifiedName */:
+                while (node.parent.kind === 128 /* QualifiedName */) {
+                    node = node.parent;
+                }
+                return node.parent.kind === 147 /* TypeQuery */;
+            case 65 /* Identifier */:
+                if (node.parent.kind === 147 /* TypeQuery */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
                 }
             // fall through
@@ -5552,6 +6445,7 @@ var ts;
             case 8 /* StringLiteral */:
                 var parent_2 = node.parent;
                 switch (parent_2.kind) {
+<<<<<<< HEAD
                     case 203 /* VariableDeclaration */:
                     case 132 /* Parameter */:
                     case 135 /* PropertyDeclaration */:
@@ -5589,6 +6483,44 @@ var ts;
                     case 130 /* ComputedPropertyName */:
                         return node === parent_2.expression;
                     case 133 /* Decorator */:
+=======
+                    case 201 /* VariableDeclaration */:
+                    case 131 /* Parameter */:
+                    case 134 /* PropertyDeclaration */:
+                    case 133 /* PropertySignature */:
+                    case 229 /* EnumMember */:
+                    case 227 /* PropertyAssignment */:
+                    case 155 /* BindingElement */:
+                        return parent_2.initializer === node;
+                    case 185 /* ExpressionStatement */:
+                    case 186 /* IfStatement */:
+                    case 187 /* DoStatement */:
+                    case 188 /* WhileStatement */:
+                    case 194 /* ReturnStatement */:
+                    case 195 /* WithStatement */:
+                    case 196 /* SwitchStatement */:
+                    case 223 /* CaseClause */:
+                    case 198 /* ThrowStatement */:
+                    case 196 /* SwitchStatement */:
+                        return parent_2.expression === node;
+                    case 189 /* ForStatement */:
+                        var forStatement = parent_2;
+                        return (forStatement.initializer === node && forStatement.initializer.kind !== 202 /* VariableDeclarationList */) ||
+                            forStatement.condition === node ||
+                            forStatement.incrementor === node;
+                    case 190 /* ForInStatement */:
+                    case 191 /* ForOfStatement */:
+                        var forInStatement = parent_2;
+                        return (forInStatement.initializer === node && forInStatement.initializer.kind !== 202 /* VariableDeclarationList */) ||
+                            forInStatement.expression === node;
+                    case 163 /* TypeAssertionExpression */:
+                        return node === parent_2.expression;
+                    case 180 /* TemplateSpan */:
+                        return node === parent_2.expression;
+                    case 129 /* ComputedPropertyName */:
+                        return node === parent_2.expression;
+                    case 132 /* Decorator */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                     case 180 /* ExpressionWithTypeArguments */:
                         return parent_2.expression === node && isExpressionWithTypeArgumentsInClassExtendsClause(parent_2);
@@ -5608,7 +6540,11 @@ var ts;
     }
     ts.isInstantiatedModule = isInstantiatedModule;
     function isExternalModuleImportEqualsDeclaration(node) {
+<<<<<<< HEAD
         return node.kind === 213 /* ImportEqualsDeclaration */ && node.moduleReference.kind === 224 /* ExternalModuleReference */;
+=======
+        return node.kind === 211 /* ImportEqualsDeclaration */ && node.moduleReference.kind === 222 /* ExternalModuleReference */;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isExternalModuleImportEqualsDeclaration = isExternalModuleImportEqualsDeclaration;
     function getExternalModuleImportEqualsDeclarationExpression(node) {
@@ -5617,6 +6553,7 @@ var ts;
     }
     ts.getExternalModuleImportEqualsDeclarationExpression = getExternalModuleImportEqualsDeclarationExpression;
     function isInternalModuleImportEqualsDeclaration(node) {
+<<<<<<< HEAD
         return node.kind === 213 /* ImportEqualsDeclaration */ && node.moduleReference.kind !== 224 /* ExternalModuleReference */;
     }
     ts.isInternalModuleImportEqualsDeclaration = isInternalModuleImportEqualsDeclaration;
@@ -5631,6 +6568,22 @@ var ts;
             }
         }
         if (node.kind === 220 /* ExportDeclaration */) {
+=======
+        return node.kind === 211 /* ImportEqualsDeclaration */ && node.moduleReference.kind !== 222 /* ExternalModuleReference */;
+    }
+    ts.isInternalModuleImportEqualsDeclaration = isInternalModuleImportEqualsDeclaration;
+    function getExternalModuleName(node) {
+        if (node.kind === 212 /* ImportDeclaration */) {
+            return node.moduleSpecifier;
+        }
+        if (node.kind === 211 /* ImportEqualsDeclaration */) {
+            var reference = node.moduleReference;
+            if (reference.kind === 222 /* ExternalModuleReference */) {
+                return reference.expression;
+            }
+        }
+        if (node.kind === 218 /* ExportDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             return node.moduleSpecifier;
         }
     }
@@ -5638,6 +6591,7 @@ var ts;
     function hasQuestionToken(node) {
         if (node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 132 /* Parameter */:
                     return node.questionToken !== undefined;
                 case 137 /* MethodDeclaration */:
@@ -5647,6 +6601,17 @@ var ts;
                 case 237 /* PropertyAssignment */:
                 case 135 /* PropertyDeclaration */:
                 case 134 /* PropertySignature */:
+=======
+                case 131 /* Parameter */:
+                    return node.questionToken !== undefined;
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                    return node.questionToken !== undefined;
+                case 228 /* ShorthandPropertyAssignment */:
+                case 227 /* PropertyAssignment */:
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return node.questionToken !== undefined;
             }
         }
@@ -5654,9 +6619,15 @@ var ts;
     }
     ts.hasQuestionToken = hasQuestionToken;
     function isJSDocConstructSignature(node) {
+<<<<<<< HEAD
         return node.kind === 253 /* JSDocFunctionType */ &&
             node.parameters.length > 0 &&
             node.parameters[0].type.kind === 255 /* JSDocConstructorType */;
+=======
+        return node.kind === 243 /* JSDocFunctionType */ &&
+            node.parameters.length > 0 &&
+            node.parameters[0].type.kind === 245 /* JSDocConstructorType */;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isJSDocConstructSignature = isJSDocConstructSignature;
     function getJSDocTag(node, kind) {
@@ -5670,6 +6641,7 @@ var ts;
         }
     }
     function getJSDocTypeTag(node) {
+<<<<<<< HEAD
         return getJSDocTag(node, 261 /* JSDocTypeTag */);
     }
     ts.getJSDocTypeTag = getJSDocTypeTag;
@@ -5683,13 +6655,32 @@ var ts;
     ts.getJSDocTemplateTag = getJSDocTemplateTag;
     function getCorrespondingJSDocParameterTag(parameter) {
         if (parameter.name && parameter.name.kind === 66 /* Identifier */) {
+=======
+        return getJSDocTag(node, 251 /* JSDocTypeTag */);
+    }
+    ts.getJSDocTypeTag = getJSDocTypeTag;
+    function getJSDocReturnTag(node) {
+        return getJSDocTag(node, 250 /* JSDocReturnTag */);
+    }
+    ts.getJSDocReturnTag = getJSDocReturnTag;
+    function getJSDocTemplateTag(node) {
+        return getJSDocTag(node, 252 /* JSDocTemplateTag */);
+    }
+    ts.getJSDocTemplateTag = getJSDocTemplateTag;
+    function getCorrespondingJSDocParameterTag(parameter) {
+        if (parameter.name && parameter.name.kind === 65 /* Identifier */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             // If it's a parameter, see if the parent has a jsdoc comment with an @param 
             // annotation.
             var parameterName = parameter.name.text;
             var docComment = parameter.parent.jsDocComment;
             if (docComment) {
                 return ts.forEach(docComment.tags, function (t) {
+<<<<<<< HEAD
                     if (t.kind === 259 /* JSDocParameterTag */) {
+=======
+                    if (t.kind === 249 /* JSDocParameterTag */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var parameterTag = t;
                         var name_5 = parameterTag.preParameterName || parameterTag.postParameterName;
                         if (name_5.text === parameterName) {
@@ -5708,12 +6699,20 @@ var ts;
     function isRestParameter(node) {
         if (node) {
             if (node.parserContextFlags & 64 /* JavaScriptFile */) {
+<<<<<<< HEAD
                 if (node.type && node.type.kind === 254 /* JSDocVariadicType */) {
+=======
+                if (node.type && node.type.kind === 244 /* JSDocVariadicType */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
                 }
                 var paramTag = getCorrespondingJSDocParameterTag(node);
                 if (paramTag && paramTag.typeExpression) {
+<<<<<<< HEAD
                     return paramTag.typeExpression.type.kind === 254 /* JSDocVariadicType */;
+=======
+                    return paramTag.typeExpression.type.kind === 244 /* JSDocVariadicType */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
             }
             return node.dotDotDotToken !== undefined;
@@ -5734,7 +6733,11 @@ var ts;
     }
     ts.isTemplateLiteralKind = isTemplateLiteralKind;
     function isBindingPattern(node) {
+<<<<<<< HEAD
         return !!node && (node.kind === 155 /* ArrayBindingPattern */ || node.kind === 154 /* ObjectBindingPattern */);
+=======
+        return !!node && (node.kind === 154 /* ArrayBindingPattern */ || node.kind === 153 /* ObjectBindingPattern */);
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isBindingPattern = isBindingPattern;
     function isInAmbientContext(node) {
@@ -5749,6 +6752,7 @@ var ts;
     ts.isInAmbientContext = isInAmbientContext;
     function isDeclaration(node) {
         switch (node.kind) {
+<<<<<<< HEAD
             case 167 /* ArrowFunction */:
             case 156 /* BindingElement */:
             case 206 /* ClassDeclaration */:
@@ -5777,6 +6781,35 @@ var ts;
             case 208 /* TypeAliasDeclaration */:
             case 131 /* TypeParameter */:
             case 203 /* VariableDeclaration */:
+=======
+            case 166 /* ArrowFunction */:
+            case 155 /* BindingElement */:
+            case 204 /* ClassDeclaration */:
+            case 137 /* Constructor */:
+            case 207 /* EnumDeclaration */:
+            case 229 /* EnumMember */:
+            case 220 /* ExportSpecifier */:
+            case 203 /* FunctionDeclaration */:
+            case 165 /* FunctionExpression */:
+            case 138 /* GetAccessor */:
+            case 213 /* ImportClause */:
+            case 211 /* ImportEqualsDeclaration */:
+            case 216 /* ImportSpecifier */:
+            case 205 /* InterfaceDeclaration */:
+            case 136 /* MethodDeclaration */:
+            case 135 /* MethodSignature */:
+            case 208 /* ModuleDeclaration */:
+            case 214 /* NamespaceImport */:
+            case 131 /* Parameter */:
+            case 227 /* PropertyAssignment */:
+            case 134 /* PropertyDeclaration */:
+            case 133 /* PropertySignature */:
+            case 139 /* SetAccessor */:
+            case 228 /* ShorthandPropertyAssignment */:
+            case 206 /* TypeAliasDeclaration */:
+            case 130 /* TypeParameter */:
+            case 201 /* VariableDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return true;
         }
         return false;
@@ -5784,6 +6817,7 @@ var ts;
     ts.isDeclaration = isDeclaration;
     function isStatement(n) {
         switch (n.kind) {
+<<<<<<< HEAD
             case 195 /* BreakStatement */:
             case 194 /* ContinueStatement */:
             case 202 /* DebuggerStatement */:
@@ -5803,6 +6837,27 @@ var ts;
             case 190 /* WhileStatement */:
             case 197 /* WithStatement */:
             case 219 /* ExportAssignment */:
+=======
+            case 193 /* BreakStatement */:
+            case 192 /* ContinueStatement */:
+            case 200 /* DebuggerStatement */:
+            case 187 /* DoStatement */:
+            case 185 /* ExpressionStatement */:
+            case 184 /* EmptyStatement */:
+            case 190 /* ForInStatement */:
+            case 191 /* ForOfStatement */:
+            case 189 /* ForStatement */:
+            case 186 /* IfStatement */:
+            case 197 /* LabeledStatement */:
+            case 194 /* ReturnStatement */:
+            case 196 /* SwitchStatement */:
+            case 94 /* ThrowKeyword */:
+            case 199 /* TryStatement */:
+            case 183 /* VariableStatement */:
+            case 188 /* WhileStatement */:
+            case 195 /* WithStatement */:
+            case 217 /* ExportAssignment */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return true;
             default:
                 return false;
@@ -5811,6 +6866,7 @@ var ts;
     ts.isStatement = isStatement;
     function isClassElement(n) {
         switch (n.kind) {
+<<<<<<< HEAD
             case 138 /* Constructor */:
             case 135 /* PropertyDeclaration */:
             case 137 /* MethodDeclaration */:
@@ -5818,6 +6874,15 @@ var ts;
             case 140 /* SetAccessor */:
             case 136 /* MethodSignature */:
             case 143 /* IndexSignature */:
+=======
+            case 137 /* Constructor */:
+            case 134 /* PropertyDeclaration */:
+            case 136 /* MethodDeclaration */:
+            case 138 /* GetAccessor */:
+            case 139 /* SetAccessor */:
+            case 135 /* MethodSignature */:
+            case 142 /* IndexSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return true;
             default:
                 return false;
@@ -5830,7 +6895,11 @@ var ts;
             return false;
         }
         var parent = name.parent;
+<<<<<<< HEAD
         if (parent.kind === 218 /* ImportSpecifier */ || parent.kind === 222 /* ExportSpecifier */) {
+=======
+        if (parent.kind === 216 /* ImportSpecifier */ || parent.kind === 220 /* ExportSpecifier */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (parent.propertyName) {
                 return true;
             }
@@ -5885,12 +6954,21 @@ var ts;
     // export = ...
     // export default ...
     function isAliasSymbolDeclaration(node) {
+<<<<<<< HEAD
         return node.kind === 213 /* ImportEqualsDeclaration */ ||
             node.kind === 215 /* ImportClause */ && !!node.name ||
             node.kind === 216 /* NamespaceImport */ ||
             node.kind === 218 /* ImportSpecifier */ ||
             node.kind === 222 /* ExportSpecifier */ ||
             node.kind === 219 /* ExportAssignment */ && node.expression.kind === 66 /* Identifier */;
+=======
+        return node.kind === 211 /* ImportEqualsDeclaration */ ||
+            node.kind === 213 /* ImportClause */ && !!node.name ||
+            node.kind === 214 /* NamespaceImport */ ||
+            node.kind === 216 /* ImportSpecifier */ ||
+            node.kind === 220 /* ExportSpecifier */ ||
+            node.kind === 217 /* ExportAssignment */ && node.expression.kind === 65 /* Identifier */;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isAliasSymbolDeclaration = isAliasSymbolDeclaration;
     function getClassExtendsHeritageClauseElement(node) {
@@ -5973,7 +7051,11 @@ var ts;
     }
     ts.getFileReferenceFromReferencePath = getFileReferenceFromReferencePath;
     function isKeyword(token) {
+<<<<<<< HEAD
         return 67 /* FirstKeyword */ <= token && token <= 128 /* LastKeyword */;
+=======
+        return 66 /* FirstKeyword */ <= token && token <= 127 /* LastKeyword */;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isKeyword = isKeyword;
     function isTrivia(token) {
@@ -5989,7 +7071,11 @@ var ts;
      */
     function hasDynamicName(declaration) {
         return declaration.name &&
+<<<<<<< HEAD
             declaration.name.kind === 130 /* ComputedPropertyName */ &&
+=======
+            declaration.name.kind === 129 /* ComputedPropertyName */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
             !isWellKnownSymbolSyntactically(declaration.name.expression);
     }
     ts.hasDynamicName = hasDynamicName;
@@ -5999,14 +7085,22 @@ var ts;
      * where Symbol is literally the word "Symbol", and name is any identifierName
      */
     function isWellKnownSymbolSyntactically(node) {
+<<<<<<< HEAD
         return node.kind === 159 /* PropertyAccessExpression */ && isESSymbolIdentifier(node.expression);
+=======
+        return node.kind === 158 /* PropertyAccessExpression */ && isESSymbolIdentifier(node.expression);
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isWellKnownSymbolSyntactically = isWellKnownSymbolSyntactically;
     function getPropertyNameForPropertyNameNode(name) {
         if (name.kind === 66 /* Identifier */ || name.kind === 8 /* StringLiteral */ || name.kind === 7 /* NumericLiteral */) {
             return name.text;
         }
+<<<<<<< HEAD
         if (name.kind === 130 /* ComputedPropertyName */) {
+=======
+        if (name.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             var nameExpression = name.expression;
             if (isWellKnownSymbolSyntactically(nameExpression)) {
                 var rightHandSideName = nameExpression.name.text;
@@ -6044,18 +7138,30 @@ var ts;
     ts.isModifier = isModifier;
     function isParameterDeclaration(node) {
         var root = getRootDeclaration(node);
+<<<<<<< HEAD
         return root.kind === 132 /* Parameter */;
     }
     ts.isParameterDeclaration = isParameterDeclaration;
     function getRootDeclaration(node) {
         while (node.kind === 156 /* BindingElement */) {
+=======
+        return root.kind === 131 /* Parameter */;
+    }
+    ts.isParameterDeclaration = isParameterDeclaration;
+    function getRootDeclaration(node) {
+        while (node.kind === 155 /* BindingElement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             node = node.parent.parent;
         }
         return node;
     }
     ts.getRootDeclaration = getRootDeclaration;
     function nodeStartsNewLexicalEnvironment(n) {
+<<<<<<< HEAD
         return isFunctionLike(n) || n.kind === 210 /* ModuleDeclaration */ || n.kind === 240 /* SourceFile */;
+=======
+        return isFunctionLike(n) || n.kind === 208 /* ModuleDeclaration */ || n.kind === 230 /* SourceFile */;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.nodeStartsNewLexicalEnvironment = nodeStartsNewLexicalEnvironment;
     function nodeIsSynthesized(node) {
@@ -6296,7 +7402,11 @@ var ts;
     ts.getLineOfLocalPosition = getLineOfLocalPosition;
     function getFirstConstructorWithBody(node) {
         return ts.forEach(node.members, function (member) {
+<<<<<<< HEAD
             if (member.kind === 138 /* Constructor */ && nodeIsPresent(member.body)) {
+=======
+            if (member.kind === 137 /* Constructor */ && nodeIsPresent(member.body)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return member;
             }
         });
@@ -6321,10 +7431,17 @@ var ts;
         var setAccessor;
         if (hasDynamicName(accessor)) {
             firstAccessor = accessor;
+<<<<<<< HEAD
             if (accessor.kind === 139 /* GetAccessor */) {
                 getAccessor = accessor;
             }
             else if (accessor.kind === 140 /* SetAccessor */) {
+=======
+            if (accessor.kind === 138 /* GetAccessor */) {
+                getAccessor = accessor;
+            }
+            else if (accessor.kind === 139 /* SetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 setAccessor = accessor;
             }
             else {
@@ -6333,7 +7450,11 @@ var ts;
         }
         else {
             ts.forEach(declarations, function (member) {
+<<<<<<< HEAD
                 if ((member.kind === 139 /* GetAccessor */ || member.kind === 140 /* SetAccessor */)
+=======
+                if ((member.kind === 138 /* GetAccessor */ || member.kind === 139 /* SetAccessor */)
+>>>>>>> Updated compiler to emitDependencyFile branch
                     && (member.flags & 128 /* Static */) === (accessor.flags & 128 /* Static */)) {
                     var memberName = getPropertyNameForPropertyNameNode(member.name);
                     var accessorName = getPropertyNameForPropertyNameNode(accessor.name);
@@ -6344,10 +7465,17 @@ var ts;
                         else if (!secondAccessor) {
                             secondAccessor = member;
                         }
+<<<<<<< HEAD
                         if (member.kind === 139 /* GetAccessor */ && !getAccessor) {
                             getAccessor = member;
                         }
                         if (member.kind === 140 /* SetAccessor */ && !setAccessor) {
+=======
+                        if (member.kind === 138 /* GetAccessor */ && !getAccessor) {
+                            getAccessor = member;
+                        }
+                        if (member.kind === 139 /* SetAccessor */ && !setAccessor) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             setAccessor = member;
                         }
                     }
@@ -6495,6 +7623,7 @@ var ts;
     function isLeftHandSideExpression(expr) {
         if (expr) {
             switch (expr.kind) {
+<<<<<<< HEAD
                 case 159 /* PropertyAccessExpression */:
                 case 160 /* ElementAccessExpression */:
                 case 162 /* NewExpression */:
@@ -6508,16 +7637,38 @@ var ts;
                 case 178 /* ClassExpression */:
                 case 166 /* FunctionExpression */:
                 case 66 /* Identifier */:
+=======
+                case 158 /* PropertyAccessExpression */:
+                case 159 /* ElementAccessExpression */:
+                case 161 /* NewExpression */:
+                case 160 /* CallExpression */:
+                case 162 /* TaggedTemplateExpression */:
+                case 156 /* ArrayLiteralExpression */:
+                case 164 /* ParenthesizedExpression */:
+                case 157 /* ObjectLiteralExpression */:
+                case 177 /* ClassExpression */:
+                case 165 /* FunctionExpression */:
+                case 65 /* Identifier */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 case 9 /* RegularExpressionLiteral */:
                 case 7 /* NumericLiteral */:
                 case 8 /* StringLiteral */:
                 case 10 /* NoSubstitutionTemplateLiteral */:
+<<<<<<< HEAD
                 case 175 /* TemplateExpression */:
                 case 81 /* FalseKeyword */:
                 case 90 /* NullKeyword */:
                 case 94 /* ThisKeyword */:
                 case 96 /* TrueKeyword */:
                 case 92 /* SuperKeyword */:
+=======
+                case 174 /* TemplateExpression */:
+                case 80 /* FalseKeyword */:
+                case 89 /* NullKeyword */:
+                case 93 /* ThisKeyword */:
+                case 95 /* TrueKeyword */:
+                case 91 /* SuperKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
             }
         }
@@ -6544,7 +7695,11 @@ var ts;
         if (node.kind === 66 /* Identifier */) {
             return true;
         }
+<<<<<<< HEAD
         else if (node.kind === 159 /* PropertyAccessExpression */) {
+=======
+        else if (node.kind === 158 /* PropertyAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             return isSupportedExpressionWithTypeArgumentsRest(node.expression);
         }
         else {
@@ -6552,8 +7707,13 @@ var ts;
         }
     }
     function isRightSideOfQualifiedNameOrPropertyAccess(node) {
+<<<<<<< HEAD
         return (node.parent.kind === 129 /* QualifiedName */ && node.parent.right === node) ||
             (node.parent.kind === 159 /* PropertyAccessExpression */ && node.parent.name === node);
+=======
+        return (node.parent.kind === 128 /* QualifiedName */ && node.parent.right === node) ||
+            (node.parent.kind === 158 /* PropertyAccessExpression */ && node.parent.name === node);
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isRightSideOfQualifiedNameOrPropertyAccess = isRightSideOfQualifiedNameOrPropertyAccess;
     function getLocalSymbolForExportDefault(symbol) {
@@ -6564,10 +7724,13 @@ var ts;
         return ts.fileExtensionIs(fileName, ".js");
     }
     ts.isJavaScript = isJavaScript;
+<<<<<<< HEAD
     function isTsx(fileName) {
         return ts.fileExtensionIs(fileName, ".tsx");
     }
     ts.isTsx = isTsx;
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
     /**
      * Replace each instance of non-ascii characters by one, two, three, or four escape sequences
      * representing the UTF-8 encoding of the character, and return the expanded char code list.
@@ -6862,9 +8025,15 @@ var ts;
     }
     ts.collapseTextChangeRangesAcrossMultipleVersions = collapseTextChangeRangesAcrossMultipleVersions;
     function getTypeParameterOwner(d) {
+<<<<<<< HEAD
         if (d && d.kind === 131 /* TypeParameter */) {
             for (var current = d; current; current = current.parent) {
                 if (ts.isFunctionLike(current) || ts.isClassLike(current) || current.kind === 207 /* InterfaceDeclaration */) {
+=======
+        if (d && d.kind === 130 /* TypeParameter */) {
+            for (var current = d; current; current = current.parent) {
+                if (ts.isFunctionLike(current) || ts.isClassLike(current) || current.kind === 205 /* InterfaceDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return current;
                 }
             }
@@ -6876,7 +8045,11 @@ var ts;
 /// <reference path="utilities.ts"/>
 var ts;
 (function (ts) {
+<<<<<<< HEAD
     var nodeConstructors = new Array(264 /* Count */);
+=======
+    var nodeConstructors = new Array(254 /* Count */);
+>>>>>>> Updated compiler to emitDependencyFile branch
     /* @internal */ ts.parseTime = 0;
     function getNodeConstructor(kind) {
         return nodeConstructors[kind] || (nodeConstructors[kind] = ts.objectAllocator.getNodeConstructor(kind));
@@ -6921,6 +8094,7 @@ var ts;
         var visitNodes = cbNodeArray ? visitNodeArray : visitEachNode;
         var cbNodes = cbNodeArray || cbNode;
         switch (node.kind) {
+<<<<<<< HEAD
             case 129 /* QualifiedName */:
                 return visitNode(cbNode, node.left) ||
                     visitNode(cbNode, node.right);
@@ -6935,6 +8109,22 @@ var ts;
             case 238 /* ShorthandPropertyAssignment */:
             case 203 /* VariableDeclaration */:
             case 156 /* BindingElement */:
+=======
+            case 128 /* QualifiedName */:
+                return visitNode(cbNode, node.left) ||
+                    visitNode(cbNode, node.right);
+            case 130 /* TypeParameter */:
+                return visitNode(cbNode, node.name) ||
+                    visitNode(cbNode, node.constraint) ||
+                    visitNode(cbNode, node.expression);
+            case 131 /* Parameter */:
+            case 134 /* PropertyDeclaration */:
+            case 133 /* PropertySignature */:
+            case 227 /* PropertyAssignment */:
+            case 228 /* ShorthandPropertyAssignment */:
+            case 201 /* VariableDeclaration */:
+            case 155 /* BindingElement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.decorators) ||
                     visitNodes(cbNodes, node.modifiers) ||
                     visitNode(cbNode, node.propertyName) ||
@@ -6943,16 +8133,25 @@ var ts;
                     visitNode(cbNode, node.questionToken) ||
                     visitNode(cbNode, node.type) ||
                     visitNode(cbNode, node.initializer);
+<<<<<<< HEAD
             case 146 /* FunctionType */:
             case 147 /* ConstructorType */:
             case 141 /* CallSignature */:
             case 142 /* ConstructSignature */:
             case 143 /* IndexSignature */:
+=======
+            case 145 /* FunctionType */:
+            case 146 /* ConstructorType */:
+            case 140 /* CallSignature */:
+            case 141 /* ConstructSignature */:
+            case 142 /* IndexSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.decorators) ||
                     visitNodes(cbNodes, node.modifiers) ||
                     visitNodes(cbNodes, node.typeParameters) ||
                     visitNodes(cbNodes, node.parameters) ||
                     visitNode(cbNode, node.type);
+<<<<<<< HEAD
             case 137 /* MethodDeclaration */:
             case 136 /* MethodSignature */:
             case 138 /* Constructor */:
@@ -6961,6 +8160,16 @@ var ts;
             case 166 /* FunctionExpression */:
             case 205 /* FunctionDeclaration */:
             case 167 /* ArrowFunction */:
+=======
+            case 136 /* MethodDeclaration */:
+            case 135 /* MethodSignature */:
+            case 137 /* Constructor */:
+            case 138 /* GetAccessor */:
+            case 139 /* SetAccessor */:
+            case 165 /* FunctionExpression */:
+            case 203 /* FunctionDeclaration */:
+            case 166 /* ArrowFunction */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.decorators) ||
                     visitNodes(cbNodes, node.modifiers) ||
                     visitNode(cbNode, node.asteriskToken) ||
@@ -6971,6 +8180,7 @@ var ts;
                     visitNode(cbNode, node.type) ||
                     visitNode(cbNode, node.equalsGreaterThanToken) ||
                     visitNode(cbNode, node.body);
+<<<<<<< HEAD
             case 145 /* TypeReference */:
                 return visitNode(cbNode, node.typeName) ||
                     visitNodes(cbNodes, node.typeArguments);
@@ -7037,11 +8247,77 @@ var ts;
                 return visitNode(cbNode, node.expression) ||
                     visitNode(cbNode, node.type);
             case 174 /* ConditionalExpression */:
+=======
+            case 144 /* TypeReference */:
+                return visitNode(cbNode, node.typeName) ||
+                    visitNodes(cbNodes, node.typeArguments);
+            case 143 /* TypePredicate */:
+                return visitNode(cbNode, node.parameterName) ||
+                    visitNode(cbNode, node.type);
+            case 147 /* TypeQuery */:
+                return visitNode(cbNode, node.exprName);
+            case 148 /* TypeLiteral */:
+                return visitNodes(cbNodes, node.members);
+            case 149 /* ArrayType */:
+                return visitNode(cbNode, node.elementType);
+            case 150 /* TupleType */:
+                return visitNodes(cbNodes, node.elementTypes);
+            case 151 /* UnionType */:
+                return visitNodes(cbNodes, node.types);
+            case 152 /* ParenthesizedType */:
+                return visitNode(cbNode, node.type);
+            case 153 /* ObjectBindingPattern */:
+            case 154 /* ArrayBindingPattern */:
+                return visitNodes(cbNodes, node.elements);
+            case 156 /* ArrayLiteralExpression */:
+                return visitNodes(cbNodes, node.elements);
+            case 157 /* ObjectLiteralExpression */:
+                return visitNodes(cbNodes, node.properties);
+            case 158 /* PropertyAccessExpression */:
+                return visitNode(cbNode, node.expression) ||
+                    visitNode(cbNode, node.dotToken) ||
+                    visitNode(cbNode, node.name);
+            case 159 /* ElementAccessExpression */:
+                return visitNode(cbNode, node.expression) ||
+                    visitNode(cbNode, node.argumentExpression);
+            case 160 /* CallExpression */:
+            case 161 /* NewExpression */:
+                return visitNode(cbNode, node.expression) ||
+                    visitNodes(cbNodes, node.typeArguments) ||
+                    visitNodes(cbNodes, node.arguments);
+            case 162 /* TaggedTemplateExpression */:
+                return visitNode(cbNode, node.tag) ||
+                    visitNode(cbNode, node.template);
+            case 163 /* TypeAssertionExpression */:
+                return visitNode(cbNode, node.type) ||
+                    visitNode(cbNode, node.expression);
+            case 164 /* ParenthesizedExpression */:
+                return visitNode(cbNode, node.expression);
+            case 167 /* DeleteExpression */:
+                return visitNode(cbNode, node.expression);
+            case 168 /* TypeOfExpression */:
+                return visitNode(cbNode, node.expression);
+            case 169 /* VoidExpression */:
+                return visitNode(cbNode, node.expression);
+            case 170 /* PrefixUnaryExpression */:
+                return visitNode(cbNode, node.operand);
+            case 175 /* YieldExpression */:
+                return visitNode(cbNode, node.asteriskToken) ||
+                    visitNode(cbNode, node.expression);
+            case 171 /* PostfixUnaryExpression */:
+                return visitNode(cbNode, node.operand);
+            case 172 /* BinaryExpression */:
+                return visitNode(cbNode, node.left) ||
+                    visitNode(cbNode, node.operatorToken) ||
+                    visitNode(cbNode, node.right);
+            case 173 /* ConditionalExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNode(cbNode, node.condition) ||
                     visitNode(cbNode, node.questionToken) ||
                     visitNode(cbNode, node.whenTrue) ||
                     visitNode(cbNode, node.colonToken) ||
                     visitNode(cbNode, node.whenFalse);
+<<<<<<< HEAD
             case 177 /* SpreadElementExpression */:
                 return visitNode(cbNode, node.expression);
             case 184 /* Block */:
@@ -7069,10 +8345,40 @@ var ts;
                 return visitNode(cbNode, node.expression) ||
                     visitNode(cbNode, node.statement);
             case 191 /* ForStatement */:
+=======
+            case 176 /* SpreadElementExpression */:
+                return visitNode(cbNode, node.expression);
+            case 182 /* Block */:
+            case 209 /* ModuleBlock */:
+                return visitNodes(cbNodes, node.statements);
+            case 230 /* SourceFile */:
+                return visitNodes(cbNodes, node.statements) ||
+                    visitNode(cbNode, node.endOfFileToken);
+            case 183 /* VariableStatement */:
+                return visitNodes(cbNodes, node.decorators) ||
+                    visitNodes(cbNodes, node.modifiers) ||
+                    visitNode(cbNode, node.declarationList);
+            case 202 /* VariableDeclarationList */:
+                return visitNodes(cbNodes, node.declarations);
+            case 185 /* ExpressionStatement */:
+                return visitNode(cbNode, node.expression);
+            case 186 /* IfStatement */:
+                return visitNode(cbNode, node.expression) ||
+                    visitNode(cbNode, node.thenStatement) ||
+                    visitNode(cbNode, node.elseStatement);
+            case 187 /* DoStatement */:
+                return visitNode(cbNode, node.statement) ||
+                    visitNode(cbNode, node.expression);
+            case 188 /* WhileStatement */:
+                return visitNode(cbNode, node.expression) ||
+                    visitNode(cbNode, node.statement);
+            case 189 /* ForStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNode(cbNode, node.initializer) ||
                     visitNode(cbNode, node.condition) ||
                     visitNode(cbNode, node.incrementor) ||
                     visitNode(cbNode, node.statement);
+<<<<<<< HEAD
             case 192 /* ForInStatement */:
                 return visitNode(cbNode, node.initializer) ||
                     visitNode(cbNode, node.expression) ||
@@ -7115,48 +8421,120 @@ var ts;
                 return visitNode(cbNode, node.expression);
             case 206 /* ClassDeclaration */:
             case 178 /* ClassExpression */:
+=======
+            case 190 /* ForInStatement */:
+                return visitNode(cbNode, node.initializer) ||
+                    visitNode(cbNode, node.expression) ||
+                    visitNode(cbNode, node.statement);
+            case 191 /* ForOfStatement */:
+                return visitNode(cbNode, node.initializer) ||
+                    visitNode(cbNode, node.expression) ||
+                    visitNode(cbNode, node.statement);
+            case 192 /* ContinueStatement */:
+            case 193 /* BreakStatement */:
+                return visitNode(cbNode, node.label);
+            case 194 /* ReturnStatement */:
+                return visitNode(cbNode, node.expression);
+            case 195 /* WithStatement */:
+                return visitNode(cbNode, node.expression) ||
+                    visitNode(cbNode, node.statement);
+            case 196 /* SwitchStatement */:
+                return visitNode(cbNode, node.expression) ||
+                    visitNode(cbNode, node.caseBlock);
+            case 210 /* CaseBlock */:
+                return visitNodes(cbNodes, node.clauses);
+            case 223 /* CaseClause */:
+                return visitNode(cbNode, node.expression) ||
+                    visitNodes(cbNodes, node.statements);
+            case 224 /* DefaultClause */:
+                return visitNodes(cbNodes, node.statements);
+            case 197 /* LabeledStatement */:
+                return visitNode(cbNode, node.label) ||
+                    visitNode(cbNode, node.statement);
+            case 198 /* ThrowStatement */:
+                return visitNode(cbNode, node.expression);
+            case 199 /* TryStatement */:
+                return visitNode(cbNode, node.tryBlock) ||
+                    visitNode(cbNode, node.catchClause) ||
+                    visitNode(cbNode, node.finallyBlock);
+            case 226 /* CatchClause */:
+                return visitNode(cbNode, node.variableDeclaration) ||
+                    visitNode(cbNode, node.block);
+            case 132 /* Decorator */:
+                return visitNode(cbNode, node.expression);
+            case 204 /* ClassDeclaration */:
+            case 177 /* ClassExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.decorators) ||
                     visitNodes(cbNodes, node.modifiers) ||
                     visitNode(cbNode, node.name) ||
                     visitNodes(cbNodes, node.typeParameters) ||
                     visitNodes(cbNodes, node.heritageClauses) ||
                     visitNodes(cbNodes, node.members);
+<<<<<<< HEAD
             case 207 /* InterfaceDeclaration */:
+=======
+            case 205 /* InterfaceDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.decorators) ||
                     visitNodes(cbNodes, node.modifiers) ||
                     visitNode(cbNode, node.name) ||
                     visitNodes(cbNodes, node.typeParameters) ||
                     visitNodes(cbNodes, node.heritageClauses) ||
                     visitNodes(cbNodes, node.members);
+<<<<<<< HEAD
             case 208 /* TypeAliasDeclaration */:
+=======
+            case 206 /* TypeAliasDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.decorators) ||
                     visitNodes(cbNodes, node.modifiers) ||
                     visitNode(cbNode, node.name) ||
                     visitNodes(cbNodes, node.typeParameters) ||
                     visitNode(cbNode, node.type);
+<<<<<<< HEAD
             case 209 /* EnumDeclaration */:
+=======
+            case 207 /* EnumDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.decorators) ||
                     visitNodes(cbNodes, node.modifiers) ||
                     visitNode(cbNode, node.name) ||
                     visitNodes(cbNodes, node.members);
+<<<<<<< HEAD
             case 239 /* EnumMember */:
                 return visitNode(cbNode, node.name) ||
                     visitNode(cbNode, node.initializer);
             case 210 /* ModuleDeclaration */:
+=======
+            case 229 /* EnumMember */:
+                return visitNode(cbNode, node.name) ||
+                    visitNode(cbNode, node.initializer);
+            case 208 /* ModuleDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.decorators) ||
                     visitNodes(cbNodes, node.modifiers) ||
                     visitNode(cbNode, node.name) ||
                     visitNode(cbNode, node.body);
+<<<<<<< HEAD
             case 213 /* ImportEqualsDeclaration */:
+=======
+            case 211 /* ImportEqualsDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.decorators) ||
                     visitNodes(cbNodes, node.modifiers) ||
                     visitNode(cbNode, node.name) ||
                     visitNode(cbNode, node.moduleReference);
+<<<<<<< HEAD
             case 214 /* ImportDeclaration */:
+=======
+            case 212 /* ImportDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.decorators) ||
                     visitNodes(cbNodes, node.modifiers) ||
                     visitNode(cbNode, node.importClause) ||
                     visitNode(cbNode, node.moduleSpecifier);
+<<<<<<< HEAD
             case 215 /* ImportClause */:
                 return visitNode(cbNode, node.name) ||
                     visitNode(cbNode, node.namedBindings);
@@ -7166,10 +8544,22 @@ var ts;
             case 221 /* NamedExports */:
                 return visitNodes(cbNodes, node.elements);
             case 220 /* ExportDeclaration */:
+=======
+            case 213 /* ImportClause */:
+                return visitNode(cbNode, node.name) ||
+                    visitNode(cbNode, node.namedBindings);
+            case 214 /* NamespaceImport */:
+                return visitNode(cbNode, node.name);
+            case 215 /* NamedImports */:
+            case 219 /* NamedExports */:
+                return visitNodes(cbNodes, node.elements);
+            case 218 /* ExportDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.decorators) ||
                     visitNodes(cbNodes, node.modifiers) ||
                     visitNode(cbNode, node.exportClause) ||
                     visitNode(cbNode, node.moduleSpecifier);
+<<<<<<< HEAD
             case 218 /* ImportSpecifier */:
             case 222 /* ExportSpecifier */:
                 return visitNode(cbNode, node.propertyName) ||
@@ -7252,6 +8642,73 @@ var ts;
             case 261 /* JSDocTypeTag */:
                 return visitNode(cbNode, node.typeExpression);
             case 262 /* JSDocTemplateTag */:
+=======
+            case 216 /* ImportSpecifier */:
+            case 220 /* ExportSpecifier */:
+                return visitNode(cbNode, node.propertyName) ||
+                    visitNode(cbNode, node.name);
+            case 217 /* ExportAssignment */:
+                return visitNodes(cbNodes, node.decorators) ||
+                    visitNodes(cbNodes, node.modifiers) ||
+                    visitNode(cbNode, node.expression);
+            case 174 /* TemplateExpression */:
+                return visitNode(cbNode, node.head) || visitNodes(cbNodes, node.templateSpans);
+            case 180 /* TemplateSpan */:
+                return visitNode(cbNode, node.expression) || visitNode(cbNode, node.literal);
+            case 129 /* ComputedPropertyName */:
+                return visitNode(cbNode, node.expression);
+            case 225 /* HeritageClause */:
+                return visitNodes(cbNodes, node.types);
+            case 179 /* ExpressionWithTypeArguments */:
+                return visitNode(cbNode, node.expression) ||
+                    visitNodes(cbNodes, node.typeArguments);
+            case 222 /* ExternalModuleReference */:
+                return visitNode(cbNode, node.expression);
+            case 221 /* MissingDeclaration */:
+                return visitNodes(cbNodes, node.decorators);
+            case 231 /* JSDocTypeExpression */:
+                return visitNode(cbNode, node.type);
+            case 235 /* JSDocUnionType */:
+                return visitNodes(cbNodes, node.types);
+            case 236 /* JSDocTupleType */:
+                return visitNodes(cbNodes, node.types);
+            case 234 /* JSDocArrayType */:
+                return visitNode(cbNode, node.elementType);
+            case 238 /* JSDocNonNullableType */:
+                return visitNode(cbNode, node.type);
+            case 237 /* JSDocNullableType */:
+                return visitNode(cbNode, node.type);
+            case 239 /* JSDocRecordType */:
+                return visitNodes(cbNodes, node.members);
+            case 241 /* JSDocTypeReference */:
+                return visitNode(cbNode, node.name) ||
+                    visitNodes(cbNodes, node.typeArguments);
+            case 242 /* JSDocOptionalType */:
+                return visitNode(cbNode, node.type);
+            case 243 /* JSDocFunctionType */:
+                return visitNodes(cbNodes, node.parameters) ||
+                    visitNode(cbNode, node.type);
+            case 244 /* JSDocVariadicType */:
+                return visitNode(cbNode, node.type);
+            case 245 /* JSDocConstructorType */:
+                return visitNode(cbNode, node.type);
+            case 246 /* JSDocThisType */:
+                return visitNode(cbNode, node.type);
+            case 240 /* JSDocRecordMember */:
+                return visitNode(cbNode, node.name) ||
+                    visitNode(cbNode, node.type);
+            case 247 /* JSDocComment */:
+                return visitNodes(cbNodes, node.tags);
+            case 249 /* JSDocParameterTag */:
+                return visitNode(cbNode, node.preParameterName) ||
+                    visitNode(cbNode, node.typeExpression) ||
+                    visitNode(cbNode, node.postParameterName);
+            case 250 /* JSDocReturnTag */:
+                return visitNode(cbNode, node.typeExpression);
+            case 251 /* JSDocTypeTag */:
+                return visitNode(cbNode, node.typeExpression);
+            case 252 /* JSDocTemplateTag */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return visitNodes(cbNodes, node.typeParameters);
         }
     }
@@ -7402,7 +8859,10 @@ var ts;
             scanner.setText(sourceText);
             scanner.setOnError(scanError);
             scanner.setScriptTarget(languageVersion);
+<<<<<<< HEAD
             scanner.setLanguageVariant(ts.isTsx(fileName) ? 1 /* JSX */ : 0 /* Standard */);
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function clearState() {
             // Clear out the text the scanner is pointing at, so it doesn't keep anything alive unnecessarily.
@@ -7420,7 +8880,11 @@ var ts;
             // Prime the scanner.
             token = nextToken();
             processReferenceComments(sourceFile);
+<<<<<<< HEAD
             sourceFile.statements = parseList(0 /* SourceElements */, parseStatement);
+=======
+            sourceFile.statements = parseList(0 /* SourceElements */, true, parseStatement);
+>>>>>>> Updated compiler to emitDependencyFile branch
             ts.Debug.assert(token === 1 /* EndOfFileToken */);
             sourceFile.endOfFileToken = parseTokenNode();
             setExternalModuleIndicator(sourceFile);
@@ -7446,9 +8910,15 @@ var ts;
                 // Add additional cases as necessary depending on how we see JSDoc comments used
                 // in the wild.
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 185 /* VariableStatement */:
                     case 205 /* FunctionDeclaration */:
                     case 132 /* Parameter */:
+=======
+                    case 183 /* VariableStatement */:
+                    case 203 /* FunctionDeclaration */:
+                    case 131 /* Parameter */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         addJSDocComment(node);
                 }
                 forEachChild(node, visit);
@@ -7489,7 +8959,11 @@ var ts;
         }
         Parser.fixupParentReferences = fixupParentReferences;
         function createSourceFile(fileName, languageVersion) {
+<<<<<<< HEAD
             var sourceFile = createNode(240 /* SourceFile */, 0);
+=======
+            var sourceFile = createNode(230 /* SourceFile */, 0);
+>>>>>>> Updated compiler to emitDependencyFile branch
             sourceFile.pos = 0;
             sourceFile.end = sourceText.length;
             sourceFile.text = sourceText;
@@ -7497,7 +8971,10 @@ var ts;
             sourceFile.languageVersion = languageVersion;
             sourceFile.fileName = ts.normalizePath(fileName);
             sourceFile.flags = ts.fileExtensionIs(sourceFile.fileName, ".d.ts") ? 2048 /* DeclarationFile */ : 0;
+<<<<<<< HEAD
             sourceFile.languageVariant = ts.isTsx(sourceFile.fileName) ? 1 /* JSX */ : 0 /* Standard */;
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
             return sourceFile;
         }
         function setContextFlag(val, flag) {
@@ -7838,7 +9315,11 @@ var ts;
             // ComputedPropertyName[Yield] :
             //     [ AssignmentExpression[In, ?Yield] ]
             //
+<<<<<<< HEAD
             var node = createNode(130 /* ComputedPropertyName */);
+=======
+            var node = createNode(129 /* ComputedPropertyName */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(18 /* OpenBracketToken */);
             // We parse any expression (including a comma expression). But the grammar
             // says that only an assignment expression is allowed, so the grammar checker
@@ -7858,7 +9339,11 @@ var ts;
             return token === t && tryParse(nextTokenCanFollowModifier);
         }
         function nextTokenCanFollowModifier() {
+<<<<<<< HEAD
             if (token === 71 /* ConstKeyword */) {
+=======
+            if (token === 70 /* ConstKeyword */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // 'const' is only a modifier if followed by 'enum'.
                 return nextToken() === 78 /* EnumKeyword */;
             }
@@ -7906,7 +9391,11 @@ var ts;
                     // outer module.  We just want to consume and move on.
                     return !(token === 22 /* SemicolonToken */ && inErrorRecovery) && isStartOfStatement();
                 case 2 /* SwitchClauses */:
+<<<<<<< HEAD
                     return token === 68 /* CaseKeyword */ || token === 74 /* DefaultKeyword */;
+=======
+                    return token === 67 /* CaseKeyword */ || token === 73 /* DefaultKeyword */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 case 4 /* TypeMembers */:
                     return isStartOfTypeMember();
                 case 5 /* ClassMembers */:
@@ -7920,7 +9409,11 @@ var ts;
                     // which would be a candidate for improved error reporting.
                     return token === 18 /* OpenBracketToken */ || isLiteralPropertyName();
                 case 12 /* ObjectLiteralMembers */:
+<<<<<<< HEAD
                     return token === 18 /* OpenBracketToken */ || token === 36 /* AsteriskToken */ || isLiteralPropertyName();
+=======
+                    return token === 18 /* OpenBracketToken */ || token === 35 /* AsteriskToken */ || isLiteralPropertyName();
+>>>>>>> Updated compiler to emitDependencyFile branch
                 case 9 /* ObjectBindingElements */:
                     return isLiteralPropertyName();
                 case 7 /* HeritageClauseElement */:
@@ -7942,6 +9435,7 @@ var ts;
                     return isIdentifierOrPattern();
                 case 10 /* ArrayBindingElements */:
                     return token === 23 /* CommaToken */ || token === 21 /* DotDotDotToken */ || isIdentifierOrPattern();
+<<<<<<< HEAD
                 case 17 /* TypeParameters */:
                     return isIdentifier();
                 case 11 /* ArgumentExpressions */:
@@ -7965,6 +9459,27 @@ var ts;
                 case 25 /* JSDocTupleTypes */:
                     return JSDocParser.isJSDocType();
                 case 24 /* JSDocRecordMembers */:
+=======
+                case 15 /* TypeParameters */:
+                    return isIdentifier();
+                case 11 /* ArgumentExpressions */:
+                case 13 /* ArrayLiteralMembers */:
+                    return token === 23 /* CommaToken */ || token === 21 /* DotDotDotToken */ || isStartOfExpression();
+                case 14 /* Parameters */:
+                    return isStartOfParameter();
+                case 16 /* TypeArguments */:
+                case 17 /* TupleElementTypes */:
+                    return token === 23 /* CommaToken */ || isStartOfType();
+                case 18 /* HeritageClauses */:
+                    return isHeritageClause();
+                case 19 /* ImportOrExportSpecifiers */:
+                    return isIdentifierOrKeyword();
+                case 20 /* JSDocFunctionParameters */:
+                case 21 /* JSDocTypeArguments */:
+                case 23 /* JSDocTupleTypes */:
+                    return JSDocParser.isJSDocType();
+                case 22 /* JSDocRecordMembers */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return isSimplePropertyName();
             }
             ts.Debug.fail("Non-exhaustive case in 'isListElement'.");
@@ -8013,6 +9528,7 @@ var ts;
                 case 6 /* EnumMembers */:
                 case 12 /* ObjectLiteralMembers */:
                 case 9 /* ObjectBindingElements */:
+<<<<<<< HEAD
                 case 21 /* ImportOrExportSpecifiers */:
                     return token === 15 /* CloseBraceToken */;
                 case 3 /* SwitchClauseStatements */:
@@ -8050,6 +9566,41 @@ var ts;
                 case 25 /* JSDocTupleTypes */:
                     return token === 19 /* CloseBracketToken */ || token === 15 /* CloseBraceToken */;
                 case 24 /* JSDocRecordMembers */:
+=======
+                case 19 /* ImportOrExportSpecifiers */:
+                    return token === 15 /* CloseBraceToken */;
+                case 3 /* SwitchClauseStatements */:
+                    return token === 15 /* CloseBraceToken */ || token === 67 /* CaseKeyword */ || token === 73 /* DefaultKeyword */;
+                case 7 /* HeritageClauseElement */:
+                    return token === 14 /* OpenBraceToken */ || token === 79 /* ExtendsKeyword */ || token === 102 /* ImplementsKeyword */;
+                case 8 /* VariableDeclarations */:
+                    return isVariableDeclaratorListTerminator();
+                case 15 /* TypeParameters */:
+                    // Tokens other than '>' are here for better error recovery
+                    return token === 25 /* GreaterThanToken */ || token === 16 /* OpenParenToken */ || token === 14 /* OpenBraceToken */ || token === 79 /* ExtendsKeyword */ || token === 102 /* ImplementsKeyword */;
+                case 11 /* ArgumentExpressions */:
+                    // Tokens other than ')' are here for better error recovery
+                    return token === 17 /* CloseParenToken */ || token === 22 /* SemicolonToken */;
+                case 13 /* ArrayLiteralMembers */:
+                case 17 /* TupleElementTypes */:
+                case 10 /* ArrayBindingElements */:
+                    return token === 19 /* CloseBracketToken */;
+                case 14 /* Parameters */:
+                    // Tokens other than ')' and ']' (the latter for index signatures) are here for better error recovery
+                    return token === 17 /* CloseParenToken */ || token === 19 /* CloseBracketToken */ /*|| token === SyntaxKind.OpenBraceToken*/;
+                case 16 /* TypeArguments */:
+                    // Tokens other than '>' are here for better error recovery
+                    return token === 25 /* GreaterThanToken */ || token === 16 /* OpenParenToken */;
+                case 18 /* HeritageClauses */:
+                    return token === 14 /* OpenBraceToken */ || token === 15 /* CloseBraceToken */;
+                case 20 /* JSDocFunctionParameters */:
+                    return token === 17 /* CloseParenToken */ || token === 51 /* ColonToken */ || token === 15 /* CloseBraceToken */;
+                case 21 /* JSDocTypeArguments */:
+                    return token === 25 /* GreaterThanToken */ || token === 15 /* CloseBraceToken */;
+                case 23 /* JSDocTupleTypes */:
+                    return token === 19 /* CloseBracketToken */ || token === 15 /* CloseBraceToken */;
+                case 22 /* JSDocRecordMembers */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return token === 15 /* CloseBraceToken */;
             }
         }
@@ -8076,7 +9627,11 @@ var ts;
         }
         // True if positioned at element or terminator of the current list or any enclosing list
         function isInSomeParsingContext() {
+<<<<<<< HEAD
             for (var kind = 0; kind < 26 /* Count */; kind++) {
+=======
+            for (var kind = 0; kind < 24 /* Count */; kind++) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (parsingContext & (1 << kind)) {
                     if (isListElement(kind, true) || isListTerminator(kind)) {
                         return true;
@@ -8095,6 +9650,21 @@ var ts;
                 if (isListElement(kind, false)) {
                     var element = parseListElement(kind, parseElement);
                     result.push(element);
+<<<<<<< HEAD
+=======
+                    // test elements only if we are not already in strict mode
+                    if (checkForStrictMode && !inStrictModeContext()) {
+                        if (ts.isPrologueDirective(element)) {
+                            if (isUseStrictPrologueDirective(element)) {
+                                setStrictModeContext(true);
+                                checkForStrictMode = false;
+                            }
+                        }
+                        else {
+                            checkForStrictMode = false;
+                        }
+                    }
+>>>>>>> Updated compiler to emitDependencyFile branch
                     continue;
                 }
                 if (abortParsingListOrMoveToNextToken(kind)) {
@@ -8105,6 +9675,17 @@ var ts;
             parsingContext = saveParsingContext;
             return result;
         }
+<<<<<<< HEAD
+=======
+        /// Should be called only on prologue directives (isPrologueDirective(node) should be true)
+        function isUseStrictPrologueDirective(node) {
+            ts.Debug.assert(ts.isPrologueDirective(node));
+            var nodeText = ts.getTextOfNodeFromSourceText(sourceText, node.expression);
+            // Note: the node text must be exactly "use strict" or 'use strict'.  It is not ok for the
+            // string to contain unicode escapes (as per ES5).
+            return nodeText === '"use strict"' || nodeText === "'use strict'";
+        }
+>>>>>>> Updated compiler to emitDependencyFile branch
         function parseListElement(parsingContext, parseElement) {
             var node = currentNode(parsingContext);
             if (node) {
@@ -8185,22 +9766,37 @@ var ts;
                     return isReusableTypeMember(node);
                 case 8 /* VariableDeclarations */:
                     return isReusableVariableDeclaration(node);
+<<<<<<< HEAD
                 case 16 /* Parameters */:
+=======
+                case 14 /* Parameters */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return isReusableParameter(node);
                 // Any other lists we do not care about reusing nodes in.  But feel free to add if
                 // you can do so safely.  Danger areas involve nodes that may involve speculative
                 // parsing.  If speculative parsing is involved with the node, then the range the
                 // parser reached while looking ahead might be in the edited range (see the example
                 // in canReuseVariableDeclaratorNode for a good case of this).
+<<<<<<< HEAD
                 case 20 /* HeritageClauses */:
                 // This would probably be safe to reuse.  There is no speculative parsing with
                 // heritage clauses.
                 case 17 /* TypeParameters */:
+=======
+                case 18 /* HeritageClauses */:
+                // This would probably be safe to reuse.  There is no speculative parsing with
+                // heritage clauses.
+                case 15 /* TypeParameters */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // This would probably be safe to reuse.  There is no speculative parsing with
                 // type parameters.  Note that that's because type *parameters* only occur in
                 // unambiguous *type* contexts.  While type *arguments* occur in very ambiguous
                 // *expression* contexts.
+<<<<<<< HEAD
                 case 19 /* TupleElementTypes */:
+=======
+                case 17 /* TupleElementTypes */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // This would probably be safe to reuse.  There is no speculative parsing with
                 // tuple types.
                 // Technically, type argument list types are probably safe to reuse.  While
@@ -8208,7 +9804,11 @@ var ts;
                 // produced from speculative parsing a < as a type argument list), we only have
                 // the types because speculative parsing succeeded.  Thus, the lookahead never
                 // went past the end of the list and rewound.
+<<<<<<< HEAD
                 case 18 /* TypeArguments */:
+=======
+                case 16 /* TypeArguments */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // Note: these are almost certainly not safe to ever reuse.  Expressions commonly
                 // need a large amount of lookahead, and we should not reuse them as they may
                 // have actually intersected the edit.
@@ -8222,22 +9822,35 @@ var ts;
                 // name list, and there can be left hand side expressions (which can have type
                 // arguments.)
                 case 7 /* HeritageClauseElement */:
+<<<<<<< HEAD
                 // Perhaps safe to reuse, but it's unlikely we'd see more than a dozen attributes
                 // on any given element. Same for children.
                 case 13 /* JsxAttributes */:
                 case 14 /* JsxChildren */:
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             return false;
         }
         function isReusableClassMember(node) {
             if (node) {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 138 /* Constructor */:
                     case 143 /* IndexSignature */:
                     case 139 /* GetAccessor */:
                     case 140 /* SetAccessor */:
                     case 135 /* PropertyDeclaration */:
                     case 183 /* SemicolonClassElement */:
+=======
+                    case 137 /* Constructor */:
+                    case 142 /* IndexSignature */:
+                    case 136 /* MethodDeclaration */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                    case 134 /* PropertyDeclaration */:
+                    case 181 /* SemicolonClassElement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                     case 137 /* MethodDeclaration */:
                         // Method declarations are not necessarily reusable.  An object-literal
@@ -8254,8 +9867,13 @@ var ts;
         function isReusableSwitchClause(node) {
             if (node) {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 233 /* CaseClause */:
                     case 234 /* DefaultClause */:
+=======
+                    case 223 /* CaseClause */:
+                    case 224 /* DefaultClause */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
             }
@@ -8264,6 +9882,7 @@ var ts;
         function isReusableStatement(node) {
             if (node) {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 205 /* FunctionDeclaration */:
                     case 185 /* VariableStatement */:
                     case 184 /* Block */:
@@ -8293,29 +9912,76 @@ var ts;
                     case 207 /* InterfaceDeclaration */:
                     case 209 /* EnumDeclaration */:
                     case 208 /* TypeAliasDeclaration */:
+=======
+                    case 203 /* FunctionDeclaration */:
+                    case 183 /* VariableStatement */:
+                    case 182 /* Block */:
+                    case 186 /* IfStatement */:
+                    case 185 /* ExpressionStatement */:
+                    case 198 /* ThrowStatement */:
+                    case 194 /* ReturnStatement */:
+                    case 196 /* SwitchStatement */:
+                    case 193 /* BreakStatement */:
+                    case 192 /* ContinueStatement */:
+                    case 190 /* ForInStatement */:
+                    case 191 /* ForOfStatement */:
+                    case 189 /* ForStatement */:
+                    case 188 /* WhileStatement */:
+                    case 195 /* WithStatement */:
+                    case 184 /* EmptyStatement */:
+                    case 199 /* TryStatement */:
+                    case 197 /* LabeledStatement */:
+                    case 187 /* DoStatement */:
+                    case 200 /* DebuggerStatement */:
+                    case 212 /* ImportDeclaration */:
+                    case 211 /* ImportEqualsDeclaration */:
+                    case 218 /* ExportDeclaration */:
+                    case 217 /* ExportAssignment */:
+                    case 208 /* ModuleDeclaration */:
+                    case 204 /* ClassDeclaration */:
+                    case 205 /* InterfaceDeclaration */:
+                    case 207 /* EnumDeclaration */:
+                    case 206 /* TypeAliasDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
             }
             return false;
         }
         function isReusableEnumMember(node) {
+<<<<<<< HEAD
             return node.kind === 239 /* EnumMember */;
+=======
+            return node.kind === 229 /* EnumMember */;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function isReusableTypeMember(node) {
             if (node) {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 142 /* ConstructSignature */:
                     case 136 /* MethodSignature */:
                     case 143 /* IndexSignature */:
                     case 134 /* PropertySignature */:
                     case 141 /* CallSignature */:
+=======
+                    case 141 /* ConstructSignature */:
+                    case 135 /* MethodSignature */:
+                    case 142 /* IndexSignature */:
+                    case 133 /* PropertySignature */:
+                    case 140 /* CallSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
             }
             return false;
         }
         function isReusableVariableDeclaration(node) {
+<<<<<<< HEAD
             if (node.kind !== 203 /* VariableDeclaration */) {
+=======
+            if (node.kind !== 201 /* VariableDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return false;
             }
             // Very subtle incremental parsing bug.  Consider the following code:
@@ -8336,7 +10002,11 @@ var ts;
             return variableDeclarator.initializer === undefined;
         }
         function isReusableParameter(node) {
+<<<<<<< HEAD
             if (node.kind !== 132 /* Parameter */) {
+=======
+            if (node.kind !== 131 /* Parameter */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return false;
             }
             // See the comment in isReusableVariableDeclaration for why we do this.
@@ -8367,6 +10037,7 @@ var ts;
                 case 10 /* ArrayBindingElements */: return ts.Diagnostics.Array_element_destructuring_pattern_expected;
                 case 11 /* ArgumentExpressions */: return ts.Diagnostics.Argument_expression_expected;
                 case 12 /* ObjectLiteralMembers */: return ts.Diagnostics.Property_assignment_expected;
+<<<<<<< HEAD
                 case 15 /* ArrayLiteralMembers */: return ts.Diagnostics.Expression_or_comma_expected;
                 case 16 /* Parameters */: return ts.Diagnostics.Parameter_declaration_expected;
                 case 17 /* TypeParameters */: return ts.Diagnostics.Type_parameter_declaration_expected;
@@ -8380,6 +10051,19 @@ var ts;
                 case 23 /* JSDocTypeArguments */: return ts.Diagnostics.Type_argument_expected;
                 case 25 /* JSDocTupleTypes */: return ts.Diagnostics.Type_expected;
                 case 24 /* JSDocRecordMembers */: return ts.Diagnostics.Property_assignment_expected;
+=======
+                case 13 /* ArrayLiteralMembers */: return ts.Diagnostics.Expression_or_comma_expected;
+                case 14 /* Parameters */: return ts.Diagnostics.Parameter_declaration_expected;
+                case 15 /* TypeParameters */: return ts.Diagnostics.Type_parameter_declaration_expected;
+                case 16 /* TypeArguments */: return ts.Diagnostics.Type_argument_expected;
+                case 17 /* TupleElementTypes */: return ts.Diagnostics.Type_expected;
+                case 18 /* HeritageClauses */: return ts.Diagnostics.Unexpected_token_expected;
+                case 19 /* ImportOrExportSpecifiers */: return ts.Diagnostics.Identifier_expected;
+                case 20 /* JSDocFunctionParameters */: return ts.Diagnostics.Parameter_declaration_expected;
+                case 21 /* JSDocTypeArguments */: return ts.Diagnostics.Type_argument_expected;
+                case 23 /* JSDocTupleTypes */: return ts.Diagnostics.Type_expected;
+                case 22 /* JSDocRecordMembers */: return ts.Diagnostics.Property_assignment_expected;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
         }
         ;
@@ -8453,7 +10137,11 @@ var ts;
         function parseEntityName(allowReservedWords, diagnosticMessage) {
             var entity = parseIdentifier(diagnosticMessage);
             while (parseOptional(20 /* DotToken */)) {
+<<<<<<< HEAD
                 var node = createNode(129 /* QualifiedName */, entity.pos);
+=======
+                var node = createNode(128 /* QualifiedName */, entity.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 node.left = entity;
                 node.right = parseRightSideOfDot(allowReservedWords);
                 entity = finishNode(node);
@@ -8486,13 +10174,21 @@ var ts;
                     // Report that we need an identifier.  However, report it right after the dot,
                     // and not on the next token.  This is because the next token might actually
                     // be an identifier and the error would be quite confusing.
+<<<<<<< HEAD
                     return createMissingNode(66 /* Identifier */, true, ts.Diagnostics.Identifier_expected);
+=======
+                    return createMissingNode(65 /* Identifier */, true, ts.Diagnostics.Identifier_expected);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
             }
             return allowIdentifierNames ? parseIdentifierName() : parseIdentifier();
         }
         function parseTemplateExpression() {
+<<<<<<< HEAD
             var template = createNode(175 /* TemplateExpression */);
+=======
+            var template = createNode(174 /* TemplateExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             template.head = parseLiteralNode();
             ts.Debug.assert(template.head.kind === 11 /* TemplateHead */, "Template head has wrong token kind");
             var templateSpans = [];
@@ -8505,7 +10201,11 @@ var ts;
             return finishNode(template);
         }
         function parseTemplateSpan() {
+<<<<<<< HEAD
             var span = createNode(182 /* TemplateSpan */);
+=======
+            var span = createNode(180 /* TemplateSpan */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             span.expression = allowInAnd(parseExpression);
             var literal;
             if (token === 15 /* CloseBraceToken */) {
@@ -8547,28 +10247,50 @@ var ts;
         // TYPES
         function parseTypeReferenceOrTypePredicate() {
             var typeName = parseEntityName(false, ts.Diagnostics.Type_expected);
+<<<<<<< HEAD
             if (typeName.kind === 66 /* Identifier */ && token === 118 /* IsKeyword */ && !scanner.hasPrecedingLineBreak()) {
                 nextToken();
                 var node_1 = createNode(144 /* TypePredicate */, typeName.pos);
+=======
+            if (typeName.kind === 65 /* Identifier */ && token === 117 /* IsKeyword */ && !scanner.hasPrecedingLineBreak()) {
+                nextToken();
+                var node_1 = createNode(143 /* TypePredicate */, typeName.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 node_1.parameterName = typeName;
                 node_1.type = parseType();
                 return finishNode(node_1);
             }
+<<<<<<< HEAD
             var node = createNode(145 /* TypeReference */, typeName.pos);
             node.typeName = typeName;
             if (!scanner.hasPrecedingLineBreak() && token === 24 /* LessThanToken */) {
                 node.typeArguments = parseBracketedList(18 /* TypeArguments */, parseType, 24 /* LessThanToken */, 26 /* GreaterThanToken */);
+=======
+            var node = createNode(144 /* TypeReference */, typeName.pos);
+            node.typeName = typeName;
+            if (!scanner.hasPrecedingLineBreak() && token === 24 /* LessThanToken */) {
+                node.typeArguments = parseBracketedList(16 /* TypeArguments */, parseType, 24 /* LessThanToken */, 25 /* GreaterThanToken */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             return finishNode(node);
         }
         function parseTypeQuery() {
+<<<<<<< HEAD
             var node = createNode(148 /* TypeQuery */);
             parseExpected(98 /* TypeOfKeyword */);
+=======
+            var node = createNode(147 /* TypeQuery */);
+            parseExpected(97 /* TypeOfKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.exprName = parseEntityName(true);
             return finishNode(node);
         }
         function parseTypeParameter() {
+<<<<<<< HEAD
             var node = createNode(131 /* TypeParameter */);
+=======
+            var node = createNode(130 /* TypeParameter */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.name = parseIdentifier();
             if (parseOptional(80 /* ExtendsKeyword */)) {
                 // It's not uncommon for people to write improper constraints to a generic.  If the
@@ -8593,7 +10315,11 @@ var ts;
         }
         function parseTypeParameters() {
             if (token === 24 /* LessThanToken */) {
+<<<<<<< HEAD
                 return parseBracketedList(17 /* TypeParameters */, parseTypeParameter, 24 /* LessThanToken */, 26 /* GreaterThanToken */);
+=======
+                return parseBracketedList(15 /* TypeParameters */, parseTypeParameter, 24 /* LessThanToken */, 25 /* GreaterThanToken */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
         }
         function parseParameterType() {
@@ -8614,7 +10340,11 @@ var ts;
             }
         }
         function parseParameter() {
+<<<<<<< HEAD
             var node = createNode(132 /* Parameter */);
+=======
+            var node = createNode(131 /* Parameter */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.decorators = parseDecorators();
             setModifiers(node, parseModifiers());
             node.dotDotDotToken = parseOptionalToken(21 /* DotDotDotToken */);
@@ -8685,7 +10415,11 @@ var ts;
                 var savedGeneratorParameterContext = inGeneratorParameterContext();
                 setYieldContext(yieldAndGeneratorParameterContext);
                 setGeneratorParameterContext(yieldAndGeneratorParameterContext);
+<<<<<<< HEAD
                 var result = parseDelimitedList(16 /* Parameters */, parseParameter);
+=======
+                var result = parseDelimitedList(14 /* Parameters */, parseParameter);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 setYieldContext(savedYieldContext);
                 setGeneratorParameterContext(savedGeneratorParameterContext);
                 if (!parseExpected(17 /* CloseParenToken */) && requireCompleteParameterList) {
@@ -8711,8 +10445,13 @@ var ts;
         }
         function parseSignatureMember(kind) {
             var node = createNode(kind);
+<<<<<<< HEAD
             if (kind === 142 /* ConstructSignature */) {
                 parseExpected(89 /* NewKeyword */);
+=======
+            if (kind === 141 /* ConstructSignature */) {
+                parseExpected(88 /* NewKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             fillSignature(52 /* ColonToken */, false, false, node);
             parseTypeMemberSemicolon();
@@ -8775,10 +10514,17 @@ var ts;
             return token === 52 /* ColonToken */ || token === 23 /* CommaToken */ || token === 19 /* CloseBracketToken */;
         }
         function parseIndexSignatureDeclaration(fullStart, decorators, modifiers) {
+<<<<<<< HEAD
             var node = createNode(143 /* IndexSignature */, fullStart);
             node.decorators = decorators;
             setModifiers(node, modifiers);
             node.parameters = parseBracketedList(16 /* Parameters */, parseParameter, 18 /* OpenBracketToken */, 19 /* CloseBracketToken */);
+=======
+            var node = createNode(142 /* IndexSignature */, fullStart);
+            node.decorators = decorators;
+            setModifiers(node, modifiers);
+            node.parameters = parseBracketedList(14 /* Parameters */, parseParameter, 18 /* OpenBracketToken */, 19 /* CloseBracketToken */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.type = parseTypeAnnotation();
             parseTypeMemberSemicolon();
             return finishNode(node);
@@ -8788,7 +10534,11 @@ var ts;
             var name = parsePropertyName();
             var questionToken = parseOptionalToken(51 /* QuestionToken */);
             if (token === 16 /* OpenParenToken */ || token === 24 /* LessThanToken */) {
+<<<<<<< HEAD
                 var method = createNode(136 /* MethodSignature */, fullStart);
+=======
+                var method = createNode(135 /* MethodSignature */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 method.name = name;
                 method.questionToken = questionToken;
                 // Method signatues don't exist in expression contexts.  So they have neither
@@ -8798,7 +10548,11 @@ var ts;
                 return finishNode(method);
             }
             else {
+<<<<<<< HEAD
                 var property = createNode(134 /* PropertySignature */, fullStart);
+=======
+                var property = createNode(133 /* PropertySignature */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 property.name = name;
                 property.questionToken = questionToken;
                 property.type = parseTypeAnnotation();
@@ -8840,7 +10594,11 @@ var ts;
             switch (token) {
                 case 16 /* OpenParenToken */:
                 case 24 /* LessThanToken */:
+<<<<<<< HEAD
                     return parseSignatureMember(141 /* CallSignature */);
+=======
+                    return parseSignatureMember(140 /* CallSignature */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 case 18 /* OpenBracketToken */:
                     // Indexer or computed property
                     return isIndexSignature()
@@ -8848,7 +10606,11 @@ var ts;
                         : parsePropertyOrMethodSignature();
                 case 89 /* NewKeyword */:
                     if (lookAhead(isStartOfConstructSignature)) {
+<<<<<<< HEAD
                         return parseSignatureMember(142 /* ConstructSignature */);
+=======
+                        return parseSignatureMember(141 /* ConstructSignature */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     }
                 // fall through.
                 case 8 /* StringLiteral */:
@@ -8885,14 +10647,22 @@ var ts;
             return token === 16 /* OpenParenToken */ || token === 24 /* LessThanToken */;
         }
         function parseTypeLiteral() {
+<<<<<<< HEAD
             var node = createNode(149 /* TypeLiteral */);
+=======
+            var node = createNode(148 /* TypeLiteral */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.members = parseObjectTypeMembers();
             return finishNode(node);
         }
         function parseObjectTypeMembers() {
             var members;
             if (parseExpected(14 /* OpenBraceToken */)) {
+<<<<<<< HEAD
                 members = parseList(4 /* TypeMembers */, parseTypeMember);
+=======
+                members = parseList(4 /* TypeMembers */, false, parseTypeMember);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 parseExpected(15 /* CloseBraceToken */);
             }
             else {
@@ -8901,12 +10671,21 @@ var ts;
             return members;
         }
         function parseTupleType() {
+<<<<<<< HEAD
             var node = createNode(151 /* TupleType */);
             node.elementTypes = parseBracketedList(19 /* TupleElementTypes */, parseType, 18 /* OpenBracketToken */, 19 /* CloseBracketToken */);
             return finishNode(node);
         }
         function parseParenthesizedType() {
             var node = createNode(153 /* ParenthesizedType */);
+=======
+            var node = createNode(150 /* TupleType */);
+            node.elementTypes = parseBracketedList(17 /* TupleElementTypes */, parseType, 18 /* OpenBracketToken */, 19 /* CloseBracketToken */);
+            return finishNode(node);
+        }
+        function parseParenthesizedType() {
+            var node = createNode(152 /* ParenthesizedType */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(16 /* OpenParenToken */);
             node.type = parseType();
             parseExpected(17 /* CloseParenToken */);
@@ -8914,8 +10693,13 @@ var ts;
         }
         function parseFunctionOrConstructorType(kind) {
             var node = createNode(kind);
+<<<<<<< HEAD
             if (kind === 147 /* ConstructorType */) {
                 parseExpected(89 /* NewKeyword */);
+=======
+            if (kind === 146 /* ConstructorType */) {
+                parseExpected(88 /* NewKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             fillSignature(33 /* EqualsGreaterThanToken */, false, false, node);
             return finishNode(node);
@@ -8926,6 +10710,7 @@ var ts;
         }
         function parseNonArrayType() {
             switch (token) {
+<<<<<<< HEAD
                 case 113 /* AnyKeyword */:
                 case 124 /* StringKeyword */:
                 case 122 /* NumberKeyword */:
@@ -8935,6 +10720,17 @@ var ts;
                     var node = tryParse(parseKeywordAndNoDot);
                     return node || parseTypeReferenceOrTypePredicate();
                 case 100 /* VoidKeyword */:
+=======
+                case 112 /* AnyKeyword */:
+                case 123 /* StringKeyword */:
+                case 121 /* NumberKeyword */:
+                case 113 /* BooleanKeyword */:
+                case 124 /* SymbolKeyword */:
+                    // If these are followed by a dot, then parse these out as a dotted type reference instead.
+                    var node = tryParse(parseKeywordAndNoDot);
+                    return node || parseTypeReferenceOrTypePredicate();
+                case 99 /* VoidKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return parseTokenNode();
                 case 98 /* TypeOfKeyword */:
                     return parseTypeQuery();
@@ -8950,6 +10746,7 @@ var ts;
         }
         function isStartOfType() {
             switch (token) {
+<<<<<<< HEAD
                 case 113 /* AnyKeyword */:
                 case 124 /* StringKeyword */:
                 case 122 /* NumberKeyword */:
@@ -8957,6 +10754,15 @@ var ts;
                 case 125 /* SymbolKeyword */:
                 case 100 /* VoidKeyword */:
                 case 98 /* TypeOfKeyword */:
+=======
+                case 112 /* AnyKeyword */:
+                case 123 /* StringKeyword */:
+                case 121 /* NumberKeyword */:
+                case 113 /* BooleanKeyword */:
+                case 124 /* SymbolKeyword */:
+                case 99 /* VoidKeyword */:
+                case 97 /* TypeOfKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 case 14 /* OpenBraceToken */:
                 case 18 /* OpenBracketToken */:
                 case 24 /* LessThanToken */:
@@ -8978,7 +10784,11 @@ var ts;
             var type = parseNonArrayType();
             while (!scanner.hasPrecedingLineBreak() && parseOptional(18 /* OpenBracketToken */)) {
                 parseExpected(19 /* CloseBracketToken */);
+<<<<<<< HEAD
                 var node = createNode(150 /* ArrayType */, type.pos);
+=======
+                var node = createNode(149 /* ArrayType */, type.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 node.elementType = type;
                 type = finishNode(node);
             }
@@ -8993,7 +10803,11 @@ var ts;
                     types.push(parseArrayTypeOrHigher());
                 }
                 types.end = getNodeEnd();
+<<<<<<< HEAD
                 var node = createNode(152 /* UnionType */, type.pos);
+=======
+                var node = createNode(151 /* UnionType */, type.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 node.types = types;
                 type = finishNode(node);
             }
@@ -9048,10 +10862,17 @@ var ts;
         }
         function parseTypeWorker() {
             if (isStartOfFunctionType()) {
+<<<<<<< HEAD
                 return parseFunctionOrConstructorType(146 /* FunctionType */);
             }
             if (token === 89 /* NewKeyword */) {
                 return parseFunctionOrConstructorType(147 /* ConstructorType */);
+=======
+                return parseFunctionOrConstructorType(145 /* FunctionType */);
+            }
+            if (token === 88 /* NewKeyword */) {
+                return parseFunctionOrConstructorType(146 /* ConstructorType */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             return parseUnionTypeOrHigher();
         }
@@ -9243,7 +11064,11 @@ var ts;
             return !scanner.hasPrecedingLineBreak() && isIdentifier();
         }
         function parseYieldExpression() {
+<<<<<<< HEAD
             var node = createNode(176 /* YieldExpression */);
+=======
+            var node = createNode(175 /* YieldExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             // YieldExpression[In] :
             //      yield
             //      yield [no LineTerminator here] [Lexical goal InputElementRegExp]AssignmentExpression[?In, Yield]
@@ -9262,9 +11087,15 @@ var ts;
             }
         }
         function parseSimpleArrowFunctionExpression(identifier) {
+<<<<<<< HEAD
             ts.Debug.assert(token === 33 /* EqualsGreaterThanToken */, "parseSimpleArrowFunctionExpression should only have been called if we had a =>");
             var node = createNode(167 /* ArrowFunction */, identifier.pos);
             var parameter = createNode(132 /* Parameter */, identifier.pos);
+=======
+            ts.Debug.assert(token === 32 /* EqualsGreaterThanToken */, "parseSimpleArrowFunctionExpression should only have been called if we had a =>");
+            var node = createNode(166 /* ArrowFunction */, identifier.pos);
+            var parameter = createNode(131 /* Parameter */, identifier.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parameter.name = identifier;
             finishNode(parameter);
             node.parameters = [parameter];
@@ -9406,7 +11237,11 @@ var ts;
             return parseParenthesizedArrowFunctionExpressionHead(false);
         }
         function parseParenthesizedArrowFunctionExpressionHead(allowAmbiguity) {
+<<<<<<< HEAD
             var node = createNode(167 /* ArrowFunction */);
+=======
+            var node = createNode(166 /* ArrowFunction */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             // Arrow functions are never generators.
             //
             // If we're speculatively parsing a signature for a parenthesized arrow function, then
@@ -9438,8 +11273,13 @@ var ts;
                 return parseFunctionBlock(false, false);
             }
             if (token !== 22 /* SemicolonToken */ &&
+<<<<<<< HEAD
                 token !== 84 /* FunctionKeyword */ &&
                 token !== 70 /* ClassKeyword */ &&
+=======
+                token !== 83 /* FunctionKeyword */ &&
+                token !== 69 /* ClassKeyword */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
                 isStartOfStatement() &&
                 !isStartOfExpressionStatement()) {
                 // Check if we got a plain statement (i.e. no expression-statements, no function/class expressions/declarations)
@@ -9468,7 +11308,11 @@ var ts;
             }
             // Note: we explicitly 'allowIn' in the whenTrue part of the condition expression, and
             // we do not that for the 'whenFalse' part.
+<<<<<<< HEAD
             var node = createNode(174 /* ConditionalExpression */, leftOperand.pos);
+=======
+            var node = createNode(173 /* ConditionalExpression */, leftOperand.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.condition = leftOperand;
             node.questionToken = questionToken;
             node.whenTrue = doOutsideOfContext(disallowInAndDecoratorContext, parseAssignmentExpressionOrHigher);
@@ -9481,7 +11325,11 @@ var ts;
             return parseBinaryExpressionRest(precedence, leftOperand);
         }
         function isInOrOfKeyword(t) {
+<<<<<<< HEAD
             return t === 87 /* InKeyword */ || t === 128 /* OfKeyword */;
+=======
+            return t === 86 /* InKeyword */ || t === 127 /* OfKeyword */;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function parseBinaryExpressionRest(precedence, leftOperand) {
             while (true) {
@@ -9564,7 +11412,11 @@ var ts;
             return -1;
         }
         function makeBinaryExpression(left, operatorToken, right) {
+<<<<<<< HEAD
             var node = createNode(173 /* BinaryExpression */, left.pos);
+=======
+            var node = createNode(172 /* BinaryExpression */, left.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.left = left;
             node.operatorToken = operatorToken;
             node.right = right;
@@ -9577,26 +11429,42 @@ var ts;
             return finishNode(node);
         }
         function parsePrefixUnaryExpression() {
+<<<<<<< HEAD
             var node = createNode(171 /* PrefixUnaryExpression */);
+=======
+            var node = createNode(170 /* PrefixUnaryExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.operator = token;
             nextToken();
             node.operand = parseUnaryExpressionOrHigher();
             return finishNode(node);
         }
         function parseDeleteExpression() {
+<<<<<<< HEAD
             var node = createNode(168 /* DeleteExpression */);
+=======
+            var node = createNode(167 /* DeleteExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             nextToken();
             node.expression = parseUnaryExpressionOrHigher();
             return finishNode(node);
         }
         function parseTypeOfExpression() {
+<<<<<<< HEAD
             var node = createNode(169 /* TypeOfExpression */);
+=======
+            var node = createNode(168 /* TypeOfExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             nextToken();
             node.expression = parseUnaryExpressionOrHigher();
             return finishNode(node);
         }
         function parseVoidExpression() {
+<<<<<<< HEAD
             var node = createNode(170 /* VoidExpression */);
+=======
+            var node = createNode(169 /* VoidExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             nextToken();
             node.expression = parseUnaryExpressionOrHigher();
             return finishNode(node);
@@ -9631,8 +11499,13 @@ var ts;
         function parsePostfixExpressionOrHigher() {
             var expression = parseLeftHandSideExpressionOrHigher();
             ts.Debug.assert(ts.isLeftHandSideExpression(expression));
+<<<<<<< HEAD
             if ((token === 39 /* PlusPlusToken */ || token === 40 /* MinusMinusToken */) && !scanner.hasPrecedingLineBreak()) {
                 var node = createNode(172 /* PostfixUnaryExpression */, expression.pos);
+=======
+            if ((token === 38 /* PlusPlusToken */ || token === 39 /* MinusMinusToken */) && !scanner.hasPrecedingLineBreak()) {
+                var node = createNode(171 /* PostfixUnaryExpression */, expression.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 node.operand = expression;
                 node.operator = token;
                 nextToken();
@@ -9736,7 +11609,11 @@ var ts;
             }
             // If we have seen "super" it must be followed by '(' or '.'.
             // If it wasn't then just try to parse out a '.' and report an error.
+<<<<<<< HEAD
             var node = createNode(159 /* PropertyAccessExpression */, expression.pos);
+=======
+            var node = createNode(158 /* PropertyAccessExpression */, expression.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.expression = expression;
             node.dotToken = parseExpectedToken(20 /* DotToken */, false, ts.Diagnostics.super_must_be_followed_by_an_argument_list_or_member_access);
             node.name = parseRightSideOfDot(true);
@@ -9867,7 +11744,11 @@ var ts;
             return finishNode(node);
         }
         function parseTypeAssertion() {
+<<<<<<< HEAD
             var node = createNode(164 /* TypeAssertionExpression */);
+=======
+            var node = createNode(163 /* TypeAssertionExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(24 /* LessThanToken */);
             node.type = parseType();
             parseExpected(26 /* GreaterThanToken */);
@@ -9878,7 +11759,11 @@ var ts;
             while (true) {
                 var dotToken = parseOptionalToken(20 /* DotToken */);
                 if (dotToken) {
+<<<<<<< HEAD
                     var propertyAccess = createNode(159 /* PropertyAccessExpression */, expression.pos);
+=======
+                    var propertyAccess = createNode(158 /* PropertyAccessExpression */, expression.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     propertyAccess.expression = expression;
                     propertyAccess.dotToken = dotToken;
                     propertyAccess.name = parseRightSideOfDot(true);
@@ -9887,7 +11772,11 @@ var ts;
                 }
                 // when in the [Decorator] context, we do not parse ElementAccess as it could be part of a ComputedPropertyName                
                 if (!inDecoratorContext() && parseOptional(18 /* OpenBracketToken */)) {
+<<<<<<< HEAD
                     var indexedAccess = createNode(160 /* ElementAccessExpression */, expression.pos);
+=======
+                    var indexedAccess = createNode(159 /* ElementAccessExpression */, expression.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     indexedAccess.expression = expression;
                     // It's not uncommon for a user to write: "new Type[]".
                     // Check for that common pattern and report a better error message.
@@ -9903,7 +11792,11 @@ var ts;
                     continue;
                 }
                 if (token === 10 /* NoSubstitutionTemplateLiteral */ || token === 11 /* TemplateHead */) {
+<<<<<<< HEAD
                     var tagExpression = createNode(163 /* TaggedTemplateExpression */, expression.pos);
+=======
+                    var tagExpression = createNode(162 /* TaggedTemplateExpression */, expression.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     tagExpression.tag = expression;
                     tagExpression.template = token === 10 /* NoSubstitutionTemplateLiteral */
                         ? parseLiteralNode()
@@ -9926,7 +11819,11 @@ var ts;
                     if (!typeArguments) {
                         return expression;
                     }
+<<<<<<< HEAD
                     var callExpr = createNode(161 /* CallExpression */, expression.pos);
+=======
+                    var callExpr = createNode(160 /* CallExpression */, expression.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     callExpr.expression = expression;
                     callExpr.typeArguments = typeArguments;
                     callExpr.arguments = parseArgumentList();
@@ -9934,7 +11831,11 @@ var ts;
                     continue;
                 }
                 else if (token === 16 /* OpenParenToken */) {
+<<<<<<< HEAD
                     var callExpr = createNode(161 /* CallExpression */, expression.pos);
+=======
+                    var callExpr = createNode(160 /* CallExpression */, expression.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     callExpr.expression = expression;
                     callExpr.arguments = parseArgumentList();
                     expression = finishNode(callExpr);
@@ -9953,8 +11854,13 @@ var ts;
             if (!parseOptional(24 /* LessThanToken */)) {
                 return undefined;
             }
+<<<<<<< HEAD
             var typeArguments = parseDelimitedList(18 /* TypeArguments */, parseType);
             if (!parseExpected(26 /* GreaterThanToken */)) {
+=======
+            var typeArguments = parseDelimitedList(16 /* TypeArguments */, parseType);
+            if (!parseExpected(25 /* GreaterThanToken */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // If it doesn't have the closing >  then it's definitely not an type argument list.
                 return undefined;
             }
@@ -10036,41 +11942,69 @@ var ts;
             return parseIdentifier(ts.Diagnostics.Expression_expected);
         }
         function parseParenthesizedExpression() {
+<<<<<<< HEAD
             var node = createNode(165 /* ParenthesizedExpression */);
+=======
+            var node = createNode(164 /* ParenthesizedExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(16 /* OpenParenToken */);
             node.expression = allowInAnd(parseExpression);
             parseExpected(17 /* CloseParenToken */);
             return finishNode(node);
         }
         function parseSpreadElement() {
+<<<<<<< HEAD
             var node = createNode(177 /* SpreadElementExpression */);
+=======
+            var node = createNode(176 /* SpreadElementExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(21 /* DotDotDotToken */);
             node.expression = parseAssignmentExpressionOrHigher();
             return finishNode(node);
         }
         function parseArgumentOrArrayLiteralElement() {
             return token === 21 /* DotDotDotToken */ ? parseSpreadElement() :
+<<<<<<< HEAD
                 token === 23 /* CommaToken */ ? createNode(179 /* OmittedExpression */) :
+=======
+                token === 23 /* CommaToken */ ? createNode(178 /* OmittedExpression */) :
+>>>>>>> Updated compiler to emitDependencyFile branch
                     parseAssignmentExpressionOrHigher();
         }
         function parseArgumentExpression() {
             return doOutsideOfContext(disallowInAndDecoratorContext, parseArgumentOrArrayLiteralElement);
         }
         function parseArrayLiteralExpression() {
+<<<<<<< HEAD
             var node = createNode(157 /* ArrayLiteralExpression */);
             parseExpected(18 /* OpenBracketToken */);
             if (scanner.hasPrecedingLineBreak())
                 node.flags |= 512 /* MultiLine */;
             node.elements = parseDelimitedList(15 /* ArrayLiteralMembers */, parseArgumentOrArrayLiteralElement);
+=======
+            var node = createNode(156 /* ArrayLiteralExpression */);
+            parseExpected(18 /* OpenBracketToken */);
+            if (scanner.hasPrecedingLineBreak())
+                node.flags |= 512 /* MultiLine */;
+            node.elements = parseDelimitedList(13 /* ArrayLiteralMembers */, parseArgumentOrArrayLiteralElement);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(19 /* CloseBracketToken */);
             return finishNode(node);
         }
         function tryParseAccessorDeclaration(fullStart, decorators, modifiers) {
+<<<<<<< HEAD
             if (parseContextualModifier(117 /* GetKeyword */)) {
                 return parseAccessorDeclaration(139 /* GetAccessor */, fullStart, decorators, modifiers);
             }
             else if (parseContextualModifier(123 /* SetKeyword */)) {
                 return parseAccessorDeclaration(140 /* SetAccessor */, fullStart, decorators, modifiers);
+=======
+            if (parseContextualModifier(116 /* GetKeyword */)) {
+                return parseAccessorDeclaration(138 /* GetAccessor */, fullStart, decorators, modifiers);
+            }
+            else if (parseContextualModifier(122 /* SetKeyword */)) {
+                return parseAccessorDeclaration(139 /* SetAccessor */, fullStart, decorators, modifiers);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             return undefined;
         }
@@ -10093,13 +12027,21 @@ var ts;
             }
             // Parse to check if it is short-hand property assignment or normal property assignment
             if ((token === 23 /* CommaToken */ || token === 15 /* CloseBraceToken */) && tokenIsIdentifier) {
+<<<<<<< HEAD
                 var shorthandDeclaration = createNode(238 /* ShorthandPropertyAssignment */, fullStart);
+=======
+                var shorthandDeclaration = createNode(228 /* ShorthandPropertyAssignment */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 shorthandDeclaration.name = propertyName;
                 shorthandDeclaration.questionToken = questionToken;
                 return finishNode(shorthandDeclaration);
             }
             else {
+<<<<<<< HEAD
                 var propertyAssignment = createNode(237 /* PropertyAssignment */, fullStart);
+=======
+                var propertyAssignment = createNode(227 /* PropertyAssignment */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 propertyAssignment.name = propertyName;
                 propertyAssignment.questionToken = questionToken;
                 parseExpected(52 /* ColonToken */);
@@ -10108,7 +12050,11 @@ var ts;
             }
         }
         function parseObjectLiteralExpression() {
+<<<<<<< HEAD
             var node = createNode(158 /* ObjectLiteralExpression */);
+=======
+            var node = createNode(157 /* ObjectLiteralExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(14 /* OpenBraceToken */);
             if (scanner.hasPrecedingLineBreak()) {
                 node.flags |= 512 /* MultiLine */;
@@ -10126,9 +12072,15 @@ var ts;
             if (saveDecoratorContext) {
                 setDecoratorContext(false);
             }
+<<<<<<< HEAD
             var node = createNode(166 /* FunctionExpression */);
             parseExpected(84 /* FunctionKeyword */);
             node.asteriskToken = parseOptionalToken(36 /* AsteriskToken */);
+=======
+            var node = createNode(165 /* FunctionExpression */);
+            parseExpected(83 /* FunctionKeyword */);
+            node.asteriskToken = parseOptionalToken(35 /* AsteriskToken */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.name = node.asteriskToken ? doInYieldContext(parseOptionalIdentifier) : parseOptionalIdentifier();
             fillSignature(52 /* ColonToken */, !!node.asteriskToken, false, node);
             node.body = parseFunctionBlock(!!node.asteriskToken, false);
@@ -10141,8 +12093,13 @@ var ts;
             return isIdentifier() ? parseIdentifier() : undefined;
         }
         function parseNewExpression() {
+<<<<<<< HEAD
             var node = createNode(162 /* NewExpression */);
             parseExpected(89 /* NewKeyword */);
+=======
+            var node = createNode(161 /* NewExpression */);
+            parseExpected(88 /* NewKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.expression = parseMemberExpressionOrHigher();
             node.typeArguments = tryParse(parseTypeArgumentsInExpression);
             if (node.typeArguments || token === 16 /* OpenParenToken */) {
@@ -10151,10 +12108,17 @@ var ts;
             return finishNode(node);
         }
         // STATEMENTS
+<<<<<<< HEAD
         function parseBlock(ignoreMissingOpenBrace, diagnosticMessage) {
             var node = createNode(184 /* Block */);
             if (parseExpected(14 /* OpenBraceToken */, diagnosticMessage) || ignoreMissingOpenBrace) {
                 node.statements = parseList(1 /* BlockStatements */, parseStatement);
+=======
+        function parseBlock(ignoreMissingOpenBrace, checkForStrictMode, diagnosticMessage) {
+            var node = createNode(182 /* Block */);
+            if (parseExpected(14 /* OpenBraceToken */, diagnosticMessage) || ignoreMissingOpenBrace) {
+                node.statements = parseList(1 /* BlockStatements */, checkForStrictMode, parseStatement);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 parseExpected(15 /* CloseBraceToken */);
             }
             else {
@@ -10179,13 +12143,22 @@ var ts;
             return block;
         }
         function parseEmptyStatement() {
+<<<<<<< HEAD
             var node = createNode(186 /* EmptyStatement */);
+=======
+            var node = createNode(184 /* EmptyStatement */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(22 /* SemicolonToken */);
             return finishNode(node);
         }
         function parseIfStatement() {
+<<<<<<< HEAD
             var node = createNode(188 /* IfStatement */);
             parseExpected(85 /* IfKeyword */);
+=======
+            var node = createNode(186 /* IfStatement */);
+            parseExpected(84 /* IfKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(16 /* OpenParenToken */);
             node.expression = allowInAnd(parseExpression);
             parseExpected(17 /* CloseParenToken */);
@@ -10194,8 +12167,13 @@ var ts;
             return finishNode(node);
         }
         function parseDoStatement() {
+<<<<<<< HEAD
             var node = createNode(189 /* DoStatement */);
             parseExpected(76 /* DoKeyword */);
+=======
+            var node = createNode(187 /* DoStatement */);
+            parseExpected(75 /* DoKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.statement = parseStatement();
             parseExpected(101 /* WhileKeyword */);
             parseExpected(16 /* OpenParenToken */);
@@ -10209,8 +12187,13 @@ var ts;
             return finishNode(node);
         }
         function parseWhileStatement() {
+<<<<<<< HEAD
             var node = createNode(190 /* WhileStatement */);
             parseExpected(101 /* WhileKeyword */);
+=======
+            var node = createNode(188 /* WhileStatement */);
+            parseExpected(100 /* WhileKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(16 /* OpenParenToken */);
             node.expression = allowInAnd(parseExpression);
             parseExpected(17 /* CloseParenToken */);
@@ -10231,22 +12214,36 @@ var ts;
                 }
             }
             var forOrForInOrForOfStatement;
+<<<<<<< HEAD
             if (parseOptional(87 /* InKeyword */)) {
                 var forInStatement = createNode(192 /* ForInStatement */, pos);
+=======
+            if (parseOptional(86 /* InKeyword */)) {
+                var forInStatement = createNode(190 /* ForInStatement */, pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 forInStatement.initializer = initializer;
                 forInStatement.expression = allowInAnd(parseExpression);
                 parseExpected(17 /* CloseParenToken */);
                 forOrForInOrForOfStatement = forInStatement;
             }
+<<<<<<< HEAD
             else if (parseOptional(128 /* OfKeyword */)) {
                 var forOfStatement = createNode(193 /* ForOfStatement */, pos);
+=======
+            else if (parseOptional(127 /* OfKeyword */)) {
+                var forOfStatement = createNode(191 /* ForOfStatement */, pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 forOfStatement.initializer = initializer;
                 forOfStatement.expression = allowInAnd(parseAssignmentExpressionOrHigher);
                 parseExpected(17 /* CloseParenToken */);
                 forOrForInOrForOfStatement = forOfStatement;
             }
             else {
+<<<<<<< HEAD
                 var forStatement = createNode(191 /* ForStatement */, pos);
+=======
+                var forStatement = createNode(189 /* ForStatement */, pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 forStatement.initializer = initializer;
                 parseExpected(22 /* SemicolonToken */);
                 if (token !== 22 /* SemicolonToken */ && token !== 17 /* CloseParenToken */) {
@@ -10264,7 +12261,11 @@ var ts;
         }
         function parseBreakOrContinueStatement(kind) {
             var node = createNode(kind);
+<<<<<<< HEAD
             parseExpected(kind === 195 /* BreakStatement */ ? 67 /* BreakKeyword */ : 72 /* ContinueKeyword */);
+=======
+            parseExpected(kind === 193 /* BreakStatement */ ? 66 /* BreakKeyword */ : 71 /* ContinueKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (!canParseSemicolon()) {
                 node.label = parseIdentifier();
             }
@@ -10272,8 +12273,13 @@ var ts;
             return finishNode(node);
         }
         function parseReturnStatement() {
+<<<<<<< HEAD
             var node = createNode(196 /* ReturnStatement */);
             parseExpected(91 /* ReturnKeyword */);
+=======
+            var node = createNode(194 /* ReturnStatement */);
+            parseExpected(90 /* ReturnKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (!canParseSemicolon()) {
                 node.expression = allowInAnd(parseExpression);
             }
@@ -10281,8 +12287,13 @@ var ts;
             return finishNode(node);
         }
         function parseWithStatement() {
+<<<<<<< HEAD
             var node = createNode(197 /* WithStatement */);
             parseExpected(102 /* WithKeyword */);
+=======
+            var node = createNode(195 /* WithStatement */);
+            parseExpected(101 /* WithKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(16 /* OpenParenToken */);
             node.expression = allowInAnd(parseExpression);
             parseExpected(17 /* CloseParenToken */);
@@ -10290,6 +12301,7 @@ var ts;
             return finishNode(node);
         }
         function parseCaseClause() {
+<<<<<<< HEAD
             var node = createNode(233 /* CaseClause */);
             parseExpected(68 /* CaseKeyword */);
             node.expression = allowInAnd(parseExpression);
@@ -10302,12 +12314,27 @@ var ts;
             parseExpected(74 /* DefaultKeyword */);
             parseExpected(52 /* ColonToken */);
             node.statements = parseList(3 /* SwitchClauseStatements */, parseStatement);
+=======
+            var node = createNode(223 /* CaseClause */);
+            parseExpected(67 /* CaseKeyword */);
+            node.expression = allowInAnd(parseExpression);
+            parseExpected(51 /* ColonToken */);
+            node.statements = parseList(3 /* SwitchClauseStatements */, false, parseStatement);
+            return finishNode(node);
+        }
+        function parseDefaultClause() {
+            var node = createNode(224 /* DefaultClause */);
+            parseExpected(73 /* DefaultKeyword */);
+            parseExpected(51 /* ColonToken */);
+            node.statements = parseList(3 /* SwitchClauseStatements */, false, parseStatement);
+>>>>>>> Updated compiler to emitDependencyFile branch
             return finishNode(node);
         }
         function parseCaseOrDefaultClause() {
             return token === 68 /* CaseKeyword */ ? parseCaseClause() : parseDefaultClause();
         }
         function parseSwitchStatement() {
+<<<<<<< HEAD
             var node = createNode(198 /* SwitchStatement */);
             parseExpected(93 /* SwitchKeyword */);
             parseExpected(16 /* OpenParenToken */);
@@ -10316,6 +12343,16 @@ var ts;
             var caseBlock = createNode(212 /* CaseBlock */, scanner.getStartPos());
             parseExpected(14 /* OpenBraceToken */);
             caseBlock.clauses = parseList(2 /* SwitchClauses */, parseCaseOrDefaultClause);
+=======
+            var node = createNode(196 /* SwitchStatement */);
+            parseExpected(92 /* SwitchKeyword */);
+            parseExpected(16 /* OpenParenToken */);
+            node.expression = allowInAnd(parseExpression);
+            parseExpected(17 /* CloseParenToken */);
+            var caseBlock = createNode(210 /* CaseBlock */, scanner.getStartPos());
+            parseExpected(14 /* OpenBraceToken */);
+            caseBlock.clauses = parseList(2 /* SwitchClauses */, false, parseCaseOrDefaultClause);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(15 /* CloseBraceToken */);
             node.caseBlock = finishNode(caseBlock);
             return finishNode(node);
@@ -10328,18 +12365,30 @@ var ts;
             // directly as that might consume an expression on the following line.
             // We just return 'undefined' in that case.  The actual error will be reported in the
             // grammar walker.
+<<<<<<< HEAD
             var node = createNode(200 /* ThrowStatement */);
             parseExpected(95 /* ThrowKeyword */);
+=======
+            var node = createNode(198 /* ThrowStatement */);
+            parseExpected(94 /* ThrowKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.expression = scanner.hasPrecedingLineBreak() ? undefined : allowInAnd(parseExpression);
             parseSemicolon();
             return finishNode(node);
         }
         // TODO: Review for error recovery
         function parseTryStatement() {
+<<<<<<< HEAD
             var node = createNode(201 /* TryStatement */);
             parseExpected(97 /* TryKeyword */);
             node.tryBlock = parseBlock(false);
             node.catchClause = token === 69 /* CatchKeyword */ ? parseCatchClause() : undefined;
+=======
+            var node = createNode(199 /* TryStatement */);
+            parseExpected(96 /* TryKeyword */);
+            node.tryBlock = parseBlock(false, false);
+            node.catchClause = token === 68 /* CatchKeyword */ ? parseCatchClause() : undefined;
+>>>>>>> Updated compiler to emitDependencyFile branch
             // If we don't have a catch clause, then we must have a finally clause.  Try to parse
             // one out no matter what.
             if (!node.catchClause || token === 82 /* FinallyKeyword */) {
@@ -10349,8 +12398,13 @@ var ts;
             return finishNode(node);
         }
         function parseCatchClause() {
+<<<<<<< HEAD
             var result = createNode(236 /* CatchClause */);
             parseExpected(69 /* CatchKeyword */);
+=======
+            var result = createNode(226 /* CatchClause */);
+            parseExpected(68 /* CatchKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (parseExpected(16 /* OpenParenToken */)) {
                 result.variableDeclaration = parseVariableDeclaration();
             }
@@ -10359,8 +12413,13 @@ var ts;
             return finishNode(result);
         }
         function parseDebuggerStatement() {
+<<<<<<< HEAD
             var node = createNode(202 /* DebuggerStatement */);
             parseExpected(73 /* DebuggerKeyword */);
+=======
+            var node = createNode(200 /* DebuggerStatement */);
+            parseExpected(72 /* DebuggerKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseSemicolon();
             return finishNode(node);
         }
@@ -10370,26 +12429,40 @@ var ts;
             // a colon.
             var fullStart = scanner.getStartPos();
             var expression = allowInAnd(parseExpression);
+<<<<<<< HEAD
             if (expression.kind === 66 /* Identifier */ && parseOptional(52 /* ColonToken */)) {
                 var labeledStatement = createNode(199 /* LabeledStatement */, fullStart);
+=======
+            if (expression.kind === 65 /* Identifier */ && parseOptional(51 /* ColonToken */)) {
+                var labeledStatement = createNode(197 /* LabeledStatement */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 labeledStatement.label = expression;
                 labeledStatement.statement = parseStatement();
                 return finishNode(labeledStatement);
             }
             else {
+<<<<<<< HEAD
                 var expressionStatement = createNode(187 /* ExpressionStatement */, fullStart);
+=======
+                var expressionStatement = createNode(185 /* ExpressionStatement */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 expressionStatement.expression = expression;
                 parseSemicolon();
                 return finishNode(expressionStatement);
             }
         }
         function isIdentifierOrKeyword() {
+<<<<<<< HEAD
             return token >= 66 /* Identifier */;
+=======
+            return token >= 65 /* Identifier */;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function nextTokenIsIdentifierOrKeywordOnSameLine() {
             nextToken();
             return isIdentifierOrKeyword() && !scanner.hasPrecedingLineBreak();
         }
+<<<<<<< HEAD
         function nextTokenIsIdentifierOrKeywordOrNumberOnSameLine() {
             nextToken();
             return (isIdentifierOrKeyword() || token === 7 /* NumericLiteral */) && !scanner.hasPrecedingLineBreak();
@@ -10403,6 +12476,17 @@ var ts;
                     case 84 /* FunctionKeyword */:
                     case 70 /* ClassKeyword */:
                     case 78 /* EnumKeyword */:
+=======
+        function isDeclaration() {
+            while (true) {
+                switch (token) {
+                    case 98 /* VarKeyword */:
+                    case 104 /* LetKeyword */:
+                    case 70 /* ConstKeyword */:
+                    case 83 /* FunctionKeyword */:
+                    case 69 /* ClassKeyword */:
+                    case 77 /* EnumKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                     // 'declare', 'module', 'namespace', 'interface'* and 'type' are all legal JavaScript identifiers;
                     // however, an identifier cannot be followed by another identifier on the same line. This is what we
@@ -10425,6 +12509,7 @@ var ts;
                     //   I {}
                     //
                     // could be legal, it would add complexity for very little gain.
+<<<<<<< HEAD
                     case 104 /* InterfaceKeyword */:
                     case 126 /* TypeKeyword */:
                         return nextTokenIsIdentifierOnSameLine();
@@ -10432,12 +12517,22 @@ var ts;
                     case 120 /* NamespaceKeyword */:
                         return nextTokenIsIdentifierOrStringLiteralOnSameLine();
                     case 116 /* DeclareKeyword */:
+=======
+                    case 103 /* InterfaceKeyword */:
+                    case 125 /* TypeKeyword */:
+                        return nextTokenIsIdentifierOnSameLine();
+                    case 118 /* ModuleKeyword */:
+                    case 119 /* NamespaceKeyword */:
+                        return nextTokenIsIdentifierOrStringLiteralOnSameLine();
+                    case 115 /* DeclareKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         nextToken();
                         // ASI takes effect for this modifier.
                         if (scanner.hasPrecedingLineBreak()) {
                             return false;
                         }
                         continue;
+<<<<<<< HEAD
                     case 86 /* ImportKeyword */:
                         nextToken();
                         return token === 8 /* StringLiteral */ || token === 36 /* AsteriskToken */ ||
@@ -10453,6 +12548,23 @@ var ts;
                     case 107 /* PrivateKeyword */:
                     case 108 /* ProtectedKeyword */:
                     case 110 /* StaticKeyword */:
+=======
+                    case 85 /* ImportKeyword */:
+                        nextToken();
+                        return token === 8 /* StringLiteral */ || token === 35 /* AsteriskToken */ ||
+                            token === 14 /* OpenBraceToken */ || isIdentifierOrKeyword();
+                    case 78 /* ExportKeyword */:
+                        nextToken();
+                        if (token === 53 /* EqualsToken */ || token === 35 /* AsteriskToken */ ||
+                            token === 14 /* OpenBraceToken */ || token === 73 /* DefaultKeyword */) {
+                            return true;
+                        }
+                        continue;
+                    case 108 /* PublicKeyword */:
+                    case 106 /* PrivateKeyword */:
+                    case 107 /* ProtectedKeyword */:
+                    case 109 /* StaticKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         nextToken();
                         continue;
                     default:
@@ -10465,6 +12577,7 @@ var ts;
         }
         function isStartOfStatement() {
             switch (token) {
+<<<<<<< HEAD
                 case 53 /* AtToken */:
                 case 22 /* SemicolonToken */:
                 case 14 /* OpenBraceToken */:
@@ -10485,11 +12598,34 @@ var ts;
                 case 95 /* ThrowKeyword */:
                 case 97 /* TryKeyword */:
                 case 73 /* DebuggerKeyword */:
+=======
+                case 52 /* AtToken */:
+                case 22 /* SemicolonToken */:
+                case 14 /* OpenBraceToken */:
+                case 98 /* VarKeyword */:
+                case 104 /* LetKeyword */:
+                case 83 /* FunctionKeyword */:
+                case 69 /* ClassKeyword */:
+                case 77 /* EnumKeyword */:
+                case 84 /* IfKeyword */:
+                case 75 /* DoKeyword */:
+                case 100 /* WhileKeyword */:
+                case 82 /* ForKeyword */:
+                case 71 /* ContinueKeyword */:
+                case 66 /* BreakKeyword */:
+                case 90 /* ReturnKeyword */:
+                case 101 /* WithKeyword */:
+                case 92 /* SwitchKeyword */:
+                case 94 /* ThrowKeyword */:
+                case 96 /* TryKeyword */:
+                case 72 /* DebuggerKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // 'catch' and 'finally' do not actually indicate that the code is part of a statement,
                 // however, we say they are here so that we may gracefully parse them and error later.
                 case 69 /* CatchKeyword */:
                 case 82 /* FinallyKeyword */:
                     return true;
+<<<<<<< HEAD
                 case 71 /* ConstKeyword */:
                 case 79 /* ExportKeyword */:
                 case 86 /* ImportKeyword */:
@@ -10505,6 +12641,23 @@ var ts;
                 case 107 /* PrivateKeyword */:
                 case 108 /* ProtectedKeyword */:
                 case 110 /* StaticKeyword */:
+=======
+                case 70 /* ConstKeyword */:
+                case 78 /* ExportKeyword */:
+                case 85 /* ImportKeyword */:
+                    return isStartOfDeclaration();
+                case 115 /* DeclareKeyword */:
+                case 103 /* InterfaceKeyword */:
+                case 118 /* ModuleKeyword */:
+                case 119 /* NamespaceKeyword */:
+                case 125 /* TypeKeyword */:
+                    // When these don't start a declaration, they're an identifier in an expression statement
+                    return true;
+                case 108 /* PublicKeyword */:
+                case 106 /* PrivateKeyword */:
+                case 107 /* ProtectedKeyword */:
+                case 109 /* StaticKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // When these don't start a declaration, they may be the start of a class member if an identifier
                     // immediately follows. Otherwise they're an identifier in an expression statement.
                     return isStartOfDeclaration() || !lookAhead(nextTokenIsIdentifierOrKeywordOnSameLine);
@@ -10512,6 +12665,7 @@ var ts;
                     return isStartOfExpression();
             }
         }
+<<<<<<< HEAD
         function nextTokenIsIdentifierOrStartOfDestructuring() {
             nextToken();
             return isIdentifier() || token === 14 /* OpenBraceToken */ || token === 18 /* OpenBracketToken */;
@@ -10520,25 +12674,51 @@ var ts;
             // In ES6 'let' always starts a lexical declaration if followed by an identifier or { 
             // or [.
             return lookAhead(nextTokenIsIdentifierOrStartOfDestructuring);
+=======
+        function nextTokenIsIdentifierOrStartOfDestructuringOnTheSameLine() {
+            nextToken();
+            return !scanner.hasPrecedingLineBreak() &&
+                (isIdentifier() || token === 14 /* OpenBraceToken */ || token === 18 /* OpenBracketToken */);
+        }
+        function isLetDeclaration() {
+            // It is let declaration if in strict mode or next token is identifier\open bracket\open curly on same line.
+            // otherwise it needs to be treated like identifier
+            return inStrictModeContext() || lookAhead(nextTokenIsIdentifierOrStartOfDestructuringOnTheSameLine);
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function parseStatement() {
             switch (token) {
                 case 22 /* SemicolonToken */:
                     return parseEmptyStatement();
                 case 14 /* OpenBraceToken */:
+<<<<<<< HEAD
                     return parseBlock(false);
                 case 99 /* VarKeyword */:
                     return parseVariableStatement(scanner.getStartPos(), undefined, undefined);
                 case 105 /* LetKeyword */:
+=======
+                    return parseBlock(false, false);
+                case 98 /* VarKeyword */:
+                    return parseVariableStatement(scanner.getStartPos(), undefined, undefined);
+                case 104 /* LetKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (isLetDeclaration()) {
                         return parseVariableStatement(scanner.getStartPos(), undefined, undefined);
                     }
                     break;
+<<<<<<< HEAD
                 case 84 /* FunctionKeyword */:
+=======
+                case 83 /* FunctionKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return parseFunctionDeclaration(scanner.getStartPos(), undefined, undefined);
                 case 70 /* ClassKeyword */:
                     return parseClassDeclaration(scanner.getStartPos(), undefined, undefined);
+<<<<<<< HEAD
                 case 85 /* IfKeyword */:
+=======
+                case 84 /* IfKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return parseIfStatement();
                 case 76 /* DoKeyword */:
                     return parseDoStatement();
@@ -10546,11 +12726,19 @@ var ts;
                     return parseWhileStatement();
                 case 83 /* ForKeyword */:
                     return parseForOrForInOrForOfStatement();
+<<<<<<< HEAD
                 case 72 /* ContinueKeyword */:
                     return parseBreakOrContinueStatement(194 /* ContinueStatement */);
                 case 67 /* BreakKeyword */:
                     return parseBreakOrContinueStatement(195 /* BreakStatement */);
                 case 91 /* ReturnKeyword */:
+=======
+                case 71 /* ContinueKeyword */:
+                    return parseBreakOrContinueStatement(192 /* ContinueStatement */);
+                case 66 /* BreakKeyword */:
+                    return parseBreakOrContinueStatement(193 /* BreakStatement */);
+                case 90 /* ReturnKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return parseReturnStatement();
                 case 102 /* WithKeyword */:
                     return parseWithStatement();
@@ -10558,13 +12746,21 @@ var ts;
                     return parseSwitchStatement();
                 case 95 /* ThrowKeyword */:
                     return parseThrowStatement();
+<<<<<<< HEAD
                 case 97 /* TryKeyword */:
                 // Include 'catch' and 'finally' for error recovery.
                 case 69 /* CatchKeyword */:
                 case 82 /* FinallyKeyword */:
+=======
+                case 96 /* TryKeyword */:
+                // Include 'catch' and 'finally' for error recovery.
+                case 68 /* CatchKeyword */:
+                case 81 /* FinallyKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return parseTryStatement();
                 case 73 /* DebuggerKeyword */:
                     return parseDebuggerStatement();
+<<<<<<< HEAD
                 case 53 /* AtToken */:
                     return parseDeclaration();
                 case 104 /* InterfaceKeyword */:
@@ -10580,6 +12776,23 @@ var ts;
                 case 108 /* ProtectedKeyword */:
                 case 109 /* PublicKeyword */:
                 case 110 /* StaticKeyword */:
+=======
+                case 52 /* AtToken */:
+                    return parseDeclaration();
+                case 103 /* InterfaceKeyword */:
+                case 125 /* TypeKeyword */:
+                case 118 /* ModuleKeyword */:
+                case 119 /* NamespaceKeyword */:
+                case 115 /* DeclareKeyword */:
+                case 70 /* ConstKeyword */:
+                case 77 /* EnumKeyword */:
+                case 78 /* ExportKeyword */:
+                case 85 /* ImportKeyword */:
+                case 106 /* PrivateKeyword */:
+                case 107 /* ProtectedKeyword */:
+                case 108 /* PublicKeyword */:
+                case 109 /* StaticKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (isStartOfDeclaration()) {
                         return parseDeclaration();
                     }
@@ -10592,6 +12805,7 @@ var ts;
             var decorators = parseDecorators();
             var modifiers = parseModifiers();
             switch (token) {
+<<<<<<< HEAD
                 case 99 /* VarKeyword */:
                 case 105 /* LetKeyword */:
                 case 71 /* ConstKeyword */:
@@ -10621,6 +12835,37 @@ var ts;
                         // We reached this point because we encountered decorators and/or modifiers and assumed a declaration
                         // would follow. For recovery and error reporting purposes, return an incomplete declaration.                        
                         var node = createMissingNode(223 /* MissingDeclaration */, true, ts.Diagnostics.Declaration_expected);
+=======
+                case 98 /* VarKeyword */:
+                case 104 /* LetKeyword */:
+                case 70 /* ConstKeyword */:
+                    return parseVariableStatement(fullStart, decorators, modifiers);
+                case 83 /* FunctionKeyword */:
+                    return parseFunctionDeclaration(fullStart, decorators, modifiers);
+                case 69 /* ClassKeyword */:
+                    return parseClassDeclaration(fullStart, decorators, modifiers);
+                case 103 /* InterfaceKeyword */:
+                    return parseInterfaceDeclaration(fullStart, decorators, modifiers);
+                case 125 /* TypeKeyword */:
+                    return parseTypeAliasDeclaration(fullStart, decorators, modifiers);
+                case 77 /* EnumKeyword */:
+                    return parseEnumDeclaration(fullStart, decorators, modifiers);
+                case 118 /* ModuleKeyword */:
+                case 119 /* NamespaceKeyword */:
+                    return parseModuleDeclaration(fullStart, decorators, modifiers);
+                case 85 /* ImportKeyword */:
+                    return parseImportDeclarationOrImportEqualsDeclaration(fullStart, decorators, modifiers);
+                case 78 /* ExportKeyword */:
+                    nextToken();
+                    return token === 73 /* DefaultKeyword */ || token === 53 /* EqualsToken */ ?
+                        parseExportAssignment(fullStart, decorators, modifiers) :
+                        parseExportDeclaration(fullStart, decorators, modifiers);
+                default:
+                    if (decorators) {
+                        // We reached this point because we encountered decorators and/or modifiers and assumed a declaration
+                        // would follow. For recovery and error reporting purposes, return an incomplete declaration.                        
+                        var node = createMissingNode(221 /* MissingDeclaration */, true, ts.Diagnostics.Declaration_expected);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         node.pos = fullStart;
                         node.decorators = decorators;
                         setModifiers(node, modifiers);
@@ -10642,16 +12887,26 @@ var ts;
         // DECLARATIONS
         function parseArrayBindingElement() {
             if (token === 23 /* CommaToken */) {
+<<<<<<< HEAD
                 return createNode(179 /* OmittedExpression */);
             }
             var node = createNode(156 /* BindingElement */);
+=======
+                return createNode(178 /* OmittedExpression */);
+            }
+            var node = createNode(155 /* BindingElement */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.dotDotDotToken = parseOptionalToken(21 /* DotDotDotToken */);
             node.name = parseIdentifierOrPattern();
             node.initializer = parseInitializer(false);
             return finishNode(node);
         }
         function parseObjectBindingElement() {
+<<<<<<< HEAD
             var node = createNode(156 /* BindingElement */);
+=======
+            var node = createNode(155 /* BindingElement */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             // TODO(andersh): Handle computed properties
             var tokenIsIdentifier = isIdentifier();
             var propertyName = parsePropertyName();
@@ -10667,14 +12922,22 @@ var ts;
             return finishNode(node);
         }
         function parseObjectBindingPattern() {
+<<<<<<< HEAD
             var node = createNode(154 /* ObjectBindingPattern */);
+=======
+            var node = createNode(153 /* ObjectBindingPattern */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(14 /* OpenBraceToken */);
             node.elements = parseDelimitedList(9 /* ObjectBindingElements */, parseObjectBindingElement);
             parseExpected(15 /* CloseBraceToken */);
             return finishNode(node);
         }
         function parseArrayBindingPattern() {
+<<<<<<< HEAD
             var node = createNode(155 /* ArrayBindingPattern */);
+=======
+            var node = createNode(154 /* ArrayBindingPattern */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(18 /* OpenBracketToken */);
             node.elements = parseDelimitedList(10 /* ArrayBindingElements */, parseArrayBindingElement);
             parseExpected(19 /* CloseBracketToken */);
@@ -10693,7 +12956,11 @@ var ts;
             return parseIdentifier();
         }
         function parseVariableDeclaration() {
+<<<<<<< HEAD
             var node = createNode(203 /* VariableDeclaration */);
+=======
+            var node = createNode(201 /* VariableDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.name = parseIdentifierOrPattern();
             node.type = parseTypeAnnotation();
             if (!isInOrOfKeyword(token)) {
@@ -10702,7 +12969,11 @@ var ts;
             return finishNode(node);
         }
         function parseVariableDeclarationList(inForStatementInitializer) {
+<<<<<<< HEAD
             var node = createNode(204 /* VariableDeclarationList */);
+=======
+            var node = createNode(202 /* VariableDeclarationList */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             switch (token) {
                 case 99 /* VarKeyword */:
                     break;
@@ -10725,7 +12996,11 @@ var ts;
             // So we need to look ahead to determine if 'of' should be treated as a keyword in
             // this context.
             // The checker will then give an error that there is an empty declaration list.
+<<<<<<< HEAD
             if (token === 128 /* OfKeyword */ && lookAhead(canFollowContextualOfKeyword)) {
+=======
+            if (token === 127 /* OfKeyword */ && lookAhead(canFollowContextualOfKeyword)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 node.declarations = createMissingList();
             }
             else {
@@ -10740,7 +13015,11 @@ var ts;
             return nextTokenIsIdentifier() && nextToken() === 17 /* CloseParenToken */;
         }
         function parseVariableStatement(fullStart, decorators, modifiers) {
+<<<<<<< HEAD
             var node = createNode(185 /* VariableStatement */, fullStart);
+=======
+            var node = createNode(183 /* VariableStatement */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.decorators = decorators;
             setModifiers(node, modifiers);
             node.declarationList = parseVariableDeclarationList(false);
@@ -10748,7 +13027,11 @@ var ts;
             return finishNode(node);
         }
         function parseFunctionDeclaration(fullStart, decorators, modifiers) {
+<<<<<<< HEAD
             var node = createNode(205 /* FunctionDeclaration */, fullStart);
+=======
+            var node = createNode(203 /* FunctionDeclaration */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.decorators = decorators;
             setModifiers(node, modifiers);
             parseExpected(84 /* FunctionKeyword */);
@@ -10759,7 +13042,11 @@ var ts;
             return finishNode(node);
         }
         function parseConstructorDeclaration(pos, decorators, modifiers) {
+<<<<<<< HEAD
             var node = createNode(138 /* Constructor */, pos);
+=======
+            var node = createNode(137 /* Constructor */, pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.decorators = decorators;
             setModifiers(node, modifiers);
             parseExpected(115 /* ConstructorKeyword */);
@@ -10768,7 +13055,11 @@ var ts;
             return finishNode(node);
         }
         function parseMethodDeclaration(fullStart, decorators, modifiers, asteriskToken, name, questionToken, diagnosticMessage) {
+<<<<<<< HEAD
             var method = createNode(137 /* MethodDeclaration */, fullStart);
+=======
+            var method = createNode(136 /* MethodDeclaration */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
             method.decorators = decorators;
             setModifiers(method, modifiers);
             method.asteriskToken = asteriskToken;
@@ -10779,7 +13070,11 @@ var ts;
             return finishNode(method);
         }
         function parsePropertyDeclaration(fullStart, decorators, modifiers, name, questionToken) {
+<<<<<<< HEAD
             var property = createNode(135 /* PropertyDeclaration */, fullStart);
+=======
+            var property = createNode(134 /* PropertyDeclaration */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
             property.decorators = decorators;
             setModifiers(property, modifiers);
             property.name = name;
@@ -10871,7 +13166,11 @@ var ts;
             // If we were able to get any potential identifier...
             if (idToken !== undefined) {
                 // If we have a non-keyword identifier, or if we have an accessor, then it's safe to parse.
+<<<<<<< HEAD
                 if (!ts.isKeyword(idToken) || idToken === 123 /* SetKeyword */ || idToken === 117 /* GetKeyword */) {
+=======
+                if (!ts.isKeyword(idToken) || idToken === 122 /* SetKeyword */ || idToken === 116 /* GetKeyword */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
                 }
                 // If it *is* a keyword, but not an accessor, check a little farther along
@@ -10905,7 +13204,11 @@ var ts;
                     decorators = [];
                     decorators.pos = scanner.getStartPos();
                 }
+<<<<<<< HEAD
                 var decorator = createNode(133 /* Decorator */, decoratorStart);
+=======
+                var decorator = createNode(132 /* Decorator */, decoratorStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 decorator.expression = doInDecoratorContext(parseLeftHandSideExpressionOrHigher);
                 decorators.push(finishNode(decorator));
             }
@@ -10938,7 +13241,11 @@ var ts;
         }
         function parseClassElement() {
             if (token === 22 /* SemicolonToken */) {
+<<<<<<< HEAD
                 var result = createNode(183 /* SemicolonClassElement */);
+=======
+                var result = createNode(181 /* SemicolonClassElement */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 nextToken();
                 return finishNode(result);
             }
@@ -10966,7 +13273,11 @@ var ts;
             }
             if (decorators || modifiers) {
                 // treat this as a property declaration with a missing name.
+<<<<<<< HEAD
                 var name_6 = createMissingNode(66 /* Identifier */, true, ts.Diagnostics.Declaration_expected);
+=======
+                var name_6 = createMissingNode(65 /* Identifier */, true, ts.Diagnostics.Declaration_expected);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return parsePropertyDeclaration(fullStart, decorators, modifiers, name_6, undefined);
             }
             // 'isClassMemberStart' should have hinted not to attempt parsing.
@@ -10976,10 +13287,17 @@ var ts;
             return parseClassDeclarationOrExpression(
             /*fullStart*/ scanner.getStartPos(), 
             /*decorators*/ undefined, 
+<<<<<<< HEAD
             /*modifiers*/ undefined, 178 /* ClassExpression */);
         }
         function parseClassDeclaration(fullStart, decorators, modifiers) {
             return parseClassDeclarationOrExpression(fullStart, decorators, modifiers, 206 /* ClassDeclaration */);
+=======
+            /*modifiers*/ undefined, 177 /* ClassExpression */);
+        }
+        function parseClassDeclaration(fullStart, decorators, modifiers) {
+            return parseClassDeclarationOrExpression(fullStart, decorators, modifiers, 204 /* ClassDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function parseClassDeclarationOrExpression(fullStart, decorators, modifiers, kind) {
             var node = createNode(kind, fullStart);
@@ -11015,11 +13333,19 @@ var ts;
             return undefined;
         }
         function parseHeritageClausesWorker() {
+<<<<<<< HEAD
             return parseList(20 /* HeritageClauses */, parseHeritageClause);
         }
         function parseHeritageClause() {
             if (token === 80 /* ExtendsKeyword */ || token === 103 /* ImplementsKeyword */) {
                 var node = createNode(235 /* HeritageClause */);
+=======
+            return parseList(18 /* HeritageClauses */, false, parseHeritageClause);
+        }
+        function parseHeritageClause() {
+            if (token === 79 /* ExtendsKeyword */ || token === 102 /* ImplementsKeyword */) {
+                var node = createNode(225 /* HeritageClause */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 node.token = token;
                 nextToken();
                 node.types = parseDelimitedList(7 /* HeritageClauseElement */, parseExpressionWithTypeArguments);
@@ -11028,10 +13354,17 @@ var ts;
             return undefined;
         }
         function parseExpressionWithTypeArguments() {
+<<<<<<< HEAD
             var node = createNode(180 /* ExpressionWithTypeArguments */);
             node.expression = parseLeftHandSideExpressionOrHigher();
             if (token === 24 /* LessThanToken */) {
                 node.typeArguments = parseBracketedList(18 /* TypeArguments */, parseType, 24 /* LessThanToken */, 26 /* GreaterThanToken */);
+=======
+            var node = createNode(179 /* ExpressionWithTypeArguments */);
+            node.expression = parseLeftHandSideExpressionOrHigher();
+            if (token === 24 /* LessThanToken */) {
+                node.typeArguments = parseBracketedList(16 /* TypeArguments */, parseType, 24 /* LessThanToken */, 25 /* GreaterThanToken */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             return finishNode(node);
         }
@@ -11039,10 +13372,17 @@ var ts;
             return token === 80 /* ExtendsKeyword */ || token === 103 /* ImplementsKeyword */;
         }
         function parseClassMembers() {
+<<<<<<< HEAD
             return parseList(5 /* ClassMembers */, parseClassElement);
         }
         function parseInterfaceDeclaration(fullStart, decorators, modifiers) {
             var node = createNode(207 /* InterfaceDeclaration */, fullStart);
+=======
+            return parseList(5 /* ClassMembers */, false, parseClassElement);
+        }
+        function parseInterfaceDeclaration(fullStart, decorators, modifiers) {
+            var node = createNode(205 /* InterfaceDeclaration */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.decorators = decorators;
             setModifiers(node, modifiers);
             parseExpected(104 /* InterfaceKeyword */);
@@ -11053,6 +13393,7 @@ var ts;
             return finishNode(node);
         }
         function parseTypeAliasDeclaration(fullStart, decorators, modifiers) {
+<<<<<<< HEAD
             var node = createNode(208 /* TypeAliasDeclaration */, fullStart);
             node.decorators = decorators;
             setModifiers(node, modifiers);
@@ -11060,6 +13401,15 @@ var ts;
             node.name = parseIdentifier();
             node.typeParameters = parseTypeParameters();
             parseExpected(54 /* EqualsToken */);
+=======
+            var node = createNode(206 /* TypeAliasDeclaration */, fullStart);
+            node.decorators = decorators;
+            setModifiers(node, modifiers);
+            parseExpected(125 /* TypeKeyword */);
+            node.name = parseIdentifier();
+            node.typeParameters = parseTypeParameters();
+            parseExpected(53 /* EqualsToken */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.type = parseType();
             parseSemicolon();
             return finishNode(node);
@@ -11069,13 +13419,21 @@ var ts;
         // ConstantEnumMemberSection, which starts at the beginning of an enum declaration
         // or any time an integer literal initializer is encountered.
         function parseEnumMember() {
+<<<<<<< HEAD
             var node = createNode(239 /* EnumMember */, scanner.getStartPos());
+=======
+            var node = createNode(229 /* EnumMember */, scanner.getStartPos());
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.name = parsePropertyName();
             node.initializer = allowInAnd(parseNonParameterInitializer);
             return finishNode(node);
         }
         function parseEnumDeclaration(fullStart, decorators, modifiers) {
+<<<<<<< HEAD
             var node = createNode(209 /* EnumDeclaration */, fullStart);
+=======
+            var node = createNode(207 /* EnumDeclaration */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.decorators = decorators;
             setModifiers(node, modifiers);
             parseExpected(78 /* EnumKeyword */);
@@ -11090,9 +13448,15 @@ var ts;
             return finishNode(node);
         }
         function parseModuleBlock() {
+<<<<<<< HEAD
             var node = createNode(211 /* ModuleBlock */, scanner.getStartPos());
             if (parseExpected(14 /* OpenBraceToken */)) {
                 node.statements = parseList(1 /* BlockStatements */, parseStatement);
+=======
+            var node = createNode(209 /* ModuleBlock */, scanner.getStartPos());
+            if (parseExpected(14 /* OpenBraceToken */)) {
+                node.statements = parseList(1 /* BlockStatements */, false, parseStatement);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 parseExpected(15 /* CloseBraceToken */);
             }
             else {
@@ -11101,7 +13465,11 @@ var ts;
             return finishNode(node);
         }
         function parseModuleOrNamespaceDeclaration(fullStart, decorators, modifiers, flags) {
+<<<<<<< HEAD
             var node = createNode(210 /* ModuleDeclaration */, fullStart);
+=======
+            var node = createNode(208 /* ModuleDeclaration */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.decorators = decorators;
             setModifiers(node, modifiers);
             node.flags |= flags;
@@ -11112,7 +13480,11 @@ var ts;
             return finishNode(node);
         }
         function parseAmbientExternalModuleDeclaration(fullStart, decorators, modifiers) {
+<<<<<<< HEAD
             var node = createNode(210 /* ModuleDeclaration */, fullStart);
+=======
+            var node = createNode(208 /* ModuleDeclaration */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.decorators = decorators;
             setModifiers(node, modifiers);
             node.name = parseLiteralNode(true);
@@ -11121,11 +13493,19 @@ var ts;
         }
         function parseModuleDeclaration(fullStart, decorators, modifiers) {
             var flags = modifiers ? modifiers.flags : 0;
+<<<<<<< HEAD
             if (parseOptional(120 /* NamespaceKeyword */)) {
                 flags |= 32768 /* Namespace */;
             }
             else {
                 parseExpected(119 /* ModuleKeyword */);
+=======
+            if (parseOptional(119 /* NamespaceKeyword */)) {
+                flags |= 32768 /* Namespace */;
+            }
+            else {
+                parseExpected(118 /* ModuleKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (token === 8 /* StringLiteral */) {
                     return parseAmbientExternalModuleDeclaration(fullStart, decorators, modifiers);
                 }
@@ -11133,7 +13513,11 @@ var ts;
             return parseModuleOrNamespaceDeclaration(fullStart, decorators, modifiers, flags);
         }
         function isExternalModuleReference() {
+<<<<<<< HEAD
             return token === 121 /* RequireKeyword */ &&
+=======
+            return token === 120 /* RequireKeyword */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
                 lookAhead(nextTokenIsOpenParen);
         }
         function nextTokenIsOpenParen() {
@@ -11145,7 +13529,11 @@ var ts;
         function nextTokenIsCommaOrFromKeyword() {
             nextToken();
             return token === 23 /* CommaToken */ ||
+<<<<<<< HEAD
                 token === 127 /* FromKeyword */;
+=======
+                token === 126 /* FromKeyword */;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function parseImportDeclarationOrImportEqualsDeclaration(fullStart, decorators, modifiers) {
             parseExpected(86 /* ImportKeyword */);
@@ -11153,11 +13541,19 @@ var ts;
             var identifier;
             if (isIdentifier()) {
                 identifier = parseIdentifier();
+<<<<<<< HEAD
                 if (token !== 23 /* CommaToken */ && token !== 127 /* FromKeyword */) {
                     // ImportEquals declaration of type:
                     // import x = require("mod"); or
                     // import x = M.x;
                     var importEqualsDeclaration = createNode(213 /* ImportEqualsDeclaration */, fullStart);
+=======
+                if (token !== 23 /* CommaToken */ && token !== 126 /* FromKeyword */) {
+                    // ImportEquals declaration of type:
+                    // import x = require("mod"); or
+                    // import x = M.x;
+                    var importEqualsDeclaration = createNode(211 /* ImportEqualsDeclaration */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     importEqualsDeclaration.decorators = decorators;
                     setModifiers(importEqualsDeclaration, modifiers);
                     importEqualsDeclaration.name = identifier;
@@ -11168,7 +13564,11 @@ var ts;
                 }
             }
             // Import statement
+<<<<<<< HEAD
             var importDeclaration = createNode(214 /* ImportDeclaration */, fullStart);
+=======
+            var importDeclaration = createNode(212 /* ImportDeclaration */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
             importDeclaration.decorators = decorators;
             setModifiers(importDeclaration, modifiers);
             // ImportDeclaration:
@@ -11178,7 +13578,11 @@ var ts;
                 token === 36 /* AsteriskToken */ ||
                 token === 14 /* OpenBraceToken */) {
                 importDeclaration.importClause = parseImportClause(identifier, afterImportPos);
+<<<<<<< HEAD
                 parseExpected(127 /* FromKeyword */);
+=======
+                parseExpected(126 /* FromKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             importDeclaration.moduleSpecifier = parseModuleSpecifier();
             parseSemicolon();
@@ -11191,7 +13595,11 @@ var ts;
             //  NamedImports
             //  ImportedDefaultBinding, NameSpaceImport
             //  ImportedDefaultBinding, NamedImports
+<<<<<<< HEAD
             var importClause = createNode(215 /* ImportClause */, fullStart);
+=======
+            var importClause = createNode(213 /* ImportClause */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (identifier) {
                 // ImportedDefaultBinding:
                 //  ImportedBinding
@@ -11201,7 +13609,11 @@ var ts;
             // parse namespace or named imports
             if (!importClause.name ||
                 parseOptional(23 /* CommaToken */)) {
+<<<<<<< HEAD
                 importClause.namedBindings = token === 36 /* AsteriskToken */ ? parseNamespaceImport() : parseNamedImportsOrExports(217 /* NamedImports */);
+=======
+                importClause.namedBindings = token === 35 /* AsteriskToken */ ? parseNamespaceImport() : parseNamedImportsOrExports(215 /* NamedImports */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             return finishNode(importClause);
         }
@@ -11211,8 +13623,13 @@ var ts;
                 : parseEntityName(false);
         }
         function parseExternalModuleReference() {
+<<<<<<< HEAD
             var node = createNode(224 /* ExternalModuleReference */);
             parseExpected(121 /* RequireKeyword */);
+=======
+            var node = createNode(222 /* ExternalModuleReference */);
+            parseExpected(120 /* RequireKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             parseExpected(16 /* OpenParenToken */);
             node.expression = parseModuleSpecifier();
             parseExpected(17 /* CloseParenToken */);
@@ -11233,9 +13650,15 @@ var ts;
         function parseNamespaceImport() {
             // NameSpaceImport:
             //  * as ImportedBinding
+<<<<<<< HEAD
             var namespaceImport = createNode(216 /* NamespaceImport */);
             parseExpected(36 /* AsteriskToken */);
             parseExpected(112 /* AsKeyword */);
+=======
+            var namespaceImport = createNode(214 /* NamespaceImport */);
+            parseExpected(35 /* AsteriskToken */);
+            parseExpected(111 /* AsKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             namespaceImport.name = parseIdentifier();
             return finishNode(namespaceImport);
         }
@@ -11248,6 +13671,7 @@ var ts;
             // ImportsList:
             //  ImportSpecifier
             //  ImportsList, ImportSpecifier
+<<<<<<< HEAD
             node.elements = parseBracketedList(21 /* ImportOrExportSpecifiers */, kind === 217 /* NamedImports */ ? parseImportSpecifier : parseExportSpecifier, 14 /* OpenBraceToken */, 15 /* CloseBraceToken */);
             return finishNode(node);
         }
@@ -11256,6 +13680,16 @@ var ts;
         }
         function parseImportSpecifier() {
             return parseImportOrExportSpecifier(218 /* ImportSpecifier */);
+=======
+            node.elements = parseBracketedList(19 /* ImportOrExportSpecifiers */, kind === 215 /* NamedImports */ ? parseImportSpecifier : parseExportSpecifier, 14 /* OpenBraceToken */, 15 /* CloseBraceToken */);
+            return finishNode(node);
+        }
+        function parseExportSpecifier() {
+            return parseImportOrExportSpecifier(220 /* ExportSpecifier */);
+        }
+        function parseImportSpecifier() {
+            return parseImportOrExportSpecifier(216 /* ImportSpecifier */);
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function parseImportOrExportSpecifier(kind) {
             var node = createNode(kind);
@@ -11280,13 +13714,18 @@ var ts;
             else {
                 node.name = identifierName;
             }
+<<<<<<< HEAD
             if (kind === 218 /* ImportSpecifier */ && checkIdentifierIsKeyword) {
+=======
+            if (kind === 216 /* ImportSpecifier */ && checkIdentifierIsKeyword) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // Report error identifier expected
                 parseErrorAtPosition(checkIdentifierStart, checkIdentifierEnd - checkIdentifierStart, ts.Diagnostics.Identifier_expected);
             }
             return finishNode(node);
         }
         function parseExportDeclaration(fullStart, decorators, modifiers) {
+<<<<<<< HEAD
             var node = createNode(220 /* ExportDeclaration */, fullStart);
             node.decorators = decorators;
             setModifiers(node, modifiers);
@@ -11297,6 +13736,18 @@ var ts;
             else {
                 node.exportClause = parseNamedImportsOrExports(221 /* NamedExports */);
                 if (parseOptional(127 /* FromKeyword */)) {
+=======
+            var node = createNode(218 /* ExportDeclaration */, fullStart);
+            node.decorators = decorators;
+            setModifiers(node, modifiers);
+            if (parseOptional(35 /* AsteriskToken */)) {
+                parseExpected(126 /* FromKeyword */);
+                node.moduleSpecifier = parseModuleSpecifier();
+            }
+            else {
+                node.exportClause = parseNamedImportsOrExports(219 /* NamedExports */);
+                if (parseOptional(126 /* FromKeyword */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     node.moduleSpecifier = parseModuleSpecifier();
                 }
             }
@@ -11304,7 +13755,11 @@ var ts;
             return finishNode(node);
         }
         function parseExportAssignment(fullStart, decorators, modifiers) {
+<<<<<<< HEAD
             var node = createNode(219 /* ExportAssignment */, fullStart);
+=======
+            var node = createNode(217 /* ExportAssignment */, fullStart);
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.decorators = decorators;
             setModifiers(node, modifiers);
             if (parseOptional(54 /* EqualsToken */)) {
@@ -11318,7 +13773,10 @@ var ts;
             return finishNode(node);
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
         function isLetDeclaration() {
             // It is let declaration if in strict mode or next token is identifier\open bracket\open curly on same line.
             // otherwise it needs to be treated like identifier
@@ -11449,7 +13907,12 @@ var ts;
                 ? parseDeclaration()
                 : parseStatement();
         }
+<<<<<<< HEAD
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
+>>>>>>> Updated compiler to emitDependencyFile branch
         function processReferenceComments(sourceFile) {
             var triviaScanner = ts.createScanner(sourceFile.languageVersion, false, 0 /* Standard */, sourceText);
             var referencedFiles = [];
@@ -11510,10 +13973,17 @@ var ts;
         function setExternalModuleIndicator(sourceFile) {
             sourceFile.externalModuleIndicator = ts.forEach(sourceFile.statements, function (node) {
                 return node.flags & 1 /* Export */
+<<<<<<< HEAD
                     || node.kind === 213 /* ImportEqualsDeclaration */ && node.moduleReference.kind === 224 /* ExternalModuleReference */
                     || node.kind === 214 /* ImportDeclaration */
                     || node.kind === 219 /* ExportAssignment */
                     || node.kind === 220 /* ExportDeclaration */
+=======
+                    || node.kind === 211 /* ImportEqualsDeclaration */ && node.moduleReference.kind === 222 /* ExternalModuleReference */
+                    || node.kind === 212 /* ImportDeclaration */
+                    || node.kind === 217 /* ExportAssignment */
+                    || node.kind === 218 /* ExportDeclaration */
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ? node
                     : undefined;
             });
@@ -11533,6 +14003,7 @@ var ts;
             ParsingContext[ParsingContext["ArrayBindingElements"] = 10] = "ArrayBindingElements";
             ParsingContext[ParsingContext["ArgumentExpressions"] = 11] = "ArgumentExpressions";
             ParsingContext[ParsingContext["ObjectLiteralMembers"] = 12] = "ObjectLiteralMembers";
+<<<<<<< HEAD
             ParsingContext[ParsingContext["JsxAttributes"] = 13] = "JsxAttributes";
             ParsingContext[ParsingContext["JsxChildren"] = 14] = "JsxChildren";
             ParsingContext[ParsingContext["ArrayLiteralMembers"] = 15] = "ArrayLiteralMembers";
@@ -11547,6 +14018,20 @@ var ts;
             ParsingContext[ParsingContext["JSDocRecordMembers"] = 24] = "JSDocRecordMembers";
             ParsingContext[ParsingContext["JSDocTupleTypes"] = 25] = "JSDocTupleTypes";
             ParsingContext[ParsingContext["Count"] = 26] = "Count"; // Number of parsing contexts
+=======
+            ParsingContext[ParsingContext["ArrayLiteralMembers"] = 13] = "ArrayLiteralMembers";
+            ParsingContext[ParsingContext["Parameters"] = 14] = "Parameters";
+            ParsingContext[ParsingContext["TypeParameters"] = 15] = "TypeParameters";
+            ParsingContext[ParsingContext["TypeArguments"] = 16] = "TypeArguments";
+            ParsingContext[ParsingContext["TupleElementTypes"] = 17] = "TupleElementTypes";
+            ParsingContext[ParsingContext["HeritageClauses"] = 18] = "HeritageClauses";
+            ParsingContext[ParsingContext["ImportOrExportSpecifiers"] = 19] = "ImportOrExportSpecifiers";
+            ParsingContext[ParsingContext["JSDocFunctionParameters"] = 20] = "JSDocFunctionParameters";
+            ParsingContext[ParsingContext["JSDocTypeArguments"] = 21] = "JSDocTypeArguments";
+            ParsingContext[ParsingContext["JSDocRecordMembers"] = 22] = "JSDocRecordMembers";
+            ParsingContext[ParsingContext["JSDocTupleTypes"] = 23] = "JSDocTupleTypes";
+            ParsingContext[ParsingContext["Count"] = 24] = "Count"; // Number of parsing contexts
+>>>>>>> Updated compiler to emitDependencyFile branch
         })(ParsingContext || (ParsingContext = {}));
         var Tristate;
         (function (Tristate) {
@@ -11558,6 +14043,7 @@ var ts;
         (function (JSDocParser) {
             function isJSDocType() {
                 switch (token) {
+<<<<<<< HEAD
                     case 36 /* AsteriskToken */:
                     case 51 /* QuestionToken */:
                     case 16 /* OpenParenToken */:
@@ -11568,6 +14054,18 @@ var ts;
                     case 21 /* DotDotDotToken */:
                     case 89 /* NewKeyword */:
                     case 94 /* ThisKeyword */:
+=======
+                    case 35 /* AsteriskToken */:
+                    case 50 /* QuestionToken */:
+                    case 16 /* OpenParenToken */:
+                    case 18 /* OpenBracketToken */:
+                    case 46 /* ExclamationToken */:
+                    case 14 /* OpenBraceToken */:
+                    case 83 /* FunctionKeyword */:
+                    case 21 /* DotDotDotToken */:
+                    case 88 /* NewKeyword */:
+                    case 93 /* ThisKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
                 return isIdentifierOrKeyword();
@@ -11588,7 +14086,11 @@ var ts;
                 scanner.setText(sourceText, start, length);
                 // Prime the first token for us to start processing.
                 token = nextToken();
+<<<<<<< HEAD
                 var result = createNode(241 /* JSDocTypeExpression */);
+=======
+                var result = createNode(231 /* JSDocTypeExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 parseExpected(14 /* OpenBraceToken */);
                 result.type = parseJSDocTopLevelType();
                 parseExpected(15 /* CloseBraceToken */);
@@ -11598,6 +14100,7 @@ var ts;
             JSDocParser.parseJSDocTypeExpression = parseJSDocTypeExpression;
             function parseJSDocTopLevelType() {
                 var type = parseJSDocType();
+<<<<<<< HEAD
                 if (token === 45 /* BarToken */) {
                     var unionType = createNode(245 /* JSDocUnionType */, type.pos);
                     unionType.types = parseJSDocTypeList(type);
@@ -11605,6 +14108,15 @@ var ts;
                 }
                 if (token === 54 /* EqualsToken */) {
                     var optionalType = createNode(252 /* JSDocOptionalType */, type.pos);
+=======
+                if (token === 44 /* BarToken */) {
+                    var unionType = createNode(235 /* JSDocUnionType */, type.pos);
+                    unionType.types = parseJSDocTypeList(type);
+                    type = finishNode(unionType);
+                }
+                if (token === 53 /* EqualsToken */) {
+                    var optionalType = createNode(242 /* JSDocOptionalType */, type.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     nextToken();
                     optionalType.type = type;
                     type = finishNode(optionalType);
@@ -11615,20 +14127,34 @@ var ts;
                 var type = parseBasicTypeExpression();
                 while (true) {
                     if (token === 18 /* OpenBracketToken */) {
+<<<<<<< HEAD
                         var arrayType = createNode(244 /* JSDocArrayType */, type.pos);
+=======
+                        var arrayType = createNode(234 /* JSDocArrayType */, type.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         arrayType.elementType = type;
                         nextToken();
                         parseExpected(19 /* CloseBracketToken */);
                         type = finishNode(arrayType);
                     }
+<<<<<<< HEAD
                     else if (token === 51 /* QuestionToken */) {
                         var nullableType = createNode(247 /* JSDocNullableType */, type.pos);
+=======
+                    else if (token === 50 /* QuestionToken */) {
+                        var nullableType = createNode(237 /* JSDocNullableType */, type.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         nullableType.type = type;
                         nextToken();
                         type = finishNode(nullableType);
                     }
+<<<<<<< HEAD
                     else if (token === 47 /* ExclamationToken */) {
                         var nonNullableType = createNode(248 /* JSDocNonNullableType */, type.pos);
+=======
+                    else if (token === 46 /* ExclamationToken */) {
+                        var nonNullableType = createNode(238 /* JSDocNonNullableType */, type.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         nonNullableType.type = type;
                         nextToken();
                         type = finishNode(nonNullableType);
@@ -11641,14 +14167,21 @@ var ts;
             }
             function parseBasicTypeExpression() {
                 switch (token) {
+<<<<<<< HEAD
                     case 36 /* AsteriskToken */:
                         return parseJSDocAllType();
                     case 51 /* QuestionToken */:
+=======
+                    case 35 /* AsteriskToken */:
+                        return parseJSDocAllType();
+                    case 50 /* QuestionToken */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return parseJSDocUnknownOrNullableType();
                     case 16 /* OpenParenToken */:
                         return parseJSDocUnionType();
                     case 18 /* OpenBracketToken */:
                         return parseJSDocTupleType();
+<<<<<<< HEAD
                     case 47 /* ExclamationToken */:
                         return parseJSDocNonNullableType();
                     case 14 /* OpenBraceToken */:
@@ -11667,31 +14200,68 @@ var ts;
                     case 114 /* BooleanKeyword */:
                     case 125 /* SymbolKeyword */:
                     case 100 /* VoidKeyword */:
+=======
+                    case 46 /* ExclamationToken */:
+                        return parseJSDocNonNullableType();
+                    case 14 /* OpenBraceToken */:
+                        return parseJSDocRecordType();
+                    case 83 /* FunctionKeyword */:
+                        return parseJSDocFunctionType();
+                    case 21 /* DotDotDotToken */:
+                        return parseJSDocVariadicType();
+                    case 88 /* NewKeyword */:
+                        return parseJSDocConstructorType();
+                    case 93 /* ThisKeyword */:
+                        return parseJSDocThisType();
+                    case 112 /* AnyKeyword */:
+                    case 123 /* StringKeyword */:
+                    case 121 /* NumberKeyword */:
+                    case 113 /* BooleanKeyword */:
+                    case 124 /* SymbolKeyword */:
+                    case 99 /* VoidKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return parseTokenNode();
                 }
                 return parseJSDocTypeReference();
             }
             function parseJSDocThisType() {
+<<<<<<< HEAD
                 var result = createNode(256 /* JSDocThisType */);
                 nextToken();
                 parseExpected(52 /* ColonToken */);
+=======
+                var result = createNode(246 /* JSDocThisType */);
+                nextToken();
+                parseExpected(51 /* ColonToken */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 result.type = parseJSDocType();
                 return finishNode(result);
             }
             function parseJSDocConstructorType() {
+<<<<<<< HEAD
                 var result = createNode(255 /* JSDocConstructorType */);
                 nextToken();
                 parseExpected(52 /* ColonToken */);
+=======
+                var result = createNode(245 /* JSDocConstructorType */);
+                nextToken();
+                parseExpected(51 /* ColonToken */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 result.type = parseJSDocType();
                 return finishNode(result);
             }
             function parseJSDocVariadicType() {
+<<<<<<< HEAD
                 var result = createNode(254 /* JSDocVariadicType */);
+=======
+                var result = createNode(244 /* JSDocVariadicType */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 nextToken();
                 result.type = parseJSDocType();
                 return finishNode(result);
             }
             function parseJSDocFunctionType() {
+<<<<<<< HEAD
                 var result = createNode(253 /* JSDocFunctionType */);
                 nextToken();
                 parseExpected(16 /* OpenParenToken */);
@@ -11699,24 +14269,45 @@ var ts;
                 checkForTrailingComma(result.parameters);
                 parseExpected(17 /* CloseParenToken */);
                 if (token === 52 /* ColonToken */) {
+=======
+                var result = createNode(243 /* JSDocFunctionType */);
+                nextToken();
+                parseExpected(16 /* OpenParenToken */);
+                result.parameters = parseDelimitedList(20 /* JSDocFunctionParameters */, parseJSDocParameter);
+                checkForTrailingComma(result.parameters);
+                parseExpected(17 /* CloseParenToken */);
+                if (token === 51 /* ColonToken */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     nextToken();
                     result.type = parseJSDocType();
                 }
                 return finishNode(result);
             }
             function parseJSDocParameter() {
+<<<<<<< HEAD
                 var parameter = createNode(132 /* Parameter */);
+=======
+                var parameter = createNode(131 /* Parameter */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 parameter.type = parseJSDocType();
                 return finishNode(parameter);
             }
             function parseJSDocOptionalType(type) {
+<<<<<<< HEAD
                 var result = createNode(252 /* JSDocOptionalType */, type.pos);
+=======
+                var result = createNode(242 /* JSDocOptionalType */, type.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 nextToken();
                 result.type = type;
                 return finishNode(result);
             }
             function parseJSDocTypeReference() {
+<<<<<<< HEAD
                 var result = createNode(251 /* JSDocTypeReference */);
+=======
+                var result = createNode(241 /* JSDocTypeReference */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 result.name = parseSimplePropertyName();
                 while (parseOptional(20 /* DotToken */)) {
                     if (token === 24 /* LessThanToken */) {
@@ -11732,10 +14323,17 @@ var ts;
             function parseTypeArguments() {
                 // Move past the <
                 nextToken();
+<<<<<<< HEAD
                 var typeArguments = parseDelimitedList(23 /* JSDocTypeArguments */, parseJSDocType);
                 checkForTrailingComma(typeArguments);
                 checkForEmptyTypeArgumentList(typeArguments);
                 parseExpected(26 /* GreaterThanToken */);
+=======
+                var typeArguments = parseDelimitedList(21 /* JSDocTypeArguments */, parseJSDocType);
+                checkForTrailingComma(typeArguments);
+                checkForEmptyTypeArgumentList(typeArguments);
+                parseExpected(25 /* GreaterThanToken */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return typeArguments;
             }
             function checkForEmptyTypeArgumentList(typeArguments) {
@@ -11746,38 +14344,64 @@ var ts;
                 }
             }
             function parseQualifiedName(left) {
+<<<<<<< HEAD
                 var result = createNode(129 /* QualifiedName */, left.pos);
+=======
+                var result = createNode(128 /* QualifiedName */, left.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 result.left = left;
                 result.right = parseIdentifierName();
                 return finishNode(result);
             }
             function parseJSDocRecordType() {
+<<<<<<< HEAD
                 var result = createNode(249 /* JSDocRecordType */);
                 nextToken();
                 result.members = parseDelimitedList(24 /* JSDocRecordMembers */, parseJSDocRecordMember);
+=======
+                var result = createNode(239 /* JSDocRecordType */);
+                nextToken();
+                result.members = parseDelimitedList(22 /* JSDocRecordMembers */, parseJSDocRecordMember);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 checkForTrailingComma(result.members);
                 parseExpected(15 /* CloseBraceToken */);
                 return finishNode(result);
             }
             function parseJSDocRecordMember() {
+<<<<<<< HEAD
                 var result = createNode(250 /* JSDocRecordMember */);
                 result.name = parseSimplePropertyName();
                 if (token === 52 /* ColonToken */) {
+=======
+                var result = createNode(240 /* JSDocRecordMember */);
+                result.name = parseSimplePropertyName();
+                if (token === 51 /* ColonToken */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     nextToken();
                     result.type = parseJSDocType();
                 }
                 return finishNode(result);
             }
             function parseJSDocNonNullableType() {
+<<<<<<< HEAD
                 var result = createNode(248 /* JSDocNonNullableType */);
+=======
+                var result = createNode(238 /* JSDocNonNullableType */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 nextToken();
                 result.type = parseJSDocType();
                 return finishNode(result);
             }
             function parseJSDocTupleType() {
+<<<<<<< HEAD
                 var result = createNode(246 /* JSDocTupleType */);
                 nextToken();
                 result.types = parseDelimitedList(25 /* JSDocTupleTypes */, parseJSDocType);
+=======
+                var result = createNode(236 /* JSDocTupleType */);
+                nextToken();
+                result.types = parseDelimitedList(23 /* JSDocTupleTypes */, parseJSDocType);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 checkForTrailingComma(result.types);
                 parseExpected(19 /* CloseBracketToken */);
                 return finishNode(result);
@@ -11789,7 +14413,11 @@ var ts;
                 }
             }
             function parseJSDocUnionType() {
+<<<<<<< HEAD
                 var result = createNode(245 /* JSDocUnionType */);
+=======
+                var result = createNode(235 /* JSDocUnionType */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 nextToken();
                 result.types = parseJSDocTypeList(parseJSDocType());
                 parseExpected(17 /* CloseParenToken */);
@@ -11800,14 +14428,22 @@ var ts;
                 var types = [];
                 types.pos = firstType.pos;
                 types.push(firstType);
+<<<<<<< HEAD
                 while (parseOptional(45 /* BarToken */)) {
+=======
+                while (parseOptional(44 /* BarToken */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     types.push(parseJSDocType());
                 }
                 types.end = scanner.getStartPos();
                 return types;
             }
             function parseJSDocAllType() {
+<<<<<<< HEAD
                 var result = createNode(242 /* JSDocAllType */);
+=======
+                var result = createNode(232 /* JSDocAllType */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 nextToken();
                 return finishNode(result);
             }
@@ -11827,6 +14463,7 @@ var ts;
                 if (token === 23 /* CommaToken */ ||
                     token === 15 /* CloseBraceToken */ ||
                     token === 17 /* CloseParenToken */ ||
+<<<<<<< HEAD
                     token === 26 /* GreaterThanToken */ ||
                     token === 54 /* EqualsToken */ ||
                     token === 45 /* BarToken */) {
@@ -11835,6 +14472,16 @@ var ts;
                 }
                 else {
                     var result = createNode(247 /* JSDocNullableType */, pos);
+=======
+                    token === 25 /* GreaterThanToken */ ||
+                    token === 53 /* EqualsToken */ ||
+                    token === 44 /* BarToken */) {
+                    var result = createNode(233 /* JSDocUnknownType */, pos);
+                    return finishNode(result);
+                }
+                else {
+                    var result = createNode(237 /* JSDocNullableType */, pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     result.type = parseJSDocType();
                     return finishNode(result);
                 }
@@ -11922,7 +14569,11 @@ var ts;
                     if (!tags) {
                         return undefined;
                     }
+<<<<<<< HEAD
                     var result = createNode(257 /* JSDocComment */, start);
+=======
+                    var result = createNode(247 /* JSDocComment */, start);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     result.tags = tags;
                     return finishNode(result, end);
                 }
@@ -11933,8 +14584,14 @@ var ts;
                 }
                 function parseTag() {
                     ts.Debug.assert(content.charCodeAt(pos - 1) === 64 /* at */);
+<<<<<<< HEAD
                     var atToken = createNode(53 /* AtToken */, pos - 1);
                     atToken.end = pos;
+=======
+                    var atToken = createNode(52 /* AtToken */, pos - 1);
+                    atToken.end = pos;
+                    var startPos = pos;
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var tagName = scanIdentifier();
                     if (!tagName) {
                         return;
@@ -11959,7 +14616,11 @@ var ts;
                     return undefined;
                 }
                 function handleUnknownTag(atToken, tagName) {
+<<<<<<< HEAD
                     var result = createNode(258 /* JSDocTag */, atToken.pos);
+=======
+                    var result = createNode(248 /* JSDocTag */, atToken.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     result.atToken = atToken;
                     result.tagName = tagName;
                     return finishNode(result, pos);
@@ -12011,7 +14672,11 @@ var ts;
                     if (!typeExpression) {
                         typeExpression = tryParseTypeExpression();
                     }
+<<<<<<< HEAD
                     var result = createNode(259 /* JSDocParameterTag */, atToken.pos);
+=======
+                    var result = createNode(249 /* JSDocParameterTag */, atToken.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     result.atToken = atToken;
                     result.tagName = tagName;
                     result.preParameterName = preName;
@@ -12021,27 +14686,45 @@ var ts;
                     return finishNode(result, pos);
                 }
                 function handleReturnTag(atToken, tagName) {
+<<<<<<< HEAD
                     if (ts.forEach(tags, function (t) { return t.kind === 260 /* JSDocReturnTag */; })) {
                         parseErrorAtPosition(tagName.pos, pos - tagName.pos, ts.Diagnostics._0_tag_already_specified, tagName.text);
                     }
                     var result = createNode(260 /* JSDocReturnTag */, atToken.pos);
+=======
+                    if (ts.forEach(tags, function (t) { return t.kind === 250 /* JSDocReturnTag */; })) {
+                        parseErrorAtPosition(tagName.pos, pos - tagName.pos, ts.Diagnostics._0_tag_already_specified, tagName.text);
+                    }
+                    var result = createNode(250 /* JSDocReturnTag */, atToken.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     result.atToken = atToken;
                     result.tagName = tagName;
                     result.typeExpression = tryParseTypeExpression();
                     return finishNode(result, pos);
                 }
                 function handleTypeTag(atToken, tagName) {
+<<<<<<< HEAD
                     if (ts.forEach(tags, function (t) { return t.kind === 261 /* JSDocTypeTag */; })) {
                         parseErrorAtPosition(tagName.pos, pos - tagName.pos, ts.Diagnostics._0_tag_already_specified, tagName.text);
                     }
                     var result = createNode(261 /* JSDocTypeTag */, atToken.pos);
+=======
+                    if (ts.forEach(tags, function (t) { return t.kind === 251 /* JSDocTypeTag */; })) {
+                        parseErrorAtPosition(tagName.pos, pos - tagName.pos, ts.Diagnostics._0_tag_already_specified, tagName.text);
+                    }
+                    var result = createNode(251 /* JSDocTypeTag */, atToken.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     result.atToken = atToken;
                     result.tagName = tagName;
                     result.typeExpression = tryParseTypeExpression();
                     return finishNode(result, pos);
                 }
                 function handleTemplateTag(atToken, tagName) {
+<<<<<<< HEAD
                     if (ts.forEach(tags, function (t) { return t.kind === 262 /* JSDocTemplateTag */; })) {
+=======
+                    if (ts.forEach(tags, function (t) { return t.kind === 252 /* JSDocTemplateTag */; })) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         parseErrorAtPosition(tagName.pos, pos - tagName.pos, ts.Diagnostics._0_tag_already_specified, tagName.text);
                     }
                     var typeParameters = [];
@@ -12054,7 +14737,11 @@ var ts;
                             parseErrorAtPosition(startPos, 0, ts.Diagnostics.Identifier_expected);
                             return undefined;
                         }
+<<<<<<< HEAD
                         var typeParameter = createNode(131 /* TypeParameter */, name_7.pos);
+=======
+                        var typeParameter = createNode(130 /* TypeParameter */, name_7.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         typeParameter.name = name_7;
                         finishNode(typeParameter, pos);
                         typeParameters.push(typeParameter);
@@ -12065,7 +14752,11 @@ var ts;
                         pos++;
                     }
                     typeParameters.end = pos;
+<<<<<<< HEAD
                     var result = createNode(262 /* JSDocTemplateTag */, atToken.pos);
+=======
+                    var result = createNode(252 /* JSDocTemplateTag */, atToken.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     result.atToken = atToken;
                     result.tagName = tagName;
                     result.typeParameters = typeParameters;
@@ -12086,7 +14777,11 @@ var ts;
                     if (startPos === pos) {
                         return undefined;
                     }
+<<<<<<< HEAD
                     var result = createNode(66 /* Identifier */, startPos);
+=======
+                    var result = createNode(65 /* Identifier */, startPos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     result.text = content.substring(startPos, pos);
                     return finishNode(result, pos);
                 }
@@ -12863,10 +15558,17 @@ var ts;
             return nodeLinks[nodeId] || (nodeLinks[nodeId] = {});
         }
         function getSourceFile(node) {
+<<<<<<< HEAD
             return ts.getAncestor(node, 240 /* SourceFile */);
         }
         function isGlobalSourceFile(node) {
             return node.kind === 240 /* SourceFile */ && !ts.isExternalModule(node);
+=======
+            return ts.getAncestor(node, 230 /* SourceFile */);
+        }
+        function isGlobalSourceFile(node) {
+            return node.kind === 230 /* SourceFile */ && !ts.isExternalModule(node);
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function getSymbol(symbols, name, meaning) {
             if (meaning && ts.hasProperty(symbols, name)) {
@@ -12923,6 +15625,7 @@ var ts;
                     }
                 }
                 switch (location.kind) {
+<<<<<<< HEAD
                     case 240 /* SourceFile */:
                         if (!ts.isExternalModule(location))
                             break;
@@ -12932,6 +15635,12 @@ var ts;
                         if (location.kind === 240 /* SourceFile */ ||
                             (location.kind === 210 /* ModuleDeclaration */ && location.name.kind === 8 /* StringLiteral */)) {
 =======
+=======
+                    case 230 /* SourceFile */:
+                        if (!ts.isExternalModule(location))
+                            break;
+<<<<<<< HEAD
+>>>>>>> Updated compiler to emitDependencyFile branch
                     case 206 /* ModuleDeclaration */:
                         var moduleExports = getSymbolOfNode(location).exports;
                         if (location.kind === 228 /* SourceFile */ ||
@@ -12958,6 +15667,18 @@ var ts;
                                 break;
                             }
                             result = moduleExports["default"];
+=======
+                    case 208 /* ModuleDeclaration */:
+                        if (result = getSymbol(getSymbolOfNode(location).exports, name, meaning & 8914931 /* ModuleMember */)) {
+                            if (result.flags & meaning || !(result.flags & 8388608 /* Alias */ && getDeclarationOfAliasSymbol(result).kind === 220 /* ExportSpecifier */)) {
+                                break loop;
+                            }
+                            result = undefined;
+                        }
+                        else if (location.kind === 230 /* SourceFile */ ||
+                            (location.kind === 208 /* ModuleDeclaration */ && location.name.kind === 8 /* StringLiteral */)) {
+                            result = getSymbolOfNode(location).exports["default"];
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var localSymbol = ts.getLocalSymbolForExportDefault(result);
                             if (result && localSymbol && (result.flags & meaning) && localSymbol.name === name) {
                                 break loop;
@@ -12968,20 +15689,33 @@ var ts;
                             break loop;
                         }
                         break;
+<<<<<<< HEAD
                     case 209 /* EnumDeclaration */:
+=======
+                    case 207 /* EnumDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (result = getSymbol(getSymbolOfNode(location).exports, name, meaning & 8 /* EnumMember */)) {
                             break loop;
                         }
                         break;
+<<<<<<< HEAD
                     case 135 /* PropertyDeclaration */:
                     case 134 /* PropertySignature */:
+=======
+                    case 134 /* PropertyDeclaration */:
+                    case 133 /* PropertySignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // TypeScript 1.0 spec (April 2014): 8.4.1
                         // Initializer expressions for instance member variables are evaluated in the scope
                         // of the class constructor body but are not permitted to reference parameters or
                         // local variables of the constructor. This effectively means that entities from outer scopes
                         // by the same name as a constructor parameter or local variable are inaccessible
                         // in initializer expressions for instance member variables.
+<<<<<<< HEAD
                         if (ts.isClassLike(location.parent) && !(location.flags & 128 /* Static */)) {
+=======
+                        if (location.parent.kind === 204 /* ClassDeclaration */ && !(location.flags & 128 /* Static */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var ctor = findConstructorDeclaration(location.parent);
                             if (ctor && ctor.locals) {
                                 if (getSymbol(ctor.locals, name, meaning & 107455 /* Value */)) {
@@ -12991,9 +15725,14 @@ var ts;
                             }
                         }
                         break;
+<<<<<<< HEAD
                     case 206 /* ClassDeclaration */:
                     case 178 /* ClassExpression */:
                     case 207 /* InterfaceDeclaration */:
+=======
+                    case 204 /* ClassDeclaration */:
+                    case 205 /* InterfaceDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (result = getSymbol(getSymbolOfNode(location).members, name, meaning & 793056 /* Type */)) {
                             if (lastLocation && lastLocation.flags & 128 /* Static */) {
                                 // TypeScript 1.0 spec (April 2014): 3.4.1
@@ -13020,9 +15759,15 @@ var ts;
                     //       [foo<T>()]() { } // <-- Reference to T from class's own computed property
                     //   }
                     //
+<<<<<<< HEAD
                     case 130 /* ComputedPropertyName */:
                         grandparent = location.parent.parent;
                         if (ts.isClassLike(grandparent) || grandparent.kind === 207 /* InterfaceDeclaration */) {
+=======
+                    case 129 /* ComputedPropertyName */:
+                        grandparent = location.parent.parent;
+                        if (grandparent.kind === 204 /* ClassDeclaration */ || grandparent.kind === 205 /* InterfaceDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // A reference to this grandparent's type parameters would be an error
                             if (result = getSymbol(getSymbolOfNode(grandparent).members, name, meaning & 793056 /* Type */)) {
                                 error(errorLocation, ts.Diagnostics.A_computed_property_name_cannot_reference_a_type_parameter_from_its_containing_type);
@@ -13030,6 +15775,7 @@ var ts;
                             }
                         }
                         break;
+<<<<<<< HEAD
                     case 137 /* MethodDeclaration */:
                     case 136 /* MethodSignature */:
                     case 138 /* Constructor */:
@@ -13037,12 +15783,25 @@ var ts;
                     case 140 /* SetAccessor */:
                     case 205 /* FunctionDeclaration */:
                     case 167 /* ArrowFunction */:
+=======
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+                    case 137 /* Constructor */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                    case 203 /* FunctionDeclaration */:
+                    case 166 /* ArrowFunction */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (meaning & 3 /* Variable */ && name === "arguments") {
                             result = argumentsSymbol;
                             break loop;
                         }
                         break;
+<<<<<<< HEAD
                     case 166 /* FunctionExpression */:
+=======
+                    case 165 /* FunctionExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (meaning & 3 /* Variable */ && name === "arguments") {
                             result = argumentsSymbol;
                             break loop;
@@ -13055,7 +15814,20 @@ var ts;
                             }
                         }
                         break;
+<<<<<<< HEAD
                     case 133 /* Decorator */:
+=======
+                    case 177 /* ClassExpression */:
+                        if (meaning & 32 /* Class */) {
+                            var className = location.name;
+                            if (className && name === className.text) {
+                                result = location.symbol;
+                                break loop;
+                            }
+                        }
+                        break;
+                    case 132 /* Decorator */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Decorators are resolved at the class declaration. Resolving at the parameter 
                         // or member would result in looking up locals in the method.
                         //
@@ -13064,7 +15836,11 @@ var ts;
                         //       method(@y x, y) {} // <-- decorator y should be resolved at the class declaration, not the parameter.
                         //   }
                         //
+<<<<<<< HEAD
                         if (location.parent && location.parent.kind === 132 /* Parameter */) {
+=======
+                        if (location.parent && location.parent.kind === 131 /* Parameter */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             location = location.parent;
                         }
                         //
@@ -13120,16 +15896,28 @@ var ts;
                 //   for (let x in x)
                 //   for (let x of x)
                 // climb up to the variable declaration skipping binding patterns
+<<<<<<< HEAD
                 var variableDeclaration = ts.getAncestor(declaration, 203 /* VariableDeclaration */);
                 var container = ts.getEnclosingBlockScopeContainer(variableDeclaration);
                 if (variableDeclaration.parent.parent.kind === 185 /* VariableStatement */ ||
                     variableDeclaration.parent.parent.kind === 191 /* ForStatement */) {
+=======
+                var variableDeclaration = ts.getAncestor(declaration, 201 /* VariableDeclaration */);
+                var container = ts.getEnclosingBlockScopeContainer(variableDeclaration);
+                if (variableDeclaration.parent.parent.kind === 183 /* VariableStatement */ ||
+                    variableDeclaration.parent.parent.kind === 189 /* ForStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // variable statement/for statement case,
                     // use site should not be inside variable declaration (initializer of declaration or binding element)
                     isUsedBeforeDeclaration = isSameScopeDescendentOf(errorLocation, variableDeclaration, container);
                 }
+<<<<<<< HEAD
                 else if (variableDeclaration.parent.parent.kind === 193 /* ForOfStatement */ ||
                     variableDeclaration.parent.parent.kind === 192 /* ForInStatement */) {
+=======
+                else if (variableDeclaration.parent.parent.kind === 191 /* ForOfStatement */ ||
+                    variableDeclaration.parent.parent.kind === 190 /* ForInStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // ForIn/ForOf case - use site should not be used in expression part
                     var expression = variableDeclaration.parent.parent.expression;
                     isUsedBeforeDeclaration = isSameScopeDescendentOf(errorLocation, expression, container);
@@ -13156,10 +15944,17 @@ var ts;
         }
         function getAnyImportSyntax(node) {
             if (ts.isAliasSymbolDeclaration(node)) {
+<<<<<<< HEAD
                 if (node.kind === 213 /* ImportEqualsDeclaration */) {
                     return node;
                 }
                 while (node && node.kind !== 214 /* ImportDeclaration */) {
+=======
+                if (node.kind === 211 /* ImportEqualsDeclaration */) {
+                    return node;
+                }
+                while (node && node.kind !== 212 /* ImportDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     node = node.parent;
                 }
                 return node;
@@ -13169,7 +15964,11 @@ var ts;
             return ts.forEach(symbol.declarations, function (d) { return ts.isAliasSymbolDeclaration(d) ? d : undefined; });
         }
         function getTargetOfImportEqualsDeclaration(node) {
+<<<<<<< HEAD
             if (node.moduleReference.kind === 224 /* ExternalModuleReference */) {
+=======
+            if (node.moduleReference.kind === 222 /* ExternalModuleReference */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return resolveExternalModuleSymbol(resolveExternalModuleName(node, ts.getExternalModuleImportEqualsDeclarationExpression(node)));
             }
             return getSymbolOfPartOfRightHandSideOfImportEquals(node.moduleReference, node);
@@ -13276,6 +16075,7 @@ var ts;
         }
         function getTargetOfAliasDeclaration(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 213 /* ImportEqualsDeclaration */:
                     return getTargetOfImportEqualsDeclaration(node);
                 case 215 /* ImportClause */:
@@ -13287,6 +16087,19 @@ var ts;
                 case 222 /* ExportSpecifier */:
                     return getTargetOfExportSpecifier(node);
                 case 219 /* ExportAssignment */:
+=======
+                case 211 /* ImportEqualsDeclaration */:
+                    return getTargetOfImportEqualsDeclaration(node);
+                case 213 /* ImportClause */:
+                    return getTargetOfImportClause(node);
+                case 214 /* NamespaceImport */:
+                    return getTargetOfNamespaceImport(node);
+                case 216 /* ImportSpecifier */:
+                    return getTargetOfImportSpecifier(node);
+                case 220 /* ExportSpecifier */:
+                    return getTargetOfExportSpecifier(node);
+                case 217 /* ExportAssignment */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return getTargetOfExportAssignment(node);
             }
         }
@@ -13331,11 +16144,19 @@ var ts;
             if (!links.referenced) {
                 links.referenced = true;
                 var node = getDeclarationOfAliasSymbol(symbol);
+<<<<<<< HEAD
                 if (node.kind === 219 /* ExportAssignment */) {
                     // export default <symbol>
                     checkExpressionCached(node.expression);
                 }
                 else if (node.kind === 222 /* ExportSpecifier */) {
+=======
+                if (node.kind === 217 /* ExportAssignment */) {
+                    // export default <symbol>
+                    checkExpressionCached(node.expression);
+                }
+                else if (node.kind === 220 /* ExportSpecifier */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // export { <symbol> } or export { <symbol> as foo }
                     checkExpressionCached(node.propertyName || node.name);
                 }
@@ -13348,7 +16169,11 @@ var ts;
         // This function is only for imports with entity names
         function getSymbolOfPartOfRightHandSideOfImportEquals(entityName, importDeclaration) {
             if (!importDeclaration) {
+<<<<<<< HEAD
                 importDeclaration = ts.getAncestor(entityName, 213 /* ImportEqualsDeclaration */);
+=======
+                importDeclaration = ts.getAncestor(entityName, 211 /* ImportEqualsDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 ts.Debug.assert(importDeclaration !== undefined);
             }
             // There are three things we might try to look for. In the following examples,
@@ -13361,13 +16186,21 @@ var ts;
                 entityName = entityName.parent;
             }
             // Check for case 1 and 3 in the above example
+<<<<<<< HEAD
             if (entityName.kind === 66 /* Identifier */ || entityName.parent.kind === 129 /* QualifiedName */) {
+=======
+            if (entityName.kind === 65 /* Identifier */ || entityName.parent.kind === 128 /* QualifiedName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return resolveEntityName(entityName, 1536 /* Namespace */);
             }
             else {
                 // Case 2 in above example
                 // entityName.kind could be a QualifiedName or a Missing identifier
+<<<<<<< HEAD
                 ts.Debug.assert(entityName.parent.kind === 213 /* ImportEqualsDeclaration */);
+=======
+                ts.Debug.assert(entityName.parent.kind === 211 /* ImportEqualsDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return resolveEntityName(entityName, 107455 /* Value */ | 793056 /* Type */ | 1536 /* Namespace */);
             }
         }
@@ -13387,9 +16220,15 @@ var ts;
                     return undefined;
                 }
             }
+<<<<<<< HEAD
             else if (name.kind === 129 /* QualifiedName */ || name.kind === 159 /* PropertyAccessExpression */) {
                 var left = name.kind === 129 /* QualifiedName */ ? name.left : name.expression;
                 var right = name.kind === 129 /* QualifiedName */ ? name.right : name.name;
+=======
+            else if (name.kind === 128 /* QualifiedName */ || name.kind === 158 /* PropertyAccessExpression */) {
+                var left = name.kind === 128 /* QualifiedName */ ? name.left : name.expression;
+                var right = name.kind === 128 /* QualifiedName */ ? name.right : name.name;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var namespace = resolveEntityName(left, 1536 /* Namespace */);
                 if (!namespace || namespace === unknownSymbol || ts.nodeIsMissing(right)) {
                     return undefined;
@@ -13550,7 +16389,11 @@ var ts;
             var members = node.members;
             for (var _i = 0; _i < members.length; _i++) {
                 var member = members[_i];
+<<<<<<< HEAD
                 if (member.kind === 138 /* Constructor */ && ts.nodeIsPresent(member.body)) {
+=======
+                if (member.kind === 137 /* Constructor */ && ts.nodeIsPresent(member.body)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return member;
                 }
             }
@@ -13620,17 +16463,30 @@ var ts;
                     }
                 }
                 switch (location_1.kind) {
+<<<<<<< HEAD
                     case 240 /* SourceFile */:
                         if (!ts.isExternalModule(location_1)) {
                             break;
                         }
                     case 210 /* ModuleDeclaration */:
+=======
+                    case 230 /* SourceFile */:
+                        if (!ts.isExternalModule(location_1)) {
+                            break;
+                        }
+                    case 208 /* ModuleDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (result = callback(getSymbolOfNode(location_1).exports)) {
                             return result;
                         }
                         break;
+<<<<<<< HEAD
                     case 206 /* ClassDeclaration */:
                     case 207 /* InterfaceDeclaration */:
+=======
+                    case 204 /* ClassDeclaration */:
+                    case 205 /* InterfaceDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (result = callback(getSymbolOfNode(location_1).members)) {
                             return result;
                         }
@@ -13781,8 +16637,13 @@ var ts;
             }
         }
         function hasExternalModuleSymbol(declaration) {
+<<<<<<< HEAD
             return (declaration.kind === 210 /* ModuleDeclaration */ && declaration.name.kind === 8 /* StringLiteral */) ||
                 (declaration.kind === 240 /* SourceFile */ && ts.isExternalModule(declaration));
+=======
+            return (declaration.kind === 208 /* ModuleDeclaration */ && declaration.name.kind === 8 /* StringLiteral */) ||
+                (declaration.kind === 230 /* SourceFile */ && ts.isExternalModule(declaration));
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function hasVisibleDeclarations(symbol) {
             var aliasesToMakeVisible;
@@ -13818,12 +16679,21 @@ var ts;
         function isEntityNameVisible(entityName, enclosingDeclaration) {
             // get symbol of the first identifier of the entityName
             var meaning;
+<<<<<<< HEAD
             if (entityName.parent.kind === 148 /* TypeQuery */) {
                 // Typeof value
                 meaning = 107455 /* Value */ | 1048576 /* ExportValue */;
             }
             else if (entityName.kind === 129 /* QualifiedName */ || entityName.kind === 159 /* PropertyAccessExpression */ ||
                 entityName.parent.kind === 213 /* ImportEqualsDeclaration */) {
+=======
+            if (entityName.parent.kind === 147 /* TypeQuery */) {
+                // Typeof value
+                meaning = 107455 /* Value */ | 1048576 /* ExportValue */;
+            }
+            else if (entityName.kind === 128 /* QualifiedName */ || entityName.kind === 158 /* PropertyAccessExpression */ ||
+                entityName.parent.kind === 211 /* ImportEqualsDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // Left identifier from type reference or TypeAlias
                 // Entity name of the import declaration
                 meaning = 1536 /* Namespace */;
@@ -13878,10 +16748,17 @@ var ts;
         function getTypeAliasForTypeLiteral(type) {
             if (type.symbol && type.symbol.flags & 2048 /* TypeLiteral */) {
                 var node = type.symbol.declarations[0].parent;
+<<<<<<< HEAD
                 while (node.kind === 153 /* ParenthesizedType */) {
                     node = node.parent;
                 }
                 if (node.kind === 208 /* TypeAliasDeclaration */) {
+=======
+                while (node.kind === 152 /* ParenthesizedType */) {
+                    node = node.parent;
+                }
+                if (node.kind === 206 /* TypeAliasDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return getSymbolOfNode(node);
                 }
             }
@@ -14047,7 +16924,11 @@ var ts;
                             writeSpace(writer);
                             writeType(typeArguments[pos++], 0 /* None */);
                         }
+<<<<<<< HEAD
                         writePunctuation(writer, 26 /* GreaterThanToken */);
+=======
+                        writePunctuation(writer, 25 /* GreaterThanToken */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     }
                 }
                 function writeTypeReference(type, flags) {
@@ -14116,7 +16997,11 @@ var ts;
                             }
                             else {
                                 // Recursive usage, use any
+<<<<<<< HEAD
                                 writeKeyword(writer, 113 /* AnyKeyword */);
+=======
+                                writeKeyword(writer, 112 /* AnyKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                             }
                         }
                         else {
@@ -14140,7 +17025,11 @@ var ts;
                         var isNonLocalFunctionSymbol = !!(symbol.flags & 16 /* Function */) &&
                             (symbol.parent ||
                                 ts.forEach(symbol.declarations, function (declaration) {
+<<<<<<< HEAD
                                     return declaration.parent.kind === 240 /* SourceFile */ || declaration.parent.kind === 211 /* ModuleBlock */;
+=======
+                                    return declaration.parent.kind === 230 /* SourceFile */ || declaration.parent.kind === 209 /* ModuleBlock */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 }));
                         if (isStaticMethodSymbol || isNonLocalFunctionSymbol) {
                             // typeof is allowed only for static/non local functions
@@ -14218,7 +17107,11 @@ var ts;
                         writer.writeParameter(getIndexerParameterName(resolved, 0 /* String */, "x"));
                         writePunctuation(writer, 52 /* ColonToken */);
                         writeSpace(writer);
+<<<<<<< HEAD
                         writeKeyword(writer, 124 /* StringKeyword */);
+=======
+                        writeKeyword(writer, 123 /* StringKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         writePunctuation(writer, 19 /* CloseBracketToken */);
                         writePunctuation(writer, 52 /* ColonToken */);
                         writeSpace(writer);
@@ -14232,7 +17125,11 @@ var ts;
                         writer.writeParameter(getIndexerParameterName(resolved, 1 /* Number */, "x"));
                         writePunctuation(writer, 52 /* ColonToken */);
                         writeSpace(writer);
+<<<<<<< HEAD
                         writeKeyword(writer, 122 /* NumberKeyword */);
+=======
+                        writeKeyword(writer, 121 /* NumberKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         writePunctuation(writer, 19 /* CloseBracketToken */);
                         writePunctuation(writer, 52 /* ColonToken */);
                         writeSpace(writer);
@@ -14295,7 +17192,11 @@ var ts;
                 }
                 appendSymbolNameOnly(p, writer);
                 if (isOptionalParameter(parameterNode)) {
+<<<<<<< HEAD
                     writePunctuation(writer, 51 /* QuestionToken */);
+=======
+                    writePunctuation(writer, 50 /* QuestionToken */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
                 writePunctuation(writer, 52 /* ColonToken */);
                 writeSpace(writer);
@@ -14379,12 +17280,20 @@ var ts;
         function isDeclarationVisible(node) {
             function getContainingExternalModule(node) {
                 for (; node; node = node.parent) {
+<<<<<<< HEAD
                     if (node.kind === 210 /* ModuleDeclaration */) {
+=======
+                    if (node.kind === 208 /* ModuleDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (node.name.kind === 8 /* StringLiteral */) {
                             return node;
                         }
                     }
+<<<<<<< HEAD
                     else if (node.kind === 240 /* SourceFile */) {
+=======
+                    else if (node.kind === 230 /* SourceFile */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return ts.isExternalModule(node) ? node : undefined;
                     }
                 }
@@ -14433,15 +17342,22 @@ var ts;
             }
             function determineIfDeclarationIsVisible() {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 156 /* BindingElement */:
                         return isDeclarationVisible(node.parent.parent);
                     case 203 /* VariableDeclaration */:
+=======
+                    case 155 /* BindingElement */:
+                        return isDeclarationVisible(node.parent.parent);
+                    case 201 /* VariableDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (ts.isBindingPattern(node.name) &&
                             !node.name.elements.length) {
                             // If the binding pattern is empty, this variable declaration is not visible
                             return false;
                         }
                     // Otherwise fall through
+<<<<<<< HEAD
                     case 210 /* ModuleDeclaration */:
                     case 206 /* ClassDeclaration */:
                     case 207 /* InterfaceDeclaration */:
@@ -14453,21 +17369,44 @@ var ts;
                         // If the node is not exported or it is not ambient module element (except import declaration)
                         if (!(ts.getCombinedNodeFlags(node) & 1 /* Export */) &&
                             !(node.kind !== 213 /* ImportEqualsDeclaration */ && parent_4.kind !== 240 /* SourceFile */ && ts.isInAmbientContext(parent_4))) {
+=======
+                    case 208 /* ModuleDeclaration */:
+                    case 204 /* ClassDeclaration */:
+                    case 205 /* InterfaceDeclaration */:
+                    case 206 /* TypeAliasDeclaration */:
+                    case 203 /* FunctionDeclaration */:
+                    case 207 /* EnumDeclaration */:
+                    case 211 /* ImportEqualsDeclaration */:
+                        var parent_4 = getDeclarationContainer(node);
+                        // If the node is not exported or it is not ambient module element (except import declaration)
+                        if (!(ts.getCombinedNodeFlags(node) & 1 /* Export */) &&
+                            !(node.kind !== 211 /* ImportEqualsDeclaration */ && parent_4.kind !== 230 /* SourceFile */ && ts.isInAmbientContext(parent_4))) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return isGlobalSourceFile(parent_4);
                         }
                         // Exported members/ambient module elements (exception import declaration) are visible if parent is visible
                         return isDeclarationVisible(parent_4);
+<<<<<<< HEAD
                     case 135 /* PropertyDeclaration */:
                     case 134 /* PropertySignature */:
                     case 139 /* GetAccessor */:
                     case 140 /* SetAccessor */:
                     case 137 /* MethodDeclaration */:
                     case 136 /* MethodSignature */:
+=======
+                    case 134 /* PropertyDeclaration */:
+                    case 133 /* PropertySignature */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (node.flags & (32 /* Private */ | 64 /* Protected */)) {
                             // Private/protected properties/methods are not visible
                             return false;
                         }
                     // Public properties/methods are visible if its parents are visible, so let it fall into next case statement
+<<<<<<< HEAD
                     case 138 /* Constructor */:
                     case 142 /* ConstructSignature */:
                     case 141 /* CallSignature */:
@@ -14496,6 +17435,36 @@ var ts;
                         return true;
                     // Export assignements do not create name bindings outside the module
                     case 219 /* ExportAssignment */:
+=======
+                    case 137 /* Constructor */:
+                    case 141 /* ConstructSignature */:
+                    case 140 /* CallSignature */:
+                    case 142 /* IndexSignature */:
+                    case 131 /* Parameter */:
+                    case 209 /* ModuleBlock */:
+                    case 145 /* FunctionType */:
+                    case 146 /* ConstructorType */:
+                    case 148 /* TypeLiteral */:
+                    case 144 /* TypeReference */:
+                    case 149 /* ArrayType */:
+                    case 150 /* TupleType */:
+                    case 151 /* UnionType */:
+                    case 152 /* ParenthesizedType */:
+                        return isDeclarationVisible(node.parent);
+                    // Default binding, import specifier and namespace import is visible 
+                    // only on demand so by default it is not visible
+                    case 213 /* ImportClause */:
+                    case 214 /* NamespaceImport */:
+                    case 216 /* ImportSpecifier */:
+                        return false;
+                    // Type parameters are always visible
+                    case 130 /* TypeParameter */:
+                    // Source file is always visible
+                    case 230 /* SourceFile */:
+                        return true;
+                    // Export assignements do not create name bindings outside the module
+                    case 217 /* ExportAssignment */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return false;
                     default:
                         ts.Debug.fail("isDeclarationVisible unknown: SyntaxKind: " + node.kind);
@@ -14511,10 +17480,17 @@ var ts;
         }
         function collectLinkedAliases(node) {
             var exportSymbol;
+<<<<<<< HEAD
             if (node.parent && node.parent.kind === 219 /* ExportAssignment */) {
                 exportSymbol = resolveName(node.parent, node.text, 107455 /* Value */ | 793056 /* Type */ | 1536 /* Namespace */, ts.Diagnostics.Cannot_find_name_0, node);
             }
             else if (node.parent.kind === 222 /* ExportSpecifier */) {
+=======
+            if (node.parent && node.parent.kind === 217 /* ExportAssignment */) {
+                exportSymbol = resolveName(node.parent, node.text, 107455 /* Value */ | 793056 /* Type */ | 1536 /* Namespace */, ts.Diagnostics.Cannot_find_name_0, node);
+            }
+            else if (node.parent.kind === 220 /* ExportSpecifier */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 exportSymbol = getTargetOfExportSpecifier(node.parent);
             }
             var result = [];
@@ -14572,7 +17548,11 @@ var ts;
             node = ts.getRootDeclaration(node);
             // Parent chain:
             // VaribleDeclaration -> VariableDeclarationList -> VariableStatement -> 'Declaration Container'
+<<<<<<< HEAD
             return node.kind === 203 /* VariableDeclaration */ ? node.parent.parent.parent : node.parent;
+=======
+            return node.kind === 201 /* VariableDeclaration */ ? node.parent.parent.parent : node.parent;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function getTypeOfPrototypeProperty(prototype) {
             // TypeScript 1.0 spec (April 2014): 8.4
@@ -14608,7 +17588,11 @@ var ts;
                 return parentType;
             }
             var type;
+<<<<<<< HEAD
             if (pattern.kind === 154 /* ObjectBindingPattern */) {
+=======
+            if (pattern.kind === 153 /* ObjectBindingPattern */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // Use explicitly specified property name ({ p: xxx } form), or otherwise the implied name ({ p } form)
                 var name_9 = declaration.propertyName || declaration.name;
                 // Use type of the specified property, or otherwise, for a numeric name, the type of the numeric index signature,
@@ -14655,10 +17639,17 @@ var ts;
         // Return the inferred type for a variable, parameter, or property declaration
         function getTypeForVariableLikeDeclaration(declaration) {
             // A variable declared in a for..in statement is always of type any
+<<<<<<< HEAD
             if (declaration.parent.parent.kind === 192 /* ForInStatement */) {
                 return anyType;
             }
             if (declaration.parent.parent.kind === 193 /* ForOfStatement */) {
+=======
+            if (declaration.parent.parent.kind === 190 /* ForInStatement */) {
+                return anyType;
+            }
+            if (declaration.parent.parent.kind === 191 /* ForOfStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // checkRightHandSideOfForOf will return undefined if the for-of expression type was
                 // missing properties/signatures required to get its iteratedType (like
                 // [Symbol.iterator] or next). This may be because we accessed properties from anyType,
@@ -14672,11 +17663,19 @@ var ts;
             if (declaration.type) {
                 return getTypeFromTypeNode(declaration.type);
             }
+<<<<<<< HEAD
             if (declaration.kind === 132 /* Parameter */) {
                 var func = declaration.parent;
                 // For a parameter of a set accessor, use the type of the get accessor if one is present
                 if (func.kind === 140 /* SetAccessor */ && !ts.hasDynamicName(func)) {
                     var getter = ts.getDeclarationOfKind(declaration.parent.symbol, 139 /* GetAccessor */);
+=======
+            if (declaration.kind === 131 /* Parameter */) {
+                var func = declaration.parent;
+                // For a parameter of a set accessor, use the type of the get accessor if one is present
+                if (func.kind === 139 /* SetAccessor */ && !ts.hasDynamicName(func)) {
+                    var getter = ts.getDeclarationOfKind(declaration.parent.symbol, 138 /* GetAccessor */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (getter) {
                         return getReturnTypeOfSignature(getSignatureFromDeclaration(getter));
                     }
@@ -14692,7 +17691,11 @@ var ts;
                 return checkExpressionCached(declaration.initializer);
             }
             // If it is a short-hand property assignment, use the type of the identifier
+<<<<<<< HEAD
             if (declaration.kind === 238 /* ShorthandPropertyAssignment */) {
+=======
+            if (declaration.kind === 228 /* ShorthandPropertyAssignment */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return checkIdentifier(declaration.name);
             }
             // No type specified and nothing can be inferred
@@ -14727,7 +17730,11 @@ var ts;
             var hasSpreadElement = false;
             var elementTypes = [];
             ts.forEach(pattern.elements, function (e) {
+<<<<<<< HEAD
                 elementTypes.push(e.kind === 179 /* OmittedExpression */ || e.dotDotDotToken ? anyType : getTypeFromBindingElement(e));
+=======
+                elementTypes.push(e.kind === 178 /* OmittedExpression */ || e.dotDotDotToken ? anyType : getTypeFromBindingElement(e));
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (e.dotDotDotToken) {
                     hasSpreadElement = true;
                 }
@@ -14750,7 +17757,11 @@ var ts;
         // parameter with no type annotation or initializer, the type implied by the binding pattern becomes the type of
         // the parameter.
         function getTypeFromBindingPattern(pattern) {
+<<<<<<< HEAD
             return pattern.kind === 154 /* ObjectBindingPattern */
+=======
+            return pattern.kind === 153 /* ObjectBindingPattern */
+>>>>>>> Updated compiler to emitDependencyFile branch
                 ? getTypeFromObjectBindingPattern(pattern)
                 : getTypeFromArrayBindingPattern(pattern);
         }
@@ -14772,7 +17783,11 @@ var ts;
                 // During a normal type check we'll never get to here with a property assignment (the check of the containing
                 // object literal uses a different path). We exclude widening only so that language services and type verification
                 // tools see the actual type.
+<<<<<<< HEAD
                 return declaration.kind !== 237 /* PropertyAssignment */ ? getWidenedType(type) : type;
+=======
+                return declaration.kind !== 227 /* PropertyAssignment */ ? getWidenedType(type) : type;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             // If no type was specified and nothing could be inferred, and if the declaration specifies a binding pattern, use
             // the type implied by the binding pattern
@@ -14784,7 +17799,11 @@ var ts;
             // Report implicit any errors unless this is a private property within an ambient declaration
             if (reportErrors && compilerOptions.noImplicitAny) {
                 var root = ts.getRootDeclaration(declaration);
+<<<<<<< HEAD
                 if (!isPrivateWithinAmbient(root) && !(root.kind === 132 /* Parameter */ && isPrivateWithinAmbient(root.parent))) {
+=======
+                if (!isPrivateWithinAmbient(root) && !(root.kind === 131 /* Parameter */ && isPrivateWithinAmbient(root.parent))) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     reportImplicitAnyError(declaration, type);
                 }
             }
@@ -14799,11 +17818,19 @@ var ts;
                 }
                 // Handle catch clause variables
                 var declaration = symbol.valueDeclaration;
+<<<<<<< HEAD
                 if (declaration.parent.kind === 236 /* CatchClause */) {
                     return links.type = anyType;
                 }
                 // Handle export default expressions
                 if (declaration.kind === 219 /* ExportAssignment */) {
+=======
+                if (declaration.parent.kind === 226 /* CatchClause */) {
+                    return links.type = anyType;
+                }
+                // Handle export default expressions
+                if (declaration.kind === 217 /* ExportAssignment */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return links.type = checkExpression(declaration.expression);
                 }
                 // Handle variable, parameter or property
@@ -14834,7 +17861,11 @@ var ts;
         }
         function getAnnotatedAccessorType(accessor) {
             if (accessor) {
+<<<<<<< HEAD
                 if (accessor.kind === 139 /* GetAccessor */) {
+=======
+                if (accessor.kind === 138 /* GetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return accessor.type && getTypeFromTypeNode(accessor.type);
                 }
                 else {
@@ -14850,8 +17881,13 @@ var ts;
                 if (!pushTypeResolution(symbol)) {
                     return unknownType;
                 }
+<<<<<<< HEAD
                 var getter = ts.getDeclarationOfKind(symbol, 139 /* GetAccessor */);
                 var setter = ts.getDeclarationOfKind(symbol, 140 /* SetAccessor */);
+=======
+                var getter = ts.getDeclarationOfKind(symbol, 138 /* GetAccessor */);
+                var setter = ts.getDeclarationOfKind(symbol, 139 /* SetAccessor */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var type;
                 // First try to see if the user specified a return type on the get-accessor.
                 var getterReturnType = getAnnotatedAccessorType(getter);
@@ -14880,7 +17916,11 @@ var ts;
                 if (!popTypeResolution()) {
                     type = anyType;
                     if (compilerOptions.noImplicitAny) {
+<<<<<<< HEAD
                         var getter_1 = ts.getDeclarationOfKind(symbol, 139 /* GetAccessor */);
+=======
+                        var getter_1 = ts.getDeclarationOfKind(symbol, 138 /* GetAccessor */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         error(getter_1, ts.Diagnostics._0_implicitly_has_return_type_any_because_it_does_not_have_a_return_type_annotation_and_is_referenced_directly_or_indirectly_in_one_of_its_return_expressions, symbolToString(symbol));
                     }
                 }
@@ -14980,9 +18020,15 @@ var ts;
                 if (!node) {
                     return typeParameters;
                 }
+<<<<<<< HEAD
                 if (node.kind === 206 /* ClassDeclaration */ || node.kind === 178 /* ClassExpression */ ||
                     node.kind === 205 /* FunctionDeclaration */ || node.kind === 166 /* FunctionExpression */ ||
                     node.kind === 137 /* MethodDeclaration */ || node.kind === 167 /* ArrowFunction */) {
+=======
+                if (node.kind === 204 /* ClassDeclaration */ || node.kind === 203 /* FunctionDeclaration */ ||
+                    node.kind === 165 /* FunctionExpression */ || node.kind === 136 /* MethodDeclaration */ ||
+                    node.kind === 166 /* ArrowFunction */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var declarations = node.typeParameters;
                     if (declarations) {
                         return appendTypeParameters(appendOuterTypeParameters(typeParameters, node), declarations);
@@ -14992,8 +18038,13 @@ var ts;
         }
         // The outer type parameters are those defined by enclosing generic classes, methods, or functions.
         function getOuterTypeParametersOfClassOrInterface(symbol) {
+<<<<<<< HEAD
             var declaration = symbol.flags & 32 /* Class */ ? symbol.valueDeclaration : ts.getDeclarationOfKind(symbol, 207 /* InterfaceDeclaration */);
             return appendOuterTypeParameters(undefined, declaration);
+=======
+            var kind = symbol.flags & 32 /* Class */ ? 204 /* ClassDeclaration */ : 205 /* InterfaceDeclaration */;
+            return appendOuterTypeParameters(undefined, ts.getDeclarationOfKind(symbol, kind));
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         // The local type parameters are the combined set of type parameters from all declarations of the class,
         // interface, or type alias.
@@ -15001,8 +18052,12 @@ var ts;
             var result;
             for (var _i = 0, _a = symbol.declarations; _i < _a.length; _i++) {
                 var node = _a[_i];
+<<<<<<< HEAD
                 if (node.kind === 207 /* InterfaceDeclaration */ || node.kind === 206 /* ClassDeclaration */ ||
                     node.kind === 178 /* ClassExpression */ || node.kind === 208 /* TypeAliasDeclaration */) {
+=======
+                if (node.kind === 205 /* InterfaceDeclaration */ || node.kind === 204 /* ClassDeclaration */ || node.kind === 206 /* TypeAliasDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var declaration = node;
                     if (declaration.typeParameters) {
                         result = appendTypeParameters(result, declaration.typeParameters);
@@ -15016,6 +18071,7 @@ var ts;
         function getTypeParametersOfClassOrInterface(symbol) {
             return ts.concatenate(getOuterTypeParametersOfClassOrInterface(symbol), getLocalTypeParametersOfClassOrInterfaceOrTypeAlias(symbol));
         }
+<<<<<<< HEAD
         function isConstructorType(type) {
             return type.flags & 48128 /* ObjectType */ && getSignaturesOfType(type, 1 /* Construct */).length > 0;
         }
@@ -15066,6 +18122,8 @@ var ts;
             }
             return type.resolvedBaseConstructorType;
         }
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
         function getBaseTypes(type) {
             if (!type.resolvedBaseTypes) {
                 if (type.symbol.flags & 32 /* Class */) {
@@ -15081,6 +18139,7 @@ var ts;
             return type.resolvedBaseTypes;
         }
         function resolveBaseTypesOfClass(type) {
+<<<<<<< HEAD
             type.resolvedBaseTypes = emptyArray;
             var baseContructorType = getBaseConstructorTypeOfClass(type);
             if (!(baseContructorType.flags & 48128 /* ObjectType */)) {
@@ -15102,6 +18161,25 @@ var ts;
                 if (!constructors.length) {
                     error(baseTypeNode.expression, ts.Diagnostics.No_base_constructor_has_the_specified_number_of_type_arguments);
                     return;
+=======
+            type.baseTypes = [];
+            var declaration = ts.getDeclarationOfKind(type.symbol, 204 /* ClassDeclaration */);
+            var baseTypeNode = ts.getClassExtendsHeritageClauseElement(declaration);
+            if (baseTypeNode) {
+                var baseType = getTypeFromTypeNode(baseTypeNode);
+                if (baseType !== unknownType) {
+                    if (getTargetType(baseType).flags & 1024 /* Class */) {
+                        if (type !== baseType && !hasBaseType(baseType, type)) {
+                            type.baseTypes.push(baseType);
+                        }
+                        else {
+                            error(declaration, ts.Diagnostics.Type_0_recursively_references_itself_as_a_base_type, typeToString(type, undefined, 1 /* WriteArrayAsGenericType */));
+                        }
+                    }
+                    else {
+                        error(baseTypeNode, ts.Diagnostics.A_class_may_only_extend_another_class);
+                    }
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
                 baseType = getReturnTypeOfSignature(constructors[0]);
             }
@@ -15122,7 +18200,11 @@ var ts;
             type.resolvedBaseTypes = [];
             for (var _i = 0, _a = type.symbol.declarations; _i < _a.length; _i++) {
                 var declaration = _a[_i];
+<<<<<<< HEAD
                 if (declaration.kind === 207 /* InterfaceDeclaration */ && ts.getInterfaceBaseTypeNodes(declaration)) {
+=======
+                if (declaration.kind === 205 /* InterfaceDeclaration */ && ts.getInterfaceBaseTypeNodes(declaration)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     for (var _b = 0, _c = ts.getInterfaceBaseTypeNodes(declaration); _b < _c.length; _b++) {
                         var node = _c[_b];
                         var baseType = getTypeFromTypeNode(node);
@@ -15171,7 +18253,11 @@ var ts;
                 if (!pushTypeResolution(links)) {
                     return unknownType;
                 }
+<<<<<<< HEAD
                 var declaration = ts.getDeclarationOfKind(symbol, 208 /* TypeAliasDeclaration */);
+=======
+                var declaration = ts.getDeclarationOfKind(symbol, 206 /* TypeAliasDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var type = getTypeFromTypeNode(declaration.type);
                 if (popTypeResolution()) {
                     links.typeParameters = getLocalTypeParametersOfClassOrInterfaceOrTypeAlias(symbol);
@@ -15204,7 +18290,11 @@ var ts;
             if (!links.declaredType) {
                 var type = createType(512 /* TypeParameter */);
                 type.symbol = symbol;
+<<<<<<< HEAD
                 if (!ts.getDeclarationOfKind(symbol, 131 /* TypeParameter */).constraint) {
+=======
+                if (!ts.getDeclarationOfKind(symbol, 130 /* TypeParameter */).constraint) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     type.constraint = noConstraintType;
                 }
                 links.declaredType = type;
@@ -15335,6 +18425,7 @@ var ts;
             return createSignature(sig.declaration, sig.typeParameters, sig.parameters, sig.resolvedReturnType, sig.typePredicate, sig.minArgumentCount, sig.hasRestParameter, sig.hasStringLiterals);
         }
         function getDefaultConstructSignatures(classType) {
+<<<<<<< HEAD
             if (!getBaseTypes(classType).length) {
                 return [createSignature(undefined, classType.localTypeParameters, emptyArray, classType, undefined, 0, false, false)];
             }
@@ -15355,6 +18446,21 @@ var ts;
                 }
             }
             return result;
+=======
+            var baseTypes = getBaseTypes(classType);
+            if (baseTypes.length) {
+                var baseType = baseTypes[0];
+                var baseSignatures = getSignaturesOfType(getTypeOfSymbol(baseType.symbol), 1 /* Construct */);
+                return ts.map(baseSignatures, function (baseSignature) {
+                    var signature = baseType.flags & 4096 /* Reference */ ?
+                        getSignatureInstantiation(baseSignature, baseType.typeArguments) : cloneSignature(baseSignature);
+                    signature.typeParameters = classType.localTypeParameters;
+                    signature.resolvedReturnType = classType;
+                    return signature;
+                });
+            }
+            return [createSignature(undefined, classType.localTypeParameters, emptyArray, classType, undefined, 0, false, false)];
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function createTupleTypeMemberSymbols(memberTypes) {
             var members = {};
@@ -15684,7 +18790,11 @@ var ts;
         function getSignatureFromDeclaration(declaration) {
             var links = getNodeLinks(declaration);
             if (!links.resolvedSignature) {
+<<<<<<< HEAD
                 var classType = declaration.kind === 138 /* Constructor */ ? getDeclaredTypeOfClassOrInterface(declaration.parent.symbol) : undefined;
+=======
+                var classType = declaration.kind === 137 /* Constructor */ ? getDeclaredTypeOfClassOrInterface(declaration.parent.symbol) : undefined;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var typeParameters = classType ? classType.localTypeParameters :
                     declaration.typeParameters ? getTypeParametersFromDeclaration(declaration.typeParameters) : undefined;
                 var parameters = [];
@@ -15712,7 +18822,11 @@ var ts;
                 }
                 else if (declaration.type) {
                     returnType = getTypeFromTypeNode(declaration.type);
+<<<<<<< HEAD
                     if (declaration.type.kind === 144 /* TypePredicate */) {
+=======
+                    if (declaration.type.kind === 143 /* TypePredicate */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var typePredicateNode = declaration.type;
                         typePredicate = {
                             parameterName: typePredicateNode.parameterName ? typePredicateNode.parameterName.text : undefined,
@@ -15724,8 +18838,13 @@ var ts;
                 else {
                     // TypeScript 1.0 spec (April 2014):
                     // If only one accessor includes a type annotation, the other behaves as if it had the same type annotation.
+<<<<<<< HEAD
                     if (declaration.kind === 139 /* GetAccessor */ && !ts.hasDynamicName(declaration)) {
                         var setter = ts.getDeclarationOfKind(declaration.symbol, 140 /* SetAccessor */);
+=======
+                    if (declaration.kind === 138 /* GetAccessor */ && !ts.hasDynamicName(declaration)) {
+                        var setter = ts.getDeclarationOfKind(declaration.symbol, 139 /* SetAccessor */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         returnType = getAnnotatedAccessorType(setter);
                     }
                     if (!returnType && ts.nodeIsMissing(declaration.body)) {
@@ -15743,6 +18862,7 @@ var ts;
             for (var i = 0, len = symbol.declarations.length; i < len; i++) {
                 var node = symbol.declarations[i];
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 146 /* FunctionType */:
                     case 147 /* ConstructorType */:
                     case 205 /* FunctionDeclaration */:
@@ -15756,6 +18876,21 @@ var ts;
                     case 140 /* SetAccessor */:
                     case 166 /* FunctionExpression */:
                     case 167 /* ArrowFunction */:
+=======
+                    case 145 /* FunctionType */:
+                    case 146 /* ConstructorType */:
+                    case 203 /* FunctionDeclaration */:
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+                    case 137 /* Constructor */:
+                    case 140 /* CallSignature */:
+                    case 141 /* ConstructSignature */:
+                    case 142 /* IndexSignature */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                    case 165 /* FunctionExpression */:
+                    case 166 /* ArrowFunction */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Don't include signature if node is the implementation of an overloaded function. A node is considered
                         // an implementation node if it has a body and the previous node is of the same kind and immediately
                         // precedes the implementation node (i.e. has the same parent and ends where the implementation starts).
@@ -15832,7 +18967,11 @@ var ts;
             // object type literal or interface (using the new keyword). Each way of declaring a constructor
             // will result in a different declaration kind.
             if (!signature.isolatedSignatureType) {
+<<<<<<< HEAD
                 var isConstructor = signature.declaration.kind === 138 /* Constructor */ || signature.declaration.kind === 142 /* ConstructSignature */;
+=======
+                var isConstructor = signature.declaration.kind === 137 /* Constructor */ || signature.declaration.kind === 141 /* ConstructSignature */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var type = createObjectType(32768 /* Anonymous */ | 131072 /* FromSignature */);
                 type.members = emptySymbols;
                 type.properties = emptyArray;
@@ -15846,7 +18985,11 @@ var ts;
             return symbol.members["__index"];
         }
         function getIndexDeclarationOfSymbol(symbol, kind) {
+<<<<<<< HEAD
             var syntaxKind = kind === 1 /* Number */ ? 122 /* NumberKeyword */ : 124 /* StringKeyword */;
+=======
+            var syntaxKind = kind === 1 /* Number */ ? 121 /* NumberKeyword */ : 123 /* StringKeyword */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             var indexSymbol = getIndexSymbol(symbol);
             if (indexSymbol) {
                 for (var _i = 0, _a = indexSymbol.declarations; _i < _a.length; _i++) {
@@ -15875,13 +19018,21 @@ var ts;
                     type.constraint = targetConstraint ? instantiateType(targetConstraint, type.mapper) : noConstraintType;
                 }
                 else {
+<<<<<<< HEAD
                     type.constraint = getTypeFromTypeNode(ts.getDeclarationOfKind(type.symbol, 131 /* TypeParameter */).constraint);
+=======
+                    type.constraint = getTypeFromTypeNode(ts.getDeclarationOfKind(type.symbol, 130 /* TypeParameter */).constraint);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
             }
             return type.constraint === noConstraintType ? undefined : type.constraint;
         }
         function getParentSymbolOfTypeParameter(typeParameter) {
+<<<<<<< HEAD
             return getSymbolOfNode(ts.getDeclarationOfKind(typeParameter.symbol, 131 /* TypeParameter */).parent);
+=======
+            return getSymbolOfNode(ts.getDeclarationOfKind(typeParameter.symbol, 130 /* TypeParameter */).parent);
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function getTypeListId(types) {
             switch (types.length) {
@@ -15934,13 +19085,21 @@ var ts;
                 currentNode = currentNode.parent;
             }
             // if last step was made from the type parameter this means that path has started somewhere in constraint which is illegal
+<<<<<<< HEAD
             links.isIllegalTypeReferenceInConstraint = currentNode.kind === 131 /* TypeParameter */;
+=======
+            links.isIllegalTypeReferenceInConstraint = currentNode.kind === 130 /* TypeParameter */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             return links.isIllegalTypeReferenceInConstraint;
         }
         function checkTypeParameterHasIllegalReferencesInConstraint(typeParameter) {
             var typeParameterSymbol;
             function check(n) {
+<<<<<<< HEAD
                 if (n.kind === 145 /* TypeReference */ && n.typeName.kind === 66 /* Identifier */) {
+=======
+                if (n.kind === 144 /* TypeReference */ && n.typeName.kind === 65 /* Identifier */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var links = getNodeLinks(n);
                     if (links.isIllegalTypeReferenceInConstraint === undefined) {
                         var symbol = resolveName(typeParameter, n.typeName.text, 793056 /* Type */, undefined, undefined);
@@ -16027,7 +19186,11 @@ var ts;
             var links = getNodeLinks(node);
             if (!links.resolvedType) {
                 // We only support expressions that are simple qualified names. For other expressions this produces undefined.
+<<<<<<< HEAD
                 var typeNameOrExpression = node.kind === 145 /* TypeReference */ ? node.typeName :
+=======
+                var typeNameOrExpression = node.kind === 144 /* TypeReference */ ? node.typeName :
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ts.isSupportedExpressionWithTypeArguments(node) ? node.expression :
                         undefined;
                 var symbol = typeNameOrExpression && resolveEntityName(typeNameOrExpression, 793056 /* Type */) || unknownSymbol;
@@ -16059,9 +19222,15 @@ var ts;
                 for (var _i = 0; _i < declarations.length; _i++) {
                     var declaration = declarations[_i];
                     switch (declaration.kind) {
+<<<<<<< HEAD
                         case 206 /* ClassDeclaration */:
                         case 207 /* InterfaceDeclaration */:
                         case 209 /* EnumDeclaration */:
+=======
+                        case 204 /* ClassDeclaration */:
+                        case 205 /* InterfaceDeclaration */:
+                        case 207 /* EnumDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return declaration;
                     }
                 }
@@ -16106,6 +19275,7 @@ var ts;
             return globalESSymbolConstructorSymbol || (globalESSymbolConstructorSymbol = getGlobalValueSymbol("Symbol"));
         }
         /**
+<<<<<<< HEAD
           * Creates a TypeReference for a generic `TypedPropertyDescriptor<T>`.
           */
         function createTypedPropertyDescriptorType(propertyType) {
@@ -16115,6 +19285,8 @@ var ts;
                 : emptyObjectType;
         }
         /**
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
          * Instantiates a global type that is generic with some element type, and returns that instantiation.
          */
         function createTypeFromGenericGlobalType(genericGlobalType, elementType) {
@@ -16292,18 +19464,29 @@ var ts;
             switch (node.kind) {
                 case 113 /* AnyKeyword */:
                     return anyType;
+<<<<<<< HEAD
                 case 124 /* StringKeyword */:
                     return stringType;
                 case 122 /* NumberKeyword */:
+=======
+                case 123 /* StringKeyword */:
+                    return stringType;
+                case 121 /* NumberKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return numberType;
                 case 114 /* BooleanKeyword */:
                     return booleanType;
+<<<<<<< HEAD
                 case 125 /* SymbolKeyword */:
+=======
+                case 124 /* SymbolKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return esSymbolType;
                 case 100 /* VoidKeyword */:
                     return voidType;
                 case 8 /* StringLiteral */:
                     return getTypeFromStringLiteral(node);
+<<<<<<< HEAD
                 case 145 /* TypeReference */:
                     return getTypeFromTypeReference(node);
                 case 144 /* TypePredicate */:
@@ -16328,6 +19511,32 @@ var ts;
                 // Callers should first ensure this by calling isTypeNode
                 case 66 /* Identifier */:
                 case 129 /* QualifiedName */:
+=======
+                case 144 /* TypeReference */:
+                    return getTypeFromTypeReference(node);
+                case 143 /* TypePredicate */:
+                    return booleanType;
+                case 179 /* ExpressionWithTypeArguments */:
+                    return getTypeFromTypeReference(node);
+                case 147 /* TypeQuery */:
+                    return getTypeFromTypeQueryNode(node);
+                case 149 /* ArrayType */:
+                    return getTypeFromArrayTypeNode(node);
+                case 150 /* TupleType */:
+                    return getTypeFromTupleTypeNode(node);
+                case 151 /* UnionType */:
+                    return getTypeFromUnionTypeNode(node);
+                case 152 /* ParenthesizedType */:
+                    return getTypeFromTypeNode(node.type);
+                case 145 /* FunctionType */:
+                case 146 /* ConstructorType */:
+                case 148 /* TypeLiteral */:
+                    return getTypeFromTypeLiteralOrFunctionOrConstructorTypeNode(node);
+                // This function assumes that an identifier or qualified name is a type expression
+                // Callers should first ensure this by calling isTypeNode
+                case 65 /* Identifier */:
+                case 128 /* QualifiedName */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var symbol = getSymbolInfo(node);
                     return symbol && getDeclaredTypeOfSymbol(symbol);
                 default:
@@ -16494,6 +19703,7 @@ var ts;
         // Returns true if the given expression contains (at any level of nesting) a function or arrow expression
         // that is subject to contextual typing.
         function isContextSensitive(node) {
+<<<<<<< HEAD
             ts.Debug.assert(node.kind !== 137 /* MethodDeclaration */ || ts.isObjectLiteralMethod(node));
             switch (node.kind) {
                 case 166 /* FunctionExpression */:
@@ -16515,6 +19725,29 @@ var ts;
                 case 136 /* MethodSignature */:
                     return isContextSensitiveFunctionLikeDeclaration(node);
                 case 165 /* ParenthesizedExpression */:
+=======
+            ts.Debug.assert(node.kind !== 136 /* MethodDeclaration */ || ts.isObjectLiteralMethod(node));
+            switch (node.kind) {
+                case 165 /* FunctionExpression */:
+                case 166 /* ArrowFunction */:
+                    return isContextSensitiveFunctionLikeDeclaration(node);
+                case 157 /* ObjectLiteralExpression */:
+                    return ts.forEach(node.properties, isContextSensitive);
+                case 156 /* ArrayLiteralExpression */:
+                    return ts.forEach(node.elements, isContextSensitive);
+                case 173 /* ConditionalExpression */:
+                    return isContextSensitive(node.whenTrue) ||
+                        isContextSensitive(node.whenFalse);
+                case 172 /* BinaryExpression */:
+                    return node.operatorToken.kind === 49 /* BarBarToken */ &&
+                        (isContextSensitive(node.left) || isContextSensitive(node.right));
+                case 227 /* PropertyAssignment */:
+                    return isContextSensitive(node.initializer);
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                    return isContextSensitiveFunctionLikeDeclaration(node);
+                case 164 /* ParenthesizedExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return isContextSensitive(node.expression);
             }
             return false;
@@ -17375,15 +20608,24 @@ var ts;
             var typeAsString = typeToString(getWidenedType(type));
             var diagnostic;
             switch (declaration.kind) {
+<<<<<<< HEAD
                 case 135 /* PropertyDeclaration */:
                 case 134 /* PropertySignature */:
                     diagnostic = ts.Diagnostics.Member_0_implicitly_has_an_1_type;
                     break;
                 case 132 /* Parameter */:
+=======
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                    diagnostic = ts.Diagnostics.Member_0_implicitly_has_an_1_type;
+                    break;
+                case 131 /* Parameter */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     diagnostic = declaration.dotDotDotToken ?
                         ts.Diagnostics.Rest_parameter_0_implicitly_has_an_any_type :
                         ts.Diagnostics.Parameter_0_implicitly_has_an_1_type;
                     break;
+<<<<<<< HEAD
                 case 205 /* FunctionDeclaration */:
                 case 137 /* MethodDeclaration */:
                 case 136 /* MethodSignature */:
@@ -17391,6 +20633,15 @@ var ts;
                 case 140 /* SetAccessor */:
                 case 166 /* FunctionExpression */:
                 case 167 /* ArrowFunction */:
+=======
+                case 203 /* FunctionDeclaration */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                case 165 /* FunctionExpression */:
+                case 166 /* ArrowFunction */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (!declaration.name) {
                         error(declaration, ts.Diagnostics.Function_expression_which_lacks_return_type_annotation_implicitly_has_an_0_return_type, typeAsString);
                         return;
@@ -17659,10 +20910,17 @@ var ts;
             // The expression is restricted to a single identifier or a sequence of identifiers separated by periods
             while (node) {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 148 /* TypeQuery */:
                         return true;
                     case 66 /* Identifier */:
                     case 129 /* QualifiedName */:
+=======
+                    case 147 /* TypeQuery */:
+                        return true;
+                    case 65 /* Identifier */:
+                    case 128 /* QualifiedName */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         node = node.parent;
                         continue;
                     default:
@@ -17710,7 +20968,11 @@ var ts;
             function isAssignedInBinaryExpression(node) {
                 if (node.operatorToken.kind >= 54 /* FirstAssignment */ && node.operatorToken.kind <= 65 /* LastAssignment */) {
                     var n = node.left;
+<<<<<<< HEAD
                     while (n.kind === 165 /* ParenthesizedExpression */) {
+=======
+                    while (n.kind === 164 /* ParenthesizedExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         n = n.expression;
                     }
                     if (n.kind === 66 /* Identifier */ && getResolvedSymbol(n) === symbol) {
@@ -17727,6 +20989,7 @@ var ts;
             }
             function isAssignedIn(node) {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 173 /* BinaryExpression */:
                         return isAssignedInBinaryExpression(node);
                     case 203 /* VariableDeclaration */:
@@ -17774,6 +21037,48 @@ var ts;
                     case 231 /* JsxSpreadAttribute */:
                     case 227 /* JsxOpeningElement */:
                     case 232 /* JsxExpression */:
+=======
+                    case 172 /* BinaryExpression */:
+                        return isAssignedInBinaryExpression(node);
+                    case 201 /* VariableDeclaration */:
+                    case 155 /* BindingElement */:
+                        return isAssignedInVariableDeclaration(node);
+                    case 153 /* ObjectBindingPattern */:
+                    case 154 /* ArrayBindingPattern */:
+                    case 156 /* ArrayLiteralExpression */:
+                    case 157 /* ObjectLiteralExpression */:
+                    case 158 /* PropertyAccessExpression */:
+                    case 159 /* ElementAccessExpression */:
+                    case 160 /* CallExpression */:
+                    case 161 /* NewExpression */:
+                    case 163 /* TypeAssertionExpression */:
+                    case 164 /* ParenthesizedExpression */:
+                    case 170 /* PrefixUnaryExpression */:
+                    case 167 /* DeleteExpression */:
+                    case 168 /* TypeOfExpression */:
+                    case 169 /* VoidExpression */:
+                    case 171 /* PostfixUnaryExpression */:
+                    case 173 /* ConditionalExpression */:
+                    case 176 /* SpreadElementExpression */:
+                    case 182 /* Block */:
+                    case 183 /* VariableStatement */:
+                    case 185 /* ExpressionStatement */:
+                    case 186 /* IfStatement */:
+                    case 187 /* DoStatement */:
+                    case 188 /* WhileStatement */:
+                    case 189 /* ForStatement */:
+                    case 190 /* ForInStatement */:
+                    case 191 /* ForOfStatement */:
+                    case 194 /* ReturnStatement */:
+                    case 195 /* WithStatement */:
+                    case 196 /* SwitchStatement */:
+                    case 223 /* CaseClause */:
+                    case 224 /* DefaultClause */:
+                    case 197 /* LabeledStatement */:
+                    case 198 /* ThrowStatement */:
+                    case 199 /* TryStatement */:
+                    case 226 /* CatchClause */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return ts.forEachChild(node, isAssignedIn);
                 }
                 return false;
@@ -17826,18 +21131,27 @@ var ts;
                         node = node.parent;
                         var narrowedType = type;
                         switch (node.kind) {
+<<<<<<< HEAD
                             case 188 /* IfStatement */:
+=======
+                            case 186 /* IfStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 // In a branch of an if statement, narrow based on controlling expression
                                 if (child !== node.expression) {
                                     narrowedType = narrowType(type, node.expression, child === node.thenStatement);
                                 }
                                 break;
+<<<<<<< HEAD
                             case 174 /* ConditionalExpression */:
+=======
+                            case 173 /* ConditionalExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 // In a branch of a conditional expression, narrow based on controlling condition
                                 if (child !== node.condition) {
                                     narrowedType = narrowType(type, node.condition, child === node.whenTrue);
                                 }
                                 break;
+<<<<<<< HEAD
                             case 173 /* BinaryExpression */:
                                 // In the right operand of an && or ||, narrow based on left operand
                                 if (child === node.right) {
@@ -17845,10 +21159,20 @@ var ts;
                                         narrowedType = narrowType(type, node.left, true);
                                     }
                                     else if (node.operatorToken.kind === 50 /* BarBarToken */) {
+=======
+                            case 172 /* BinaryExpression */:
+                                // In the right operand of an && or ||, narrow based on left operand
+                                if (child === node.right) {
+                                    if (node.operatorToken.kind === 48 /* AmpersandAmpersandToken */) {
+                                        narrowedType = narrowType(type, node.left, true);
+                                    }
+                                    else if (node.operatorToken.kind === 49 /* BarBarToken */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                         narrowedType = narrowType(type, node.left, false);
                                     }
                                 }
                                 break;
+<<<<<<< HEAD
                             case 240 /* SourceFile */:
                             case 210 /* ModuleDeclaration */:
                             case 205 /* FunctionDeclaration */:
@@ -17857,6 +21181,16 @@ var ts;
                             case 139 /* GetAccessor */:
                             case 140 /* SetAccessor */:
                             case 138 /* Constructor */:
+=======
+                            case 230 /* SourceFile */:
+                            case 208 /* ModuleDeclaration */:
+                            case 203 /* FunctionDeclaration */:
+                            case 136 /* MethodDeclaration */:
+                            case 135 /* MethodSignature */:
+                            case 138 /* GetAccessor */:
+                            case 139 /* SetAccessor */:
+                            case 137 /* Constructor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 // Stop at the first containing function or module declaration
                                 break loop;
                         }
@@ -17873,7 +21207,11 @@ var ts;
             return type;
             function narrowTypeByEquality(type, expr, assumeTrue) {
                 // Check that we have 'typeof <symbol>' on the left and string literal on the right
+<<<<<<< HEAD
                 if (expr.left.kind !== 169 /* TypeOfExpression */ || expr.right.kind !== 8 /* StringLiteral */) {
+=======
+                if (expr.left.kind !== 168 /* TypeOfExpression */ || expr.right.kind !== 8 /* StringLiteral */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return type;
                 }
                 var left = expr.left;
@@ -17938,7 +21276,11 @@ var ts;
             }
             function narrowTypeByInstanceof(type, expr, assumeTrue) {
                 // Check that type is not any, assumed result is true, and we have variable symbol on the left
+<<<<<<< HEAD
                 if (isTypeAny(type) || !assumeTrue || expr.left.kind !== 66 /* Identifier */ || getResolvedSymbol(expr.left) !== symbol) {
+=======
+                if (isTypeAny(type) || !assumeTrue || expr.left.kind !== 65 /* Identifier */ || getResolvedSymbol(expr.left) !== symbol) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return type;
                 }
                 // Check that right operand is a function type with a prototype property
@@ -17990,7 +21332,10 @@ var ts;
                 }
                 var signature = getResolvedSignature(expr);
                 if (signature.typePredicate &&
+<<<<<<< HEAD
                     expr.arguments[signature.typePredicate.parameterIndex] &&
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
                     getSymbolAtLocation(expr.arguments[signature.typePredicate.parameterIndex]) === symbol) {
                     if (!assumeTrue) {
                         if (type.flags & 16384 /* Union */) {
@@ -18006,11 +21351,19 @@ var ts;
             // will be a subtype or the same type as the argument.
             function narrowType(type, expr, assumeTrue) {
                 switch (expr.kind) {
+<<<<<<< HEAD
                     case 161 /* CallExpression */:
                         return narrowTypeByTypePredicate(type, expr, assumeTrue);
                     case 165 /* ParenthesizedExpression */:
                         return narrowType(type, expr.expression, assumeTrue);
                     case 173 /* BinaryExpression */:
+=======
+                    case 160 /* CallExpression */:
+                        return narrowTypeByTypePredicate(type, expr, assumeTrue);
+                    case 164 /* ParenthesizedExpression */:
+                        return narrowType(type, expr.expression, assumeTrue);
+                    case 172 /* BinaryExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var operator = expr.operatorToken.kind;
                         if (operator === 31 /* EqualsEqualsEqualsToken */ || operator === 32 /* ExclamationEqualsEqualsToken */) {
                             return narrowTypeByEquality(type, expr, assumeTrue);
@@ -18025,8 +21378,13 @@ var ts;
                             return narrowTypeByInstanceof(type, expr, assumeTrue);
                         }
                         break;
+<<<<<<< HEAD
                     case 171 /* PrefixUnaryExpression */:
                         if (expr.operator === 47 /* ExclamationToken */) {
+=======
+                    case 170 /* PrefixUnaryExpression */:
+                        if (expr.operator === 46 /* ExclamationToken */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return narrowType(type, expr.operand, !assumeTrue);
                         }
                         break;
@@ -18042,7 +21400,11 @@ var ts;
             // will be bound to non-arrow function that contain this arrow function. This results in inconsistent behavior.
             // To avoid that we will give an error to users if they use arguments objects in arrow function so that they
             // can explicitly bound arguments objects
+<<<<<<< HEAD
             if (symbol === argumentsSymbol && ts.getContainingFunction(node).kind === 167 /* ArrowFunction */ && languageVersion < 2 /* ES6 */) {
+=======
+            if (symbol === argumentsSymbol && ts.getContainingFunction(node).kind === 166 /* ArrowFunction */ && languageVersion < 2 /* ES6 */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 error(node, ts.Diagnostics.The_arguments_object_cannot_be_referenced_in_an_arrow_function_in_ES3_and_ES5_Consider_using_a_standard_function_expression);
             }
             if (symbol.flags & 8388608 /* Alias */ && !isInTypeQuery(node) && !isConstEnumOrConstEnumOnlyModule(resolveAlias(symbol))) {
@@ -18066,7 +21428,11 @@ var ts;
         function checkBlockScopedBindingCapturedInLoop(node, symbol) {
             if (languageVersion >= 2 /* ES6 */ ||
                 (symbol.flags & 2 /* BlockScopedVariable */) === 0 ||
+<<<<<<< HEAD
                 symbol.valueDeclaration.parent.kind === 236 /* CatchClause */) {
+=======
+                symbol.valueDeclaration.parent.kind === 226 /* CatchClause */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return;
             }
             // - check if binding is used in some function
@@ -18075,12 +21441,20 @@ var ts;
             // nesting structure:
             // (variable declaration or binding element) -> variable declaration list -> container
             var container = symbol.valueDeclaration;
+<<<<<<< HEAD
             while (container.kind !== 204 /* VariableDeclarationList */) {
+=======
+            while (container.kind !== 202 /* VariableDeclarationList */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 container = container.parent;
             }
             // get the parent of variable declaration list
             container = container.parent;
+<<<<<<< HEAD
             if (container.kind === 185 /* VariableStatement */) {
+=======
+            if (container.kind === 183 /* VariableStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // if parent is variable statement - get its parent
                 container = container.parent;
             }
@@ -18099,9 +21473,15 @@ var ts;
             }
         }
         function captureLexicalThis(node, container) {
+<<<<<<< HEAD
             getNodeLinks(node).flags |= 2 /* LexicalThis */;
             if (container.kind === 135 /* PropertyDeclaration */ || container.kind === 138 /* Constructor */) {
                 var classNode = container.parent;
+=======
+            var classNode = container.parent && container.parent.kind === 204 /* ClassDeclaration */ ? container.parent : undefined;
+            getNodeLinks(node).flags |= 2 /* LexicalThis */;
+            if (container.kind === 134 /* PropertyDeclaration */ || container.kind === 137 /* Constructor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 getNodeLinks(classNode).flags |= 4 /* CaptureThis */;
             }
             else {
@@ -18114,12 +21494,17 @@ var ts;
             var container = ts.getThisContainer(node, true);
             var needToCaptureLexicalThis = false;
             // Now skip arrow functions to get the "real" owner of 'this'.
+<<<<<<< HEAD
             if (container.kind === 167 /* ArrowFunction */) {
+=======
+            if (container.kind === 166 /* ArrowFunction */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 container = ts.getThisContainer(container, false);
                 // When targeting es6, arrow function lexically bind "this" so we do not need to do the work of binding "this" in emitted code
                 needToCaptureLexicalThis = (languageVersion < 2 /* ES6 */);
             }
             switch (container.kind) {
+<<<<<<< HEAD
                 case 210 /* ModuleDeclaration */:
                     error(node, ts.Diagnostics.this_cannot_be_referenced_in_a_module_or_namespace_body);
                     // do not return here so in case if lexical this is captured - it will be reflected in flags on NodeLinks
@@ -18129,38 +21514,69 @@ var ts;
                     // do not return here so in case if lexical this is captured - it will be reflected in flags on NodeLinks
                     break;
                 case 138 /* Constructor */:
+=======
+                case 208 /* ModuleDeclaration */:
+                    error(node, ts.Diagnostics.this_cannot_be_referenced_in_a_module_or_namespace_body);
+                    // do not return here so in case if lexical this is captured - it will be reflected in flags on NodeLinks
+                    break;
+                case 207 /* EnumDeclaration */:
+                    error(node, ts.Diagnostics.this_cannot_be_referenced_in_current_location);
+                    // do not return here so in case if lexical this is captured - it will be reflected in flags on NodeLinks
+                    break;
+                case 137 /* Constructor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (isInConstructorArgumentInitializer(node, container)) {
                         error(node, ts.Diagnostics.this_cannot_be_referenced_in_constructor_arguments);
                     }
                     break;
+<<<<<<< HEAD
                 case 135 /* PropertyDeclaration */:
                 case 134 /* PropertySignature */:
+=======
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (container.flags & 128 /* Static */) {
                         error(node, ts.Diagnostics.this_cannot_be_referenced_in_a_static_property_initializer);
                     }
                     break;
+<<<<<<< HEAD
                 case 130 /* ComputedPropertyName */:
+=======
+                case 129 /* ComputedPropertyName */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     error(node, ts.Diagnostics.this_cannot_be_referenced_in_a_computed_property_name);
                     break;
             }
             if (needToCaptureLexicalThis) {
                 captureLexicalThis(node, container);
             }
+<<<<<<< HEAD
             if (ts.isClassLike(container.parent)) {
                 var symbol = getSymbolOfNode(container.parent);
+=======
+            var classNode = container.parent && container.parent.kind === 204 /* ClassDeclaration */ ? container.parent : undefined;
+            if (classNode) {
+                var symbol = getSymbolOfNode(classNode);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return container.flags & 128 /* Static */ ? getTypeOfSymbol(symbol) : getDeclaredTypeOfSymbol(symbol);
             }
             return anyType;
         }
         function isInConstructorArgumentInitializer(node, constructorDecl) {
             for (var n = node; n && n !== constructorDecl; n = n.parent) {
+<<<<<<< HEAD
                 if (n.kind === 132 /* Parameter */) {
+=======
+                if (n.kind === 131 /* Parameter */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
                 }
             }
             return false;
         }
         function checkSuperExpression(node) {
+<<<<<<< HEAD
             var isCallExpression = node.parent.kind === 161 /* CallExpression */ && node.parent.expression === node;
             var classDeclaration = ts.getContainingClass(node);
             var classType = classDeclaration && getDeclaredTypeOfSymbol(getSymbolOfNode(classDeclaration));
@@ -18169,6 +21585,18 @@ var ts;
                 if (!classDeclaration || !ts.getClassExtendsHeritageClauseElement(classDeclaration)) {
                     error(node, ts.Diagnostics.super_can_only_be_referenced_in_a_derived_class);
                 }
+=======
+            var isCallExpression = node.parent.kind === 160 /* CallExpression */ && node.parent.expression === node;
+            var enclosingClass = ts.getAncestor(node, 204 /* ClassDeclaration */);
+            var baseClass;
+            if (enclosingClass && ts.getClassExtendsHeritageClauseElement(enclosingClass)) {
+                var classType = getDeclaredTypeOfSymbol(getSymbolOfNode(enclosingClass));
+                var baseTypes = getBaseTypes(classType);
+                baseClass = baseTypes.length && baseTypes[0];
+            }
+            if (!baseClass) {
+                error(node, ts.Diagnostics.super_can_only_be_referenced_in_a_derived_class);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return unknownType;
             }
             var container = ts.getSuperContainer(node, true);
@@ -18178,7 +21606,11 @@ var ts;
                 if (isCallExpression) {
                     // TS 1.0 SPEC (April 2014): 4.8.1
                     // Super calls are only permitted in constructors of derived classes
+<<<<<<< HEAD
                     canUseSuperExpression = container.kind === 138 /* Constructor */;
+=======
+                    canUseSuperExpression = container.kind === 137 /* Constructor */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
                 else {
                     // TS 1.0 SPEC (April 2014)
@@ -18187,11 +21619,16 @@ var ts;
                     // - In a static member function or static member accessor
                     // super property access might appear in arrow functions with arbitrary deep nesting
                     needToCaptureLexicalThis = false;
+<<<<<<< HEAD
                     while (container && container.kind === 167 /* ArrowFunction */) {
+=======
+                    while (container && container.kind === 166 /* ArrowFunction */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         container = ts.getSuperContainer(container, true);
                         needToCaptureLexicalThis = languageVersion < 2 /* ES6 */;
                     }
                     // topmost container must be something that is directly nested in the class declaration
+<<<<<<< HEAD
                     if (container && ts.isClassLike(container.parent)) {
                         if (container.flags & 128 /* Static */) {
                             canUseSuperExpression =
@@ -18209,6 +21646,25 @@ var ts;
                                     container.kind === 135 /* PropertyDeclaration */ ||
                                     container.kind === 134 /* PropertySignature */ ||
                                     container.kind === 138 /* Constructor */;
+=======
+                    if (container && container.parent && container.parent.kind === 204 /* ClassDeclaration */) {
+                        if (container.flags & 128 /* Static */) {
+                            canUseSuperExpression =
+                                container.kind === 136 /* MethodDeclaration */ ||
+                                    container.kind === 135 /* MethodSignature */ ||
+                                    container.kind === 138 /* GetAccessor */ ||
+                                    container.kind === 139 /* SetAccessor */;
+                        }
+                        else {
+                            canUseSuperExpression =
+                                container.kind === 136 /* MethodDeclaration */ ||
+                                    container.kind === 135 /* MethodSignature */ ||
+                                    container.kind === 138 /* GetAccessor */ ||
+                                    container.kind === 139 /* SetAccessor */ ||
+                                    container.kind === 134 /* PropertyDeclaration */ ||
+                                    container.kind === 133 /* PropertySignature */ ||
+                                    container.kind === 137 /* Constructor */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                         }
                     }
                 }
@@ -18222,7 +21678,11 @@ var ts;
                         getNodeLinks(node).flags |= 16 /* SuperInstance */;
                         returnType = baseClassType;
                     }
+<<<<<<< HEAD
                     if (container.kind === 138 /* Constructor */ && isInConstructorArgumentInitializer(node, container)) {
+=======
+                    if (container.kind === 137 /* Constructor */ && isInConstructorArgumentInitializer(node, container)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // issue custom error message for super property access in constructor arguments (to be aligned with old compiler)
                         error(node, ts.Diagnostics.super_cannot_be_referenced_in_constructor_arguments);
                         returnType = unknownType;
@@ -18236,7 +21696,11 @@ var ts;
                     return returnType;
                 }
             }
+<<<<<<< HEAD
             if (container && container.kind === 130 /* ComputedPropertyName */) {
+=======
+            if (container && container.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 error(node, ts.Diagnostics.super_cannot_be_referenced_in_a_computed_property_name);
             }
             else if (isCallExpression) {
@@ -18281,7 +21745,11 @@ var ts;
                 if (declaration.type) {
                     return getTypeFromTypeNode(declaration.type);
                 }
+<<<<<<< HEAD
                 if (declaration.kind === 132 /* Parameter */) {
+=======
+                if (declaration.kind === 131 /* Parameter */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var type = getContextuallyTypedParameterType(declaration);
                     if (type) {
                         return type;
@@ -18316,8 +21784,13 @@ var ts;
             // If the containing function has a return type annotation, is a constructor, or is a get accessor whose
             // corresponding set accessor has a type annotation, return statements in the function are contextually typed
             if (functionDecl.type ||
+<<<<<<< HEAD
                 functionDecl.kind === 138 /* Constructor */ ||
                 functionDecl.kind === 139 /* GetAccessor */ && getSetAccessorTypeAnnotationNode(ts.getDeclarationOfKind(functionDecl.symbol, 140 /* SetAccessor */))) {
+=======
+                functionDecl.kind === 137 /* Constructor */ ||
+                functionDecl.kind === 138 /* GetAccessor */ && getSetAccessorTypeAnnotationNode(ts.getDeclarationOfKind(functionDecl.symbol, 139 /* SetAccessor */))) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return getReturnTypeOfSignature(getSignatureFromDeclaration(functionDecl));
             }
             // Otherwise, if the containing function is contextually typed by a function type with exactly one call signature
@@ -18339,7 +21812,11 @@ var ts;
             return undefined;
         }
         function getContextualTypeForSubstitutionExpression(template, substitutionExpression) {
+<<<<<<< HEAD
             if (template.parent.kind === 163 /* TaggedTemplateExpression */) {
+=======
+            if (template.parent.kind === 162 /* TaggedTemplateExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return getContextualTypeForArgument(template.parent, substitutionExpression);
             }
             return undefined;
@@ -18487,6 +21964,7 @@ var ts;
             }
             var parent = node.parent;
             switch (parent.kind) {
+<<<<<<< HEAD
                 case 203 /* VariableDeclaration */:
                 case 132 /* Parameter */:
                 case 135 /* PropertyDeclaration */:
@@ -18516,6 +21994,36 @@ var ts;
                     ts.Debug.assert(parent.parent.kind === 175 /* TemplateExpression */);
                     return getContextualTypeForSubstitutionExpression(parent.parent, node);
                 case 165 /* ParenthesizedExpression */:
+=======
+                case 201 /* VariableDeclaration */:
+                case 131 /* Parameter */:
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                case 155 /* BindingElement */:
+                    return getContextualTypeForInitializerExpression(node);
+                case 166 /* ArrowFunction */:
+                case 194 /* ReturnStatement */:
+                    return getContextualTypeForReturnExpression(node);
+                case 175 /* YieldExpression */:
+                    return getContextualTypeForYieldOperand(parent);
+                case 160 /* CallExpression */:
+                case 161 /* NewExpression */:
+                    return getContextualTypeForArgument(parent, node);
+                case 163 /* TypeAssertionExpression */:
+                    return getTypeFromTypeNode(parent.type);
+                case 172 /* BinaryExpression */:
+                    return getContextualTypeForBinaryOperand(node);
+                case 227 /* PropertyAssignment */:
+                    return getContextualTypeForObjectLiteralElement(parent);
+                case 156 /* ArrayLiteralExpression */:
+                    return getContextualTypeForElementExpression(node);
+                case 173 /* ConditionalExpression */:
+                    return getContextualTypeForConditionalOperand(node);
+                case 180 /* TemplateSpan */:
+                    ts.Debug.assert(parent.parent.kind === 174 /* TemplateExpression */);
+                    return getContextualTypeForSubstitutionExpression(parent.parent, node);
+                case 164 /* ParenthesizedExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return getContextualType(parent);
                 case 232 /* JsxExpression */:
                 case 231 /* JsxSpreadAttribute */:
@@ -18535,7 +22043,11 @@ var ts;
             }
         }
         function isFunctionExpressionOrArrowFunction(node) {
+<<<<<<< HEAD
             return node.kind === 166 /* FunctionExpression */ || node.kind === 167 /* ArrowFunction */;
+=======
+            return node.kind === 165 /* FunctionExpression */ || node.kind === 166 /* ArrowFunction */;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function getContextualSignatureForFunctionLikeDeclaration(node) {
             // Only function expressions, arrow functions, and object literal methods are contextually typed.
@@ -18549,7 +22061,11 @@ var ts;
         // all identical ignoring their return type, the result is same signature but with return type as
         // union type of return types from these signatures
         function getContextualSignature(node) {
+<<<<<<< HEAD
             ts.Debug.assert(node.kind !== 137 /* MethodDeclaration */ || ts.isObjectLiteralMethod(node));
+=======
+            ts.Debug.assert(node.kind !== 136 /* MethodDeclaration */ || ts.isObjectLiteralMethod(node));
+>>>>>>> Updated compiler to emitDependencyFile branch
             var type = ts.isObjectLiteralMethod(node)
                 ? getContextualTypeForObjectLiteralMethod(node)
                 : getContextualType(node);
@@ -18605,6 +22121,7 @@ var ts;
         // an assignment target. Examples include 'a = xxx', '{ p: a } = xxx', '[{ p: a}] = xxx'.
         function isAssignmentTarget(node) {
             var parent = node.parent;
+<<<<<<< HEAD
             if (parent.kind === 173 /* BinaryExpression */ && parent.operatorToken.kind === 54 /* EqualsToken */ && parent.left === node) {
                 return true;
             }
@@ -18612,6 +22129,15 @@ var ts;
                 return isAssignmentTarget(parent.parent);
             }
             if (parent.kind === 157 /* ArrayLiteralExpression */) {
+=======
+            if (parent.kind === 172 /* BinaryExpression */ && parent.operatorToken.kind === 53 /* EqualsToken */ && parent.left === node) {
+                return true;
+            }
+            if (parent.kind === 227 /* PropertyAssignment */) {
+                return isAssignmentTarget(parent.parent);
+            }
+            if (parent.kind === 156 /* ArrayLiteralExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return isAssignmentTarget(parent);
             }
             return false;
@@ -18636,7 +22162,11 @@ var ts;
             var inDestructuringPattern = isAssignmentTarget(node);
             for (var _i = 0; _i < elements.length; _i++) {
                 var e = elements[_i];
+<<<<<<< HEAD
                 if (inDestructuringPattern && e.kind === 177 /* SpreadElementExpression */) {
+=======
+                if (inDestructuringPattern && e.kind === 176 /* SpreadElementExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // Given the following situation:
                     //    var c: {};
                     //    [...c] = ["", 0];
@@ -18660,7 +22190,11 @@ var ts;
                     var type = checkExpression(e, contextualMapper);
                     elementTypes.push(type);
                 }
+<<<<<<< HEAD
                 hasSpreadElement = hasSpreadElement || e.kind === 177 /* SpreadElementExpression */;
+=======
+                hasSpreadElement = hasSpreadElement || e.kind === 176 /* SpreadElementExpression */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             if (!hasSpreadElement) {
                 var contextualType = getContextualType(node);
@@ -18671,7 +22205,11 @@ var ts;
             return createArrayType(getUnionType(elementTypes));
         }
         function isNumericName(name) {
+<<<<<<< HEAD
             return name.kind === 130 /* ComputedPropertyName */ ? isNumericComputedName(name) : isNumericLiteralName(name.text);
+=======
+            return name.kind === 129 /* ComputedPropertyName */ ? isNumericComputedName(name) : isNumericLiteralName(name.text);
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function isNumericComputedName(name) {
             // It seems odd to consider an expression of type Any to result in a numeric name,
@@ -18730,6 +22268,7 @@ var ts;
             for (var _i = 0, _a = node.properties; _i < _a.length; _i++) {
                 var memberDecl = _a[_i];
                 var member = memberDecl.symbol;
+<<<<<<< HEAD
                 if (memberDecl.kind === 237 /* PropertyAssignment */ ||
                     memberDecl.kind === 238 /* ShorthandPropertyAssignment */ ||
                     ts.isObjectLiteralMethod(memberDecl)) {
@@ -18742,6 +22281,20 @@ var ts;
                     }
                     else {
                         ts.Debug.assert(memberDecl.kind === 238 /* ShorthandPropertyAssignment */);
+=======
+                if (memberDecl.kind === 227 /* PropertyAssignment */ ||
+                    memberDecl.kind === 228 /* ShorthandPropertyAssignment */ ||
+                    ts.isObjectLiteralMethod(memberDecl)) {
+                    var type = void 0;
+                    if (memberDecl.kind === 227 /* PropertyAssignment */) {
+                        type = checkPropertyAssignment(memberDecl, contextualMapper);
+                    }
+                    else if (memberDecl.kind === 136 /* MethodDeclaration */) {
+                        type = checkObjectLiteralMethod(memberDecl, contextualMapper);
+                    }
+                    else {
+                        ts.Debug.assert(memberDecl.kind === 228 /* ShorthandPropertyAssignment */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         type = checkExpression(memberDecl.name, contextualMapper);
                     }
                     typeFlags |= type.flags;
@@ -18761,7 +22314,11 @@ var ts;
                     // an ordinary function declaration(section 6.1) with no parameters.
                     // A set accessor declaration is processed in the same manner
                     // as an ordinary function declaration with a single parameter and a Void return type.
+<<<<<<< HEAD
                     ts.Debug.assert(memberDecl.kind === 139 /* GetAccessor */ || memberDecl.kind === 140 /* SetAccessor */);
+=======
+                    ts.Debug.assert(memberDecl.kind === 138 /* GetAccessor */ || memberDecl.kind === 139 /* SetAccessor */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     checkAccessorDeclaration(memberDecl);
                 }
                 if (!ts.hasDynamicName(memberDecl)) {
@@ -19175,7 +22732,11 @@ var ts;
         // If a symbol is a synthesized symbol with no value declaration, we assume it is a property. Example of this are the synthesized
         // '.prototype' property as well as synthesized tuple index properties.
         function getDeclarationKindFromSymbol(s) {
+<<<<<<< HEAD
             return s.valueDeclaration ? s.valueDeclaration.kind : 135 /* PropertyDeclaration */;
+=======
+            return s.valueDeclaration ? s.valueDeclaration.kind : 134 /* PropertyDeclaration */;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function getDeclarationFlagsFromSymbol(s) {
             return s.valueDeclaration ? ts.getCombinedNodeFlags(s.valueDeclaration) : s.flags & 134217728 /* Prototype */ ? 16 /* Public */ | 128 /* Static */ : 0;
@@ -19188,7 +22749,11 @@ var ts;
             }
             // Property is known to be private or protected at this point
             // Get the declaring and enclosing class instance types
+<<<<<<< HEAD
             var enclosingClassDeclaration = ts.getContainingClass(node);
+=======
+            var enclosingClassDeclaration = ts.getAncestor(node, 204 /* ClassDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             var enclosingClass = enclosingClassDeclaration ? getDeclaredTypeOfSymbol(getSymbolOfNode(enclosingClassDeclaration)) : undefined;
             var declaringClass = getDeclaredTypeOfSymbol(prop.parent);
             // Private property is accessible if declaring and enclosing class are the same
@@ -19224,7 +22789,11 @@ var ts;
             return checkPropertyAccessExpressionOrQualifiedName(node, node.left, node.right);
         }
         function checkPropertyAccessExpressionOrQualifiedName(node, left, right) {
+<<<<<<< HEAD
             var type = checkExpression(left);
+=======
+            var type = checkExpressionOrQualifiedName(left);
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (isTypeAny(type)) {
                 return type;
             }
@@ -19249,7 +22818,11 @@ var ts;
                 // - In a static member function or static member accessor
                 //   where this references the constructor function object of a derived class,
                 //   a super property access is permitted and must specify a public static member function of the base class.
+<<<<<<< HEAD
                 if (left.kind === 92 /* SuperKeyword */ && getDeclarationKindFromSymbol(prop) !== 137 /* MethodDeclaration */) {
+=======
+                if (left.kind === 91 /* SuperKeyword */ && getDeclarationKindFromSymbol(prop) !== 136 /* MethodDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     error(right, ts.Diagnostics.Only_public_and_protected_methods_of_the_base_class_are_accessible_via_the_super_keyword);
                 }
                 else {
@@ -19259,6 +22832,7 @@ var ts;
             return getTypeOfSymbol(prop);
         }
         function isValidPropertyAccess(node, propertyName) {
+<<<<<<< HEAD
             var left = node.kind === 159 /* PropertyAccessExpression */
                 ? node.expression
                 : node.left;
@@ -19267,6 +22841,16 @@ var ts;
                 var prop = getPropertyOfType(getWidenedType(type), propertyName);
                 if (prop && prop.parent && prop.parent.flags & 32 /* Class */) {
                     if (left.kind === 92 /* SuperKeyword */ && getDeclarationKindFromSymbol(prop) !== 137 /* MethodDeclaration */) {
+=======
+            var left = node.kind === 158 /* PropertyAccessExpression */
+                ? node.expression
+                : node.left;
+            var type = checkExpressionOrQualifiedName(left);
+            if (type !== unknownType && !isTypeAny(type)) {
+                var prop = getPropertyOfType(getWidenedType(type), propertyName);
+                if (prop && prop.parent && prop.parent.flags & 32 /* Class */) {
+                    if (left.kind === 91 /* SuperKeyword */ && getDeclarationKindFromSymbol(prop) !== 136 /* MethodDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return false;
                     }
                     else {
@@ -19282,7 +22866,11 @@ var ts;
             // Grammar checking
             if (!node.argumentExpression) {
                 var sourceFile = getSourceFile(node);
+<<<<<<< HEAD
                 if (node.parent.kind === 162 /* NewExpression */ && node.parent.expression === node) {
+=======
+                if (node.parent.kind === 161 /* NewExpression */ && node.parent.expression === node) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var start = ts.skipTrivia(sourceFile.text, node.expression.end);
                     var end = node.end;
                     grammarErrorAtPos(sourceFile, start, end - start, ts.Diagnostics.new_T_cannot_be_used_to_create_an_array_Use_new_Array_T_instead);
@@ -19411,7 +22999,11 @@ var ts;
             return true;
         }
         function resolveUntypedCall(node) {
+<<<<<<< HEAD
             if (node.kind === 163 /* TaggedTemplateExpression */) {
+=======
+            if (node.kind === 162 /* TaggedTemplateExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 checkExpression(node.template);
             }
             else if (node.kind !== 133 /* Decorator */) {
@@ -19479,8 +23071,12 @@ var ts;
         }
         function getSpreadArgumentIndex(args) {
             for (var i = 0; i < args.length; i++) {
+<<<<<<< HEAD
                 var arg = args[i];
                 if (arg && arg.kind === 177 /* SpreadElementExpression */) {
+=======
+                if (args[i].kind === 176 /* SpreadElementExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return i;
                 }
             }
@@ -19490,15 +23086,23 @@ var ts;
             var adjustedArgCount; // Apparent number of arguments we will have in this call
             var typeArguments; // Type arguments (undefined if none)
             var callIsIncomplete; // In incomplete call we want to be lenient when we have too few arguments
+<<<<<<< HEAD
             var isDecorator;
             var spreadArgIndex = -1;
             if (node.kind === 163 /* TaggedTemplateExpression */) {
+=======
+            if (node.kind === 162 /* TaggedTemplateExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var tagExpression = node;
                 // Even if the call is incomplete, we'll have a missing expression as our last argument,
                 // so we can say the count is just the arg list length
                 adjustedArgCount = args.length;
                 typeArguments = undefined;
+<<<<<<< HEAD
                 if (tagExpression.template.kind === 175 /* TemplateExpression */) {
+=======
+                if (tagExpression.template.kind === 174 /* TemplateExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // If a tagged template expression lacks a tail literal, the call is incomplete.
                     // Specifically, a template only can end in a TemplateTail or a Missing literal.
                     var templateExpression = tagExpression.template;
@@ -19524,7 +23128,11 @@ var ts;
                 var callExpression = node;
                 if (!callExpression.arguments) {
                     // This only happens when we have something of the form: 'new C'
+<<<<<<< HEAD
                     ts.Debug.assert(callExpression.kind === 162 /* NewExpression */);
+=======
+                    ts.Debug.assert(callExpression.kind === 161 /* NewExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return signature.minArgumentCount === 0;
                 }
                 // For IDE scenarios we may have an incomplete call, so a trailing comma is tantamount to adding another argument.
@@ -19599,6 +23207,7 @@ var ts;
             }
             // We perform two passes over the arguments. In the first pass we infer from all arguments, but use
             // wildcards for all context sensitive function expressions.
+<<<<<<< HEAD
             var argCount = getEffectiveArgumentCount(node, args, signature);
             for (var i = 0; i < argCount; i++) {
                 var arg = getEffectiveArgument(node, args, i);
@@ -19609,6 +23218,17 @@ var ts;
                     // If the effective argument type is 'undefined', there is no synthetic type 
                     // for the argument. In that case, we should check the argument.
                     if (argType === undefined) {
+=======
+            for (var i = 0; i < args.length; i++) {
+                var arg = args[i];
+                if (arg.kind !== 178 /* OmittedExpression */) {
+                    var paramType = getTypeAtPosition(signature, i);
+                    var argType = void 0;
+                    if (i === 0 && args[i].parent.kind === 162 /* TaggedTemplateExpression */) {
+                        argType = globalTemplateStringsArrayType;
+                    }
+                    else {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // For context sensitive arguments we pass the identityMapper, which is a signal to treat all
                         // context sensitive function expressions as wildcards
                         var mapper = excludeArgument && excludeArgument[i] !== undefined ? identityMapper : inferenceMapper;
@@ -19658,6 +23278,7 @@ var ts;
             return typeArgumentsAreAssignable;
         }
         function checkApplicableSignature(node, args, signature, relation, excludeArgument, reportErrors) {
+<<<<<<< HEAD
             var argCount = getEffectiveArgumentCount(node, args, signature);
             for (var i = 0; i < argCount; i++) {
                 var arg = getEffectiveArgument(node, args, i);
@@ -19670,6 +23291,18 @@ var ts;
                     // for the argument. In that case, we should check the argument.
                     if (argType === undefined) {
                         argType = arg.kind === 8 /* StringLiteral */ && !reportErrors
+=======
+            for (var i = 0; i < args.length; i++) {
+                var arg = args[i];
+                if (arg.kind !== 178 /* OmittedExpression */) {
+                    // Check spread elements against rest type (from arity check we know spread argument corresponds to a rest parameter)
+                    var paramType = getTypeAtPosition(signature, i);
+                    // A tagged template expression provides a special first argument, and string literals get string literal types
+                    // unless we're reporting errors
+                    var argType = i === 0 && node.kind === 162 /* TaggedTemplateExpression */
+                        ? globalTemplateStringsArrayType
+                        : arg.kind === 8 /* StringLiteral */ && !reportErrors
+>>>>>>> Updated compiler to emitDependencyFile branch
                             ? getStringLiteralType(arg)
                             : checkExpressionWithContextualType(arg, paramType, excludeArgument && excludeArgument[i] ? identityMapper : undefined);
                     }
@@ -19694,10 +23327,17 @@ var ts;
          */
         function getEffectiveCallArguments(node) {
             var args;
+<<<<<<< HEAD
             if (node.kind === 163 /* TaggedTemplateExpression */) {
                 var template = node.template;
                 args = [undefined];
                 if (template.kind === 175 /* TemplateExpression */) {
+=======
+            if (node.kind === 162 /* TaggedTemplateExpression */) {
+                var template = node.template;
+                args = [template];
+                if (template.kind === 174 /* TemplateExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ts.forEach(template.templateSpans, function (span) {
                         args.push(span.expression);
                     });
@@ -19715,6 +23355,7 @@ var ts;
             return args;
         }
         /**
+<<<<<<< HEAD
           * Returns the effective argument count for a node that works like a function invocation.
           * If 'node' is a Decorator, the number of arguments is derived from the decoration
           *    target and the signature:
@@ -19948,14 +23589,35 @@ var ts;
             else if (argIndex === 0 && node.kind === 163 /* TaggedTemplateExpression */) {
                 // For a the first argument of a tagged template expression, we use the template of the tag for error reporting.
                 return node.template;
+=======
+         * In a 'super' call, type arguments are not provided within the CallExpression node itself.
+         * Instead, they must be fetched from the class declaration's base type node.
+         *
+         * If 'node' is a 'super' call (e.g. super(...), new super(...)), then we attempt to fetch
+         * the type arguments off the containing class's first heritage clause (if one exists). Note that if
+         * type arguments are supplied on the 'super' call, they are ignored (though this is syntactically incorrect).
+         *
+         * In all other cases, the call's explicit type arguments are returned.
+         */
+        function getEffectiveTypeArguments(callExpression) {
+            if (callExpression.expression.kind === 91 /* SuperKeyword */) {
+                var containingClass = ts.getAncestor(callExpression, 204 /* ClassDeclaration */);
+                var baseClassTypeNode = containingClass && ts.getClassExtendsHeritageClauseElement(containingClass);
+                return baseClassTypeNode && baseClassTypeNode.typeArguments;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             else {
                 return arg;
             }
         }
+<<<<<<< HEAD
         function resolveCall(node, signatures, candidatesOutArray, headMessage) {
             var isTaggedTemplate = node.kind === 163 /* TaggedTemplateExpression */;
             var isDecorator = node.kind === 133 /* Decorator */;
+=======
+        function resolveCall(node, signatures, candidatesOutArray) {
+            var isTaggedTemplate = node.kind === 162 /* TaggedTemplateExpression */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             var typeArguments;
             if (!isTaggedTemplate && !isDecorator) {
                 typeArguments = node.typeArguments;
@@ -20060,8 +23722,13 @@ var ts;
                 checkApplicableSignature(node, args, candidateForArgumentError, assignableRelation, undefined, true);
             }
             else if (candidateForTypeArgumentError) {
+<<<<<<< HEAD
                 if (!isTaggedTemplate && !isDecorator && typeArguments) {
                     checkTypeArguments(candidateForTypeArgumentError, node.typeArguments, [], true, headMessage);
+=======
+                if (!isTaggedTemplate && typeArguments) {
+                    checkTypeArguments(candidateForTypeArgumentError, typeArguments, [], true);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
                 else {
                     ts.Debug.assert(resultOfFailedInference.failedTypeParameterIndex >= 0);
@@ -20333,6 +24000,7 @@ var ts;
             // to correctly fill the candidatesOutArray.
             if (!links.resolvedSignature || candidatesOutArray) {
                 links.resolvedSignature = anySignature;
+<<<<<<< HEAD
                 if (node.kind === 161 /* CallExpression */) {
                     links.resolvedSignature = resolveCallExpression(node, candidatesOutArray);
                 }
@@ -20340,6 +24008,15 @@ var ts;
                     links.resolvedSignature = resolveNewExpression(node, candidatesOutArray);
                 }
                 else if (node.kind === 163 /* TaggedTemplateExpression */) {
+=======
+                if (node.kind === 160 /* CallExpression */) {
+                    links.resolvedSignature = resolveCallExpression(node, candidatesOutArray);
+                }
+                else if (node.kind === 161 /* NewExpression */) {
+                    links.resolvedSignature = resolveNewExpression(node, candidatesOutArray);
+                }
+                else if (node.kind === 162 /* TaggedTemplateExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     links.resolvedSignature = resolveTaggedTemplateExpression(node, candidatesOutArray);
                 }
                 else if (node.kind === 133 /* Decorator */) {
@@ -20358,12 +24035,21 @@ var ts;
             if (node.expression.kind === 92 /* SuperKeyword */) {
                 return voidType;
             }
+<<<<<<< HEAD
             if (node.kind === 162 /* NewExpression */) {
                 var declaration = signature.declaration;
                 if (declaration &&
                     declaration.kind !== 138 /* Constructor */ &&
                     declaration.kind !== 142 /* ConstructSignature */ &&
                     declaration.kind !== 147 /* ConstructorType */) {
+=======
+            if (node.kind === 161 /* NewExpression */) {
+                var declaration = signature.declaration;
+                if (declaration &&
+                    declaration.kind !== 137 /* Constructor */ &&
+                    declaration.kind !== 141 /* ConstructSignature */ &&
+                    declaration.kind !== 146 /* ConstructorType */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // When resolved signature is a call signature (and not a construct signature) the result type is any
                     if (compilerOptions.noImplicitAny) {
                         error(node, ts.Diagnostics.new_expression_whose_target_lacks_a_construct_signature_implicitly_has_an_any_type);
@@ -20411,7 +24097,11 @@ var ts;
                 return unknownType;
             }
             var type;
+<<<<<<< HEAD
             if (func.body.kind !== 184 /* Block */) {
+=======
+            if (func.body.kind !== 182 /* Block */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 type = checkExpressionCached(func.body, contextualMapper);
             }
             else {
@@ -20426,6 +24116,7 @@ var ts;
                         }
                         return iterableIteratorAny;
                     }
+<<<<<<< HEAD
                 }
                 else {
                     types = checkAndAggregateReturnExpressionTypes(func.body, contextualMapper);
@@ -20433,6 +24124,15 @@ var ts;
                         return voidType;
                     }
                 }
+=======
+                }
+                else {
+                    types = checkAndAggregateReturnExpressionTypes(func.body, contextualMapper);
+                    if (types.length === 0) {
+                        return voidType;
+                    }
+                }
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // When yield/return statements are contextually typed we allow the return type to be a union type.
                 // Otherwise we require the yield/return expressions to have a best common supertype.
                 type = contextualSignature ? getUnionType(types) : getCommonSupertype(types);
@@ -20491,7 +24191,11 @@ var ts;
             });
         }
         function bodyContainsSingleThrowStatement(body) {
+<<<<<<< HEAD
             return (body.statements.length === 1) && (body.statements[0].kind === 200 /* ThrowStatement */);
+=======
+            return (body.statements.length === 1) && (body.statements[0].kind === 198 /* ThrowStatement */);
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         // TypeScript Specification 1.0 (6.3) - July 2014
         // An explicitly typed function whose return type isn't the Void or the Any type
@@ -20506,7 +24210,11 @@ var ts;
                 return;
             }
             // If all we have is a function signature, or an arrow function with an expression body, then there is nothing to check.
+<<<<<<< HEAD
             if (ts.nodeIsMissing(func.body) || func.body.kind !== 184 /* Block */) {
+=======
+            if (ts.nodeIsMissing(func.body) || func.body.kind !== 182 /* Block */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return;
             }
             var bodyBlock = func.body;
@@ -20524,11 +24232,19 @@ var ts;
             error(func.type, ts.Diagnostics.A_function_whose_declared_type_is_neither_void_nor_any_must_return_a_value_or_consist_of_a_single_throw_statement);
         }
         function checkFunctionExpressionOrObjectLiteralMethod(node, contextualMapper) {
+<<<<<<< HEAD
             ts.Debug.assert(node.kind !== 137 /* MethodDeclaration */ || ts.isObjectLiteralMethod(node));
             // Grammar checking
             var hasGrammarError = checkGrammarFunctionLikeDeclaration(node);
             if (!hasGrammarError && node.kind === 166 /* FunctionExpression */) {
                 checkGrammarForGenerator(node);
+=======
+            ts.Debug.assert(node.kind !== 136 /* MethodDeclaration */ || ts.isObjectLiteralMethod(node));
+            // Grammar checking
+            var hasGrammarError = checkGrammarDeclarationNameInStrictMode(node) || checkGrammarFunctionLikeDeclaration(node);
+            if (!hasGrammarError && node.kind === 165 /* FunctionExpression */) {
+                checkGrammarFunctionName(node.name) || checkGrammarForGenerator(node);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             // The identityMapper object is used to indicate that function expressions are wildcards
             if (contextualMapper === identityMapper && isContextSensitive(node)) {
@@ -20559,14 +24275,22 @@ var ts;
                     checkSignatureDeclaration(node);
                 }
             }
+<<<<<<< HEAD
             if (produceDiagnostics && node.kind !== 137 /* MethodDeclaration */ && node.kind !== 136 /* MethodSignature */) {
+=======
+            if (produceDiagnostics && node.kind !== 136 /* MethodDeclaration */ && node.kind !== 135 /* MethodSignature */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 checkCollisionWithCapturedSuperVariable(node, node.name);
                 checkCollisionWithCapturedThisVariable(node, node.name);
             }
             return type;
         }
         function checkFunctionExpressionOrObjectLiteralMethodBody(node) {
+<<<<<<< HEAD
             ts.Debug.assert(node.kind !== 137 /* MethodDeclaration */ || ts.isObjectLiteralMethod(node));
+=======
+            ts.Debug.assert(node.kind !== 136 /* MethodDeclaration */ || ts.isObjectLiteralMethod(node));
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (node.type && !node.asteriskToken) {
                 checkIfNonVoidFunctionHasReturnExpressionsOrSingleThrowStatment(node, getTypeFromTypeNode(node.type));
             }
@@ -20579,7 +24303,11 @@ var ts;
                     // checkFunctionExpressionBodies). So it must be done now.
                     getReturnTypeOfSignature(getSignatureFromDeclaration(node));
                 }
+<<<<<<< HEAD
                 if (node.body.kind === 184 /* Block */) {
+=======
+                if (node.body.kind === 182 /* Block */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     checkSourceElement(node.body);
                 }
                 else {
@@ -20621,17 +24349,28 @@ var ts;
                         // An identifier expression that references any other kind of entity is classified as a value(and therefore cannot be the target of an assignment).
                         return !symbol || symbol === unknownSymbol || symbol === argumentsSymbol || (symbol.flags & 3 /* Variable */) !== 0;
                     }
+<<<<<<< HEAD
                     case 159 /* PropertyAccessExpression */: {
+=======
+                    case 158 /* PropertyAccessExpression */: {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var symbol = findSymbol(n);
                         // TypeScript 1.0 spec (April 2014): 4.10
                         // A property access expression is always classified as a reference.
                         // NOTE (not in spec): assignment to enum members should not be allowed
                         return !symbol || symbol === unknownSymbol || (symbol.flags & ~8 /* EnumMember */) !== 0;
                     }
+<<<<<<< HEAD
                     case 160 /* ElementAccessExpression */:
                         //  old compiler doesn't check indexed assess
                         return true;
                     case 165 /* ParenthesizedExpression */:
+=======
+                    case 159 /* ElementAccessExpression */:
+                        //  old compiler doesn't check indexed assess
+                        return true;
+                    case 164 /* ParenthesizedExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return isReferenceOrErrorExpression(n.expression);
                     default:
                         return false;
@@ -20639,12 +24378,21 @@ var ts;
             }
             function isConstVariableReference(n) {
                 switch (n.kind) {
+<<<<<<< HEAD
                     case 66 /* Identifier */:
                     case 159 /* PropertyAccessExpression */: {
                         var symbol = findSymbol(n);
                         return symbol && (symbol.flags & 3 /* Variable */) !== 0 && (getDeclarationFlagsFromSymbol(symbol) & 8192 /* Const */) !== 0;
                     }
                     case 160 /* ElementAccessExpression */: {
+=======
+                    case 65 /* Identifier */:
+                    case 158 /* PropertyAccessExpression */: {
+                        var symbol = findSymbol(n);
+                        return symbol && (symbol.flags & 3 /* Variable */) !== 0 && (getDeclarationFlagsFromSymbol(symbol) & 8192 /* Const */) !== 0;
+                    }
+                    case 159 /* ElementAccessExpression */: {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var index = n.argumentExpression;
                         var symbol = findSymbol(n.expression);
                         if (symbol && index && index.kind === 8 /* StringLiteral */) {
@@ -20654,7 +24402,11 @@ var ts;
                         }
                         return false;
                     }
+<<<<<<< HEAD
                     case 165 /* ParenthesizedExpression */:
+=======
+                    case 164 /* ParenthesizedExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return isConstVariableReference(n.expression);
                     default:
                         return false;
@@ -20685,9 +24437,15 @@ var ts;
         function checkPrefixUnaryExpression(node) {
             var operandType = checkExpression(node.operand);
             switch (node.operator) {
+<<<<<<< HEAD
                 case 34 /* PlusToken */:
                 case 35 /* MinusToken */:
                 case 48 /* TildeToken */:
+=======
+                case 33 /* PlusToken */:
+                case 34 /* MinusToken */:
+                case 47 /* TildeToken */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (someConstituentTypeHasKind(operandType, 2097152 /* ESSymbol */)) {
                         error(node.operand, ts.Diagnostics.The_0_operator_cannot_be_applied_to_type_symbol, ts.tokenToString(node.operator));
                     }
@@ -20787,7 +24545,11 @@ var ts;
             var properties = node.properties;
             for (var _i = 0; _i < properties.length; _i++) {
                 var p = properties[_i];
+<<<<<<< HEAD
                 if (p.kind === 237 /* PropertyAssignment */ || p.kind === 238 /* ShorthandPropertyAssignment */) {
+=======
+                if (p.kind === 227 /* PropertyAssignment */ || p.kind === 228 /* ShorthandPropertyAssignment */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // TODO(andersh): Computed property support
                     var name_12 = p.name;
                     var type = isTypeAny(sourceType)
@@ -20816,8 +24578,13 @@ var ts;
             var elements = node.elements;
             for (var i = 0; i < elements.length; i++) {
                 var e = elements[i];
+<<<<<<< HEAD
                 if (e.kind !== 179 /* OmittedExpression */) {
                     if (e.kind !== 177 /* SpreadElementExpression */) {
+=======
+                if (e.kind !== 178 /* OmittedExpression */) {
+                    if (e.kind !== 176 /* SpreadElementExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var propName = "" + i;
                         var type = isTypeAny(sourceType)
                             ? sourceType
@@ -20842,7 +24609,11 @@ var ts;
                         }
                         else {
                             var restExpression = e.expression;
+<<<<<<< HEAD
                             if (restExpression.kind === 173 /* BinaryExpression */ && restExpression.operatorToken.kind === 54 /* EqualsToken */) {
+=======
+                            if (restExpression.kind === 172 /* BinaryExpression */ && restExpression.operatorToken.kind === 53 /* EqualsToken */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 error(restExpression.operatorToken, ts.Diagnostics.A_rest_element_cannot_have_an_initializer);
                             }
                             else {
@@ -20855,6 +24626,7 @@ var ts;
             return sourceType;
         }
         function checkDestructuringAssignment(target, sourceType, contextualMapper) {
+<<<<<<< HEAD
             if (target.kind === 173 /* BinaryExpression */ && target.operatorToken.kind === 54 /* EqualsToken */) {
                 checkBinaryExpression(target, contextualMapper);
                 target = target.left;
@@ -20863,6 +24635,16 @@ var ts;
                 return checkObjectLiteralAssignment(target, sourceType, contextualMapper);
             }
             if (target.kind === 157 /* ArrayLiteralExpression */) {
+=======
+            if (target.kind === 172 /* BinaryExpression */ && target.operatorToken.kind === 53 /* EqualsToken */) {
+                checkBinaryExpression(target, contextualMapper);
+                target = target.left;
+            }
+            if (target.kind === 157 /* ObjectLiteralExpression */) {
+                return checkObjectLiteralAssignment(target, sourceType, contextualMapper);
+            }
+            if (target.kind === 156 /* ArrayLiteralExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return checkArrayLiteralAssignment(target, sourceType, contextualMapper);
             }
             return checkReferenceAssignment(target, sourceType, contextualMapper);
@@ -20876,7 +24658,11 @@ var ts;
         }
         function checkBinaryExpression(node, contextualMapper) {
             var operator = node.operatorToken.kind;
+<<<<<<< HEAD
             if (operator === 54 /* EqualsToken */ && (node.left.kind === 158 /* ObjectLiteralExpression */ || node.left.kind === 157 /* ArrayLiteralExpression */)) {
+=======
+            if (operator === 53 /* EqualsToken */ && (node.left.kind === 157 /* ObjectLiteralExpression */ || node.left.kind === 156 /* ArrayLiteralExpression */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return checkDestructuringAssignment(node.left, checkExpression(node.right, contextualMapper), contextualMapper);
             }
             var leftType = checkExpression(node.left, contextualMapper);
@@ -21051,7 +24837,11 @@ var ts;
                 if (ts.isFunctionLike(parent) && current === parent.body) {
                     return false;
                 }
+<<<<<<< HEAD
                 else if (ts.isClassLike(current)) {
+=======
+                else if (current.kind === 204 /* ClassDeclaration */ || current.kind === 177 /* ClassExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
                 }
                 current = parent;
@@ -21127,7 +24917,11 @@ var ts;
             // Do not use hasDynamicName here, because that returns false for well known symbols.
             // We want to perform checkComputedPropertyName for all computed properties, including
             // well known symbols.
+<<<<<<< HEAD
             if (node.name.kind === 130 /* ComputedPropertyName */) {
+=======
+            if (node.name.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 checkComputedPropertyName(node.name);
             }
             return checkExpression(node.initializer, contextualMapper);
@@ -21138,7 +24932,11 @@ var ts;
             // Do not use hasDynamicName here, because that returns false for well known symbols.
             // We want to perform checkComputedPropertyName for all computed properties, including
             // well known symbols.
+<<<<<<< HEAD
             if (node.name.kind === 130 /* ComputedPropertyName */) {
+=======
+            if (node.name.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 checkComputedPropertyName(node.name);
             }
             var uninstantiatedType = checkFunctionExpressionOrObjectLiteralMethod(node, contextualMapper);
@@ -21168,7 +24966,11 @@ var ts;
         // contextually typed function and arrow expressions in the initial phase.
         function checkExpression(node, contextualMapper) {
             var type;
+<<<<<<< HEAD
             if (node.kind === 129 /* QualifiedName */) {
+=======
+            if (node.kind == 128 /* QualifiedName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 type = checkQualifiedName(node);
             }
             else {
@@ -21180,9 +24982,15 @@ var ts;
                 // - 'left' in property access
                 // - 'object' in indexed access
                 // - target in rhs of import statement
+<<<<<<< HEAD
                 var ok = (node.parent.kind === 159 /* PropertyAccessExpression */ && node.parent.expression === node) ||
                     (node.parent.kind === 160 /* ElementAccessExpression */ && node.parent.expression === node) ||
                     ((node.kind === 66 /* Identifier */ || node.kind === 129 /* QualifiedName */) && isInRightSideOfImportOrExportAssignment(node));
+=======
+                var ok = (node.parent.kind === 158 /* PropertyAccessExpression */ && node.parent.expression === node) ||
+                    (node.parent.kind === 159 /* ElementAccessExpression */ && node.parent.expression === node) ||
+                    ((node.kind === 65 /* Identifier */ || node.kind === 128 /* QualifiedName */) && isInRightSideOfImportOrExportAssignment(node));
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (!ok) {
                     error(node, ts.Diagnostics.const_enums_can_only_be_used_in_property_or_index_access_expressions_or_the_right_hand_side_of_an_import_declaration_or_export_assignment);
                 }
@@ -21209,13 +25017,18 @@ var ts;
                     return booleanType;
                 case 7 /* NumericLiteral */:
                     return checkNumericLiteral(node);
+<<<<<<< HEAD
                 case 175 /* TemplateExpression */:
+=======
+                case 174 /* TemplateExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return checkTemplateExpression(node);
                 case 8 /* StringLiteral */:
                 case 10 /* NoSubstitutionTemplateLiteral */:
                     return stringType;
                 case 9 /* RegularExpressionLiteral */:
                     return globalRegExpType;
+<<<<<<< HEAD
                 case 157 /* ArrayLiteralExpression */:
                     return checkArrayLiteral(node, contextualMapper);
                 case 158 /* ObjectLiteralExpression */:
@@ -21267,6 +25080,50 @@ var ts;
                     return checkJsxSelfClosingElement(node);
                 case 227 /* JsxOpeningElement */:
                     ts.Debug.fail("Shouldn't ever directly check a JsxOpeningElement");
+=======
+                case 156 /* ArrayLiteralExpression */:
+                    return checkArrayLiteral(node, contextualMapper);
+                case 157 /* ObjectLiteralExpression */:
+                    return checkObjectLiteral(node, contextualMapper);
+                case 158 /* PropertyAccessExpression */:
+                    return checkPropertyAccessExpression(node);
+                case 159 /* ElementAccessExpression */:
+                    return checkIndexedAccess(node);
+                case 160 /* CallExpression */:
+                case 161 /* NewExpression */:
+                    return checkCallExpression(node);
+                case 162 /* TaggedTemplateExpression */:
+                    return checkTaggedTemplateExpression(node);
+                case 163 /* TypeAssertionExpression */:
+                    return checkTypeAssertion(node);
+                case 164 /* ParenthesizedExpression */:
+                    return checkExpression(node.expression, contextualMapper);
+                case 177 /* ClassExpression */:
+                    return checkClassExpression(node);
+                case 165 /* FunctionExpression */:
+                case 166 /* ArrowFunction */:
+                    return checkFunctionExpressionOrObjectLiteralMethod(node, contextualMapper);
+                case 168 /* TypeOfExpression */:
+                    return checkTypeOfExpression(node);
+                case 167 /* DeleteExpression */:
+                    return checkDeleteExpression(node);
+                case 169 /* VoidExpression */:
+                    return checkVoidExpression(node);
+                case 170 /* PrefixUnaryExpression */:
+                    return checkPrefixUnaryExpression(node);
+                case 171 /* PostfixUnaryExpression */:
+                    return checkPostfixUnaryExpression(node);
+                case 172 /* BinaryExpression */:
+                    return checkBinaryExpression(node, contextualMapper);
+                case 173 /* ConditionalExpression */:
+                    return checkConditionalExpression(node, contextualMapper);
+                case 176 /* SpreadElementExpression */:
+                    return checkSpreadElementExpression(node, contextualMapper);
+                case 178 /* OmittedExpression */:
+                    return undefinedType;
+                case 175 /* YieldExpression */:
+                    return checkYieldExpression(node);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             return unknownType;
         }
@@ -21294,7 +25151,11 @@ var ts;
             var func = ts.getContainingFunction(node);
             if (node.flags & 112 /* AccessibilityModifier */) {
                 func = ts.getContainingFunction(node);
+<<<<<<< HEAD
                 if (!(func.kind === 138 /* Constructor */ && ts.nodeIsPresent(func.body))) {
+=======
+                if (!(func.kind === 137 /* Constructor */ && ts.nodeIsPresent(func.body))) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     error(node, ts.Diagnostics.A_parameter_property_is_only_allowed_in_a_constructor_implementation);
                 }
             }
@@ -21311,15 +25172,25 @@ var ts;
             if (!node.asteriskToken || !node.body) {
                 return false;
             }
+<<<<<<< HEAD
             return node.kind === 137 /* MethodDeclaration */ ||
                 node.kind === 205 /* FunctionDeclaration */ ||
                 node.kind === 166 /* FunctionExpression */;
+=======
+            return node.kind === 136 /* MethodDeclaration */ ||
+                node.kind === 203 /* FunctionDeclaration */ ||
+                node.kind === 165 /* FunctionExpression */;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function getTypePredicateParameterIndex(parameterList, parameter) {
             if (parameterList) {
                 for (var i = 0; i < parameterList.length; i++) {
                     var param = parameterList[i];
+<<<<<<< HEAD
                     if (param.name.kind === 66 /* Identifier */ &&
+=======
+                    if (param.name.kind === 65 /* Identifier */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
                         param.name.text === parameter.text) {
                         return i;
                     }
@@ -21329,6 +25200,7 @@ var ts;
         }
         function isInLegalTypePredicatePosition(node) {
             switch (node.parent.kind) {
+<<<<<<< HEAD
                 case 167 /* ArrowFunction */:
                 case 141 /* CallSignature */:
                 case 205 /* FunctionDeclaration */:
@@ -21336,24 +25208,46 @@ var ts;
                 case 146 /* FunctionType */:
                 case 137 /* MethodDeclaration */:
                 case 136 /* MethodSignature */:
+=======
+                case 166 /* ArrowFunction */:
+                case 140 /* CallSignature */:
+                case 203 /* FunctionDeclaration */:
+                case 165 /* FunctionExpression */:
+                case 145 /* FunctionType */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return node === node.parent.type;
             }
             return false;
         }
         function checkSignatureDeclaration(node) {
             // Grammar checking
+<<<<<<< HEAD
             if (node.kind === 143 /* IndexSignature */) {
                 checkGrammarIndexSignature(node);
             }
             else if (node.kind === 146 /* FunctionType */ || node.kind === 205 /* FunctionDeclaration */ || node.kind === 147 /* ConstructorType */ ||
                 node.kind === 141 /* CallSignature */ || node.kind === 138 /* Constructor */ ||
                 node.kind === 142 /* ConstructSignature */) {
+=======
+            if (node.kind === 142 /* IndexSignature */) {
+                checkGrammarIndexSignature(node);
+            }
+            else if (node.kind === 145 /* FunctionType */ || node.kind === 203 /* FunctionDeclaration */ || node.kind === 146 /* ConstructorType */ ||
+                node.kind === 140 /* CallSignature */ || node.kind === 137 /* Constructor */ ||
+                node.kind === 141 /* ConstructSignature */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 checkGrammarFunctionLikeDeclaration(node);
             }
             checkTypeParameters(node.typeParameters);
             ts.forEach(node.parameters, checkParameter);
             if (node.type) {
+<<<<<<< HEAD
                 if (node.type.kind === 144 /* TypePredicate */) {
+=======
+                if (node.type.kind === 143 /* TypePredicate */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var typePredicate = getSignatureFromDeclaration(node).typePredicate;
                     var typePredicateNode = node.type;
                     if (isInLegalTypePredicatePosition(typePredicateNode)) {
@@ -21372,19 +25266,33 @@ var ts;
                                 if (hasReportedError) {
                                     break;
                                 }
+<<<<<<< HEAD
                                 if (param.name.kind === 154 /* ObjectBindingPattern */ ||
                                     param.name.kind === 155 /* ArrayBindingPattern */) {
                                     (function checkBindingPattern(pattern) {
                                         for (var _i = 0, _a = pattern.elements; _i < _a.length; _i++) {
                                             var element = _a[_i];
                                             if (element.name.kind === 66 /* Identifier */ &&
+=======
+                                if (param.name.kind === 153 /* ObjectBindingPattern */ ||
+                                    param.name.kind === 154 /* ArrayBindingPattern */) {
+                                    (function checkBindingPattern(pattern) {
+                                        for (var _i = 0, _a = pattern.elements; _i < _a.length; _i++) {
+                                            var element = _a[_i];
+                                            if (element.name.kind === 65 /* Identifier */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
                                                 element.name.text === typePredicate.parameterName) {
                                                 error(typePredicateNode.parameterName, ts.Diagnostics.A_type_predicate_cannot_reference_element_0_in_a_binding_pattern, typePredicate.parameterName);
                                                 hasReportedError = true;
                                                 break;
                                             }
+<<<<<<< HEAD
                                             else if (element.name.kind === 155 /* ArrayBindingPattern */ ||
                                                 element.name.kind === 154 /* ObjectBindingPattern */) {
+=======
+                                            else if (element.name.kind === 154 /* ArrayBindingPattern */ ||
+                                                element.name.kind === 153 /* ObjectBindingPattern */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                                 checkBindingPattern(element.name);
                                             }
                                         }
@@ -21408,10 +25316,17 @@ var ts;
                 checkCollisionWithArgumentsInGeneratedCode(node);
                 if (compilerOptions.noImplicitAny && !node.type) {
                     switch (node.kind) {
+<<<<<<< HEAD
                         case 142 /* ConstructSignature */:
                             error(node, ts.Diagnostics.Construct_signature_which_lacks_return_type_annotation_implicitly_has_an_any_return_type);
                             break;
                         case 141 /* CallSignature */:
+=======
+                        case 141 /* ConstructSignature */:
+                            error(node, ts.Diagnostics.Construct_signature_which_lacks_return_type_annotation_implicitly_has_an_any_return_type);
+                            break;
+                        case 140 /* CallSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             error(node, ts.Diagnostics.Call_signature_which_lacks_return_type_annotation_implicitly_has_an_any_return_type);
                             break;
                     }
@@ -21439,7 +25354,11 @@ var ts;
             checkSpecializedSignatureDeclaration(node);
         }
         function checkTypeForDuplicateIndexSignatures(node) {
+<<<<<<< HEAD
             if (node.kind === 207 /* InterfaceDeclaration */) {
+=======
+            if (node.kind === 205 /* InterfaceDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var nodeSymbol = getSymbolOfNode(node);
                 // in case of merging interface declaration it is possible that we'll enter this check procedure several times for every declaration
                 // to prevent this run check only for the first declaration of a given kind
@@ -21459,7 +25378,11 @@ var ts;
                     var declaration = decl;
                     if (declaration.parameters.length === 1 && declaration.parameters[0].type) {
                         switch (declaration.parameters[0].type.kind) {
+<<<<<<< HEAD
                             case 124 /* StringKeyword */:
+=======
+                            case 123 /* StringKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (!seenStringIndexer) {
                                     seenStringIndexer = true;
                                 }
@@ -21467,7 +25390,11 @@ var ts;
                                     error(declaration, ts.Diagnostics.Duplicate_string_index_signature);
                                 }
                                 break;
+<<<<<<< HEAD
                             case 122 /* NumberKeyword */:
+=======
+                            case 121 /* NumberKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (!seenNumericIndexer) {
                                     seenNumericIndexer = true;
                                 }
@@ -21511,17 +25438,28 @@ var ts;
                 return;
             }
             function isSuperCallExpression(n) {
+<<<<<<< HEAD
                 return n.kind === 161 /* CallExpression */ && n.expression.kind === 92 /* SuperKeyword */;
+=======
+                return n.kind === 160 /* CallExpression */ && n.expression.kind === 91 /* SuperKeyword */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             function containsSuperCall(n) {
                 if (isSuperCallExpression(n)) {
                     return true;
                 }
                 switch (n.kind) {
+<<<<<<< HEAD
                     case 166 /* FunctionExpression */:
                     case 205 /* FunctionDeclaration */:
                     case 167 /* ArrowFunction */:
                     case 158 /* ObjectLiteralExpression */: return false;
+=======
+                    case 165 /* FunctionExpression */:
+                    case 203 /* FunctionDeclaration */:
+                    case 166 /* ArrowFunction */:
+                    case 157 /* ObjectLiteralExpression */: return false;
+>>>>>>> Updated compiler to emitDependencyFile branch
                     default: return ts.forEachChild(n, containsSuperCall);
                 }
             }
@@ -21529,12 +25467,20 @@ var ts;
                 if (n.kind === 94 /* ThisKeyword */) {
                     error(n, ts.Diagnostics.this_cannot_be_referenced_in_current_location);
                 }
+<<<<<<< HEAD
                 else if (n.kind !== 166 /* FunctionExpression */ && n.kind !== 205 /* FunctionDeclaration */) {
+=======
+                else if (n.kind !== 165 /* FunctionExpression */ && n.kind !== 203 /* FunctionDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ts.forEachChild(n, markThisReferencesAsErrors);
                 }
             }
             function isInstancePropertyWithInitializer(n) {
+<<<<<<< HEAD
                 return n.kind === 135 /* PropertyDeclaration */ &&
+=======
+                return n.kind === 134 /* PropertyDeclaration */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
                     !(n.flags & 128 /* Static */) &&
                     !!n.initializer;
             }
@@ -21551,7 +25497,11 @@ var ts;
                         ts.forEach(node.parameters, function (p) { return p.flags & (16 /* Public */ | 32 /* Private */ | 64 /* Protected */); });
                     if (superCallShouldBeFirst) {
                         var statements = node.body.statements;
+<<<<<<< HEAD
                         if (!statements.length || statements[0].kind !== 187 /* ExpressionStatement */ || !isSuperCallExpression(statements[0].expression)) {
+=======
+                        if (!statements.length || statements[0].kind !== 185 /* ExpressionStatement */ || !isSuperCallExpression(statements[0].expression)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             error(node, ts.Diagnostics.A_super_call_must_be_the_first_statement_in_the_constructor_when_a_class_contains_initialized_properties_or_has_parameter_properties);
                         }
                         else {
@@ -21569,7 +25519,11 @@ var ts;
             if (produceDiagnostics) {
                 // Grammar checking accessors
                 checkGrammarFunctionLikeDeclaration(node) || checkGrammarAccessor(node) || checkGrammarComputedPropertyName(node.name);
+<<<<<<< HEAD
                 if (node.kind === 139 /* GetAccessor */) {
+=======
+                if (node.kind === 138 /* GetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (!ts.isInAmbientContext(node) && ts.nodeIsPresent(node.body) && !(bodyContainsAReturnStatement(node.body) || bodyContainsSingleThrowStatement(node.body))) {
                         error(node.name, ts.Diagnostics.A_get_accessor_must_return_a_value_or_consist_of_a_single_throw_statement);
                     }
@@ -21577,7 +25531,11 @@ var ts;
                 if (!ts.hasDynamicName(node)) {
                     // TypeScript 1.0 spec (April 2014): 8.4.3
                     // Accessors for the same member name must specify the same accessibility.
+<<<<<<< HEAD
                     var otherKind = node.kind === 139 /* GetAccessor */ ? 140 /* SetAccessor */ : 139 /* GetAccessor */;
+=======
+                    var otherKind = node.kind === 138 /* GetAccessor */ ? 139 /* SetAccessor */ : 138 /* GetAccessor */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var otherAccessor = ts.getDeclarationOfKind(node.symbol, otherKind);
                     if (otherAccessor) {
                         if (((node.flags & 112 /* AccessibilityModifier */) !== (otherAccessor.flags & 112 /* AccessibilityModifier */))) {
@@ -21617,11 +25575,24 @@ var ts;
             var type = getTypeFromTypeReference(node);
             if (type !== unknownType && node.typeArguments) {
                 // Do type argument local checks only if referenced type is successfully resolved
+<<<<<<< HEAD
                 ts.forEach(node.typeArguments, checkSourceElement);
                 if (produceDiagnostics) {
                     var symbol = getNodeLinks(node).resolvedSymbol;
                     var typeParameters = symbol.flags & 524288 /* TypeAlias */ ? getSymbolLinks(symbol).typeParameters : type.target.localTypeParameters;
                     checkTypeArgumentConstraints(typeParameters, node.typeArguments);
+=======
+                var symbol = getNodeLinks(node).resolvedSymbol;
+                var typeParameters = symbol.flags & 524288 /* TypeAlias */ ? getSymbolLinks(symbol).typeParameters : type.target.localTypeParameters;
+                var len = node.typeArguments.length;
+                for (var i = 0; i < len; i++) {
+                    checkSourceElement(node.typeArguments[i]);
+                    var constraint = getConstraintOfTypeParameter(typeParameters[i]);
+                    if (produceDiagnostics && constraint) {
+                        var typeArgument = type.typeArguments[i];
+                        checkTypeAssignableTo(typeArgument, constraint, node, ts.Diagnostics.Type_0_does_not_satisfy_the_constraint_1);
+                    }
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
             }
         }
@@ -21673,9 +25644,15 @@ var ts;
             var signaturesToCheck;
             // Unnamed (call\construct) signatures in interfaces are inherited and not shadowed so examining just node symbol won't give complete answer.
             // Use declaring type to obtain full list of signatures.
+<<<<<<< HEAD
             if (!signatureDeclarationNode.name && signatureDeclarationNode.parent && signatureDeclarationNode.parent.kind === 207 /* InterfaceDeclaration */) {
                 ts.Debug.assert(signatureDeclarationNode.kind === 141 /* CallSignature */ || signatureDeclarationNode.kind === 142 /* ConstructSignature */);
                 var signatureKind = signatureDeclarationNode.kind === 141 /* CallSignature */ ? 0 /* Call */ : 1 /* Construct */;
+=======
+            if (!signatureDeclarationNode.name && signatureDeclarationNode.parent && signatureDeclarationNode.parent.kind === 205 /* InterfaceDeclaration */) {
+                ts.Debug.assert(signatureDeclarationNode.kind === 140 /* CallSignature */ || signatureDeclarationNode.kind === 141 /* ConstructSignature */);
+                var signatureKind = signatureDeclarationNode.kind === 140 /* CallSignature */ ? 0 /* Call */ : 1 /* Construct */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var containingSymbol = getSymbolOfNode(signatureDeclarationNode.parent);
                 var containingType = getDeclaredTypeOfSymbol(containingSymbol);
                 signaturesToCheck = getSignaturesOfType(containingType, signatureKind);
@@ -21693,7 +25670,11 @@ var ts;
         }
         function getEffectiveDeclarationFlags(n, flagsToCheck) {
             var flags = ts.getCombinedNodeFlags(n);
+<<<<<<< HEAD
             if (n.parent.kind !== 207 /* InterfaceDeclaration */ && ts.isInAmbientContext(n)) {
+=======
+            if (n.parent.kind !== 205 /* InterfaceDeclaration */ && ts.isInAmbientContext(n)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (!(flags & 2 /* Ambient */)) {
                     // It is nested in an ambient context, which means it is automatically exported
                     flags |= 1 /* Export */;
@@ -21776,7 +25757,11 @@ var ts;
                         // TODO(jfreeman): These are methods, so handle computed name case
                         if (node.name && subsequentNode.name && node.name.text === subsequentNode.name.text) {
                             // the only situation when this is possible (same kind\same name but different symbol) - mixed static and instance class members
+<<<<<<< HEAD
                             ts.Debug.assert(node.kind === 137 /* MethodDeclaration */ || node.kind === 136 /* MethodSignature */);
+=======
+                            ts.Debug.assert(node.kind === 136 /* MethodDeclaration */ || node.kind === 135 /* MethodSignature */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                             ts.Debug.assert((node.flags & 128 /* Static */) !== (subsequentNode.flags & 128 /* Static */));
                             var diagnostic = node.flags & 128 /* Static */ ? ts.Diagnostics.Function_overload_must_be_static : ts.Diagnostics.Function_overload_must_not_be_static;
                             error(errorNode_1, diagnostic);
@@ -21805,7 +25790,11 @@ var ts;
                 var current = declarations[_i];
                 var node = current;
                 var inAmbientContext = ts.isInAmbientContext(node);
+<<<<<<< HEAD
                 var inAmbientContextOrInterface = node.parent.kind === 207 /* InterfaceDeclaration */ || node.parent.kind === 149 /* TypeLiteral */ || inAmbientContext;
+=======
+                var inAmbientContextOrInterface = node.parent.kind === 205 /* InterfaceDeclaration */ || node.parent.kind === 148 /* TypeLiteral */ || inAmbientContext;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (inAmbientContextOrInterface) {
                     // check if declarations are consecutive only if they are non-ambient
                     // 1. ambient declarations can be interleaved
@@ -21816,7 +25805,11 @@ var ts;
                     // 2. mixing ambient and non-ambient declarations is a separate error that will be reported - do not want to report an extra one
                     previousDeclaration = undefined;
                 }
+<<<<<<< HEAD
                 if (node.kind === 205 /* FunctionDeclaration */ || node.kind === 137 /* MethodDeclaration */ || node.kind === 136 /* MethodSignature */ || node.kind === 138 /* Constructor */) {
+=======
+                if (node.kind === 203 /* FunctionDeclaration */ || node.kind === 136 /* MethodDeclaration */ || node.kind === 135 /* MethodSignature */ || node.kind === 137 /* Constructor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var currentNodeFlags = getEffectiveDeclarationFlags(node, flagsToCheck);
                     someNodeFlags |= currentNodeFlags;
                     allNodeFlags &= currentNodeFlags;
@@ -21939,6 +25932,7 @@ var ts;
             }
             function getDeclarationSpaces(d) {
                 switch (d.kind) {
+<<<<<<< HEAD
                     case 207 /* InterfaceDeclaration */:
                         return 2097152 /* ExportType */;
                     case 210 /* ModuleDeclaration */:
@@ -21949,6 +25943,18 @@ var ts;
                     case 209 /* EnumDeclaration */:
                         return 2097152 /* ExportType */ | 1048576 /* ExportValue */;
                     case 213 /* ImportEqualsDeclaration */:
+=======
+                    case 205 /* InterfaceDeclaration */:
+                        return 2097152 /* ExportType */;
+                    case 208 /* ModuleDeclaration */:
+                        return d.name.kind === 8 /* StringLiteral */ || ts.getModuleInstanceState(d) !== 0 /* NonInstantiated */
+                            ? 4194304 /* ExportNamespace */ | 1048576 /* ExportValue */
+                            : 4194304 /* ExportNamespace */;
+                    case 204 /* ClassDeclaration */:
+                    case 207 /* EnumDeclaration */:
+                        return 2097152 /* ExportType */ | 1048576 /* ExportValue */;
+                    case 211 /* ImportEqualsDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var result = 0;
                         var target = resolveAlias(getSymbolOfNode(d));
                         ts.forEach(target.declarations, function (d) { result |= getDeclarationSpaces(d); });
@@ -21969,11 +25975,16 @@ var ts;
             var headMessage = getDiagnosticHeadMessageForDecoratorResolution(node);
             var errorInfo;
             switch (node.parent.kind) {
+<<<<<<< HEAD
                 case 206 /* ClassDeclaration */:
+=======
+                case 204 /* ClassDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var classSymbol = getSymbolOfNode(node.parent);
                     var classConstructorType = getTypeOfSymbol(classSymbol);
                     expectedReturnType = getUnionType([classConstructorType, voidType]);
                     break;
+<<<<<<< HEAD
                 case 132 /* Parameter */:
                     expectedReturnType = voidType;
                     errorInfo = ts.chainDiagnosticMessages(errorInfo, ts.Diagnostics.The_return_type_of_a_parameter_decorator_function_must_be_either_void_or_any);
@@ -21988,6 +25999,20 @@ var ts;
                     var methodType = getTypeOfNode(node.parent);
                     var descriptorType = createTypedPropertyDescriptorType(methodType);
                     expectedReturnType = getUnionType([descriptorType, voidType]);
+=======
+                case 134 /* PropertyDeclaration */:
+                    checkTypeAssignableTo(exprType, getGlobalPropertyDecoratorType(), node);
+                    break;
+                case 136 /* MethodDeclaration */:
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                    var methodType = getTypeOfNode(node.parent);
+                    var methodDecoratorType = instantiateSingleCallFunctionType(getGlobalMethodDecoratorType(), [methodType]);
+                    checkTypeAssignableTo(exprType, methodDecoratorType, node);
+                    break;
+                case 131 /* Parameter */:
+                    checkTypeAssignableTo(exprType, getGlobalParameterDecoratorType(), node);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     break;
             }
             checkTypeAssignableTo(returnType, expectedReturnType, node, headMessage, errorInfo);
@@ -21997,7 +26022,11 @@ var ts;
             // When we are emitting type metadata for decorators, we need to try to check the type
             // as if it were an expression so that we can emit the type in a value position when we 
             // serialize the type metadata.
+<<<<<<< HEAD
             if (node && node.kind === 145 /* TypeReference */) {
+=======
+            if (node && node.kind === 144 /* TypeReference */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var type = getTypeFromTypeNode(node);
                 var shouldCheckIfUnknownType = type === unknownType && compilerOptions.isolatedModules;
                 if (!type || (!shouldCheckIfUnknownType && type.flags & (2097279 /* Intrinsic */ | 132 /* NumberLike */ | 258 /* StringLike */))) {
@@ -22014,6 +26043,7 @@ var ts;
           */
         function checkTypeAnnotationAsExpression(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 135 /* PropertyDeclaration */:
                     checkTypeNodeAsExpression(node.type);
                     break;
@@ -22027,6 +26057,21 @@ var ts;
                     checkTypeNodeAsExpression(node.type);
                     break;
                 case 140 /* SetAccessor */:
+=======
+                case 134 /* PropertyDeclaration */:
+                    checkTypeNodeAsExpression(node.type);
+                    break;
+                case 131 /* Parameter */:
+                    checkTypeNodeAsExpression(node.type);
+                    break;
+                case 136 /* MethodDeclaration */:
+                    checkTypeNodeAsExpression(node.type);
+                    break;
+                case 138 /* GetAccessor */:
+                    checkTypeNodeAsExpression(node.type);
+                    break;
+                case 139 /* SetAccessor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     checkTypeNodeAsExpression(getSetAccessorTypeAnnotationNode(node));
                     break;
             }
@@ -22055,12 +26100,17 @@ var ts;
             if (compilerOptions.emitDecoratorMetadata) {
                 // we only need to perform these checks if we are emitting serialized type metadata for the target of a decorator.
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 206 /* ClassDeclaration */:
+=======
+                    case 204 /* ClassDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var constructor = ts.getFirstConstructorWithBody(node);
                         if (constructor) {
                             checkParameterTypeAnnotationsAsExpressions(constructor);
                         }
                         break;
+<<<<<<< HEAD
                     case 137 /* MethodDeclaration */:
                         checkParameterTypeAnnotationsAsExpressions(node);
                     // fall-through
@@ -22068,19 +26118,38 @@ var ts;
                     case 139 /* GetAccessor */:
                     case 135 /* PropertyDeclaration */:
                     case 132 /* Parameter */:
+=======
+                    case 136 /* MethodDeclaration */:
+                        checkParameterTypeAnnotationsAsExpressions(node);
+                    // fall-through
+                    case 139 /* SetAccessor */:
+                    case 138 /* GetAccessor */:
+                    case 134 /* PropertyDeclaration */:
+                    case 131 /* Parameter */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         checkTypeAnnotationAsExpression(node);
                         break;
                 }
             }
             emitDecorate = true;
+<<<<<<< HEAD
             if (node.kind === 132 /* Parameter */) {
+=======
+            if (node.kind === 131 /* Parameter */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 emitParam = true;
             }
             ts.forEach(node.decorators, checkDecorator);
         }
         function checkFunctionDeclaration(node) {
             if (produceDiagnostics) {
+<<<<<<< HEAD
                 checkFunctionLikeDeclaration(node) || checkGrammarForGenerator(node);
+=======
+                checkFunctionLikeDeclaration(node) ||
+                    checkGrammarFunctionName(node.name) ||
+                    checkGrammarForGenerator(node);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 checkCollisionWithCapturedSuperVariable(node, node.name);
                 checkCollisionWithCapturedThisVariable(node, node.name);
                 checkCollisionWithRequireExportsInGeneratedCode(node, node.name);
@@ -22092,7 +26161,11 @@ var ts;
             // Do not use hasDynamicName here, because that returns false for well known symbols.
             // We want to perform checkComputedPropertyName for all computed properties, including
             // well known symbols.
+<<<<<<< HEAD
             if (node.name && node.name.kind === 130 /* ComputedPropertyName */) {
+=======
+            if (node.name && node.name.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // This check will account for methods in class/interface declarations,
                 // as well as accessors in classes/object literals
                 checkComputedPropertyName(node.name);
@@ -22136,12 +26209,21 @@ var ts;
         }
         function checkBlock(node) {
             // Grammar checking for SyntaxKind.Block
+<<<<<<< HEAD
             if (node.kind === 184 /* Block */) {
                 checkGrammarStatementInAmbientContext(node);
             }
             ts.forEach(node.statements, checkSourceElement);
             if (ts.isFunctionBlock(node) || node.kind === 211 /* ModuleBlock */) {
                 checkFunctionAndClassExpressionBodies(node);
+=======
+            if (node.kind === 182 /* Block */) {
+                checkGrammarStatementInAmbientContext(node);
+            }
+            ts.forEach(node.statements, checkSourceElement);
+            if (ts.isFunctionBlock(node) || node.kind === 209 /* ModuleBlock */) {
+                checkFunctionExpressionBodies(node);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
         }
         function checkCollisionWithArgumentsInGeneratedCode(node) {
@@ -22159,12 +26241,21 @@ var ts;
             if (!(identifier && identifier.text === name)) {
                 return false;
             }
+<<<<<<< HEAD
             if (node.kind === 135 /* PropertyDeclaration */ ||
                 node.kind === 134 /* PropertySignature */ ||
                 node.kind === 137 /* MethodDeclaration */ ||
                 node.kind === 136 /* MethodSignature */ ||
                 node.kind === 139 /* GetAccessor */ ||
                 node.kind === 140 /* SetAccessor */) {
+=======
+            if (node.kind === 134 /* PropertyDeclaration */ ||
+                node.kind === 133 /* PropertySignature */ ||
+                node.kind === 136 /* MethodDeclaration */ ||
+                node.kind === 135 /* MethodSignature */ ||
+                node.kind === 138 /* GetAccessor */ ||
+                node.kind === 139 /* SetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // it is ok to have member named '_super' or '_this' - member access is always qualified
                 return false;
             }
@@ -22173,7 +26264,11 @@ var ts;
                 return false;
             }
             var root = ts.getRootDeclaration(node);
+<<<<<<< HEAD
             if (root.kind === 132 /* Parameter */ && ts.nodeIsMissing(root.parent.body)) {
+=======
+            if (root.kind === 131 /* Parameter */ && ts.nodeIsMissing(root.parent.body)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // just an overload - no codegen impact
                 return false;
             }
@@ -22206,7 +26301,11 @@ var ts;
                 return;
             }
             // bubble up and find containing type
+<<<<<<< HEAD
             var enclosingClass = ts.getContainingClass(node);
+=======
+            var enclosingClass = ts.getAncestor(node, 204 /* ClassDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             // if containing type was not found or it is ambient - exit (no codegen)
             if (!enclosingClass || ts.isInAmbientContext(enclosingClass)) {
                 return;
@@ -22226,12 +26325,20 @@ var ts;
                 return;
             }
             // Uninstantiated modules shouldnt do this check
+<<<<<<< HEAD
             if (node.kind === 210 /* ModuleDeclaration */ && ts.getModuleInstanceState(node) !== 1 /* Instantiated */) {
+=======
+            if (node.kind === 208 /* ModuleDeclaration */ && ts.getModuleInstanceState(node) !== 1 /* Instantiated */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return;
             }
             // In case of variable declaration, node.parent is variable statement so look at the variable statement's parent
             var parent = getDeclarationContainer(node);
+<<<<<<< HEAD
             if (parent.kind === 240 /* SourceFile */ && ts.isExternalModule(parent)) {
+=======
+            if (parent.kind === 230 /* SourceFile */ && ts.isExternalModule(parent)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // If the declaration happens to be in external module, report error that require and exports are reserved keywords
                 error(name, ts.Diagnostics.Duplicate_identifier_0_Compiler_reserves_name_1_in_top_level_scope_of_a_module, ts.declarationNameToString(name), ts.declarationNameToString(name));
             }
@@ -22266,7 +26373,11 @@ var ts;
             // skip variable declarations that don't have initializers
             // NOTE: in ES6 spec initializer is required in variable declarations where name is binding pattern
             // so we'll always treat binding elements as initialized
+<<<<<<< HEAD
             if (node.kind === 203 /* VariableDeclaration */ && !node.initializer) {
+=======
+            if (node.kind === 201 /* VariableDeclaration */ && !node.initializer) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return;
             }
             var symbol = getSymbolOfNode(node);
@@ -22276,17 +26387,29 @@ var ts;
                     localDeclarationSymbol !== symbol &&
                     localDeclarationSymbol.flags & 2 /* BlockScopedVariable */) {
                     if (getDeclarationFlagsFromSymbol(localDeclarationSymbol) & 12288 /* BlockScoped */) {
+<<<<<<< HEAD
                         var varDeclList = ts.getAncestor(localDeclarationSymbol.valueDeclaration, 204 /* VariableDeclarationList */);
                         var container = varDeclList.parent.kind === 185 /* VariableStatement */ && varDeclList.parent.parent
+=======
+                        var varDeclList = ts.getAncestor(localDeclarationSymbol.valueDeclaration, 202 /* VariableDeclarationList */);
+                        var container = varDeclList.parent.kind === 183 /* VariableStatement */ && varDeclList.parent.parent
+>>>>>>> Updated compiler to emitDependencyFile branch
                             ? varDeclList.parent.parent
                             : undefined;
                         // names of block-scoped and function scoped variables can collide only
                         // if block scoped variable is defined in the function\module\source file scope (because of variable hoisting)
                         var namesShareScope = container &&
+<<<<<<< HEAD
                             (container.kind === 184 /* Block */ && ts.isFunctionLike(container.parent) ||
                                 container.kind === 211 /* ModuleBlock */ ||
                                 container.kind === 210 /* ModuleDeclaration */ ||
                                 container.kind === 240 /* SourceFile */);
+=======
+                            (container.kind === 182 /* Block */ && ts.isFunctionLike(container.parent) ||
+                                container.kind === 209 /* ModuleBlock */ ||
+                                container.kind === 208 /* ModuleDeclaration */ ||
+                                container.kind === 230 /* SourceFile */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // here we know that function scoped variable is shadowed by block scoped one
                         // if they are defined in the same scope - binder has already reported redeclaration error
                         // otherwise if variable has an initializer - show error that initialization will fail
@@ -22301,7 +26424,11 @@ var ts;
         }
         // Check that a parameter initializer contains no references to parameters declared to the right of itself
         function checkParameterInitializer(node) {
+<<<<<<< HEAD
             if (ts.getRootDeclaration(node).kind !== 132 /* Parameter */) {
+=======
+            if (ts.getRootDeclaration(node).kind !== 131 /* Parameter */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return;
             }
             var func = ts.getContainingFunction(node);
@@ -22312,7 +26439,11 @@ var ts;
                     // check FunctionLikeDeclaration.locals (stores parameters\function local variable)
                     // if it contains entry with a specified name and if this entry matches the resolved symbol
                     if (referencedSymbol && referencedSymbol !== unknownSymbol && getSymbol(func.locals, referencedSymbol.name, 107455 /* Value */) === referencedSymbol) {
+<<<<<<< HEAD
                         if (referencedSymbol.valueDeclaration.kind === 132 /* Parameter */) {
+=======
+                        if (referencedSymbol.valueDeclaration.kind === 131 /* Parameter */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (referencedSymbol.valueDeclaration === node) {
                                 error(n, ts.Diagnostics.Parameter_0_cannot_be_referenced_in_its_initializer, ts.declarationNameToString(node.name));
                                 return;
@@ -22338,7 +26469,11 @@ var ts;
             // Do not use hasDynamicName here, because that returns false for well known symbols.
             // We want to perform checkComputedPropertyName for all computed properties, including
             // well known symbols.
+<<<<<<< HEAD
             if (node.name.kind === 130 /* ComputedPropertyName */) {
+=======
+            if (node.name.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 checkComputedPropertyName(node.name);
                 if (node.initializer) {
                     checkExpressionCached(node.initializer);
@@ -22349,7 +26484,11 @@ var ts;
                 ts.forEach(node.name.elements, checkSourceElement);
             }
             // For a parameter declaration with an initializer, error and exit if the containing function doesn't have a body
+<<<<<<< HEAD
             if (node.initializer && ts.getRootDeclaration(node).kind === 132 /* Parameter */ && ts.nodeIsMissing(ts.getContainingFunction(node).body)) {
+=======
+            if (node.initializer && ts.getRootDeclaration(node).kind === 131 /* Parameter */ && ts.nodeIsMissing(ts.getContainingFunction(node).body)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 error(node, ts.Diagnostics.A_parameter_initializer_is_only_allowed_in_a_function_or_constructor_implementation);
                 return;
             }
@@ -22381,10 +26520,17 @@ var ts;
                     checkTypeAssignableTo(checkExpressionCached(node.initializer), declarationType, node, undefined);
                 }
             }
+<<<<<<< HEAD
             if (node.kind !== 135 /* PropertyDeclaration */ && node.kind !== 134 /* PropertySignature */) {
                 // We know we don't have a binding pattern or computed name here
                 checkExportsOnMergedDeclarations(node);
                 if (node.kind === 203 /* VariableDeclaration */ || node.kind === 156 /* BindingElement */) {
+=======
+            if (node.kind !== 134 /* PropertyDeclaration */ && node.kind !== 133 /* PropertySignature */) {
+                // We know we don't have a binding pattern or computed name here
+                checkExportsOnMergedDeclarations(node);
+                if (node.kind === 201 /* VariableDeclaration */ || node.kind === 155 /* BindingElement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     checkVarDeclaredNamesNotShadowed(node);
                 }
                 checkCollisionWithCapturedSuperVariable(node, node.name);
@@ -22414,7 +26560,11 @@ var ts;
         }
         function inBlockOrObjectLiteralExpression(node) {
             while (node) {
+<<<<<<< HEAD
                 if (node.kind === 184 /* Block */ || node.kind === 158 /* ObjectLiteralExpression */) {
+=======
+                if (node.kind === 182 /* Block */ || node.kind === 157 /* ObjectLiteralExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
                 }
                 node = node.parent;
@@ -22447,12 +26597,20 @@ var ts;
         function checkForStatement(node) {
             // Grammar checking
             if (!checkGrammarStatementInAmbientContext(node)) {
+<<<<<<< HEAD
                 if (node.initializer && node.initializer.kind === 204 /* VariableDeclarationList */) {
+=======
+                if (node.initializer && node.initializer.kind == 202 /* VariableDeclarationList */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     checkGrammarVariableDeclarationList(node.initializer);
                 }
             }
             if (node.initializer) {
+<<<<<<< HEAD
                 if (node.initializer.kind === 204 /* VariableDeclarationList */) {
+=======
+                if (node.initializer.kind === 202 /* VariableDeclarationList */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ts.forEach(node.initializer.declarations, checkVariableDeclaration);
                 }
                 else {
@@ -22472,14 +26630,22 @@ var ts;
             // via checkRightHandSideOfForOf.
             // If the LHS is an expression, check the LHS, as a destructuring assignment or as a reference.
             // Then check that the RHS is assignable to it.
+<<<<<<< HEAD
             if (node.initializer.kind === 204 /* VariableDeclarationList */) {
+=======
+            if (node.initializer.kind === 202 /* VariableDeclarationList */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 checkForInOrForOfVariableDeclaration(node);
             }
             else {
                 var varExpr = node.initializer;
                 var iteratedType = checkRightHandSideOfForOf(node.expression);
                 // There may be a destructuring assignment on the left side
+<<<<<<< HEAD
                 if (varExpr.kind === 157 /* ArrayLiteralExpression */ || varExpr.kind === 158 /* ObjectLiteralExpression */) {
+=======
+                if (varExpr.kind === 156 /* ArrayLiteralExpression */ || varExpr.kind === 157 /* ObjectLiteralExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // iteratedType may be undefined. In this case, we still want to check the structure of
                     // varExpr, in particular making sure it's a valid LeftHandSideExpression. But we'd like
                     // to short circuit the type relation checking as much as possible, so we pass the unknownType.
@@ -22508,7 +26674,11 @@ var ts;
             // for (let VarDecl in Expr) Statement
             //   VarDecl must be a variable declaration without a type annotation that declares a variable of type Any,
             //   and Expr must be an expression of type Any, an object type, or a type parameter type.
+<<<<<<< HEAD
             if (node.initializer.kind === 204 /* VariableDeclarationList */) {
+=======
+            if (node.initializer.kind === 202 /* VariableDeclarationList */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var variable = node.initializer.declarations[0];
                 if (variable && ts.isBindingPattern(variable.name)) {
                     error(variable.name, ts.Diagnostics.The_left_hand_side_of_a_for_in_statement_cannot_be_a_destructuring_pattern);
@@ -22522,7 +26692,11 @@ var ts;
                 //   and Expr must be an expression of type Any, an object type, or a type parameter type.
                 var varExpr = node.initializer;
                 var leftType = checkExpression(varExpr);
+<<<<<<< HEAD
                 if (varExpr.kind === 157 /* ArrayLiteralExpression */ || varExpr.kind === 158 /* ObjectLiteralExpression */) {
+=======
+                if (varExpr.kind === 156 /* ArrayLiteralExpression */ || varExpr.kind === 157 /* ObjectLiteralExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     error(varExpr, ts.Diagnostics.The_left_hand_side_of_a_for_in_statement_cannot_be_a_destructuring_pattern);
                 }
                 else if (!isTypeAnyOrAllConstituentTypesHaveKind(leftType, 258 /* StringLike */)) {
@@ -22761,7 +26935,11 @@ var ts;
             // TODO: Check that target label is valid
         }
         function isGetAccessorWithAnnotatatedSetAccessor(node) {
+<<<<<<< HEAD
             return !!(node.kind === 139 /* GetAccessor */ && getSetAccessorTypeAnnotationNode(ts.getDeclarationOfKind(node.symbol, 140 /* SetAccessor */)));
+=======
+            return !!(node.kind === 138 /* GetAccessor */ && getSetAccessorTypeAnnotationNode(ts.getDeclarationOfKind(node.symbol, 139 /* SetAccessor */)));
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function checkReturnStatement(node) {
             // Grammar checking
@@ -22784,10 +26962,17 @@ var ts;
                         // for generators.
                         return;
                     }
+<<<<<<< HEAD
                     if (func.kind === 140 /* SetAccessor */) {
                         error(node.expression, ts.Diagnostics.Setters_cannot_return_a_value);
                     }
                     else if (func.kind === 138 /* Constructor */) {
+=======
+                    if (func.kind === 139 /* SetAccessor */) {
+                        error(node.expression, ts.Diagnostics.Setters_cannot_return_a_value);
+                    }
+                    else if (func.kind === 137 /* Constructor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (!isTypeAssignableTo(exprType, returnType)) {
                             error(node.expression, ts.Diagnostics.Return_type_of_constructor_signature_must_be_assignable_to_the_instance_type_of_the_class);
                         }
@@ -22811,7 +26996,11 @@ var ts;
             var expressionType = checkExpression(node.expression);
             ts.forEach(node.caseBlock.clauses, function (clause) {
                 // Grammar check for duplicate default clauses, skip if we already report duplicate default clause
+<<<<<<< HEAD
                 if (clause.kind === 234 /* DefaultClause */ && !hasDuplicateDefaultClause) {
+=======
+                if (clause.kind === 224 /* DefaultClause */ && !hasDuplicateDefaultClause) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (firstDefaultClause === undefined) {
                         firstDefaultClause = clause;
                     }
@@ -22823,7 +27012,11 @@ var ts;
                         hasDuplicateDefaultClause = true;
                     }
                 }
+<<<<<<< HEAD
                 if (produceDiagnostics && clause.kind === 233 /* CaseClause */) {
+=======
+                if (produceDiagnostics && clause.kind === 223 /* CaseClause */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var caseClause = clause;
                     // TypeScript 1.0 spec (April 2014):5.9
                     // In a 'switch' statement, each 'case' expression must be of a type that is assignable to or from the type of the 'switch' expression.
@@ -22844,7 +27037,11 @@ var ts;
                     if (ts.isFunctionLike(current)) {
                         break;
                     }
+<<<<<<< HEAD
                     if (current.kind === 199 /* LabeledStatement */ && current.label.text === node.label.text) {
+=======
+                    if (current.kind === 197 /* LabeledStatement */ && current.label.text === node.label.text) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var sourceFile = ts.getSourceFileOfNode(node);
                         grammarErrorOnNode(node.label, ts.Diagnostics.Duplicate_label_0, ts.getTextOfNodeFromSourceText(sourceFile.text, node.label));
                         break;
@@ -22911,7 +27108,11 @@ var ts;
                     checkIndexConstraintForProperty(prop, propType, type, declaredStringIndexer, stringIndexType, 0 /* String */);
                     checkIndexConstraintForProperty(prop, propType, type, declaredNumberIndexer, numberIndexType, 1 /* Number */);
                 });
+<<<<<<< HEAD
                 if (type.flags & 1024 /* Class */ && ts.isClassLike(type.symbol.valueDeclaration)) {
+=======
+                if (type.flags & 1024 /* Class */ && type.symbol.valueDeclaration.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var classDeclaration = type.symbol.valueDeclaration;
                     for (var _i = 0, _a = classDeclaration.members; _i < _a.length; _i++) {
                         var member = _a[_i];
@@ -22949,7 +27150,11 @@ var ts;
                 // perform property check if property or indexer is declared in 'type'
                 // this allows to rule out cases when both property and indexer are inherited from the base class
                 var errorNode;
+<<<<<<< HEAD
                 if (prop.valueDeclaration.name.kind === 130 /* ComputedPropertyName */ || prop.parent === containingType.symbol) {
+=======
+                if (prop.valueDeclaration.name.kind === 129 /* ComputedPropertyName */ || prop.parent === containingType.symbol) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     errorNode = prop.valueDeclaration;
                 }
                 else if (indexDeclaration) {
@@ -23004,6 +27209,11 @@ var ts;
             return getTypeOfSymbol(getSymbolOfNode(node));
         }
         function checkClassDeclaration(node) {
+<<<<<<< HEAD
+=======
+            checkGrammarDeclarationNameInStrictMode(node);
+            // Grammar checking
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (!node.name && !(node.flags & 256 /* Default */)) {
                 grammarErrorOnFirstToken(node, ts.Diagnostics.A_class_declaration_without_the_default_modifier_must_have_a_name);
             }
@@ -23147,7 +27357,11 @@ var ts;
             }
         }
         function isAccessor(kind) {
+<<<<<<< HEAD
             return kind === 139 /* GetAccessor */ || kind === 140 /* SetAccessor */;
+=======
+            return kind === 138 /* GetAccessor */ || kind === 139 /* SetAccessor */;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function areTypeParametersIdentical(list1, list2) {
             if (!list1 && !list2) {
@@ -23217,7 +27431,11 @@ var ts;
                 checkTypeNameIsReserved(node.name, ts.Diagnostics.Interface_name_cannot_be_0);
                 checkExportsOnMergedDeclarations(node);
                 var symbol = getSymbolOfNode(node);
+<<<<<<< HEAD
                 var firstInterfaceDecl = ts.getDeclarationOfKind(symbol, 207 /* InterfaceDeclaration */);
+=======
+                var firstInterfaceDecl = ts.getDeclarationOfKind(symbol, 205 /* InterfaceDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (symbol.declarations.length > 1) {
                     if (node !== firstInterfaceDecl && !areTypeParametersIdentical(firstInterfaceDecl.typeParameters, node.typeParameters)) {
                         error(node.name, ts.Diagnostics.All_declarations_of_an_interface_must_have_identical_type_parameters);
@@ -23261,7 +27479,11 @@ var ts;
                 var ambient = ts.isInAmbientContext(node);
                 var enumIsConst = ts.isConst(node);
                 ts.forEach(node.members, function (member) {
+<<<<<<< HEAD
                     if (member.name.kind !== 130 /* ComputedPropertyName */ && isNumericLiteralName(member.name.text)) {
+=======
+                    if (member.name.kind !== 129 /* ComputedPropertyName */ && isNumericLiteralName(member.name.text)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         error(member.name, ts.Diagnostics.An_enum_member_cannot_have_a_numeric_name);
                     }
                     var initializer = member.initializer;
@@ -23301,7 +27523,11 @@ var ts;
                 return evalConstant(initializer);
                 function evalConstant(e) {
                     switch (e.kind) {
+<<<<<<< HEAD
                         case 171 /* PrefixUnaryExpression */:
+=======
+                        case 170 /* PrefixUnaryExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var value = evalConstant(e.operand);
                             if (value === undefined) {
                                 return undefined;
@@ -23312,7 +27538,11 @@ var ts;
                                 case 48 /* TildeToken */: return ~value;
                             }
                             return undefined;
+<<<<<<< HEAD
                         case 173 /* BinaryExpression */:
+=======
+                        case 172 /* BinaryExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var left = evalConstant(e.left);
                             if (left === undefined) {
                                 return undefined;
@@ -23337,11 +27567,19 @@ var ts;
                             return undefined;
                         case 7 /* NumericLiteral */:
                             return +e.text;
+<<<<<<< HEAD
                         case 165 /* ParenthesizedExpression */:
                             return evalConstant(e.expression);
                         case 66 /* Identifier */:
                         case 160 /* ElementAccessExpression */:
                         case 159 /* PropertyAccessExpression */:
+=======
+                        case 164 /* ParenthesizedExpression */:
+                            return evalConstant(e.expression);
+                        case 65 /* Identifier */:
+                        case 159 /* ElementAccessExpression */:
+                        case 158 /* PropertyAccessExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var member = initializer.parent;
                             var currentType = getTypeOfSymbol(getSymbolOfNode(member.parent));
                             var enumType;
@@ -23354,7 +27592,11 @@ var ts;
                             }
                             else {
                                 var expression;
+<<<<<<< HEAD
                                 if (e.kind === 160 /* ElementAccessExpression */) {
+=======
+                                if (e.kind === 159 /* ElementAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                     if (e.argumentExpression === undefined ||
                                         e.argumentExpression.kind !== 8 /* StringLiteral */) {
                                         return undefined;
@@ -23372,7 +27614,11 @@ var ts;
                                     if (current.kind === 66 /* Identifier */) {
                                         break;
                                     }
+<<<<<<< HEAD
                                     else if (current.kind === 159 /* PropertyAccessExpression */) {
+=======
+                                    else if (current.kind === 158 /* PropertyAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                         current = current.expression;
                                     }
                                     else {
@@ -23441,7 +27687,11 @@ var ts;
                 var seenEnumMissingInitialInitializer = false;
                 ts.forEach(enumSymbol.declarations, function (declaration) {
                     // return true if we hit a violation of the rule, false otherwise
+<<<<<<< HEAD
                     if (declaration.kind !== 209 /* EnumDeclaration */) {
+=======
+                    if (declaration.kind !== 207 /* EnumDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return false;
                     }
                     var enumDeclaration = declaration;
@@ -23464,8 +27714,13 @@ var ts;
             var declarations = symbol.declarations;
             for (var _i = 0; _i < declarations.length; _i++) {
                 var declaration = declarations[_i];
+<<<<<<< HEAD
                 if ((declaration.kind === 206 /* ClassDeclaration */ ||
                     (declaration.kind === 205 /* FunctionDeclaration */ && ts.nodeIsPresent(declaration.body))) &&
+=======
+                if ((declaration.kind === 204 /* ClassDeclaration */ ||
+                    (declaration.kind === 203 /* FunctionDeclaration */ && ts.nodeIsPresent(declaration.body))) &&
+>>>>>>> Updated compiler to emitDependencyFile branch
                     !ts.isInAmbientContext(declaration)) {
                     return declaration;
                 }
@@ -23496,7 +27751,11 @@ var ts;
                     // If we hit a module declaration in an illegal context, just bail out to avoid cascading errors.
                     return;
                 }
+<<<<<<< HEAD
                 if (!checkGrammarDecorators(node) && !checkGrammarModifiers(node)) {
+=======
+                if (!checkGrammarDeclarationNameInStrictMode(node) && !checkGrammarDecorators(node) && !checkGrammarModifiers(node)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (!ts.isInAmbientContext(node) && node.name.kind === 8 /* StringLiteral */) {
                         grammarErrorOnNode(node.name, ts.Diagnostics.Only_ambient_modules_can_use_quoted_names);
                     }
@@ -23521,7 +27780,11 @@ var ts;
                     }
                     // if the module merges with a class declaration in the same lexical scope, 
                     // we need to track this to ensure the correct emit.
+<<<<<<< HEAD
                     var mergedClass = ts.getDeclarationOfKind(symbol, 206 /* ClassDeclaration */);
+=======
+                    var mergedClass = ts.getDeclarationOfKind(symbol, 204 /* ClassDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (mergedClass &&
                         inSameLexicalScope(node, mergedClass)) {
                         getNodeLinks(node).flags |= 2048 /* LexicalModuleMergesWithClass */;
@@ -23541,10 +27804,17 @@ var ts;
         }
         function getFirstIdentifier(node) {
             while (true) {
+<<<<<<< HEAD
                 if (node.kind === 129 /* QualifiedName */) {
                     node = node.left;
                 }
                 else if (node.kind === 159 /* PropertyAccessExpression */) {
+=======
+                if (node.kind === 128 /* QualifiedName */) {
+                    node = node.left;
+                }
+                else if (node.kind === 158 /* PropertyAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     node = node.expression;
                 }
                 else {
@@ -23560,9 +27830,15 @@ var ts;
                 error(moduleName, ts.Diagnostics.String_literal_expected);
                 return false;
             }
+<<<<<<< HEAD
             var inAmbientExternalModule = node.parent.kind === 211 /* ModuleBlock */ && node.parent.parent.name.kind === 8 /* StringLiteral */;
             if (node.parent.kind !== 240 /* SourceFile */ && !inAmbientExternalModule) {
                 error(moduleName, node.kind === 220 /* ExportDeclaration */ ?
+=======
+            var inAmbientExternalModule = node.parent.kind === 209 /* ModuleBlock */ && node.parent.parent.name.kind === 8 /* StringLiteral */;
+            if (node.parent.kind !== 230 /* SourceFile */ && !inAmbientExternalModule) {
+                error(moduleName, node.kind === 218 /* ExportDeclaration */ ?
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ts.Diagnostics.Export_declarations_are_not_permitted_in_a_namespace :
                     ts.Diagnostics.Import_declarations_in_a_namespace_cannot_reference_a_module);
                 return false;
@@ -23585,7 +27861,11 @@ var ts;
                     (symbol.flags & 793056 /* Type */ ? 793056 /* Type */ : 0) |
                     (symbol.flags & 1536 /* Namespace */ ? 1536 /* Namespace */ : 0);
                 if (target.flags & excludedMeanings) {
+<<<<<<< HEAD
                     var message = node.kind === 222 /* ExportSpecifier */ ?
+=======
+                    var message = node.kind === 220 /* ExportSpecifier */ ?
+>>>>>>> Updated compiler to emitDependencyFile branch
                         ts.Diagnostics.Export_declaration_conflicts_with_exported_declaration_of_0 :
                         ts.Diagnostics.Import_declaration_conflicts_with_local_declaration_of_0;
                     error(node, message, symbolToString(symbol));
@@ -23602,7 +27882,11 @@ var ts;
                 // If we hit an import declaration in an illegal context, just bail out to avoid cascading errors.
                 return;
             }
+<<<<<<< HEAD
             if (!checkGrammarDecorators(node) && !checkGrammarModifiers(node) && (node.flags & 499 /* Modifier */)) {
+=======
+            if (!checkGrammarImportDeclarationNameInStrictMode(node) && !checkGrammarDecorators(node) && !checkGrammarModifiers(node) && (node.flags & 499 /* Modifier */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 grammarErrorOnFirstToken(node, ts.Diagnostics.An_import_declaration_cannot_have_modifiers);
             }
             if (checkExternalImportOrExportDeclaration(node)) {
@@ -23612,7 +27896,11 @@ var ts;
                         checkImportBinding(importClause);
                     }
                     if (importClause.namedBindings) {
+<<<<<<< HEAD
                         if (importClause.namedBindings.kind === 216 /* NamespaceImport */) {
+=======
+                        if (importClause.namedBindings.kind === 214 /* NamespaceImport */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             checkImportBinding(importClause.namedBindings);
                         }
                         else {
@@ -23627,7 +27915,11 @@ var ts;
                 // If we hit an import declaration in an illegal context, just bail out to avoid cascading errors.
                 return;
             }
+<<<<<<< HEAD
             checkGrammarDecorators(node) || checkGrammarModifiers(node);
+=======
+            checkGrammarDeclarationNameInStrictMode(node) || checkGrammarDecorators(node) || checkGrammarModifiers(node);
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (ts.isInternalModuleImportEqualsDeclaration(node) || checkExternalImportOrExportDeclaration(node)) {
                 checkImportBinding(node);
                 if (node.flags & 1 /* Export */) {
@@ -23669,8 +27961,13 @@ var ts;
                     // export { x, y }
                     // export { x, y } from "foo"
                     ts.forEach(node.exportClause.elements, checkExportSpecifier);
+<<<<<<< HEAD
                     var inAmbientExternalModule = node.parent.kind === 211 /* ModuleBlock */ && node.parent.parent.name.kind === 8 /* StringLiteral */;
                     if (node.parent.kind !== 240 /* SourceFile */ && !inAmbientExternalModule) {
+=======
+                    var inAmbientExternalModule = node.parent.kind === 209 /* ModuleBlock */ && node.parent.parent.name.kind === 8 /* StringLiteral */;
+                    if (node.parent.kind !== 230 /* SourceFile */ && !inAmbientExternalModule) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         error(node, ts.Diagnostics.Export_declarations_are_not_permitted_in_a_namespace);
                     }
                 }
@@ -23684,7 +27981,11 @@ var ts;
             }
         }
         function checkGrammarModuleElementContext(node, errorMessage) {
+<<<<<<< HEAD
             if (node.parent.kind !== 240 /* SourceFile */ && node.parent.kind !== 211 /* ModuleBlock */ && node.parent.kind !== 210 /* ModuleDeclaration */) {
+=======
+            if (node.parent.kind !== 230 /* SourceFile */ && node.parent.kind !== 209 /* ModuleBlock */ && node.parent.kind !== 208 /* ModuleDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return grammarErrorOnFirstToken(node, errorMessage);
             }
         }
@@ -23699,8 +28000,13 @@ var ts;
                 // If we hit an export assignment in an illegal context, just bail out to avoid cascading errors.
                 return;
             }
+<<<<<<< HEAD
             var container = node.parent.kind === 240 /* SourceFile */ ? node.parent : node.parent.parent;
             if (container.kind === 210 /* ModuleDeclaration */ && container.name.kind === 66 /* Identifier */) {
+=======
+            var container = node.parent.kind === 230 /* SourceFile */ ? node.parent : node.parent.parent;
+            if (container.kind === 208 /* ModuleDeclaration */ && container.name.kind === 65 /* Identifier */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 error(node, ts.Diagnostics.An_export_assignment_cannot_be_used_in_a_namespace);
                 return;
             }
@@ -23727,10 +28033,17 @@ var ts;
             }
         }
         function getModuleStatements(node) {
+<<<<<<< HEAD
             if (node.kind === 240 /* SourceFile */) {
                 return node.statements;
             }
             if (node.kind === 210 /* ModuleDeclaration */ && node.body.kind === 211 /* ModuleBlock */) {
+=======
+            if (node.kind === 230 /* SourceFile */) {
+                return node.statements;
+            }
+            if (node.kind === 208 /* ModuleDeclaration */ && node.body.kind === 209 /* ModuleBlock */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return node.body.statements;
             }
             return emptyArray;
@@ -23764,6 +28077,7 @@ var ts;
             if (!node)
                 return;
             switch (node.kind) {
+<<<<<<< HEAD
                 case 131 /* TypeParameter */:
                     return checkTypeParameter(node);
                 case 132 /* Parameter */:
@@ -23867,6 +28181,111 @@ var ts;
                     checkGrammarStatementInAmbientContext(node);
                     return;
                 case 223 /* MissingDeclaration */:
+=======
+                case 130 /* TypeParameter */:
+                    return checkTypeParameter(node);
+                case 131 /* Parameter */:
+                    return checkParameter(node);
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                    return checkPropertyDeclaration(node);
+                case 145 /* FunctionType */:
+                case 146 /* ConstructorType */:
+                case 140 /* CallSignature */:
+                case 141 /* ConstructSignature */:
+                    return checkSignatureDeclaration(node);
+                case 142 /* IndexSignature */:
+                    return checkSignatureDeclaration(node);
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                    return checkMethodDeclaration(node);
+                case 137 /* Constructor */:
+                    return checkConstructorDeclaration(node);
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                    return checkAccessorDeclaration(node);
+                case 144 /* TypeReference */:
+                    return checkTypeReferenceNode(node);
+                case 143 /* TypePredicate */:
+                    return checkTypePredicate(node);
+                case 147 /* TypeQuery */:
+                    return checkTypeQuery(node);
+                case 148 /* TypeLiteral */:
+                    return checkTypeLiteral(node);
+                case 149 /* ArrayType */:
+                    return checkArrayType(node);
+                case 150 /* TupleType */:
+                    return checkTupleType(node);
+                case 151 /* UnionType */:
+                    return checkUnionType(node);
+                case 152 /* ParenthesizedType */:
+                    return checkSourceElement(node.type);
+                case 203 /* FunctionDeclaration */:
+                    return checkFunctionDeclaration(node);
+                case 182 /* Block */:
+                case 209 /* ModuleBlock */:
+                    return checkBlock(node);
+                case 183 /* VariableStatement */:
+                    return checkVariableStatement(node);
+                case 185 /* ExpressionStatement */:
+                    return checkExpressionStatement(node);
+                case 186 /* IfStatement */:
+                    return checkIfStatement(node);
+                case 187 /* DoStatement */:
+                    return checkDoStatement(node);
+                case 188 /* WhileStatement */:
+                    return checkWhileStatement(node);
+                case 189 /* ForStatement */:
+                    return checkForStatement(node);
+                case 190 /* ForInStatement */:
+                    return checkForInStatement(node);
+                case 191 /* ForOfStatement */:
+                    return checkForOfStatement(node);
+                case 192 /* ContinueStatement */:
+                case 193 /* BreakStatement */:
+                    return checkBreakOrContinueStatement(node);
+                case 194 /* ReturnStatement */:
+                    return checkReturnStatement(node);
+                case 195 /* WithStatement */:
+                    return checkWithStatement(node);
+                case 196 /* SwitchStatement */:
+                    return checkSwitchStatement(node);
+                case 197 /* LabeledStatement */:
+                    return checkLabeledStatement(node);
+                case 198 /* ThrowStatement */:
+                    return checkThrowStatement(node);
+                case 199 /* TryStatement */:
+                    return checkTryStatement(node);
+                case 201 /* VariableDeclaration */:
+                    return checkVariableDeclaration(node);
+                case 155 /* BindingElement */:
+                    return checkBindingElement(node);
+                case 204 /* ClassDeclaration */:
+                    return checkClassDeclaration(node);
+                case 205 /* InterfaceDeclaration */:
+                    return checkInterfaceDeclaration(node);
+                case 206 /* TypeAliasDeclaration */:
+                    return checkTypeAliasDeclaration(node);
+                case 207 /* EnumDeclaration */:
+                    return checkEnumDeclaration(node);
+                case 208 /* ModuleDeclaration */:
+                    return checkModuleDeclaration(node);
+                case 212 /* ImportDeclaration */:
+                    return checkImportDeclaration(node);
+                case 211 /* ImportEqualsDeclaration */:
+                    return checkImportEqualsDeclaration(node);
+                case 218 /* ExportDeclaration */:
+                    return checkExportDeclaration(node);
+                case 217 /* ExportAssignment */:
+                    return checkExportAssignment(node);
+                case 184 /* EmptyStatement */:
+                    checkGrammarStatementInAmbientContext(node);
+                    return;
+                case 200 /* DebuggerStatement */:
+                    checkGrammarStatementInAmbientContext(node);
+                    return;
+                case 221 /* MissingDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return checkMissingDeclaration(node);
             }
         }
@@ -23881,6 +28300,7 @@ var ts;
         // Delaying the type check of the body ensures foo has been assigned a type.
         function checkFunctionAndClassExpressionBodies(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 166 /* FunctionExpression */:
                 case 167 /* ArrowFunction */:
                     ts.forEach(node.parameters, checkFunctionAndClassExpressionBodies);
@@ -23893,10 +28313,22 @@ var ts;
                 case 136 /* MethodSignature */:
                     ts.forEach(node.decorators, checkFunctionAndClassExpressionBodies);
                     ts.forEach(node.parameters, checkFunctionAndClassExpressionBodies);
+=======
+                case 165 /* FunctionExpression */:
+                case 166 /* ArrowFunction */:
+                    ts.forEach(node.parameters, checkFunctionExpressionBodies);
+                    checkFunctionExpressionOrObjectLiteralMethodBody(node);
+                    break;
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                    ts.forEach(node.decorators, checkFunctionExpressionBodies);
+                    ts.forEach(node.parameters, checkFunctionExpressionBodies);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (ts.isObjectLiteralMethod(node)) {
                         checkFunctionExpressionOrObjectLiteralMethodBody(node);
                     }
                     break;
+<<<<<<< HEAD
                 case 138 /* Constructor */:
                 case 139 /* GetAccessor */:
                 case 140 /* SetAccessor */:
@@ -23969,6 +28401,73 @@ var ts;
                 case 231 /* JsxSpreadAttribute */:
                 case 227 /* JsxOpeningElement */:
                     ts.forEachChild(node, checkFunctionAndClassExpressionBodies);
+=======
+                case 137 /* Constructor */:
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                case 203 /* FunctionDeclaration */:
+                    ts.forEach(node.parameters, checkFunctionExpressionBodies);
+                    break;
+                case 195 /* WithStatement */:
+                    checkFunctionExpressionBodies(node.expression);
+                    break;
+                case 132 /* Decorator */:
+                case 131 /* Parameter */:
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                case 153 /* ObjectBindingPattern */:
+                case 154 /* ArrayBindingPattern */:
+                case 155 /* BindingElement */:
+                case 156 /* ArrayLiteralExpression */:
+                case 157 /* ObjectLiteralExpression */:
+                case 227 /* PropertyAssignment */:
+                case 158 /* PropertyAccessExpression */:
+                case 159 /* ElementAccessExpression */:
+                case 160 /* CallExpression */:
+                case 161 /* NewExpression */:
+                case 162 /* TaggedTemplateExpression */:
+                case 174 /* TemplateExpression */:
+                case 180 /* TemplateSpan */:
+                case 163 /* TypeAssertionExpression */:
+                case 164 /* ParenthesizedExpression */:
+                case 168 /* TypeOfExpression */:
+                case 169 /* VoidExpression */:
+                case 167 /* DeleteExpression */:
+                case 170 /* PrefixUnaryExpression */:
+                case 171 /* PostfixUnaryExpression */:
+                case 172 /* BinaryExpression */:
+                case 173 /* ConditionalExpression */:
+                case 176 /* SpreadElementExpression */:
+                case 182 /* Block */:
+                case 209 /* ModuleBlock */:
+                case 183 /* VariableStatement */:
+                case 185 /* ExpressionStatement */:
+                case 186 /* IfStatement */:
+                case 187 /* DoStatement */:
+                case 188 /* WhileStatement */:
+                case 189 /* ForStatement */:
+                case 190 /* ForInStatement */:
+                case 191 /* ForOfStatement */:
+                case 192 /* ContinueStatement */:
+                case 193 /* BreakStatement */:
+                case 194 /* ReturnStatement */:
+                case 196 /* SwitchStatement */:
+                case 210 /* CaseBlock */:
+                case 223 /* CaseClause */:
+                case 224 /* DefaultClause */:
+                case 197 /* LabeledStatement */:
+                case 198 /* ThrowStatement */:
+                case 199 /* TryStatement */:
+                case 226 /* CatchClause */:
+                case 201 /* VariableDeclaration */:
+                case 202 /* VariableDeclarationList */:
+                case 204 /* ClassDeclaration */:
+                case 207 /* EnumDeclaration */:
+                case 229 /* EnumMember */:
+                case 217 /* ExportAssignment */:
+                case 230 /* SourceFile */:
+                    ts.forEachChild(node, checkFunctionExpressionBodies);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     break;
             }
         }
@@ -24035,7 +28534,11 @@ var ts;
         function isInsideWithStatementBody(node) {
             if (node) {
                 while (node.parent) {
+<<<<<<< HEAD
                     if (node.parent.kind === 197 /* WithStatement */ && node.parent.statement === node) {
+=======
+                    if (node.parent.kind === 195 /* WithStatement */ && node.parent.statement === node) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                     }
                     node = node.parent;
@@ -24058,6 +28561,7 @@ var ts;
                         copySymbols(location.locals, meaning);
                     }
                     switch (location.kind) {
+<<<<<<< HEAD
                         case 240 /* SourceFile */:
                             if (!ts.isExternalModule(location)) {
                                 break;
@@ -24075,11 +28579,29 @@ var ts;
                         // Fall through
                         case 206 /* ClassDeclaration */:
                         case 207 /* InterfaceDeclaration */:
+=======
+                        case 230 /* SourceFile */:
+                            if (!ts.isExternalModule(location)) {
+                                break;
+                            }
+                        case 208 /* ModuleDeclaration */:
+                            copySymbols(getSymbolOfNode(location).exports, meaning & 8914931 /* ModuleMember */);
+                            break;
+                        case 207 /* EnumDeclaration */:
+                            copySymbols(getSymbolOfNode(location).exports, meaning & 8 /* EnumMember */);
+                            break;
+                        case 204 /* ClassDeclaration */:
+                        case 205 /* InterfaceDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (!(memberFlags & 128 /* Static */)) {
                                 copySymbols(getSymbolOfNode(location).members, meaning & 793056 /* Type */);
                             }
                             break;
+<<<<<<< HEAD
                         case 166 /* FunctionExpression */:
+=======
+                        case 165 /* FunctionExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (location.name) {
                                 copySymbol(location.symbol, meaning);
                             }
@@ -24108,6 +28630,44 @@ var ts;
                     }
                 }
             }
+<<<<<<< HEAD
+=======
+            if (isInsideWithStatementBody(location)) {
+                // We cannot answer semantic questions within a with block, do not proceed any further
+                return [];
+            }
+            while (location) {
+                if (location.locals && !isGlobalSourceFile(location)) {
+                    copySymbols(location.locals, meaning);
+                }
+                switch (location.kind) {
+                    case 230 /* SourceFile */:
+                        if (!ts.isExternalModule(location))
+                            break;
+                    case 208 /* ModuleDeclaration */:
+                        copySymbols(getSymbolOfNode(location).exports, meaning & 8914931 /* ModuleMember */);
+                        break;
+                    case 207 /* EnumDeclaration */:
+                        copySymbols(getSymbolOfNode(location).exports, meaning & 8 /* EnumMember */);
+                        break;
+                    case 204 /* ClassDeclaration */:
+                    case 205 /* InterfaceDeclaration */:
+                        if (!(memberFlags & 128 /* Static */)) {
+                            copySymbols(getSymbolOfNode(location).members, meaning & 793056 /* Type */);
+                        }
+                        break;
+                    case 165 /* FunctionExpression */:
+                        if (location.name) {
+                            copySymbol(location.symbol, meaning);
+                        }
+                        break;
+                }
+                memberFlags = location.flags;
+                location = location.parent;
+            }
+            copySymbols(globals, meaning);
+            return symbolsToArray(symbols);
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function isTypeDeclarationName(name) {
             return name.kind === 66 /* Identifier */ &&
@@ -24116,17 +28676,26 @@ var ts;
         }
         function isTypeDeclaration(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 131 /* TypeParameter */:
                 case 206 /* ClassDeclaration */:
                 case 207 /* InterfaceDeclaration */:
                 case 208 /* TypeAliasDeclaration */:
                 case 209 /* EnumDeclaration */:
+=======
+                case 130 /* TypeParameter */:
+                case 204 /* ClassDeclaration */:
+                case 205 /* InterfaceDeclaration */:
+                case 206 /* TypeAliasDeclaration */:
+                case 207 /* EnumDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
             }
         }
         // True if the given identifier is part of a type reference
         function isTypeReferenceIdentifier(entityName) {
             var node = entityName;
+<<<<<<< HEAD
             while (node.parent && node.parent.kind === 129 /* QualifiedName */) {
                 node = node.parent;
             }
@@ -24147,6 +28716,28 @@ var ts;
                 return nodeOnRightSide.parent.moduleReference === nodeOnRightSide && nodeOnRightSide.parent;
             }
             if (nodeOnRightSide.parent.kind === 219 /* ExportAssignment */) {
+=======
+            while (node.parent && node.parent.kind === 128 /* QualifiedName */) {
+                node = node.parent;
+            }
+            return node.parent && node.parent.kind === 144 /* TypeReference */;
+        }
+        function isHeritageClauseElementIdentifier(entityName) {
+            var node = entityName;
+            while (node.parent && node.parent.kind === 158 /* PropertyAccessExpression */) {
+                node = node.parent;
+            }
+            return node.parent && node.parent.kind === 179 /* ExpressionWithTypeArguments */;
+        }
+        function getLeftSideOfImportEqualsOrExportAssignment(nodeOnRightSide) {
+            while (nodeOnRightSide.parent.kind === 128 /* QualifiedName */) {
+                nodeOnRightSide = nodeOnRightSide.parent;
+            }
+            if (nodeOnRightSide.parent.kind === 211 /* ImportEqualsDeclaration */) {
+                return nodeOnRightSide.parent.moduleReference === nodeOnRightSide && nodeOnRightSide.parent;
+            }
+            if (nodeOnRightSide.parent.kind === 217 /* ExportAssignment */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return nodeOnRightSide.parent.expression === nodeOnRightSide && nodeOnRightSide.parent;
             }
             return undefined;
@@ -24158,11 +28749,19 @@ var ts;
             if (ts.isDeclarationName(entityName)) {
                 return getSymbolOfNode(entityName.parent);
             }
+<<<<<<< HEAD
             if (entityName.parent.kind === 219 /* ExportAssignment */) {
                 return resolveEntityName(entityName, 
                 /*all meanings*/ 107455 /* Value */ | 793056 /* Type */ | 1536 /* Namespace */ | 8388608 /* Alias */);
             }
             if (entityName.kind !== 159 /* PropertyAccessExpression */) {
+=======
+            if (entityName.parent.kind === 217 /* ExportAssignment */) {
+                return resolveEntityName(entityName, 
+                /*all meanings*/ 107455 /* Value */ | 793056 /* Type */ | 1536 /* Namespace */ | 8388608 /* Alias */);
+            }
+            if (entityName.kind !== 158 /* PropertyAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (isInRightSideOfImportOrExportAssignment(entityName)) {
                     // Since we already checked for ExportAssignment, this really could only be an Import
                     return getSymbolOfPartOfRightHandSideOfImportEquals(entityName);
@@ -24172,7 +28771,11 @@ var ts;
                 entityName = entityName.parent;
             }
             if (isHeritageClauseElementIdentifier(entityName)) {
+<<<<<<< HEAD
                 var meaning = entityName.parent.kind === 180 /* ExpressionWithTypeArguments */ ? 793056 /* Type */ : 1536 /* Namespace */;
+=======
+                var meaning = entityName.parent.kind === 179 /* ExpressionWithTypeArguments */ ? 793056 /* Type */ : 1536 /* Namespace */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 meaning |= 8388608 /* Alias */;
                 return resolveEntityName(entityName, meaning);
             }
@@ -24190,14 +28793,22 @@ var ts;
                     var meaning = 107455 /* Value */ | 8388608 /* Alias */;
                     return resolveEntityName(entityName, meaning);
                 }
+<<<<<<< HEAD
                 else if (entityName.kind === 159 /* PropertyAccessExpression */) {
+=======
+                else if (entityName.kind === 158 /* PropertyAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var symbol = getNodeLinks(entityName).resolvedSymbol;
                     if (!symbol) {
                         checkPropertyAccessExpression(entityName);
                     }
                     return getNodeLinks(entityName).resolvedSymbol;
                 }
+<<<<<<< HEAD
                 else if (entityName.kind === 129 /* QualifiedName */) {
+=======
+                else if (entityName.kind === 128 /* QualifiedName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var symbol = getNodeLinks(entityName).resolvedSymbol;
                     if (!symbol) {
                         checkQualifiedName(entityName);
@@ -24206,7 +28817,11 @@ var ts;
                 }
             }
             else if (isTypeReferenceIdentifier(entityName)) {
+<<<<<<< HEAD
                 var meaning = entityName.parent.kind === 145 /* TypeReference */ ? 793056 /* Type */ : 1536 /* Namespace */;
+=======
+                var meaning = entityName.parent.kind === 144 /* TypeReference */ ? 793056 /* Type */ : 1536 /* Namespace */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // Include aliases in the meaning, this ensures that we do not follow aliases to where they point and instead
                 // return the alias symbol.
                 meaning |= 8388608 /* Alias */;
@@ -24230,15 +28845,26 @@ var ts;
                 // This is a declaration, call getSymbolOfNode
                 return getSymbolOfNode(node.parent);
             }
+<<<<<<< HEAD
             if (node.kind === 66 /* Identifier */ && isInRightSideOfImportOrExportAssignment(node)) {
                 return node.parent.kind === 219 /* ExportAssignment */
+=======
+            if (node.kind === 65 /* Identifier */ && isInRightSideOfImportOrExportAssignment(node)) {
+                return node.parent.kind === 217 /* ExportAssignment */
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ? getSymbolOfEntityNameOrPropertyAccessExpression(node)
                     : getSymbolOfPartOfRightHandSideOfImportEquals(node);
             }
             switch (node.kind) {
+<<<<<<< HEAD
                 case 66 /* Identifier */:
                 case 159 /* PropertyAccessExpression */:
                 case 129 /* QualifiedName */:
+=======
+                case 65 /* Identifier */:
+                case 158 /* PropertyAccessExpression */:
+                case 128 /* QualifiedName */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return getSymbolOfEntityNameOrPropertyAccessExpression(node);
                 case 94 /* ThisKeyword */:
                 case 92 /* SuperKeyword */:
@@ -24247,7 +28873,11 @@ var ts;
                 case 115 /* ConstructorKeyword */:
                     // constructor keyword for an overload, should take us to the definition if it exist
                     var constructorDeclaration = node.parent;
+<<<<<<< HEAD
                     if (constructorDeclaration && constructorDeclaration.kind === 138 /* Constructor */) {
+=======
+                    if (constructorDeclaration && constructorDeclaration.kind === 137 /* Constructor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return constructorDeclaration.parent.symbol;
                     }
                     return undefined;
@@ -24255,14 +28885,22 @@ var ts;
                     // External module name in an import declaration
                     if ((ts.isExternalModuleImportEqualsDeclaration(node.parent.parent) &&
                         ts.getExternalModuleImportEqualsDeclarationExpression(node.parent.parent) === node) ||
+<<<<<<< HEAD
                         ((node.parent.kind === 214 /* ImportDeclaration */ || node.parent.kind === 220 /* ExportDeclaration */) &&
+=======
+                        ((node.parent.kind === 212 /* ImportDeclaration */ || node.parent.kind === 218 /* ExportDeclaration */) &&
+>>>>>>> Updated compiler to emitDependencyFile branch
                             node.parent.moduleSpecifier === node)) {
                         return resolveExternalModuleName(node, node);
                     }
                 // fall through
                 case 7 /* NumericLiteral */:
                     // index access
+<<<<<<< HEAD
                     if (node.parent.kind === 160 /* ElementAccessExpression */ && node.parent.argumentExpression === node) {
+=======
+                    if (node.parent.kind == 159 /* ElementAccessExpression */ && node.parent.argumentExpression === node) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var objectType = checkExpression(node.parent.expression);
                         if (objectType === unknownType)
                             return undefined;
@@ -24279,7 +28917,11 @@ var ts;
             // The function returns a value symbol of an identifier in the short-hand property assignment.
             // This is necessary as an identifier in short-hand property assignment can contains two meaning:
             // property name and property value.
+<<<<<<< HEAD
             if (location && location.kind === 238 /* ShorthandPropertyAssignment */) {
+=======
+            if (location && location.kind === 228 /* ShorthandPropertyAssignment */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return resolveEntityName(location.name, 107455 /* Value */);
             }
             return undefined;
@@ -24393,11 +29035,19 @@ var ts;
                 }
                 var parentSymbol = getParentOfSymbol(symbol);
                 if (parentSymbol) {
+<<<<<<< HEAD
                     if (parentSymbol.flags & 512 /* ValueModule */ && parentSymbol.valueDeclaration.kind === 240 /* SourceFile */) {
                         return parentSymbol.valueDeclaration;
                     }
                     for (var n = node.parent; n; n = n.parent) {
                         if ((n.kind === 210 /* ModuleDeclaration */ || n.kind === 209 /* EnumDeclaration */) && getSymbolOfNode(n) === parentSymbol) {
+=======
+                    if (parentSymbol.flags & 512 /* ValueModule */ && parentSymbol.valueDeclaration.kind === 230 /* SourceFile */) {
+                        return parentSymbol.valueDeclaration;
+                    }
+                    for (var n = node.parent; n; n = n.parent) {
+                        if ((n.kind === 208 /* ModuleDeclaration */ || n.kind === 207 /* EnumDeclaration */) && getSymbolOfNode(n) === parentSymbol) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return n;
                         }
                     }
@@ -24412,11 +29062,19 @@ var ts;
         }
         function isStatementWithLocals(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 184 /* Block */:
                 case 212 /* CaseBlock */:
                 case 191 /* ForStatement */:
                 case 192 /* ForInStatement */:
                 case 193 /* ForOfStatement */:
+=======
+                case 182 /* Block */:
+                case 210 /* CaseBlock */:
+                case 189 /* ForStatement */:
+                case 190 /* ForInStatement */:
+                case 191 /* ForOfStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
             }
             return false;
@@ -24446,6 +29104,7 @@ var ts;
         }
         function isValueAliasDeclaration(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 213 /* ImportEqualsDeclaration */:
                 case 215 /* ImportClause */:
                 case 216 /* NamespaceImport */:
@@ -24457,11 +29116,28 @@ var ts;
                     return exportClause && ts.forEach(exportClause.elements, isValueAliasDeclaration);
                 case 219 /* ExportAssignment */:
                     return node.expression && node.expression.kind === 66 /* Identifier */ ? isAliasResolvedToValue(getSymbolOfNode(node)) : true;
+=======
+                case 211 /* ImportEqualsDeclaration */:
+                case 213 /* ImportClause */:
+                case 214 /* NamespaceImport */:
+                case 216 /* ImportSpecifier */:
+                case 220 /* ExportSpecifier */:
+                    return isAliasResolvedToValue(getSymbolOfNode(node));
+                case 218 /* ExportDeclaration */:
+                    var exportClause = node.exportClause;
+                    return exportClause && ts.forEach(exportClause.elements, isValueAliasDeclaration);
+                case 217 /* ExportAssignment */:
+                    return node.expression && node.expression.kind === 65 /* Identifier */ ? isAliasResolvedToValue(getSymbolOfNode(node)) : true;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             return false;
         }
         function isTopLevelValueImportEqualsWithEntityName(node) {
+<<<<<<< HEAD
             if (node.parent.kind !== 240 /* SourceFile */ || !ts.isInternalModuleImportEqualsDeclaration(node)) {
+=======
+            if (node.parent.kind !== 230 /* SourceFile */ || !ts.isInternalModuleImportEqualsDeclaration(node)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // parent is not source file or it is not reference to internal module
                 return false;
             }
@@ -24519,7 +29195,11 @@ var ts;
             return getNodeLinks(node).enumMemberValue;
         }
         function getConstantValue(node) {
+<<<<<<< HEAD
             if (node.kind === 239 /* EnumMember */) {
+=======
+            if (node.kind === 229 /* EnumMember */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return getEnumMemberValue(node);
             }
             var symbol = getNodeLinks(node).resolvedSymbol;
@@ -24533,7 +29213,11 @@ var ts;
         }
         /** Serializes an EntityName (with substitutions) to an appropriate JS constructor value. Used by the __metadata decorator. */
         function serializeEntityName(node, fallbackPath) {
+<<<<<<< HEAD
             if (node.kind === 66 /* Identifier */) {
+=======
+            if (node.kind === 65 /* Identifier */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // TODO(ron.buckton): The getExpressionNameSubstitution function has been removed, but calling it
                 // here has no effect anyway as an identifier in a type name is not an expression.
                 // var substitution = getExpressionNameSubstitution(<Identifier>node, getGeneratedNameForNode);
@@ -24615,6 +29299,7 @@ var ts;
                 switch (node.kind) {
                     case 100 /* VoidKeyword */:
                         return "void 0";
+<<<<<<< HEAD
                     case 153 /* ParenthesizedType */:
                         return serializeTypeNode(node.type);
                     case 146 /* FunctionType */:
@@ -24622,9 +29307,19 @@ var ts;
                         return "Function";
                     case 150 /* ArrayType */:
                     case 151 /* TupleType */:
+=======
+                    case 152 /* ParenthesizedType */:
+                        return serializeTypeNode(node.type);
+                    case 145 /* FunctionType */:
+                    case 146 /* ConstructorType */:
+                        return "Function";
+                    case 149 /* ArrayType */:
+                    case 150 /* TupleType */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return "Array";
                     case 114 /* BooleanKeyword */:
                         return "Boolean";
+<<<<<<< HEAD
                     case 124 /* StringKeyword */:
                     case 8 /* StringLiteral */:
                         return "String";
@@ -24636,6 +29331,19 @@ var ts;
                     case 149 /* TypeLiteral */:
                     case 152 /* UnionType */:
                     case 113 /* AnyKeyword */:
+=======
+                    case 123 /* StringKeyword */:
+                    case 8 /* StringLiteral */:
+                        return "String";
+                    case 121 /* NumberKeyword */:
+                        return "Number";
+                    case 144 /* TypeReference */:
+                        return serializeTypeReferenceNode(node);
+                    case 147 /* TypeQuery */:
+                    case 148 /* TypeLiteral */:
+                    case 151 /* UnionType */:
+                    case 112 /* AnyKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         break;
                     default:
                         ts.Debug.fail("Cannot serialize unexpected type node.");
@@ -24657,11 +29365,19 @@ var ts;
             // 
             // For rules on serializing type annotations, see `serializeTypeNode`.
             switch (node.kind) {
+<<<<<<< HEAD
                 case 206 /* ClassDeclaration */: return "Function";
                 case 135 /* PropertyDeclaration */: return serializeTypeNode(node.type);
                 case 132 /* Parameter */: return serializeTypeNode(node.type);
                 case 139 /* GetAccessor */: return serializeTypeNode(node.type);
                 case 140 /* SetAccessor */: return serializeTypeNode(getSetAccessorTypeAnnotationNode(node));
+=======
+                case 204 /* ClassDeclaration */: return "Function";
+                case 134 /* PropertyDeclaration */: return serializeTypeNode(node.type);
+                case 131 /* Parameter */: return serializeTypeNode(node.type);
+                case 138 /* GetAccessor */: return serializeTypeNode(node.type);
+                case 139 /* SetAccessor */: return serializeTypeNode(getSetAccessorTypeAnnotationNode(node));
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             if (ts.isFunctionLike(node)) {
                 return "Function";
@@ -24678,7 +29394,11 @@ var ts;
             // For the rules on serializing the type of each parameter declaration, see `serializeTypeOfDeclaration`.
             if (node) {
                 var valueDeclaration;
+<<<<<<< HEAD
                 if (node.kind === 206 /* ClassDeclaration */) {
+=======
+                if (node.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     valueDeclaration = ts.getFirstConstructorWithBody(node);
                 }
                 else if (ts.isFunctionLike(node) && ts.nodeIsPresent(node.body)) {
@@ -24693,10 +29413,17 @@ var ts;
                         for (var i = 0; i < parameterCount; i++) {
                             if (parameters[i].dotDotDotToken) {
                                 var parameterType = parameters[i].type;
+<<<<<<< HEAD
                                 if (parameterType.kind === 150 /* ArrayType */) {
                                     parameterType = parameterType.elementType;
                                 }
                                 else if (parameterType.kind === 145 /* TypeReference */ && parameterType.typeArguments && parameterType.typeArguments.length === 1) {
+=======
+                                if (parameterType.kind === 149 /* ArrayType */) {
+                                    parameterType = parameterType.elementType;
+                                }
+                                else if (parameterType.kind === 144 /* TypeReference */ && parameterType.typeArguments && parameterType.typeArguments.length === 1) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                     parameterType = parameterType.typeArguments[0];
                                 }
                                 else {
@@ -24752,13 +29479,21 @@ var ts;
         }
         function getBlockScopedVariableId(n) {
             ts.Debug.assert(!ts.nodeIsSynthesized(n));
+<<<<<<< HEAD
             var isVariableDeclarationOrBindingElement = n.parent.kind === 156 /* BindingElement */ || (n.parent.kind === 203 /* VariableDeclaration */ && n.parent.name === n);
+=======
+            var isVariableDeclarationOrBindingElement = n.parent.kind === 155 /* BindingElement */ || (n.parent.kind === 201 /* VariableDeclaration */ && n.parent.name === n);
+>>>>>>> Updated compiler to emitDependencyFile branch
             var symbol = (isVariableDeclarationOrBindingElement ? getSymbolOfNode(n.parent) : undefined) ||
                 getNodeLinks(n).resolvedSymbol ||
                 resolveName(n, n.text, 107455 /* Value */ | 8388608 /* Alias */, undefined, undefined);
             var isLetOrConst = symbol &&
                 (symbol.flags & 2 /* BlockScopedVariable */) &&
+<<<<<<< HEAD
                 symbol.valueDeclaration.parent.kind !== 236 /* CatchClause */;
+=======
+                symbol.valueDeclaration.parent.kind !== 226 /* CatchClause */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (isLetOrConst) {
                 // side-effect of calling this method:
                 //   assign id to symbol if it was not yet set
@@ -24859,6 +29594,140 @@ var ts;
             anyArrayType = createArrayType(anyType);
         }
         // GRAMMAR CHECKING
+<<<<<<< HEAD
+=======
+        function isReservedWordInStrictMode(node) {
+            // Check that originalKeywordKind is less than LastFutureReservedWord to see if an Identifier is a strict-mode reserved word
+            return (node.parserContextFlags & 1 /* StrictMode */) &&
+                (102 /* FirstFutureReservedWord */ <= node.originalKeywordKind && node.originalKeywordKind <= 110 /* LastFutureReservedWord */);
+        }
+        function reportStrictModeGrammarErrorInClassDeclaration(identifier, message, arg0, arg1, arg2) {
+            // We are checking if this name is inside class declaration or class expression (which are under class definitions inside ES6 spec.)
+            // if so, we would like to give more explicit invalid usage error.
+            if (ts.getAncestor(identifier, 204 /* ClassDeclaration */) || ts.getAncestor(identifier, 177 /* ClassExpression */)) {
+                return grammarErrorOnNode(identifier, message, arg0);
+            }
+            return false;
+        }
+        function checkGrammarImportDeclarationNameInStrictMode(node) {
+            // Check if the import declaration used strict-mode reserved word in its names bindings
+            if (node.importClause) {
+                var impotClause = node.importClause;
+                if (impotClause.namedBindings) {
+                    var nameBindings = impotClause.namedBindings;
+                    if (nameBindings.kind === 214 /* NamespaceImport */) {
+                        var name_15 = nameBindings.name;
+                        if (isReservedWordInStrictMode(name_15)) {
+                            var nameText = ts.declarationNameToString(name_15);
+                            return grammarErrorOnNode(name_15, ts.Diagnostics.Identifier_expected_0_is_a_reserved_word_in_strict_mode, nameText);
+                        }
+                    }
+                    else if (nameBindings.kind === 215 /* NamedImports */) {
+                        var reportError = false;
+                        for (var _i = 0, _a = nameBindings.elements; _i < _a.length; _i++) {
+                            var element = _a[_i];
+                            var name_16 = element.name;
+                            if (isReservedWordInStrictMode(name_16)) {
+                                var nameText = ts.declarationNameToString(name_16);
+                                reportError = reportError || grammarErrorOnNode(name_16, ts.Diagnostics.Identifier_expected_0_is_a_reserved_word_in_strict_mode, nameText);
+                            }
+                        }
+                        return reportError;
+                    }
+                }
+            }
+            return false;
+        }
+        function checkGrammarDeclarationNameInStrictMode(node) {
+            var name = node.name;
+            if (name && name.kind === 65 /* Identifier */ && isReservedWordInStrictMode(name)) {
+                var nameText = ts.declarationNameToString(name);
+                switch (node.kind) {
+                    case 131 /* Parameter */:
+                    case 201 /* VariableDeclaration */:
+                    case 203 /* FunctionDeclaration */:
+                    case 130 /* TypeParameter */:
+                    case 155 /* BindingElement */:
+                    case 205 /* InterfaceDeclaration */:
+                    case 206 /* TypeAliasDeclaration */:
+                    case 207 /* EnumDeclaration */:
+                        return checkGrammarIdentifierInStrictMode(name);
+                    case 204 /* ClassDeclaration */:
+                        // Report an error if the class declaration uses strict-mode reserved word.
+                        return grammarErrorOnNode(name, ts.Diagnostics.Identifier_expected_0_is_a_reserved_word_in_strict_mode_Class_definitions_are_automatically_in_strict_mode, nameText);
+                    case 208 /* ModuleDeclaration */:
+                        // Report an error if the module declaration uses strict-mode reserved word.
+                        // TODO(yuisu): fix this when having external module in strict mode
+                        return grammarErrorOnNode(name, ts.Diagnostics.Identifier_expected_0_is_a_reserved_word_in_strict_mode, nameText);
+                    case 211 /* ImportEqualsDeclaration */:
+                        // TODO(yuisu): fix this when having external module in strict mode
+                        return grammarErrorOnNode(name, ts.Diagnostics.Identifier_expected_0_is_a_reserved_word_in_strict_mode, nameText);
+                }
+            }
+            return false;
+        }
+        function checkGrammarTypeReferenceInStrictMode(typeName) {
+            // Check if the type reference is using strict mode keyword
+            // Example:
+            //      class C {
+            //          foo(x: public){}  // Error.
+            //      }
+            if (typeName.kind === 65 /* Identifier */) {
+                checkGrammarTypeNameInStrictMode(typeName);
+            }
+            else if (typeName.kind === 128 /* QualifiedName */) {
+                // Walk from right to left and report a possible error at each Identifier in QualifiedName
+                // Example:
+                //      x1: public.private.package  // error at public and private
+                checkGrammarTypeNameInStrictMode(typeName.right);
+                checkGrammarTypeReferenceInStrictMode(typeName.left);
+            }
+        }
+        // This function will report an error for every identifier in property access expression
+        // whether it violates strict mode reserved words.
+        // Example:
+        //      public                  // error at public
+        //      public.private.package  // error at public
+        //      B.private.B             // no error
+        function checkGrammarExpressionWithTypeArgumentsInStrictMode(expression) {
+            // Example:
+            //      class C extends public // error at public
+            if (expression && expression.kind === 65 /* Identifier */) {
+                return checkGrammarIdentifierInStrictMode(expression);
+            }
+            else if (expression && expression.kind === 158 /* PropertyAccessExpression */) {
+                // Walk from left to right in PropertyAccessExpression until we are at the left most expression
+                // in PropertyAccessExpression. According to grammar production of MemberExpression,
+                // the left component expression is a PrimaryExpression (i.e. Identifier) while the other
+                // component after dots can be IdentifierName.
+                checkGrammarExpressionWithTypeArgumentsInStrictMode(expression.expression);
+            }
+        }
+        // The function takes an identifier itself or an expression which has SyntaxKind.Identifier.
+        function checkGrammarIdentifierInStrictMode(node, nameText) {
+            if (node && node.kind === 65 /* Identifier */ && isReservedWordInStrictMode(node)) {
+                if (!nameText) {
+                    nameText = ts.declarationNameToString(node);
+                }
+                // TODO (yuisu): Fix when module is a strict mode
+                var errorReport = reportStrictModeGrammarErrorInClassDeclaration(node, ts.Diagnostics.Identifier_expected_0_is_a_reserved_word_in_strict_mode_Class_definitions_are_automatically_in_strict_mode, nameText) ||
+                    grammarErrorOnNode(node, ts.Diagnostics.Identifier_expected_0_is_a_reserved_word_in_strict_mode, nameText);
+                return errorReport;
+            }
+            return false;
+        }
+        // The function takes an identifier when uses as a typeName in TypeReferenceNode
+        function checkGrammarTypeNameInStrictMode(node) {
+            if (node && node.kind === 65 /* Identifier */ && isReservedWordInStrictMode(node)) {
+                var nameText = ts.declarationNameToString(node);
+                // TODO (yuisu): Fix when module is a strict mode
+                var errorReport = reportStrictModeGrammarErrorInClassDeclaration(node, ts.Diagnostics.Type_expected_0_is_a_reserved_word_in_strict_mode_Class_definitions_are_automatically_in_strict_mode, nameText) ||
+                    grammarErrorOnNode(node, ts.Diagnostics.Type_expected_0_is_a_reserved_word_in_strict_mode, nameText);
+                return errorReport;
+            }
+            return false;
+        }
+>>>>>>> Updated compiler to emitDependencyFile branch
         function checkGrammarDecorators(node) {
             if (!node.decorators) {
                 return false;
@@ -24869,7 +29738,11 @@ var ts;
             else if (languageVersion < 1 /* ES5 */) {
                 return grammarErrorOnFirstToken(node, ts.Diagnostics.Decorators_are_only_available_when_targeting_ECMAScript_5_and_higher);
             }
+<<<<<<< HEAD
             else if (node.kind === 139 /* GetAccessor */ || node.kind === 140 /* SetAccessor */) {
+=======
+            else if (node.kind === 138 /* GetAccessor */ || node.kind === 139 /* SetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var accessors = ts.getAllAccessorDeclarations(node.parent.members, node);
                 if (accessors.firstAccessor.decorators && node === accessors.secondAccessor) {
                     return grammarErrorOnFirstToken(node, ts.Diagnostics.Decorators_cannot_be_applied_to_multiple_get_Slashset_accessors_of_the_same_name);
@@ -24879,6 +29752,7 @@ var ts;
         }
         function checkGrammarModifiers(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 139 /* GetAccessor */:
                 case 140 /* SetAccessor */:
                 case 138 /* Constructor */:
@@ -24906,6 +29780,35 @@ var ts;
                 case 209 /* EnumDeclaration */:
                     if (node.modifiers && (node.modifiers.length > 1 || node.modifiers[0].kind !== 71 /* ConstKeyword */) &&
                         node.parent.kind !== 211 /* ModuleBlock */ && node.parent.kind !== 240 /* SourceFile */) {
+=======
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                case 137 /* Constructor */:
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                case 142 /* IndexSignature */:
+                case 208 /* ModuleDeclaration */:
+                case 212 /* ImportDeclaration */:
+                case 211 /* ImportEqualsDeclaration */:
+                case 218 /* ExportDeclaration */:
+                case 217 /* ExportAssignment */:
+                case 131 /* Parameter */:
+                    break;
+                case 204 /* ClassDeclaration */:
+                case 205 /* InterfaceDeclaration */:
+                case 183 /* VariableStatement */:
+                case 203 /* FunctionDeclaration */:
+                case 206 /* TypeAliasDeclaration */:
+                    if (node.modifiers && node.parent.kind !== 209 /* ModuleBlock */ && node.parent.kind !== 230 /* SourceFile */) {
+                        return grammarErrorOnFirstToken(node, ts.Diagnostics.Modifiers_cannot_appear_here);
+                    }
+                    break;
+                case 207 /* EnumDeclaration */:
+                    if (node.modifiers && (node.modifiers.length > 1 || node.modifiers[0].kind !== 70 /* ConstKeyword */) &&
+                        node.parent.kind !== 209 /* ModuleBlock */ && node.parent.kind !== 230 /* SourceFile */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return grammarErrorOnFirstToken(node, ts.Diagnostics.Modifiers_cannot_appear_here);
                     }
                     break;
@@ -24941,7 +29844,11 @@ var ts;
                         else if (flags & 128 /* Static */) {
                             return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_must_precede_1_modifier, text, "static");
                         }
+<<<<<<< HEAD
                         else if (node.parent.kind === 211 /* ModuleBlock */ || node.parent.kind === 240 /* SourceFile */) {
+=======
+                        else if (node.parent.kind === 209 /* ModuleBlock */ || node.parent.kind === 230 /* SourceFile */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_cannot_appear_on_a_module_element, text);
                         }
                         flags |= ts.modifierToFlag(modifier.kind);
@@ -24950,10 +29857,17 @@ var ts;
                         if (flags & 128 /* Static */) {
                             return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_already_seen, "static");
                         }
+<<<<<<< HEAD
                         else if (node.parent.kind === 211 /* ModuleBlock */ || node.parent.kind === 240 /* SourceFile */) {
                             return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_cannot_appear_on_a_module_element, "static");
                         }
                         else if (node.kind === 132 /* Parameter */) {
+=======
+                        else if (node.parent.kind === 209 /* ModuleBlock */ || node.parent.kind === 230 /* SourceFile */) {
+                            return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_cannot_appear_on_a_module_element, "static");
+                        }
+                        else if (node.kind === 131 /* Parameter */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_cannot_appear_on_a_parameter, "static");
                         }
                         flags |= 128 /* Static */;
@@ -24966,10 +29880,17 @@ var ts;
                         else if (flags & 2 /* Ambient */) {
                             return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_must_precede_1_modifier, "export", "declare");
                         }
+<<<<<<< HEAD
                         else if (node.parent.kind === 206 /* ClassDeclaration */) {
                             return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_cannot_appear_on_a_class_element, "export");
                         }
                         else if (node.kind === 132 /* Parameter */) {
+=======
+                        else if (node.parent.kind === 204 /* ClassDeclaration */) {
+                            return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_cannot_appear_on_a_class_element, "export");
+                        }
+                        else if (node.kind === 131 /* Parameter */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_cannot_appear_on_a_parameter, "export");
                         }
                         flags |= 1 /* Export */;
@@ -24978,6 +29899,7 @@ var ts;
                         if (flags & 2 /* Ambient */) {
                             return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_already_seen, "declare");
                         }
+<<<<<<< HEAD
                         else if (node.parent.kind === 206 /* ClassDeclaration */) {
                             return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_cannot_appear_on_a_class_element, "declare");
                         }
@@ -24985,6 +29907,15 @@ var ts;
                             return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_cannot_appear_on_a_parameter, "declare");
                         }
                         else if (ts.isInAmbientContext(node.parent) && node.parent.kind === 211 /* ModuleBlock */) {
+=======
+                        else if (node.parent.kind === 204 /* ClassDeclaration */) {
+                            return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_cannot_appear_on_a_class_element, "declare");
+                        }
+                        else if (node.kind === 131 /* Parameter */) {
+                            return grammarErrorOnNode(modifier, ts.Diagnostics._0_modifier_cannot_appear_on_a_parameter, "declare");
+                        }
+                        else if (ts.isInAmbientContext(node.parent) && node.parent.kind === 209 /* ModuleBlock */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return grammarErrorOnNode(modifier, ts.Diagnostics.A_declare_modifier_cannot_be_used_in_an_already_ambient_context);
                         }
                         flags |= 2 /* Ambient */;
@@ -24992,7 +29923,11 @@ var ts;
                         break;
                 }
             }
+<<<<<<< HEAD
             if (node.kind === 138 /* Constructor */) {
+=======
+            if (node.kind === 137 /* Constructor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (flags & 128 /* Static */) {
                     return grammarErrorOnNode(lastStatic, ts.Diagnostics._0_modifier_cannot_appear_on_a_constructor_declaration, "static");
                 }
@@ -25003,10 +29938,17 @@ var ts;
                     return grammarErrorOnNode(lastPrivate, ts.Diagnostics._0_modifier_cannot_appear_on_a_constructor_declaration, "private");
                 }
             }
+<<<<<<< HEAD
             else if ((node.kind === 214 /* ImportDeclaration */ || node.kind === 213 /* ImportEqualsDeclaration */) && flags & 2 /* Ambient */) {
                 return grammarErrorOnNode(lastDeclare, ts.Diagnostics.A_declare_modifier_cannot_be_used_with_an_import_declaration, "declare");
             }
             else if (node.kind === 132 /* Parameter */ && (flags & 112 /* AccessibilityModifier */) && ts.isBindingPattern(node.name)) {
+=======
+            else if ((node.kind === 212 /* ImportDeclaration */ || node.kind === 211 /* ImportEqualsDeclaration */) && flags & 2 /* Ambient */) {
+                return grammarErrorOnNode(lastDeclare, ts.Diagnostics.A_declare_modifier_cannot_be_used_with_an_import_declaration, "declare");
+            }
+            else if (node.kind === 131 /* Parameter */ && (flags & 112 /* AccessibilityModifier */) && ts.isBindingPattern(node.name)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return grammarErrorOnNode(node, ts.Diagnostics.A_parameter_property_may_not_be_a_binding_pattern);
             }
         }
@@ -25070,7 +30012,11 @@ var ts;
                 checkGrammarParameterList(node.parameters) || checkGrammarArrowFunction(node, file);
         }
         function checkGrammarArrowFunction(node, file) {
+<<<<<<< HEAD
             if (node.kind === 167 /* ArrowFunction */) {
+=======
+            if (node.kind === 166 /* ArrowFunction */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var arrowFunction = node;
                 var startLine = ts.getLineAndCharacterOfPosition(file, arrowFunction.equalsGreaterThanToken.pos).line;
                 var endLine = ts.getLineAndCharacterOfPosition(file, arrowFunction.equalsGreaterThanToken.end).line;
@@ -25105,7 +30051,11 @@ var ts;
             if (!parameter.type) {
                 return grammarErrorOnNode(parameter.name, ts.Diagnostics.An_index_signature_parameter_must_have_a_type_annotation);
             }
+<<<<<<< HEAD
             if (parameter.type.kind !== 124 /* StringKeyword */ && parameter.type.kind !== 122 /* NumberKeyword */) {
+=======
+            if (parameter.type.kind !== 123 /* StringKeyword */ && parameter.type.kind !== 121 /* NumberKeyword */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return grammarErrorOnNode(parameter.name, ts.Diagnostics.An_index_signature_parameter_type_must_be_string_or_number);
             }
             if (!node.type) {
@@ -25138,7 +30088,11 @@ var ts;
                 var sourceFile = ts.getSourceFileOfNode(node);
                 for (var _i = 0; _i < arguments.length; _i++) {
                     var arg = arguments[_i];
+<<<<<<< HEAD
                     if (arg.kind === 179 /* OmittedExpression */) {
+=======
+                    if (arg.kind === 178 /* OmittedExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return grammarErrorAtPos(sourceFile, arg.pos, 0, ts.Diagnostics.Argument_expression_expected);
                     }
                 }
@@ -25212,19 +30166,33 @@ var ts;
         }
         function checkGrammarComputedPropertyName(node) {
             // If node is not a computedPropertyName, just skip the grammar checking
+<<<<<<< HEAD
             if (node.kind !== 130 /* ComputedPropertyName */) {
                 return false;
             }
             var computedPropertyName = node;
             if (computedPropertyName.expression.kind === 173 /* BinaryExpression */ && computedPropertyName.expression.operatorToken.kind === 23 /* CommaToken */) {
+=======
+            if (node.kind !== 129 /* ComputedPropertyName */) {
+                return false;
+            }
+            var computedPropertyName = node;
+            if (computedPropertyName.expression.kind === 172 /* BinaryExpression */ && computedPropertyName.expression.operatorToken.kind === 23 /* CommaToken */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return grammarErrorOnNode(computedPropertyName.expression, ts.Diagnostics.A_comma_expression_is_not_allowed_in_a_computed_property_name);
             }
         }
         function checkGrammarForGenerator(node) {
             if (node.asteriskToken) {
+<<<<<<< HEAD
                 ts.Debug.assert(node.kind === 205 /* FunctionDeclaration */ ||
                     node.kind === 166 /* FunctionExpression */ ||
                     node.kind === 137 /* MethodDeclaration */);
+=======
+                ts.Debug.assert(node.kind === 203 /* FunctionDeclaration */ ||
+                    node.kind === 165 /* FunctionExpression */ ||
+                    node.kind === 136 /* MethodDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (ts.isInAmbientContext(node)) {
                     return grammarErrorOnNode(node.asteriskToken, ts.Diagnostics.Generators_are_not_allowed_in_an_ambient_context);
                 }
@@ -25249,11 +30217,19 @@ var ts;
             var GetOrSetAccessor = GetAccessor | SetAccesor;
             for (var _i = 0, _a = node.properties; _i < _a.length; _i++) {
                 var prop = _a[_i];
+<<<<<<< HEAD
                 var name_15 = prop.name;
                 if (prop.kind === 179 /* OmittedExpression */ ||
                     name_15.kind === 130 /* ComputedPropertyName */) {
                     // If the name is not a ComputedPropertyName, the grammar checking will skip it
                     checkGrammarComputedPropertyName(name_15);
+=======
+                var name_17 = prop.name;
+                if (prop.kind === 178 /* OmittedExpression */ ||
+                    name_17.kind === 129 /* ComputedPropertyName */) {
+                    // If the name is not a ComputedPropertyName, the grammar checking will skip it
+                    checkGrammarComputedPropertyName(name_17);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     continue;
                 }
                 // ECMA-262 11.1.5 Object Initialiser
@@ -25265,6 +30241,7 @@ var ts;
                 //    d.IsAccessorDescriptor(previous) is true and IsAccessorDescriptor(propId.descriptor) is true
                 // and either both previous and propId.descriptor have[[Get]] fields or both previous and propId.descriptor have[[Set]] fields
                 var currentKind = void 0;
+<<<<<<< HEAD
                 if (prop.kind === 237 /* PropertyAssignment */ || prop.kind === 238 /* ShorthandPropertyAssignment */) {
                     // Grammar checking for computedPropertName and shorthandPropertyAssignment
                     checkGrammarForInvalidQuestionMark(prop, prop.questionToken, ts.Diagnostics.An_object_member_cannot_be_declared_optional);
@@ -25280,11 +30257,29 @@ var ts;
                     currentKind = GetAccessor;
                 }
                 else if (prop.kind === 140 /* SetAccessor */) {
+=======
+                if (prop.kind === 227 /* PropertyAssignment */ || prop.kind === 228 /* ShorthandPropertyAssignment */) {
+                    // Grammar checking for computedPropertName and shorthandPropertyAssignment
+                    checkGrammarForInvalidQuestionMark(prop, prop.questionToken, ts.Diagnostics.An_object_member_cannot_be_declared_optional);
+                    if (name_17.kind === 7 /* NumericLiteral */) {
+                        checkGrammarNumericLiteral(name_17);
+                    }
+                    currentKind = Property;
+                }
+                else if (prop.kind === 136 /* MethodDeclaration */) {
+                    currentKind = Property;
+                }
+                else if (prop.kind === 138 /* GetAccessor */) {
+                    currentKind = GetAccessor;
+                }
+                else if (prop.kind === 139 /* SetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     currentKind = SetAccesor;
                 }
                 else {
                     ts.Debug.fail("Unexpected syntax kind:" + prop.kind);
                 }
+<<<<<<< HEAD
                 if (!ts.hasProperty(seen, name_15.text)) {
                     seen[name_15.text] = currentKind;
                 }
@@ -25303,6 +30298,28 @@ var ts;
                     }
                     else {
                         return grammarErrorOnNode(name_15, ts.Diagnostics.An_object_literal_cannot_have_property_and_accessor_with_the_same_name);
+=======
+                if (!ts.hasProperty(seen, name_17.text)) {
+                    seen[name_17.text] = currentKind;
+                }
+                else {
+                    var existingKind = seen[name_17.text];
+                    if (currentKind === Property && existingKind === Property) {
+                        if (inStrictMode) {
+                            grammarErrorOnNode(name_17, ts.Diagnostics.An_object_literal_cannot_have_multiple_properties_with_the_same_name_in_strict_mode);
+                        }
+                    }
+                    else if ((currentKind & GetOrSetAccessor) && (existingKind & GetOrSetAccessor)) {
+                        if (existingKind !== GetOrSetAccessor && currentKind !== existingKind) {
+                            seen[name_17.text] = currentKind | existingKind;
+                        }
+                        else {
+                            return grammarErrorOnNode(name_17, ts.Diagnostics.An_object_literal_cannot_have_multiple_get_Slashset_accessors_with_the_same_name);
+                        }
+                    }
+                    else {
+                        return grammarErrorOnNode(name_17, ts.Diagnostics.An_object_literal_cannot_have_property_and_accessor_with_the_same_name);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     }
                 }
             }
@@ -25332,24 +30349,40 @@ var ts;
             if (checkGrammarStatementInAmbientContext(forInOrOfStatement)) {
                 return true;
             }
+<<<<<<< HEAD
             if (forInOrOfStatement.initializer.kind === 204 /* VariableDeclarationList */) {
                 var variableList = forInOrOfStatement.initializer;
                 if (!checkGrammarVariableDeclarationList(variableList)) {
                     if (variableList.declarations.length > 1) {
                         var diagnostic = forInOrOfStatement.kind === 192 /* ForInStatement */
+=======
+            if (forInOrOfStatement.initializer.kind === 202 /* VariableDeclarationList */) {
+                var variableList = forInOrOfStatement.initializer;
+                if (!checkGrammarVariableDeclarationList(variableList)) {
+                    if (variableList.declarations.length > 1) {
+                        var diagnostic = forInOrOfStatement.kind === 190 /* ForInStatement */
+>>>>>>> Updated compiler to emitDependencyFile branch
                             ? ts.Diagnostics.Only_a_single_variable_declaration_is_allowed_in_a_for_in_statement
                             : ts.Diagnostics.Only_a_single_variable_declaration_is_allowed_in_a_for_of_statement;
                         return grammarErrorOnFirstToken(variableList.declarations[1], diagnostic);
                     }
                     var firstDeclaration = variableList.declarations[0];
                     if (firstDeclaration.initializer) {
+<<<<<<< HEAD
                         var diagnostic = forInOrOfStatement.kind === 192 /* ForInStatement */
+=======
+                        var diagnostic = forInOrOfStatement.kind === 190 /* ForInStatement */
+>>>>>>> Updated compiler to emitDependencyFile branch
                             ? ts.Diagnostics.The_variable_declaration_of_a_for_in_statement_cannot_have_an_initializer
                             : ts.Diagnostics.The_variable_declaration_of_a_for_of_statement_cannot_have_an_initializer;
                         return grammarErrorOnNode(firstDeclaration.name, diagnostic);
                     }
                     if (firstDeclaration.type) {
+<<<<<<< HEAD
                         var diagnostic = forInOrOfStatement.kind === 192 /* ForInStatement */
+=======
+                        var diagnostic = forInOrOfStatement.kind === 190 /* ForInStatement */
+>>>>>>> Updated compiler to emitDependencyFile branch
                             ? ts.Diagnostics.The_left_hand_side_of_a_for_in_statement_cannot_use_a_type_annotation
                             : ts.Diagnostics.The_left_hand_side_of_a_for_of_statement_cannot_use_a_type_annotation;
                         return grammarErrorOnNode(firstDeclaration, diagnostic);
@@ -25372,10 +30405,17 @@ var ts;
             else if (accessor.typeParameters) {
                 return grammarErrorOnNode(accessor.name, ts.Diagnostics.An_accessor_cannot_have_type_parameters);
             }
+<<<<<<< HEAD
             else if (kind === 139 /* GetAccessor */ && accessor.parameters.length) {
                 return grammarErrorOnNode(accessor.name, ts.Diagnostics.A_get_accessor_cannot_have_parameters);
             }
             else if (kind === 140 /* SetAccessor */) {
+=======
+            else if (kind === 138 /* GetAccessor */ && accessor.parameters.length) {
+                return grammarErrorOnNode(accessor.name, ts.Diagnostics.A_get_accessor_cannot_have_parameters);
+            }
+            else if (kind === 139 /* SetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (accessor.type) {
                     return grammarErrorOnNode(accessor.name, ts.Diagnostics.A_set_accessor_cannot_have_a_return_type_annotation);
                 }
@@ -25400,7 +30440,11 @@ var ts;
             }
         }
         function checkGrammarForNonSymbolComputedProperty(node, message) {
+<<<<<<< HEAD
             if (node.kind === 130 /* ComputedPropertyName */ && !ts.isWellKnownSymbolSyntactically(node.expression)) {
+=======
+            if (node.kind === 129 /* ComputedPropertyName */ && !ts.isWellKnownSymbolSyntactically(node.expression)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return grammarErrorOnNode(node, message);
             }
         }
@@ -25410,7 +30454,11 @@ var ts;
                 checkGrammarForGenerator(node)) {
                 return true;
             }
+<<<<<<< HEAD
             if (node.parent.kind === 158 /* ObjectLiteralExpression */) {
+=======
+            if (node.parent.kind === 157 /* ObjectLiteralExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (checkGrammarForInvalidQuestionMark(node, node.questionToken, ts.Diagnostics.A_class_member_cannot_be_declared_optional)) {
                     return true;
                 }
@@ -25418,7 +30466,11 @@ var ts;
                     return grammarErrorAtPos(getSourceFile(node), node.end - 1, ";".length, ts.Diagnostics._0_expected, "{");
                 }
             }
+<<<<<<< HEAD
             if (ts.isClassLike(node.parent)) {
+=======
+            if (node.parent.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (checkGrammarForInvalidQuestionMark(node, node.questionToken, ts.Diagnostics.A_class_member_cannot_be_declared_optional)) {
                     return true;
                 }
@@ -25434,15 +30486,23 @@ var ts;
                     return checkGrammarForNonSymbolComputedProperty(node.name, ts.Diagnostics.A_computed_property_name_in_a_method_overload_must_directly_refer_to_a_built_in_symbol);
                 }
             }
+<<<<<<< HEAD
             else if (node.parent.kind === 207 /* InterfaceDeclaration */) {
                 return checkGrammarForNonSymbolComputedProperty(node.name, ts.Diagnostics.A_computed_property_name_in_an_interface_must_directly_refer_to_a_built_in_symbol);
             }
             else if (node.parent.kind === 149 /* TypeLiteral */) {
+=======
+            else if (node.parent.kind === 205 /* InterfaceDeclaration */) {
+                return checkGrammarForNonSymbolComputedProperty(node.name, ts.Diagnostics.A_computed_property_name_in_an_interface_must_directly_refer_to_a_built_in_symbol);
+            }
+            else if (node.parent.kind === 148 /* TypeLiteral */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return checkGrammarForNonSymbolComputedProperty(node.name, ts.Diagnostics.A_computed_property_name_in_a_type_literal_must_directly_refer_to_a_built_in_symbol);
             }
         }
         function isIterationStatement(node, lookInLabeledStatements) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 191 /* ForStatement */:
                 case 192 /* ForInStatement */:
                 case 193 /* ForOfStatement */:
@@ -25450,6 +30510,15 @@ var ts;
                 case 190 /* WhileStatement */:
                     return true;
                 case 199 /* LabeledStatement */:
+=======
+                case 189 /* ForStatement */:
+                case 190 /* ForInStatement */:
+                case 191 /* ForOfStatement */:
+                case 187 /* DoStatement */:
+                case 188 /* WhileStatement */:
+                    return true;
+                case 197 /* LabeledStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return lookInLabeledStatements && isIterationStatement(node.statement, lookInLabeledStatements);
             }
             return false;
@@ -25461,11 +30530,19 @@ var ts;
                     return grammarErrorOnNode(node, ts.Diagnostics.Jump_target_cannot_cross_function_boundary);
                 }
                 switch (current.kind) {
+<<<<<<< HEAD
                     case 199 /* LabeledStatement */:
                         if (node.label && current.label.text === node.label.text) {
                             // found matching label - verify that label usage is correct
                             // continue can only target labels that are on iteration statements
                             var isMisplacedContinueLabel = node.kind === 194 /* ContinueStatement */
+=======
+                    case 197 /* LabeledStatement */:
+                        if (node.label && current.label.text === node.label.text) {
+                            // found matching label - verify that label usage is correct
+                            // continue can only target labels that are on iteration statements
+                            var isMisplacedContinueLabel = node.kind === 192 /* ContinueStatement */
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 && !isIterationStatement(current.statement, true);
                             if (isMisplacedContinueLabel) {
                                 return grammarErrorOnNode(node, ts.Diagnostics.A_continue_statement_can_only_jump_to_a_label_of_an_enclosing_iteration_statement);
@@ -25473,8 +30550,13 @@ var ts;
                             return false;
                         }
                         break;
+<<<<<<< HEAD
                     case 198 /* SwitchStatement */:
                         if (node.kind === 195 /* BreakStatement */ && !node.label) {
+=======
+                    case 196 /* SwitchStatement */:
+                        if (node.kind === 193 /* BreakStatement */ && !node.label) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // unlabeled break within switch statement - ok
                             return false;
                         }
@@ -25489,13 +30571,21 @@ var ts;
                 current = current.parent;
             }
             if (node.label) {
+<<<<<<< HEAD
                 var message = node.kind === 195 /* BreakStatement */
+=======
+                var message = node.kind === 193 /* BreakStatement */
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ? ts.Diagnostics.A_break_statement_can_only_jump_to_a_label_of_an_enclosing_statement
                     : ts.Diagnostics.A_continue_statement_can_only_jump_to_a_label_of_an_enclosing_iteration_statement;
                 return grammarErrorOnNode(node, message);
             }
             else {
+<<<<<<< HEAD
                 var message = node.kind === 195 /* BreakStatement */
+=======
+                var message = node.kind === 193 /* BreakStatement */
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ? ts.Diagnostics.A_break_statement_can_only_be_used_within_an_enclosing_iteration_or_switch_statement
                     : ts.Diagnostics.A_continue_statement_can_only_be_used_within_an_enclosing_iteration_statement;
                 return grammarErrorOnNode(node, message);
@@ -25507,7 +30597,11 @@ var ts;
                 if (node !== ts.lastOrUndefined(elements)) {
                     return grammarErrorOnNode(node, ts.Diagnostics.A_rest_element_must_be_last_in_an_array_destructuring_pattern);
                 }
+<<<<<<< HEAD
                 if (node.name.kind === 155 /* ArrayBindingPattern */ || node.name.kind === 154 /* ObjectBindingPattern */) {
+=======
+                if (node.name.kind === 154 /* ArrayBindingPattern */ || node.name.kind === 153 /* ObjectBindingPattern */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return grammarErrorOnNode(node.name, ts.Diagnostics.A_rest_element_cannot_contain_a_binding_pattern);
                 }
                 if (node.initializer) {
@@ -25517,7 +30611,11 @@ var ts;
             }
         }
         function checkGrammarVariableDeclaration(node) {
+<<<<<<< HEAD
             if (node.parent.parent.kind !== 192 /* ForInStatement */ && node.parent.parent.kind !== 193 /* ForOfStatement */) {
+=======
+            if (node.parent.parent.kind !== 190 /* ForInStatement */ && node.parent.parent.kind !== 191 /* ForOfStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (ts.isInAmbientContext(node)) {
                     if (node.initializer) {
                         // Error on equals token which immediate precedes the initializer
@@ -25553,7 +30651,11 @@ var ts;
                 var elements = name.elements;
                 for (var _i = 0; _i < elements.length; _i++) {
                     var element = elements[_i];
+<<<<<<< HEAD
                     if (element.kind !== 179 /* OmittedExpression */) {
+=======
+                    if (element.kind !== 178 /* OmittedExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         checkGrammarNameInLetOrConstDeclarations(element.name);
                     }
                 }
@@ -25570,6 +30672,7 @@ var ts;
         }
         function allowLetAndConstDeclarations(parent) {
             switch (parent.kind) {
+<<<<<<< HEAD
                 case 188 /* IfStatement */:
                 case 189 /* DoStatement */:
                 case 190 /* WhileStatement */:
@@ -25579,6 +30682,17 @@ var ts;
                 case 193 /* ForOfStatement */:
                     return false;
                 case 199 /* LabeledStatement */:
+=======
+                case 186 /* IfStatement */:
+                case 187 /* DoStatement */:
+                case 188 /* WhileStatement */:
+                case 195 /* WithStatement */:
+                case 189 /* ForStatement */:
+                case 190 /* ForInStatement */:
+                case 191 /* ForOfStatement */:
+                    return false;
+                case 197 /* LabeledStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return allowLetAndConstDeclarations(parent.parent);
             }
             return true;
@@ -25594,7 +30708,11 @@ var ts;
             }
         }
         function isIntegerLiteral(expression) {
+<<<<<<< HEAD
             if (expression.kind === 171 /* PrefixUnaryExpression */) {
+=======
+            if (expression.kind === 170 /* PrefixUnaryExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var unaryExpression = expression;
                 if (unaryExpression.operator === 34 /* PlusToken */ || unaryExpression.operator === 35 /* MinusToken */) {
                     expression = unaryExpression.operand;
@@ -25623,7 +30741,11 @@ var ts;
                     // Do not use hasDynamicName here, because that returns false for well known symbols.
                     // We want to perform checkComputedPropertyName for all computed properties, including
                     // well known symbols.
+<<<<<<< HEAD
                     if (node.name.kind === 130 /* ComputedPropertyName */) {
+=======
+                    if (node.name.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         hasError = grammarErrorOnNode(node.name, ts.Diagnostics.Computed_property_names_are_not_allowed_in_enums);
                     }
                     else if (inAmbientContext) {
@@ -25680,18 +30802,30 @@ var ts;
             }
         }
         function checkGrammarProperty(node) {
+<<<<<<< HEAD
             if (ts.isClassLike(node.parent)) {
+=======
+            if (node.parent.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (checkGrammarForInvalidQuestionMark(node, node.questionToken, ts.Diagnostics.A_class_member_cannot_be_declared_optional) ||
                     checkGrammarForNonSymbolComputedProperty(node.name, ts.Diagnostics.A_computed_property_name_in_a_class_property_declaration_must_directly_refer_to_a_built_in_symbol)) {
                     return true;
                 }
             }
+<<<<<<< HEAD
             else if (node.parent.kind === 207 /* InterfaceDeclaration */) {
+=======
+            else if (node.parent.kind === 205 /* InterfaceDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (checkGrammarForNonSymbolComputedProperty(node.name, ts.Diagnostics.A_computed_property_name_in_an_interface_must_directly_refer_to_a_built_in_symbol)) {
                     return true;
                 }
             }
+<<<<<<< HEAD
             else if (node.parent.kind === 149 /* TypeLiteral */) {
+=======
+            else if (node.parent.kind === 148 /* TypeLiteral */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (checkGrammarForNonSymbolComputedProperty(node.name, ts.Diagnostics.A_computed_property_name_in_a_type_literal_must_directly_refer_to_a_built_in_symbol)) {
                     return true;
                 }
@@ -25711,11 +30845,19 @@ var ts;
             //     export_opt   ExternalImportDeclaration
             //     export_opt   AmbientDeclaration
             //
+<<<<<<< HEAD
             if (node.kind === 207 /* InterfaceDeclaration */ ||
                 node.kind === 214 /* ImportDeclaration */ ||
                 node.kind === 213 /* ImportEqualsDeclaration */ ||
                 node.kind === 220 /* ExportDeclaration */ ||
                 node.kind === 219 /* ExportAssignment */ ||
+=======
+            if (node.kind === 205 /* InterfaceDeclaration */ ||
+                node.kind === 212 /* ImportDeclaration */ ||
+                node.kind === 211 /* ImportEqualsDeclaration */ ||
+                node.kind === 218 /* ExportDeclaration */ ||
+                node.kind === 217 /* ExportAssignment */ ||
+>>>>>>> Updated compiler to emitDependencyFile branch
                 (node.flags & 2 /* Ambient */) ||
                 (node.flags & (1 /* Export */ | 256 /* Default */))) {
                 return false;
@@ -25725,7 +30867,11 @@ var ts;
         function checkGrammarTopLevelElementsForRequiredDeclareModifier(file) {
             for (var _i = 0, _a = file.statements; _i < _a.length; _i++) {
                 var decl = _a[_i];
+<<<<<<< HEAD
                 if (ts.isDeclaration(decl) || decl.kind === 185 /* VariableStatement */) {
+=======
+                if (ts.isDeclaration(decl) || decl.kind === 183 /* VariableStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (checkGrammarTopLevelElementForRequiredDeclareModifier(decl)) {
                         return true;
                     }
@@ -25751,7 +30897,11 @@ var ts;
                 // to prevent noisyness.  So use a bit on the block to indicate if
                 // this has already been reported, and don't report if it has.
                 //
+<<<<<<< HEAD
                 if (node.parent.kind === 184 /* Block */ || node.parent.kind === 211 /* ModuleBlock */ || node.parent.kind === 240 /* SourceFile */) {
+=======
+                if (node.parent.kind === 182 /* Block */ || node.parent.kind === 209 /* ModuleBlock */ || node.parent.kind === 230 /* SourceFile */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var links_1 = getNodeLinks(node.parent);
                     // Check if the containing block ever report this error
                     if (!links_1.hasReportedStatementInAmbientContext) {
@@ -25833,7 +30983,11 @@ var ts;
                 var oldWriter = writer;
                 ts.forEach(moduleElementDeclarationEmitInfo, function (aliasEmitInfo) {
                     if (aliasEmitInfo.isVisible) {
+<<<<<<< HEAD
                         ts.Debug.assert(aliasEmitInfo.node.kind === 214 /* ImportDeclaration */);
+=======
+                        ts.Debug.assert(aliasEmitInfo.node.kind === 212 /* ImportDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         createAndSetNewTextWriterWithSymbolWriter();
                         ts.Debug.assert(aliasEmitInfo.indent === 0);
                         writeImportDeclaration(aliasEmitInfo.node);
@@ -25909,10 +31063,17 @@ var ts;
             var oldWriter = writer;
             ts.forEach(nodes, function (declaration) {
                 var nodeToCheck;
+<<<<<<< HEAD
                 if (declaration.kind === 203 /* VariableDeclaration */) {
                     nodeToCheck = declaration.parent.parent;
                 }
                 else if (declaration.kind === 217 /* NamedImports */ || declaration.kind === 218 /* ImportSpecifier */ || declaration.kind === 215 /* ImportClause */) {
+=======
+                if (declaration.kind === 201 /* VariableDeclaration */) {
+                    nodeToCheck = declaration.parent.parent;
+                }
+                else if (declaration.kind === 215 /* NamedImports */ || declaration.kind === 216 /* ImportSpecifier */ || declaration.kind === 213 /* ImportClause */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ts.Debug.fail("We should be getting ImportDeclaration instead to write");
                 }
                 else {
@@ -25930,7 +31091,11 @@ var ts;
                 // Writing of function bar would mark alias declaration foo as visible but we haven't yet visited that declaration so do nothing,
                 // we would write alias foo declaration when we visit it since it would now be marked as visible
                 if (moduleElementEmitInfo) {
+<<<<<<< HEAD
                     if (moduleElementEmitInfo.node.kind === 214 /* ImportDeclaration */) {
+=======
+                    if (moduleElementEmitInfo.node.kind === 212 /* ImportDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // we have to create asynchronous output only after we have collected complete information 
                         // because it is possible to enable multiple bindings as asynchronously visible
                         moduleElementEmitInfo.isVisible = true;
@@ -25940,12 +31105,20 @@ var ts;
                         for (var declarationIndent = moduleElementEmitInfo.indent; declarationIndent; declarationIndent--) {
                             increaseIndent();
                         }
+<<<<<<< HEAD
                         if (nodeToCheck.kind === 210 /* ModuleDeclaration */) {
+=======
+                        if (nodeToCheck.kind === 208 /* ModuleDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             ts.Debug.assert(asynchronousSubModuleDeclarationEmitInfo === undefined);
                             asynchronousSubModuleDeclarationEmitInfo = [];
                         }
                         writeModuleElement(nodeToCheck);
+<<<<<<< HEAD
                         if (nodeToCheck.kind === 210 /* ModuleDeclaration */) {
+=======
+                        if (nodeToCheck.kind === 208 /* ModuleDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             moduleElementEmitInfo.subModuleElementDeclarationEmitInfo = asynchronousSubModuleDeclarationEmitInfo;
                             asynchronousSubModuleDeclarationEmitInfo = undefined;
                         }
@@ -26037,6 +31210,7 @@ var ts;
         }
         function emitType(type) {
             switch (type.kind) {
+<<<<<<< HEAD
                 case 113 /* AnyKeyword */:
                 case 124 /* StringKeyword */:
                 case 122 /* NumberKeyword */:
@@ -26063,16 +31237,52 @@ var ts;
                 case 147 /* ConstructorType */:
                     return emitSignatureDeclarationWithJsDocComments(type);
                 case 149 /* TypeLiteral */:
+=======
+                case 112 /* AnyKeyword */:
+                case 123 /* StringKeyword */:
+                case 121 /* NumberKeyword */:
+                case 113 /* BooleanKeyword */:
+                case 124 /* SymbolKeyword */:
+                case 99 /* VoidKeyword */:
+                case 8 /* StringLiteral */:
+                    return writeTextOfNode(currentSourceFile, type);
+                case 179 /* ExpressionWithTypeArguments */:
+                    return emitExpressionWithTypeArguments(type);
+                case 144 /* TypeReference */:
+                    return emitTypeReference(type);
+                case 147 /* TypeQuery */:
+                    return emitTypeQuery(type);
+                case 149 /* ArrayType */:
+                    return emitArrayType(type);
+                case 150 /* TupleType */:
+                    return emitTupleType(type);
+                case 151 /* UnionType */:
+                    return emitUnionType(type);
+                case 152 /* ParenthesizedType */:
+                    return emitParenType(type);
+                case 145 /* FunctionType */:
+                case 146 /* ConstructorType */:
+                    return emitSignatureDeclarationWithJsDocComments(type);
+                case 148 /* TypeLiteral */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return emitTypeLiteral(type);
                 case 66 /* Identifier */:
                     return emitEntityName(type);
+<<<<<<< HEAD
                 case 129 /* QualifiedName */:
+=======
+                case 128 /* QualifiedName */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return emitEntityName(type);
             }
             function emitEntityName(entityName) {
                 var visibilityResult = resolver.isEntityNameVisible(entityName, 
                 // Aliases can be written asynchronously so use correct enclosing declaration
+<<<<<<< HEAD
                 entityName.parent.kind === 213 /* ImportEqualsDeclaration */ ? entityName.parent : enclosingDeclaration);
+=======
+                entityName.parent.kind === 211 /* ImportEqualsDeclaration */ ? entityName.parent : enclosingDeclaration);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 handleSymbolAccessibilityError(visibilityResult);
                 writeEntityName(entityName);
                 function writeEntityName(entityName) {
@@ -26080,8 +31290,13 @@ var ts;
                         writeTextOfNode(currentSourceFile, entityName);
                     }
                     else {
+<<<<<<< HEAD
                         var left = entityName.kind === 129 /* QualifiedName */ ? entityName.left : entityName.expression;
                         var right = entityName.kind === 129 /* QualifiedName */ ? entityName.right : entityName.name;
+=======
+                        var left = entityName.kind === 128 /* QualifiedName */ ? entityName.left : entityName.expression;
+                        var right = entityName.kind === 128 /* QualifiedName */ ? entityName.right : entityName.name;
+>>>>>>> Updated compiler to emitDependencyFile branch
                         writeEntityName(left);
                         write(".");
                         writeTextOfNode(currentSourceFile, right);
@@ -26090,7 +31305,11 @@ var ts;
             }
             function emitExpressionWithTypeArguments(node) {
                 if (ts.isSupportedExpressionWithTypeArguments(node)) {
+<<<<<<< HEAD
                     ts.Debug.assert(node.expression.kind === 66 /* Identifier */ || node.expression.kind === 159 /* PropertyAccessExpression */);
+=======
+                    ts.Debug.assert(node.expression.kind === 65 /* Identifier */ || node.expression.kind === 158 /* PropertyAccessExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     emitEntityName(node.expression);
                     if (node.typeArguments) {
                         write("<");
@@ -26156,9 +31375,15 @@ var ts;
             }
             var count = 0;
             while (true) {
+<<<<<<< HEAD
                 var name_17 = baseName + "_" + (++count);
                 if (!ts.hasProperty(currentSourceFile.identifiers, name_17)) {
                     return name_17;
+=======
+                var name_18 = baseName + "_" + (++count);
+                if (!ts.hasProperty(currentSourceFile.identifiers, name_18)) {
+                    return name_18;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
             }
         }
@@ -26202,10 +31427,17 @@ var ts;
             if (isModuleElementVisible) {
                 writeModuleElement(node);
             }
+<<<<<<< HEAD
             else if (node.kind === 213 /* ImportEqualsDeclaration */ ||
                 (node.parent.kind === 240 /* SourceFile */ && ts.isExternalModule(currentSourceFile))) {
                 var isVisible;
                 if (asynchronousSubModuleDeclarationEmitInfo && node.parent.kind !== 240 /* SourceFile */) {
+=======
+            else if (node.kind === 211 /* ImportEqualsDeclaration */ ||
+                (node.parent.kind === 230 /* SourceFile */ && ts.isExternalModule(currentSourceFile))) {
+                var isVisible;
+                if (asynchronousSubModuleDeclarationEmitInfo && node.parent.kind !== 230 /* SourceFile */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // Import declaration of another module that is visited async so lets put it in right spot
                     asynchronousSubModuleDeclarationEmitInfo.push({
                         node: node,
@@ -26215,7 +31447,11 @@ var ts;
                     });
                 }
                 else {
+<<<<<<< HEAD
                     if (node.kind === 214 /* ImportDeclaration */) {
+=======
+                    if (node.kind === 212 /* ImportDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var importDeclaration = node;
                         if (importDeclaration.importClause) {
                             isVisible = (importDeclaration.importClause.name && resolver.isDeclarationVisible(importDeclaration.importClause)) ||
@@ -26233,6 +31469,7 @@ var ts;
         }
         function writeModuleElement(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 205 /* FunctionDeclaration */:
                     return writeFunctionDeclaration(node);
                 case 185 /* VariableStatement */:
@@ -26250,6 +31487,25 @@ var ts;
                 case 213 /* ImportEqualsDeclaration */:
                     return writeImportEqualsDeclaration(node);
                 case 214 /* ImportDeclaration */:
+=======
+                case 203 /* FunctionDeclaration */:
+                    return writeFunctionDeclaration(node);
+                case 183 /* VariableStatement */:
+                    return writeVariableStatement(node);
+                case 205 /* InterfaceDeclaration */:
+                    return writeInterfaceDeclaration(node);
+                case 204 /* ClassDeclaration */:
+                    return writeClassDeclaration(node);
+                case 206 /* TypeAliasDeclaration */:
+                    return writeTypeAliasDeclaration(node);
+                case 207 /* EnumDeclaration */:
+                    return writeEnumDeclaration(node);
+                case 208 /* ModuleDeclaration */:
+                    return writeModuleDeclaration(node);
+                case 211 /* ImportEqualsDeclaration */:
+                    return writeImportEqualsDeclaration(node);
+                case 212 /* ImportDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return writeImportDeclaration(node);
                 default:
                     ts.Debug.fail("Unknown symbol kind");
@@ -26265,7 +31521,11 @@ var ts;
                 if (node.flags & 256 /* Default */) {
                     write("default ");
                 }
+<<<<<<< HEAD
                 else if (node.kind !== 207 /* InterfaceDeclaration */) {
+=======
+                else if (node.kind !== 205 /* InterfaceDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     write("declare ");
                 }
             }
@@ -26311,7 +31571,11 @@ var ts;
         }
         function isVisibleNamedBinding(namedBindings) {
             if (namedBindings) {
+<<<<<<< HEAD
                 if (namedBindings.kind === 216 /* NamespaceImport */) {
+=======
+                if (namedBindings.kind === 214 /* NamespaceImport */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return resolver.isDeclarationVisible(namedBindings);
                 }
                 else {
@@ -26339,7 +31603,11 @@ var ts;
                         // If the default binding was emitted, write the separated
                         write(", ");
                     }
+<<<<<<< HEAD
                     if (node.importClause.namedBindings.kind === 216 /* NamespaceImport */) {
+=======
+                    if (node.importClause.namedBindings.kind === 214 /* NamespaceImport */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         write("* as ");
                         writeTextOfNode(currentSourceFile, node.importClause.namedBindings.name);
                     }
@@ -26397,7 +31665,11 @@ var ts;
                 write("module ");
             }
             writeTextOfNode(currentSourceFile, node.name);
+<<<<<<< HEAD
             while (node.body.kind !== 211 /* ModuleBlock */) {
+=======
+            while (node.body.kind !== 209 /* ModuleBlock */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 node = node.body;
                 write(".");
                 writeTextOfNode(currentSourceFile, node.name);
@@ -26458,7 +31730,11 @@ var ts;
             writeLine();
         }
         function isPrivateMethodTypeParameter(node) {
+<<<<<<< HEAD
             return node.parent.kind === 137 /* MethodDeclaration */ && (node.parent.flags & 32 /* Private */);
+=======
+            return node.parent.kind === 136 /* MethodDeclaration */ && (node.parent.flags & 32 /* Private */);
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function emitTypeParameters(typeParameters) {
             function emitTypeParameter(node) {
@@ -26469,6 +31745,7 @@ var ts;
                 // If there is constraint present and this is not a type parameter of the private method emit the constraint
                 if (node.constraint && !isPrivateMethodTypeParameter(node)) {
                     write(" extends ");
+<<<<<<< HEAD
                     if (node.parent.kind === 146 /* FunctionType */ ||
                         node.parent.kind === 147 /* ConstructorType */ ||
                         (node.parent.parent && node.parent.parent.kind === 149 /* TypeLiteral */)) {
@@ -26478,6 +31755,17 @@ var ts;
                             node.parent.kind === 147 /* ConstructorType */ ||
                             node.parent.kind === 141 /* CallSignature */ ||
                             node.parent.kind === 142 /* ConstructSignature */);
+=======
+                    if (node.parent.kind === 145 /* FunctionType */ ||
+                        node.parent.kind === 146 /* ConstructorType */ ||
+                        (node.parent.parent && node.parent.parent.kind === 148 /* TypeLiteral */)) {
+                        ts.Debug.assert(node.parent.kind === 136 /* MethodDeclaration */ ||
+                            node.parent.kind === 135 /* MethodSignature */ ||
+                            node.parent.kind === 145 /* FunctionType */ ||
+                            node.parent.kind === 146 /* ConstructorType */ ||
+                            node.parent.kind === 140 /* CallSignature */ ||
+                            node.parent.kind === 141 /* ConstructSignature */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         emitType(node.constraint);
                     }
                     else {
@@ -26488,6 +31776,7 @@ var ts;
                     // Type parameter constraints are named by user so we should always be able to name it
                     var diagnosticMessage;
                     switch (node.parent.kind) {
+<<<<<<< HEAD
                         case 206 /* ClassDeclaration */:
                             diagnosticMessage = ts.Diagnostics.Type_parameter_0_of_exported_class_has_or_is_using_private_name_1;
                             break;
@@ -26506,13 +31795,37 @@ var ts;
                                 diagnosticMessage = ts.Diagnostics.Type_parameter_0_of_public_static_method_from_exported_class_has_or_is_using_private_name_1;
                             }
                             else if (node.parent.parent.kind === 206 /* ClassDeclaration */) {
+=======
+                        case 204 /* ClassDeclaration */:
+                            diagnosticMessage = ts.Diagnostics.Type_parameter_0_of_exported_class_has_or_is_using_private_name_1;
+                            break;
+                        case 205 /* InterfaceDeclaration */:
+                            diagnosticMessage = ts.Diagnostics.Type_parameter_0_of_exported_interface_has_or_is_using_private_name_1;
+                            break;
+                        case 141 /* ConstructSignature */:
+                            diagnosticMessage = ts.Diagnostics.Type_parameter_0_of_constructor_signature_from_exported_interface_has_or_is_using_private_name_1;
+                            break;
+                        case 140 /* CallSignature */:
+                            diagnosticMessage = ts.Diagnostics.Type_parameter_0_of_call_signature_from_exported_interface_has_or_is_using_private_name_1;
+                            break;
+                        case 136 /* MethodDeclaration */:
+                        case 135 /* MethodSignature */:
+                            if (node.parent.flags & 128 /* Static */) {
+                                diagnosticMessage = ts.Diagnostics.Type_parameter_0_of_public_static_method_from_exported_class_has_or_is_using_private_name_1;
+                            }
+                            else if (node.parent.parent.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 diagnosticMessage = ts.Diagnostics.Type_parameter_0_of_public_method_from_exported_class_has_or_is_using_private_name_1;
                             }
                             else {
                                 diagnosticMessage = ts.Diagnostics.Type_parameter_0_of_method_from_exported_interface_has_or_is_using_private_name_1;
                             }
                             break;
+<<<<<<< HEAD
                         case 205 /* FunctionDeclaration */:
+=======
+                        case 203 /* FunctionDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             diagnosticMessage = ts.Diagnostics.Type_parameter_0_of_exported_function_has_or_is_using_private_name_1;
                             break;
                         default:
@@ -26543,7 +31856,11 @@ var ts;
                 function getHeritageClauseVisibilityError(symbolAccesibilityResult) {
                     var diagnosticMessage;
                     // Heritage clause is written by user so it can always be named
+<<<<<<< HEAD
                     if (node.parent.parent.kind === 206 /* ClassDeclaration */) {
+=======
+                    if (node.parent.parent.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Class or Interface implemented/extended is inaccessible
                         diagnosticMessage = isImplementsList ?
                             ts.Diagnostics.Implements_clause_of_exported_class_0_has_or_is_using_private_name_1 :
@@ -26624,7 +31941,11 @@ var ts;
         function emitVariableDeclaration(node) {
             // If we are emitting property it isn't moduleElement and hence we already know it needs to be emitted
             // so there is no check needed to see if declaration is visible
+<<<<<<< HEAD
             if (node.kind !== 203 /* VariableDeclaration */ || resolver.isDeclarationVisible(node)) {
+=======
+            if (node.kind !== 201 /* VariableDeclaration */ || resolver.isDeclarationVisible(node)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (ts.isBindingPattern(node.name)) {
                     emitBindingPattern(node.name);
                 }
@@ -26634,10 +31955,17 @@ var ts;
                     // what we want, namely the name expression enclosed in brackets.
                     writeTextOfNode(currentSourceFile, node.name);
                     // If optional property emit ?
+<<<<<<< HEAD
                     if ((node.kind === 135 /* PropertyDeclaration */ || node.kind === 134 /* PropertySignature */) && ts.hasQuestionToken(node)) {
                         write("?");
                     }
                     if ((node.kind === 135 /* PropertyDeclaration */ || node.kind === 134 /* PropertySignature */) && node.parent.kind === 149 /* TypeLiteral */) {
+=======
+                    if ((node.kind === 134 /* PropertyDeclaration */ || node.kind === 133 /* PropertySignature */) && ts.hasQuestionToken(node)) {
+                        write("?");
+                    }
+                    if ((node.kind === 134 /* PropertyDeclaration */ || node.kind === 133 /* PropertySignature */) && node.parent.kind === 148 /* TypeLiteral */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         emitTypeOfVariableDeclarationFromTypeLiteral(node);
                     }
                     else if (!(node.flags & 32 /* Private */)) {
@@ -26646,14 +31974,22 @@ var ts;
                 }
             }
             function getVariableDeclarationTypeVisibilityDiagnosticMessage(symbolAccesibilityResult) {
+<<<<<<< HEAD
                 if (node.kind === 203 /* VariableDeclaration */) {
+=======
+                if (node.kind === 201 /* VariableDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return symbolAccesibilityResult.errorModuleName ?
                         symbolAccesibilityResult.accessibility === 2 /* CannotBeNamed */ ?
                             ts.Diagnostics.Exported_variable_0_has_or_is_using_name_1_from_external_module_2_but_cannot_be_named :
                             ts.Diagnostics.Exported_variable_0_has_or_is_using_name_1_from_private_module_2 :
                         ts.Diagnostics.Exported_variable_0_has_or_is_using_private_name_1;
                 }
+<<<<<<< HEAD
                 else if (node.kind === 135 /* PropertyDeclaration */ || node.kind === 134 /* PropertySignature */) {
+=======
+                else if (node.kind === 134 /* PropertyDeclaration */ || node.kind === 133 /* PropertySignature */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // TODO(jfreeman): Deal with computed properties in error reporting.
                     if (node.flags & 128 /* Static */) {
                         return symbolAccesibilityResult.errorModuleName ?
@@ -26662,7 +31998,11 @@ var ts;
                                 ts.Diagnostics.Public_static_property_0_of_exported_class_has_or_is_using_name_1_from_private_module_2 :
                             ts.Diagnostics.Public_static_property_0_of_exported_class_has_or_is_using_private_name_1;
                     }
+<<<<<<< HEAD
                     else if (node.parent.kind === 206 /* ClassDeclaration */) {
+=======
+                    else if (node.parent.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return symbolAccesibilityResult.errorModuleName ?
                             symbolAccesibilityResult.accessibility === 2 /* CannotBeNamed */ ?
                                 ts.Diagnostics.Public_property_0_of_exported_class_has_or_is_using_name_1_from_external_module_2_but_cannot_be_named :
@@ -26694,7 +32034,11 @@ var ts;
                 var elements = [];
                 for (var _i = 0, _a = bindingPattern.elements; _i < _a.length; _i++) {
                     var element = _a[_i];
+<<<<<<< HEAD
                     if (element.kind !== 179 /* OmittedExpression */) {
+=======
+                    if (element.kind !== 178 /* OmittedExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         elements.push(element);
                     }
                 }
@@ -26764,7 +32108,11 @@ var ts;
                     var type = getTypeAnnotationFromAccessor(node);
                     if (!type) {
                         // couldn't get type for the first accessor, try the another one
+<<<<<<< HEAD
                         var anotherAccessor = node.kind === 139 /* GetAccessor */ ? accessors.setAccessor : accessors.getAccessor;
+=======
+                        var anotherAccessor = node.kind === 138 /* GetAccessor */ ? accessors.setAccessor : accessors.getAccessor;
+>>>>>>> Updated compiler to emitDependencyFile branch
                         type = getTypeAnnotationFromAccessor(anotherAccessor);
                         if (type) {
                             accessorWithTypeAnnotation = anotherAccessor;
@@ -26777,7 +32125,11 @@ var ts;
             }
             function getTypeAnnotationFromAccessor(accessor) {
                 if (accessor) {
+<<<<<<< HEAD
                     return accessor.kind === 139 /* GetAccessor */
+=======
+                    return accessor.kind === 138 /* GetAccessor */
+>>>>>>> Updated compiler to emitDependencyFile branch
                         ? accessor.type // Getter - return type
                         : accessor.parameters.length > 0
                             ? accessor.parameters[0].type // Setter parameter type
@@ -26786,7 +32138,11 @@ var ts;
             }
             function getAccessorDeclarationTypeVisibilityError(symbolAccesibilityResult) {
                 var diagnosticMessage;
+<<<<<<< HEAD
                 if (accessorWithTypeAnnotation.kind === 140 /* SetAccessor */) {
+=======
+                if (accessorWithTypeAnnotation.kind === 139 /* SetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // Setters have to have type named and cannot infer it so, the type should always be named
                     if (accessorWithTypeAnnotation.parent.flags & 128 /* Static */) {
                         diagnosticMessage = symbolAccesibilityResult.errorModuleName ?
@@ -26836,6 +32192,7 @@ var ts;
             // so no need to verify if the declaration is visible
             if (!resolver.isImplementationOfOverload(node)) {
                 emitJsDocComments(node);
+<<<<<<< HEAD
                 if (node.kind === 205 /* FunctionDeclaration */) {
                     emitModuleElementDeclarationFlags(node);
                 }
@@ -26847,6 +32204,19 @@ var ts;
                     writeTextOfNode(currentSourceFile, node.name);
                 }
                 else if (node.kind === 138 /* Constructor */) {
+=======
+                if (node.kind === 203 /* FunctionDeclaration */) {
+                    emitModuleElementDeclarationFlags(node);
+                }
+                else if (node.kind === 136 /* MethodDeclaration */) {
+                    emitClassMemberDeclarationFlags(node);
+                }
+                if (node.kind === 203 /* FunctionDeclaration */) {
+                    write("function ");
+                    writeTextOfNode(currentSourceFile, node.name);
+                }
+                else if (node.kind === 137 /* Constructor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     write("constructor");
                 }
                 else {
@@ -26864,11 +32234,19 @@ var ts;
         }
         function emitSignatureDeclaration(node) {
             // Construct signature or constructor type write new Signature
+<<<<<<< HEAD
             if (node.kind === 142 /* ConstructSignature */ || node.kind === 147 /* ConstructorType */) {
                 write("new ");
             }
             emitTypeParameters(node.typeParameters);
             if (node.kind === 143 /* IndexSignature */) {
+=======
+            if (node.kind === 141 /* ConstructSignature */ || node.kind === 146 /* ConstructorType */) {
+                write("new ");
+            }
+            emitTypeParameters(node.typeParameters);
+            if (node.kind === 142 /* IndexSignature */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 write("[");
             }
             else {
@@ -26878,22 +32256,35 @@ var ts;
             enclosingDeclaration = node;
             // Parameters
             emitCommaList(node.parameters, emitParameterDeclaration);
+<<<<<<< HEAD
             if (node.kind === 143 /* IndexSignature */) {
+=======
+            if (node.kind === 142 /* IndexSignature */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 write("]");
             }
             else {
                 write(")");
             }
             // If this is not a constructor and is not private, emit the return type
+<<<<<<< HEAD
             var isFunctionTypeOrConstructorType = node.kind === 146 /* FunctionType */ || node.kind === 147 /* ConstructorType */;
             if (isFunctionTypeOrConstructorType || node.parent.kind === 149 /* TypeLiteral */) {
+=======
+            var isFunctionTypeOrConstructorType = node.kind === 145 /* FunctionType */ || node.kind === 146 /* ConstructorType */;
+            if (isFunctionTypeOrConstructorType || node.parent.kind === 148 /* TypeLiteral */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // Emit type literal signature return type only if specified
                 if (node.type) {
                     write(isFunctionTypeOrConstructorType ? " => " : ": ");
                     emitType(node.type);
                 }
             }
+<<<<<<< HEAD
             else if (node.kind !== 138 /* Constructor */ && !(node.flags & 32 /* Private */)) {
+=======
+            else if (node.kind !== 137 /* Constructor */ && !(node.flags & 32 /* Private */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 writeReturnTypeAtSignature(node, getReturnTypeVisibilityError);
             }
             enclosingDeclaration = prevEnclosingDeclaration;
@@ -26904,26 +32295,43 @@ var ts;
             function getReturnTypeVisibilityError(symbolAccesibilityResult) {
                 var diagnosticMessage;
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 142 /* ConstructSignature */:
+=======
+                    case 141 /* ConstructSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Interfaces cannot have return types that cannot be named
                         diagnosticMessage = symbolAccesibilityResult.errorModuleName ?
                             ts.Diagnostics.Return_type_of_constructor_signature_from_exported_interface_has_or_is_using_name_0_from_private_module_1 :
                             ts.Diagnostics.Return_type_of_constructor_signature_from_exported_interface_has_or_is_using_private_name_0;
                         break;
+<<<<<<< HEAD
                     case 141 /* CallSignature */:
+=======
+                    case 140 /* CallSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Interfaces cannot have return types that cannot be named
                         diagnosticMessage = symbolAccesibilityResult.errorModuleName ?
                             ts.Diagnostics.Return_type_of_call_signature_from_exported_interface_has_or_is_using_name_0_from_private_module_1 :
                             ts.Diagnostics.Return_type_of_call_signature_from_exported_interface_has_or_is_using_private_name_0;
                         break;
+<<<<<<< HEAD
                     case 143 /* IndexSignature */:
+=======
+                    case 142 /* IndexSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Interfaces cannot have return types that cannot be named
                         diagnosticMessage = symbolAccesibilityResult.errorModuleName ?
                             ts.Diagnostics.Return_type_of_index_signature_from_exported_interface_has_or_is_using_name_0_from_private_module_1 :
                             ts.Diagnostics.Return_type_of_index_signature_from_exported_interface_has_or_is_using_private_name_0;
                         break;
+<<<<<<< HEAD
                     case 137 /* MethodDeclaration */:
                     case 136 /* MethodSignature */:
+=======
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (node.flags & 128 /* Static */) {
                             diagnosticMessage = symbolAccesibilityResult.errorModuleName ?
                                 symbolAccesibilityResult.accessibility === 2 /* CannotBeNamed */ ?
@@ -26931,7 +32339,11 @@ var ts;
                                     ts.Diagnostics.Return_type_of_public_static_method_from_exported_class_has_or_is_using_name_0_from_private_module_1 :
                                 ts.Diagnostics.Return_type_of_public_static_method_from_exported_class_has_or_is_using_private_name_0;
                         }
+<<<<<<< HEAD
                         else if (node.parent.kind === 206 /* ClassDeclaration */) {
+=======
+                        else if (node.parent.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             diagnosticMessage = symbolAccesibilityResult.errorModuleName ?
                                 symbolAccesibilityResult.accessibility === 2 /* CannotBeNamed */ ?
                                     ts.Diagnostics.Return_type_of_public_method_from_exported_class_has_or_is_using_name_0_from_external_module_1_but_cannot_be_named :
@@ -26945,7 +32357,11 @@ var ts;
                                 ts.Diagnostics.Return_type_of_method_from_exported_interface_has_or_is_using_private_name_0;
                         }
                         break;
+<<<<<<< HEAD
                     case 205 /* FunctionDeclaration */:
+=======
+                    case 203 /* FunctionDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         diagnosticMessage = symbolAccesibilityResult.errorModuleName ?
                             symbolAccesibilityResult.accessibility === 2 /* CannotBeNamed */ ?
                                 ts.Diagnostics.Return_type_of_exported_function_has_or_is_using_name_0_from_external_module_1_but_cannot_be_named :
@@ -26980,9 +32396,15 @@ var ts;
                 write("?");
             }
             decreaseIndent();
+<<<<<<< HEAD
             if (node.parent.kind === 146 /* FunctionType */ ||
                 node.parent.kind === 147 /* ConstructorType */ ||
                 node.parent.parent.kind === 149 /* TypeLiteral */) {
+=======
+            if (node.parent.kind === 145 /* FunctionType */ ||
+                node.parent.kind === 146 /* ConstructorType */ ||
+                node.parent.parent.kind === 148 /* TypeLiteral */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 emitTypeOfVariableDeclarationFromTypeLiteral(node);
             }
             else if (!(node.parent.flags & 32 /* Private */)) {
@@ -26998,24 +32420,41 @@ var ts;
             }
             function getParameterDeclarationTypeVisibilityDiagnosticMessage(symbolAccesibilityResult) {
                 switch (node.parent.kind) {
+<<<<<<< HEAD
                     case 138 /* Constructor */:
+=======
+                    case 137 /* Constructor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return symbolAccesibilityResult.errorModuleName ?
                             symbolAccesibilityResult.accessibility === 2 /* CannotBeNamed */ ?
                                 ts.Diagnostics.Parameter_0_of_constructor_from_exported_class_has_or_is_using_name_1_from_external_module_2_but_cannot_be_named :
                                 ts.Diagnostics.Parameter_0_of_constructor_from_exported_class_has_or_is_using_name_1_from_private_module_2 :
                             ts.Diagnostics.Parameter_0_of_constructor_from_exported_class_has_or_is_using_private_name_1;
+<<<<<<< HEAD
                     case 142 /* ConstructSignature */:
+=======
+                    case 141 /* ConstructSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Interfaces cannot have parameter types that cannot be named
                         return symbolAccesibilityResult.errorModuleName ?
                             ts.Diagnostics.Parameter_0_of_constructor_signature_from_exported_interface_has_or_is_using_name_1_from_private_module_2 :
                             ts.Diagnostics.Parameter_0_of_constructor_signature_from_exported_interface_has_or_is_using_private_name_1;
+<<<<<<< HEAD
                     case 141 /* CallSignature */:
+=======
+                    case 140 /* CallSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Interfaces cannot have parameter types that cannot be named
                         return symbolAccesibilityResult.errorModuleName ?
                             ts.Diagnostics.Parameter_0_of_call_signature_from_exported_interface_has_or_is_using_name_1_from_private_module_2 :
                             ts.Diagnostics.Parameter_0_of_call_signature_from_exported_interface_has_or_is_using_private_name_1;
+<<<<<<< HEAD
                     case 137 /* MethodDeclaration */:
                     case 136 /* MethodSignature */:
+=======
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (node.parent.flags & 128 /* Static */) {
                             return symbolAccesibilityResult.errorModuleName ?
                                 symbolAccesibilityResult.accessibility === 2 /* CannotBeNamed */ ?
@@ -27023,7 +32462,11 @@ var ts;
                                     ts.Diagnostics.Parameter_0_of_public_static_method_from_exported_class_has_or_is_using_name_1_from_private_module_2 :
                                 ts.Diagnostics.Parameter_0_of_public_static_method_from_exported_class_has_or_is_using_private_name_1;
                         }
+<<<<<<< HEAD
                         else if (node.parent.parent.kind === 206 /* ClassDeclaration */) {
+=======
+                        else if (node.parent.parent.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return symbolAccesibilityResult.errorModuleName ?
                                 symbolAccesibilityResult.accessibility === 2 /* CannotBeNamed */ ?
                                     ts.Diagnostics.Parameter_0_of_public_method_from_exported_class_has_or_is_using_name_1_from_external_module_2_but_cannot_be_named :
@@ -27036,7 +32479,11 @@ var ts;
                                 ts.Diagnostics.Parameter_0_of_method_from_exported_interface_has_or_is_using_name_1_from_private_module_2 :
                                 ts.Diagnostics.Parameter_0_of_method_from_exported_interface_has_or_is_using_private_name_1;
                         }
+<<<<<<< HEAD
                     case 205 /* FunctionDeclaration */:
+=======
+                    case 203 /* FunctionDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return symbolAccesibilityResult.errorModuleName ?
                             symbolAccesibilityResult.accessibility === 2 /* CannotBeNamed */ ?
                                 ts.Diagnostics.Parameter_0_of_exported_function_has_or_is_using_name_1_from_external_module_2_but_cannot_be_named :
@@ -27048,12 +32495,20 @@ var ts;
             }
             function emitBindingPattern(bindingPattern) {
                 // We have to explicitly emit square bracket and bracket because these tokens are not store inside the node.
+<<<<<<< HEAD
                 if (bindingPattern.kind === 154 /* ObjectBindingPattern */) {
+=======
+                if (bindingPattern.kind === 153 /* ObjectBindingPattern */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     write("{");
                     emitCommaList(bindingPattern.elements, emitBindingElement);
                     write("}");
                 }
+<<<<<<< HEAD
                 else if (bindingPattern.kind === 155 /* ArrayBindingPattern */) {
+=======
+                else if (bindingPattern.kind === 154 /* ArrayBindingPattern */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     write("[");
                     var elements = bindingPattern.elements;
                     emitCommaList(elements, emitBindingElement);
@@ -27072,7 +32527,11 @@ var ts;
                         typeName: bindingElement.name
                     } : undefined;
                 }
+<<<<<<< HEAD
                 if (bindingElement.kind === 179 /* OmittedExpression */) {
+=======
+                if (bindingElement.kind === 178 /* OmittedExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // If bindingElement is an omittedExpression (i.e. containing elision),
                     // we will emit blank space (although this may differ from users' original code,
                     // it allows emitSeparatedList to write separator appropriately)
@@ -27081,7 +32540,11 @@ var ts;
                     //      emit    : function foo([ , x,  , ]) {}
                     write(" ");
                 }
+<<<<<<< HEAD
                 else if (bindingElement.kind === 156 /* BindingElement */) {
+=======
+                else if (bindingElement.kind === 155 /* BindingElement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (bindingElement.propertyName) {
                         // bindingElement has propertyName property in the following case:
                         //      { y: [a,b,c] ...} -> bindingPattern will have a property called propertyName for "y"
@@ -27122,6 +32585,7 @@ var ts;
         }
         function emitNode(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 205 /* FunctionDeclaration */:
                 case 210 /* ModuleDeclaration */:
                 case 213 /* ImportEqualsDeclaration */:
@@ -27156,6 +32620,42 @@ var ts;
                 case 219 /* ExportAssignment */:
                     return emitExportAssignment(node);
                 case 240 /* SourceFile */:
+=======
+                case 203 /* FunctionDeclaration */:
+                case 208 /* ModuleDeclaration */:
+                case 211 /* ImportEqualsDeclaration */:
+                case 205 /* InterfaceDeclaration */:
+                case 204 /* ClassDeclaration */:
+                case 206 /* TypeAliasDeclaration */:
+                case 207 /* EnumDeclaration */:
+                    return emitModuleElement(node, isModuleElementVisible(node));
+                case 183 /* VariableStatement */:
+                    return emitModuleElement(node, isVariableStatementVisible(node));
+                case 212 /* ImportDeclaration */:
+                    // Import declaration without import clause is visible, otherwise it is not visible
+                    return emitModuleElement(node, !node.importClause);
+                case 218 /* ExportDeclaration */:
+                    return emitExportDeclaration(node);
+                case 137 /* Constructor */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                    return writeFunctionDeclaration(node);
+                case 141 /* ConstructSignature */:
+                case 140 /* CallSignature */:
+                case 142 /* IndexSignature */:
+                    return emitSignatureDeclarationWithJsDocComments(node);
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                    return emitAccessorDeclaration(node);
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                    return emitPropertyDeclaration(node);
+                case 229 /* EnumMember */:
+                    return emitEnumMemberDeclaration(node);
+                case 217 /* ExportAssignment */:
+                    return emitExportAssignment(node);
+                case 230 /* SourceFile */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return emitSourceFile(node);
             }
         }
@@ -27346,7 +32846,70 @@ var ts;
             }
             writeLine();
             writeEmittedFiles(writer.getText(), compilerOptions.emitBOM);
+            if (compilerOptions.dependency && root && compilerOptions.module) {
+                emitDependencyFile(root);
+            }
             return;
+            function emitDependencyFile(sourceFile) {
+                var depFile = ts.removeFileExtension(jsFilePath) + '.dep.json';
+                var runtime = [];
+                var compileTime = [];
+                for (var _a = 0, _b = root.amdDependencies; _a < _b.length; _a++) {
+                    var node = _b[_a];
+                    runtime.push(node.path);
+                }
+                function processExternalDeclaration(node) {
+                    var name = getExternalModuleNameText(node);
+                    if (name) {
+                        if (name.length >= 2) {
+                            var first = name[0];
+                            var last = name[name.length - 1];
+                            if ((first == '"' || first == "'") && (last == '"' || last == "'")) {
+                                name = name.substring(1, name.length - 1);
+                            }
+                        }
+                        if (isExternalDepedency(node)) {
+                            runtime.push(name);
+                        }
+                        else {
+                            compileTime.push(name);
+                        }
+                    }
+                }
+                function isExternalDepedency(node) {
+                    for (var _a = 0; _a < externalImports.length; _a++) {
+                        var external_1 = externalImports[_a];
+                        if (node === external_1) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                for (var _c = 0, _d = root.statements; _c < _d.length; _c++) {
+                    var node = _d[_c];
+                    var name_19;
+                    switch (node.kind) {
+                        case 212 /* ImportDeclaration */:
+                            processExternalDeclaration(node);
+                            break;
+                        case 211 /* ImportEqualsDeclaration */:
+                            processExternalDeclaration(node);
+                            break;
+                        case 218 /* ExportDeclaration */:
+                            var exportDeclaration = node;
+                            if (exportDeclaration.moduleSpecifier) {
+                                processExternalDeclaration(node);
+                            }
+                            break;
+                    }
+                }
+                var dep = {
+                    filePath: root.fileName,
+                    compileTime: compileTime,
+                    runtime: runtime
+                };
+                ts.writeFile(host, [], depFile, JSON.stringify(dep, null, 4), compilerOptions.emitBOM);
+            }
             function emitSourceFile(sourceFile) {
                 currentSourceFile = sourceFile;
                 exportFunctionForFile = undefined;
@@ -27373,9 +32936,15 @@ var ts;
                     tempFlags++;
                     // Skip over 'i' and 'n'
                     if (count !== 8 && count !== 13) {
+<<<<<<< HEAD
                         var name_18 = count < 26 ? "_" + String.fromCharCode(97 /* a */ + count) : "_" + (count - 26);
                         if (isUniqueName(name_18)) {
                             return name_18;
+=======
+                        var name_20 = count < 26 ? "_" + String.fromCharCode(97 /* a */ + count) : "_" + (count - 26);
+                        if (isUniqueName(name_20)) {
+                            return name_20;
+>>>>>>> Updated compiler to emitDependencyFile branch
                         }
                     }
                 }
@@ -27411,6 +32980,7 @@ var ts;
             }
             function generateNameForExportDefault() {
                 return makeUniqueName("default");
+<<<<<<< HEAD
             }
             function generateNameForClassExpression() {
                 return makeUniqueName("class");
@@ -27431,6 +33001,24 @@ var ts;
                         return generateNameForExportDefault();
                     case 178 /* ClassExpression */:
                         return generateNameForClassExpression();
+=======
+            }
+            function generateNameForNode(node) {
+                switch (node.kind) {
+                    case 65 /* Identifier */:
+                        return makeUniqueName(node.text);
+                    case 208 /* ModuleDeclaration */:
+                    case 207 /* EnumDeclaration */:
+                        return generateNameForModuleOrEnum(node);
+                    case 212 /* ImportDeclaration */:
+                    case 218 /* ExportDeclaration */:
+                        return generateNameForImportOrExportDeclaration(node);
+                    case 203 /* FunctionDeclaration */:
+                    case 204 /* ClassDeclaration */:
+                    case 177 /* ClassExpression */:
+                    case 217 /* ExportAssignment */:
+                        return generateNameForExportDefault();
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
             }
             function getGeneratedNameForNode(node) {
@@ -27600,8 +33188,13 @@ var ts;
                                 // Child scopes are always shown with a dot (even if they have no name),
                                 // unless it is a computed property. Then it is shown with brackets,
                                 // but the brackets are included in the name.
+<<<<<<< HEAD
                                 var name_19 = node.name;
                                 if (!name_19 || name_19.kind !== 130 /* ComputedPropertyName */) {
+=======
+                                var name_21 = node.name;
+                                if (!name_21 || name_21.kind !== 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                     scopeName = "." + scopeName;
                                 }
                                 scopeName = sourceMapData.sourceMapNames[parentIndex] + scopeName;
@@ -27619,6 +33212,7 @@ var ts;
                         // The scope was already given a name  use it
                         recordScopeNameStart(scopeName);
                     }
+<<<<<<< HEAD
                     else if (node.kind === 205 /* FunctionDeclaration */ ||
                         node.kind === 166 /* FunctionExpression */ ||
                         node.kind === 137 /* MethodDeclaration */ ||
@@ -27634,6 +33228,23 @@ var ts;
                             // For computed property names, the text will include the brackets
                             scopeName = name_20.kind === 130 /* ComputedPropertyName */
                                 ? ts.getTextOfNode(name_20)
+=======
+                    else if (node.kind === 203 /* FunctionDeclaration */ ||
+                        node.kind === 165 /* FunctionExpression */ ||
+                        node.kind === 136 /* MethodDeclaration */ ||
+                        node.kind === 135 /* MethodSignature */ ||
+                        node.kind === 138 /* GetAccessor */ ||
+                        node.kind === 139 /* SetAccessor */ ||
+                        node.kind === 208 /* ModuleDeclaration */ ||
+                        node.kind === 204 /* ClassDeclaration */ ||
+                        node.kind === 207 /* EnumDeclaration */) {
+                        // Declaration and has associated name use it
+                        if (node.name) {
+                            var name_22 = node.name;
+                            // For computed property names, the text will include the brackets
+                            scopeName = name_22.kind === 129 /* ComputedPropertyName */
+                                ? ts.getTextOfNode(name_22)
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 : node.name.text;
                         }
                         recordScopeNameStart(scopeName);
@@ -27742,7 +33353,11 @@ var ts;
                         if (ts.nodeIsSynthesized(node)) {
                             return emitNodeWithoutSourceMap(node);
                         }
+<<<<<<< HEAD
                         if (node.kind !== 240 /* SourceFile */) {
+=======
+                        if (node.kind != 230 /* SourceFile */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             recordEmitNodeStartSpan(node);
                             emitNodeWithoutSourceMap(node);
                             recordEmitNodeEndSpan(node);
@@ -28005,10 +33620,17 @@ var ts;
                 write("(");
                 emit(tempVariable);
                 // Now we emit the expressions
+<<<<<<< HEAD
                 if (node.template.kind === 175 /* TemplateExpression */) {
                     ts.forEach(node.template.templateSpans, function (templateSpan) {
                         write(", ");
                         var needsParens = templateSpan.expression.kind === 173 /* BinaryExpression */
+=======
+                if (node.template.kind === 174 /* TemplateExpression */) {
+                    ts.forEach(node.template.templateSpans, function (templateSpan) {
+                        write(", ");
+                        var needsParens = templateSpan.expression.kind === 172 /* BinaryExpression */
+>>>>>>> Updated compiler to emitDependencyFile branch
                             && templateSpan.expression.operatorToken.kind === 23 /* CommaToken */;
                         emitParenthesizedIf(templateSpan.expression, needsParens);
                     });
@@ -28043,7 +33665,11 @@ var ts;
                     //    ("abc" + 1) << (2 + "")
                     // rather than
                     //    "abc" + (1 << 2) + ""
+<<<<<<< HEAD
                     var needsParens = templateSpan.expression.kind !== 165 /* ParenthesizedExpression */
+=======
+                    var needsParens = templateSpan.expression.kind !== 164 /* ParenthesizedExpression */
+>>>>>>> Updated compiler to emitDependencyFile branch
                         && comparePrecedenceToBinaryPlus(templateSpan.expression) !== 1 /* GreaterThan */;
                     if (i > 0 || headEmitted) {
                         // If this is the first span and the head was not emitted, then this templateSpan's
@@ -28085,11 +33711,19 @@ var ts;
                 }
                 function templateNeedsParens(template, parent) {
                     switch (parent.kind) {
+<<<<<<< HEAD
                         case 161 /* CallExpression */:
                         case 162 /* NewExpression */:
                             return parent.expression === template;
                         case 163 /* TaggedTemplateExpression */:
                         case 165 /* ParenthesizedExpression */:
+=======
+                        case 160 /* CallExpression */:
+                        case 161 /* NewExpression */:
+                            return parent.expression === template;
+                        case 162 /* TaggedTemplateExpression */:
+                        case 164 /* ParenthesizedExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return false;
                         default:
                             return comparePrecedenceToBinaryPlus(parent) !== -1 /* LessThan */;
@@ -28110,7 +33744,11 @@ var ts;
                     // TODO (drosen): Note that we need to account for the upcoming 'yield' and
                     //                spread ('...') unary operators that are anticipated for ES6.
                     switch (expression.kind) {
+<<<<<<< HEAD
                         case 173 /* BinaryExpression */:
+=======
+                        case 172 /* BinaryExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             switch (expression.operatorToken.kind) {
                                 case 36 /* AsteriskToken */:
                                 case 37 /* SlashToken */:
@@ -28122,8 +33760,13 @@ var ts;
                                 default:
                                     return -1 /* LessThan */;
                             }
+<<<<<<< HEAD
                         case 176 /* YieldExpression */:
                         case 174 /* ConditionalExpression */:
+=======
+                        case 175 /* YieldExpression */:
+                        case 173 /* ConditionalExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return -1 /* LessThan */;
                         default:
                             return 1 /* GreaterThan */;
@@ -28332,11 +33975,19 @@ var ts;
             // In a sense, it does not actually emit identifiers as much as it declares a name for a specific property.
             // For example, this is utilized when feeding in a result to Object.defineProperty.
             function emitExpressionForPropertyName(node) {
+<<<<<<< HEAD
                 ts.Debug.assert(node.kind !== 156 /* BindingElement */);
                 if (node.kind === 8 /* StringLiteral */) {
                     emitLiteral(node);
                 }
                 else if (node.kind === 130 /* ComputedPropertyName */) {
+=======
+                ts.Debug.assert(node.kind !== 155 /* BindingElement */);
+                if (node.kind === 8 /* StringLiteral */) {
+                    emitLiteral(node);
+                }
+                else if (node.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // if this is a decorated computed property, we will need to capture the result
                     // of the property expression so that we can apply decorators later. This is to ensure 
                     // we don't introduce unintended side effects:
@@ -28380,6 +34031,7 @@ var ts;
             function isExpressionIdentifier(node) {
                 var parent = node.parent;
                 switch (parent.kind) {
+<<<<<<< HEAD
                     case 157 /* ArrayLiteralExpression */:
                     case 173 /* BinaryExpression */:
                     case 161 /* CallExpression */:
@@ -28432,6 +34084,58 @@ var ts;
                     case 213 /* ImportEqualsDeclaration */:
                         return parent.moduleReference === node;
                     case 129 /* QualifiedName */:
+=======
+                    case 156 /* ArrayLiteralExpression */:
+                    case 172 /* BinaryExpression */:
+                    case 160 /* CallExpression */:
+                    case 223 /* CaseClause */:
+                    case 129 /* ComputedPropertyName */:
+                    case 173 /* ConditionalExpression */:
+                    case 132 /* Decorator */:
+                    case 167 /* DeleteExpression */:
+                    case 187 /* DoStatement */:
+                    case 159 /* ElementAccessExpression */:
+                    case 217 /* ExportAssignment */:
+                    case 185 /* ExpressionStatement */:
+                    case 179 /* ExpressionWithTypeArguments */:
+                    case 189 /* ForStatement */:
+                    case 190 /* ForInStatement */:
+                    case 191 /* ForOfStatement */:
+                    case 186 /* IfStatement */:
+                    case 161 /* NewExpression */:
+                    case 164 /* ParenthesizedExpression */:
+                    case 171 /* PostfixUnaryExpression */:
+                    case 170 /* PrefixUnaryExpression */:
+                    case 194 /* ReturnStatement */:
+                    case 228 /* ShorthandPropertyAssignment */:
+                    case 176 /* SpreadElementExpression */:
+                    case 196 /* SwitchStatement */:
+                    case 162 /* TaggedTemplateExpression */:
+                    case 180 /* TemplateSpan */:
+                    case 198 /* ThrowStatement */:
+                    case 163 /* TypeAssertionExpression */:
+                    case 168 /* TypeOfExpression */:
+                    case 169 /* VoidExpression */:
+                    case 188 /* WhileStatement */:
+                    case 195 /* WithStatement */:
+                    case 175 /* YieldExpression */:
+                        return true;
+                    case 155 /* BindingElement */:
+                    case 229 /* EnumMember */:
+                    case 131 /* Parameter */:
+                    case 227 /* PropertyAssignment */:
+                    case 134 /* PropertyDeclaration */:
+                    case 201 /* VariableDeclaration */:
+                        return parent.initializer === node;
+                    case 158 /* PropertyAccessExpression */:
+                        return parent.expression === node;
+                    case 166 /* ArrowFunction */:
+                    case 165 /* FunctionExpression */:
+                        return parent.body === node;
+                    case 211 /* ImportEqualsDeclaration */:
+                        return parent.moduleReference === node;
+                    case 128 /* QualifiedName */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return parent.left === node;
                 }
                 return false;
@@ -28439,7 +34143,11 @@ var ts;
             function emitExpressionIdentifier(node) {
                 var container = resolver.getReferencedExportContainer(node);
                 if (container) {
+<<<<<<< HEAD
                     if (container.kind === 240 /* SourceFile */) {
+=======
+                    if (container.kind === 230 /* SourceFile */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Identifier references module export
                         if (languageVersion < 2 /* ES6 */ && compilerOptions.module !== 4 /* System */) {
                             write("exports.");
@@ -28454,13 +34162,21 @@ var ts;
                 else if (languageVersion < 2 /* ES6 */) {
                     var declaration = resolver.getReferencedImportDeclaration(node);
                     if (declaration) {
+<<<<<<< HEAD
                         if (declaration.kind === 215 /* ImportClause */) {
+=======
+                        if (declaration.kind === 213 /* ImportClause */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // Identifier references default import
                             write(getGeneratedNameForNode(declaration.parent));
                             write(languageVersion === 0 /* ES3 */ ? '["default"]' : ".default");
                             return;
                         }
+<<<<<<< HEAD
                         else if (declaration.kind === 218 /* ImportSpecifier */) {
+=======
+                        else if (declaration.kind === 216 /* ImportSpecifier */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // Identifier references named import
                             write(getGeneratedNameForNode(declaration.parent.parent.parent));
                             write(".");
@@ -28480,10 +34196,17 @@ var ts;
                 if (languageVersion < 2 /* ES6 */) {
                     var parent_7 = node.parent;
                     switch (parent_7.kind) {
+<<<<<<< HEAD
                         case 156 /* BindingElement */:
                         case 206 /* ClassDeclaration */:
                         case 209 /* EnumDeclaration */:
                         case 203 /* VariableDeclaration */:
+=======
+                        case 155 /* BindingElement */:
+                        case 204 /* ClassDeclaration */:
+                        case 207 /* EnumDeclaration */:
+                        case 201 /* VariableDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return parent_7.name === node && resolver.isNestedRedeclaration(parent_7);
                     }
                 }
@@ -28569,12 +34292,21 @@ var ts;
             }
             function needsParenthesisForPropertyAccessOrInvocation(node) {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 66 /* Identifier */:
                     case 157 /* ArrayLiteralExpression */:
                     case 159 /* PropertyAccessExpression */:
                     case 160 /* ElementAccessExpression */:
                     case 161 /* CallExpression */:
                     case 165 /* ParenthesizedExpression */:
+=======
+                    case 65 /* Identifier */:
+                    case 156 /* ArrayLiteralExpression */:
+                    case 158 /* PropertyAccessExpression */:
+                    case 159 /* ElementAccessExpression */:
+                    case 160 /* CallExpression */:
+                    case 164 /* ParenthesizedExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // This list is not exhaustive and only includes those cases that are relevant
                         // to the check in emitArrayLiteral. More cases can be added as needed.
                         return false;
@@ -28594,17 +34326,29 @@ var ts;
                         write(", ");
                     }
                     var e = elements[pos];
+<<<<<<< HEAD
                     if (e.kind === 177 /* SpreadElementExpression */) {
                         e = e.expression;
                         emitParenthesizedIf(e, group === 0 && needsParenthesisForPropertyAccessOrInvocation(e));
                         pos++;
                         if (pos === length && group === 0 && needsUniqueCopy && e.kind !== 157 /* ArrayLiteralExpression */) {
+=======
+                    if (e.kind === 176 /* SpreadElementExpression */) {
+                        e = e.expression;
+                        emitParenthesizedIf(e, group === 0 && needsParenthesisForPropertyAccessOrInvocation(e));
+                        pos++;
+                        if (pos === length && group === 0 && needsUniqueCopy && e.kind !== 156 /* ArrayLiteralExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             write(".slice()");
                         }
                     }
                     else {
                         var i = pos;
+<<<<<<< HEAD
                         while (i < length && elements[i].kind !== 177 /* SpreadElementExpression */) {
+=======
+                        while (i < length && elements[i].kind !== 176 /* SpreadElementExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             i++;
                         }
                         write("[");
@@ -28627,7 +34371,11 @@ var ts;
                 }
             }
             function isSpreadElementExpression(node) {
+<<<<<<< HEAD
                 return node.kind === 177 /* SpreadElementExpression */;
+=======
+                return node.kind === 176 /* SpreadElementExpression */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             function emitArrayLiteral(node) {
                 var elements = node.elements;
@@ -28697,7 +34445,11 @@ var ts;
                     writeComma();
                     var property = properties[i];
                     emitStart(property);
+<<<<<<< HEAD
                     if (property.kind === 139 /* GetAccessor */ || property.kind === 140 /* SetAccessor */) {
+=======
+                    if (property.kind === 138 /* GetAccessor */ || property.kind === 139 /* SetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // TODO (drosen): Reconcile with 'emitMemberFunctions'.
                         var accessors = ts.getAllAccessorDeclarations(node.properties, property);
                         if (property !== accessors.firstAccessor) {
@@ -28749,6 +34501,7 @@ var ts;
                         emitMemberAccessForPropertyName(property.name);
                         emitEnd(property.name);
                         write(" = ");
+<<<<<<< HEAD
                         if (property.kind === 237 /* PropertyAssignment */) {
                             emit(property.initializer);
                         }
@@ -28756,6 +34509,15 @@ var ts;
                             emitExpressionIdentifier(property.name);
                         }
                         else if (property.kind === 137 /* MethodDeclaration */) {
+=======
+                        if (property.kind === 227 /* PropertyAssignment */) {
+                            emit(property.initializer);
+                        }
+                        else if (property.kind === 228 /* ShorthandPropertyAssignment */) {
+                            emitExpressionIdentifier(property.name);
+                        }
+                        else if (property.kind === 136 /* MethodDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             emitFunctionDeclaration(property);
                         }
                         else {
@@ -28789,7 +34551,11 @@ var ts;
                     // Everything until that point can be emitted as part of the initial object literal.
                     var numInitialNonComputedProperties = numProperties;
                     for (var i = 0, n = properties.length; i < n; i++) {
+<<<<<<< HEAD
                         if (properties[i].name.kind === 130 /* ComputedPropertyName */) {
+=======
+                        if (properties[i].name.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             numInitialNonComputedProperties = i;
                             break;
                         }
@@ -28805,21 +34571,33 @@ var ts;
                 emitObjectLiteralBody(node, properties.length);
             }
             function createBinaryExpression(left, operator, right, startsOnNewLine) {
+<<<<<<< HEAD
                 var result = ts.createSynthesizedNode(173 /* BinaryExpression */, startsOnNewLine);
+=======
+                var result = ts.createSynthesizedNode(172 /* BinaryExpression */, startsOnNewLine);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 result.operatorToken = ts.createSynthesizedNode(operator);
                 result.left = left;
                 result.right = right;
                 return result;
             }
             function createPropertyAccessExpression(expression, name) {
+<<<<<<< HEAD
                 var result = ts.createSynthesizedNode(159 /* PropertyAccessExpression */);
+=======
+                var result = ts.createSynthesizedNode(158 /* PropertyAccessExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 result.expression = parenthesizeForAccess(expression);
                 result.dotToken = ts.createSynthesizedNode(20 /* DotToken */);
                 result.name = name;
                 return result;
             }
             function createElementAccessExpression(expression, argumentExpression) {
+<<<<<<< HEAD
                 var result = ts.createSynthesizedNode(160 /* ElementAccessExpression */);
+=======
+                var result = ts.createSynthesizedNode(159 /* ElementAccessExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 result.expression = parenthesizeForAccess(expression);
                 result.argumentExpression = argumentExpression;
                 return result;
@@ -28827,7 +34605,11 @@ var ts;
             function parenthesizeForAccess(expr) {
                 // When diagnosing whether the expression needs parentheses, the decision should be based
                 // on the innermost expression in a chain of nested type assertions.
+<<<<<<< HEAD
                 while (expr.kind === 164 /* TypeAssertionExpression */ || expr.kind === 181 /* AsExpression */) {
+=======
+                while (expr.kind === 163 /* TypeAssertionExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     expr = expr.expression;
                 }
                 // isLeftHandSideExpression is almost the correct criterion for when it is not necessary
@@ -28839,11 +34621,19 @@ var ts;
                 //       1.x            -> not the same as (1).x
                 //
                 if (ts.isLeftHandSideExpression(expr) &&
+<<<<<<< HEAD
                     expr.kind !== 162 /* NewExpression */ &&
                     expr.kind !== 7 /* NumericLiteral */) {
                     return expr;
                 }
                 var node = ts.createSynthesizedNode(165 /* ParenthesizedExpression */);
+=======
+                    expr.kind !== 161 /* NewExpression */ &&
+                    expr.kind !== 7 /* NumericLiteral */) {
+                    return expr;
+                }
+                var node = ts.createSynthesizedNode(164 /* ParenthesizedExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 node.expression = expr;
                 return node;
             }
@@ -28870,7 +34660,11 @@ var ts;
             // Return true if identifier resolves to an exported member of a namespace
             function isNamespaceExportReference(node) {
                 var container = resolver.getReferencedExportContainer(node);
+<<<<<<< HEAD
                 return container && container.kind !== 240 /* SourceFile */;
+=======
+                return container && container.kind !== 230 /* SourceFile */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             function emitShorthandPropertyAssignment(node) {
                 // The name property of a short-hand property assignment is considered an expression position, so here
@@ -28900,7 +34694,11 @@ var ts;
                 if (constantValue !== undefined) {
                     write(constantValue.toString());
                     if (!compilerOptions.removeComments) {
+<<<<<<< HEAD
                         var propertyName = node.kind === 159 /* PropertyAccessExpression */ ? ts.declarationNameToString(node.name) : ts.getTextOfNode(node.argumentExpression);
+=======
+                        var propertyName = node.kind === 158 /* PropertyAccessExpression */ ? ts.declarationNameToString(node.name) : ts.getTextOfNode(node.argumentExpression);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         write(" /* " + propertyName + " */");
                     }
                     return true;
@@ -28963,10 +34761,17 @@ var ts;
                 write("]");
             }
             function hasSpreadElement(elements) {
+<<<<<<< HEAD
                 return ts.forEach(elements, function (e) { return e.kind === 177 /* SpreadElementExpression */; });
             }
             function skipParentheses(node) {
                 while (node.kind === 165 /* ParenthesizedExpression */ || node.kind === 164 /* TypeAssertionExpression */ || node.kind === 181 /* AsExpression */) {
+=======
+                return ts.forEach(elements, function (e) { return e.kind === 176 /* SpreadElementExpression */; });
+            }
+            function skipParentheses(node) {
+                while (node.kind === 164 /* ParenthesizedExpression */ || node.kind === 163 /* TypeAssertionExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     node = node.expression;
                 }
                 return node;
@@ -28987,13 +34792,21 @@ var ts;
             function emitCallWithSpread(node) {
                 var target;
                 var expr = skipParentheses(node.expression);
+<<<<<<< HEAD
                 if (expr.kind === 159 /* PropertyAccessExpression */) {
+=======
+                if (expr.kind === 158 /* PropertyAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // Target will be emitted as "this" argument
                     target = emitCallTarget(expr.expression);
                     write(".");
                     emit(expr.name);
                 }
+<<<<<<< HEAD
                 else if (expr.kind === 160 /* ElementAccessExpression */) {
+=======
+                else if (expr.kind === 159 /* ElementAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // Target will be emitted as "this" argument
                     target = emitCallTarget(expr.expression);
                     write("[");
@@ -29038,7 +34851,11 @@ var ts;
                 }
                 else {
                     emit(node.expression);
+<<<<<<< HEAD
                     superCall = node.expression.kind === 159 /* PropertyAccessExpression */ && node.expression.expression.kind === 92 /* SuperKeyword */;
+=======
+                    superCall = node.expression.kind === 158 /* PropertyAccessExpression */ && node.expression.expression.kind === 91 /* SuperKeyword */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
                 if (superCall && languageVersion < 2 /* ES6 */) {
                     write(".call(");
@@ -29107,12 +34924,21 @@ var ts;
                 // If the node is synthesized, it means the emitter put the parentheses there,
                 // not the user. If we didn't want them, the emitter would not have put them
                 // there.
+<<<<<<< HEAD
                 if (!ts.nodeIsSynthesized(node) && node.parent.kind !== 167 /* ArrowFunction */) {
                     if (node.expression.kind === 164 /* TypeAssertionExpression */ || node.expression.kind === 181 /* AsExpression */) {
                         var operand = node.expression.expression;
                         // Make sure we consider all nested cast expressions, e.g.:
                         // (<any><number><any>-A).x;
                         while (operand.kind === 164 /* TypeAssertionExpression */ || operand.kind === 181 /* AsExpression */) {
+=======
+                if (!ts.nodeIsSynthesized(node) && node.parent.kind !== 166 /* ArrowFunction */) {
+                    if (node.expression.kind === 163 /* TypeAssertionExpression */) {
+                        var operand = node.expression.expression;
+                        // Make sure we consider all nested cast expressions, e.g.:
+                        // (<any><number><any>-A).x;
+                        while (operand.kind == 163 /* TypeAssertionExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             operand = operand.expression;
                         }
                         // We have an expression of the form: (<Type>SubExpr)
@@ -29123,6 +34949,7 @@ var ts;
                         //      (<any>typeof A).toString() should be emitted as (typeof A).toString() and not typeof A.toString()
                         //      new (<any>A()) should be emitted as new (A()) and not new A()
                         //      (<any>function foo() { })() should be emitted as an IIF (function foo(){})() and not declaration function foo(){} ()
+<<<<<<< HEAD
                         if (operand.kind !== 171 /* PrefixUnaryExpression */ &&
                             operand.kind !== 170 /* VoidExpression */ &&
                             operand.kind !== 169 /* TypeOfExpression */ &&
@@ -29131,6 +34958,16 @@ var ts;
                             operand.kind !== 162 /* NewExpression */ &&
                             !(operand.kind === 161 /* CallExpression */ && node.parent.kind === 162 /* NewExpression */) &&
                             !(operand.kind === 166 /* FunctionExpression */ && node.parent.kind === 161 /* CallExpression */)) {
+=======
+                        if (operand.kind !== 170 /* PrefixUnaryExpression */ &&
+                            operand.kind !== 169 /* VoidExpression */ &&
+                            operand.kind !== 168 /* TypeOfExpression */ &&
+                            operand.kind !== 167 /* DeleteExpression */ &&
+                            operand.kind !== 171 /* PostfixUnaryExpression */ &&
+                            operand.kind !== 161 /* NewExpression */ &&
+                            !(operand.kind === 160 /* CallExpression */ && node.parent.kind === 161 /* NewExpression */) &&
+                            !(operand.kind === 165 /* FunctionExpression */ && node.parent.kind === 160 /* CallExpression */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             emit(operand);
                             return;
                         }
@@ -29159,7 +34996,11 @@ var ts;
                 if (!isCurrentFileSystemExternalModule() || node.kind !== 66 /* Identifier */ || ts.nodeIsSynthesized(node)) {
                     return false;
                 }
+<<<<<<< HEAD
                 var isVariableDeclarationOrBindingElement = node.parent && (node.parent.kind === 203 /* VariableDeclaration */ || node.parent.kind === 156 /* BindingElement */);
+=======
+                var isVariableDeclarationOrBindingElement = node.parent && (node.parent.kind === 201 /* VariableDeclaration */ || node.parent.kind === 155 /* BindingElement */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var targetDeclaration = isVariableDeclarationOrBindingElement
                     ? node.parent
                     : resolver.getReferencedValueDeclaration(node);
@@ -29189,7 +35030,11 @@ var ts;
                 // the resulting expression a prefix increment operation. And in the second, it will make the resulting
                 // expression a prefix increment whose operand is a plus expression - (++(+x))
                 // The same is true of minus of course.
+<<<<<<< HEAD
                 if (node.operand.kind === 171 /* PrefixUnaryExpression */) {
+=======
+                if (node.operand.kind === 170 /* PrefixUnaryExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var operand = node.operand;
                     if (node.operator === 34 /* PlusToken */ && (operand.operator === 34 /* PlusToken */ || operand.operator === 39 /* PlusPlusToken */)) {
                         write(" ");
@@ -29245,10 +35090,17 @@ var ts;
                 }
                 var current = node;
                 while (current) {
+<<<<<<< HEAD
                     if (current.kind === 240 /* SourceFile */) {
                         return !isExported || ((ts.getCombinedNodeFlags(node) & 1 /* Export */) !== 0);
                     }
                     else if (ts.isFunctionLike(current) || current.kind === 211 /* ModuleBlock */) {
+=======
+                    if (current.kind === 230 /* SourceFile */) {
+                        return !isExported || ((ts.getCombinedNodeFlags(node) & 1 /* Export */) !== 0);
+                    }
+                    else if (ts.isFunctionLike(current) || current.kind === 209 /* ModuleBlock */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return false;
                     }
                     else {
@@ -29257,9 +35109,15 @@ var ts;
                 }
             }
             function emitBinaryExpression(node) {
+<<<<<<< HEAD
                 if (languageVersion < 2 /* ES6 */ && node.operatorToken.kind === 54 /* EqualsToken */ &&
                     (node.left.kind === 158 /* ObjectLiteralExpression */ || node.left.kind === 157 /* ArrayLiteralExpression */)) {
                     emitDestructuring(node, node.parent.kind === 187 /* ExpressionStatement */);
+=======
+                if (languageVersion < 2 /* ES6 */ && node.operatorToken.kind === 53 /* EqualsToken */ &&
+                    (node.left.kind === 157 /* ObjectLiteralExpression */ || node.left.kind === 156 /* ArrayLiteralExpression */)) {
+                    emitDestructuring(node, node.parent.kind === 185 /* ExpressionStatement */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
                 else {
                     var exportChanged = node.operatorToken.kind >= 54 /* FirstAssignment */ &&
@@ -29311,7 +35169,11 @@ var ts;
                 }
             }
             function isSingleLineEmptyBlock(node) {
+<<<<<<< HEAD
                 if (node && node.kind === 184 /* Block */) {
+=======
+                if (node && node.kind === 182 /* Block */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var block = node;
                     return block.statements.length === 0 && nodeEndIsOnSameLineAsNodeStart(block, block);
                 }
@@ -29326,12 +35188,21 @@ var ts;
                 emitToken(14 /* OpenBraceToken */, node.pos);
                 increaseIndent();
                 scopeEmitStart(node.parent);
+<<<<<<< HEAD
                 if (node.kind === 211 /* ModuleBlock */) {
                     ts.Debug.assert(node.parent.kind === 210 /* ModuleDeclaration */);
                     emitCaptureThisForNodeIfNecessary(node.parent);
                 }
                 emitLines(node.statements);
                 if (node.kind === 211 /* ModuleBlock */) {
+=======
+                if (node.kind === 209 /* ModuleBlock */) {
+                    ts.Debug.assert(node.parent.kind === 208 /* ModuleDeclaration */);
+                    emitCaptureThisForNodeIfNecessary(node.parent);
+                }
+                emitLines(node.statements);
+                if (node.kind === 209 /* ModuleBlock */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     emitTempDeclarations(true);
                 }
                 decreaseIndent();
@@ -29340,7 +35211,11 @@ var ts;
                 scopeEmitEnd();
             }
             function emitEmbeddedStatement(node) {
+<<<<<<< HEAD
                 if (node.kind === 184 /* Block */) {
+=======
+                if (node.kind === 182 /* Block */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     write(" ");
                     emit(node);
                 }
@@ -29352,7 +35227,11 @@ var ts;
                 }
             }
             function emitExpressionStatement(node) {
+<<<<<<< HEAD
                 emitParenthesizedIf(node.expression, node.expression.kind === 167 /* ArrowFunction */);
+=======
+                emitParenthesizedIf(node.expression, node.expression.kind === 166 /* ArrowFunction */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 write(";");
             }
             function emitIfStatement(node) {
@@ -29364,8 +35243,13 @@ var ts;
                 emitEmbeddedStatement(node.thenStatement);
                 if (node.elseStatement) {
                     writeLine();
+<<<<<<< HEAD
                     emitToken(77 /* ElseKeyword */, node.thenStatement.end);
                     if (node.elseStatement.kind === 188 /* IfStatement */) {
+=======
+                    emitToken(76 /* ElseKeyword */, node.thenStatement.end);
+                    if (node.elseStatement.kind === 186 /* IfStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         write(" ");
                         emit(node.elseStatement);
                     }
@@ -29377,7 +35261,11 @@ var ts;
             function emitDoStatement(node) {
                 write("do");
                 emitEmbeddedStatement(node.statement);
+<<<<<<< HEAD
                 if (node.statement.kind === 184 /* Block */) {
+=======
+                if (node.statement.kind === 182 /* Block */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     write(" ");
                 }
                 else {
@@ -29452,7 +35340,11 @@ var ts;
                 var endPos = emitToken(83 /* ForKeyword */, node.pos);
                 write(" ");
                 endPos = emitToken(16 /* OpenParenToken */, endPos);
+<<<<<<< HEAD
                 if (node.initializer && node.initializer.kind === 204 /* VariableDeclarationList */) {
+=======
+                if (node.initializer && node.initializer.kind === 202 /* VariableDeclarationList */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var variableDeclarationList = node.initializer;
                     var startIsEmitted = tryEmitStartOfVariableDeclarationList(variableDeclarationList, endPos);
                     if (startIsEmitted) {
@@ -29473,13 +35365,21 @@ var ts;
                 emitEmbeddedStatement(node.statement);
             }
             function emitForInOrForOfStatement(node) {
+<<<<<<< HEAD
                 if (languageVersion < 2 /* ES6 */ && node.kind === 193 /* ForOfStatement */) {
+=======
+                if (languageVersion < 2 /* ES6 */ && node.kind === 191 /* ForOfStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return emitDownLevelForOfStatement(node);
                 }
                 var endPos = emitToken(83 /* ForKeyword */, node.pos);
                 write(" ");
                 endPos = emitToken(16 /* OpenParenToken */, endPos);
+<<<<<<< HEAD
                 if (node.initializer.kind === 204 /* VariableDeclarationList */) {
+=======
+                if (node.initializer.kind === 202 /* VariableDeclarationList */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var variableDeclarationList = node.initializer;
                     if (variableDeclarationList.declarations.length >= 1) {
                         tryEmitStartOfVariableDeclarationList(variableDeclarationList, endPos);
@@ -29489,7 +35389,11 @@ var ts;
                 else {
                     emit(node.initializer);
                 }
+<<<<<<< HEAD
                 if (node.kind === 192 /* ForInStatement */) {
+=======
+                if (node.kind === 190 /* ForInStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     write(" in ");
                 }
                 else {
@@ -29574,7 +35478,11 @@ var ts;
                 // let v = _a[_i];
                 var rhsIterationValue = createElementAccessExpression(rhsReference, counter);
                 emitStart(node.initializer);
+<<<<<<< HEAD
                 if (node.initializer.kind === 204 /* VariableDeclarationList */) {
+=======
+                if (node.initializer.kind === 202 /* VariableDeclarationList */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     write("var ");
                     var variableDeclarationList = node.initializer;
                     if (variableDeclarationList.declarations.length > 0) {
@@ -29603,8 +35511,13 @@ var ts;
                 else {
                     // Initializer is an expression. Emit the expression in the body, so that it's
                     // evaluated on every iteration.
+<<<<<<< HEAD
                     var assignmentExpression = createBinaryExpression(node.initializer, 54 /* EqualsToken */, rhsIterationValue, false);
                     if (node.initializer.kind === 157 /* ArrayLiteralExpression */ || node.initializer.kind === 158 /* ObjectLiteralExpression */) {
+=======
+                    var assignmentExpression = createBinaryExpression(node.initializer, 53 /* EqualsToken */, rhsIterationValue, false);
+                    if (node.initializer.kind === 156 /* ArrayLiteralExpression */ || node.initializer.kind === 157 /* ObjectLiteralExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // This is a destructuring pattern, so call emitDestructuring instead of emit. Calling emit will not work, because it will cause
                         // the BinaryExpression to be passed in instead of the expression statement, which will cause emitDestructuring to crash.
                         emitDestructuring(assignmentExpression, true, undefined);
@@ -29615,7 +35528,11 @@ var ts;
                 }
                 emitEnd(node.initializer);
                 write(";");
+<<<<<<< HEAD
                 if (node.statement.kind === 184 /* Block */) {
+=======
+                if (node.statement.kind === 182 /* Block */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     emitLines(node.statement.statements);
                 }
                 else {
@@ -29627,7 +35544,11 @@ var ts;
                 write("}");
             }
             function emitBreakOrContinueStatement(node) {
+<<<<<<< HEAD
                 emitToken(node.kind === 195 /* BreakStatement */ ? 67 /* BreakKeyword */ : 72 /* ContinueKeyword */, node.pos);
+=======
+                emitToken(node.kind === 193 /* BreakStatement */ ? 66 /* BreakKeyword */ : 71 /* ContinueKeyword */, node.pos);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 emitOptional(" ", node.label);
                 write(";");
             }
@@ -29672,7 +35593,11 @@ var ts;
                     ts.getLineOfLocalPosition(currentSourceFile, ts.skipTrivia(currentSourceFile.text, node2.pos));
             }
             function emitCaseOrDefaultClause(node) {
+<<<<<<< HEAD
                 if (node.kind === 233 /* CaseClause */) {
+=======
+                if (node.kind === 223 /* CaseClause */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     write("case ");
                     emit(node.expression);
                     write(":");
@@ -29727,7 +35652,11 @@ var ts;
             function getContainingModule(node) {
                 do {
                     node = node.parent;
+<<<<<<< HEAD
                 } while (node && node.kind !== 210 /* ModuleDeclaration */);
+=======
+                } while (node && node.kind !== 208 /* ModuleDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return node;
             }
             function emitContainingModuleName(node) {
@@ -29752,7 +35681,11 @@ var ts;
             function createVoidZero() {
                 var zero = ts.createSynthesizedNode(7 /* NumericLiteral */);
                 zero.text = "0";
+<<<<<<< HEAD
                 var result = ts.createSynthesizedNode(170 /* VoidExpression */);
+=======
+                var result = ts.createSynthesizedNode(169 /* VoidExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 result.expression = zero;
                 return result;
             }
@@ -29828,15 +35761,26 @@ var ts;
                 // Also temporary variables should be explicitly allocated for source level declarations when module target is system
                 // because actual variable declarations are hoisted
                 var canDefineTempVariablesInPlace = false;
+<<<<<<< HEAD
                 if (root.kind === 203 /* VariableDeclaration */) {
+=======
+                if (root.kind === 201 /* VariableDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var isExported = ts.getCombinedNodeFlags(root) & 1 /* Export */;
                     var isSourceLevelForSystemModuleKind = shouldHoistDeclarationInSystemJsModule(root);
                     canDefineTempVariablesInPlace = !isExported && !isSourceLevelForSystemModuleKind;
                 }
+<<<<<<< HEAD
                 else if (root.kind === 132 /* Parameter */) {
                     canDefineTempVariablesInPlace = true;
                 }
                 if (root.kind === 173 /* BinaryExpression */) {
+=======
+                else if (root.kind === 131 /* Parameter */) {
+                    canDefineTempVariablesInPlace = true;
+                }
+                if (root.kind === 172 /* BinaryExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     emitAssignmentExpression(root);
                 }
                 else {
@@ -29847,7 +35791,11 @@ var ts;
                     if (emitCount++) {
                         write(", ");
                     }
+<<<<<<< HEAD
                     var isVariableDeclarationOrBindingElement = name.parent && (name.parent.kind === 203 /* VariableDeclaration */ || name.parent.kind === 156 /* BindingElement */);
+=======
+                    var isVariableDeclarationOrBindingElement = name.parent && (name.parent.kind === 201 /* VariableDeclaration */ || name.parent.kind === 155 /* BindingElement */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var exportChanged = isNameOfExportedSourceLevelDeclarationInSystemExternalModule(name);
                     if (exportChanged) {
                         write(exportFunctionForFile + "(\"");
@@ -29882,14 +35830,22 @@ var ts;
                     // we need to generate a temporary variable
                     value = ensureIdentifier(value);
                     // Return the expression 'value === void 0 ? defaultValue : value'
+<<<<<<< HEAD
                     var equals = ts.createSynthesizedNode(173 /* BinaryExpression */);
+=======
+                    var equals = ts.createSynthesizedNode(172 /* BinaryExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     equals.left = value;
                     equals.operatorToken = ts.createSynthesizedNode(31 /* EqualsEqualsEqualsToken */);
                     equals.right = createVoidZero();
                     return createConditionalExpression(equals, defaultValue, value);
                 }
                 function createConditionalExpression(condition, whenTrue, whenFalse) {
+<<<<<<< HEAD
                     var cond = ts.createSynthesizedNode(174 /* ConditionalExpression */);
+=======
+                    var cond = ts.createSynthesizedNode(173 /* ConditionalExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     cond.condition = condition;
                     cond.questionToken = ts.createSynthesizedNode(51 /* QuestionToken */);
                     cond.whenTrue = whenTrue;
@@ -29907,14 +35863,23 @@ var ts;
                     // otherwise occur when the identifier is emitted.
                     var syntheticName = ts.createSynthesizedNode(propName.kind);
                     syntheticName.text = propName.text;
+<<<<<<< HEAD
                     if (syntheticName.kind !== 66 /* Identifier */) {
+=======
+                    if (syntheticName.kind !== 65 /* Identifier */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return createElementAccessExpression(object, syntheticName);
                     }
                     return createPropertyAccessExpression(object, syntheticName);
                 }
                 function createSliceCall(value, sliceIndex) {
+<<<<<<< HEAD
                     var call = ts.createSynthesizedNode(161 /* CallExpression */);
                     var sliceIdentifier = ts.createSynthesizedNode(66 /* Identifier */);
+=======
+                    var call = ts.createSynthesizedNode(160 /* CallExpression */);
+                    var sliceIdentifier = ts.createSynthesizedNode(65 /* Identifier */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     sliceIdentifier.text = "slice";
                     call.expression = createPropertyAccessExpression(value, sliceIdentifier);
                     call.arguments = ts.createSynthesizedNodeArray();
@@ -29930,7 +35895,11 @@ var ts;
                     }
                     for (var _a = 0; _a < properties.length; _a++) {
                         var p = properties[_a];
+<<<<<<< HEAD
                         if (p.kind === 237 /* PropertyAssignment */ || p.kind === 238 /* ShorthandPropertyAssignment */) {
+=======
+                        if (p.kind === 227 /* PropertyAssignment */ || p.kind === 228 /* ShorthandPropertyAssignment */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var propName = p.name;
                             emitDestructuringAssignment(p.initializer || propName, createPropertyAccessForDestructuringProperty(value, propName));
                         }
@@ -29945,8 +35914,13 @@ var ts;
                     }
                     for (var i = 0; i < elements.length; i++) {
                         var e = elements[i];
+<<<<<<< HEAD
                         if (e.kind !== 179 /* OmittedExpression */) {
                             if (e.kind !== 177 /* SpreadElementExpression */) {
+=======
+                        if (e.kind !== 178 /* OmittedExpression */) {
+                            if (e.kind !== 176 /* SpreadElementExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 emitDestructuringAssignment(e, createElementAccessExpression(value, createNumericLiteral(i)));
                             }
                             else if (i === elements.length - 1) {
@@ -29956,6 +35930,7 @@ var ts;
                     }
                 }
                 function emitDestructuringAssignment(target, value) {
+<<<<<<< HEAD
                     if (target.kind === 173 /* BinaryExpression */ && target.operatorToken.kind === 54 /* EqualsToken */) {
                         value = createDefaultValueCheck(value, target.right);
                         target = target.left;
@@ -29964,6 +35939,16 @@ var ts;
                         emitObjectLiteralAssignment(target, value);
                     }
                     else if (target.kind === 157 /* ArrayLiteralExpression */) {
+=======
+                    if (target.kind === 172 /* BinaryExpression */ && target.operatorToken.kind === 53 /* EqualsToken */) {
+                        value = createDefaultValueCheck(value, target.right);
+                        target = target.left;
+                    }
+                    if (target.kind === 157 /* ObjectLiteralExpression */) {
+                        emitObjectLiteralAssignment(target, value);
+                    }
+                    else if (target.kind === 156 /* ArrayLiteralExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         emitArrayLiteralAssignment(target, value);
                     }
                     else {
@@ -29977,14 +35962,22 @@ var ts;
                         emitDestructuringAssignment(target, value);
                     }
                     else {
+<<<<<<< HEAD
                         if (root.parent.kind !== 165 /* ParenthesizedExpression */) {
+=======
+                        if (root.parent.kind !== 164 /* ParenthesizedExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             write("(");
                         }
                         value = ensureIdentifier(value);
                         emitDestructuringAssignment(target, value);
                         write(", ");
                         emit(value);
+<<<<<<< HEAD
                         if (root.parent.kind !== 165 /* ParenthesizedExpression */) {
+=======
+                        if (root.parent.kind !== 164 /* ParenthesizedExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             write(")");
                         }
                     }
@@ -30008,12 +36001,20 @@ var ts;
                         }
                         for (var i = 0; i < elements.length; i++) {
                             var element = elements[i];
+<<<<<<< HEAD
                             if (pattern.kind === 154 /* ObjectBindingPattern */) {
+=======
+                            if (pattern.kind === 153 /* ObjectBindingPattern */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 // Rewrite element to a declaration with an initializer that fetches property
                                 var propName = element.propertyName || element.name;
                                 emitBindingElement(element, createPropertyAccessForDestructuringProperty(value, propName));
                             }
+<<<<<<< HEAD
                             else if (element.kind !== 179 /* OmittedExpression */) {
+=======
+                            else if (element.kind !== 178 /* OmittedExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (!element.dotDotDotToken) {
                                     // Rewrite element to a declaration that accesses array element at index i
                                     emitBindingElement(element, createElementAccessExpression(value, createNumericLiteral(i)));
@@ -30052,8 +36053,13 @@ var ts;
                             (getCombinedFlagsForIdentifier(node.name) & 4096 /* Let */);
                         // NOTE: default initialization should not be added to let bindings in for-in\for-of statements
                         if (isUninitializedLet &&
+<<<<<<< HEAD
                             node.parent.parent.kind !== 192 /* ForInStatement */ &&
                             node.parent.parent.kind !== 193 /* ForOfStatement */) {
+=======
+                            node.parent.parent.kind !== 190 /* ForInStatement */ &&
+                            node.parent.parent.kind !== 191 /* ForOfStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             initializer = createVoidZero();
                         }
                     }
@@ -30071,7 +36077,11 @@ var ts;
                 }
             }
             function emitExportVariableAssignments(node) {
+<<<<<<< HEAD
                 if (node.kind === 179 /* OmittedExpression */) {
+=======
+                if (node.kind === 178 /* OmittedExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return;
                 }
                 var name = node.name;
@@ -30083,7 +36093,11 @@ var ts;
                 }
             }
             function getCombinedFlagsForIdentifier(node) {
+<<<<<<< HEAD
                 if (!node.parent || (node.parent.kind !== 203 /* VariableDeclaration */ && node.parent.kind !== 156 /* BindingElement */)) {
+=======
+                if (!node.parent || (node.parent.kind !== 201 /* VariableDeclaration */ && node.parent.kind !== 155 /* BindingElement */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return 0;
                 }
                 return ts.getCombinedNodeFlags(node.parent);
@@ -30091,7 +36105,11 @@ var ts;
             function isES6ExportedDeclaration(node) {
                 return !!(node.flags & 1 /* Export */) &&
                     languageVersion >= 2 /* ES6 */ &&
+<<<<<<< HEAD
                     node.parent.kind === 240 /* SourceFile */;
+=======
+                    node.parent.kind === 230 /* SourceFile */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             function emitVariableStatement(node) {
                 var startIsEmitted = false;
@@ -30142,12 +36160,21 @@ var ts;
             function emitParameter(node) {
                 if (languageVersion < 2 /* ES6 */) {
                     if (ts.isBindingPattern(node.name)) {
+<<<<<<< HEAD
                         var name_21 = createTempVariable(0 /* Auto */);
                         if (!tempParameters) {
                             tempParameters = [];
                         }
                         tempParameters.push(name_21);
                         emit(name_21);
+=======
+                        var name_23 = createTempVariable(0 /* Auto */);
+                        if (!tempParameters) {
+                            tempParameters = [];
+                        }
+                        tempParameters.push(name_23);
+                        emit(name_23);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     }
                     else {
                         emit(node.name);
@@ -30252,12 +36279,20 @@ var ts;
                 }
             }
             function emitAccessor(node) {
+<<<<<<< HEAD
                 write(node.kind === 139 /* GetAccessor */ ? "get " : "set ");
+=======
+                write(node.kind === 138 /* GetAccessor */ ? "get " : "set ");
+>>>>>>> Updated compiler to emitDependencyFile branch
                 emit(node.name);
                 emitSignatureAndBody(node);
             }
             function shouldEmitAsArrowFunction(node) {
+<<<<<<< HEAD
                 return node.kind === 167 /* ArrowFunction */ && languageVersion >= 2 /* ES6 */;
+=======
+                return node.kind === 166 /* ArrowFunction */ && languageVersion >= 2 /* ES6 */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             function emitDeclarationName(node) {
                 if (node.name) {
@@ -30268,11 +36303,19 @@ var ts;
                 }
             }
             function shouldEmitFunctionName(node) {
+<<<<<<< HEAD
                 if (node.kind === 166 /* FunctionExpression */) {
                     // Emit name if one is present
                     return !!node.name;
                 }
                 if (node.kind === 205 /* FunctionDeclaration */) {
+=======
+                if (node.kind === 165 /* FunctionExpression */) {
+                    // Emit name if one is present
+                    return !!node.name;
+                }
+                if (node.kind === 203 /* FunctionDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // Emit name if one is present, or emit generated name in down-level case (for export default case)
                     return !!node.name || languageVersion < 2 /* ES6 */;
                 }
@@ -30281,7 +36324,11 @@ var ts;
                 if (ts.nodeIsMissing(node.body)) {
                     return emitOnlyPinnedOrTripleSlashComments(node);
                 }
+<<<<<<< HEAD
                 if (node.kind !== 137 /* MethodDeclaration */ && node.kind !== 136 /* MethodSignature */) {
+=======
+                if (node.kind !== 136 /* MethodDeclaration */ && node.kind !== 135 /* MethodSignature */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // Methods will emit the comments as part of emitting method declaration
                     emitLeadingComments(node);
                 }
@@ -30304,10 +36351,17 @@ var ts;
                     emitDeclarationName(node);
                 }
                 emitSignatureAndBody(node);
+<<<<<<< HEAD
                 if (languageVersion < 2 /* ES6 */ && node.kind === 205 /* FunctionDeclaration */ && node.parent === currentSourceFile && node.name) {
                     emitExportMemberAssignments(node.name);
                 }
                 if (node.kind !== 137 /* MethodDeclaration */ && node.kind !== 136 /* MethodSignature */) {
+=======
+                if (languageVersion < 2 /* ES6 */ && node.kind === 203 /* FunctionDeclaration */ && node.parent === currentSourceFile && node.name) {
+                    emitExportMemberAssignments(node.name);
+                }
+                if (node.kind !== 136 /* MethodDeclaration */ && node.kind !== 135 /* MethodSignature */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     emitTrailingComments(node);
                 }
             }
@@ -30358,7 +36412,11 @@ var ts;
                     // in that case.
                     write(" { }");
                 }
+<<<<<<< HEAD
                 else if (node.body.kind === 184 /* Block */) {
+=======
+                else if (node.body.kind === 182 /* Block */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     emitBlockFunctionBody(node, node.body);
                 }
                 else {
@@ -30389,10 +36447,17 @@ var ts;
                 write(" ");
                 // Unwrap all type assertions.
                 var current = body;
+<<<<<<< HEAD
                 while (current.kind === 164 /* TypeAssertionExpression */) {
                     current = current.expression;
                 }
                 emitParenthesizedIf(body, current.kind === 158 /* ObjectLiteralExpression */);
+=======
+                while (current.kind === 163 /* TypeAssertionExpression */) {
+                    current = current.expression;
+                }
+                emitParenthesizedIf(body, current.kind === 157 /* ObjectLiteralExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             function emitDownLevelExpressionFunctionBody(node, body) {
                 write(" {");
@@ -30468,9 +36533,15 @@ var ts;
             function findInitialSuperCall(ctor) {
                 if (ctor.body) {
                     var statement = ctor.body.statements[0];
+<<<<<<< HEAD
                     if (statement && statement.kind === 187 /* ExpressionStatement */) {
                         var expr = statement.expression;
                         if (expr && expr.kind === 161 /* CallExpression */) {
+=======
+                    if (statement && statement.kind === 185 /* ExpressionStatement */) {
+                        var expr = statement.expression;
+                        if (expr && expr.kind === 160 /* CallExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var func = expr.expression;
                             if (func && func.kind === 92 /* SuperKeyword */) {
                                 return statement;
@@ -30502,7 +36573,11 @@ var ts;
                     emitNodeWithoutSourceMap(memberName);
                     write("]");
                 }
+<<<<<<< HEAD
                 else if (memberName.kind === 130 /* ComputedPropertyName */) {
+=======
+                else if (memberName.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     emitComputedPropertyName(memberName);
                 }
                 else {
@@ -30514,7 +36589,11 @@ var ts;
                 var properties = [];
                 for (var _a = 0, _b = node.members; _a < _b.length; _a++) {
                     var member = _b[_a];
+<<<<<<< HEAD
                     if (member.kind === 135 /* PropertyDeclaration */ && isStatic === ((member.flags & 128 /* Static */) !== 0) && member.initializer) {
+=======
+                    if (member.kind === 134 /* PropertyDeclaration */ && isStatic === ((member.flags & 128 /* Static */) !== 0) && member.initializer) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         properties.push(member);
                     }
                 }
@@ -30554,11 +36633,19 @@ var ts;
             }
             function emitMemberFunctionsForES5AndLower(node) {
                 ts.forEach(node.members, function (member) {
+<<<<<<< HEAD
                     if (member.kind === 183 /* SemicolonClassElement */) {
                         writeLine();
                         write(";");
                     }
                     else if (member.kind === 137 /* MethodDeclaration */ || node.kind === 136 /* MethodSignature */) {
+=======
+                    if (member.kind === 181 /* SemicolonClassElement */) {
+                        writeLine();
+                        write(";");
+                    }
+                    else if (member.kind === 136 /* MethodDeclaration */ || node.kind === 135 /* MethodSignature */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (!member.body) {
                             return emitOnlyPinnedOrTripleSlashComments(member);
                         }
@@ -30577,7 +36664,11 @@ var ts;
                         write(";");
                         emitTrailingComments(member);
                     }
+<<<<<<< HEAD
                     else if (member.kind === 139 /* GetAccessor */ || member.kind === 140 /* SetAccessor */) {
+=======
+                    else if (member.kind === 138 /* GetAccessor */ || member.kind === 139 /* SetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var accessors = ts.getAllAccessorDeclarations(node.members, member);
                         if (member === accessors.firstAccessor) {
                             writeLine();
@@ -30627,22 +36718,38 @@ var ts;
             function emitMemberFunctionsForES6AndHigher(node) {
                 for (var _a = 0, _b = node.members; _a < _b.length; _a++) {
                     var member = _b[_a];
+<<<<<<< HEAD
                     if ((member.kind === 137 /* MethodDeclaration */ || node.kind === 136 /* MethodSignature */) && !member.body) {
                         emitOnlyPinnedOrTripleSlashComments(member);
                     }
                     else if (member.kind === 137 /* MethodDeclaration */ ||
                         member.kind === 139 /* GetAccessor */ ||
                         member.kind === 140 /* SetAccessor */) {
+=======
+                    if ((member.kind === 136 /* MethodDeclaration */ || node.kind === 135 /* MethodSignature */) && !member.body) {
+                        emitOnlyPinnedOrTripleSlashComments(member);
+                    }
+                    else if (member.kind === 136 /* MethodDeclaration */ ||
+                        member.kind === 138 /* GetAccessor */ ||
+                        member.kind === 139 /* SetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         writeLine();
                         emitLeadingComments(member);
                         emitStart(member);
                         if (member.flags & 128 /* Static */) {
                             write("static ");
                         }
+<<<<<<< HEAD
                         if (member.kind === 139 /* GetAccessor */) {
                             write("get ");
                         }
                         else if (member.kind === 140 /* SetAccessor */) {
+=======
+                        if (member.kind === 138 /* GetAccessor */) {
+                            write("get ");
+                        }
+                        else if (member.kind === 139 /* SetAccessor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             write("set ");
                         }
                         if (member.asteriskToken) {
@@ -30653,7 +36760,11 @@ var ts;
                         emitEnd(member);
                         emitTrailingComments(member);
                     }
+<<<<<<< HEAD
                     else if (member.kind === 183 /* SemicolonClassElement */) {
+=======
+                    else if (member.kind === 181 /* SemicolonClassElement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         writeLine();
                         write(";");
                     }
@@ -30678,11 +36789,19 @@ var ts;
                 var hasInstancePropertyWithInitializer = false;
                 // Emit the constructor overload pinned comments
                 ts.forEach(node.members, function (member) {
+<<<<<<< HEAD
                     if (member.kind === 138 /* Constructor */ && !member.body) {
                         emitOnlyPinnedOrTripleSlashComments(member);
                     }
                     // Check if there is any non-static property assignment
                     if (member.kind === 135 /* PropertyDeclaration */ && member.initializer && (member.flags & 128 /* Static */) === 0) {
+=======
+                    if (member.kind === 137 /* Constructor */ && !member.body) {
+                        emitOnlyPinnedOrTripleSlashComments(member);
+                    }
+                    // Check if there is any non-static property assignment
+                    if (member.kind === 134 /* PropertyDeclaration */ && member.initializer && (member.flags & 128 /* Static */) === 0) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         hasInstancePropertyWithInitializer = true;
                     }
                 });
@@ -30790,7 +36909,11 @@ var ts;
             }
             function emitClassLikeDeclarationForES6AndHigher(node) {
                 var thisNodeIsDecorated = ts.nodeIsDecorated(node);
+<<<<<<< HEAD
                 if (node.kind === 206 /* ClassDeclaration */) {
+=======
+                if (node.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (thisNodeIsDecorated) {
                         // To preserve the correct runtime semantics when decorators are applied to the class,
                         // the emit needs to follow one of the following rules:
@@ -30870,7 +36993,11 @@ var ts;
                 // This keeps the expression as an expression, while ensuring that the static parts
                 // of it have been initialized by the time it is used.
                 var staticProperties = getInitializedProperties(node, true);
+<<<<<<< HEAD
                 var isClassExpressionWithStaticProperties = staticProperties.length > 0 && node.kind === 178 /* ClassExpression */;
+=======
+                var isClassExpressionWithStaticProperties = staticProperties.length > 0 && node.kind === 177 /* ClassExpression */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var tempVariable;
                 if (isClassExpressionWithStaticProperties) {
                     tempVariable = createAndRecordTempVariable(0 /* Auto */);
@@ -30954,7 +37081,11 @@ var ts;
                 }
             }
             function emitClassLikeDeclarationBelowES6(node) {
+<<<<<<< HEAD
                 if (node.kind === 206 /* ClassDeclaration */) {
+=======
+                if (node.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // source file level classes in system modules are hoisted so 'var's for them are already defined
                     if (!shouldHoistDeclarationInSystemJsModule(node)) {
                         write("var ");
@@ -31013,11 +37144,19 @@ var ts;
                     emit(baseTypeNode.expression);
                 }
                 write(")");
+<<<<<<< HEAD
                 if (node.kind === 206 /* ClassDeclaration */) {
                     write(";");
                 }
                 emitEnd(node);
                 if (node.kind === 206 /* ClassDeclaration */) {
+=======
+                if (node.kind === 204 /* ClassDeclaration */) {
+                    write(";");
+                }
+                emitEnd(node);
+                if (node.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     emitExportMemberAssignment(node);
                 }
                 if (languageVersion < 2 /* ES6 */ && node.parent === currentSourceFile && node.name) {
@@ -31109,7 +37248,11 @@ var ts;
                     else {
                         decorators = member.decorators;
                         // we only decorate the parameters here if this is a method
+<<<<<<< HEAD
                         if (member.kind === 137 /* MethodDeclaration */) {
+=======
+                        if (member.kind === 136 /* MethodDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             functionLikeMember = member;
                         }
                     }
@@ -31147,7 +37290,11 @@ var ts;
                     //
                     writeLine();
                     emitStart(member);
+<<<<<<< HEAD
                     if (member.kind !== 135 /* PropertyDeclaration */) {
+=======
+                    if (member.kind !== 134 /* PropertyDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         write("Object.defineProperty(");
                         emitStart(member.name);
                         emitClassMemberPrefix(node, member);
@@ -31177,7 +37324,11 @@ var ts;
                     write(", ");
                     emitExpressionForPropertyName(member.name);
                     emitEnd(member.name);
+<<<<<<< HEAD
                     if (member.kind !== 135 /* PropertyDeclaration */) {
+=======
+                    if (member.kind !== 134 /* PropertyDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         write(", Object.getOwnPropertyDescriptor(");
                         emitStart(member.name);
                         emitClassMemberPrefix(node, member);
@@ -31219,10 +37370,17 @@ var ts;
                 // The caller should have already tested whether the node has decorators and whether the emitDecoratorMetadata 
                 // compiler option is set.
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 137 /* MethodDeclaration */:
                     case 139 /* GetAccessor */:
                     case 140 /* SetAccessor */:
                     case 135 /* PropertyDeclaration */:
+=======
+                    case 136 /* MethodDeclaration */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                    case 134 /* PropertyDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
                 return false;
@@ -31232,7 +37390,11 @@ var ts;
                 // The caller should have already tested whether the node has decorators and whether the emitDecoratorMetadata 
                 // compiler option is set.
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 137 /* MethodDeclaration */:
+=======
+                    case 136 /* MethodDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
                 return false;
@@ -31242,9 +37404,15 @@ var ts;
                 // The caller should have already tested whether the node has decorators and whether the emitDecoratorMetadata 
                 // compiler option is set.
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 206 /* ClassDeclaration */:
                     case 137 /* MethodDeclaration */:
                     case 140 /* SetAccessor */:
+=======
+                    case 204 /* ClassDeclaration */:
+                    case 136 /* MethodDeclaration */:
+                    case 139 /* SetAccessor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
                 return false;
@@ -31420,7 +37588,11 @@ var ts;
                 }
             }
             function getInnerMostModuleDeclarationFromDottedModule(moduleDeclaration) {
+<<<<<<< HEAD
                 if (moduleDeclaration.body.kind === 210 /* ModuleDeclaration */) {
+=======
+                if (moduleDeclaration.body.kind === 208 /* ModuleDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var recursiveInnerModule = getInnerMostModuleDeclarationFromDottedModule(moduleDeclaration.body);
                     return recursiveInnerModule || moduleDeclaration.body;
                 }
@@ -31456,7 +37628,11 @@ var ts;
                 write(getGeneratedNameForNode(node));
                 emitEnd(node.name);
                 write(") ");
+<<<<<<< HEAD
                 if (node.body.kind === 211 /* ModuleBlock */) {
+=======
+                if (node.body.kind === 209 /* ModuleBlock */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var saveTempFlags = tempFlags;
                     var saveTempVariables = tempVariables;
                     tempFlags = 0;
@@ -31514,16 +37690,28 @@ var ts;
                 }
             }
             function getNamespaceDeclarationNode(node) {
+<<<<<<< HEAD
                 if (node.kind === 213 /* ImportEqualsDeclaration */) {
                     return node;
                 }
                 var importClause = node.importClause;
                 if (importClause && importClause.namedBindings && importClause.namedBindings.kind === 216 /* NamespaceImport */) {
+=======
+                if (node.kind === 211 /* ImportEqualsDeclaration */) {
+                    return node;
+                }
+                var importClause = node.importClause;
+                if (importClause && importClause.namedBindings && importClause.namedBindings.kind === 214 /* NamespaceImport */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return importClause.namedBindings;
                 }
             }
             function isDefaultImport(node) {
+<<<<<<< HEAD
                 return node.kind === 214 /* ImportDeclaration */ && node.importClause && !!node.importClause.name;
+=======
+                return node.kind === 212 /* ImportDeclaration */ && node.importClause && !!node.importClause.name;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             function emitExportImportAssignments(node) {
                 if (ts.isAliasSymbolDeclaration(node) && resolver.isValueAliasDeclaration(node)) {
@@ -31551,7 +37739,11 @@ var ts;
                         if (shouldEmitNamedBindings) {
                             emitLeadingComments(node.importClause.namedBindings);
                             emitStart(node.importClause.namedBindings);
+<<<<<<< HEAD
                             if (node.importClause.namedBindings.kind === 216 /* NamespaceImport */) {
+=======
+                            if (node.importClause.namedBindings.kind === 214 /* NamespaceImport */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 write("* as ");
                                 emit(node.importClause.namedBindings.name);
                             }
@@ -31577,7 +37769,11 @@ var ts;
             }
             function emitExternalImportDeclaration(node) {
                 if (ts.contains(externalImports, node)) {
+<<<<<<< HEAD
                     var isExportedImport = node.kind === 213 /* ImportEqualsDeclaration */ && (node.flags & 1 /* Export */) !== 0;
+=======
+                    var isExportedImport = node.kind === 211 /* ImportEqualsDeclaration */ && (node.flags & 1 /* Export */) !== 0;
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var namespaceDeclaration = getNamespaceDeclarationNode(node);
                     if (compilerOptions.module !== 2 /* AMD */) {
                         emitLeadingComments(node);
@@ -31596,7 +37792,11 @@ var ts;
                             // import { x, y } from "foo"
                             // import d, * as x from "foo"
                             // import d, { x, y } from "foo"
+<<<<<<< HEAD
                             var isNakedImport = 214 /* ImportDeclaration */ && !node.importClause;
+=======
+                            var isNakedImport = 212 /* ImportDeclaration */ && !node.importClause;
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (!isNakedImport) {
                                 write("var ");
                                 write(getGeneratedNameForNode(node));
@@ -31760,8 +37960,13 @@ var ts;
                         write("export default ");
                         var expression = node.expression;
                         emit(expression);
+<<<<<<< HEAD
                         if (expression.kind !== 205 /* FunctionDeclaration */ &&
                             expression.kind !== 206 /* ClassDeclaration */) {
+=======
+                        if (expression.kind !== 203 /* FunctionDeclaration */ &&
+                            expression.kind !== 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             write(";");
                         }
                         emitEnd(node);
@@ -31797,7 +38002,11 @@ var ts;
                 for (var _a = 0, _b = sourceFile.statements; _a < _b.length; _a++) {
                     var node = _b[_a];
                     switch (node.kind) {
+<<<<<<< HEAD
                         case 214 /* ImportDeclaration */:
+=======
+                        case 212 /* ImportDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (!node.importClause ||
                                 resolver.isReferencedAliasDeclaration(node.importClause, true)) {
                                 // import "mod"
@@ -31807,13 +38016,22 @@ var ts;
                                 externalImports.push(node);
                             }
                             break;
+<<<<<<< HEAD
                         case 213 /* ImportEqualsDeclaration */:
                             if (node.moduleReference.kind === 224 /* ExternalModuleReference */ && resolver.isReferencedAliasDeclaration(node)) {
+=======
+                        case 211 /* ImportEqualsDeclaration */:
+                            if (node.moduleReference.kind === 222 /* ExternalModuleReference */ && resolver.isReferencedAliasDeclaration(node)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 // import x = require("mod") where x is referenced
                                 externalImports.push(node);
                             }
                             break;
+<<<<<<< HEAD
                         case 220 /* ExportDeclaration */:
+=======
+                        case 218 /* ExportDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (node.moduleSpecifier) {
                                 if (!node.exportClause) {
                                     // export * from "mod"
@@ -31829,12 +38047,21 @@ var ts;
                                 // export { x, y }
                                 for (var _c = 0, _d = node.exportClause.elements; _c < _d.length; _c++) {
                                     var specifier = _d[_c];
+<<<<<<< HEAD
                                     var name_22 = (specifier.propertyName || specifier.name).text;
                                     (exportSpecifiers[name_22] || (exportSpecifiers[name_22] = [])).push(specifier);
                                 }
                             }
                             break;
                         case 219 /* ExportAssignment */:
+=======
+                                    var name_24 = (specifier.propertyName || specifier.name).text;
+                                    (exportSpecifiers[name_24] || (exportSpecifiers[name_24] = [])).push(specifier);
+                                }
+                            }
+                            break;
+                        case 217 /* ExportAssignment */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (node.isExportEquals && !exportEquals) {
                                 // export = x
                                 exportEquals = node;
@@ -31860,10 +38087,17 @@ var ts;
                 if (namespaceDeclaration && !isDefaultImport(node)) {
                     return ts.getSourceTextOfNodeFromSourceFile(currentSourceFile, namespaceDeclaration.name);
                 }
+<<<<<<< HEAD
                 if (node.kind === 214 /* ImportDeclaration */ && node.importClause) {
                     return getGeneratedNameForNode(node);
                 }
                 if (node.kind === 220 /* ExportDeclaration */ && node.moduleSpecifier) {
+=======
+                if (node.kind === 212 /* ImportDeclaration */ && node.importClause) {
+                    return getGeneratedNameForNode(node);
+                }
+                if (node.kind === 218 /* ExportDeclaration */ && node.moduleSpecifier) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return getGeneratedNameForNode(node);
                 }
             }
@@ -31883,8 +38117,13 @@ var ts;
                 for (var _a = 0; _a < externalImports.length; _a++) {
                     var importNode = externalImports[_a];
                     // do not create variable declaration for exports and imports that lack import clause
+<<<<<<< HEAD
                     var skipNode = importNode.kind === 220 /* ExportDeclaration */ ||
                         (importNode.kind === 214 /* ImportDeclaration */ && !importNode.importClause);
+=======
+                    var skipNode = importNode.kind === 218 /* ExportDeclaration */ ||
+                        (importNode.kind === 212 /* ImportDeclaration */ && !importNode.importClause);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (skipNode) {
                         continue;
                     }
@@ -31917,7 +38156,11 @@ var ts;
                     var hasExportDeclarationWithExportClause = false;
                     for (var _a = 0; _a < externalImports.length; _a++) {
                         var externalImport = externalImports[_a];
+<<<<<<< HEAD
                         if (externalImport.kind === 220 /* ExportDeclaration */ && externalImport.exportClause) {
+=======
+                        if (externalImport.kind === 218 /* ExportDeclaration */ && externalImport.exportClause) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             hasExportDeclarationWithExportClause = true;
                             break;
                         }
@@ -31949,7 +38192,11 @@ var ts;
                 }
                 for (var _d = 0; _d < externalImports.length; _d++) {
                     var externalImport = externalImports[_d];
+<<<<<<< HEAD
                     if (externalImport.kind !== 220 /* ExportDeclaration */) {
+=======
+                    if (externalImport.kind !== 218 /* ExportDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         continue;
                     }
                     var exportDecl = externalImport;
@@ -32033,12 +38280,21 @@ var ts;
                     var seen = {};
                     for (var i = 0; i < hoistedVars.length; ++i) {
                         var local = hoistedVars[i];
+<<<<<<< HEAD
                         var name_23 = local.kind === 66 /* Identifier */
                             ? local
                             : local.name;
                         if (name_23) {
                             // do not emit duplicate entries (in case of declaration merging) in the list of hoisted variables
                             var text = ts.unescapeIdentifier(name_23.text);
+=======
+                        var name_25 = local.kind === 65 /* Identifier */
+                            ? local
+                            : local.name;
+                        if (name_25) {
+                            // do not emit duplicate entries (in case of declaration merging) in the list of hoisted variables
+                            var text = ts.unescapeIdentifier(name_25.text);
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (ts.hasProperty(seen, text)) {
                                 continue;
                             }
@@ -32049,7 +38305,11 @@ var ts;
                         if (i !== 0) {
                             write(", ");
                         }
+<<<<<<< HEAD
                         if (local.kind === 206 /* ClassDeclaration */ || local.kind === 210 /* ModuleDeclaration */ || local.kind === 209 /* EnumDeclaration */) {
+=======
+                        if (local.kind === 204 /* ClassDeclaration */ || local.kind === 208 /* ModuleDeclaration */ || local.kind === 207 /* EnumDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             emitDeclarationName(local);
                         }
                         else {
@@ -32083,21 +38343,33 @@ var ts;
                     if (node.flags & 2 /* Ambient */) {
                         return;
                     }
+<<<<<<< HEAD
                     if (node.kind === 205 /* FunctionDeclaration */) {
+=======
+                    if (node.kind === 203 /* FunctionDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (!hoistedFunctionDeclarations) {
                             hoistedFunctionDeclarations = [];
                         }
                         hoistedFunctionDeclarations.push(node);
                         return;
                     }
+<<<<<<< HEAD
                     if (node.kind === 206 /* ClassDeclaration */) {
+=======
+                    if (node.kind === 204 /* ClassDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (!hoistedVars) {
                             hoistedVars = [];
                         }
                         hoistedVars.push(node);
                         return;
                     }
+<<<<<<< HEAD
                     if (node.kind === 209 /* EnumDeclaration */) {
+=======
+                    if (node.kind === 207 /* EnumDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (shouldEmitEnumDeclaration(node)) {
                             if (!hoistedVars) {
                                 hoistedVars = [];
@@ -32106,7 +38378,11 @@ var ts;
                         }
                         return;
                     }
+<<<<<<< HEAD
                     if (node.kind === 210 /* ModuleDeclaration */) {
+=======
+                    if (node.kind === 208 /* ModuleDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (shouldEmitModuleDeclaration(node)) {
                             if (!hoistedVars) {
                                 hoistedVars = [];
@@ -32115,6 +38391,7 @@ var ts;
                         }
                         return;
                     }
+<<<<<<< HEAD
                     if (node.kind === 203 /* VariableDeclaration */ || node.kind === 156 /* BindingElement */) {
                         if (shouldHoistVariable(node, false)) {
                             var name_24 = node.name;
@@ -32126,6 +38403,19 @@ var ts;
                             }
                             else {
                                 ts.forEachChild(name_24, visit);
+=======
+                    if (node.kind === 201 /* VariableDeclaration */ || node.kind === 155 /* BindingElement */) {
+                        if (shouldHoistVariable(node, false)) {
+                            var name_26 = node.name;
+                            if (name_26.kind === 65 /* Identifier */) {
+                                if (!hoistedVars) {
+                                    hoistedVars = [];
+                                }
+                                hoistedVars.push(name_26);
+                            }
+                            else {
+                                ts.forEachChild(name_26, visit);
+>>>>>>> Updated compiler to emitDependencyFile branch
                             }
                         }
                         return;
@@ -32149,7 +38439,11 @@ var ts;
                 // if block scoped variables are nested in some another block then 
                 // no other functions can use them except ones that are defined at least in the same block
                 return (ts.getCombinedNodeFlags(node) & 12288 /* BlockScoped */) === 0 ||
+<<<<<<< HEAD
                     ts.getEnclosingBlockScopeContainer(node).kind === 240 /* SourceFile */;
+=======
+                    ts.getEnclosingBlockScopeContainer(node).kind === 230 /* SourceFile */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             function isCurrentFileSystemExternalModule() {
                 return compilerOptions.module === 4 /* System */ && ts.isExternalModule(currentSourceFile);
@@ -32220,21 +38514,33 @@ var ts;
                     var parameterName = "_" + importVariableName;
                     write("function (" + parameterName + ") {");
                     switch (importNode.kind) {
+<<<<<<< HEAD
                         case 214 /* ImportDeclaration */:
+=======
+                        case 212 /* ImportDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (!importNode.importClause) {
                                 // 'import "..."' case
                                 // module is imported only for side-effects, setter body will be empty
                                 break;
                             }
                         // fall-through
+<<<<<<< HEAD
                         case 213 /* ImportEqualsDeclaration */:
+=======
+                        case 211 /* ImportEqualsDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             ts.Debug.assert(importVariableName !== "");
                             increaseIndent();
                             writeLine();
                             // save import into the local
                             write(importVariableName + " = " + parameterName + ";");
                             writeLine();
+<<<<<<< HEAD
                             var defaultName = importNode.kind === 214 /* ImportDeclaration */
+=======
+                            var defaultName = importNode.kind === 212 /* ImportDeclaration */
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 ? importNode.importClause.name
                                 : importNode.name;
                             if (defaultName) {
@@ -32246,10 +38552,17 @@ var ts;
                                 emitExportMemberAssignments(defaultName);
                                 writeLine();
                             }
+<<<<<<< HEAD
                             if (importNode.kind === 214 /* ImportDeclaration */ &&
                                 importNode.importClause.namedBindings) {
                                 var namedBindings = importNode.importClause.namedBindings;
                                 if (namedBindings.kind === 216 /* NamespaceImport */) {
+=======
+                            if (importNode.kind === 212 /* ImportDeclaration */ &&
+                                importNode.importClause.namedBindings) {
+                                var namedBindings = importNode.importClause.namedBindings;
+                                if (namedBindings.kind === 214 /* NamespaceImport */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                     // emit re-export for namespace
                                     // import * as n from 'foo'
                                     // export {n}
@@ -32269,7 +38582,11 @@ var ts;
                             }
                             decreaseIndent();
                             break;
+<<<<<<< HEAD
                         case 220 /* ExportDeclaration */:
+=======
+                        case 218 /* ExportDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             ts.Debug.assert(importVariableName !== "");
                             increaseIndent();
                             if (importNode.exportClause) {
@@ -32312,10 +38629,17 @@ var ts;
                     // - imports/exports are not emitted for system modules
                     // - function declarations are not emitted because they were already hoisted
                     switch (statement.kind) {
+<<<<<<< HEAD
                         case 220 /* ExportDeclaration */:
                         case 214 /* ImportDeclaration */:
                         case 213 /* ImportEqualsDeclaration */:
                         case 205 /* FunctionDeclaration */:
+=======
+                        case 218 /* ExportDeclaration */:
+                        case 212 /* ImportDeclaration */:
+                        case 211 /* ImportEqualsDeclaration */:
+                        case 203 /* FunctionDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             continue;
                     }
                     writeLine();
@@ -32666,6 +38990,7 @@ var ts;
                 switch (node.kind) {
                     // All of these entities are emitted in a specialized fashion.  As such, we allow
                     // the specialized methods for each to handle the comments on the nodes.
+<<<<<<< HEAD
                     case 207 /* InterfaceDeclaration */:
                     case 205 /* FunctionDeclaration */:
                     case 214 /* ImportDeclaration */:
@@ -32680,6 +39005,22 @@ var ts;
                         // emitting the module as well.
                         return shouldEmitModuleDeclaration(node);
                     case 209 /* EnumDeclaration */:
+=======
+                    case 205 /* InterfaceDeclaration */:
+                    case 203 /* FunctionDeclaration */:
+                    case 212 /* ImportDeclaration */:
+                    case 211 /* ImportEqualsDeclaration */:
+                    case 206 /* TypeAliasDeclaration */:
+                    case 217 /* ExportAssignment */:
+                        return false;
+                    case 183 /* VariableStatement */:
+                        return shouldEmitLeadingAndTrailingCommentsForVariableStatement(node);
+                    case 208 /* ModuleDeclaration */:
+                        // Only emit the leading/trailing comments for a module if we're actually
+                        // emitting the module as well.
+                        return shouldEmitModuleDeclaration(node);
+                    case 207 /* EnumDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Only emit the leading/trailing comments for an enum if we're actually
                         // emitting the module as well.
                         return shouldEmitEnumDeclaration(node);
@@ -32688,9 +39029,15 @@ var ts;
                 // then we don't want to emit comments when we emit the body.  It will have already
                 // been taken care of when we emitted the 'return' statement for the function
                 // expression body.
+<<<<<<< HEAD
                 if (node.kind !== 184 /* Block */ &&
                     node.parent &&
                     node.parent.kind === 167 /* ArrowFunction */ &&
+=======
+                if (node.kind !== 182 /* Block */ &&
+                    node.parent &&
+                    node.parent.kind === 166 /* ArrowFunction */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
                     node.parent.body === node &&
                     compilerOptions.target <= 1 /* ES5 */) {
                     return false;
@@ -32701,6 +39048,7 @@ var ts;
             function emitJavaScriptWorker(node) {
                 // Check if the node can be emitted regardless of the ScriptTarget
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 66 /* Identifier */:
                         return emitIdentifier(node);
                     case 132 /* Parameter */:
@@ -32710,6 +39058,17 @@ var ts;
                         return emitMethod(node);
                     case 139 /* GetAccessor */:
                     case 140 /* SetAccessor */:
+=======
+                    case 65 /* Identifier */:
+                        return emitIdentifier(node);
+                    case 131 /* Parameter */:
+                        return emitParameter(node);
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+                        return emitMethod(node);
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return emitAccessor(node);
                     case 94 /* ThisKeyword */:
                         return emitThis(node);
@@ -32729,6 +39088,7 @@ var ts;
                     case 12 /* TemplateMiddle */:
                     case 13 /* TemplateTail */:
                         return emitLiteral(node);
+<<<<<<< HEAD
                     case 175 /* TemplateExpression */:
                         return emitTemplateExpression(node);
                     case 182 /* TemplateSpan */:
@@ -32863,6 +39223,133 @@ var ts;
                     case 219 /* ExportAssignment */:
                         return emitExportAssignment(node);
                     case 240 /* SourceFile */:
+=======
+                    case 174 /* TemplateExpression */:
+                        return emitTemplateExpression(node);
+                    case 180 /* TemplateSpan */:
+                        return emitTemplateSpan(node);
+                    case 128 /* QualifiedName */:
+                        return emitQualifiedName(node);
+                    case 153 /* ObjectBindingPattern */:
+                        return emitObjectBindingPattern(node);
+                    case 154 /* ArrayBindingPattern */:
+                        return emitArrayBindingPattern(node);
+                    case 155 /* BindingElement */:
+                        return emitBindingElement(node);
+                    case 156 /* ArrayLiteralExpression */:
+                        return emitArrayLiteral(node);
+                    case 157 /* ObjectLiteralExpression */:
+                        return emitObjectLiteral(node);
+                    case 227 /* PropertyAssignment */:
+                        return emitPropertyAssignment(node);
+                    case 228 /* ShorthandPropertyAssignment */:
+                        return emitShorthandPropertyAssignment(node);
+                    case 129 /* ComputedPropertyName */:
+                        return emitComputedPropertyName(node);
+                    case 158 /* PropertyAccessExpression */:
+                        return emitPropertyAccess(node);
+                    case 159 /* ElementAccessExpression */:
+                        return emitIndexedAccess(node);
+                    case 160 /* CallExpression */:
+                        return emitCallExpression(node);
+                    case 161 /* NewExpression */:
+                        return emitNewExpression(node);
+                    case 162 /* TaggedTemplateExpression */:
+                        return emitTaggedTemplateExpression(node);
+                    case 163 /* TypeAssertionExpression */:
+                        return emit(node.expression);
+                    case 164 /* ParenthesizedExpression */:
+                        return emitParenExpression(node);
+                    case 203 /* FunctionDeclaration */:
+                    case 165 /* FunctionExpression */:
+                    case 166 /* ArrowFunction */:
+                        return emitFunctionDeclaration(node);
+                    case 167 /* DeleteExpression */:
+                        return emitDeleteExpression(node);
+                    case 168 /* TypeOfExpression */:
+                        return emitTypeOfExpression(node);
+                    case 169 /* VoidExpression */:
+                        return emitVoidExpression(node);
+                    case 170 /* PrefixUnaryExpression */:
+                        return emitPrefixUnaryExpression(node);
+                    case 171 /* PostfixUnaryExpression */:
+                        return emitPostfixUnaryExpression(node);
+                    case 172 /* BinaryExpression */:
+                        return emitBinaryExpression(node);
+                    case 173 /* ConditionalExpression */:
+                        return emitConditionalExpression(node);
+                    case 176 /* SpreadElementExpression */:
+                        return emitSpreadElementExpression(node);
+                    case 175 /* YieldExpression */:
+                        return emitYieldExpression(node);
+                    case 178 /* OmittedExpression */:
+                        return;
+                    case 182 /* Block */:
+                    case 209 /* ModuleBlock */:
+                        return emitBlock(node);
+                    case 183 /* VariableStatement */:
+                        return emitVariableStatement(node);
+                    case 184 /* EmptyStatement */:
+                        return write(";");
+                    case 185 /* ExpressionStatement */:
+                        return emitExpressionStatement(node);
+                    case 186 /* IfStatement */:
+                        return emitIfStatement(node);
+                    case 187 /* DoStatement */:
+                        return emitDoStatement(node);
+                    case 188 /* WhileStatement */:
+                        return emitWhileStatement(node);
+                    case 189 /* ForStatement */:
+                        return emitForStatement(node);
+                    case 191 /* ForOfStatement */:
+                    case 190 /* ForInStatement */:
+                        return emitForInOrForOfStatement(node);
+                    case 192 /* ContinueStatement */:
+                    case 193 /* BreakStatement */:
+                        return emitBreakOrContinueStatement(node);
+                    case 194 /* ReturnStatement */:
+                        return emitReturnStatement(node);
+                    case 195 /* WithStatement */:
+                        return emitWithStatement(node);
+                    case 196 /* SwitchStatement */:
+                        return emitSwitchStatement(node);
+                    case 223 /* CaseClause */:
+                    case 224 /* DefaultClause */:
+                        return emitCaseOrDefaultClause(node);
+                    case 197 /* LabeledStatement */:
+                        return emitLabelledStatement(node);
+                    case 198 /* ThrowStatement */:
+                        return emitThrowStatement(node);
+                    case 199 /* TryStatement */:
+                        return emitTryStatement(node);
+                    case 226 /* CatchClause */:
+                        return emitCatchClause(node);
+                    case 200 /* DebuggerStatement */:
+                        return emitDebuggerStatement(node);
+                    case 201 /* VariableDeclaration */:
+                        return emitVariableDeclaration(node);
+                    case 177 /* ClassExpression */:
+                        return emitClassExpression(node);
+                    case 204 /* ClassDeclaration */:
+                        return emitClassDeclaration(node);
+                    case 205 /* InterfaceDeclaration */:
+                        return emitInterfaceDeclaration(node);
+                    case 207 /* EnumDeclaration */:
+                        return emitEnumDeclaration(node);
+                    case 229 /* EnumMember */:
+                        return emitEnumMember(node);
+                    case 208 /* ModuleDeclaration */:
+                        return emitModuleDeclaration(node);
+                    case 212 /* ImportDeclaration */:
+                        return emitImportDeclaration(node);
+                    case 211 /* ImportEqualsDeclaration */:
+                        return emitImportEqualsDeclaration(node);
+                    case 218 /* ExportDeclaration */:
+                        return emitExportDeclaration(node);
+                    case 217 /* ExportAssignment */:
+                        return emitExportAssignment(node);
+                    case 230 /* SourceFile */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return emitSourceFileNode(node);
                 }
             }
@@ -32894,7 +39381,11 @@ var ts;
             function getLeadingCommentsToEmit(node) {
                 // Emit the leading comments only if the parent's pos doesn't match because parent should take care of emitting these comments
                 if (node.parent) {
+<<<<<<< HEAD
                     if (node.parent.kind === 240 /* SourceFile */ || node.pos !== node.parent.pos) {
+=======
+                    if (node.parent.kind === 230 /* SourceFile */ || node.pos !== node.parent.pos) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (hasDetachedComments(node.pos)) {
                             // get comments without detached comments
                             return getLeadingCommentsWithoutDetachedComments();
@@ -32909,7 +39400,11 @@ var ts;
             function getTrailingCommentsToEmit(node) {
                 // Emit the trailing comments only if the parent's pos doesn't match because parent should take care of emitting these comments
                 if (node.parent) {
+<<<<<<< HEAD
                     if (node.parent.kind === 240 /* SourceFile */ || node.end !== node.parent.end) {
+=======
+                    if (node.parent.kind === 230 /* SourceFile */ || node.end !== node.parent.end) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return ts.getTrailingCommentRanges(currentSourceFile.text, node.end);
                     }
                 }
@@ -33289,6 +39784,10 @@ var ts;
         function processSourceFile(fileName, isDefaultLib, refFile, refPos, refEnd) {
             var start;
             var length;
+<<<<<<< HEAD
+=======
+            var extensions;
+>>>>>>> Updated compiler to emitDependencyFile branch
             var diagnosticArgument;
             if (refEnd !== undefined && refPos !== undefined) {
                 start = refPos;
@@ -33393,7 +39892,11 @@ var ts;
         }
         function processImportedModules(file, basePath) {
             ts.forEach(file.statements, function (node) {
+<<<<<<< HEAD
                 if (node.kind === 214 /* ImportDeclaration */ || node.kind === 213 /* ImportEqualsDeclaration */ || node.kind === 220 /* ExportDeclaration */) {
+=======
+                if (node.kind === 212 /* ImportDeclaration */ || node.kind === 211 /* ImportEqualsDeclaration */ || node.kind === 218 /* ExportDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var moduleNameExpr = ts.getExternalModuleName(node);
                     if (moduleNameExpr && moduleNameExpr.kind === 8 /* StringLiteral */) {
                         var moduleNameText = moduleNameExpr.text;
@@ -33414,7 +39917,11 @@ var ts;
                         }
                     }
                 }
+<<<<<<< HEAD
                 else if (node.kind === 210 /* ModuleDeclaration */ && node.name.kind === 8 /* StringLiteral */ && (node.flags & 2 /* Ambient */ || ts.isDeclarationFile(file))) {
+=======
+                else if (node.kind === 208 /* ModuleDeclaration */ && node.name.kind === 8 /* StringLiteral */ && (node.flags & 2 /* Ambient */ || ts.isDeclarationFile(file))) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // TypeScript 1.0 spec (April 2014): 12.1.6
                     // An AmbientExternalModuleDeclaration declares an external module. 
                     // This type of declaration is permitted only in the global module.
@@ -34002,6 +40509,7 @@ var ts;
             }
             else {
                 var exclude = json["exclude"] instanceof Array ? ts.map(json["exclude"], ts.normalizeSlashes) : undefined;
+<<<<<<< HEAD
                 var sysFiles = host.readDirectory(basePath, ".ts", exclude).concat(host.readDirectory(basePath, ".tsx", exclude));
                 for (var i = 0; i < sysFiles.length; i++) {
                     var name_25 = sysFiles[i];
@@ -34018,6 +40526,13 @@ var ts;
                     }
                     else {
                         fileNames.push(name_25);
+=======
+                var sysFiles = host.readDirectory(basePath, ".ts", exclude);
+                for (var i = 0; i < sysFiles.length; i++) {
+                    var name = sysFiles[i];
+                    if (!ts.fileExtensionIs(name, ".d.ts") || !ts.contains(sysFiles, name.substr(0, name.length - 5) + ".ts")) {
+                        fileNames.push(name);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     }
                 }
             }
@@ -34098,7 +40613,11 @@ var ts;
                 }
             }
             function autoCollapse(node) {
+<<<<<<< HEAD
                 return ts.isFunctionBlock(node) && node.parent.kind !== 167 /* ArrowFunction */;
+=======
+                return ts.isFunctionBlock(node) && node.parent.kind !== 166 /* ArrowFunction */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             var depth = 0;
             var maxDepth = 20;
@@ -34110,7 +40629,11 @@ var ts;
                     addOutliningForLeadingCommentsForNode(n);
                 }
                 switch (n.kind) {
+<<<<<<< HEAD
                     case 184 /* Block */:
+=======
+                    case 182 /* Block */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (!ts.isFunctionBlock(n)) {
                             var parent_8 = n.parent;
                             var openBrace = ts.findChildOfKind(n, 14 /* OpenBraceToken */, sourceFile);
@@ -34118,6 +40641,7 @@ var ts;
                             // Check if the block is standalone, or 'attached' to some parent statement.
                             // If the latter, we want to collaps the block, but consider its hint span
                             // to be the entire span of the parent.
+<<<<<<< HEAD
                             if (parent_8.kind === 189 /* DoStatement */ ||
                                 parent_8.kind === 192 /* ForInStatement */ ||
                                 parent_8.kind === 193 /* ForOfStatement */ ||
@@ -34130,6 +40654,20 @@ var ts;
                                 break;
                             }
                             if (parent_8.kind === 201 /* TryStatement */) {
+=======
+                            if (parent_8.kind === 187 /* DoStatement */ ||
+                                parent_8.kind === 190 /* ForInStatement */ ||
+                                parent_8.kind === 191 /* ForOfStatement */ ||
+                                parent_8.kind === 189 /* ForStatement */ ||
+                                parent_8.kind === 186 /* IfStatement */ ||
+                                parent_8.kind === 188 /* WhileStatement */ ||
+                                parent_8.kind === 195 /* WithStatement */ ||
+                                parent_8.kind === 226 /* CatchClause */) {
+                                addOutliningSpan(parent_8, openBrace, closeBrace, autoCollapse(n));
+                                break;
+                            }
+                            if (parent_8.kind === 199 /* TryStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 // Could be the try-block, or the finally-block.
                                 var tryStatement = parent_8;
                                 if (tryStatement.tryBlock === n) {
@@ -34156,23 +40694,39 @@ var ts;
                             break;
                         }
                     // Fallthrough.
+<<<<<<< HEAD
                     case 211 /* ModuleBlock */: {
+=======
+                    case 209 /* ModuleBlock */: {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var openBrace = ts.findChildOfKind(n, 14 /* OpenBraceToken */, sourceFile);
                         var closeBrace = ts.findChildOfKind(n, 15 /* CloseBraceToken */, sourceFile);
                         addOutliningSpan(n.parent, openBrace, closeBrace, autoCollapse(n));
                         break;
                     }
+<<<<<<< HEAD
                     case 206 /* ClassDeclaration */:
                     case 207 /* InterfaceDeclaration */:
                     case 209 /* EnumDeclaration */:
                     case 158 /* ObjectLiteralExpression */:
                     case 212 /* CaseBlock */: {
+=======
+                    case 204 /* ClassDeclaration */:
+                    case 205 /* InterfaceDeclaration */:
+                    case 207 /* EnumDeclaration */:
+                    case 157 /* ObjectLiteralExpression */:
+                    case 210 /* CaseBlock */: {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var openBrace = ts.findChildOfKind(n, 14 /* OpenBraceToken */, sourceFile);
                         var closeBrace = ts.findChildOfKind(n, 15 /* CloseBraceToken */, sourceFile);
                         addOutliningSpan(n, openBrace, closeBrace, autoCollapse(n));
                         break;
                     }
+<<<<<<< HEAD
                     case 157 /* ArrayLiteralExpression */:
+=======
+                    case 156 /* ArrayLiteralExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var openBracket = ts.findChildOfKind(n, 18 /* OpenBracketToken */, sourceFile);
                         var closeBracket = ts.findChildOfKind(n, 19 /* CloseBracketToken */, sourceFile);
                         addOutliningSpan(n, openBracket, closeBracket, autoCollapse(n));
@@ -34200,12 +40754,21 @@ var ts;
             ts.forEach(program.getSourceFiles(), function (sourceFile) {
                 cancellationToken.throwIfCancellationRequested();
                 var nameToDeclarations = sourceFile.getNamedDeclarations();
+<<<<<<< HEAD
                 for (var name_26 in nameToDeclarations) {
                     var declarations = ts.getProperty(nameToDeclarations, name_26);
                     if (declarations) {
                         // First do a quick check to see if the name of the declaration matches the 
                         // last portion of the (possibly) dotted name they're searching for.
                         var matches = patternMatcher.getMatchesForLastSegmentOfPattern(name_26);
+=======
+                for (var name_27 in nameToDeclarations) {
+                    var declarations = ts.getProperty(nameToDeclarations, name_27);
+                    if (declarations) {
+                        // First do a quick check to see if the name of the declaration matches the 
+                        // last portion of the (possibly) dotted name they're searching for.
+                        var matches = patternMatcher.getMatchesForLastSegmentOfPattern(name_27);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (!matches) {
                             continue;
                         }
@@ -34218,14 +40781,22 @@ var ts;
                                 if (!containers) {
                                     return undefined;
                                 }
+<<<<<<< HEAD
                                 matches = patternMatcher.getMatches(containers, name_26);
+=======
+                                matches = patternMatcher.getMatches(containers, name_27);
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (!matches) {
                                     continue;
                                 }
                             }
                             var fileName = sourceFile.fileName;
                             var matchKind = bestMatchKind(matches);
+<<<<<<< HEAD
                             rawItems.push({ name: name_26, fileName: fileName, matchKind: matchKind, isCaseSensitive: allMatchesAreCaseSensitive(matches), declaration: declaration });
+=======
+                            rawItems.push({ name: name_27, fileName: fileName, matchKind: matchKind, isCaseSensitive: allMatchesAreCaseSensitive(matches), declaration: declaration });
+>>>>>>> Updated compiler to emitDependencyFile branch
                         }
                     }
                 }
@@ -34263,7 +40834,11 @@ var ts;
                     if (text !== undefined) {
                         containers.unshift(text);
                     }
+<<<<<<< HEAD
                     else if (declaration.name.kind === 130 /* ComputedPropertyName */) {
+=======
+                    else if (declaration.name.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return tryAddComputedPropertyName(declaration.name.expression, containers, true);
                     }
                     else {
@@ -34284,7 +40859,11 @@ var ts;
                     }
                     return true;
                 }
+<<<<<<< HEAD
                 if (expression.kind === 159 /* PropertyAccessExpression */) {
+=======
+                if (expression.kind === 158 /* PropertyAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var propertyAccess = expression;
                     if (includeLastPortion) {
                         containers.unshift(propertyAccess.name.text);
@@ -34297,7 +40876,11 @@ var ts;
                 var containers = [];
                 // First, if we started with a computed property name, then add all but the last
                 // portion into the container array.
+<<<<<<< HEAD
                 if (declaration.name.kind === 130 /* ComputedPropertyName */) {
+=======
+                if (declaration.name.kind === 129 /* ComputedPropertyName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (!tryAddComputedPropertyName(declaration.name.expression, containers, false)) {
                         return undefined;
                     }
@@ -34373,17 +40956,30 @@ var ts;
                 var current = node.parent;
                 while (current) {
                     switch (current.kind) {
+<<<<<<< HEAD
                         case 210 /* ModuleDeclaration */:
+=======
+                        case 208 /* ModuleDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // If we have a module declared as A.B.C, it is more "intuitive"
                             // to say it only has a single layer of depth
                             do {
                                 current = current.parent;
+<<<<<<< HEAD
                             } while (current.kind === 210 /* ModuleDeclaration */);
                         // fall through
                         case 206 /* ClassDeclaration */:
                         case 209 /* EnumDeclaration */:
                         case 207 /* InterfaceDeclaration */:
                         case 205 /* FunctionDeclaration */:
+=======
+                            } while (current.kind === 208 /* ModuleDeclaration */);
+                        // fall through
+                        case 204 /* ClassDeclaration */:
+                        case 207 /* EnumDeclaration */:
+                        case 205 /* InterfaceDeclaration */:
+                        case 203 /* FunctionDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             indent++;
                     }
                     current = current.parent;
@@ -34394,6 +40990,7 @@ var ts;
                 var childNodes = [];
                 function visit(node) {
                     switch (node.kind) {
+<<<<<<< HEAD
                         case 185 /* VariableStatement */:
                             ts.forEach(node.declarationList.declarations, visit);
                             break;
@@ -34402,13 +40999,27 @@ var ts;
                             ts.forEach(node.elements, visit);
                             break;
                         case 220 /* ExportDeclaration */:
+=======
+                        case 183 /* VariableStatement */:
+                            ts.forEach(node.declarationList.declarations, visit);
+                            break;
+                        case 153 /* ObjectBindingPattern */:
+                        case 154 /* ArrayBindingPattern */:
+                            ts.forEach(node.elements, visit);
+                            break;
+                        case 218 /* ExportDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // Handle named exports case e.g.:
                             //    export {a, b as B} from "mod";
                             if (node.exportClause) {
                                 ts.forEach(node.exportClause.elements, visit);
                             }
                             break;
+<<<<<<< HEAD
                         case 214 /* ImportDeclaration */:
+=======
+                        case 212 /* ImportDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var importClause = node.importClause;
                             if (importClause) {
                                 // Handle default import case e.g.:
@@ -34420,7 +41031,11 @@ var ts;
                                 //    import * as NS from "mod";
                                 //    import {a, b as B} from "mod";
                                 if (importClause.namedBindings) {
+<<<<<<< HEAD
                                     if (importClause.namedBindings.kind === 216 /* NamespaceImport */) {
+=======
+                                    if (importClause.namedBindings.kind === 214 /* NamespaceImport */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                         childNodes.push(importClause.namedBindings);
                                     }
                                     else {
@@ -34429,13 +41044,19 @@ var ts;
                                 }
                             }
                             break;
+<<<<<<< HEAD
                         case 156 /* BindingElement */:
                         case 203 /* VariableDeclaration */:
+=======
+                        case 155 /* BindingElement */:
+                        case 201 /* VariableDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (ts.isBindingPattern(node.name)) {
                                 visit(node.name);
                                 break;
                             }
                         // Fall through
+<<<<<<< HEAD
                         case 206 /* ClassDeclaration */:
                         case 209 /* EnumDeclaration */:
                         case 207 /* InterfaceDeclaration */:
@@ -34444,6 +41065,16 @@ var ts;
                         case 213 /* ImportEqualsDeclaration */:
                         case 218 /* ImportSpecifier */:
                         case 222 /* ExportSpecifier */:
+=======
+                        case 204 /* ClassDeclaration */:
+                        case 207 /* EnumDeclaration */:
+                        case 205 /* InterfaceDeclaration */:
+                        case 208 /* ModuleDeclaration */:
+                        case 203 /* FunctionDeclaration */:
+                        case 211 /* ImportEqualsDeclaration */:
+                        case 216 /* ImportSpecifier */:
+                        case 220 /* ExportSpecifier */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             childNodes.push(node);
                             break;
                     }
@@ -34491,17 +41122,30 @@ var ts;
                 for (var _i = 0; _i < nodes.length; _i++) {
                     var node = nodes[_i];
                     switch (node.kind) {
+<<<<<<< HEAD
                         case 206 /* ClassDeclaration */:
                         case 209 /* EnumDeclaration */:
                         case 207 /* InterfaceDeclaration */:
                             topLevelNodes.push(node);
                             break;
                         case 210 /* ModuleDeclaration */:
+=======
+                        case 204 /* ClassDeclaration */:
+                        case 207 /* EnumDeclaration */:
+                        case 205 /* InterfaceDeclaration */:
+                            topLevelNodes.push(node);
+                            break;
+                        case 208 /* ModuleDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var moduleDeclaration = node;
                             topLevelNodes.push(node);
                             addTopLevelNodes(getInnermostModule(moduleDeclaration).body.statements, topLevelNodes);
                             break;
+<<<<<<< HEAD
                         case 205 /* FunctionDeclaration */:
+=======
+                        case 203 /* FunctionDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var functionDeclaration = node;
                             if (isTopLevelFunctionDeclaration(functionDeclaration)) {
                                 topLevelNodes.push(node);
@@ -34512,12 +41156,21 @@ var ts;
                 }
             }
             function isTopLevelFunctionDeclaration(functionDeclaration) {
+<<<<<<< HEAD
                 if (functionDeclaration.kind === 205 /* FunctionDeclaration */) {
                     // A function declaration is 'top level' if it contains any function declarations 
                     // within it. 
                     if (functionDeclaration.body && functionDeclaration.body.kind === 184 /* Block */) {
                         // Proper function declarations can only have identifier names
                         if (ts.forEach(functionDeclaration.body.statements, function (s) { return s.kind === 205 /* FunctionDeclaration */ && !isEmpty(s.name.text); })) {
+=======
+                if (functionDeclaration.kind === 203 /* FunctionDeclaration */) {
+                    // A function declaration is 'top level' if it contains any function declarations 
+                    // within it. 
+                    if (functionDeclaration.body && functionDeclaration.body.kind === 182 /* Block */) {
+                        // Proper function declarations can only have identifier names
+                        if (ts.forEach(functionDeclaration.body.statements, function (s) { return s.kind === 203 /* FunctionDeclaration */ && !isEmpty(s.name.text); })) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return true;
                         }
                         // Or if it is not parented by another function.  i.e all functions
@@ -34577,7 +41230,11 @@ var ts;
             }
             function createChildItem(node) {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 132 /* Parameter */:
+=======
+                    case 131 /* Parameter */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (ts.isBindingPattern(node.name)) {
                             break;
                         }
@@ -34585,6 +41242,7 @@ var ts;
                             return undefined;
                         }
                         return createItem(node, getTextOfNode(node.name), ts.ScriptElementKind.memberVariableElement);
+<<<<<<< HEAD
                     case 137 /* MethodDeclaration */:
                     case 136 /* MethodSignature */:
                         return createItem(node, getTextOfNode(node.name), ts.ScriptElementKind.memberFunctionElement);
@@ -34615,6 +41273,38 @@ var ts;
                             // binding elements are added only for variable declarations
                             // bubble up to the containing variable declaration
                             while (variableDeclarationNode && variableDeclarationNode.kind !== 203 /* VariableDeclaration */) {
+=======
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+                        return createItem(node, getTextOfNode(node.name), ts.ScriptElementKind.memberFunctionElement);
+                    case 138 /* GetAccessor */:
+                        return createItem(node, getTextOfNode(node.name), ts.ScriptElementKind.memberGetAccessorElement);
+                    case 139 /* SetAccessor */:
+                        return createItem(node, getTextOfNode(node.name), ts.ScriptElementKind.memberSetAccessorElement);
+                    case 142 /* IndexSignature */:
+                        return createItem(node, "[]", ts.ScriptElementKind.indexSignatureElement);
+                    case 229 /* EnumMember */:
+                        return createItem(node, getTextOfNode(node.name), ts.ScriptElementKind.memberVariableElement);
+                    case 140 /* CallSignature */:
+                        return createItem(node, "()", ts.ScriptElementKind.callSignatureElement);
+                    case 141 /* ConstructSignature */:
+                        return createItem(node, "new()", ts.ScriptElementKind.constructSignatureElement);
+                    case 134 /* PropertyDeclaration */:
+                    case 133 /* PropertySignature */:
+                        return createItem(node, getTextOfNode(node.name), ts.ScriptElementKind.memberVariableElement);
+                    case 203 /* FunctionDeclaration */:
+                        return createItem(node, getTextOfNode(node.name), ts.ScriptElementKind.functionElement);
+                    case 201 /* VariableDeclaration */:
+                    case 155 /* BindingElement */:
+                        var variableDeclarationNode;
+                        var name_28;
+                        if (node.kind === 155 /* BindingElement */) {
+                            name_28 = node.name;
+                            variableDeclarationNode = node;
+                            // binding elements are added only for variable declarations
+                            // bubble up to the containing variable declaration
+                            while (variableDeclarationNode && variableDeclarationNode.kind !== 201 /* VariableDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 variableDeclarationNode = variableDeclarationNode.parent;
                             }
                             ts.Debug.assert(variableDeclarationNode !== undefined);
@@ -34622,6 +41312,7 @@ var ts;
                         else {
                             ts.Debug.assert(!ts.isBindingPattern(node.name));
                             variableDeclarationNode = node;
+<<<<<<< HEAD
                             name_27 = node.name;
                         }
                         if (ts.isConst(variableDeclarationNode)) {
@@ -34640,6 +41331,26 @@ var ts;
                     case 213 /* ImportEqualsDeclaration */:
                     case 215 /* ImportClause */:
                     case 216 /* NamespaceImport */:
+=======
+                            name_28 = node.name;
+                        }
+                        if (ts.isConst(variableDeclarationNode)) {
+                            return createItem(node, getTextOfNode(name_28), ts.ScriptElementKind.constElement);
+                        }
+                        else if (ts.isLet(variableDeclarationNode)) {
+                            return createItem(node, getTextOfNode(name_28), ts.ScriptElementKind.letElement);
+                        }
+                        else {
+                            return createItem(node, getTextOfNode(name_28), ts.ScriptElementKind.variableElement);
+                        }
+                    case 137 /* Constructor */:
+                        return createItem(node, "constructor", ts.ScriptElementKind.constructorImplementationElement);
+                    case 220 /* ExportSpecifier */:
+                    case 216 /* ImportSpecifier */:
+                    case 211 /* ImportEqualsDeclaration */:
+                    case 213 /* ImportClause */:
+                    case 214 /* NamespaceImport */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return createItem(node, getTextOfNode(node.name), ts.ScriptElementKind.alias);
                 }
                 return undefined;
@@ -34669,6 +41380,7 @@ var ts;
             }
             function createTopLevelItem(node) {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 240 /* SourceFile */:
                         return createSourceFileItem(node);
                     case 206 /* ClassDeclaration */:
@@ -34680,6 +41392,19 @@ var ts;
                     case 210 /* ModuleDeclaration */:
                         return createModuleItem(node);
                     case 205 /* FunctionDeclaration */:
+=======
+                    case 230 /* SourceFile */:
+                        return createSourceFileItem(node);
+                    case 204 /* ClassDeclaration */:
+                        return createClassItem(node);
+                    case 207 /* EnumDeclaration */:
+                        return createEnumItem(node);
+                    case 205 /* InterfaceDeclaration */:
+                        return createIterfaceItem(node);
+                    case 208 /* ModuleDeclaration */:
+                        return createModuleItem(node);
+                    case 203 /* FunctionDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return createFunctionItem(node);
                 }
                 return undefined;
@@ -34691,7 +41416,11 @@ var ts;
                     // Otherwise, we need to aggregate each identifier to build up the qualified name.
                     var result = [];
                     result.push(moduleDeclaration.name.text);
+<<<<<<< HEAD
                     while (moduleDeclaration.body && moduleDeclaration.body.kind === 210 /* ModuleDeclaration */) {
+=======
+                    while (moduleDeclaration.body && moduleDeclaration.body.kind === 208 /* ModuleDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         moduleDeclaration = moduleDeclaration.body;
                         result.push(moduleDeclaration.name.text);
                     }
@@ -34703,7 +41432,11 @@ var ts;
                     return getNavigationBarItem(moduleName, ts.ScriptElementKind.moduleElement, ts.getNodeModifiers(node), [getNodeSpan(node)], childItems, getIndent(node));
                 }
                 function createFunctionItem(node) {
+<<<<<<< HEAD
                     if (node.body && node.body.kind === 184 /* Block */) {
+=======
+                    if (node.body && node.body.kind === 182 /* Block */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var childItems = getItemsWorker(sortNodes(node.body.statements), createChildItem);
                         return getNavigationBarItem(!node.name ? "default" : node.name.text, ts.ScriptElementKind.functionElement, ts.getNodeModifiers(node), [getNodeSpan(node)], childItems, getIndent(node));
                     }
@@ -34724,7 +41457,11 @@ var ts;
                     var childItems;
                     if (node.members) {
                         var constructor = ts.forEach(node.members, function (member) {
+<<<<<<< HEAD
                             return member.kind === 138 /* Constructor */ && member;
+=======
+                            return member.kind === 137 /* Constructor */ && member;
+>>>>>>> Updated compiler to emitDependencyFile branch
                         });
                         // Add the constructor parameters in as children of the class (for property parameters).
                         // Note that *all non-binding pattern named* parameters will be added to the nodes array, but parameters that
@@ -34748,7 +41485,11 @@ var ts;
                 }
             }
             function removeComputedProperties(node) {
+<<<<<<< HEAD
                 return ts.filter(node.members, function (member) { return member.name === undefined || member.name.kind !== 130 /* ComputedPropertyName */; });
+=======
+                return ts.filter(node.members, function (member) { return member.name === undefined || member.name.kind !== 129 /* ComputedPropertyName */; });
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             /**
              * Like removeComputedProperties, but retains the properties with well known symbol names
@@ -34757,13 +41498,21 @@ var ts;
                 return ts.filter(node.members, function (member) { return !ts.hasDynamicName(member); });
             }
             function getInnermostModule(node) {
+<<<<<<< HEAD
                 while (node.body.kind === 210 /* ModuleDeclaration */) {
+=======
+                while (node.body.kind === 208 /* ModuleDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     node = node.body;
                 }
                 return node;
             }
             function getNodeSpan(node) {
+<<<<<<< HEAD
                 return node.kind === 240 /* SourceFile */
+=======
+                return node.kind === 230 /* SourceFile */
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ? ts.createTextSpanFromBounds(node.getFullStart(), node.getEnd())
                     : ts.createTextSpanFromBounds(node.getStart(), node.getEnd());
             }
@@ -35558,7 +42307,11 @@ var ts;
             }
             return createSignatureHelpItems(candidates, resolvedSignature, argumentInfo);
             function createJavaScriptSignatureHelpItems(argumentInfo) {
+<<<<<<< HEAD
                 if (argumentInfo.invocation.kind !== 161 /* CallExpression */) {
+=======
+                if (argumentInfo.invocation.kind !== 160 /* CallExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return undefined;
                 }
                 // See if we can find some symbol with the call expression name that has call signatures.
@@ -35566,7 +42319,11 @@ var ts;
                 var expression = callExpression.expression;
                 var name = expression.kind === 66 /* Identifier */
                     ? expression
+<<<<<<< HEAD
                     : expression.kind === 159 /* PropertyAccessExpression */
+=======
+                    : expression.kind === 158 /* PropertyAccessExpression */
+>>>>>>> Updated compiler to emitDependencyFile branch
                         ? expression.name
                         : undefined;
                 if (!name || !name.text) {
@@ -35599,7 +42356,11 @@ var ts;
              * in the argument of an invocation; returns undefined otherwise.
              */
             function getImmediatelyContainingArgumentInfo(node) {
+<<<<<<< HEAD
                 if (node.parent.kind === 161 /* CallExpression */ || node.parent.kind === 162 /* NewExpression */) {
+=======
+                if (node.parent.kind === 160 /* CallExpression */ || node.parent.kind === 161 /* NewExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var callExpression = node.parent;
                     // There are 3 cases to handle:
                     //   1. The token introduces a list, and should begin a sig help session
@@ -35652,13 +42413,18 @@ var ts;
                         };
                     }
                 }
+<<<<<<< HEAD
                 else if (node.kind === 10 /* NoSubstitutionTemplateLiteral */ && node.parent.kind === 163 /* TaggedTemplateExpression */) {
+=======
+                else if (node.kind === 10 /* NoSubstitutionTemplateLiteral */ && node.parent.kind === 162 /* TaggedTemplateExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // Check if we're actually inside the template;
                     // otherwise we'll fall out and return undefined.
                     if (ts.isInsideTemplateLiteral(node, position)) {
                         return getArgumentListInfoForTemplate(node.parent, 0);
                     }
                 }
+<<<<<<< HEAD
                 else if (node.kind === 11 /* TemplateHead */ && node.parent.parent.kind === 163 /* TaggedTemplateExpression */) {
                     var templateExpression = node.parent;
                     var tagExpression = templateExpression.parent;
@@ -35671,6 +42437,20 @@ var ts;
                     var templateExpression = templateSpan.parent;
                     var tagExpression = templateExpression.parent;
                     ts.Debug.assert(templateExpression.kind === 175 /* TemplateExpression */);
+=======
+                else if (node.kind === 11 /* TemplateHead */ && node.parent.parent.kind === 162 /* TaggedTemplateExpression */) {
+                    var templateExpression = node.parent;
+                    var tagExpression = templateExpression.parent;
+                    ts.Debug.assert(templateExpression.kind === 174 /* TemplateExpression */);
+                    var argumentIndex = ts.isInsideTemplateLiteral(node, position) ? 0 : 1;
+                    return getArgumentListInfoForTemplate(tagExpression, argumentIndex);
+                }
+                else if (node.parent.kind === 180 /* TemplateSpan */ && node.parent.parent.parent.kind === 162 /* TaggedTemplateExpression */) {
+                    var templateSpan = node.parent;
+                    var templateExpression = templateSpan.parent;
+                    var tagExpression = templateExpression.parent;
+                    ts.Debug.assert(templateExpression.kind === 174 /* TemplateExpression */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // If we're just after a template tail, don't show signature help.
                     if (node.kind === 13 /* TemplateTail */ && !ts.isInsideTemplateLiteral(node, position)) {
                         return undefined;
@@ -35788,7 +42568,11 @@ var ts;
                 //
                 // This is because a Missing node has no width. However, what we actually want is to include trivia
                 // leading up to the next token in case the user is about to type in a TemplateMiddle or TemplateTail.
+<<<<<<< HEAD
                 if (template.kind === 175 /* TemplateExpression */) {
+=======
+                if (template.kind === 174 /* TemplateExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var lastSpan = ts.lastOrUndefined(template.templateSpans);
                     if (lastSpan.literal.getFullWidth() === 0) {
                         applicableSpanEnd = ts.skipTrivia(sourceFile.text, applicableSpanEnd, false);
@@ -35797,7 +42581,11 @@ var ts;
                 return ts.createTextSpan(applicableSpanStart, applicableSpanEnd - applicableSpanStart);
             }
             function getContainingArgumentInfo(node) {
+<<<<<<< HEAD
                 for (var n = node; n.kind !== 240 /* SourceFile */; n = n.parent) {
+=======
+                for (var n = node; n.kind !== 230 /* SourceFile */; n = n.parent) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (ts.isFunctionBlock(n)) {
                         return undefined;
                     }
@@ -35998,6 +42786,7 @@ var ts;
             return false;
         }
         switch (n.kind) {
+<<<<<<< HEAD
             case 206 /* ClassDeclaration */:
             case 207 /* InterfaceDeclaration */:
             case 209 /* EnumDeclaration */:
@@ -36011,10 +42800,26 @@ var ts;
             case 236 /* CatchClause */:
                 return isCompletedNode(n.block, sourceFile);
             case 162 /* NewExpression */:
+=======
+            case 204 /* ClassDeclaration */:
+            case 205 /* InterfaceDeclaration */:
+            case 207 /* EnumDeclaration */:
+            case 157 /* ObjectLiteralExpression */:
+            case 153 /* ObjectBindingPattern */:
+            case 148 /* TypeLiteral */:
+            case 182 /* Block */:
+            case 209 /* ModuleBlock */:
+            case 210 /* CaseBlock */:
+                return nodeEndsWith(n, 15 /* CloseBraceToken */, sourceFile);
+            case 226 /* CatchClause */:
+                return isCompletedNode(n.block, sourceFile);
+            case 161 /* NewExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (!n.arguments) {
                     return true;
                 }
             // fall through
+<<<<<<< HEAD
             case 161 /* CallExpression */:
             case 165 /* ParenthesizedExpression */:
             case 153 /* ParenthesizedType */:
@@ -36032,6 +42837,25 @@ var ts;
             case 142 /* ConstructSignature */:
             case 141 /* CallSignature */:
             case 167 /* ArrowFunction */:
+=======
+            case 160 /* CallExpression */:
+            case 164 /* ParenthesizedExpression */:
+            case 152 /* ParenthesizedType */:
+                return nodeEndsWith(n, 17 /* CloseParenToken */, sourceFile);
+            case 145 /* FunctionType */:
+            case 146 /* ConstructorType */:
+                return isCompletedNode(n.type, sourceFile);
+            case 137 /* Constructor */:
+            case 138 /* GetAccessor */:
+            case 139 /* SetAccessor */:
+            case 203 /* FunctionDeclaration */:
+            case 165 /* FunctionExpression */:
+            case 136 /* MethodDeclaration */:
+            case 135 /* MethodSignature */:
+            case 141 /* ConstructSignature */:
+            case 140 /* CallSignature */:
+            case 166 /* ArrowFunction */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (n.body) {
                     return isCompletedNode(n.body, sourceFile);
                 }
@@ -36041,13 +42865,20 @@ var ts;
                 // Even though type parameters can be unclosed, we can get away with
                 // having at least a closing paren.
                 return hasChildOfKind(n, 17 /* CloseParenToken */, sourceFile);
+<<<<<<< HEAD
             case 210 /* ModuleDeclaration */:
                 return n.body && isCompletedNode(n.body, sourceFile);
             case 188 /* IfStatement */:
+=======
+            case 208 /* ModuleDeclaration */:
+                return n.body && isCompletedNode(n.body, sourceFile);
+            case 186 /* IfStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (n.elseStatement) {
                     return isCompletedNode(n.elseStatement, sourceFile);
                 }
                 return isCompletedNode(n.thenStatement, sourceFile);
+<<<<<<< HEAD
             case 187 /* ExpressionStatement */:
                 return isCompletedNode(n.expression, sourceFile);
             case 157 /* ArrayLiteralExpression */:
@@ -36057,10 +42888,22 @@ var ts;
             case 151 /* TupleType */:
                 return nodeEndsWith(n, 19 /* CloseBracketToken */, sourceFile);
             case 143 /* IndexSignature */:
+=======
+            case 185 /* ExpressionStatement */:
+                return isCompletedNode(n.expression, sourceFile);
+            case 156 /* ArrayLiteralExpression */:
+            case 154 /* ArrayBindingPattern */:
+            case 159 /* ElementAccessExpression */:
+            case 129 /* ComputedPropertyName */:
+            case 150 /* TupleType */:
+                return nodeEndsWith(n, 19 /* CloseBracketToken */, sourceFile);
+            case 142 /* IndexSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (n.type) {
                     return isCompletedNode(n.type, sourceFile);
                 }
                 return hasChildOfKind(n, 19 /* CloseBracketToken */, sourceFile);
+<<<<<<< HEAD
             case 233 /* CaseClause */:
             case 234 /* DefaultClause */:
                 // there is no such thing as terminator token for CaseClause/DefaultClause so for simplicitly always consider them non-completed
@@ -36071,12 +42914,25 @@ var ts;
             case 190 /* WhileStatement */:
                 return isCompletedNode(n.statement, sourceFile);
             case 189 /* DoStatement */:
+=======
+            case 223 /* CaseClause */:
+            case 224 /* DefaultClause */:
+                // there is no such thing as terminator token for CaseClause/DefaultClause so for simplicitly always consider them non-completed
+                return false;
+            case 189 /* ForStatement */:
+            case 190 /* ForInStatement */:
+            case 191 /* ForOfStatement */:
+            case 188 /* WhileStatement */:
+                return isCompletedNode(n.statement, sourceFile);
+            case 187 /* DoStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // rough approximation: if DoStatement has While keyword - then if node is completed is checking the presence of ')';
                 var hasWhileKeyword = findChildOfKind(n, 101 /* WhileKeyword */, sourceFile);
                 if (hasWhileKeyword) {
                     return nodeEndsWith(n, 17 /* CloseParenToken */, sourceFile);
                 }
                 return isCompletedNode(n.statement, sourceFile);
+<<<<<<< HEAD
             case 148 /* TypeQuery */:
                 return isCompletedNode(n.exprName, sourceFile);
             case 169 /* TypeOfExpression */:
@@ -36098,6 +42954,29 @@ var ts;
             case 173 /* BinaryExpression */:
                 return isCompletedNode(n.right, sourceFile);
             case 174 /* ConditionalExpression */:
+=======
+            case 147 /* TypeQuery */:
+                return isCompletedNode(n.exprName, sourceFile);
+            case 168 /* TypeOfExpression */:
+            case 167 /* DeleteExpression */:
+            case 169 /* VoidExpression */:
+            case 175 /* YieldExpression */:
+            case 176 /* SpreadElementExpression */:
+                var unaryWordExpression = n;
+                return isCompletedNode(unaryWordExpression.expression, sourceFile);
+            case 162 /* TaggedTemplateExpression */:
+                return isCompletedNode(n.template, sourceFile);
+            case 174 /* TemplateExpression */:
+                var lastSpan = ts.lastOrUndefined(n.templateSpans);
+                return isCompletedNode(lastSpan, sourceFile);
+            case 180 /* TemplateSpan */:
+                return ts.nodeIsPresent(n.literal);
+            case 170 /* PrefixUnaryExpression */:
+                return isCompletedNode(n.operand, sourceFile);
+            case 172 /* BinaryExpression */:
+                return isCompletedNode(n.right, sourceFile);
+            case 173 /* ConditionalExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return isCompletedNode(n.whenFalse, sourceFile);
             default:
                 return true;
@@ -36153,7 +43032,11 @@ var ts;
         // for the position of the relevant node (or comma).
         var syntaxList = ts.forEach(node.parent.getChildren(), function (c) {
             // find syntax list that covers the span of the node
+<<<<<<< HEAD
             if (c.kind === 263 /* SyntaxList */ && c.pos <= node.pos && c.end >= node.end) {
+=======
+            if (c.kind === 253 /* SyntaxList */ && c.pos <= node.pos && c.end >= node.end) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return c;
             }
         });
@@ -36287,7 +43170,11 @@ var ts;
                     }
                 }
             }
+<<<<<<< HEAD
             ts.Debug.assert(startNode !== undefined || n.kind === 240 /* SourceFile */);
+=======
+            ts.Debug.assert(startNode !== undefined || n.kind === 230 /* SourceFile */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             // Here we know that none of child token nodes embrace the position, 
             // the only known case is when position is at the end of the file.
             // Try to find the rightmost token in the file without filtering.
@@ -36331,17 +43218,28 @@ var ts;
     }
     ts.getNodeModifiers = getNodeModifiers;
     function getTypeArgumentOrTypeParameterList(node) {
+<<<<<<< HEAD
         if (node.kind === 145 /* TypeReference */ || node.kind === 161 /* CallExpression */) {
             return node.typeArguments;
         }
         if (ts.isFunctionLike(node) || node.kind === 206 /* ClassDeclaration */ || node.kind === 207 /* InterfaceDeclaration */) {
+=======
+        if (node.kind === 144 /* TypeReference */ || node.kind === 160 /* CallExpression */) {
+            return node.typeArguments;
+        }
+        if (ts.isFunctionLike(node) || node.kind === 204 /* ClassDeclaration */ || node.kind === 205 /* InterfaceDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             return node.typeParameters;
         }
         return undefined;
     }
     ts.getTypeArgumentOrTypeParameterList = getTypeArgumentOrTypeParameterList;
     function isToken(n) {
+<<<<<<< HEAD
         return n.kind >= 0 /* FirstToken */ && n.kind <= 128 /* LastToken */;
+=======
+        return n.kind >= 0 /* FirstToken */ && n.kind <= 127 /* LastToken */;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isToken = isToken;
     function isWord(kind) {
@@ -36396,7 +43294,11 @@ var ts;
 var ts;
 (function (ts) {
     function isFirstDeclarationOfSymbolParameter(symbol) {
+<<<<<<< HEAD
         return symbol.declarations && symbol.declarations.length > 0 && symbol.declarations[0].kind === 132 /* Parameter */;
+=======
+        return symbol.declarations && symbol.declarations.length > 0 && symbol.declarations[0].kind === 131 /* Parameter */;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     ts.isFirstDeclarationOfSymbolParameter = isFirstDeclarationOfSymbolParameter;
     var displayPartWriter = getDisplayPartWriter();
@@ -36560,6 +43462,7 @@ var ts;
         });
     }
     ts.signatureToDisplayParts = signatureToDisplayParts;
+<<<<<<< HEAD
     function getDeclaredName(typeChecker, symbol, location) {
         // If this is an export or import specifier it could have been renamed using the 'as' syntax.
         // If so we want to search for whatever is under the cursor.
@@ -36588,6 +43491,8 @@ var ts;
         return name;
     }
     ts.stripQuotes = stripQuotes;
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
 })(ts || (ts = {}));
 /// <reference path="formatting.ts"/>
 /// <reference path="..\..\compiler\scanner.ts"/>
@@ -37122,7 +44027,11 @@ var ts;
                 this.SpaceAfterTryFinally = new formatting.Rule(formatting.RuleDescriptor.create2(formatting.Shared.TokenRange.FromTokens([97 /* TryKeyword */, 82 /* FinallyKeyword */]), 14 /* OpenBraceToken */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 2 /* Space */));
                 //      get x() {}
                 //      set x(val) {}
+<<<<<<< HEAD
                 this.SpaceAfterGetSetInMember = new formatting.Rule(formatting.RuleDescriptor.create2(formatting.Shared.TokenRange.FromTokens([117 /* GetKeyword */, 123 /* SetKeyword */]), 66 /* Identifier */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsFunctionDeclContext), 2 /* Space */));
+=======
+                this.SpaceAfterGetSetInMember = new formatting.Rule(formatting.RuleDescriptor.create2(formatting.Shared.TokenRange.FromTokens([116 /* GetKeyword */, 122 /* SetKeyword */]), 65 /* Identifier */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsFunctionDeclContext), 2 /* Space */));
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // Special case for binary operators (that are keywords). For these we have to add a space and shouldn't follow any user options.
                 this.SpaceBeforeBinaryKeywordOperator = new formatting.Rule(formatting.RuleDescriptor.create4(formatting.Shared.TokenRange.Any, formatting.Shared.TokenRange.BinaryKeywordOperators), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext, Rules.IsBinaryOpContext), 2 /* Space */));
                 this.SpaceAfterBinaryKeywordOperator = new formatting.Rule(formatting.RuleDescriptor.create4(formatting.Shared.TokenRange.BinaryKeywordOperators, formatting.Shared.TokenRange.Any), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext, Rules.IsBinaryOpContext), 2 /* Space */));
@@ -37130,10 +44039,17 @@ var ts;
                 // Treat constructor as an identifier in a function declaration, and remove spaces between constructor and following left parentheses
                 this.NoSpaceAfterConstructor = new formatting.Rule(formatting.RuleDescriptor.create1(115 /* ConstructorKeyword */, 16 /* OpenParenToken */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 8 /* Delete */));
                 // Use of module as a function call. e.g.: import m2 = module("m2");
+<<<<<<< HEAD
                 this.NoSpaceAfterModuleImport = new formatting.Rule(formatting.RuleDescriptor.create2(formatting.Shared.TokenRange.FromTokens([119 /* ModuleKeyword */, 121 /* RequireKeyword */]), 16 /* OpenParenToken */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 8 /* Delete */));
                 // Add a space around certain TypeScript keywords
                 this.SpaceAfterCertainTypeScriptKeywords = new formatting.Rule(formatting.RuleDescriptor.create4(formatting.Shared.TokenRange.FromTokens([70 /* ClassKeyword */, 116 /* DeclareKeyword */, 74 /* DefaultKeyword */, 78 /* EnumKeyword */, 79 /* ExportKeyword */, 80 /* ExtendsKeyword */, 117 /* GetKeyword */, 103 /* ImplementsKeyword */, 86 /* ImportKeyword */, 104 /* InterfaceKeyword */, 119 /* ModuleKeyword */, 120 /* NamespaceKeyword */, 107 /* PrivateKeyword */, 109 /* PublicKeyword */, 108 /* ProtectedKeyword */, 123 /* SetKeyword */, 110 /* StaticKeyword */]), formatting.Shared.TokenRange.Any), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 2 /* Space */));
                 this.SpaceBeforeCertainTypeScriptKeywords = new formatting.Rule(formatting.RuleDescriptor.create4(formatting.Shared.TokenRange.Any, formatting.Shared.TokenRange.FromTokens([80 /* ExtendsKeyword */, 103 /* ImplementsKeyword */])), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 2 /* Space */));
+=======
+                this.NoSpaceAfterModuleImport = new formatting.Rule(formatting.RuleDescriptor.create2(formatting.Shared.TokenRange.FromTokens([118 /* ModuleKeyword */, 120 /* RequireKeyword */]), 16 /* OpenParenToken */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 8 /* Delete */));
+                // Add a space around certain TypeScript keywords
+                this.SpaceAfterCertainTypeScriptKeywords = new formatting.Rule(formatting.RuleDescriptor.create4(formatting.Shared.TokenRange.FromTokens([69 /* ClassKeyword */, 115 /* DeclareKeyword */, 77 /* EnumKeyword */, 78 /* ExportKeyword */, 79 /* ExtendsKeyword */, 116 /* GetKeyword */, 102 /* ImplementsKeyword */, 85 /* ImportKeyword */, 103 /* InterfaceKeyword */, 118 /* ModuleKeyword */, 119 /* NamespaceKeyword */, 106 /* PrivateKeyword */, 108 /* PublicKeyword */, 122 /* SetKeyword */, 109 /* StaticKeyword */]), formatting.Shared.TokenRange.Any), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 2 /* Space */));
+                this.SpaceBeforeCertainTypeScriptKeywords = new formatting.Rule(formatting.RuleDescriptor.create4(formatting.Shared.TokenRange.Any, formatting.Shared.TokenRange.FromTokens([79 /* ExtendsKeyword */, 102 /* ImplementsKeyword */])), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 2 /* Space */));
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // Treat string literals in module names as identifiers, and add a space between the literal and the opening Brace braces, e.g.: module "m2" {
                 this.SpaceAfterModuleName = new formatting.Rule(formatting.RuleDescriptor.create1(8 /* StringLiteral */, 14 /* OpenBraceToken */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsModuleDeclContext), 2 /* Space */));
                 // Lambda expressions
@@ -37150,6 +44066,7 @@ var ts;
                 // Remove spaces in empty interface literals. e.g.: x: {}
                 this.NoSpaceBetweenEmptyInterfaceBraceBrackets = new formatting.Rule(formatting.RuleDescriptor.create1(14 /* OpenBraceToken */, 15 /* CloseBraceToken */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext, Rules.IsObjectTypeContext), 8 /* Delete */));
                 // decorators
+<<<<<<< HEAD
                 this.SpaceBeforeAt = new formatting.Rule(formatting.RuleDescriptor.create2(formatting.Shared.TokenRange.Any, 53 /* AtToken */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 2 /* Space */));
                 this.NoSpaceAfterAt = new formatting.Rule(formatting.RuleDescriptor.create3(53 /* AtToken */, formatting.Shared.TokenRange.Any), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 8 /* Delete */));
                 this.SpaceAfterDecorator = new formatting.Rule(formatting.RuleDescriptor.create4(formatting.Shared.TokenRange.Any, formatting.Shared.TokenRange.FromTokens([66 /* Identifier */, 79 /* ExportKeyword */, 74 /* DefaultKeyword */, 70 /* ClassKeyword */, 110 /* StaticKeyword */, 109 /* PublicKeyword */, 107 /* PrivateKeyword */, 108 /* ProtectedKeyword */, 117 /* GetKeyword */, 123 /* SetKeyword */, 18 /* OpenBracketToken */, 36 /* AsteriskToken */])), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsEndOfDecoratorContextOnSameLine), 2 /* Space */));
@@ -37157,6 +44074,15 @@ var ts;
                 this.SpaceAfterStarInGeneratorDeclaration = new formatting.Rule(formatting.RuleDescriptor.create3(36 /* AsteriskToken */, formatting.Shared.TokenRange.FromTokens([66 /* Identifier */, 16 /* OpenParenToken */])), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsFunctionDeclarationOrFunctionExpressionContext), 2 /* Space */));
                 this.NoSpaceBetweenYieldKeywordAndStar = new formatting.Rule(formatting.RuleDescriptor.create1(111 /* YieldKeyword */, 36 /* AsteriskToken */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext, Rules.IsYieldOrYieldStarWithOperand), 8 /* Delete */));
                 this.SpaceBetweenYieldOrYieldStarAndOperand = new formatting.Rule(formatting.RuleDescriptor.create4(formatting.Shared.TokenRange.FromTokens([111 /* YieldKeyword */, 36 /* AsteriskToken */]), formatting.Shared.TokenRange.Any), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext, Rules.IsYieldOrYieldStarWithOperand), 2 /* Space */));
+=======
+                this.SpaceBeforeAt = new formatting.Rule(formatting.RuleDescriptor.create2(formatting.Shared.TokenRange.Any, 52 /* AtToken */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 2 /* Space */));
+                this.NoSpaceAfterAt = new formatting.Rule(formatting.RuleDescriptor.create3(52 /* AtToken */, formatting.Shared.TokenRange.Any), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext), 8 /* Delete */));
+                this.SpaceAfterDecorator = new formatting.Rule(formatting.RuleDescriptor.create4(formatting.Shared.TokenRange.Any, formatting.Shared.TokenRange.FromTokens([65 /* Identifier */, 78 /* ExportKeyword */, 73 /* DefaultKeyword */, 69 /* ClassKeyword */, 109 /* StaticKeyword */, 108 /* PublicKeyword */, 106 /* PrivateKeyword */, 107 /* ProtectedKeyword */, 116 /* GetKeyword */, 122 /* SetKeyword */, 18 /* OpenBracketToken */, 35 /* AsteriskToken */])), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsEndOfDecoratorContextOnSameLine), 2 /* Space */));
+                this.NoSpaceBetweenFunctionKeywordAndStar = new formatting.Rule(formatting.RuleDescriptor.create1(83 /* FunctionKeyword */, 35 /* AsteriskToken */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsFunctionDeclarationOrFunctionExpressionContext), 8 /* Delete */));
+                this.SpaceAfterStarInGeneratorDeclaration = new formatting.Rule(formatting.RuleDescriptor.create3(35 /* AsteriskToken */, formatting.Shared.TokenRange.FromTokens([65 /* Identifier */, 16 /* OpenParenToken */])), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsFunctionDeclarationOrFunctionExpressionContext), 2 /* Space */));
+                this.NoSpaceBetweenYieldKeywordAndStar = new formatting.Rule(formatting.RuleDescriptor.create1(110 /* YieldKeyword */, 35 /* AsteriskToken */), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext, Rules.IsYieldOrYieldStarWithOperand), 8 /* Delete */));
+                this.SpaceBetweenYieldOrYieldStarAndOperand = new formatting.Rule(formatting.RuleDescriptor.create4(formatting.Shared.TokenRange.FromTokens([110 /* YieldKeyword */, 35 /* AsteriskToken */]), formatting.Shared.TokenRange.Any), formatting.RuleOperation.create2(new formatting.RuleOperationContext(Rules.IsSameLineTokenContext, Rules.IsYieldOrYieldStarWithOperand), 2 /* Space */));
+>>>>>>> Updated compiler to emitDependencyFile branch
                 // These rules are higher in priority than user-configurable rules.
                 this.HighPriorityCommonRules =
                     [
@@ -37248,9 +44174,15 @@ var ts;
             }
             Rules.prototype.getRuleName = function (rule) {
                 var o = this;
+<<<<<<< HEAD
                 for (var name_28 in o) {
                     if (o[name_28] === rule) {
                         return name_28;
+=======
+                for (var name_29 in o) {
+                    if (o[name_29] === rule) {
+                        return name_29;
+>>>>>>> Updated compiler to emitDependencyFile branch
                     }
                 }
                 throw new Error("Unknown rule");
@@ -37259,13 +44191,18 @@ var ts;
             /// Contexts
             ///
             Rules.IsForContext = function (context) {
+<<<<<<< HEAD
                 return context.contextNode.kind === 191 /* ForStatement */;
+=======
+                return context.contextNode.kind === 189 /* ForStatement */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             };
             Rules.IsNotForContext = function (context) {
                 return !Rules.IsForContext(context);
             };
             Rules.IsBinaryOpContext = function (context) {
                 switch (context.contextNode.kind) {
+<<<<<<< HEAD
                     case 173 /* BinaryExpression */:
                     case 174 /* ConditionalExpression */:
                     case 181 /* AsExpression */:
@@ -37291,6 +44228,32 @@ var ts;
                     // Technically, "of" is not a binary operator, but format it the same way as "in"
                     case 193 /* ForOfStatement */:
                         return context.currentTokenSpan.kind === 128 /* OfKeyword */ || context.nextTokenSpan.kind === 128 /* OfKeyword */;
+=======
+                    case 172 /* BinaryExpression */:
+                    case 173 /* ConditionalExpression */:
+                    case 143 /* TypePredicate */:
+                        return true;
+                    // equals in binding elements: function foo([[x, y] = [1, 2]])
+                    case 155 /* BindingElement */:
+                    // equals in type X = ...
+                    case 206 /* TypeAliasDeclaration */:
+                    // equal in import a = module('a');
+                    case 211 /* ImportEqualsDeclaration */:
+                    // equal in let a = 0;
+                    case 201 /* VariableDeclaration */:
+                    // equal in p = 0;
+                    case 131 /* Parameter */:
+                    case 229 /* EnumMember */:
+                    case 134 /* PropertyDeclaration */:
+                    case 133 /* PropertySignature */:
+                        return context.currentTokenSpan.kind === 53 /* EqualsToken */ || context.nextTokenSpan.kind === 53 /* EqualsToken */;
+                    // "in" keyword in for (let x in []) { }
+                    case 190 /* ForInStatement */:
+                        return context.currentTokenSpan.kind === 86 /* InKeyword */ || context.nextTokenSpan.kind === 86 /* InKeyword */;
+                    // Technically, "of" is not a binary operator, but format it the same way as "in"
+                    case 191 /* ForOfStatement */:
+                        return context.currentTokenSpan.kind === 127 /* OfKeyword */ || context.nextTokenSpan.kind === 127 /* OfKeyword */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
                 return false;
             };
@@ -37298,7 +44261,11 @@ var ts;
                 return !Rules.IsBinaryOpContext(context);
             };
             Rules.IsConditionalOperatorContext = function (context) {
+<<<<<<< HEAD
                 return context.contextNode.kind === 174 /* ConditionalExpression */;
+=======
+                return context.contextNode.kind === 173 /* ConditionalExpression */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             };
             Rules.IsSameLineTokenOrBeforeMultilineBlockContext = function (context) {
                 //// This check is mainly used inside SpaceBeforeOpenBraceInControl and SpaceBeforeOpenBraceInFunction.
@@ -37342,16 +44309,24 @@ var ts;
                     return true;
                 }
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 184 /* Block */:
                     case 212 /* CaseBlock */:
                     case 158 /* ObjectLiteralExpression */:
                     case 211 /* ModuleBlock */:
+=======
+                    case 182 /* Block */:
+                    case 210 /* CaseBlock */:
+                    case 157 /* ObjectLiteralExpression */:
+                    case 209 /* ModuleBlock */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
                 return false;
             };
             Rules.IsFunctionDeclContext = function (context) {
                 switch (context.contextNode.kind) {
+<<<<<<< HEAD
                     case 205 /* FunctionDeclaration */:
                     case 137 /* MethodDeclaration */:
                     case 136 /* MethodSignature */:
@@ -37367,29 +44342,59 @@ var ts;
                     //case SyntaxKind.SimpleArrowFunctionExpression:
                     //case SyntaxKind.ParenthesizedArrowFunctionExpression:
                     case 207 /* InterfaceDeclaration */:
+=======
+                    case 203 /* FunctionDeclaration */:
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+                    //case SyntaxKind.MemberFunctionDeclaration:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                    ///case SyntaxKind.MethodSignature:
+                    case 140 /* CallSignature */:
+                    case 165 /* FunctionExpression */:
+                    case 137 /* Constructor */:
+                    case 166 /* ArrowFunction */:
+                    //case SyntaxKind.ConstructorDeclaration:
+                    //case SyntaxKind.SimpleArrowFunctionExpression:
+                    //case SyntaxKind.ParenthesizedArrowFunctionExpression:
+                    case 205 /* InterfaceDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
                 return false;
             };
             Rules.IsFunctionDeclarationOrFunctionExpressionContext = function (context) {
+<<<<<<< HEAD
                 return context.contextNode.kind === 205 /* FunctionDeclaration */ || context.contextNode.kind === 166 /* FunctionExpression */;
+=======
+                return context.contextNode.kind === 203 /* FunctionDeclaration */ || context.contextNode.kind === 165 /* FunctionExpression */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             };
             Rules.IsTypeScriptDeclWithBlockContext = function (context) {
                 return Rules.NodeIsTypeScriptDeclWithBlockContext(context.contextNode);
             };
             Rules.NodeIsTypeScriptDeclWithBlockContext = function (node) {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 206 /* ClassDeclaration */:
                     case 207 /* InterfaceDeclaration */:
                     case 209 /* EnumDeclaration */:
                     case 149 /* TypeLiteral */:
                     case 210 /* ModuleDeclaration */:
+=======
+                    case 204 /* ClassDeclaration */:
+                    case 205 /* InterfaceDeclaration */:
+                    case 207 /* EnumDeclaration */:
+                    case 148 /* TypeLiteral */:
+                    case 208 /* ModuleDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
                 return false;
             };
             Rules.IsAfterCodeBlockContext = function (context) {
                 switch (context.currentTokenParent.kind) {
+<<<<<<< HEAD
                     case 206 /* ClassDeclaration */:
                     case 210 /* ModuleDeclaration */:
                     case 209 /* EnumDeclaration */:
@@ -37397,12 +44402,22 @@ var ts;
                     case 236 /* CatchClause */:
                     case 211 /* ModuleBlock */:
                     case 198 /* SwitchStatement */:
+=======
+                    case 204 /* ClassDeclaration */:
+                    case 208 /* ModuleDeclaration */:
+                    case 207 /* EnumDeclaration */:
+                    case 182 /* Block */:
+                    case 226 /* CatchClause */:
+                    case 209 /* ModuleBlock */:
+                    case 196 /* SwitchStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
                 return false;
             };
             Rules.IsControlDeclContext = function (context) {
                 switch (context.contextNode.kind) {
+<<<<<<< HEAD
                     case 188 /* IfStatement */:
                     case 198 /* SwitchStatement */:
                     case 191 /* ForStatement */:
@@ -37415,12 +44430,27 @@ var ts;
                     // TODO
                     // case SyntaxKind.ElseClause:
                     case 236 /* CatchClause */:
+=======
+                    case 186 /* IfStatement */:
+                    case 196 /* SwitchStatement */:
+                    case 189 /* ForStatement */:
+                    case 190 /* ForInStatement */:
+                    case 191 /* ForOfStatement */:
+                    case 188 /* WhileStatement */:
+                    case 199 /* TryStatement */:
+                    case 187 /* DoStatement */:
+                    case 195 /* WithStatement */:
+                    // TODO
+                    // case SyntaxKind.ElseClause:
+                    case 226 /* CatchClause */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                     default:
                         return false;
                 }
             };
             Rules.IsObjectContext = function (context) {
+<<<<<<< HEAD
                 return context.contextNode.kind === 158 /* ObjectLiteralExpression */;
             };
             Rules.IsFunctionCallContext = function (context) {
@@ -37428,6 +44458,15 @@ var ts;
             };
             Rules.IsNewContext = function (context) {
                 return context.contextNode.kind === 162 /* NewExpression */;
+=======
+                return context.contextNode.kind === 157 /* ObjectLiteralExpression */;
+            };
+            Rules.IsFunctionCallContext = function (context) {
+                return context.contextNode.kind === 160 /* CallExpression */;
+            };
+            Rules.IsNewContext = function (context) {
+                return context.contextNode.kind === 161 /* NewExpression */;
+>>>>>>> Updated compiler to emitDependencyFile branch
             };
             Rules.IsFunctionCallOrNewContext = function (context) {
                 return Rules.IsFunctionCallContext(context) || Rules.IsNewContext(context);
@@ -37451,26 +44490,41 @@ var ts;
                 while (ts.isExpression(node)) {
                     node = node.parent;
                 }
+<<<<<<< HEAD
                 return node.kind === 133 /* Decorator */;
             };
             Rules.IsStartOfVariableDeclarationList = function (context) {
                 return context.currentTokenParent.kind === 204 /* VariableDeclarationList */ &&
+=======
+                return node.kind === 132 /* Decorator */;
+            };
+            Rules.IsStartOfVariableDeclarationList = function (context) {
+                return context.currentTokenParent.kind === 202 /* VariableDeclarationList */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
                     context.currentTokenParent.getStart(context.sourceFile) === context.currentTokenSpan.pos;
             };
             Rules.IsNotFormatOnEnter = function (context) {
                 return context.formattingRequestKind !== 2 /* FormatOnEnter */;
             };
             Rules.IsModuleDeclContext = function (context) {
+<<<<<<< HEAD
                 return context.contextNode.kind === 210 /* ModuleDeclaration */;
             };
             Rules.IsObjectTypeContext = function (context) {
                 return context.contextNode.kind === 149 /* TypeLiteral */; // && context.contextNode.parent.kind !== SyntaxKind.InterfaceDeclaration;
+=======
+                return context.contextNode.kind === 208 /* ModuleDeclaration */;
+            };
+            Rules.IsObjectTypeContext = function (context) {
+                return context.contextNode.kind === 148 /* TypeLiteral */; // && context.contextNode.parent.kind !== SyntaxKind.InterfaceDeclaration;
+>>>>>>> Updated compiler to emitDependencyFile branch
             };
             Rules.IsTypeArgumentOrParameter = function (token, parent) {
                 if (token.kind !== 24 /* LessThanToken */ && token.kind !== 26 /* GreaterThanToken */) {
                     return false;
                 }
                 switch (parent.kind) {
+<<<<<<< HEAD
                     case 145 /* TypeReference */:
                     case 206 /* ClassDeclaration */:
                     case 207 /* InterfaceDeclaration */:
@@ -37483,6 +44537,20 @@ var ts;
                     case 142 /* ConstructSignature */:
                     case 161 /* CallExpression */:
                     case 162 /* NewExpression */:
+=======
+                    case 144 /* TypeReference */:
+                    case 204 /* ClassDeclaration */:
+                    case 205 /* InterfaceDeclaration */:
+                    case 203 /* FunctionDeclaration */:
+                    case 165 /* FunctionExpression */:
+                    case 166 /* ArrowFunction */:
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+                    case 140 /* CallSignature */:
+                    case 141 /* ConstructSignature */:
+                    case 160 /* CallExpression */:
+                    case 161 /* NewExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                     default:
                         return false;
@@ -37493,10 +44561,17 @@ var ts;
                     Rules.IsTypeArgumentOrParameter(context.nextTokenSpan, context.nextTokenParent);
             };
             Rules.IsVoidOpContext = function (context) {
+<<<<<<< HEAD
                 return context.currentTokenSpan.kind === 100 /* VoidKeyword */ && context.currentTokenParent.kind === 170 /* VoidExpression */;
             };
             Rules.IsYieldOrYieldStarWithOperand = function (context) {
                 return context.contextNode.kind === 176 /* YieldExpression */ && context.contextNode.expression !== undefined;
+=======
+                return context.currentTokenSpan.kind === 99 /* VoidKeyword */ && context.currentTokenParent.kind === 169 /* VoidExpression */;
+            };
+            Rules.IsYieldOrYieldStarWithOperand = function (context) {
+                return context.contextNode.kind === 175 /* YieldExpression */ && context.contextNode.expression !== undefined;
+>>>>>>> Updated compiler to emitDependencyFile branch
             };
             return Rules;
         })();
@@ -37520,7 +44595,11 @@ var ts;
                 return result;
             };
             RulesMap.prototype.Initialize = function (rules) {
+<<<<<<< HEAD
                 this.mapRowLength = 128 /* LastToken */ + 1;
+=======
+                this.mapRowLength = 127 /* LastToken */ + 1;
+>>>>>>> Updated compiler to emitDependencyFile branch
                 this.map = new Array(this.mapRowLength * this.mapRowLength); //new Array<RulesBucket>(this.mapRowLength * this.mapRowLength);
                 // This array is used only during construction of the rulesbucket in the map
                 var rulesBucketConstructionStateList = new Array(this.map.length); //new Array<RulesBucketConstructionState>(this.map.length);
@@ -37715,7 +44794,11 @@ var ts;
                 }
                 TokenAllAccess.prototype.GetTokens = function () {
                     var result = [];
+<<<<<<< HEAD
                     for (var token = 0 /* FirstToken */; token <= 128 /* LastToken */; token++) {
+=======
+                    for (var token = 0 /* FirstToken */; token <= 127 /* LastToken */; token++) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         result.push(token);
                     }
                     return result;
@@ -37757,6 +44840,7 @@ var ts;
                 };
                 TokenRange.Any = TokenRange.AllTokens();
                 TokenRange.AnyIncludingMultilineComments = TokenRange.FromTokens(TokenRange.Any.GetTokens().concat([3 /* MultiLineCommentTrivia */]));
+<<<<<<< HEAD
                 TokenRange.Keywords = TokenRange.FromRange(67 /* FirstKeyword */, 128 /* LastKeyword */);
                 TokenRange.BinaryOperators = TokenRange.FromRange(24 /* FirstBinaryOperator */, 65 /* LastBinaryOperator */);
                 TokenRange.BinaryKeywordOperators = TokenRange.FromTokens([87 /* InKeyword */, 88 /* InstanceOfKeyword */, 128 /* OfKeyword */, 112 /* AsKeyword */, 118 /* IsKeyword */]);
@@ -37768,6 +44852,19 @@ var ts;
                 TokenRange.UnaryPostdecrementExpressions = TokenRange.FromTokens([66 /* Identifier */, 17 /* CloseParenToken */, 19 /* CloseBracketToken */, 89 /* NewKeyword */]);
                 TokenRange.Comments = TokenRange.FromTokens([2 /* SingleLineCommentTrivia */, 3 /* MultiLineCommentTrivia */]);
                 TokenRange.TypeNames = TokenRange.FromTokens([66 /* Identifier */, 122 /* NumberKeyword */, 124 /* StringKeyword */, 114 /* BooleanKeyword */, 125 /* SymbolKeyword */, 100 /* VoidKeyword */, 113 /* AnyKeyword */]);
+=======
+                TokenRange.Keywords = TokenRange.FromRange(66 /* FirstKeyword */, 127 /* LastKeyword */);
+                TokenRange.BinaryOperators = TokenRange.FromRange(24 /* FirstBinaryOperator */, 64 /* LastBinaryOperator */);
+                TokenRange.BinaryKeywordOperators = TokenRange.FromTokens([86 /* InKeyword */, 87 /* InstanceOfKeyword */, 127 /* OfKeyword */, 117 /* IsKeyword */]);
+                TokenRange.UnaryPrefixOperators = TokenRange.FromTokens([38 /* PlusPlusToken */, 39 /* MinusMinusToken */, 47 /* TildeToken */, 46 /* ExclamationToken */]);
+                TokenRange.UnaryPrefixExpressions = TokenRange.FromTokens([7 /* NumericLiteral */, 65 /* Identifier */, 16 /* OpenParenToken */, 18 /* OpenBracketToken */, 14 /* OpenBraceToken */, 93 /* ThisKeyword */, 88 /* NewKeyword */]);
+                TokenRange.UnaryPreincrementExpressions = TokenRange.FromTokens([65 /* Identifier */, 16 /* OpenParenToken */, 93 /* ThisKeyword */, 88 /* NewKeyword */]);
+                TokenRange.UnaryPostincrementExpressions = TokenRange.FromTokens([65 /* Identifier */, 17 /* CloseParenToken */, 19 /* CloseBracketToken */, 88 /* NewKeyword */]);
+                TokenRange.UnaryPredecrementExpressions = TokenRange.FromTokens([65 /* Identifier */, 16 /* OpenParenToken */, 93 /* ThisKeyword */, 88 /* NewKeyword */]);
+                TokenRange.UnaryPostdecrementExpressions = TokenRange.FromTokens([65 /* Identifier */, 17 /* CloseParenToken */, 19 /* CloseBracketToken */, 88 /* NewKeyword */]);
+                TokenRange.Comments = TokenRange.FromTokens([2 /* SingleLineCommentTrivia */, 3 /* MultiLineCommentTrivia */]);
+                TokenRange.TypeNames = TokenRange.FromTokens([65 /* Identifier */, 121 /* NumberKeyword */, 123 /* StringKeyword */, 113 /* BooleanKeyword */, 124 /* SymbolKeyword */, 99 /* VoidKeyword */, 112 /* AnyKeyword */]);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return TokenRange;
             })();
             Shared.TokenRange = TokenRange;
@@ -37971,6 +45068,7 @@ var ts;
         // i.e. parent is class declaration with the list of members and node is one of members.
         function isListElement(parent, node) {
             switch (parent.kind) {
+<<<<<<< HEAD
                 case 206 /* ClassDeclaration */:
                 case 207 /* InterfaceDeclaration */:
                     return ts.rangeContainsRange(parent.members, node);
@@ -37982,6 +45080,19 @@ var ts;
                 case 211 /* ModuleBlock */:
                     return ts.rangeContainsRange(parent.statements, node);
                 case 236 /* CatchClause */:
+=======
+                case 204 /* ClassDeclaration */:
+                case 205 /* InterfaceDeclaration */:
+                    return ts.rangeContainsRange(parent.members, node);
+                case 208 /* ModuleDeclaration */:
+                    var body = parent.body;
+                    return body && body.kind === 182 /* Block */ && ts.rangeContainsRange(body.statements, node);
+                case 230 /* SourceFile */:
+                case 182 /* Block */:
+                case 209 /* ModuleBlock */:
+                    return ts.rangeContainsRange(parent.statements, node);
+                case 226 /* CatchClause */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return ts.rangeContainsRange(parent.block.statements, node);
             }
             return false;
@@ -38154,9 +45265,15 @@ var ts;
                         // - source file 
                         // - switch\default clauses
                         if (isSomeBlock(parent.kind) ||
+<<<<<<< HEAD
                             parent.kind === 240 /* SourceFile */ ||
                             parent.kind === 233 /* CaseClause */ ||
                             parent.kind === 234 /* DefaultClause */) {
+=======
+                            parent.kind === 230 /* SourceFile */ ||
+                            parent.kind === 223 /* CaseClause */ ||
+                            parent.kind === 224 /* DefaultClause */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             indentation = parentDynamicIndentation.getIndentation() + parentDynamicIndentation.getDelta();
                         }
                         else {
@@ -38192,6 +45309,7 @@ var ts;
                     return node.modifiers[0].kind;
                 }
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 206 /* ClassDeclaration */: return 70 /* ClassKeyword */;
                     case 207 /* InterfaceDeclaration */: return 104 /* InterfaceKeyword */;
                     case 205 /* FunctionDeclaration */: return 84 /* FunctionKeyword */;
@@ -38199,12 +45317,26 @@ var ts;
                     case 139 /* GetAccessor */: return 117 /* GetKeyword */;
                     case 140 /* SetAccessor */: return 123 /* SetKeyword */;
                     case 137 /* MethodDeclaration */:
+=======
+                    case 204 /* ClassDeclaration */: return 69 /* ClassKeyword */;
+                    case 205 /* InterfaceDeclaration */: return 103 /* InterfaceKeyword */;
+                    case 203 /* FunctionDeclaration */: return 83 /* FunctionKeyword */;
+                    case 207 /* EnumDeclaration */: return 207 /* EnumDeclaration */;
+                    case 138 /* GetAccessor */: return 116 /* GetKeyword */;
+                    case 139 /* SetAccessor */: return 122 /* SetKeyword */;
+                    case 136 /* MethodDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (node.asteriskToken) {
                             return 36 /* AsteriskToken */;
                         }
                     // fall-through
+<<<<<<< HEAD
                     case 135 /* PropertyDeclaration */:
                     case 132 /* Parameter */:
+=======
+                    case 134 /* PropertyDeclaration */:
+                    case 131 /* Parameter */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return node.name.kind;
                 }
             }
@@ -38337,7 +45469,11 @@ var ts;
                         consumeTokenAndAdvanceScanner(tokenInfo, node, parentDynamicIndentation);
                         return inheritedIndentation;
                     }
+<<<<<<< HEAD
                     var effectiveParentStartLine = child.kind === 133 /* Decorator */ ? childStartLine : undecoratedParentStartLine;
+=======
+                    var effectiveParentStartLine = child.kind === 132 /* Decorator */ ? childStartLine : undecoratedParentStartLine;
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var childIndentation = computeIndentation(child, childStartLine, childIndentationAmount, node, parentDynamicIndentation, effectiveParentStartLine);
                     processNode(child, childContextNode, childStartLine, undecoratedChildStartLine, childIndentation.indentation, childIndentation.delta);
                     childContextNode = node;
@@ -38660,20 +45796,34 @@ var ts;
         }
         function isSomeBlock(kind) {
             switch (kind) {
+<<<<<<< HEAD
                 case 184 /* Block */:
                 case 211 /* ModuleBlock */:
+=======
+                case 182 /* Block */:
+                case 209 /* ModuleBlock */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return true;
             }
             return false;
         }
         function getOpenTokenForList(node, list) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 138 /* Constructor */:
                 case 205 /* FunctionDeclaration */:
                 case 166 /* FunctionExpression */:
                 case 137 /* MethodDeclaration */:
                 case 136 /* MethodSignature */:
                 case 167 /* ArrowFunction */:
+=======
+                case 137 /* Constructor */:
+                case 203 /* FunctionDeclaration */:
+                case 165 /* FunctionExpression */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                case 166 /* ArrowFunction */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (node.typeParameters === list) {
                         return 24 /* LessThanToken */;
                     }
@@ -38681,8 +45831,13 @@ var ts;
                         return 16 /* OpenParenToken */;
                     }
                     break;
+<<<<<<< HEAD
                 case 161 /* CallExpression */:
                 case 162 /* NewExpression */:
+=======
+                case 160 /* CallExpression */:
+                case 161 /* NewExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (node.typeArguments === list) {
                         return 24 /* LessThanToken */;
                     }
@@ -38690,7 +45845,11 @@ var ts;
                         return 16 /* OpenParenToken */;
                     }
                     break;
+<<<<<<< HEAD
                 case 145 /* TypeReference */:
+=======
+                case 144 /* TypeReference */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (node.typeArguments === list) {
                         return 24 /* LessThanToken */;
                     }
@@ -38789,7 +45948,11 @@ var ts;
                     return 0;
                 }
                 var lineAtPosition = sourceFile.getLineAndCharacterOfPosition(position).line;
+<<<<<<< HEAD
                 if (precedingToken.kind === 23 /* CommaToken */ && precedingToken.parent.kind !== 173 /* BinaryExpression */) {
+=======
+                if (precedingToken.kind === 23 /* CommaToken */ && precedingToken.parent.kind !== 172 /* BinaryExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // previous token is comma that separates items in list - find the previous item and try to derive indentation from it
                     var actualIndentation = getActualIndentationForListItemBeforeComma(precedingToken, sourceFile, options);
                     if (actualIndentation !== -1 /* Unknown */) {
@@ -38908,7 +46071,11 @@ var ts;
                 // - parent is SourceFile - by default immediate children of SourceFile are not indented except when user indents them manually
                 // - parent and child are not on the same line
                 var useActualIndentation = (ts.isDeclaration(current) || ts.isStatement(current)) &&
+<<<<<<< HEAD
                     (parent.kind === 240 /* SourceFile */ || !parentAndChildShareLine);
+=======
+                    (parent.kind === 230 /* SourceFile */ || !parentAndChildShareLine);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 if (!useActualIndentation) {
                     return -1 /* Unknown */;
                 }
@@ -38941,8 +46108,13 @@ var ts;
                 return sourceFile.getLineAndCharacterOfPosition(n.getStart(sourceFile));
             }
             function childStartsOnTheSameLineWithElseInIfStatement(parent, child, childStartLine, sourceFile) {
+<<<<<<< HEAD
                 if (parent.kind === 188 /* IfStatement */ && parent.elseStatement === child) {
                     var elseKeyword = ts.findChildOfKind(parent, 77 /* ElseKeyword */, sourceFile);
+=======
+                if (parent.kind === 186 /* IfStatement */ && parent.elseStatement === child) {
+                    var elseKeyword = ts.findChildOfKind(parent, 76 /* ElseKeyword */, sourceFile);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ts.Debug.assert(elseKeyword !== undefined);
                     var elseKeywordStartLine = getStartLineAndCharacterForNode(elseKeyword, sourceFile).line;
                     return elseKeywordStartLine === childStartLine;
@@ -38953,12 +46125,17 @@ var ts;
             function getContainingList(node, sourceFile) {
                 if (node.parent) {
                     switch (node.parent.kind) {
+<<<<<<< HEAD
                         case 145 /* TypeReference */:
+=======
+                        case 144 /* TypeReference */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (node.parent.typeArguments &&
                                 ts.rangeContainsStartEnd(node.parent.typeArguments, node.getStart(sourceFile), node.getEnd())) {
                                 return node.parent.typeArguments;
                             }
                             break;
+<<<<<<< HEAD
                         case 158 /* ObjectLiteralExpression */:
                             return node.parent.properties;
                         case 157 /* ArrayLiteralExpression */:
@@ -38970,6 +46147,19 @@ var ts;
                         case 136 /* MethodSignature */:
                         case 141 /* CallSignature */:
                         case 142 /* ConstructSignature */: {
+=======
+                        case 157 /* ObjectLiteralExpression */:
+                            return node.parent.properties;
+                        case 156 /* ArrayLiteralExpression */:
+                            return node.parent.elements;
+                        case 203 /* FunctionDeclaration */:
+                        case 165 /* FunctionExpression */:
+                        case 166 /* ArrowFunction */:
+                        case 136 /* MethodDeclaration */:
+                        case 135 /* MethodSignature */:
+                        case 140 /* CallSignature */:
+                        case 141 /* ConstructSignature */: {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var start = node.getStart(sourceFile);
                             if (node.parent.typeParameters &&
                                 ts.rangeContainsStartEnd(node.parent.typeParameters, start, node.getEnd())) {
@@ -38980,8 +46170,13 @@ var ts;
                             }
                             break;
                         }
+<<<<<<< HEAD
                         case 162 /* NewExpression */:
                         case 161 /* CallExpression */: {
+=======
+                        case 161 /* NewExpression */:
+                        case 160 /* CallExpression */: {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var start = node.getStart(sourceFile);
                             if (node.parent.typeArguments &&
                                 ts.rangeContainsStartEnd(node.parent.typeArguments, start, node.getEnd())) {
@@ -39098,6 +46293,7 @@ var ts;
             SmartIndenter.findFirstNonWhitespaceColumn = findFirstNonWhitespaceColumn;
             function nodeContentIsAlwaysIndented(kind) {
                 switch (kind) {
+<<<<<<< HEAD
                     case 206 /* ClassDeclaration */:
                     case 207 /* InterfaceDeclaration */:
                     case 209 /* EnumDeclaration */:
@@ -39120,6 +46316,30 @@ var ts;
                     case 174 /* ConditionalExpression */:
                     case 155 /* ArrayBindingPattern */:
                     case 154 /* ObjectBindingPattern */:
+=======
+                    case 204 /* ClassDeclaration */:
+                    case 205 /* InterfaceDeclaration */:
+                    case 207 /* EnumDeclaration */:
+                    case 156 /* ArrayLiteralExpression */:
+                    case 182 /* Block */:
+                    case 209 /* ModuleBlock */:
+                    case 157 /* ObjectLiteralExpression */:
+                    case 148 /* TypeLiteral */:
+                    case 150 /* TupleType */:
+                    case 210 /* CaseBlock */:
+                    case 224 /* DefaultClause */:
+                    case 223 /* CaseClause */:
+                    case 164 /* ParenthesizedExpression */:
+                    case 160 /* CallExpression */:
+                    case 161 /* NewExpression */:
+                    case 183 /* VariableStatement */:
+                    case 201 /* VariableDeclaration */:
+                    case 217 /* ExportAssignment */:
+                    case 194 /* ReturnStatement */:
+                    case 173 /* ConditionalExpression */:
+                    case 154 /* ArrayBindingPattern */:
+                    case 153 /* ObjectBindingPattern */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
                 return false;
@@ -39129,6 +46349,7 @@ var ts;
                     return true;
                 }
                 switch (parent) {
+<<<<<<< HEAD
                     case 189 /* DoStatement */:
                     case 190 /* WhileStatement */:
                     case 192 /* ForInStatement */:
@@ -39145,6 +46366,24 @@ var ts;
                     case 139 /* GetAccessor */:
                     case 140 /* SetAccessor */:
                         return child !== 184 /* Block */;
+=======
+                    case 187 /* DoStatement */:
+                    case 188 /* WhileStatement */:
+                    case 190 /* ForInStatement */:
+                    case 191 /* ForOfStatement */:
+                    case 189 /* ForStatement */:
+                    case 186 /* IfStatement */:
+                    case 203 /* FunctionDeclaration */:
+                    case 165 /* FunctionExpression */:
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+                    case 140 /* CallSignature */:
+                    case 166 /* ArrowFunction */:
+                    case 137 /* Constructor */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                        return child !== 182 /* Block */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                     default:
                         return false;
                 }
@@ -39247,7 +46486,11 @@ var ts;
             return pos;
         };
         NodeObject.prototype.createSyntaxList = function (nodes) {
+<<<<<<< HEAD
             var list = createNode(263 /* SyntaxList */, nodes.pos, nodes.end, 1024 /* Synthetic */, this);
+=======
+            var list = createNode(253 /* SyntaxList */, nodes.pos, nodes.end, 1024 /* Synthetic */, this);
+>>>>>>> Updated compiler to emitDependencyFile branch
             list._children = [];
             var pos = nodes.pos;
             for (var _i = 0; _i < nodes.length; _i++) {
@@ -39266,7 +46509,11 @@ var ts;
         NodeObject.prototype.createChildren = function (sourceFile) {
             var _this = this;
             var children;
+<<<<<<< HEAD
             if (this.kind >= 129 /* FirstNode */) {
+=======
+            if (this.kind >= 128 /* FirstNode */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 scanner.setText((sourceFile || this.getSourceFile()).text);
                 children = [];
                 var pos = this.pos;
@@ -39311,7 +46558,11 @@ var ts;
             var children = this.getChildren();
             for (var _i = 0; _i < children.length; _i++) {
                 var child = children[_i];
+<<<<<<< HEAD
                 if (child.kind < 129 /* FirstNode */) {
+=======
+                if (child.kind < 128 /* FirstNode */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return child;
                 }
                 return child.getFirstToken(sourceFile);
@@ -39321,7 +46572,11 @@ var ts;
             var children = this.getChildren(sourceFile);
             for (var i = children.length - 1; i >= 0; i--) {
                 var child = children[i];
+<<<<<<< HEAD
                 if (child.kind < 129 /* FirstNode */) {
+=======
+                if (child.kind < 128 /* FirstNode */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return child;
                 }
                 return child.getLastToken(sourceFile);
@@ -39374,7 +46629,11 @@ var ts;
                 if (ts.indexOf(declarations, declaration) === indexOfDeclaration) {
                     var sourceFileOfDeclaration = ts.getSourceFileOfNode(declaration);
                     // If it is parameter - try and get the jsDoc comment with @param tag from function declaration's jsDoc comments
+<<<<<<< HEAD
                     if (canUseParsedParamTagComments && declaration.kind === 132 /* Parameter */) {
+=======
+                    if (canUseParsedParamTagComments && declaration.kind === 131 /* Parameter */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         ts.forEach(getJsDocCommentTextRange(declaration.parent, sourceFileOfDeclaration), function (jsDocCommentTextRange) {
                             var cleanedParamJsDocComment = getCleanedParamJsDocComment(jsDocCommentTextRange.pos, jsDocCommentTextRange.end, sourceFileOfDeclaration);
                             if (cleanedParamJsDocComment) {
@@ -39383,6 +46642,7 @@ var ts;
                         });
                     }
                     // If this is left side of dotted module declaration, there is no doc comments associated with this node
+<<<<<<< HEAD
                     if (declaration.kind === 210 /* ModuleDeclaration */ && declaration.body.kind === 210 /* ModuleDeclaration */) {
                         return;
                     }
@@ -39392,6 +46652,17 @@ var ts;
                     }
                     // Get the cleaned js doc comment text from the declaration
                     ts.forEach(getJsDocCommentTextRange(declaration.kind === 203 /* VariableDeclaration */ ? declaration.parent.parent : declaration, sourceFileOfDeclaration), function (jsDocCommentTextRange) {
+=======
+                    if (declaration.kind === 208 /* ModuleDeclaration */ && declaration.body.kind === 208 /* ModuleDeclaration */) {
+                        return;
+                    }
+                    // If this is dotted module name, get the doc comments from the parent
+                    while (declaration.kind === 208 /* ModuleDeclaration */ && declaration.parent.kind === 208 /* ModuleDeclaration */) {
+                        declaration = declaration.parent;
+                    }
+                    // Get the cleaned js doc comment text from the declaration
+                    ts.forEach(getJsDocCommentTextRange(declaration.kind === 201 /* VariableDeclaration */ ? declaration.parent.parent : declaration, sourceFileOfDeclaration), function (jsDocCommentTextRange) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var cleanedJsDocComment = getCleanedJsDocComment(jsDocCommentTextRange.pos, jsDocCommentTextRange.end, sourceFileOfDeclaration);
                         if (cleanedJsDocComment) {
                             jsDocCommentParts.push.apply(jsDocCommentParts, cleanedJsDocComment);
@@ -39730,9 +47001,15 @@ var ts;
                     if (result_2 !== undefined) {
                         return result_2;
                     }
+<<<<<<< HEAD
                     if (declaration.name.kind === 130 /* ComputedPropertyName */) {
                         var expr = declaration.name.expression;
                         if (expr.kind === 159 /* PropertyAccessExpression */) {
+=======
+                    if (declaration.name.kind === 129 /* ComputedPropertyName */) {
+                        var expr = declaration.name.expression;
+                        if (expr.kind === 158 /* PropertyAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return expr.name.text;
                         }
                         return getTextOfIdentifierOrLiteral(expr);
@@ -39752,9 +47029,15 @@ var ts;
             }
             function visit(node) {
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 205 /* FunctionDeclaration */:
                     case 137 /* MethodDeclaration */:
                     case 136 /* MethodSignature */:
+=======
+                    case 203 /* FunctionDeclaration */:
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var functionDeclaration = node;
                         var declarationName = getDeclarationName(functionDeclaration);
                         if (declarationName) {
@@ -39774,6 +47057,7 @@ var ts;
                             ts.forEachChild(node, visit);
                         }
                         break;
+<<<<<<< HEAD
                     case 206 /* ClassDeclaration */:
                     case 207 /* InterfaceDeclaration */:
                     case 208 /* TypeAliasDeclaration */:
@@ -39799,35 +47083,84 @@ var ts;
                         ts.forEachChild(node, visit);
                         break;
                     case 184 /* Block */:
+=======
+                    case 204 /* ClassDeclaration */:
+                    case 205 /* InterfaceDeclaration */:
+                    case 206 /* TypeAliasDeclaration */:
+                    case 207 /* EnumDeclaration */:
+                    case 208 /* ModuleDeclaration */:
+                    case 211 /* ImportEqualsDeclaration */:
+                    case 220 /* ExportSpecifier */:
+                    case 216 /* ImportSpecifier */:
+                    case 211 /* ImportEqualsDeclaration */:
+                    case 213 /* ImportClause */:
+                    case 214 /* NamespaceImport */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                    case 148 /* TypeLiteral */:
+                        addDeclaration(node);
+                    // fall through
+                    case 137 /* Constructor */:
+                    case 183 /* VariableStatement */:
+                    case 202 /* VariableDeclarationList */:
+                    case 153 /* ObjectBindingPattern */:
+                    case 154 /* ArrayBindingPattern */:
+                    case 209 /* ModuleBlock */:
+                        ts.forEachChild(node, visit);
+                        break;
+                    case 182 /* Block */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (ts.isFunctionBlock(node)) {
                             ts.forEachChild(node, visit);
                         }
                         break;
+<<<<<<< HEAD
                     case 132 /* Parameter */:
+=======
+                    case 131 /* Parameter */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Only consider properties defined as constructor parameters
                         if (!(node.flags & 112 /* AccessibilityModifier */)) {
                             break;
                         }
                     // fall through
+<<<<<<< HEAD
                     case 203 /* VariableDeclaration */:
                     case 156 /* BindingElement */:
+=======
+                    case 201 /* VariableDeclaration */:
+                    case 155 /* BindingElement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (ts.isBindingPattern(node.name)) {
                             ts.forEachChild(node.name, visit);
                             break;
                         }
+<<<<<<< HEAD
                     case 239 /* EnumMember */:
                     case 135 /* PropertyDeclaration */:
                     case 134 /* PropertySignature */:
                         addDeclaration(node);
                         break;
                     case 220 /* ExportDeclaration */:
+=======
+                    case 229 /* EnumMember */:
+                    case 134 /* PropertyDeclaration */:
+                    case 133 /* PropertySignature */:
+                        addDeclaration(node);
+                        break;
+                    case 218 /* ExportDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Handle named exports case e.g.:
                         //    export {a, b as B} from "mod";
                         if (node.exportClause) {
                             ts.forEach(node.exportClause.elements, visit);
                         }
                         break;
+<<<<<<< HEAD
                     case 214 /* ImportDeclaration */:
+=======
+                    case 212 /* ImportDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var importClause = node.importClause;
                         if (importClause) {
                             // Handle default import case e.g.:
@@ -39839,7 +47172,11 @@ var ts;
                             //    import * as NS from "mod";
                             //    import {a, b as B} from "mod";
                             if (importClause.namedBindings) {
+<<<<<<< HEAD
                                 if (importClause.namedBindings.kind === 216 /* NamespaceImport */) {
+=======
+                                if (importClause.namedBindings.kind === 214 /* NamespaceImport */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                     addDeclaration(importClause.namedBindings);
                                 }
                                 else {
@@ -40040,16 +47377,27 @@ var ts;
         }
         return ts.forEach(symbol.declarations, function (declaration) {
             // Function expressions are local
+<<<<<<< HEAD
             if (declaration.kind === 166 /* FunctionExpression */) {
                 return true;
             }
             if (declaration.kind !== 203 /* VariableDeclaration */ && declaration.kind !== 205 /* FunctionDeclaration */) {
+=======
+            if (declaration.kind === 165 /* FunctionExpression */) {
+                return true;
+            }
+            if (declaration.kind !== 201 /* VariableDeclaration */ && declaration.kind !== 203 /* FunctionDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return false;
             }
             // If the parent is not sourceFile or module block it is local variable
             for (var parent_9 = declaration.parent; !ts.isFunctionBlock(parent_9); parent_9 = parent_9.parent) {
                 // Reached source file or module block
+<<<<<<< HEAD
                 if (parent_9.kind === 240 /* SourceFile */ || parent_9.kind === 211 /* ModuleBlock */) {
+=======
+                if (parent_9.kind === 230 /* SourceFile */ || parent_9.kind === 209 /* ModuleBlock */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return false;
                 }
             }
@@ -40448,7 +47796,11 @@ var ts;
                     else {
                         if (token === 66 /* Identifier */) {
                             token = scanner.scan();
+<<<<<<< HEAD
                             if (token === 127 /* FromKeyword */) {
+=======
+                            if (token === 126 /* FromKeyword */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 token = scanner.scan();
                                 if (token === 8 /* StringLiteral */) {
                                     // import d from "mod";
@@ -40458,7 +47810,11 @@ var ts;
                             }
                             else if (token === 54 /* EqualsToken */) {
                                 token = scanner.scan();
+<<<<<<< HEAD
                                 if (token === 121 /* RequireKeyword */) {
+=======
+                                if (token === 120 /* RequireKeyword */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                     token = scanner.scan();
                                     if (token === 16 /* OpenParenToken */) {
                                         token = scanner.scan();
@@ -40487,7 +47843,11 @@ var ts;
                             }
                             if (token === 15 /* CloseBraceToken */) {
                                 token = scanner.scan();
+<<<<<<< HEAD
                                 if (token === 127 /* FromKeyword */) {
+=======
+                                if (token === 126 /* FromKeyword */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                     token = scanner.scan();
                                     if (token === 8 /* StringLiteral */) {
                                         // import {a as A} from "mod";
@@ -40503,7 +47863,11 @@ var ts;
                                 token = scanner.scan();
                                 if (token === 66 /* Identifier */) {
                                     token = scanner.scan();
+<<<<<<< HEAD
                                     if (token === 127 /* FromKeyword */) {
+=======
+                                    if (token === 126 /* FromKeyword */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                         token = scanner.scan();
                                         if (token === 8 /* StringLiteral */) {
                                             // import * as NS from "mod"
@@ -40526,7 +47890,11 @@ var ts;
                         }
                         if (token === 15 /* CloseBraceToken */) {
                             token = scanner.scan();
+<<<<<<< HEAD
                             if (token === 127 /* FromKeyword */) {
+=======
+                            if (token === 126 /* FromKeyword */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 token = scanner.scan();
                                 if (token === 8 /* StringLiteral */) {
                                     // export {a as A} from "mod";
@@ -40538,7 +47906,11 @@ var ts;
                     }
                     else if (token === 36 /* AsteriskToken */) {
                         token = scanner.scan();
+<<<<<<< HEAD
                         if (token === 127 /* FromKeyword */) {
+=======
+                        if (token === 126 /* FromKeyword */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             token = scanner.scan();
                             if (token === 8 /* StringLiteral */) {
                                 // export * from "mod"
@@ -40561,7 +47933,11 @@ var ts;
     /// Helpers
     function getTargetLabel(referenceNode, labelName) {
         while (referenceNode) {
+<<<<<<< HEAD
             if (referenceNode.kind === 199 /* LabeledStatement */ && referenceNode.label.text === labelName) {
+=======
+            if (referenceNode.kind === 197 /* LabeledStatement */ && referenceNode.label.text === labelName) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return referenceNode.label;
             }
             referenceNode = referenceNode.parent;
@@ -40569,6 +47945,7 @@ var ts;
         return undefined;
     }
     function isJumpStatementTarget(node) {
+<<<<<<< HEAD
         return node.kind === 66 /* Identifier */ &&
             (node.parent.kind === 195 /* BreakStatement */ || node.parent.kind === 194 /* ContinueStatement */) &&
             node.parent.label === node;
@@ -40576,6 +47953,15 @@ var ts;
     function isLabelOfLabeledStatement(node) {
         return node.kind === 66 /* Identifier */ &&
             node.parent.kind === 199 /* LabeledStatement */ &&
+=======
+        return node.kind === 65 /* Identifier */ &&
+            (node.parent.kind === 193 /* BreakStatement */ || node.parent.kind === 192 /* ContinueStatement */) &&
+            node.parent.label === node;
+    }
+    function isLabelOfLabeledStatement(node) {
+        return node.kind === 65 /* Identifier */ &&
+            node.parent.kind === 197 /* LabeledStatement */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.parent.label === node;
     }
     /**
@@ -40583,7 +47969,11 @@ var ts;
      * Note: 'node' cannot be a SourceFile.
      */
     function isLabeledBy(node, labelName) {
+<<<<<<< HEAD
         for (var owner = node.parent; owner.kind === 199 /* LabeledStatement */; owner = owner.parent) {
+=======
+        for (var owner = node.parent; owner.kind === 197 /* LabeledStatement */; owner = owner.parent) {
+>>>>>>> Updated compiler to emitDependencyFile branch
             if (owner.label.text === labelName) {
                 return true;
             }
@@ -40594,25 +47984,43 @@ var ts;
         return isLabelOfLabeledStatement(node) || isJumpStatementTarget(node);
     }
     function isRightSideOfQualifiedName(node) {
+<<<<<<< HEAD
         return node.parent.kind === 129 /* QualifiedName */ && node.parent.right === node;
     }
     function isRightSideOfPropertyAccess(node) {
         return node && node.parent && node.parent.kind === 159 /* PropertyAccessExpression */ && node.parent.name === node;
+=======
+        return node.parent.kind === 128 /* QualifiedName */ && node.parent.right === node;
+    }
+    function isRightSideOfPropertyAccess(node) {
+        return node && node.parent && node.parent.kind === 158 /* PropertyAccessExpression */ && node.parent.name === node;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     function isCallExpressionTarget(node) {
         if (isRightSideOfPropertyAccess(node)) {
             node = node.parent;
         }
+<<<<<<< HEAD
         return node && node.parent && node.parent.kind === 161 /* CallExpression */ && node.parent.expression === node;
+=======
+        return node && node.parent && node.parent.kind === 160 /* CallExpression */ && node.parent.expression === node;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     function isNewExpressionTarget(node) {
         if (isRightSideOfPropertyAccess(node)) {
             node = node.parent;
         }
+<<<<<<< HEAD
         return node && node.parent && node.parent.kind === 162 /* NewExpression */ && node.parent.expression === node;
     }
     function isNameOfModuleDeclaration(node) {
         return node.parent.kind === 210 /* ModuleDeclaration */ && node.parent.name === node;
+=======
+        return node && node.parent && node.parent.kind === 161 /* NewExpression */ && node.parent.expression === node;
+    }
+    function isNameOfModuleDeclaration(node) {
+        return node.parent.kind === 208 /* ModuleDeclaration */ && node.parent.name === node;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     function isNameOfFunctionDeclaration(node) {
         return node.kind === 66 /* Identifier */ &&
@@ -40620,12 +48028,18 @@ var ts;
     }
     /** Returns true if node is a name of an object literal property, e.g. "a" in x = { "a": 1 } */
     function isNameOfPropertyAssignment(node) {
+<<<<<<< HEAD
         return (node.kind === 66 /* Identifier */ || node.kind === 8 /* StringLiteral */ || node.kind === 7 /* NumericLiteral */) &&
             (node.parent.kind === 237 /* PropertyAssignment */ || node.parent.kind === 238 /* ShorthandPropertyAssignment */) && node.parent.name === node;
+=======
+        return (node.kind === 65 /* Identifier */ || node.kind === 8 /* StringLiteral */ || node.kind === 7 /* NumericLiteral */) &&
+            (node.parent.kind === 227 /* PropertyAssignment */ || node.parent.kind === 228 /* ShorthandPropertyAssignment */) && node.parent.name === node;
+>>>>>>> Updated compiler to emitDependencyFile branch
     }
     function isLiteralNameOfPropertyDeclarationOrIndexAccess(node) {
         if (node.kind === 8 /* StringLiteral */ || node.kind === 7 /* NumericLiteral */) {
             switch (node.parent.kind) {
+<<<<<<< HEAD
                 case 135 /* PropertyDeclaration */:
                 case 134 /* PropertySignature */:
                 case 237 /* PropertyAssignment */:
@@ -40637,6 +48051,19 @@ var ts;
                 case 210 /* ModuleDeclaration */:
                     return node.parent.name === node;
                 case 160 /* ElementAccessExpression */:
+=======
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                case 227 /* PropertyAssignment */:
+                case 229 /* EnumMember */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                case 208 /* ModuleDeclaration */:
+                    return node.parent.name === node;
+                case 159 /* ElementAccessExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return node.parent.argumentExpression === node;
             }
         }
@@ -40695,7 +48122,11 @@ var ts;
     })(BreakContinueSearchType || (BreakContinueSearchType = {}));
     // A cache of completion entries for keywords, these do not change between sessions
     var keywordCompletions = [];
+<<<<<<< HEAD
     for (var i = 67 /* FirstKeyword */; i <= 128 /* LastKeyword */; i++) {
+=======
+    for (var i = 66 /* FirstKeyword */; i <= 127 /* LastKeyword */; i++) {
+>>>>>>> Updated compiler to emitDependencyFile branch
         keywordCompletions.push({
             name: ts.tokenToString(i),
             kind: ScriptElementKind.keyword,
@@ -40710,6 +48141,7 @@ var ts;
                 return undefined;
             }
             switch (node.kind) {
+<<<<<<< HEAD
                 case 240 /* SourceFile */:
                 case 137 /* MethodDeclaration */:
                 case 136 /* MethodSignature */:
@@ -40721,6 +48153,19 @@ var ts;
                 case 207 /* InterfaceDeclaration */:
                 case 209 /* EnumDeclaration */:
                 case 210 /* ModuleDeclaration */:
+=======
+                case 230 /* SourceFile */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                case 203 /* FunctionDeclaration */:
+                case 165 /* FunctionExpression */:
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                case 204 /* ClassDeclaration */:
+                case 205 /* InterfaceDeclaration */:
+                case 207 /* EnumDeclaration */:
+                case 208 /* ModuleDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return node;
             }
         }
@@ -40728,17 +48173,27 @@ var ts;
     ts.getContainerNode = getContainerNode;
     /* @internal */ function getNodeKind(node) {
         switch (node.kind) {
+<<<<<<< HEAD
             case 210 /* ModuleDeclaration */: return ScriptElementKind.moduleElement;
             case 206 /* ClassDeclaration */: return ScriptElementKind.classElement;
             case 207 /* InterfaceDeclaration */: return ScriptElementKind.interfaceElement;
             case 208 /* TypeAliasDeclaration */: return ScriptElementKind.typeElement;
             case 209 /* EnumDeclaration */: return ScriptElementKind.enumElement;
             case 203 /* VariableDeclaration */:
+=======
+            case 208 /* ModuleDeclaration */: return ScriptElementKind.moduleElement;
+            case 204 /* ClassDeclaration */: return ScriptElementKind.classElement;
+            case 205 /* InterfaceDeclaration */: return ScriptElementKind.interfaceElement;
+            case 206 /* TypeAliasDeclaration */: return ScriptElementKind.typeElement;
+            case 207 /* EnumDeclaration */: return ScriptElementKind.enumElement;
+            case 201 /* VariableDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return ts.isConst(node)
                     ? ScriptElementKind.constElement
                     : ts.isLet(node)
                         ? ScriptElementKind.letElement
                         : ScriptElementKind.variableElement;
+<<<<<<< HEAD
             case 205 /* FunctionDeclaration */: return ScriptElementKind.functionElement;
             case 139 /* GetAccessor */: return ScriptElementKind.memberGetAccessorElement;
             case 140 /* SetAccessor */: return ScriptElementKind.memberSetAccessorElement;
@@ -40760,6 +48215,29 @@ var ts;
             case 215 /* ImportClause */:
             case 222 /* ExportSpecifier */:
             case 216 /* NamespaceImport */:
+=======
+            case 203 /* FunctionDeclaration */: return ScriptElementKind.functionElement;
+            case 138 /* GetAccessor */: return ScriptElementKind.memberGetAccessorElement;
+            case 139 /* SetAccessor */: return ScriptElementKind.memberSetAccessorElement;
+            case 136 /* MethodDeclaration */:
+            case 135 /* MethodSignature */:
+                return ScriptElementKind.memberFunctionElement;
+            case 134 /* PropertyDeclaration */:
+            case 133 /* PropertySignature */:
+                return ScriptElementKind.memberVariableElement;
+            case 142 /* IndexSignature */: return ScriptElementKind.indexSignatureElement;
+            case 141 /* ConstructSignature */: return ScriptElementKind.constructSignatureElement;
+            case 140 /* CallSignature */: return ScriptElementKind.callSignatureElement;
+            case 137 /* Constructor */: return ScriptElementKind.constructorImplementationElement;
+            case 130 /* TypeParameter */: return ScriptElementKind.typeParameterElement;
+            case 229 /* EnumMember */: return ScriptElementKind.variableElement;
+            case 131 /* Parameter */: return (node.flags & 112 /* AccessibilityModifier */) ? ScriptElementKind.memberVariableElement : ScriptElementKind.parameterElement;
+            case 211 /* ImportEqualsDeclaration */:
+            case 216 /* ImportSpecifier */:
+            case 213 /* ImportClause */:
+            case 220 /* ExportSpecifier */:
+            case 214 /* NamespaceImport */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return ScriptElementKind.alias;
         }
         return ScriptElementKind.unknown;
@@ -40973,6 +48451,7 @@ var ts;
                     return false;
                 }
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 213 /* ImportEqualsDeclaration */:
                         diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.import_can_only_be_used_in_a_ts_file));
                         return true;
@@ -40980,19 +48459,33 @@ var ts;
                         diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.export_can_only_be_used_in_a_ts_file));
                         return true;
                     case 206 /* ClassDeclaration */:
+=======
+                    case 211 /* ImportEqualsDeclaration */:
+                        diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.import_can_only_be_used_in_a_ts_file));
+                        return true;
+                    case 217 /* ExportAssignment */:
+                        diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.export_can_only_be_used_in_a_ts_file));
+                        return true;
+                    case 204 /* ClassDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var classDeclaration = node;
                         if (checkModifiers(classDeclaration.modifiers) ||
                             checkTypeParameters(classDeclaration.typeParameters)) {
                             return true;
                         }
                         break;
+<<<<<<< HEAD
                     case 235 /* HeritageClause */:
+=======
+                    case 225 /* HeritageClause */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var heritageClause = node;
                         if (heritageClause.token === 103 /* ImplementsKeyword */) {
                             diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.implements_clauses_can_only_be_used_in_a_ts_file));
                             return true;
                         }
                         break;
+<<<<<<< HEAD
                     case 207 /* InterfaceDeclaration */:
                         diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.interface_declarations_can_only_be_used_in_a_ts_file));
                         return true;
@@ -41011,6 +48504,26 @@ var ts;
                     case 205 /* FunctionDeclaration */:
                     case 167 /* ArrowFunction */:
                     case 205 /* FunctionDeclaration */:
+=======
+                    case 205 /* InterfaceDeclaration */:
+                        diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.interface_declarations_can_only_be_used_in_a_ts_file));
+                        return true;
+                    case 208 /* ModuleDeclaration */:
+                        diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.module_declarations_can_only_be_used_in_a_ts_file));
+                        return true;
+                    case 206 /* TypeAliasDeclaration */:
+                        diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.type_aliases_can_only_be_used_in_a_ts_file));
+                        return true;
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+                    case 137 /* Constructor */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                    case 165 /* FunctionExpression */:
+                    case 203 /* FunctionDeclaration */:
+                    case 166 /* ArrowFunction */:
+                    case 203 /* FunctionDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var functionDeclaration = node;
                         if (checkModifiers(functionDeclaration.modifiers) ||
                             checkTypeParameters(functionDeclaration.typeParameters) ||
@@ -41018,20 +48531,33 @@ var ts;
                             return true;
                         }
                         break;
+<<<<<<< HEAD
                     case 185 /* VariableStatement */:
+=======
+                    case 183 /* VariableStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var variableStatement = node;
                         if (checkModifiers(variableStatement.modifiers)) {
                             return true;
                         }
                         break;
+<<<<<<< HEAD
                     case 203 /* VariableDeclaration */:
+=======
+                    case 201 /* VariableDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var variableDeclaration = node;
                         if (checkTypeAnnotation(variableDeclaration.type)) {
                             return true;
                         }
                         break;
+<<<<<<< HEAD
                     case 161 /* CallExpression */:
                     case 162 /* NewExpression */:
+=======
+                    case 160 /* CallExpression */:
+                    case 161 /* NewExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var expression = node;
                         if (expression.typeArguments && expression.typeArguments.length > 0) {
                             var start = expression.typeArguments.pos;
@@ -41039,7 +48565,11 @@ var ts;
                             return true;
                         }
                         break;
+<<<<<<< HEAD
                     case 132 /* Parameter */:
+=======
+                    case 131 /* Parameter */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var parameter = node;
                         if (parameter.modifiers) {
                             var start = parameter.modifiers.pos;
@@ -41055,6 +48585,7 @@ var ts;
                             return true;
                         }
                         break;
+<<<<<<< HEAD
                     case 135 /* PropertyDeclaration */:
                         diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.property_declarations_can_only_be_used_in_a_ts_file));
                         return true;
@@ -41066,6 +48597,19 @@ var ts;
                         diagnostics.push(ts.createDiagnosticForNode(typeAssertionExpression.type, ts.Diagnostics.type_assertion_expressions_can_only_be_used_in_a_ts_file));
                         return true;
                     case 133 /* Decorator */:
+=======
+                    case 134 /* PropertyDeclaration */:
+                        diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.property_declarations_can_only_be_used_in_a_ts_file));
+                        return true;
+                    case 207 /* EnumDeclaration */:
+                        diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.enum_declarations_can_only_be_used_in_a_ts_file));
+                        return true;
+                    case 163 /* TypeAssertionExpression */:
+                        var typeAssertionExpression = node;
+                        diagnostics.push(ts.createDiagnosticForNode(typeAssertionExpression.type, ts.Diagnostics.type_assertion_expressions_can_only_be_used_in_a_ts_file));
+                        return true;
+                    case 132 /* Decorator */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         diagnostics.push(ts.createDiagnosticForNode(node, ts.Diagnostics.decorators_can_only_be_used_in_a_ts_file));
                         return true;
                 }
@@ -41202,7 +48746,18 @@ var ts;
             // visible symbols in the scope, and the node is the current location.
             var node = currentToken;
             var isRightOfDot = false;
+<<<<<<< HEAD
             var isRightOfOpenTag = false;
+=======
+            if (contextToken && contextToken.kind === 20 /* DotToken */ && contextToken.parent.kind === 158 /* PropertyAccessExpression */) {
+                node = contextToken.parent.expression;
+                isRightOfDot = true;
+            }
+            else if (contextToken && contextToken.kind === 20 /* DotToken */ && contextToken.parent.kind === 128 /* QualifiedName */) {
+                node = contextToken.parent.left;
+                isRightOfDot = true;
+            }
+>>>>>>> Updated compiler to emitDependencyFile branch
             var location = ts.getTouchingPropertyName(sourceFile, position);
             if (contextToken) {
                 var kind = contextToken.kind;
@@ -41251,7 +48806,11 @@ var ts;
                 // Right of dot member completion list
                 isMemberCompletion = true;
                 isNewIdentifierLocation = false;
+<<<<<<< HEAD
                 if (node.kind === 66 /* Identifier */ || node.kind === 129 /* QualifiedName */ || node.kind === 159 /* PropertyAccessExpression */) {
+=======
+                if (node.kind === 65 /* Identifier */ || node.kind === 128 /* QualifiedName */ || node.kind === 158 /* PropertyAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var symbol = typeChecker.getSymbolAtLocation(node);
                     // This is an alias, follow what it aliases
                     if (symbol && symbol.flags & 8388608 /* Alias */) {
@@ -41319,13 +48878,21 @@ var ts;
                     }
                     return true;
                 }
+<<<<<<< HEAD
                 else if (ts.getAncestor(contextToken, 215 /* ImportClause */)) {
+=======
+                else if (ts.getAncestor(contextToken, 213 /* ImportClause */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // cursor is in import clause
                     // try to show exported member for imported module
                     isMemberCompletion = true;
                     isNewIdentifierLocation = true;
                     if (showCompletionsInImportsClause(contextToken)) {
+<<<<<<< HEAD
                         var importDeclaration = ts.getAncestor(contextToken, 214 /* ImportDeclaration */);
+=======
+                        var importDeclaration = ts.getAncestor(contextToken, 212 /* ImportDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         ts.Debug.assert(importDeclaration !== undefined);
                         var exports;
                         if (importDeclaration.moduleSpecifier) {
@@ -41429,7 +48996,11 @@ var ts;
                     // import {| 
                     // import {a,|
                     if (node.kind === 14 /* OpenBraceToken */ || node.kind === 23 /* CommaToken */) {
+<<<<<<< HEAD
                         return node.parent.kind === 217 /* NamedImports */;
+=======
+                        return node.parent.kind === 215 /* NamedImports */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                     }
                 }
                 return false;
@@ -41439,6 +49010,7 @@ var ts;
                     var containingNodeKind = previousToken.parent.kind;
                     switch (previousToken.kind) {
                         case 23 /* CommaToken */:
+<<<<<<< HEAD
                             return containingNodeKind === 161 /* CallExpression */ // func( a, |
                                 || containingNodeKind === 138 /* Constructor */ // constructor( a, |   public, protected, private keywords are allowed here, so show completion
                                 || containingNodeKind === 162 /* NewExpression */ // new C(a, |
@@ -41471,6 +49043,40 @@ var ts;
                         case 107 /* PrivateKeyword */:
                         case 108 /* ProtectedKeyword */:
                             return containingNodeKind === 135 /* PropertyDeclaration */; // class A{ public |
+=======
+                            return containingNodeKind === 160 /* CallExpression */ // func( a, |
+                                || containingNodeKind === 137 /* Constructor */ // constructor( a, |   public, protected, private keywords are allowed here, so show completion
+                                || containingNodeKind === 161 /* NewExpression */ // new C(a, |
+                                || containingNodeKind === 156 /* ArrayLiteralExpression */ // [a, |
+                                || containingNodeKind === 172 /* BinaryExpression */ // let x = (a, |
+                                || containingNodeKind === 145 /* FunctionType */; // var x: (s: string, list|
+                        case 16 /* OpenParenToken */:
+                            return containingNodeKind === 160 /* CallExpression */ // func( |
+                                || containingNodeKind === 137 /* Constructor */ // constructor( |
+                                || containingNodeKind === 161 /* NewExpression */ // new C(a|
+                                || containingNodeKind === 164 /* ParenthesizedExpression */ // let x = (a|
+                                || containingNodeKind === 152 /* ParenthesizedType */; // function F(pred: (a| this can become an arrow function, where 'a' is the argument
+                        case 18 /* OpenBracketToken */:
+                            return containingNodeKind === 156 /* ArrayLiteralExpression */; // [ |
+                        case 118 /* ModuleKeyword */: // module |
+                        case 119 /* NamespaceKeyword */:
+                            return true;
+                        case 20 /* DotToken */:
+                            return containingNodeKind === 208 /* ModuleDeclaration */; // module A.|
+                        case 14 /* OpenBraceToken */:
+                            return containingNodeKind === 204 /* ClassDeclaration */; // class A{ |
+                        case 53 /* EqualsToken */:
+                            return containingNodeKind === 201 /* VariableDeclaration */ // let x = a|
+                                || containingNodeKind === 172 /* BinaryExpression */; // x = a|
+                        case 11 /* TemplateHead */:
+                            return containingNodeKind === 174 /* TemplateExpression */; // `aa ${|
+                        case 12 /* TemplateMiddle */:
+                            return containingNodeKind === 180 /* TemplateSpan */; // `aa ${10} dd ${|
+                        case 108 /* PublicKeyword */:
+                        case 106 /* PrivateKeyword */:
+                        case 107 /* ProtectedKeyword */:
+                            return containingNodeKind === 134 /* PropertyDeclaration */; // class A{ public |
+>>>>>>> Updated compiler to emitDependencyFile branch
                     }
                     // Previous token may have been a keyword that was converted to an identifier.
                     switch (previousToken.getText()) {
@@ -41502,6 +49108,7 @@ var ts;
                 }
                 return false;
             }
+<<<<<<< HEAD
             /**
              * Returns the immediate owning object literal or binding pattern of a context token,
              * on the condition that one exists and that the context implies completion should be given.
@@ -41513,6 +49120,16 @@ var ts;
                         case 23 /* CommaToken */:
                             var parent_10 = contextToken.parent;
                             if (parent_10 && (parent_10.kind === 158 /* ObjectLiteralExpression */ || parent_10.kind === 154 /* ObjectBindingPattern */)) {
+=======
+            function getContainingObjectLiteralApplicableForCompletion(previousToken) {
+                // The locations in an object literal expression that are applicable for completion are property name definition locations.
+                if (previousToken) {
+                    var parent_10 = previousToken.parent;
+                    switch (previousToken.kind) {
+                        case 14 /* OpenBraceToken */: // let x = { |
+                        case 23 /* CommaToken */:
+                            if (parent_10 && parent_10.kind === 157 /* ObjectLiteralExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 return parent_10;
                             }
                             break;
@@ -41522,6 +49139,7 @@ var ts;
             }
             function isFunction(kind) {
                 switch (kind) {
+<<<<<<< HEAD
                     case 166 /* FunctionExpression */:
                     case 167 /* ArrowFunction */:
                     case 205 /* FunctionDeclaration */:
@@ -41532,6 +49150,18 @@ var ts;
                     case 141 /* CallSignature */:
                     case 142 /* ConstructSignature */:
                     case 143 /* IndexSignature */:
+=======
+                    case 165 /* FunctionExpression */:
+                    case 166 /* ArrowFunction */:
+                    case 203 /* FunctionDeclaration */:
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                    case 140 /* CallSignature */:
+                    case 141 /* ConstructSignature */:
+                    case 142 /* IndexSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return true;
                 }
                 return false;
@@ -41541,6 +49171,7 @@ var ts;
                     var containingNodeKind = previousToken.parent.kind;
                     switch (previousToken.kind) {
                         case 23 /* CommaToken */:
+<<<<<<< HEAD
                             return containingNodeKind === 203 /* VariableDeclaration */ ||
                                 containingNodeKind === 204 /* VariableDeclarationList */ ||
                                 containingNodeKind === 185 /* VariableStatement */ ||
@@ -41596,6 +49227,65 @@ var ts;
                         case 71 /* ConstKeyword */:
                         case 111 /* YieldKeyword */:
                         case 126 /* TypeKeyword */:
+=======
+                            return containingNodeKind === 201 /* VariableDeclaration */ ||
+                                containingNodeKind === 202 /* VariableDeclarationList */ ||
+                                containingNodeKind === 183 /* VariableStatement */ ||
+                                containingNodeKind === 207 /* EnumDeclaration */ ||
+                                isFunction(containingNodeKind) ||
+                                containingNodeKind === 204 /* ClassDeclaration */ ||
+                                containingNodeKind === 203 /* FunctionDeclaration */ ||
+                                containingNodeKind === 205 /* InterfaceDeclaration */ ||
+                                containingNodeKind === 154 /* ArrayBindingPattern */ ||
+                                containingNodeKind === 153 /* ObjectBindingPattern */; // function func({ x, y|
+                        case 20 /* DotToken */:
+                            return containingNodeKind === 154 /* ArrayBindingPattern */; // var [.|
+                        case 51 /* ColonToken */:
+                            return containingNodeKind === 155 /* BindingElement */; // var {x :html|
+                        case 18 /* OpenBracketToken */:
+                            return containingNodeKind === 154 /* ArrayBindingPattern */; // var [x|
+                        case 16 /* OpenParenToken */:
+                            return containingNodeKind === 226 /* CatchClause */ ||
+                                isFunction(containingNodeKind);
+                        case 14 /* OpenBraceToken */:
+                            return containingNodeKind === 207 /* EnumDeclaration */ ||
+                                containingNodeKind === 205 /* InterfaceDeclaration */ ||
+                                containingNodeKind === 148 /* TypeLiteral */ ||
+                                containingNodeKind === 153 /* ObjectBindingPattern */; // function func({ x|
+                        case 22 /* SemicolonToken */:
+                            return containingNodeKind === 133 /* PropertySignature */ &&
+                                previousToken.parent && previousToken.parent.parent &&
+                                (previousToken.parent.parent.kind === 205 /* InterfaceDeclaration */ ||
+                                    previousToken.parent.parent.kind === 148 /* TypeLiteral */); // let x : { a; |
+                        case 24 /* LessThanToken */:
+                            return containingNodeKind === 204 /* ClassDeclaration */ ||
+                                containingNodeKind === 203 /* FunctionDeclaration */ ||
+                                containingNodeKind === 205 /* InterfaceDeclaration */ ||
+                                isFunction(containingNodeKind);
+                        case 109 /* StaticKeyword */:
+                            return containingNodeKind === 134 /* PropertyDeclaration */;
+                        case 21 /* DotDotDotToken */:
+                            return containingNodeKind === 131 /* Parameter */ ||
+                                containingNodeKind === 137 /* Constructor */ ||
+                                (previousToken.parent && previousToken.parent.parent &&
+                                    previousToken.parent.parent.kind === 154 /* ArrayBindingPattern */); // var [...z|
+                        case 108 /* PublicKeyword */:
+                        case 106 /* PrivateKeyword */:
+                        case 107 /* ProtectedKeyword */:
+                            return containingNodeKind === 131 /* Parameter */;
+                        case 69 /* ClassKeyword */:
+                        case 77 /* EnumKeyword */:
+                        case 103 /* InterfaceKeyword */:
+                        case 83 /* FunctionKeyword */:
+                        case 98 /* VarKeyword */:
+                        case 116 /* GetKeyword */:
+                        case 122 /* SetKeyword */:
+                        case 85 /* ImportKeyword */:
+                        case 104 /* LetKeyword */:
+                        case 70 /* ConstKeyword */:
+                        case 110 /* YieldKeyword */:
+                        case 125 /* TypeKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return true;
                     }
                     // Previous token may have been a keyword that was converted to an identifier.
@@ -41627,7 +49317,11 @@ var ts;
                     return exports;
                 }
                 if (importDeclaration.importClause.namedBindings &&
+<<<<<<< HEAD
                     importDeclaration.importClause.namedBindings.kind === 217 /* NamedImports */) {
+=======
+                    importDeclaration.importClause.namedBindings.kind === 215 /* NamedImports */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ts.forEach(importDeclaration.importClause.namedBindings.elements, function (el) {
                         var name = el.propertyName || el.name;
                         exisingImports[name.text] = true;
@@ -41643,6 +49337,7 @@ var ts;
                     return contextualMemberSymbols;
                 }
                 var existingMemberNames = {};
+<<<<<<< HEAD
                 for (var _i = 0; _i < existingMembers.length; _i++) {
                     var m = existingMembers[_i];
                     // Ignore omitted expressions for missing members
@@ -41650,6 +49345,12 @@ var ts;
                         m.kind !== 238 /* ShorthandPropertyAssignment */ &&
                         m.kind !== 156 /* BindingElement */) {
                         continue;
+=======
+                ts.forEach(existingMembers, function (m) {
+                    if (m.kind !== 227 /* PropertyAssignment */ && m.kind !== 228 /* ShorthandPropertyAssignment */) {
+                        // Ignore omitted expressions for missing members in the object literal
+                        return;
+>>>>>>> Updated compiler to emitDependencyFile branch
                     }
                     // If this is the current item we are editing right now, do not filter it out
                     if (m.getStart() <= position && position <= m.getEnd()) {
@@ -41706,10 +49407,17 @@ var ts;
                 for (var _i = 0, _a = program.getSourceFiles(); _i < _a.length; _i++) {
                     var sourceFile = _a[_i];
                     var nameTable = getNameTable(sourceFile);
+<<<<<<< HEAD
                     for (var name_29 in nameTable) {
                         if (!allNames[name_29]) {
                             allNames[name_29] = name_29;
                             var displayName = getCompletionEntryDisplayName(name_29, target, true);
+=======
+                    for (var name_30 in nameTable) {
+                        if (!allNames[name_30]) {
+                            allNames[name_30] = name_30;
+                            var displayName = getCompletionEntryDisplayName(name_30, target, true);
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (displayName) {
                                 var entry = {
                                     name: displayName,
@@ -41908,7 +49616,11 @@ var ts;
                 var signature;
                 type = typeChecker.getTypeOfSymbolAtLocation(symbol, location);
                 if (type) {
+<<<<<<< HEAD
                     if (location.parent && location.parent.kind === 159 /* PropertyAccessExpression */) {
+=======
+                    if (location.parent && location.parent.kind === 158 /* PropertyAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var right = location.parent.name;
                         // Either the location is on the right of a property access, or on the left and the right is missing
                         if (right === location || (right && right.getFullWidth() === 0)) {
@@ -41917,7 +49629,11 @@ var ts;
                     }
                     // try get the call/construct signature from the type if it matches
                     var callExpression;
+<<<<<<< HEAD
                     if (location.kind === 161 /* CallExpression */ || location.kind === 162 /* NewExpression */) {
+=======
+                    if (location.kind === 160 /* CallExpression */ || location.kind === 161 /* NewExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         callExpression = location;
                     }
                     else if (isCallExpressionTarget(location) || isNewExpressionTarget(location)) {
@@ -41930,7 +49646,11 @@ var ts;
                             // Use the first candidate:
                             signature = candidateSignatures[0];
                         }
+<<<<<<< HEAD
                         var useConstructSignatures = callExpression.kind === 162 /* NewExpression */ || callExpression.expression.kind === 92 /* SuperKeyword */;
+=======
+                        var useConstructSignatures = callExpression.kind === 161 /* NewExpression */ || callExpression.expression.kind === 91 /* SuperKeyword */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var allSignatures = useConstructSignatures ? type.getConstructSignatures() : type.getCallSignatures();
                         if (!ts.contains(allSignatures, signature.target || signature)) {
                             // Get the first signature if there 
@@ -41982,24 +49702,39 @@ var ts;
                         }
                     }
                     else if ((isNameOfFunctionDeclaration(location) && !(symbol.flags & 98304 /* Accessor */)) ||
+<<<<<<< HEAD
                         (location.kind === 115 /* ConstructorKeyword */ && location.parent.kind === 138 /* Constructor */)) {
                         // get the signature from the declaration and write it
                         var functionDeclaration = location.parent;
                         var allSignatures = functionDeclaration.kind === 138 /* Constructor */ ? type.getConstructSignatures() : type.getCallSignatures();
+=======
+                        (location.kind === 114 /* ConstructorKeyword */ && location.parent.kind === 137 /* Constructor */)) {
+                        // get the signature from the declaration and write it
+                        var functionDeclaration = location.parent;
+                        var allSignatures = functionDeclaration.kind === 137 /* Constructor */ ? type.getConstructSignatures() : type.getCallSignatures();
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (!typeChecker.isImplementationOfOverload(functionDeclaration)) {
                             signature = typeChecker.getSignatureFromDeclaration(functionDeclaration);
                         }
                         else {
                             signature = allSignatures[0];
                         }
+<<<<<<< HEAD
                         if (functionDeclaration.kind === 138 /* Constructor */) {
+=======
+                        if (functionDeclaration.kind === 137 /* Constructor */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // show (constructor) Type(...) signature
                             symbolKind = ScriptElementKind.constructorImplementationElement;
                             addPrefixForAnyFunctionOrVar(type.symbol, symbolKind);
                         }
                         else {
                             // (function/method) symbol(..signature)
+<<<<<<< HEAD
                             addPrefixForAnyFunctionOrVar(functionDeclaration.kind === 141 /* CallSignature */ &&
+=======
+                            addPrefixForAnyFunctionOrVar(functionDeclaration.kind === 140 /* CallSignature */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 !(type.symbol.flags & 2048 /* TypeLiteral */ || type.symbol.flags & 4096 /* ObjectLiteral */) ? type.symbol : symbol, symbolKind);
                         }
                         addSignatureDisplayParts(signature, allSignatures);
@@ -42022,7 +49757,11 @@ var ts;
             }
             if (symbolFlags & 524288 /* TypeAlias */) {
                 addNewLineIfDisplayPartsExist();
+<<<<<<< HEAD
                 displayParts.push(ts.keywordPart(126 /* TypeKeyword */));
+=======
+                displayParts.push(ts.keywordPart(125 /* TypeKeyword */));
+>>>>>>> Updated compiler to emitDependencyFile branch
                 displayParts.push(ts.spacePart());
                 addFullSymbolName(symbol);
                 displayParts.push(ts.spacePart());
@@ -42042,9 +49781,15 @@ var ts;
             }
             if (symbolFlags & 1536 /* Module */) {
                 addNewLineIfDisplayPartsExist();
+<<<<<<< HEAD
                 var declaration = ts.getDeclarationOfKind(symbol, 210 /* ModuleDeclaration */);
                 var isNamespace = declaration && declaration.name && declaration.name.kind === 66 /* Identifier */;
                 displayParts.push(ts.keywordPart(isNamespace ? 120 /* NamespaceKeyword */ : 119 /* ModuleKeyword */));
+=======
+                var declaration = ts.getDeclarationOfKind(symbol, 208 /* ModuleDeclaration */);
+                var isNamespace = declaration && declaration.name && declaration.name.kind === 65 /* Identifier */;
+                displayParts.push(ts.keywordPart(isNamespace ? 119 /* NamespaceKeyword */ : 118 /* ModuleKeyword */));
+>>>>>>> Updated compiler to emitDependencyFile branch
                 displayParts.push(ts.spacePart());
                 addFullSymbolName(symbol);
             }
@@ -42065,6 +49810,7 @@ var ts;
                 }
                 else {
                     // Method/function type parameter
+<<<<<<< HEAD
                     var signatureDeclaration = ts.getDeclarationOfKind(symbol, 131 /* TypeParameter */).parent;
                     var signature = typeChecker.getSignatureFromDeclaration(signatureDeclaration);
                     if (signatureDeclaration.kind === 142 /* ConstructSignature */) {
@@ -42072,6 +49818,15 @@ var ts;
                         displayParts.push(ts.spacePart());
                     }
                     else if (signatureDeclaration.kind !== 141 /* CallSignature */ && signatureDeclaration.name) {
+=======
+                    var signatureDeclaration = ts.getDeclarationOfKind(symbol, 130 /* TypeParameter */).parent;
+                    var signature = typeChecker.getSignatureFromDeclaration(signatureDeclaration);
+                    if (signatureDeclaration.kind === 141 /* ConstructSignature */) {
+                        displayParts.push(ts.keywordPart(88 /* NewKeyword */));
+                        displayParts.push(ts.spacePart());
+                    }
+                    else if (signatureDeclaration.kind !== 140 /* CallSignature */ && signatureDeclaration.name) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         addFullSymbolName(signatureDeclaration.symbol);
                     }
                     displayParts.push.apply(displayParts, ts.signatureToDisplayParts(typeChecker, signature, sourceFile, 32 /* WriteTypeArgumentsOfSignature */));
@@ -42080,7 +49835,11 @@ var ts;
             if (symbolFlags & 8 /* EnumMember */) {
                 addPrefixForAnyFunctionOrVar(symbol, "enum member");
                 var declaration = symbol.declarations[0];
+<<<<<<< HEAD
                 if (declaration.kind === 239 /* EnumMember */) {
+=======
+                if (declaration.kind === 229 /* EnumMember */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var constantValue = typeChecker.getConstantValue(declaration);
                     if (constantValue !== undefined) {
                         displayParts.push(ts.spacePart());
@@ -42096,13 +49855,21 @@ var ts;
                 displayParts.push(ts.spacePart());
                 addFullSymbolName(symbol);
                 ts.forEach(symbol.declarations, function (declaration) {
+<<<<<<< HEAD
                     if (declaration.kind === 213 /* ImportEqualsDeclaration */) {
+=======
+                    if (declaration.kind === 211 /* ImportEqualsDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var importEqualsDeclaration = declaration;
                         if (ts.isExternalModuleImportEqualsDeclaration(importEqualsDeclaration)) {
                             displayParts.push(ts.spacePart());
                             displayParts.push(ts.operatorPart(54 /* EqualsToken */));
                             displayParts.push(ts.spacePart());
+<<<<<<< HEAD
                             displayParts.push(ts.keywordPart(121 /* RequireKeyword */));
+=======
+                            displayParts.push(ts.keywordPart(120 /* RequireKeyword */));
+>>>>>>> Updated compiler to emitDependencyFile branch
                             displayParts.push(ts.punctuationPart(16 /* OpenParenToken */));
                             displayParts.push(ts.displayPart(ts.getTextOfNode(ts.getExternalModuleImportEqualsDeclarationExpression(importEqualsDeclaration)), SymbolDisplayPartKind.stringLiteral));
                             displayParts.push(ts.punctuationPart(17 /* CloseParenToken */));
@@ -42228,11 +49995,19 @@ var ts;
             if (!symbol) {
                 // Try getting just type at this position and show
                 switch (node.kind) {
+<<<<<<< HEAD
                     case 66 /* Identifier */:
                     case 159 /* PropertyAccessExpression */:
                     case 129 /* QualifiedName */:
                     case 94 /* ThisKeyword */:
                     case 92 /* SuperKeyword */:
+=======
+                    case 65 /* Identifier */:
+                    case 158 /* PropertyAccessExpression */:
+                    case 128 /* QualifiedName */:
+                    case 93 /* ThisKeyword */:
+                    case 91 /* SuperKeyword */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // For the identifiers/this/super etc get the type at position
                         var type = typeChecker.getTypeAtLocation(node);
                         if (type) {
@@ -42288,7 +50063,11 @@ var ts;
                 if (isNewExpressionTarget(location) || location.kind === 115 /* ConstructorKeyword */) {
                     if (symbol.flags & 32 /* Class */) {
                         var classDeclaration = symbol.getDeclarations()[0];
+<<<<<<< HEAD
                         ts.Debug.assert(classDeclaration && classDeclaration.kind === 206 /* ClassDeclaration */);
+=======
+                        ts.Debug.assert(classDeclaration && classDeclaration.kind === 204 /* ClassDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return tryAddSignature(classDeclaration.members, true, symbolKind, symbolName, containerName, result);
                     }
                 }
@@ -42304,8 +50083,13 @@ var ts;
                 var declarations = [];
                 var definition;
                 ts.forEach(signatureDeclarations, function (d) {
+<<<<<<< HEAD
                     if ((selectConstructors && d.kind === 138 /* Constructor */) ||
                         (!selectConstructors && (d.kind === 205 /* FunctionDeclaration */ || d.kind === 137 /* MethodDeclaration */ || d.kind === 136 /* MethodSignature */))) {
+=======
+                    if ((selectConstructors && d.kind === 137 /* Constructor */) ||
+                        (!selectConstructors && (d.kind === 203 /* FunctionDeclaration */ || d.kind === 136 /* MethodDeclaration */ || d.kind === 135 /* MethodSignature */))) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         declarations.push(d);
                         if (d.body)
                             definition = d;
@@ -42374,7 +50158,11 @@ var ts;
             // go to the declaration of the property name (in this case stay at the same position). However, if go-to-definition 
             // is performed at the location of property access, we would like to go to definition of the property in the short-hand
             // assignment. This case and others are handled by the following code.
+<<<<<<< HEAD
             if (node.parent.kind === 238 /* ShorthandPropertyAssignment */) {
+=======
+            if (node.parent.kind === 228 /* ShorthandPropertyAssignment */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 var shorthandSymbol = typeChecker.getShorthandAssignmentValueSymbol(symbol.valueDeclaration);
                 if (!shorthandSymbol) {
                     return [];
@@ -42501,6 +50289,7 @@ var ts;
                 function getHighlightSpans(node) {
                     if (node) {
                         switch (node.kind) {
+<<<<<<< HEAD
                             case 85 /* IfKeyword */:
                             case 77 /* ElseKeyword */:
                                 if (hasKind(node.parent, 188 /* IfStatement */)) {
@@ -42566,11 +50355,82 @@ var ts;
                             case 117 /* GetKeyword */:
                             case 123 /* SetKeyword */:
                                 if (hasKind(node.parent, 139 /* GetAccessor */) || hasKind(node.parent, 140 /* SetAccessor */)) {
+=======
+                            case 84 /* IfKeyword */:
+                            case 76 /* ElseKeyword */:
+                                if (hasKind(node.parent, 186 /* IfStatement */)) {
+                                    return getIfElseOccurrences(node.parent);
+                                }
+                                break;
+                            case 90 /* ReturnKeyword */:
+                                if (hasKind(node.parent, 194 /* ReturnStatement */)) {
+                                    return getReturnOccurrences(node.parent);
+                                }
+                                break;
+                            case 94 /* ThrowKeyword */:
+                                if (hasKind(node.parent, 198 /* ThrowStatement */)) {
+                                    return getThrowOccurrences(node.parent);
+                                }
+                                break;
+                            case 68 /* CatchKeyword */:
+                                if (hasKind(parent(parent(node)), 199 /* TryStatement */)) {
+                                    return getTryCatchFinallyOccurrences(node.parent.parent);
+                                }
+                                break;
+                            case 96 /* TryKeyword */:
+                            case 81 /* FinallyKeyword */:
+                                if (hasKind(parent(node), 199 /* TryStatement */)) {
+                                    return getTryCatchFinallyOccurrences(node.parent);
+                                }
+                                break;
+                            case 92 /* SwitchKeyword */:
+                                if (hasKind(node.parent, 196 /* SwitchStatement */)) {
+                                    return getSwitchCaseDefaultOccurrences(node.parent);
+                                }
+                                break;
+                            case 67 /* CaseKeyword */:
+                            case 73 /* DefaultKeyword */:
+                                if (hasKind(parent(parent(parent(node))), 196 /* SwitchStatement */)) {
+                                    return getSwitchCaseDefaultOccurrences(node.parent.parent.parent);
+                                }
+                                break;
+                            case 66 /* BreakKeyword */:
+                            case 71 /* ContinueKeyword */:
+                                if (hasKind(node.parent, 193 /* BreakStatement */) || hasKind(node.parent, 192 /* ContinueStatement */)) {
+                                    return getBreakOrContinueStatementOccurences(node.parent);
+                                }
+                                break;
+                            case 82 /* ForKeyword */:
+                                if (hasKind(node.parent, 189 /* ForStatement */) ||
+                                    hasKind(node.parent, 190 /* ForInStatement */) ||
+                                    hasKind(node.parent, 191 /* ForOfStatement */)) {
+                                    return getLoopBreakContinueOccurrences(node.parent);
+                                }
+                                break;
+                            case 100 /* WhileKeyword */:
+                            case 75 /* DoKeyword */:
+                                if (hasKind(node.parent, 188 /* WhileStatement */) || hasKind(node.parent, 187 /* DoStatement */)) {
+                                    return getLoopBreakContinueOccurrences(node.parent);
+                                }
+                                break;
+                            case 114 /* ConstructorKeyword */:
+                                if (hasKind(node.parent, 137 /* Constructor */)) {
+                                    return getConstructorOccurrences(node.parent);
+                                }
+                                break;
+                            case 116 /* GetKeyword */:
+                            case 122 /* SetKeyword */:
+                                if (hasKind(node.parent, 138 /* GetAccessor */) || hasKind(node.parent, 139 /* SetAccessor */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                     return getGetAndSetOccurrences(node.parent);
                                 }
                             default:
                                 if (ts.isModifier(node.kind) && node.parent &&
+<<<<<<< HEAD
                                     (ts.isDeclaration(node.parent) || node.parent.kind === 185 /* VariableStatement */)) {
+=======
+                                    (ts.isDeclaration(node.parent) || node.parent.kind === 183 /* VariableStatement */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                     return getModifierOccurrences(node.kind, node.parent);
                                 }
                         }
@@ -42586,10 +50446,17 @@ var ts;
                     aggregate(node);
                     return statementAccumulator;
                     function aggregate(node) {
+<<<<<<< HEAD
                         if (node.kind === 200 /* ThrowStatement */) {
                             statementAccumulator.push(node);
                         }
                         else if (node.kind === 201 /* TryStatement */) {
+=======
+                        if (node.kind === 198 /* ThrowStatement */) {
+                            statementAccumulator.push(node);
+                        }
+                        else if (node.kind === 199 /* TryStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var tryStatement = node;
                             if (tryStatement.catchClause) {
                                 aggregate(tryStatement.catchClause);
@@ -42618,12 +50485,20 @@ var ts;
                     var child = throwStatement;
                     while (child.parent) {
                         var parent_11 = child.parent;
+<<<<<<< HEAD
                         if (ts.isFunctionBlock(parent_11) || parent_11.kind === 240 /* SourceFile */) {
+=======
+                        if (ts.isFunctionBlock(parent_11) || parent_11.kind === 230 /* SourceFile */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return parent_11;
                         }
                         // A throw-statement is only owned by a try-statement if the try-statement has
                         // a catch clause, and if the throw-statement occurs within the try block.
+<<<<<<< HEAD
                         if (parent_11.kind === 201 /* TryStatement */) {
+=======
+                        if (parent_11.kind === 199 /* TryStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var tryStatement = parent_11;
                             if (tryStatement.tryBlock === child && tryStatement.catchClause) {
                                 return child;
@@ -42638,7 +50513,11 @@ var ts;
                     aggregate(node);
                     return statementAccumulator;
                     function aggregate(node) {
+<<<<<<< HEAD
                         if (node.kind === 195 /* BreakStatement */ || node.kind === 194 /* ContinueStatement */) {
+=======
+                        if (node.kind === 193 /* BreakStatement */ || node.kind === 192 /* ContinueStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             statementAccumulator.push(node);
                         }
                         else if (!ts.isFunctionLike(node)) {
@@ -42654,6 +50533,7 @@ var ts;
                 function getBreakOrContinueOwner(statement) {
                     for (var node_2 = statement.parent; node_2; node_2 = node_2.parent) {
                         switch (node_2.kind) {
+<<<<<<< HEAD
                             case 198 /* SwitchStatement */:
                                 if (statement.kind === 194 /* ContinueStatement */) {
                                     continue;
@@ -42664,6 +50544,18 @@ var ts;
                             case 193 /* ForOfStatement */:
                             case 190 /* WhileStatement */:
                             case 189 /* DoStatement */:
+=======
+                            case 196 /* SwitchStatement */:
+                                if (statement.kind === 192 /* ContinueStatement */) {
+                                    continue;
+                                }
+                            // Fall through.
+                            case 189 /* ForStatement */:
+                            case 190 /* ForInStatement */:
+                            case 191 /* ForOfStatement */:
+                            case 188 /* WhileStatement */:
+                            case 187 /* DoStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (!statement.label || isLabeledBy(node_2, statement.label.text)) {
                                     return node_2;
                                 }
@@ -42682,6 +50574,7 @@ var ts;
                     var container = declaration.parent;
                     // Make sure we only highlight the keyword when it makes sense to do so.
                     if (ts.isAccessibilityModifier(modifier)) {
+<<<<<<< HEAD
                         if (!(container.kind === 206 /* ClassDeclaration */ ||
                             (declaration.kind === 132 /* Parameter */ && hasKind(container, 138 /* Constructor */)))) {
                             return undefined;
@@ -42694,6 +50587,20 @@ var ts;
                     }
                     else if (modifier === 79 /* ExportKeyword */ || modifier === 116 /* DeclareKeyword */) {
                         if (!(container.kind === 211 /* ModuleBlock */ || container.kind === 240 /* SourceFile */)) {
+=======
+                        if (!(container.kind === 204 /* ClassDeclaration */ ||
+                            (declaration.kind === 131 /* Parameter */ && hasKind(container, 137 /* Constructor */)))) {
+                            return undefined;
+                        }
+                    }
+                    else if (modifier === 109 /* StaticKeyword */) {
+                        if (container.kind !== 204 /* ClassDeclaration */) {
+                            return undefined;
+                        }
+                    }
+                    else if (modifier === 78 /* ExportKeyword */ || modifier === 115 /* DeclareKeyword */) {
+                        if (!(container.kind === 209 /* ModuleBlock */ || container.kind === 230 /* SourceFile */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return undefined;
                         }
                     }
@@ -42705,6 +50612,7 @@ var ts;
                     var modifierFlag = getFlagFromModifier(modifier);
                     var nodes;
                     switch (container.kind) {
+<<<<<<< HEAD
                         case 211 /* ModuleBlock */:
                         case 240 /* SourceFile */:
                             nodes = container.statements;
@@ -42713,12 +50621,26 @@ var ts;
                             nodes = container.parameters.concat(container.parent.members);
                             break;
                         case 206 /* ClassDeclaration */:
+=======
+                        case 209 /* ModuleBlock */:
+                        case 230 /* SourceFile */:
+                            nodes = container.statements;
+                            break;
+                        case 137 /* Constructor */:
+                            nodes = container.parameters.concat(container.parent.members);
+                            break;
+                        case 204 /* ClassDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             nodes = container.members;
                             // If we're an accessibility modifier, we're in an instance member and should search
                             // the constructor's parameter list for instance members as well.
                             if (modifierFlag & 112 /* AccessibilityModifier */) {
                                 var constructor = ts.forEach(container.members, function (member) {
+<<<<<<< HEAD
                                     return member.kind === 138 /* Constructor */ && member;
+=======
+                                    return member.kind === 137 /* Constructor */ && member;
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 });
                                 if (constructor) {
                                     nodes = nodes.concat(constructor.parameters);
@@ -42766,13 +50688,22 @@ var ts;
                 }
                 function getGetAndSetOccurrences(accessorDeclaration) {
                     var keywords = [];
+<<<<<<< HEAD
                     tryPushAccessorKeyword(accessorDeclaration.symbol, 139 /* GetAccessor */);
                     tryPushAccessorKeyword(accessorDeclaration.symbol, 140 /* SetAccessor */);
+=======
+                    tryPushAccessorKeyword(accessorDeclaration.symbol, 138 /* GetAccessor */);
+                    tryPushAccessorKeyword(accessorDeclaration.symbol, 139 /* SetAccessor */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return ts.map(keywords, getHighlightSpanForNode);
                     function tryPushAccessorKeyword(accessorSymbol, accessorKind) {
                         var accessor = ts.getDeclarationOfKind(accessorSymbol, accessorKind);
                         if (accessor) {
+<<<<<<< HEAD
                             ts.forEach(accessor.getChildren(), function (child) { return pushKeywordIf(keywords, child, 117 /* GetKeyword */, 123 /* SetKeyword */); });
+=======
+                            ts.forEach(accessor.getChildren(), function (child) { return pushKeywordIf(keywords, child, 116 /* GetKeyword */, 122 /* SetKeyword */); });
+>>>>>>> Updated compiler to emitDependencyFile branch
                         }
                     }
                 }
@@ -42790,7 +50721,11 @@ var ts;
                     var keywords = [];
                     if (pushKeywordIf(keywords, loopNode.getFirstToken(), 83 /* ForKeyword */, 101 /* WhileKeyword */, 76 /* DoKeyword */)) {
                         // If we succeeded and got a do-while loop, then start looking for a 'while' keyword.
+<<<<<<< HEAD
                         if (loopNode.kind === 189 /* DoStatement */) {
+=======
+                        if (loopNode.kind === 187 /* DoStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var loopTokens = loopNode.getChildren();
                             for (var i = loopTokens.length - 1; i >= 0; i--) {
                                 if (pushKeywordIf(keywords, loopTokens[i], 101 /* WhileKeyword */)) {
@@ -42811,6 +50746,7 @@ var ts;
                     var owner = getBreakOrContinueOwner(breakOrContinueStatement);
                     if (owner) {
                         switch (owner.kind) {
+<<<<<<< HEAD
                             case 191 /* ForStatement */:
                             case 192 /* ForInStatement */:
                             case 193 /* ForOfStatement */:
@@ -42818,6 +50754,15 @@ var ts;
                             case 190 /* WhileStatement */:
                                 return getLoopBreakContinueOccurrences(owner);
                             case 198 /* SwitchStatement */:
+=======
+                            case 189 /* ForStatement */:
+                            case 190 /* ForInStatement */:
+                            case 191 /* ForOfStatement */:
+                            case 187 /* DoStatement */:
+                            case 188 /* WhileStatement */:
+                                return getLoopBreakContinueOccurrences(owner);
+                            case 196 /* SwitchStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 return getSwitchCaseDefaultOccurrences(owner);
                         }
                     }
@@ -42871,7 +50816,11 @@ var ts;
                 function getReturnOccurrences(returnStatement) {
                     var func = ts.getContainingFunction(returnStatement);
                     // If we didn't find a containing function with a block body, bail out.
+<<<<<<< HEAD
                     if (!(func && hasKind(func.body, 184 /* Block */))) {
+=======
+                    if (!(func && hasKind(func.body, 182 /* Block */))) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return undefined;
                     }
                     var keywords = [];
@@ -42887,7 +50836,11 @@ var ts;
                 function getIfElseOccurrences(ifStatement) {
                     var keywords = [];
                     // Traverse upwards through all parent if-statements linked by their else-branches.
+<<<<<<< HEAD
                     while (hasKind(ifStatement.parent, 188 /* IfStatement */) && ifStatement.parent.elseStatement === ifStatement) {
+=======
+                    while (hasKind(ifStatement.parent, 186 /* IfStatement */) && ifStatement.parent.elseStatement === ifStatement) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         ifStatement = ifStatement.parent;
                     }
                     // Now traverse back down through the else branches, aggregating if/else keywords of if-statements.
@@ -42900,7 +50853,11 @@ var ts;
                                 break;
                             }
                         }
+<<<<<<< HEAD
                         if (!hasKind(ifStatement.elseStatement, 188 /* IfStatement */)) {
+=======
+                        if (!hasKind(ifStatement.elseStatement, 186 /* IfStatement */)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             break;
                         }
                         ifStatement = ifStatement.elseStatement;
@@ -43078,22 +51035,78 @@ var ts;
                     textSpan: ts.createTextSpan(declarations[0].getStart(), 0)
                 };
             }
+<<<<<<< HEAD
             function isImportOrExportSpecifierImportSymbol(symbol) {
                 return (symbol.flags & 8388608 /* Alias */) && ts.forEach(symbol.declarations, function (declaration) {
                     return declaration.kind === 218 /* ImportSpecifier */ || declaration.kind === 222 /* ExportSpecifier */;
                 });
             }
+=======
+            function isImportOrExportSpecifierName(location) {
+                return location.parent &&
+                    (location.parent.kind === 216 /* ImportSpecifier */ || location.parent.kind === 220 /* ExportSpecifier */) &&
+                    location.parent.propertyName === location;
+            }
+            function isImportOrExportSpecifierImportSymbol(symbol) {
+                return (symbol.flags & 8388608 /* Alias */) && ts.forEach(symbol.declarations, function (declaration) {
+                    return declaration.kind === 216 /* ImportSpecifier */ || declaration.kind === 220 /* ExportSpecifier */;
+                });
+            }
+            function getDeclaredName(symbol, location) {
+                // Special case for function expressions, whose names are solely local to their bodies.
+                var functionExpression = ts.forEach(symbol.declarations, function (d) { return d.kind === 165 /* FunctionExpression */ ? d : undefined; });
+                // When a name gets interned into a SourceFile's 'identifiers' Map,
+                // its name is escaped and stored in the same way its symbol name/identifier
+                // name should be stored. Function expressions, however, are a special case,
+                // because despite sometimes having a name, the binder unconditionally binds them
+                // to a symbol with the name "__function".
+                var name;
+                if (functionExpression && functionExpression.name) {
+                    name = functionExpression.name.text;
+                }
+                // If this is an export or import specifier it could have been renamed using the as syntax.
+                // if so we want to search for whatever under the cursor, the symbol is pointing to the alias (name)
+                // so check for the propertyName.
+                if (isImportOrExportSpecifierName(location)) {
+                    return location.getText();
+                }
+                name = typeChecker.symbolToString(symbol);
+                return stripQuotes(name);
+            }
+>>>>>>> Updated compiler to emitDependencyFile branch
             function getInternedName(symbol, location, declarations) {
                 // If this is an export or import specifier it could have been renamed using the 'as' syntax.
                 // If so we want to search for whatever under the cursor.
                 if (ts.isImportOrExportSpecifierName(location)) {
                     return location.getText();
                 }
+<<<<<<< HEAD
                 // Try to get the local symbol if we're dealing with an 'export default'
                 // since that symbol has the "true" name.
                 var localExportDefaultSymbol = ts.getLocalSymbolForExportDefault(symbol);
                 symbol = localExportDefaultSymbol || symbol;
                 return ts.stripQuotes(symbol.name);
+=======
+                // Special case for function expressions, whose names are solely local to their bodies.
+                var functionExpression = ts.forEach(declarations, function (d) { return d.kind === 165 /* FunctionExpression */ ? d : undefined; });
+                // When a name gets interned into a SourceFile's 'identifiers' Map,
+                // its name is escaped and stored in the same way its symbol name/identifier
+                // name should be stored. Function expressions, however, are a special case,
+                // because despite sometimes having a name, the binder unconditionally binds them
+                // to a symbol with the name "__function".
+                var name = functionExpression && functionExpression.name
+                    ? functionExpression.name.text
+                    : symbol.name;
+                return stripQuotes(name);
+            }
+            function stripQuotes(name) {
+                var length = name.length;
+                if (length >= 2 && name.charCodeAt(0) === 34 /* doubleQuote */ && name.charCodeAt(length - 1) === 34 /* doubleQuote */) {
+                    return name.substring(1, length - 1);
+                }
+                ;
+                return name;
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             /**
              * Determines the smallest scope in which a symbol may have named references.
@@ -43114,7 +51127,11 @@ var ts;
                 if (symbol.flags & (4 /* Property */ | 8192 /* Method */)) {
                     var privateDeclaration = ts.forEach(symbol.getDeclarations(), function (d) { return (d.flags & 32 /* Private */) ? d : undefined; });
                     if (privateDeclaration) {
+<<<<<<< HEAD
                         return ts.getAncestor(privateDeclaration, 206 /* ClassDeclaration */);
+=======
+                        return ts.getAncestor(privateDeclaration, 204 /* ClassDeclaration */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     }
                 }
                 // If the symbol is an import we would like to find it if we are looking for what it imports.
@@ -43140,7 +51157,11 @@ var ts;
                             // Different declarations have different containers, bail out
                             return undefined;
                         }
+<<<<<<< HEAD
                         if (container.kind === 240 /* SourceFile */ && !ts.isExternalModule(container)) {
+=======
+                        if (container.kind === 230 /* SourceFile */ && !ts.isExternalModule(container)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // This is a global variable and not an external module, any declaration defined
                             // within this scope is visible outside the file
                             return undefined;
@@ -43328,6 +51349,7 @@ var ts;
                 // Whether 'super' occurs in a static context within a class.
                 var staticFlag = 128 /* Static */;
                 switch (searchSpaceNode.kind) {
+<<<<<<< HEAD
                     case 135 /* PropertyDeclaration */:
                     case 134 /* PropertySignature */:
                     case 137 /* MethodDeclaration */:
@@ -43335,6 +51357,15 @@ var ts;
                     case 138 /* Constructor */:
                     case 139 /* GetAccessor */:
                     case 140 /* SetAccessor */:
+=======
+                    case 134 /* PropertyDeclaration */:
+                    case 133 /* PropertySignature */:
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+                    case 137 /* Constructor */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         staticFlag &= searchSpaceNode.flags;
                         searchSpaceNode = searchSpaceNode.parent; // re-assign to be the owning class
                         break;
@@ -43366,12 +51397,18 @@ var ts;
                 // Whether 'this' occurs in a static context within a class.
                 var staticFlag = 128 /* Static */;
                 switch (searchSpaceNode.kind) {
+<<<<<<< HEAD
                     case 137 /* MethodDeclaration */:
                     case 136 /* MethodSignature */:
+=======
+                    case 136 /* MethodDeclaration */:
+                    case 135 /* MethodSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (ts.isObjectLiteralMethod(searchSpaceNode)) {
                             break;
                         }
                     // fall through
+<<<<<<< HEAD
                     case 135 /* PropertyDeclaration */:
                     case 134 /* PropertySignature */:
                     case 138 /* Constructor */:
@@ -43381,12 +51418,28 @@ var ts;
                         searchSpaceNode = searchSpaceNode.parent; // re-assign to be the owning class
                         break;
                     case 240 /* SourceFile */:
+=======
+                    case 134 /* PropertyDeclaration */:
+                    case 133 /* PropertySignature */:
+                    case 137 /* Constructor */:
+                    case 138 /* GetAccessor */:
+                    case 139 /* SetAccessor */:
+                        staticFlag &= searchSpaceNode.flags;
+                        searchSpaceNode = searchSpaceNode.parent; // re-assign to be the owning class
+                        break;
+                    case 230 /* SourceFile */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (ts.isExternalModule(searchSpaceNode)) {
                             return undefined;
                         }
                     // Fall through
+<<<<<<< HEAD
                     case 205 /* FunctionDeclaration */:
                     case 166 /* FunctionExpression */:
+=======
+                    case 203 /* FunctionDeclaration */:
+                    case 165 /* FunctionExpression */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                         break;
                     // Computed properties in classes are not handled here because references to this are illegal,
                     // so there is no point finding references to them.
@@ -43395,7 +51448,11 @@ var ts;
                 }
                 var references = [];
                 var possiblePositions;
+<<<<<<< HEAD
                 if (searchSpaceNode.kind === 240 /* SourceFile */) {
+=======
+                if (searchSpaceNode.kind === 230 /* SourceFile */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     ts.forEach(sourceFiles, function (sourceFile) {
                         possiblePositions = getPossibleSymbolReferencePositions(sourceFile, "this", sourceFile.getStart(), sourceFile.getEnd());
                         getThisReferencesInFile(sourceFile, sourceFile, possiblePositions, references);
@@ -43426,27 +51483,46 @@ var ts;
                         }
                         var container = ts.getThisContainer(node, false);
                         switch (searchSpaceNode.kind) {
+<<<<<<< HEAD
                             case 166 /* FunctionExpression */:
                             case 205 /* FunctionDeclaration */:
+=======
+                            case 165 /* FunctionExpression */:
+                            case 203 /* FunctionDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (searchSpaceNode.symbol === container.symbol) {
                                     result.push(getReferenceEntryFromNode(node));
                                 }
                                 break;
+<<<<<<< HEAD
                             case 137 /* MethodDeclaration */:
                             case 136 /* MethodSignature */:
+=======
+                            case 136 /* MethodDeclaration */:
+                            case 135 /* MethodSignature */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (ts.isObjectLiteralMethod(searchSpaceNode) && searchSpaceNode.symbol === container.symbol) {
                                     result.push(getReferenceEntryFromNode(node));
                                 }
                                 break;
+<<<<<<< HEAD
                             case 206 /* ClassDeclaration */:
+=======
+                            case 204 /* ClassDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 // Make sure the container belongs to the same class
                                 // and has the appropriate static modifier from the original container.
                                 if (container.parent && searchSpaceNode.symbol === container.parent.symbol && (container.flags & 128 /* Static */) === staticFlag) {
                                     result.push(getReferenceEntryFromNode(node));
                                 }
                                 break;
+<<<<<<< HEAD
                             case 240 /* SourceFile */:
                                 if (container.kind === 240 /* SourceFile */ && !ts.isExternalModule(container)) {
+=======
+                            case 230 /* SourceFile */:
+                                if (container.kind === 230 /* SourceFile */ && !ts.isExternalModule(container)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                     result.push(getReferenceEntryFromNode(node));
                                 }
                                 break;
@@ -43500,11 +51576,19 @@ var ts;
             function getPropertySymbolsFromBaseTypes(symbol, propertyName, result) {
                 if (symbol && symbol.flags & (32 /* Class */ | 64 /* Interface */)) {
                     ts.forEach(symbol.getDeclarations(), function (declaration) {
+<<<<<<< HEAD
                         if (declaration.kind === 206 /* ClassDeclaration */) {
                             getPropertySymbolFromTypeReference(ts.getClassExtendsHeritageClauseElement(declaration));
                             ts.forEach(ts.getClassImplementsHeritageClauseElements(declaration), getPropertySymbolFromTypeReference);
                         }
                         else if (declaration.kind === 207 /* InterfaceDeclaration */) {
+=======
+                        if (declaration.kind === 204 /* ClassDeclaration */) {
+                            getPropertySymbolFromTypeReference(ts.getClassExtendsHeritageClauseElement(declaration));
+                            ts.forEach(ts.getClassImplementsHeritageClauseElements(declaration), getPropertySymbolFromTypeReference);
+                        }
+                        else if (declaration.kind === 205 /* InterfaceDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             ts.forEach(ts.getInterfaceBaseTypeNodes(declaration), getPropertySymbolFromTypeReference);
                         }
                     });
@@ -43565,19 +51649,31 @@ var ts;
                 if (isNameOfPropertyAssignment(node)) {
                     var objectLiteral = node.parent.parent;
                     var contextualType = typeChecker.getContextualType(objectLiteral);
+<<<<<<< HEAD
                     var name_30 = node.text;
+=======
+                    var name_31 = node.text;
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (contextualType) {
                         if (contextualType.flags & 16384 /* Union */) {
                             // This is a union type, first see if the property we are looking for is a union property (i.e. exists in all types)
                             // if not, search the constituent types for the property
+<<<<<<< HEAD
                             var unionProperty = contextualType.getProperty(name_30);
+=======
+                            var unionProperty = contextualType.getProperty(name_31);
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (unionProperty) {
                                 return [unionProperty];
                             }
                             else {
                                 var result_4 = [];
                                 ts.forEach(contextualType.types, function (t) {
+<<<<<<< HEAD
                                     var symbol = t.getProperty(name_30);
+=======
+                                    var symbol = t.getProperty(name_31);
+>>>>>>> Updated compiler to emitDependencyFile branch
                                     if (symbol) {
                                         result_4.push(symbol);
                                     }
@@ -43586,7 +51682,11 @@ var ts;
                             }
                         }
                         else {
+<<<<<<< HEAD
                             var symbol_1 = contextualType.getProperty(name_30);
+=======
+                            var symbol_1 = contextualType.getProperty(name_31);
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (symbol_1) {
                                 return [symbol_1];
                             }
@@ -43644,10 +51744,17 @@ var ts;
             }
             var parent = node.parent;
             if (parent) {
+<<<<<<< HEAD
                 if (parent.kind === 172 /* PostfixUnaryExpression */ || parent.kind === 171 /* PrefixUnaryExpression */) {
                     return true;
                 }
                 else if (parent.kind === 173 /* BinaryExpression */ && parent.left === node) {
+=======
+                if (parent.kind === 171 /* PostfixUnaryExpression */ || parent.kind === 170 /* PrefixUnaryExpression */) {
+                    return true;
+                }
+                else if (parent.kind === 172 /* BinaryExpression */ && parent.left === node) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var operator = parent.operatorToken.kind;
                     return 54 /* FirstAssignment */ <= operator && operator <= 65 /* LastAssignment */;
                 }
@@ -43735,6 +51842,7 @@ var ts;
         }
         function getMeaningFromDeclaration(node) {
             switch (node.kind) {
+<<<<<<< HEAD
                 case 132 /* Parameter */:
                 case 203 /* VariableDeclaration */:
                 case 156 /* BindingElement */:
@@ -43762,6 +51870,35 @@ var ts;
                 case 209 /* EnumDeclaration */:
                     return 1 /* Value */ | 2 /* Type */;
                 case 210 /* ModuleDeclaration */:
+=======
+                case 131 /* Parameter */:
+                case 201 /* VariableDeclaration */:
+                case 155 /* BindingElement */:
+                case 134 /* PropertyDeclaration */:
+                case 133 /* PropertySignature */:
+                case 227 /* PropertyAssignment */:
+                case 228 /* ShorthandPropertyAssignment */:
+                case 229 /* EnumMember */:
+                case 136 /* MethodDeclaration */:
+                case 135 /* MethodSignature */:
+                case 137 /* Constructor */:
+                case 138 /* GetAccessor */:
+                case 139 /* SetAccessor */:
+                case 203 /* FunctionDeclaration */:
+                case 165 /* FunctionExpression */:
+                case 166 /* ArrowFunction */:
+                case 226 /* CatchClause */:
+                    return 1 /* Value */;
+                case 130 /* TypeParameter */:
+                case 205 /* InterfaceDeclaration */:
+                case 206 /* TypeAliasDeclaration */:
+                case 148 /* TypeLiteral */:
+                    return 2 /* Type */;
+                case 204 /* ClassDeclaration */:
+                case 207 /* EnumDeclaration */:
+                    return 1 /* Value */ | 2 /* Type */;
+                case 208 /* ModuleDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     if (node.name.kind === 8 /* StringLiteral */) {
                         return 4 /* Namespace */ | 1 /* Value */;
                     }
@@ -43771,6 +51908,7 @@ var ts;
                     else {
                         return 4 /* Namespace */;
                     }
+<<<<<<< HEAD
                 case 217 /* NamedImports */:
                 case 218 /* ImportSpecifier */:
                 case 213 /* ImportEqualsDeclaration */:
@@ -43780,6 +51918,17 @@ var ts;
                     return 1 /* Value */ | 2 /* Type */ | 4 /* Namespace */;
                 // An external module can be a Value
                 case 240 /* SourceFile */:
+=======
+                case 215 /* NamedImports */:
+                case 216 /* ImportSpecifier */:
+                case 211 /* ImportEqualsDeclaration */:
+                case 212 /* ImportDeclaration */:
+                case 217 /* ExportAssignment */:
+                case 218 /* ExportDeclaration */:
+                    return 1 /* Value */ | 2 /* Type */ | 4 /* Namespace */;
+                // An external module can be a Value
+                case 230 /* SourceFile */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                     return 4 /* Namespace */ | 1 /* Value */;
             }
             return 1 /* Value */ | 2 /* Type */ | 4 /* Namespace */;
@@ -43789,8 +51938,12 @@ var ts;
             if (ts.isRightSideOfQualifiedNameOrPropertyAccess(node)) {
                 node = node.parent;
             }
+<<<<<<< HEAD
             return node.parent.kind === 145 /* TypeReference */ ||
                 (node.parent.kind === 180 /* ExpressionWithTypeArguments */ && !ts.isExpressionWithTypeArgumentsInClassExtendsClause(node.parent));
+=======
+            return node.parent.kind === 144 /* TypeReference */ || node.parent.kind === 179 /* ExpressionWithTypeArguments */;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function isNamespaceReference(node) {
             return isQualifiedNameNamespaceReference(node) || isPropertyAccessNamespaceReference(node);
@@ -43798,32 +51951,56 @@ var ts;
         function isPropertyAccessNamespaceReference(node) {
             var root = node;
             var isLastClause = true;
+<<<<<<< HEAD
             if (root.parent.kind === 159 /* PropertyAccessExpression */) {
                 while (root.parent && root.parent.kind === 159 /* PropertyAccessExpression */) {
+=======
+            if (root.parent.kind === 158 /* PropertyAccessExpression */) {
+                while (root.parent && root.parent.kind === 158 /* PropertyAccessExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     root = root.parent;
                 }
                 isLastClause = root.name === node;
             }
+<<<<<<< HEAD
             if (!isLastClause && root.parent.kind === 180 /* ExpressionWithTypeArguments */ && root.parent.parent.kind === 235 /* HeritageClause */) {
                 var decl = root.parent.parent.parent;
                 return (decl.kind === 206 /* ClassDeclaration */ && root.parent.parent.token === 103 /* ImplementsKeyword */) ||
                     (decl.kind === 207 /* InterfaceDeclaration */ && root.parent.parent.token === 80 /* ExtendsKeyword */);
+=======
+            if (!isLastClause && root.parent.kind === 179 /* ExpressionWithTypeArguments */ && root.parent.parent.kind === 225 /* HeritageClause */) {
+                var decl = root.parent.parent.parent;
+                return (decl.kind === 204 /* ClassDeclaration */ && root.parent.parent.token === 102 /* ImplementsKeyword */) ||
+                    (decl.kind === 205 /* InterfaceDeclaration */ && root.parent.parent.token === 79 /* ExtendsKeyword */);
+>>>>>>> Updated compiler to emitDependencyFile branch
             }
             return false;
         }
         function isQualifiedNameNamespaceReference(node) {
             var root = node;
             var isLastClause = true;
+<<<<<<< HEAD
             if (root.parent.kind === 129 /* QualifiedName */) {
                 while (root.parent && root.parent.kind === 129 /* QualifiedName */) {
+=======
+            if (root.parent.kind === 128 /* QualifiedName */) {
+                while (root.parent && root.parent.kind === 128 /* QualifiedName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     root = root.parent;
                 }
                 isLastClause = root.right === node;
             }
+<<<<<<< HEAD
             return root.parent.kind === 145 /* TypeReference */ && !isLastClause;
         }
         function isInRightSideOfImport(node) {
             while (node.parent.kind === 129 /* QualifiedName */) {
+=======
+            return root.parent.kind === 144 /* TypeReference */ && !isLastClause;
+        }
+        function isInRightSideOfImport(node) {
+            while (node.parent.kind === 128 /* QualifiedName */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 node = node.parent;
             }
             return ts.isInternalModuleImportEqualsDeclaration(node.parent) && node.parent.moduleReference === node;
@@ -43833,15 +52010,25 @@ var ts;
             //     import a = |b|; // Namespace
             //     import a = |b.c|; // Value, type, namespace
             //     import a = |b.c|.d; // Namespace
+<<<<<<< HEAD
             if (node.parent.kind === 129 /* QualifiedName */ &&
                 node.parent.right === node &&
                 node.parent.parent.kind === 213 /* ImportEqualsDeclaration */) {
+=======
+            if (node.parent.kind === 128 /* QualifiedName */ &&
+                node.parent.right === node &&
+                node.parent.parent.kind === 211 /* ImportEqualsDeclaration */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return 1 /* Value */ | 2 /* Type */ | 4 /* Namespace */;
             }
             return 4 /* Namespace */;
         }
         function getMeaningFromLocation(node) {
+<<<<<<< HEAD
             if (node.parent.kind === 219 /* ExportAssignment */) {
+=======
+            if (node.parent.kind === 217 /* ExportAssignment */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                 return 1 /* Value */ | 2 /* Type */ | 4 /* Namespace */;
             }
             else if (isInRightSideOfImport(node)) {
@@ -43881,8 +52068,13 @@ var ts;
                 return;
             }
             switch (node.kind) {
+<<<<<<< HEAD
                 case 159 /* PropertyAccessExpression */:
                 case 129 /* QualifiedName */:
+=======
+                case 158 /* PropertyAccessExpression */:
+                case 128 /* QualifiedName */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                 case 8 /* StringLiteral */:
                 case 81 /* FalseKeyword */:
                 case 96 /* TrueKeyword */:
@@ -43905,7 +52097,11 @@ var ts;
                     // If this is name of a module declarations, check if this is right side of dotted module name
                     // If parent of the module declaration which is parent of this node is module declaration and its body is the module declaration that this node is name of 
                     // Then this name is name from dotted module
+<<<<<<< HEAD
                     if (nodeForStartPos.parent.parent.kind === 210 /* ModuleDeclaration */ &&
+=======
+                    if (nodeForStartPos.parent.parent.kind === 208 /* ModuleDeclaration */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
                         nodeForStartPos.parent.parent.body === nodeForStartPos.parent) {
                         // Use parent module declarations name for start pos
                         nodeForStartPos = nodeForStartPos.parent.parent.name;
@@ -43984,15 +52180,23 @@ var ts;
                  */
                 function hasValueSideModule(symbol) {
                     return ts.forEach(symbol.declarations, function (declaration) {
+<<<<<<< HEAD
                         return declaration.kind === 210 /* ModuleDeclaration */ &&
                             ts.getModuleInstanceState(declaration) === 1 /* Instantiated */;
+=======
+                        return declaration.kind === 208 /* ModuleDeclaration */ && ts.getModuleInstanceState(declaration) == 1 /* Instantiated */;
+>>>>>>> Updated compiler to emitDependencyFile branch
                     });
                 }
             }
             function processNode(node) {
                 // Only walk into nodes that intersect the requested span.
                 if (node && ts.textSpanIntersectsWith(span, node.getFullStart(), node.getFullWidth())) {
+<<<<<<< HEAD
                     if (node.kind === 66 /* Identifier */ && !ts.nodeIsMissing(node)) {
+=======
+                    if (node.kind === 65 /* Identifier */ && !ts.nodeIsMissing(node)) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         var identifier = node;
                         // Only bother calling into the typechecker if this is an identifier that
                         // could possibly resolve to a type name.  This makes classification run
@@ -44083,6 +52287,7 @@ var ts;
                         continue;
                     }
                     // Only bother with the trivia if it at least intersects the span of interest.
+<<<<<<< HEAD
                     if (ts.isComment(kind)) {
                         classifyComment(token, kind, start, width);
                         // Classifying a comment might cause us to reuse the trivia scanner 
@@ -44098,6 +52303,11 @@ var ts;
                         // in the classification stream.
                         if (ch === 60 /* lessThan */ || ch === 62 /* greaterThan */) {
                             pushClassification(start, width, 1 /* comment */);
+=======
+                    if (ts.textSpanIntersectsWith(span, start, width)) {
+                        if (ts.isComment(kind)) {
+                            classifyComment(token, kind, start, width);
+>>>>>>> Updated compiler to emitDependencyFile branch
                             continue;
                         }
                         // for the ======== add a comment for the first line, and then lex all
@@ -44174,6 +52384,76 @@ var ts;
                     }
                 }
             }
+<<<<<<< HEAD
+=======
+            function classifyComment(token, kind, start, width) {
+                if (kind === 3 /* MultiLineCommentTrivia */) {
+                    // See if this is a doc comment.  If so, we'll classify certain portions of it
+                    // specially.
+                    var docCommentAndDiagnostics = ts.parseIsolatedJSDocComment(sourceFile.text, start, width);
+                    if (docCommentAndDiagnostics && docCommentAndDiagnostics.jsDocComment) {
+                        docCommentAndDiagnostics.jsDocComment.parent = token;
+                        classifyJSDocComment(docCommentAndDiagnostics.jsDocComment);
+                        return;
+                    }
+                }
+                // Simple comment.  Just add as is.
+                pushCommentRange(start, width);
+            }
+            function pushCommentRange(start, width) {
+                pushClassification(start, width, 1 /* comment */);
+            }
+            function classifyJSDocComment(docComment) {
+                var pos = docComment.pos;
+                for (var _i = 0, _a = docComment.tags; _i < _a.length; _i++) {
+                    var tag = _a[_i];
+                    // As we walk through each tag, classify the portion of text from the end of
+                    // the last tag (or the start of the entire doc comment) as 'comment'.  
+                    if (tag.pos !== pos) {
+                        pushCommentRange(pos, tag.pos - pos);
+                    }
+                    pushClassification(tag.atToken.pos, tag.atToken.end - tag.atToken.pos, 10 /* punctuation */);
+                    pushClassification(tag.tagName.pos, tag.tagName.end - tag.tagName.pos, 18 /* docCommentTagName */);
+                    pos = tag.tagName.end;
+                    switch (tag.kind) {
+                        case 249 /* JSDocParameterTag */:
+                            processJSDocParameterTag(tag);
+                            break;
+                        case 252 /* JSDocTemplateTag */:
+                            processJSDocTemplateTag(tag);
+                            break;
+                        case 251 /* JSDocTypeTag */:
+                            processElement(tag.typeExpression);
+                            break;
+                        case 250 /* JSDocReturnTag */:
+                            processElement(tag.typeExpression);
+                            break;
+                    }
+                    pos = tag.end;
+                }
+                if (pos !== docComment.end) {
+                    pushCommentRange(pos, docComment.end - pos);
+                }
+                return;
+                function processJSDocParameterTag(tag) {
+                    if (tag.preParameterName) {
+                        pushCommentRange(pos, tag.preParameterName.pos - pos);
+                        pushClassification(tag.preParameterName.pos, tag.preParameterName.end - tag.preParameterName.pos, 17 /* parameterName */);
+                        pos = tag.preParameterName.end;
+                    }
+                    if (tag.typeExpression) {
+                        pushCommentRange(pos, tag.typeExpression.pos - pos);
+                        processElement(tag.typeExpression);
+                        pos = tag.typeExpression.end;
+                    }
+                    if (tag.postParameterName) {
+                        pushCommentRange(pos, tag.postParameterName.pos - pos);
+                        pushClassification(tag.postParameterName.pos, tag.postParameterName.end - tag.postParameterName.pos, 17 /* parameterName */);
+                        pos = tag.postParameterName.end;
+                    }
+                }
+            }
+>>>>>>> Updated compiler to emitDependencyFile branch
             function processJSDocTemplateTag(tag) {
                 for (var _i = 0, _a = tag.getChildren(); _i < _a.length; _i++) {
                     var child = _a[_i];
@@ -44237,6 +52517,7 @@ var ts;
                     if (token) {
                         if (tokenKind === 54 /* EqualsToken */) {
                             // the '=' in a variable declaration is special cased here.
+<<<<<<< HEAD
                             if (token.parent.kind === 203 /* VariableDeclaration */ ||
                                 token.parent.kind === 135 /* PropertyDeclaration */ ||
                                 token.parent.kind === 132 /* Parameter */) {
@@ -44247,6 +52528,18 @@ var ts;
                             token.parent.kind === 171 /* PrefixUnaryExpression */ ||
                             token.parent.kind === 172 /* PostfixUnaryExpression */ ||
                             token.parent.kind === 174 /* ConditionalExpression */) {
+=======
+                            if (token.parent.kind === 201 /* VariableDeclaration */ ||
+                                token.parent.kind === 134 /* PropertyDeclaration */ ||
+                                token.parent.kind === 131 /* Parameter */) {
+                                return 5 /* operator */;
+                            }
+                        }
+                        if (token.parent.kind === 172 /* BinaryExpression */ ||
+                            token.parent.kind === 170 /* PrefixUnaryExpression */ ||
+                            token.parent.kind === 171 /* PostfixUnaryExpression */ ||
+                            token.parent.kind === 173 /* ConditionalExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return 5 /* operator */;
                         }
                     }
@@ -44269,32 +52562,56 @@ var ts;
                 else if (tokenKind === 66 /* Identifier */) {
                     if (token) {
                         switch (token.parent.kind) {
+<<<<<<< HEAD
                             case 206 /* ClassDeclaration */:
+=======
+                            case 204 /* ClassDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (token.parent.name === token) {
                                     return 11 /* className */;
                                 }
                                 return;
+<<<<<<< HEAD
                             case 131 /* TypeParameter */:
+=======
+                            case 130 /* TypeParameter */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (token.parent.name === token) {
                                     return 15 /* typeParameterName */;
                                 }
                                 return;
+<<<<<<< HEAD
                             case 207 /* InterfaceDeclaration */:
+=======
+                            case 205 /* InterfaceDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (token.parent.name === token) {
                                     return 13 /* interfaceName */;
                                 }
                                 return;
+<<<<<<< HEAD
                             case 209 /* EnumDeclaration */:
+=======
+                            case 207 /* EnumDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (token.parent.name === token) {
                                     return 12 /* enumName */;
                                 }
                                 return;
+<<<<<<< HEAD
                             case 210 /* ModuleDeclaration */:
+=======
+                            case 208 /* ModuleDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (token.parent.name === token) {
                                     return 14 /* moduleName */;
                                 }
                                 return;
+<<<<<<< HEAD
                             case 132 /* Parameter */:
+=======
+                            case 131 /* Parameter */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 if (token.parent.name === token) {
                                     return 17 /* parameterName */;
                                 }
@@ -44309,10 +52626,17 @@ var ts;
                     return;
                 }
                 // Ignore nodes that don't intersect the original span to classify.
+<<<<<<< HEAD
                 if (ts.decodedTextSpanIntersectsWith(spanStart, spanLength, element.pos, element.getFullWidth())) {
                     var children = element.getChildren(sourceFile);
                     for (var i = 0, n = children.length; i < n; i++) {
                         var child = children[i];
+=======
+                if (ts.textSpanIntersectsWith(span, element.getFullStart(), element.getFullWidth())) {
+                    var children = element.getChildren(sourceFile);
+                    for (var _i = 0; _i < children.length; _i++) {
+                        var child = children[_i];
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (ts.isToken(child)) {
                             classifyToken(child);
                         }
@@ -44642,7 +52966,11 @@ var ts;
                     // then we want 'something' to be in the name table.  Similarly, if we have
                     // "a['propname']" then we want to store "propname" in the name table.
                     if (ts.isDeclarationName(node) ||
+<<<<<<< HEAD
                         node.parent.kind === 224 /* ExternalModuleReference */ ||
+=======
+                        node.parent.kind === 222 /* ExternalModuleReference */ ||
+>>>>>>> Updated compiler to emitDependencyFile branch
                         isArgumentOfElementAccessExpression(node)) {
                         nameTable[node.text] = node.text;
                     }
@@ -44655,7 +52983,11 @@ var ts;
     function isArgumentOfElementAccessExpression(node) {
         return node &&
             node.parent &&
+<<<<<<< HEAD
             node.parent.kind === 160 /* ElementAccessExpression */ &&
+=======
+            node.parent.kind === 159 /* ElementAccessExpression */ &&
+>>>>>>> Updated compiler to emitDependencyFile branch
             node.parent.argumentExpression === node;
     }
     /// Classifier
@@ -44702,10 +53034,17 @@ var ts;
         /** Returns true if 'keyword2' can legally follow 'keyword1' in any language construct. */
         function canFollow(keyword1, keyword2) {
             if (ts.isAccessibilityModifier(keyword1)) {
+<<<<<<< HEAD
                 if (keyword2 === 117 /* GetKeyword */ ||
                     keyword2 === 123 /* SetKeyword */ ||
                     keyword2 === 115 /* ConstructorKeyword */ ||
                     keyword2 === 110 /* StaticKeyword */) {
+=======
+                if (keyword2 === 116 /* GetKeyword */ ||
+                    keyword2 === 122 /* SetKeyword */ ||
+                    keyword2 === 114 /* ConstructorKeyword */ ||
+                    keyword2 === 109 /* StaticKeyword */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                     // Allow things like "public get", "public constructor" and "public static".  
                     // These are all legal.
                     return true;
@@ -44861,11 +53200,19 @@ var ts;
                         // generic entity is complete.
                         angleBracketStack--;
                     }
+<<<<<<< HEAD
                     else if (token === 113 /* AnyKeyword */ ||
                         token === 124 /* StringKeyword */ ||
                         token === 122 /* NumberKeyword */ ||
                         token === 114 /* BooleanKeyword */ ||
                         token === 125 /* SymbolKeyword */) {
+=======
+                    else if (token === 112 /* AnyKeyword */ ||
+                        token === 123 /* StringKeyword */ ||
+                        token === 121 /* NumberKeyword */ ||
+                        token === 113 /* BooleanKeyword */ ||
+                        token === 124 /* SymbolKeyword */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         if (angleBracketStack > 0 && !syntacticClassifierAbsent) {
                             // If it looks like we're could be in something generic, don't classify this 
                             // as a keyword.  We may just get overwritten by the syntactic classifier,
@@ -45036,7 +53383,11 @@ var ts;
             }
         }
         function isKeyword(token) {
+<<<<<<< HEAD
             return token >= 67 /* FirstKeyword */ && token <= 128 /* LastKeyword */;
+=======
+            return token >= 66 /* FirstKeyword */ && token <= 127 /* LastKeyword */;
+>>>>>>> Updated compiler to emitDependencyFile branch
         }
         function classFromKind(token) {
             if (isKeyword(token)) {
@@ -45094,7 +53445,11 @@ var ts;
             getNodeConstructor: function (kind) {
                 function Node() {
                 }
+<<<<<<< HEAD
                 var proto = kind === 240 /* SourceFile */ ? new SourceFileObject() : new NodeObject();
+=======
+                var proto = kind === 230 /* SourceFile */ ? new SourceFileObject() : new NodeObject();
+>>>>>>> Updated compiler to emitDependencyFile branch
                 proto.kind = kind;
                 proto.pos = 0;
                 proto.end = 0;
@@ -45164,6 +53519,7 @@ var ts;
             function spanInNode(node) {
                 if (node) {
                     if (ts.isExpression(node)) {
+<<<<<<< HEAD
                         if (node.parent.kind === 189 /* DoStatement */) {
                             // Set span as if on while keyword
                             return spanInPreviousNode(node);
@@ -45177,11 +53533,27 @@ var ts;
                             return textSpan(node);
                         }
                         if (node.parent.kind === 167 /* ArrowFunction */ && node.parent.body === node) {
+=======
+                        if (node.parent.kind === 187 /* DoStatement */) {
+                            // Set span as if on while keyword
+                            return spanInPreviousNode(node);
+                        }
+                        if (node.parent.kind === 189 /* ForStatement */) {
+                            // For now lets set the span on this expression, fix it later
+                            return textSpan(node);
+                        }
+                        if (node.parent.kind === 172 /* BinaryExpression */ && node.parent.operatorToken.kind === 23 /* CommaToken */) {
+                            // if this is comma expression, the breakpoint is possible in this expression
+                            return textSpan(node);
+                        }
+                        if (node.parent.kind == 166 /* ArrowFunction */ && node.parent.body == node) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // If this is body of arrow function, it is allowed to have the breakpoint
                             return textSpan(node);
                         }
                     }
                     switch (node.kind) {
+<<<<<<< HEAD
                         case 185 /* VariableStatement */:
                             // Span on first variable declaration
                             return spanInVariableDeclaration(node.declarationList.declarations[0]);
@@ -45201,10 +53573,32 @@ var ts;
                         case 167 /* ArrowFunction */:
                             return spanInFunctionDeclaration(node);
                         case 184 /* Block */:
+=======
+                        case 183 /* VariableStatement */:
+                            // Span on first variable declaration
+                            return spanInVariableDeclaration(node.declarationList.declarations[0]);
+                        case 201 /* VariableDeclaration */:
+                        case 134 /* PropertyDeclaration */:
+                        case 133 /* PropertySignature */:
+                            return spanInVariableDeclaration(node);
+                        case 131 /* Parameter */:
+                            return spanInParameterDeclaration(node);
+                        case 203 /* FunctionDeclaration */:
+                        case 136 /* MethodDeclaration */:
+                        case 135 /* MethodSignature */:
+                        case 138 /* GetAccessor */:
+                        case 139 /* SetAccessor */:
+                        case 137 /* Constructor */:
+                        case 165 /* FunctionExpression */:
+                        case 166 /* ArrowFunction */:
+                            return spanInFunctionDeclaration(node);
+                        case 182 /* Block */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (ts.isFunctionBlock(node)) {
                                 return spanInFunctionBlock(node);
                             }
                         // Fall through
+<<<<<<< HEAD
                         case 211 /* ModuleBlock */:
                             return spanInBlock(node);
                         case 236 /* CatchClause */:
@@ -45266,10 +53660,74 @@ var ts;
                             // import statement without including semicolon
                             return textSpan(node, node.moduleSpecifier);
                         case 210 /* ModuleDeclaration */:
+=======
+                        case 209 /* ModuleBlock */:
+                            return spanInBlock(node);
+                        case 226 /* CatchClause */:
+                            return spanInBlock(node.block);
+                        case 185 /* ExpressionStatement */:
+                            // span on the expression
+                            return textSpan(node.expression);
+                        case 194 /* ReturnStatement */:
+                            // span on return keyword and expression if present
+                            return textSpan(node.getChildAt(0), node.expression);
+                        case 188 /* WhileStatement */:
+                            // Span on while(...)
+                            return textSpan(node, ts.findNextToken(node.expression, node));
+                        case 187 /* DoStatement */:
+                            // span in statement of the do statement
+                            return spanInNode(node.statement);
+                        case 200 /* DebuggerStatement */:
+                            // span on debugger keyword
+                            return textSpan(node.getChildAt(0));
+                        case 186 /* IfStatement */:
+                            // set on if(..) span
+                            return textSpan(node, ts.findNextToken(node.expression, node));
+                        case 197 /* LabeledStatement */:
+                            // span in statement
+                            return spanInNode(node.statement);
+                        case 193 /* BreakStatement */:
+                        case 192 /* ContinueStatement */:
+                            // On break or continue keyword and label if present
+                            return textSpan(node.getChildAt(0), node.label);
+                        case 189 /* ForStatement */:
+                            return spanInForStatement(node);
+                        case 190 /* ForInStatement */:
+                        case 191 /* ForOfStatement */:
+                            // span on for (a in ...)
+                            return textSpan(node, ts.findNextToken(node.expression, node));
+                        case 196 /* SwitchStatement */:
+                            // span on switch(...)
+                            return textSpan(node, ts.findNextToken(node.expression, node));
+                        case 223 /* CaseClause */:
+                        case 224 /* DefaultClause */:
+                            // span in first statement of the clause
+                            return spanInNode(node.statements[0]);
+                        case 199 /* TryStatement */:
+                            // span in try block
+                            return spanInBlock(node.tryBlock);
+                        case 198 /* ThrowStatement */:
+                            // span in throw ...
+                            return textSpan(node, node.expression);
+                        case 217 /* ExportAssignment */:
+                            // span on export = id
+                            return textSpan(node, node.expression);
+                        case 211 /* ImportEqualsDeclaration */:
+                            // import statement without including semicolon
+                            return textSpan(node, node.moduleReference);
+                        case 212 /* ImportDeclaration */:
+                            // import statement without including semicolon
+                            return textSpan(node, node.moduleSpecifier);
+                        case 218 /* ExportDeclaration */:
+                            // import statement without including semicolon
+                            return textSpan(node, node.moduleSpecifier);
+                        case 208 /* ModuleDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // span on complete module if it is instantiated
                             if (ts.getModuleInstanceState(node) !== 1 /* Instantiated */) {
                                 return undefined;
                             }
+<<<<<<< HEAD
                         case 206 /* ClassDeclaration */:
                         case 209 /* EnumDeclaration */:
                         case 239 /* EnumMember */:
@@ -45283,6 +53741,21 @@ var ts;
                         // No breakpoint in interface, type alias
                         case 207 /* InterfaceDeclaration */:
                         case 208 /* TypeAliasDeclaration */:
+=======
+                        case 204 /* ClassDeclaration */:
+                        case 207 /* EnumDeclaration */:
+                        case 229 /* EnumMember */:
+                        case 160 /* CallExpression */:
+                        case 161 /* NewExpression */:
+                            // span on complete node
+                            return textSpan(node);
+                        case 195 /* WithStatement */:
+                            // span in statement
+                            return spanInNode(node.statement);
+                        // No breakpoint in interface, type alias
+                        case 205 /* InterfaceDeclaration */:
+                        case 206 /* TypeAliasDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return undefined;
                         // Tokens:
                         case 22 /* SemicolonToken */:
@@ -45312,11 +53785,19 @@ var ts;
                             return spanInNextNode(node);
                         default:
                             // If this is name of property assignment, set breakpoint in the initializer
+<<<<<<< HEAD
                             if (node.parent.kind === 237 /* PropertyAssignment */ && node.parent.name === node) {
                                 return spanInNode(node.parent.initializer);
                             }
                             // Breakpoint in type assertion goes to its operand
                             if (node.parent.kind === 164 /* TypeAssertionExpression */ && node.parent.type === node) {
+=======
+                            if (node.parent.kind === 227 /* PropertyAssignment */ && node.parent.name === node) {
+                                return spanInNode(node.parent.initializer);
+                            }
+                            // Breakpoint in type assertion goes to its operand
+                            if (node.parent.kind === 163 /* TypeAssertionExpression */ && node.parent.type === node) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                                 return spanInNode(node.parent.expression);
                             }
                             // return type of function go to previous token
@@ -45329,12 +53810,21 @@ var ts;
                 }
                 function spanInVariableDeclaration(variableDeclaration) {
                     // If declaration of for in statement, just set the span in parent
+<<<<<<< HEAD
                     if (variableDeclaration.parent.parent.kind === 192 /* ForInStatement */ ||
                         variableDeclaration.parent.parent.kind === 193 /* ForOfStatement */) {
                         return spanInNode(variableDeclaration.parent.parent);
                     }
                     var isParentVariableStatement = variableDeclaration.parent.parent.kind === 185 /* VariableStatement */;
                     var isDeclarationOfForStatement = variableDeclaration.parent.parent.kind === 191 /* ForStatement */ && ts.contains(variableDeclaration.parent.parent.initializer.declarations, variableDeclaration);
+=======
+                    if (variableDeclaration.parent.parent.kind === 190 /* ForInStatement */ ||
+                        variableDeclaration.parent.parent.kind === 191 /* ForOfStatement */) {
+                        return spanInNode(variableDeclaration.parent.parent);
+                    }
+                    var isParentVariableStatement = variableDeclaration.parent.parent.kind === 183 /* VariableStatement */;
+                    var isDeclarationOfForStatement = variableDeclaration.parent.parent.kind === 189 /* ForStatement */ && ts.contains(variableDeclaration.parent.parent.initializer.declarations, variableDeclaration);
+>>>>>>> Updated compiler to emitDependencyFile branch
                     var declarations = isParentVariableStatement
                         ? variableDeclaration.parent.parent.declarationList.declarations
                         : isDeclarationOfForStatement
@@ -45388,7 +53878,11 @@ var ts;
                 }
                 function canFunctionHaveSpanInWholeDeclaration(functionDeclaration) {
                     return !!(functionDeclaration.flags & 1 /* Export */) ||
+<<<<<<< HEAD
                         (functionDeclaration.parent.kind === 206 /* ClassDeclaration */ && functionDeclaration.kind !== 138 /* Constructor */);
+=======
+                        (functionDeclaration.parent.kind === 204 /* ClassDeclaration */ && functionDeclaration.kind !== 137 /* Constructor */);
+>>>>>>> Updated compiler to emitDependencyFile branch
                 }
                 function spanInFunctionDeclaration(functionDeclaration) {
                     // No breakpoints in the function signature
@@ -45411,11 +53905,16 @@ var ts;
                 }
                 function spanInBlock(block) {
                     switch (block.parent.kind) {
+<<<<<<< HEAD
                         case 210 /* ModuleDeclaration */:
+=======
+                        case 208 /* ModuleDeclaration */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (ts.getModuleInstanceState(block.parent) !== 1 /* Instantiated */) {
                                 return undefined;
                             }
                         // Set on parent if on same line otherwise on first statement
+<<<<<<< HEAD
                         case 190 /* WhileStatement */:
                         case 188 /* IfStatement */:
                         case 192 /* ForInStatement */:
@@ -45423,6 +53922,15 @@ var ts;
                             return spanInNodeIfStartsOnSameLine(block.parent, block.statements[0]);
                         // Set span on previous token if it starts on same line otherwise on the first statement of the block
                         case 191 /* ForStatement */:
+=======
+                        case 188 /* WhileStatement */:
+                        case 186 /* IfStatement */:
+                        case 190 /* ForInStatement */:
+                        case 191 /* ForOfStatement */:
+                            return spanInNodeIfStartsOnSameLine(block.parent, block.statements[0]);
+                        // Set span on previous token if it starts on same line otherwise on the first statement of the block
+                        case 189 /* ForStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return spanInNodeIfStartsOnSameLine(ts.findPrecedingToken(block.pos, sourceFile, block.parent), block.statements[0]);
                     }
                     // Default action is to set on first statement
@@ -45430,7 +53938,11 @@ var ts;
                 }
                 function spanInForStatement(forStatement) {
                     if (forStatement.initializer) {
+<<<<<<< HEAD
                         if (forStatement.initializer.kind === 204 /* VariableDeclarationList */) {
+=======
+                        if (forStatement.initializer.kind === 202 /* VariableDeclarationList */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                             var variableDeclarationList = forStatement.initializer;
                             if (variableDeclarationList.declarations.length > 0) {
                                 return spanInNode(variableDeclarationList.declarations[0]);
@@ -45450,6 +53962,7 @@ var ts;
                 // Tokens:
                 function spanInOpenBraceToken(node) {
                     switch (node.parent.kind) {
+<<<<<<< HEAD
                         case 209 /* EnumDeclaration */:
                             var enumDeclaration = node.parent;
                             return spanInNodeIfStartsOnSameLine(ts.findPrecedingToken(node.pos, sourceFile, node.parent), enumDeclaration.members.length ? enumDeclaration.members[0] : enumDeclaration.getLastToken(sourceFile));
@@ -45457,6 +53970,15 @@ var ts;
                             var classDeclaration = node.parent;
                             return spanInNodeIfStartsOnSameLine(ts.findPrecedingToken(node.pos, sourceFile, node.parent), classDeclaration.members.length ? classDeclaration.members[0] : classDeclaration.getLastToken(sourceFile));
                         case 212 /* CaseBlock */:
+=======
+                        case 207 /* EnumDeclaration */:
+                            var enumDeclaration = node.parent;
+                            return spanInNodeIfStartsOnSameLine(ts.findPrecedingToken(node.pos, sourceFile, node.parent), enumDeclaration.members.length ? enumDeclaration.members[0] : enumDeclaration.getLastToken(sourceFile));
+                        case 204 /* ClassDeclaration */:
+                            var classDeclaration = node.parent;
+                            return spanInNodeIfStartsOnSameLine(ts.findPrecedingToken(node.pos, sourceFile, node.parent), classDeclaration.members.length ? classDeclaration.members[0] : classDeclaration.getLastToken(sourceFile));
+                        case 210 /* CaseBlock */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return spanInNodeIfStartsOnSameLine(node.parent.parent, node.parent.clauses[0]);
                     }
                     // Default to parent node
@@ -45464,25 +53986,44 @@ var ts;
                 }
                 function spanInCloseBraceToken(node) {
                     switch (node.parent.kind) {
+<<<<<<< HEAD
                         case 211 /* ModuleBlock */:
+=======
+                        case 209 /* ModuleBlock */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // If this is not instantiated module block no bp span
                             if (ts.getModuleInstanceState(node.parent.parent) !== 1 /* Instantiated */) {
                                 return undefined;
                             }
+<<<<<<< HEAD
                         case 209 /* EnumDeclaration */:
                         case 206 /* ClassDeclaration */:
                             // Span on close brace token
                             return textSpan(node);
                         case 184 /* Block */:
+=======
+                        case 207 /* EnumDeclaration */:
+                        case 204 /* ClassDeclaration */:
+                            // Span on close brace token
+                            return textSpan(node);
+                        case 182 /* Block */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             if (ts.isFunctionBlock(node.parent)) {
                                 // Span on close brace token
                                 return textSpan(node);
                             }
                         // fall through.
+<<<<<<< HEAD
                         case 236 /* CatchClause */:
                             return spanInNode(ts.lastOrUndefined(node.parent.statements));
                             ;
                         case 212 /* CaseBlock */:
+=======
+                        case 226 /* CatchClause */:
+                            return spanInNode(ts.lastOrUndefined(node.parent.statements));
+                            ;
+                        case 210 /* CaseBlock */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             // breakpoint in last statement of the last clause
                             var caseBlock = node.parent;
                             var lastClause = ts.lastOrUndefined(caseBlock.clauses);
@@ -45496,7 +54037,11 @@ var ts;
                     }
                 }
                 function spanInOpenParenToken(node) {
+<<<<<<< HEAD
                     if (node.parent.kind === 189 /* DoStatement */) {
+=======
+                    if (node.parent.kind === 187 /* DoStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Go to while keyword and do action instead
                         return spanInPreviousNode(node);
                     }
@@ -45506,6 +54051,7 @@ var ts;
                 function spanInCloseParenToken(node) {
                     // Is this close paren token of parameter list, set span in previous token
                     switch (node.parent.kind) {
+<<<<<<< HEAD
                         case 166 /* FunctionExpression */:
                         case 205 /* FunctionDeclaration */:
                         case 167 /* ArrowFunction */:
@@ -45517,6 +54063,19 @@ var ts;
                         case 190 /* WhileStatement */:
                         case 189 /* DoStatement */:
                         case 191 /* ForStatement */:
+=======
+                        case 165 /* FunctionExpression */:
+                        case 203 /* FunctionDeclaration */:
+                        case 166 /* ArrowFunction */:
+                        case 136 /* MethodDeclaration */:
+                        case 135 /* MethodSignature */:
+                        case 138 /* GetAccessor */:
+                        case 139 /* SetAccessor */:
+                        case 137 /* Constructor */:
+                        case 188 /* WhileStatement */:
+                        case 187 /* DoStatement */:
+                        case 189 /* ForStatement */:
+>>>>>>> Updated compiler to emitDependencyFile branch
                             return spanInPreviousNode(node);
                         // Default to parent node
                         default:
@@ -45527,19 +54086,31 @@ var ts;
                 }
                 function spanInColonToken(node) {
                     // Is this : specifying return annotation of the function declaration
+<<<<<<< HEAD
                     if (ts.isFunctionLike(node.parent) || node.parent.kind === 237 /* PropertyAssignment */) {
+=======
+                    if (ts.isFunctionLike(node.parent) || node.parent.kind === 227 /* PropertyAssignment */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return spanInPreviousNode(node);
                     }
                     return spanInNode(node.parent);
                 }
                 function spanInGreaterThanOrLessThanToken(node) {
+<<<<<<< HEAD
                     if (node.parent.kind === 164 /* TypeAssertionExpression */) {
+=======
+                    if (node.parent.kind === 163 /* TypeAssertionExpression */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         return spanInNode(node.parent.expression);
                     }
                     return spanInNode(node.parent);
                 }
                 function spanInWhileKeyword(node) {
+<<<<<<< HEAD
                     if (node.parent.kind === 189 /* DoStatement */) {
+=======
+                    if (node.parent.kind === 187 /* DoStatement */) {
+>>>>>>> Updated compiler to emitDependencyFile branch
                         // Set span on while expression
                         return textSpan(node, ts.findNextToken(node.parent.expression, node.parent));
                     }
