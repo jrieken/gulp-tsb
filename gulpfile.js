@@ -12,12 +12,10 @@ var sources = [
 	'!src/typescript/lib*.ts'
 ];
 
-var target = '';
-
 gulp.task('build', function() {
 	return gulp.src(sources)
 		.pipe(compilation())
-		.pipe(gulp.dest(target));
+		.pipe(gulp.dest('src'));
 });
 
 gulp.task('dev', ['build'], function() {
