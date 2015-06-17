@@ -40,7 +40,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
     if (!host.getCompilationSettings().noLib) {
         var defaultLib = host.getDefaultLibFileName();
-        host.addScriptSnapshot(defaultLib, new ScriptSnapshot(readFileSync(defaultLib), statSync(defaultLib)));
+        host.addScriptSnapshot(defaultLib, new DefaultLibScriptSnapshot(defaultLib));
     }
 
     function _log(topic: string, message: string): void {
@@ -74,8 +74,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
     }
 
     function file(file: Vinyl): void {
-        var snapshot = new ScriptSnapshot(file.contents, file.stat);
-        host.addScriptSnapshot(file.path, snapshot);
+        host.addScriptSnapshot(file.path, new VinylScriptSnapshot(file));
     }
 
     function build(out: (file: Vinyl) => void, onError: (err: any) => void): void {
@@ -102,7 +101,8 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         for (var i = 0, len = filenames.length; i < len; i++) {
 
             var filename = filenames[i],
-                version = host.getScriptVersion(filename);
+                version = host.getScriptVersion(filename),
+                snapshot = host.getScriptSnapshot(filename);
 
             if (lastBuildVersion[filename] === version) {
                 // unchanged since the last time
@@ -131,7 +131,8 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
                 out(new Vinyl({
                     path: file.name,
-                    contents: new Buffer(file.text)
+                    contents: new Buffer(file.text),
+                    base: snapshot instanceof VinylScriptSnapshot ? snapshot.getBase() : ''
                 }));
             });
 
@@ -261,13 +262,13 @@ function createCompilerOptions(config: IConfiguration): ts.CompilerOptions {
 }
 
 class ScriptSnapshot implements ts.IScriptSnapshot {
-
+    
     private _text: string;
     private _mtime: Date;
 
-    constructor(buffer: Buffer, stat: Stats) {
-        this._text = buffer.toString();
-        this._mtime = stat.mtime;
+    constructor(text: string, mtime: Date) {
+        this._text = text;
+        this._mtime = mtime;
     }
 
     public getVersion(): string {
@@ -284,6 +285,27 @@ class ScriptSnapshot implements ts.IScriptSnapshot {
 
     public getChangeRange(oldSnapshot: ts.IScriptSnapshot): ts.TextChangeRange {
         return null;
+    }
+}
+
+class DefaultLibScriptSnapshot extends ScriptSnapshot {
+
+    constructor(defaultLib: string) {
+        super(readFileSync(defaultLib).toString(), statSync(defaultLib).mtime);
+    }
+}
+
+class VinylScriptSnapshot extends ScriptSnapshot {
+
+    private _base: string;
+
+    constructor(file: Vinyl) {
+        super(file.contents.toString(), file.stat.mtime);
+        this._base = file.base;
+    }
+
+    public getBase(): string {
+        return this._base;
     }
 }
 
@@ -328,7 +350,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         return this._snapshots[filename].getVersion();
     }
 
-    getScriptSnapshot(filename: string): ts.IScriptSnapshot {
+    getScriptSnapshot(filename: string): ScriptSnapshot {
         filename = normalize(filename);
         return this._snapshots[filename];
     }

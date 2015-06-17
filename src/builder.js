@@ -1,4 +1,10 @@
 'use strict';
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
 var fs_1 = require('fs');
 var path = require('path');
 var crypto = require('crypto');
@@ -15,7 +21,7 @@ function createTypeScriptBuilder(config) {
     host.getCompilationSettings().declaration = true;
     if (!host.getCompilationSettings().noLib) {
         var defaultLib = host.getDefaultLibFileName();
-        host.addScriptSnapshot(defaultLib, new ScriptSnapshot(fs_1.readFileSync(defaultLib), fs_1.statSync(defaultLib)));
+        host.addScriptSnapshot(defaultLib, new DefaultLibScriptSnapshot(defaultLib));
     }
     function _log(topic, message) {
         if (config.verbose) {
@@ -38,8 +44,7 @@ function createTypeScriptBuilder(config) {
         onError(message);
     }
     function file(file) {
-        var snapshot = new ScriptSnapshot(file.contents, file.stat);
-        host.addScriptSnapshot(file.path, snapshot);
+        host.addScriptSnapshot(file.path, new VinylScriptSnapshot(file));
     }
     function build(out, onError) {
         var filenames = host.getScriptFileNames(), newErrors = Object.create(null), checkedThisRound = Object.create(null), filesWithShapeChanges = [], t1 = Date.now();
@@ -56,7 +61,7 @@ function createTypeScriptBuilder(config) {
             return !!sourceFile.externalModuleIndicator;
         }
         for (var i = 0, len = filenames.length; i < len; i++) {
-            var filename = filenames[i], version = host.getScriptVersion(filename);
+            var filename = filenames[i], version = host.getScriptVersion(filename), snapshot = host.getScriptSnapshot(filename);
             if (lastBuildVersion[filename] === version) {
                 // unchanged since the last time
                 continue;
@@ -76,7 +81,8 @@ function createTypeScriptBuilder(config) {
                 _log('[emit output]', file.name);
                 out(new Vinyl({
                     path: file.name,
-                    contents: new Buffer(file.text)
+                    contents: new Buffer(file.text),
+                    base: snapshot instanceof VinylScriptSnapshot ? snapshot.getBase() : ''
                 }));
             });
             // print and store syntax and semantic errors
@@ -188,9 +194,9 @@ function createCompilerOptions(config) {
     return config;
 }
 var ScriptSnapshot = (function () {
-    function ScriptSnapshot(buffer, stat) {
-        this._text = buffer.toString();
-        this._mtime = stat.mtime;
+    function ScriptSnapshot(text, mtime) {
+        this._text = text;
+        this._mtime = mtime;
     }
     ScriptSnapshot.prototype.getVersion = function () {
         return this._mtime.toUTCString();
@@ -206,6 +212,24 @@ var ScriptSnapshot = (function () {
     };
     return ScriptSnapshot;
 })();
+var DefaultLibScriptSnapshot = (function (_super) {
+    __extends(DefaultLibScriptSnapshot, _super);
+    function DefaultLibScriptSnapshot(defaultLib) {
+        _super.call(this, fs_1.readFileSync(defaultLib).toString(), fs_1.statSync(defaultLib).mtime);
+    }
+    return DefaultLibScriptSnapshot;
+})(ScriptSnapshot);
+var VinylScriptSnapshot = (function (_super) {
+    __extends(VinylScriptSnapshot, _super);
+    function VinylScriptSnapshot(file) {
+        _super.call(this, file.contents.toString(), file.stat.mtime);
+        this._base = file.base;
+    }
+    VinylScriptSnapshot.prototype.getBase = function () {
+        return this._base;
+    };
+    return VinylScriptSnapshot;
+})(ScriptSnapshot);
 var LanguageServiceHost = (function () {
     function LanguageServiceHost(settings) {
         this._settings = settings;
