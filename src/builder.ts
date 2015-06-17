@@ -262,7 +262,7 @@ function createCompilerOptions(config: IConfiguration): ts.CompilerOptions {
 }
 
 class ScriptSnapshot implements ts.IScriptSnapshot {
-    
+
     private _text: string;
     private _mtime: Date;
 
