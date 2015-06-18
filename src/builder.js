@@ -46,6 +46,14 @@ function createTypeScriptBuilder(config) {
     function file(file) {
         host.addScriptSnapshot(file.path, new VinylScriptSnapshot(file));
     }
+    function baseFor(snapshot) {
+        if (snapshot instanceof VinylScriptSnapshot) {
+            return compilerOptions.outDir || snapshot.getBase();
+        }
+        else {
+            return '';
+        }
+    }
     function build(out, onError) {
         var filenames = host.getScriptFileNames(), newErrors = Object.create(null), checkedThisRound = Object.create(null), filesWithShapeChanges = [], t1 = Date.now();
         function shouldCheck(filename) {
@@ -82,7 +90,7 @@ function createTypeScriptBuilder(config) {
                 out(new Vinyl({
                     path: file.name,
                     contents: new Buffer(file.text),
-                    base: snapshot instanceof VinylScriptSnapshot ? snapshot.getBase() : ''
+                    base: baseFor(snapshot)
                 }));
             });
             // print and store syntax and semantic errors
