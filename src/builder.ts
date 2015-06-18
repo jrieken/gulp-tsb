@@ -76,6 +76,14 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
     function file(file: Vinyl): void {
         host.addScriptSnapshot(file.path, new VinylScriptSnapshot(file));
     }
+    
+    function baseFor(snapshot: ScriptSnapshot): string {
+        if (snapshot instanceof VinylScriptSnapshot) {
+            return compilerOptions.outDir || snapshot.getBase();
+        } else {
+            return '';
+        }
+    }
 
     function build(out: (file: Vinyl) => void, onError: (err: any) => void): void {
 
@@ -128,11 +136,11 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                 }
 
                 _log('[emit output]', file.name);
-
+                
                 out(new Vinyl({
                     path: file.name,
                     contents: new Buffer(file.text),
-                    base: snapshot instanceof VinylScriptSnapshot ? snapshot.getBase() : ''
+                    base: baseFor(snapshot)
                 }));
             });
 
