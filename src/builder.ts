@@ -328,7 +328,9 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     constructor(settings: ts.CompilerOptions) {
         this._settings = settings;
         this._snapshots = Object.create(null);
-        this._defaultLib = normalize(path.join(__dirname, 'typescript', 'lib.d.ts'));
+        this._defaultLib = normalize(path.join(__dirname, 'typescript', settings.target === ts.ScriptTarget.ES6
+            ? 'lib.es6.d.ts'
+            : 'lib.d.ts'));
         this._dependencies = new utils.graph.Graph<string>(s => s);
         this._dependenciesRecomputeList = [];
     }
