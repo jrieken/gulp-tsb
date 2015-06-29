@@ -15394,7 +15394,11 @@ var ts;
 <<<<<<< HEAD
 =======
 =======
+<<<<<<< HEAD
 >>>>>>> Updated compiler to emitDependencyFile branch
+=======
+>>>>>>> update to latest TS and suport lib.es6.d.ts
+>>>>>>> update to latest TS and suport lib.es6.d.ts
         function isLetDeclaration() {
             // It is let declaration if in strict mode or next token is identifier\open bracket\open curly on same line.
             // otherwise it needs to be treated like identifier
@@ -15526,11 +15530,17 @@ var ts;
                 : parseStatement();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
 >>>>>>> update to latest TS and suport lib.es6.d.ts
 =======
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
 >>>>>>> Updated compiler to emitDependencyFile branch
+=======
+>>>>>>> update to latest TS and suport lib.es6.d.ts
+>>>>>>> update to latest TS and suport lib.es6.d.ts
         function processReferenceComments(sourceFile) {
             var triviaScanner = ts.createScanner(sourceFile.languageVersion, false, 0 /* Standard */, sourceText);
             var referencedFiles = [];
@@ -17480,7 +17490,11 @@ var ts;
                             break;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+<<<<<<< HEAD
+>>>>>>> update to latest TS and suport lib.es6.d.ts
                     case 206 /* ModuleDeclaration */:
                         var moduleExports = getSymbolOfNode(location).exports;
                         if (location.kind === 228 /* SourceFile */ ||
@@ -17489,12 +17503,26 @@ var ts;
 >>>>>>> update to latest TS and suport lib.es6.d.ts
 =======
 =======
+=======
+>>>>>>> update to latest TS and suport lib.es6.d.ts
                     case 210 /* ModuleDeclaration */:
                         var moduleExports = getSymbolOfNode(location).exports;
                         if (location.kind === 240 /* SourceFile */ ||
                             (location.kind === 210 /* ModuleDeclaration */ && location.name.kind === 8 /* StringLiteral */)) {
+<<<<<<< HEAD
 >>>>>>> Updated TS service which exposes new dependency API
+<<<<<<< HEAD
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+=======
+=======
+                    case 206 /* ModuleDeclaration */:
+                        var moduleExports = getSymbolOfNode(location).exports;
+                        if (location.kind === 228 /* SourceFile */ ||
+                            (location.kind === 206 /* ModuleDeclaration */ && location.name.kind === 8 /* StringLiteral */)) {
+>>>>>>> update to latest TS and suport lib.es6.d.ts
+>>>>>>> update to latest TS and suport lib.es6.d.ts
+>>>>>>> update to latest TS and suport lib.es6.d.ts
                             // It's an external module. Because of module/namespace merging, a module's exports are in scope,
                             // yet we never want to treat an export specifier as putting a member in scope. Therefore,
                             // if the name we find is purely an export specifier, it is not actually considered in scope.
@@ -17510,10 +17538,13 @@ var ts;
                                 moduleExports[name].flags === 8388608 /* Alias */ &&
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 ts.getDeclarationOfKind(moduleExports[name], 222 /* ExportSpecifier */)) {
 =======
 =======
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+>>>>>>> update to latest TS and suport lib.es6.d.ts
                                 ts.getDeclarationOfKind(moduleExports[name], 218 /* ExportSpecifier */)) {
 >>>>>>> update to latest TS and suport lib.es6.d.ts
                                 break;
@@ -17532,7 +17563,12 @@ var ts;
                             result = getSymbolOfNode(location).exports["default"];
 >>>>>>> Updated compiler to emitDependencyFile branch
 =======
+=======
+>>>>>>> update to latest TS and suport lib.es6.d.ts
                                 ts.getDeclarationOfKind(moduleExports[name], 222 /* ExportSpecifier */)) {
+=======
+                                ts.getDeclarationOfKind(moduleExports[name], 218 /* ExportSpecifier */)) {
+>>>>>>> update to latest TS and suport lib.es6.d.ts
                                 break;
                             }
                             result = moduleExports["default"];
@@ -52860,6 +52896,9 @@ var ts;
 =======
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> update to latest TS and suport lib.es6.d.ts
         // Store syntactic diagnostics
         if (diagnostics && sourceFile.parseDiagnostics) {
             diagnostics.push.apply(diagnostics, sourceFile.parseDiagnostics);
