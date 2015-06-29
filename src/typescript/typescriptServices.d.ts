@@ -2072,4 +2072,5 @@ declare namespace ts {
       */
     function getDefaultLibFilePath(options: CompilerOptions): string;
 }
+
 export = ts;

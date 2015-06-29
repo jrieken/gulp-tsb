@@ -271,7 +271,9 @@ var LanguageServiceHost = (function () {
     function LanguageServiceHost(settings) {
         this._settings = settings;
         this._snapshots = Object.create(null);
-        this._defaultLib = normalize(path.join(__dirname, 'typescript', 'lib.d.ts'));
+        this._defaultLib = normalize(path.join(__dirname, 'typescript', settings.target === 2 /* ES6 */
+            ? 'lib.es6.d.ts'
+            : 'lib.d.ts'));
         this._dependencies = new utils.graph.Graph(function (s) { return s; });
         this._dependenciesRecomputeList = [];
     }
