@@ -3,10 +3,10 @@
   "version": "1.4.4",
   "author": "Johannes Rieken <johannes.rieken@gmail.com>",
   "description": "A gulp plugin for very fast TypeScript compilation.",
-  "main": "./src/index",
+  "main": "./lib/index",
   "license": "MIT",
   "scripts": {
-    "test": "mocha src/tests"
+    "test": "mocha lib/tests"
   },
   "repository": {
     "type": "git",

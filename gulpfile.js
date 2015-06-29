@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 var path = require('path');
-var tsb = require('./src');
+var tsb = require('./lib/index');
 
 var compilation = tsb.create(path.join(__dirname, 'tsconfig.json'), true);
 
@@ -15,7 +15,7 @@ var sources = [
 gulp.task('build', function() {
 	return gulp.src(sources)
 		.pipe(compilation())
-		.pipe(gulp.dest('src'));
+		.pipe(gulp.dest('lib'));
 });
 
 gulp.task('dev', ['build'], function() {
