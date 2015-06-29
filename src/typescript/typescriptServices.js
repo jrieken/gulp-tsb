@@ -11317,6 +11317,139 @@ var ts;
             parseSemicolon();
             return finishNode(node);
         }
+<<<<<<< HEAD
+=======
+        function isLetDeclaration() {
+            // It is let declaration if in strict mode or next token is identifier\open bracket\open curly on same line.
+            // otherwise it needs to be treated like identifier
+            return inStrictModeContext() || lookAhead(nextTokenIsIdentifierOrStartOfDestructuringOnTheSameLine);
+        }
+        function isDeclarationStart(followsModifier) {
+            switch (token) {
+                case 98 /* VarKeyword */:
+                case 70 /* ConstKeyword */:
+                case 83 /* FunctionKeyword */:
+                    return true;
+                case 104 /* LetKeyword */:
+                    return isLetDeclaration();
+                case 69 /* ClassKeyword */:
+                case 103 /* InterfaceKeyword */:
+                case 77 /* EnumKeyword */:
+                case 124 /* TypeKeyword */:
+                    // Not true keywords so ensure an identifier follows
+                    return lookAhead(nextTokenIsIdentifierOrKeyword);
+                case 85 /* ImportKeyword */:
+                    // Not true keywords so ensure an identifier follows or is string literal or asterisk or open brace
+                    return lookAhead(nextTokenCanFollowImportKeyword);
+                case 117 /* ModuleKeyword */:
+                case 118 /* NamespaceKeyword */:
+                    // Not a true keyword so ensure an identifier or string literal follows
+                    return lookAhead(nextTokenIsIdentifierOrKeywordOrStringLiteral);
+                case 78 /* ExportKeyword */:
+                    // Check for export assignment or modifier on source element
+                    return lookAhead(nextTokenCanFollowExportKeyword);
+                case 115 /* DeclareKeyword */:
+                case 108 /* PublicKeyword */:
+                case 106 /* PrivateKeyword */:
+                case 107 /* ProtectedKeyword */:
+                case 109 /* StaticKeyword */:
+                    // Check for modifier on source element
+                    return lookAhead(nextTokenIsDeclarationStart);
+                case 52 /* AtToken */:
+                    // a lookahead here is too costly, and decorators are only valid on a declaration. 
+                    // We will assume we are parsing a declaration here and report an error later
+                    return !followsModifier;
+            }
+        }
+        function isIdentifierOrKeyword() {
+            return token >= 65 /* Identifier */;
+        }
+        function nextTokenIsIdentifierOrKeyword() {
+            nextToken();
+            return isIdentifierOrKeyword();
+        }
+        function nextTokenIsIdentifierOrKeywordOrStringLiteral() {
+            nextToken();
+            return isIdentifierOrKeyword() || token === 8 /* StringLiteral */;
+        }
+        function nextTokenCanFollowImportKeyword() {
+            nextToken();
+            return isIdentifierOrKeyword() || token === 8 /* StringLiteral */ ||
+                token === 35 /* AsteriskToken */ || token === 14 /* OpenBraceToken */;
+        }
+        function nextTokenCanFollowExportKeyword() {
+            nextToken();
+            return token === 53 /* EqualsToken */ || token === 35 /* AsteriskToken */ ||
+                token === 14 /* OpenBraceToken */ || token === 73 /* DefaultKeyword */ || isDeclarationStart(true);
+        }
+        function nextTokenIsDeclarationStart() {
+            nextToken();
+            return isDeclarationStart(true);
+        }
+        function nextTokenIsAsKeyword() {
+            return nextToken() === 111 /* AsKeyword */;
+        }
+        function parseDeclaration() {
+            var fullStart = getNodePos();
+            var decorators = parseDecorators();
+            var modifiers = parseModifiers();
+            if (token === 78 /* ExportKeyword */) {
+                nextToken();
+                if (token === 73 /* DefaultKeyword */ || token === 53 /* EqualsToken */) {
+                    return parseExportAssignment(fullStart, decorators, modifiers);
+                }
+                if (token === 35 /* AsteriskToken */ || token === 14 /* OpenBraceToken */) {
+                    return parseExportDeclaration(fullStart, decorators, modifiers);
+                }
+            }
+            switch (token) {
+                case 98 /* VarKeyword */:
+                case 104 /* LetKeyword */:
+                case 70 /* ConstKeyword */:
+                    return parseVariableStatement(fullStart, decorators, modifiers);
+                case 83 /* FunctionKeyword */:
+                    return parseFunctionDeclaration(fullStart, decorators, modifiers);
+                case 69 /* ClassKeyword */:
+                    return parseClassDeclaration(fullStart, decorators, modifiers);
+                case 103 /* InterfaceKeyword */:
+                    return parseInterfaceDeclaration(fullStart, decorators, modifiers);
+                case 124 /* TypeKeyword */:
+                    return parseTypeAliasDeclaration(fullStart, decorators, modifiers);
+                case 77 /* EnumKeyword */:
+                    return parseEnumDeclaration(fullStart, decorators, modifiers);
+                case 117 /* ModuleKeyword */:
+                case 118 /* NamespaceKeyword */:
+                    return parseModuleDeclaration(fullStart, decorators, modifiers);
+                case 85 /* ImportKeyword */:
+                    return parseImportDeclarationOrImportEqualsDeclaration(fullStart, decorators, modifiers);
+                default:
+                    if (decorators || modifiers) {
+                        // We reached this point because we encountered an AtToken and assumed a declaration would
+                        // follow. For recovery and error reporting purposes, return an incomplete declaration.                        
+                        var node = createMissingNode(219 /* MissingDeclaration */, true, ts.Diagnostics.Declaration_expected);
+                        node.pos = fullStart;
+                        node.decorators = decorators;
+                        setModifiers(node, modifiers);
+                        return finishNode(node);
+                    }
+                    ts.Debug.fail("Mismatch between isDeclarationStart and parseDeclaration");
+            }
+        }
+        function isSourceElement(inErrorRecovery) {
+            return isDeclarationStart() || isStartOfStatement(inErrorRecovery);
+        }
+        function parseSourceElement() {
+            return parseSourceElementOrModuleElement();
+        }
+        function parseModuleElement() {
+            return parseSourceElementOrModuleElement();
+        }
+        function parseSourceElementOrModuleElement() {
+            return isDeclarationStart()
+                ? parseDeclaration()
+                : parseStatement();
+        }
+>>>>>>> update to latest TS and suport lib.es6.d.ts
         function processReferenceComments(sourceFile) {
             var triviaScanner = ts.createScanner(sourceFile.languageVersion, false, 0 /* Standard */, sourceText);
             var referencedFiles = [];
@@ -12793,10 +12926,17 @@ var ts;
                     case 240 /* SourceFile */:
                         if (!ts.isExternalModule(location))
                             break;
+<<<<<<< HEAD
                     case 210 /* ModuleDeclaration */:
                         var moduleExports = getSymbolOfNode(location).exports;
                         if (location.kind === 240 /* SourceFile */ ||
                             (location.kind === 210 /* ModuleDeclaration */ && location.name.kind === 8 /* StringLiteral */)) {
+=======
+                    case 206 /* ModuleDeclaration */:
+                        var moduleExports = getSymbolOfNode(location).exports;
+                        if (location.kind === 228 /* SourceFile */ ||
+                            (location.kind === 206 /* ModuleDeclaration */ && location.name.kind === 8 /* StringLiteral */)) {
+>>>>>>> update to latest TS and suport lib.es6.d.ts
                             // It's an external module. Because of module/namespace merging, a module's exports are in scope,
                             // yet we never want to treat an export specifier as putting a member in scope. Therefore,
                             // if the name we find is purely an export specifier, it is not actually considered in scope.
@@ -12810,7 +12950,11 @@ var ts;
                             //        which is not the desired behavior.
                             if (ts.hasProperty(moduleExports, name) &&
                                 moduleExports[name].flags === 8388608 /* Alias */ &&
+<<<<<<< HEAD
                                 ts.getDeclarationOfKind(moduleExports[name], 222 /* ExportSpecifier */)) {
+=======
+                                ts.getDeclarationOfKind(moduleExports[name], 218 /* ExportSpecifier */)) {
+>>>>>>> update to latest TS and suport lib.es6.d.ts
                                 break;
                             }
                             result = moduleExports["default"];
@@ -40069,6 +40213,13 @@ var ts;
         var sourceFile = ts.createSourceFile(inputFileName, input, options.target);
         if (moduleName) {
             sourceFile.moduleName = moduleName;
+<<<<<<< HEAD
+=======
+        }
+        // Store syntactic diagnostics
+        if (diagnostics && sourceFile.parseDiagnostics) {
+            diagnostics.push.apply(diagnostics, sourceFile.parseDiagnostics);
+>>>>>>> update to latest TS and suport lib.es6.d.ts
         }
         var newLine = ts.getNewLineCharacter(options);
         // Output
