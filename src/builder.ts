@@ -74,7 +74,11 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
     }
 
     function file(file: Vinyl): void {
-        host.addScriptSnapshot(file.path, new VinylScriptSnapshot(file));
+        if (!file.contents) {
+            host.removeScriptSnapshot(file.path);            
+        } else {
+            host.addScriptSnapshot(file.path, new VinylScriptSnapshot(file));
+        }
     }
     
     function baseFor(snapshot: ScriptSnapshot): string {
@@ -409,6 +413,11 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         }
         this._snapshots[filename] = snapshot;
         return old;
+    }
+
+    removeScriptSnapshot(filename: string): boolean {
+        filename = normalize(filename);
+        return delete this._snapshots[filename];
     }
 
     getLocalizedDiagnosticMessages(): any {
