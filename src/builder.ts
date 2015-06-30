@@ -11,6 +11,7 @@ import Vinyl = require('vinyl');
 export interface IConfiguration {
     json: boolean;
     verbose: boolean;
+    _emitWithoutBasePath?: boolean;
     _emitLanguageService?: boolean;
     [option: string]: string | number | boolean;
 }
@@ -162,7 +163,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                 out(new Vinyl({
                     path: file.name,
                     contents: new Buffer(file.text),
-                    base: baseFor(snapshot)
+                    base: !config._emitWithoutBasePath && baseFor(snapshot)
                 }));
             });
             
