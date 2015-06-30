@@ -95,7 +95,8 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         var filenames = host.getScriptFileNames(),
             newErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null),
             checkedThisRound: { [path: string]: boolean } = Object.create(null),
-            filesWithShapeChanges: string[] = [],
+            externalsWithShapeChanges: string[] = [],
+            internalsWithShapeChanges: string[] = [],
             t1 = Date.now();
 
         function shouldCheck(filename: string): boolean {
@@ -160,9 +161,9 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
             if (dtsHash && lastDtsHash[filename] !== dtsHash) {
                 lastDtsHash[filename] = dtsHash;
                 if (isExternalModule(service.getSourceFile(filename))) {
-                    filesWithShapeChanges.push(filename);
+                    externalsWithShapeChanges.push(filename);
                 } else {
-                    filesWithShapeChanges.unshift(filename);
+                    internalsWithShapeChanges.unshift(filename);
                 }
             }
 
@@ -170,13 +171,14 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
             checkedThisRound[filename] = true;
         }
 
-        if (filesWithShapeChanges.length === 0) {
+        if (externalsWithShapeChanges.length === 0 && internalsWithShapeChanges.length === 0) {
             // nothing to do here
 
-        } else if (!isExternalModule(service.getSourceFile(filesWithShapeChanges[0]))) {
+        } else if (internalsWithShapeChanges.length > 0) {
             // at least one internal module changes which means that
             // we have to type check all others
-            _log('[shape changes]', 'internal module changed → FULL check required');
+			_log('[shape changes]', 'internal modules changed: ' + internalsWithShapeChanges.join(', '));
+			_log('[shape changes]', 'FULL check required');            
             host.getScriptFileNames().forEach(filename => {
                 if (!shouldCheck(filename)) {
                     return;
@@ -189,11 +191,13 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                     printDiagnostic(diag, onError);
                 });
             });
+            _log('[shape changes]', 'FULL check completed');
         } else {
             // reverse dependencies
-            _log('[shape changes]', 'external module changed → check REVERSE dependencies');
+			_log('[shape changes]', 'external modules changed: ' + externalsWithShapeChanges.join(', '));
+			_log('[shape changes]', 'check REVERSE dependencies');
             var needsSemanticCheck: string[] = [];
-            filesWithShapeChanges.forEach(filename => host.collectDependents(filename, needsSemanticCheck));
+            externalsWithShapeChanges.forEach(filename => host.collectDependents(filename, needsSemanticCheck));
             while (needsSemanticCheck.length) {
                 var filename = needsSemanticCheck.pop();
                 if (!shouldCheck(filename)) {
@@ -214,6 +218,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                     host.collectDependents(filename, needsSemanticCheck);
                 }
             }
+            _log('[shape changes]', 'check REVERSE dependencies completed');
         }
 
         // (4) dump old errors
