@@ -13,7 +13,7 @@ See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
 
-declare module ts {
+declare namespace ts {
     interface Map<T> {
         [index: string]: T;
     }
@@ -54,250 +54,260 @@ declare module ts {
         SemicolonToken = 22,
         CommaToken = 23,
         LessThanToken = 24,
-        GreaterThanToken = 25,
-        LessThanEqualsToken = 26,
-        GreaterThanEqualsToken = 27,
-        EqualsEqualsToken = 28,
-        ExclamationEqualsToken = 29,
-        EqualsEqualsEqualsToken = 30,
-        ExclamationEqualsEqualsToken = 31,
-        EqualsGreaterThanToken = 32,
-        PlusToken = 33,
-        MinusToken = 34,
-        AsteriskToken = 35,
-        SlashToken = 36,
-        PercentToken = 37,
-        PlusPlusToken = 38,
-        MinusMinusToken = 39,
-        LessThanLessThanToken = 40,
-        GreaterThanGreaterThanToken = 41,
-        GreaterThanGreaterThanGreaterThanToken = 42,
-        AmpersandToken = 43,
-        BarToken = 44,
-        CaretToken = 45,
-        ExclamationToken = 46,
-        TildeToken = 47,
-        AmpersandAmpersandToken = 48,
-        BarBarToken = 49,
-        QuestionToken = 50,
-        ColonToken = 51,
-        AtToken = 52,
-        EqualsToken = 53,
-        PlusEqualsToken = 54,
-        MinusEqualsToken = 55,
-        AsteriskEqualsToken = 56,
-        SlashEqualsToken = 57,
-        PercentEqualsToken = 58,
-        LessThanLessThanEqualsToken = 59,
-        GreaterThanGreaterThanEqualsToken = 60,
-        GreaterThanGreaterThanGreaterThanEqualsToken = 61,
-        AmpersandEqualsToken = 62,
-        BarEqualsToken = 63,
-        CaretEqualsToken = 64,
-        Identifier = 65,
-        BreakKeyword = 66,
-        CaseKeyword = 67,
-        CatchKeyword = 68,
-        ClassKeyword = 69,
-        ConstKeyword = 70,
-        ContinueKeyword = 71,
-        DebuggerKeyword = 72,
-        DefaultKeyword = 73,
-        DeleteKeyword = 74,
-        DoKeyword = 75,
-        ElseKeyword = 76,
-        EnumKeyword = 77,
-        ExportKeyword = 78,
-        ExtendsKeyword = 79,
-        FalseKeyword = 80,
-        FinallyKeyword = 81,
-        ForKeyword = 82,
-        FunctionKeyword = 83,
-        IfKeyword = 84,
-        ImportKeyword = 85,
-        InKeyword = 86,
-        InstanceOfKeyword = 87,
-        NewKeyword = 88,
-        NullKeyword = 89,
-        ReturnKeyword = 90,
-        SuperKeyword = 91,
-        SwitchKeyword = 92,
-        ThisKeyword = 93,
-        ThrowKeyword = 94,
-        TrueKeyword = 95,
-        TryKeyword = 96,
-        TypeOfKeyword = 97,
-        VarKeyword = 98,
-        VoidKeyword = 99,
-        WhileKeyword = 100,
-        WithKeyword = 101,
-        ImplementsKeyword = 102,
-        InterfaceKeyword = 103,
-        LetKeyword = 104,
-        PackageKeyword = 105,
-        PrivateKeyword = 106,
-        ProtectedKeyword = 107,
-        PublicKeyword = 108,
-        StaticKeyword = 109,
-        YieldKeyword = 110,
-        AsKeyword = 111,
-        AnyKeyword = 112,
-        BooleanKeyword = 113,
-        ConstructorKeyword = 114,
-        DeclareKeyword = 115,
-        GetKeyword = 116,
-        IsKeyword = 117,
-        ModuleKeyword = 118,
-        NamespaceKeyword = 119,
-        RequireKeyword = 120,
-        NumberKeyword = 121,
-        SetKeyword = 122,
-        StringKeyword = 123,
-        SymbolKeyword = 124,
-        TypeKeyword = 125,
-        FromKeyword = 126,
-        OfKeyword = 127,
-        QualifiedName = 128,
-        ComputedPropertyName = 129,
-        TypeParameter = 130,
-        Parameter = 131,
-        Decorator = 132,
-        PropertySignature = 133,
-        PropertyDeclaration = 134,
-        MethodSignature = 135,
-        MethodDeclaration = 136,
-        Constructor = 137,
-        GetAccessor = 138,
-        SetAccessor = 139,
-        CallSignature = 140,
-        ConstructSignature = 141,
-        IndexSignature = 142,
-        TypePredicate = 143,
-        TypeReference = 144,
-        FunctionType = 145,
-        ConstructorType = 146,
-        TypeQuery = 147,
-        TypeLiteral = 148,
-        ArrayType = 149,
-        TupleType = 150,
-        UnionType = 151,
-        ParenthesizedType = 152,
-        ObjectBindingPattern = 153,
-        ArrayBindingPattern = 154,
-        BindingElement = 155,
-        ArrayLiteralExpression = 156,
-        ObjectLiteralExpression = 157,
-        PropertyAccessExpression = 158,
-        ElementAccessExpression = 159,
-        CallExpression = 160,
-        NewExpression = 161,
-        TaggedTemplateExpression = 162,
-        TypeAssertionExpression = 163,
-        ParenthesizedExpression = 164,
-        FunctionExpression = 165,
-        ArrowFunction = 166,
-        DeleteExpression = 167,
-        TypeOfExpression = 168,
-        VoidExpression = 169,
-        PrefixUnaryExpression = 170,
-        PostfixUnaryExpression = 171,
-        BinaryExpression = 172,
-        ConditionalExpression = 173,
-        TemplateExpression = 174,
-        YieldExpression = 175,
-        SpreadElementExpression = 176,
-        ClassExpression = 177,
-        OmittedExpression = 178,
-        ExpressionWithTypeArguments = 179,
-        TemplateSpan = 180,
-        SemicolonClassElement = 181,
-        Block = 182,
-        VariableStatement = 183,
-        EmptyStatement = 184,
-        ExpressionStatement = 185,
-        IfStatement = 186,
-        DoStatement = 187,
-        WhileStatement = 188,
-        ForStatement = 189,
-        ForInStatement = 190,
-        ForOfStatement = 191,
-        ContinueStatement = 192,
-        BreakStatement = 193,
-        ReturnStatement = 194,
-        WithStatement = 195,
-        SwitchStatement = 196,
-        LabeledStatement = 197,
-        ThrowStatement = 198,
-        TryStatement = 199,
-        DebuggerStatement = 200,
-        VariableDeclaration = 201,
-        VariableDeclarationList = 202,
-        FunctionDeclaration = 203,
-        ClassDeclaration = 204,
-        InterfaceDeclaration = 205,
-        TypeAliasDeclaration = 206,
-        EnumDeclaration = 207,
-        ModuleDeclaration = 208,
-        ModuleBlock = 209,
-        CaseBlock = 210,
-        ImportEqualsDeclaration = 211,
-        ImportDeclaration = 212,
-        ImportClause = 213,
-        NamespaceImport = 214,
-        NamedImports = 215,
-        ImportSpecifier = 216,
-        ExportAssignment = 217,
-        ExportDeclaration = 218,
-        NamedExports = 219,
-        ExportSpecifier = 220,
-        MissingDeclaration = 221,
-        ExternalModuleReference = 222,
-        CaseClause = 223,
-        DefaultClause = 224,
-        HeritageClause = 225,
-        CatchClause = 226,
-        PropertyAssignment = 227,
-        ShorthandPropertyAssignment = 228,
-        EnumMember = 229,
-        SourceFile = 230,
-        JSDocTypeExpression = 231,
-        JSDocAllType = 232,
-        JSDocUnknownType = 233,
-        JSDocArrayType = 234,
-        JSDocUnionType = 235,
-        JSDocTupleType = 236,
-        JSDocNullableType = 237,
-        JSDocNonNullableType = 238,
-        JSDocRecordType = 239,
-        JSDocRecordMember = 240,
-        JSDocTypeReference = 241,
-        JSDocOptionalType = 242,
-        JSDocFunctionType = 243,
-        JSDocVariadicType = 244,
-        JSDocConstructorType = 245,
-        JSDocThisType = 246,
-        JSDocComment = 247,
-        JSDocTag = 248,
-        JSDocParameterTag = 249,
-        JSDocReturnTag = 250,
-        JSDocTypeTag = 251,
-        JSDocTemplateTag = 252,
-        SyntaxList = 253,
-        Count = 254,
-        FirstAssignment = 53,
-        LastAssignment = 64,
-        FirstReservedWord = 66,
-        LastReservedWord = 101,
-        FirstKeyword = 66,
-        LastKeyword = 127,
-        FirstFutureReservedWord = 102,
-        LastFutureReservedWord = 110,
-        FirstTypeNode = 144,
-        LastTypeNode = 152,
+        LessThanSlashToken = 25,
+        GreaterThanToken = 26,
+        LessThanEqualsToken = 27,
+        GreaterThanEqualsToken = 28,
+        EqualsEqualsToken = 29,
+        ExclamationEqualsToken = 30,
+        EqualsEqualsEqualsToken = 31,
+        ExclamationEqualsEqualsToken = 32,
+        EqualsGreaterThanToken = 33,
+        PlusToken = 34,
+        MinusToken = 35,
+        AsteriskToken = 36,
+        SlashToken = 37,
+        PercentToken = 38,
+        PlusPlusToken = 39,
+        MinusMinusToken = 40,
+        LessThanLessThanToken = 41,
+        GreaterThanGreaterThanToken = 42,
+        GreaterThanGreaterThanGreaterThanToken = 43,
+        AmpersandToken = 44,
+        BarToken = 45,
+        CaretToken = 46,
+        ExclamationToken = 47,
+        TildeToken = 48,
+        AmpersandAmpersandToken = 49,
+        BarBarToken = 50,
+        QuestionToken = 51,
+        ColonToken = 52,
+        AtToken = 53,
+        EqualsToken = 54,
+        PlusEqualsToken = 55,
+        MinusEqualsToken = 56,
+        AsteriskEqualsToken = 57,
+        SlashEqualsToken = 58,
+        PercentEqualsToken = 59,
+        LessThanLessThanEqualsToken = 60,
+        GreaterThanGreaterThanEqualsToken = 61,
+        GreaterThanGreaterThanGreaterThanEqualsToken = 62,
+        AmpersandEqualsToken = 63,
+        BarEqualsToken = 64,
+        CaretEqualsToken = 65,
+        Identifier = 66,
+        BreakKeyword = 67,
+        CaseKeyword = 68,
+        CatchKeyword = 69,
+        ClassKeyword = 70,
+        ConstKeyword = 71,
+        ContinueKeyword = 72,
+        DebuggerKeyword = 73,
+        DefaultKeyword = 74,
+        DeleteKeyword = 75,
+        DoKeyword = 76,
+        ElseKeyword = 77,
+        EnumKeyword = 78,
+        ExportKeyword = 79,
+        ExtendsKeyword = 80,
+        FalseKeyword = 81,
+        FinallyKeyword = 82,
+        ForKeyword = 83,
+        FunctionKeyword = 84,
+        IfKeyword = 85,
+        ImportKeyword = 86,
+        InKeyword = 87,
+        InstanceOfKeyword = 88,
+        NewKeyword = 89,
+        NullKeyword = 90,
+        ReturnKeyword = 91,
+        SuperKeyword = 92,
+        SwitchKeyword = 93,
+        ThisKeyword = 94,
+        ThrowKeyword = 95,
+        TrueKeyword = 96,
+        TryKeyword = 97,
+        TypeOfKeyword = 98,
+        VarKeyword = 99,
+        VoidKeyword = 100,
+        WhileKeyword = 101,
+        WithKeyword = 102,
+        ImplementsKeyword = 103,
+        InterfaceKeyword = 104,
+        LetKeyword = 105,
+        PackageKeyword = 106,
+        PrivateKeyword = 107,
+        ProtectedKeyword = 108,
+        PublicKeyword = 109,
+        StaticKeyword = 110,
+        YieldKeyword = 111,
+        AsKeyword = 112,
+        AnyKeyword = 113,
+        BooleanKeyword = 114,
+        ConstructorKeyword = 115,
+        DeclareKeyword = 116,
+        GetKeyword = 117,
+        IsKeyword = 118,
+        ModuleKeyword = 119,
+        NamespaceKeyword = 120,
+        RequireKeyword = 121,
+        NumberKeyword = 122,
+        SetKeyword = 123,
+        StringKeyword = 124,
+        SymbolKeyword = 125,
+        TypeKeyword = 126,
+        FromKeyword = 127,
+        OfKeyword = 128,
+        QualifiedName = 129,
+        ComputedPropertyName = 130,
+        TypeParameter = 131,
+        Parameter = 132,
+        Decorator = 133,
+        PropertySignature = 134,
+        PropertyDeclaration = 135,
+        MethodSignature = 136,
+        MethodDeclaration = 137,
+        Constructor = 138,
+        GetAccessor = 139,
+        SetAccessor = 140,
+        CallSignature = 141,
+        ConstructSignature = 142,
+        IndexSignature = 143,
+        TypePredicate = 144,
+        TypeReference = 145,
+        FunctionType = 146,
+        ConstructorType = 147,
+        TypeQuery = 148,
+        TypeLiteral = 149,
+        ArrayType = 150,
+        TupleType = 151,
+        UnionType = 152,
+        ParenthesizedType = 153,
+        ObjectBindingPattern = 154,
+        ArrayBindingPattern = 155,
+        BindingElement = 156,
+        ArrayLiteralExpression = 157,
+        ObjectLiteralExpression = 158,
+        PropertyAccessExpression = 159,
+        ElementAccessExpression = 160,
+        CallExpression = 161,
+        NewExpression = 162,
+        TaggedTemplateExpression = 163,
+        TypeAssertionExpression = 164,
+        ParenthesizedExpression = 165,
+        FunctionExpression = 166,
+        ArrowFunction = 167,
+        DeleteExpression = 168,
+        TypeOfExpression = 169,
+        VoidExpression = 170,
+        PrefixUnaryExpression = 171,
+        PostfixUnaryExpression = 172,
+        BinaryExpression = 173,
+        ConditionalExpression = 174,
+        TemplateExpression = 175,
+        YieldExpression = 176,
+        SpreadElementExpression = 177,
+        ClassExpression = 178,
+        OmittedExpression = 179,
+        ExpressionWithTypeArguments = 180,
+        AsExpression = 181,
+        TemplateSpan = 182,
+        SemicolonClassElement = 183,
+        Block = 184,
+        VariableStatement = 185,
+        EmptyStatement = 186,
+        ExpressionStatement = 187,
+        IfStatement = 188,
+        DoStatement = 189,
+        WhileStatement = 190,
+        ForStatement = 191,
+        ForInStatement = 192,
+        ForOfStatement = 193,
+        ContinueStatement = 194,
+        BreakStatement = 195,
+        ReturnStatement = 196,
+        WithStatement = 197,
+        SwitchStatement = 198,
+        LabeledStatement = 199,
+        ThrowStatement = 200,
+        TryStatement = 201,
+        DebuggerStatement = 202,
+        VariableDeclaration = 203,
+        VariableDeclarationList = 204,
+        FunctionDeclaration = 205,
+        ClassDeclaration = 206,
+        InterfaceDeclaration = 207,
+        TypeAliasDeclaration = 208,
+        EnumDeclaration = 209,
+        ModuleDeclaration = 210,
+        ModuleBlock = 211,
+        CaseBlock = 212,
+        ImportEqualsDeclaration = 213,
+        ImportDeclaration = 214,
+        ImportClause = 215,
+        NamespaceImport = 216,
+        NamedImports = 217,
+        ImportSpecifier = 218,
+        ExportAssignment = 219,
+        ExportDeclaration = 220,
+        NamedExports = 221,
+        ExportSpecifier = 222,
+        MissingDeclaration = 223,
+        ExternalModuleReference = 224,
+        JsxElement = 225,
+        JsxSelfClosingElement = 226,
+        JsxOpeningElement = 227,
+        JsxText = 228,
+        JsxClosingElement = 229,
+        JsxAttribute = 230,
+        JsxSpreadAttribute = 231,
+        JsxExpression = 232,
+        CaseClause = 233,
+        DefaultClause = 234,
+        HeritageClause = 235,
+        CatchClause = 236,
+        PropertyAssignment = 237,
+        ShorthandPropertyAssignment = 238,
+        EnumMember = 239,
+        SourceFile = 240,
+        JSDocTypeExpression = 241,
+        JSDocAllType = 242,
+        JSDocUnknownType = 243,
+        JSDocArrayType = 244,
+        JSDocUnionType = 245,
+        JSDocTupleType = 246,
+        JSDocNullableType = 247,
+        JSDocNonNullableType = 248,
+        JSDocRecordType = 249,
+        JSDocRecordMember = 250,
+        JSDocTypeReference = 251,
+        JSDocOptionalType = 252,
+        JSDocFunctionType = 253,
+        JSDocVariadicType = 254,
+        JSDocConstructorType = 255,
+        JSDocThisType = 256,
+        JSDocComment = 257,
+        JSDocTag = 258,
+        JSDocParameterTag = 259,
+        JSDocReturnTag = 260,
+        JSDocTypeTag = 261,
+        JSDocTemplateTag = 262,
+        SyntaxList = 263,
+        Count = 264,
+        FirstAssignment = 54,
+        LastAssignment = 65,
+        FirstReservedWord = 67,
+        LastReservedWord = 102,
+        FirstKeyword = 67,
+        LastKeyword = 128,
+        FirstFutureReservedWord = 103,
+        LastFutureReservedWord = 111,
+        FirstTypeNode = 145,
+        LastTypeNode = 153,
         FirstPunctuation = 14,
-        LastPunctuation = 64,
+        LastPunctuation = 65,
         FirstToken = 0,
-        LastToken = 127,
+        LastToken = 128,
         FirstTriviaToken = 2,
         LastTriviaToken = 6,
         FirstLiteralToken = 7,
@@ -305,8 +315,8 @@ declare module ts {
         FirstTemplateToken = 10,
         LastTemplateToken = 13,
         FirstBinaryOperator = 24,
-        LastBinaryOperator = 64,
-        FirstNode = 128,
+        LastBinaryOperator = 65,
+        FirstNode = 129,
     }
     const enum NodeFlags {
         Export = 1,
@@ -327,6 +337,14 @@ declare module ts {
         Modifier = 499,
         AccessibilityModifier = 112,
         BlockScoped = 12288,
+    }
+    const enum JsxFlags {
+        None = 0,
+        IntrinsicNamedElement = 1,
+        IntrinsicIndexedElement = 2,
+        ClassElement = 4,
+        UnknownElement = 8,
+        IntrinsicElement = 3,
     }
     interface Node extends TextRange {
         kind: SyntaxKind;
@@ -600,11 +618,47 @@ declare module ts {
         tag: LeftHandSideExpression;
         template: LiteralExpression | TemplateExpression;
     }
-    type CallLikeExpression = CallExpression | NewExpression | TaggedTemplateExpression;
+    type CallLikeExpression = CallExpression | NewExpression | TaggedTemplateExpression | Decorator;
+    interface AsExpression extends Expression {
+        expression: Expression;
+        type: TypeNode;
+    }
     interface TypeAssertion extends UnaryExpression {
         type: TypeNode;
         expression: UnaryExpression;
     }
+    type AssertionExpression = TypeAssertion | AsExpression;
+    interface JsxElement extends PrimaryExpression {
+        openingElement: JsxOpeningElement;
+        children: NodeArray<JsxChild>;
+        closingElement: JsxClosingElement;
+    }
+    interface JsxOpeningElement extends Expression {
+        _openingElementBrand?: any;
+        tagName: EntityName;
+        attributes: NodeArray<JsxAttribute | JsxSpreadAttribute>;
+    }
+    interface JsxSelfClosingElement extends PrimaryExpression, JsxOpeningElement {
+        _selfClosingElementBrand?: any;
+    }
+    type JsxOpeningLikeElement = JsxSelfClosingElement | JsxOpeningElement;
+    interface JsxAttribute extends Node {
+        name: Identifier;
+        initializer?: Expression;
+    }
+    interface JsxSpreadAttribute extends Node {
+        expression: Expression;
+    }
+    interface JsxClosingElement extends Node {
+        tagName: EntityName;
+    }
+    interface JsxExpression extends Expression {
+        expression?: Expression;
+    }
+    interface JsxText extends Node {
+        _jsxTextExpressionBrand: any;
+    }
+    type JsxChild = JsxText | JsxExpression | JsxElement | JsxSelfClosingElement;
     interface Statement extends Node {
         _statementBrand: any;
     }
@@ -859,6 +913,7 @@ declare module ts {
         }[];
         moduleName: string;
         referencedFiles: FileReference[];
+        languageVariant: LanguageVariant;
         /**
          * lib.d.ts should have a reference comment like
          *
@@ -897,8 +952,9 @@ declare module ts {
          * will be invoked when writing the JavaScript and declaration files.
          */
         emit(targetSourceFile?: SourceFile, writeFile?: WriteFileCallback): EmitResult;
-        getSyntacticDiagnostics(sourceFile?: SourceFile): Diagnostic[];
+        getOptionsDiagnostics(): Diagnostic[];
         getGlobalDiagnostics(): Diagnostic[];
+        getSyntacticDiagnostics(sourceFile?: SourceFile): Diagnostic[];
         getSemanticDiagnostics(sourceFile?: SourceFile): Diagnostic[];
         getDeclarationDiagnostics(sourceFile?: SourceFile): Diagnostic[];
         /**
@@ -975,6 +1031,8 @@ declare module ts {
         isValidPropertyAccess(node: PropertyAccessExpression | QualifiedName, propertyName: string): boolean;
         getAliasedSymbol(symbol: Symbol): Symbol;
         getExportsOfModule(moduleSymbol: Symbol): Symbol[];
+        getJsxElementAttributesType(elementNode: JsxOpeningLikeElement): Type;
+        getJsxIntrinsicTagNames(): Symbol[];
     }
     interface SymbolDisplayBuilder {
         buildTypeDisplay(type: Type, writer: SymbolWriter, enclosingDeclaration?: Node, flags?: TypeFormatFlags): void;
@@ -1136,9 +1194,8 @@ declare module ts {
         typeParameters: TypeParameter[];
         outerTypeParameters: TypeParameter[];
         localTypeParameters: TypeParameter[];
-    }
-    interface InterfaceTypeWithBaseTypes extends InterfaceType {
-        baseTypes: ObjectType[];
+        resolvedBaseConstructorType?: Type;
+        resolvedBaseTypes: ObjectType[];
     }
     interface InterfaceTypeWithDeclaredMembers extends InterfaceType {
         declaredProperties: Symbol[];
@@ -1211,12 +1268,12 @@ declare module ts {
         allowNonTsExtensions?: boolean;
         charset?: string;
         declaration?: boolean;
-        dependency?: boolean;
         diagnostics?: boolean;
         emitBOM?: boolean;
         help?: boolean;
         inlineSourceMap?: boolean;
         inlineSources?: boolean;
+        jsx?: JsxEmit;
         listFiles?: boolean;
         locale?: string;
         mapRoot?: string;
@@ -1253,6 +1310,11 @@ declare module ts {
         UMD = 3,
         System = 4,
     }
+    const enum JsxEmit {
+        None = 0,
+        Preserve = 1,
+        React = 2,
+    }
     const enum NewLineKind {
         CarriageReturnLineFeed = 0,
         LineFeed = 1,
@@ -1266,6 +1328,10 @@ declare module ts {
         ES5 = 1,
         ES6 = 2,
         Latest = 2,
+    }
+    const enum LanguageVariant {
+        Standard = 0,
+        JSX = 1,
     }
     interface ParsedCommandLine {
         options: CompilerOptions;
@@ -1294,7 +1360,7 @@ declare module ts {
         newLength: number;
     }
 }
-declare module ts {
+declare namespace ts {
     interface System {
         args: string[];
         newLine: string;
@@ -1318,7 +1384,7 @@ declare module ts {
     }
     var sys: System;
 }
-declare module ts {
+declare namespace ts {
     interface ErrorCallback {
         (message: DiagnosticMessage, length: number): void;
     }
@@ -1337,10 +1403,14 @@ declare module ts {
         reScanGreaterToken(): SyntaxKind;
         reScanSlashToken(): SyntaxKind;
         reScanTemplateToken(): SyntaxKind;
+        scanJsxIdentifier(): SyntaxKind;
+        reScanJsxToken(): SyntaxKind;
+        scanJsxToken(): SyntaxKind;
         scan(): SyntaxKind;
         setText(text: string, start?: number, length?: number): void;
         setOnError(onError: ErrorCallback): void;
         setScriptTarget(scriptTarget: ScriptTarget): void;
+        setLanguageVariant(variant: LanguageVariant): void;
         setTextPos(textPos: number): void;
         lookAhead<T>(callback: () => T): T;
         tryScan<T>(callback: () => T): T;
@@ -1350,12 +1420,13 @@ declare module ts {
     function getLineAndCharacterOfPosition(sourceFile: SourceFile, position: number): LineAndCharacter;
     function isWhiteSpace(ch: number): boolean;
     function isLineBreak(ch: number): boolean;
+    function couldStartTrivia(text: string, pos: number): boolean;
     function getLeadingCommentRanges(text: string, pos: number): CommentRange[];
     function getTrailingCommentRanges(text: string, pos: number): CommentRange[];
     function isIdentifierStart(ch: number, languageVersion: ScriptTarget): boolean;
     function isIdentifierPart(ch: number, languageVersion: ScriptTarget): boolean;
 }
-declare module ts {
+declare namespace ts {
     function getDefaultLibFileName(options: CompilerOptions): string;
     function textSpanEnd(span: TextSpan): number;
     function textSpanIsEmpty(span: TextSpan): boolean;
@@ -1365,6 +1436,7 @@ declare module ts {
     function textSpanOverlap(span1: TextSpan, span2: TextSpan): TextSpan;
     function textSpanIntersectsWithTextSpan(span: TextSpan, other: TextSpan): boolean;
     function textSpanIntersectsWith(span: TextSpan, start: number, length: number): boolean;
+    function decodedTextSpanIntersectsWith(start1: number, length1: number, start2: number, length2: number): boolean;
     function textSpanIntersectsWithPosition(span: TextSpan, position: number): boolean;
     function textSpanIntersection(span1: TextSpan, span2: TextSpan): TextSpan;
     function createTextSpan(start: number, length: number): TextSpan;
@@ -1384,14 +1456,14 @@ declare module ts {
     function collapseTextChangeRangesAcrossMultipleVersions(changes: TextChangeRange[]): TextChangeRange;
     function getTypeParameterOwner(d: Declaration): Declaration;
 }
-declare module ts {
+declare namespace ts {
     function getNodeConstructor(kind: SyntaxKind): new () => Node;
     function createNode(kind: SyntaxKind): Node;
     function forEachChild<T>(node: Node, cbNode: (node: Node) => T, cbNodeArray?: (nodes: Node[]) => T): T;
     function createSourceFile(fileName: string, sourceText: string, languageVersion: ScriptTarget, setParentNodes?: boolean): SourceFile;
     function updateSourceFile(sourceFile: SourceFile, newText: string, textChangeRange: TextChangeRange, aggressiveChecks?: boolean): SourceFile;
 }
-declare module ts {
+declare namespace ts {
     /** The version of the TypeScript compiler release */
     const version: string;
     function findConfigFile(searchPath: string): string;
@@ -1400,7 +1472,7 @@ declare module ts {
     function flattenDiagnosticMessageText(messageText: string | DiagnosticMessageChain, newLine: string): string;
     function createProgram(rootNames: string[], options: CompilerOptions, host?: CompilerHost): Program;
 }
-declare module ts {
+declare namespace ts {
     function parseCommandLine(commandLine: string[]): ParsedCommandLine;
     /**
       * Read tsconfig.json file
@@ -1427,7 +1499,7 @@ declare module ts {
       */
     function parseConfigFile(json: any, host: ParseConfigHost, basePath: string): ParsedCommandLine;
 }
-declare module ts {
+declare namespace ts {
     /** The version of the language service API */
     let servicesVersion: string;
     interface Node {
@@ -1558,6 +1630,7 @@ declare module ts {
         getFormattingEditsForRange(fileName: string, start: number, end: number, options: FormatCodeOptions): TextChange[];
         getFormattingEditsForDocument(fileName: string, options: FormatCodeOptions): TextChange[];
         getFormattingEditsAfterKeystroke(fileName: string, position: number, key: string, options: FormatCodeOptions): TextChange[];
+        getDependencies(fileName: string): DependencyInfo;
         getEmitOutput(fileName: string): EmitOutput;
         getProgram(): Program;
         getSourceFile(fileName: string): SourceFile;
@@ -1762,6 +1835,14 @@ declare module ts {
           * the 'Collapse to Definitions' command is invoked.
           */
         autoCollapse: boolean;
+    }
+    interface DependencyInfo {
+        /** The file name of the dependency information */
+        fileName: string;
+        /** The compile time dependencies of a file */
+        compileTime: string[];
+        /** The runtime dependencies of a file */
+        runtime: string[];
     }
     interface EmitOutput {
         outputFiles: OutputFile[];
@@ -1985,7 +2066,7 @@ declare module ts {
     function createLanguageService(host: LanguageServiceHost, documentRegistry?: DocumentRegistry): LanguageService;
     function createClassifier(): Classifier;
     /**
-      * Get the path of the default library file (lib.d.ts) as distributed with the typescript
+      * Get the path of the default library files (lib.d.ts) as distributed with the typescript
       * node package.
       * The functionality is not supported if the ts module is consumed outside of a node module.
       */

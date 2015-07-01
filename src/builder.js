@@ -2,8 +2,7 @@
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var fs_1 = require('fs');
 var path = require('path');
@@ -68,6 +67,22 @@ function createTypeScriptBuilder(config) {
         function isExternalModule(sourceFile) {
             return !!sourceFile.externalModuleIndicator;
         }
+        function getCommonSourceDirectory() {
+            return service.getProgram().getCommonSourceDirectory();
+        }
+        function getDependencyFileName(filename) {
+            var ext = path.extname(filename);
+            var outDir = config['outDir'];
+            if (outDir) {
+                var basename = path.basename(filename, ext);
+                var dirname = path.dirname(filename);
+                var common = getCommonSourceDirectory();
+                if (dirname.substr(0, common.length) === common) {
+                    return path.join(path.resolve(outDir), dirname.substr(common.length), basename) + '.dep.json';
+                }
+            }
+            return filename.substr(0, filename.length - ext.length) + '.dep.json';
+        }
         for (var i = 0, len = filenames.length; i < len; i++) {
             var filename = filenames[i], version = host.getScriptVersion(filename), snapshot = host.getScriptSnapshot(filename);
             if (lastBuildVersion[filename] === version) {
@@ -93,6 +108,20 @@ function createTypeScriptBuilder(config) {
                     base: baseFor(snapshot)
                 }));
             });
+            if (config['emitDependencies'] && /\.ts$/.test(filename) && !/\.d\.ts$/.test(filename)) {
+                var dependencies = service.getDependencies(filename);
+                if (dependencies) {
+                    out(new Vinyl({
+                        path: getDependencyFileName(filename),
+                        contents: new Buffer(JSON.stringify({
+                            filePath: dependencies.fileName,
+                            compileTime: dependencies.compileTime,
+                            runtime: dependencies.runtime
+                        }, null, 4)),
+                        base: baseFor(snapshot)
+                    }));
+                }
+            }
             // print and store syntax and semantic errors
             delete oldErrors[filename];
             var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []);

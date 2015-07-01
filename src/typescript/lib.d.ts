@@ -3531,6 +3531,11 @@ declare module Intl {
         currency?: string;
         currencyDisplay?: string;
         useGrouping?: boolean;
+        minimumintegerDigits?: number;
+        minimumFractionDigits?: number;
+        maximumFractionDigits?: number;
+        minimumSignificantDigits?: number;
+        maximumSignificantDigits?: number;
     }
 
     interface ResolvedNumberFormatOptions {
@@ -3593,7 +3598,7 @@ declare module Intl {
     }
 
     interface DateTimeFormat {
-        format(date: number): string;
+        format(date?: Date | number): string;
         resolvedOptions(): ResolvedDateTimeFormatOptions;
     }
     var DateTimeFormat: {

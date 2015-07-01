@@ -105,6 +105,24 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         function isExternalModule(sourceFile: ts.SourceFile): boolean {
             return !!(<any> sourceFile).externalModuleIndicator;
         }
+        
+        function getCommonSourceDirectory(): string {
+            return (<any>service.getProgram()).getCommonSourceDirectory();
+        }
+        
+        function getDependencyFileName(filename: string): string {
+            let ext = path.extname(filename);
+            let outDir: string = <string>config['outDir'];
+            if (outDir) {
+                let basename = path.basename(filename, ext);
+                let dirname = path.dirname(filename);
+                let common = getCommonSourceDirectory();
+                if (dirname.substr(0, common.length) === common) {
+                    return path.join(path.resolve(outDir), dirname.substr(common.length), basename) + '.dep.json';
+                }
+            } 
+            return filename.substr(0, filename.length - ext.length) + '.dep.json';
+        }
 
         for (var i = 0, len = filenames.length; i < len; i++) {
 
@@ -143,7 +161,21 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                     base: baseFor(snapshot)
                 }));
             });
-
+            
+            if (config['emitDependencies'] && /\.ts$/.test(filename) && !/\.d\.ts$/.test(filename)) {
+                var dependencies = service.getDependencies(filename);
+                if (dependencies) {
+                    out(new Vinyl({
+                        path: getDependencyFileName(filename),
+                        contents: new Buffer(JSON.stringify({
+                            filePath: dependencies.fileName,
+                            compileTime: dependencies.compileTime,   
+                            runtime: dependencies.runtime
+                        }, null, 4)),
+                        base: baseFor(snapshot)
+                    }));                
+                }                
+            }
             // print and store syntax and semantic errors
             delete oldErrors[filename];
             var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []);
