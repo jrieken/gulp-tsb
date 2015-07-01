@@ -57,10 +57,15 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Updated TS service which exposes new dependency API
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
+=======
+=======
+>>>>>>> Updated TS service which exposes new dependency API
+>>>>>>> Updated TS service which exposes new dependency API
         LessThanSlashToken = 25,
         GreaterThanToken = 26,
         LessThanEqualsToken = 27,
@@ -313,8 +318,11 @@ declare namespace ts {
         LastTypeNode = 153,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
+=======
+>>>>>>> Updated TS service which exposes new dependency API
 =======
         GreaterThanToken = 25,
         LessThanEqualsToken = 26,
@@ -566,14 +574,20 @@ declare namespace ts {
         LastToken = 127,
 >>>>>>> Updated compiler to emitDependencyFile branch
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Updated TS service which exposes new dependency API
 =======
         FirstPunctuation = 14,
         LastPunctuation = 65,
         FirstToken = 0,
         LastToken = 128,
 >>>>>>> Updated TS service which exposes new dependency API
+<<<<<<< HEAD
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
+=======
+>>>>>>> Updated TS service which exposes new dependency API
         FirstTriviaToken = 2,
         LastTriviaToken = 6,
         FirstLiteralToken = 7,
@@ -584,6 +598,7 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         LastBinaryOperator = 65,
         FirstNode = 129,
 =======
@@ -595,13 +610,22 @@ declare namespace ts {
         FirstNode = 129,
 >>>>>>> Updated TS service which exposes new dependency API
 =======
+=======
+>>>>>>> Updated TS service which exposes new dependency API
         LastBinaryOperator = 65,
         FirstNode = 129,
 =======
         LastBinaryOperator = 64,
         FirstNode = 128,
 >>>>>>> Updated compiler to emitDependencyFile branch
+<<<<<<< HEAD
 >>>>>>> Updated compiler to emitDependencyFile branch
+=======
+=======
+        LastBinaryOperator = 65,
+        FirstNode = 129,
+>>>>>>> Updated TS service which exposes new dependency API
+>>>>>>> Updated TS service which exposes new dependency API
     }
     const enum NodeFlags {
         Export = 1,
@@ -915,10 +939,15 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Updated TS service which exposes new dependency API
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
+=======
+=======
+>>>>>>> Updated TS service which exposes new dependency API
+>>>>>>> Updated TS service which exposes new dependency API
     type AssertionExpression = TypeAssertion | AsExpression;
     interface JsxElement extends PrimaryExpression {
         openingElement: JsxOpeningElement;
@@ -953,6 +982,7 @@ declare namespace ts {
     type JsxChild = JsxText | JsxExpression | JsxElement | JsxSelfClosingElement;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
 =======
@@ -961,6 +991,12 @@ declare namespace ts {
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
 >>>>>>> Updated compiler to emitDependencyFile branch
+=======
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
+=======
+>>>>>>> Updated TS service which exposes new dependency API
+>>>>>>> Updated TS service which exposes new dependency API
     interface Statement extends Node {
         _statementBrand: any;
     }
@@ -1218,6 +1254,7 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         languageVariant: LanguageVariant;
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
@@ -1229,6 +1266,14 @@ declare namespace ts {
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
 >>>>>>> Updated compiler to emitDependencyFile branch
+=======
+        languageVariant: LanguageVariant;
+=======
+>>>>>>> Updated compiler to emitDependencyFile branch
+=======
+        languageVariant: LanguageVariant;
+>>>>>>> Updated TS service which exposes new dependency API
+>>>>>>> Updated TS service which exposes new dependency API
         /**
          * lib.d.ts should have a reference comment like
          *
@@ -1512,6 +1557,7 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         resolvedBaseConstructorType?: Type;
         resolvedBaseTypes: ObjectType[];
 =======
@@ -1524,6 +1570,8 @@ declare namespace ts {
         resolvedBaseTypes: ObjectType[];
 >>>>>>> Updated TS service which exposes new dependency API
 =======
+=======
+>>>>>>> Updated TS service which exposes new dependency API
         resolvedBaseConstructorType?: Type;
         resolvedBaseTypes: ObjectType[];
 =======
@@ -1531,7 +1579,14 @@ declare namespace ts {
     interface InterfaceTypeWithBaseTypes extends InterfaceType {
         baseTypes: ObjectType[];
 >>>>>>> Updated compiler to emitDependencyFile branch
+<<<<<<< HEAD
 >>>>>>> Updated compiler to emitDependencyFile branch
+=======
+=======
+        resolvedBaseConstructorType?: Type;
+        resolvedBaseTypes: ObjectType[];
+>>>>>>> Updated TS service which exposes new dependency API
+>>>>>>> Updated TS service which exposes new dependency API
     }
     interface InterfaceTypeWithDeclaredMembers extends InterfaceType {
         declaredProperties: Symbol[];
@@ -1604,7 +1659,6 @@ declare namespace ts {
         allowNonTsExtensions?: boolean;
         charset?: string;
         declaration?: boolean;
-        dependency?: boolean;
         diagnostics?: boolean;
         emitBOM?: boolean;
         help?: boolean;
