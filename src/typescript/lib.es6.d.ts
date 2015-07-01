@@ -1166,10 +1166,14 @@ interface ArrayConstructor {
     <T>(arrayLength: number): T[];
     <T>(...items: T[]): T[];
 <<<<<<< HEAD
+<<<<<<< HEAD
     isArray(arg: any): arg is Array<any>;
 =======
     isArray(arg: any): boolean;
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+    isArray(arg: any): arg is Array<any>;
+>>>>>>> Rebased on master
     prototype: Array<any>;
 }
 
@@ -1507,13 +1511,19 @@ interface Array<T> {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
 interface IArguments {
     /** Iterator */
     [Symbol.iterator](): IterableIterator<any>;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+>>>>>>> Rebased on master
 interface ArrayConstructor {
     /**
       * Creates an array from an array-like object.
@@ -1699,6 +1709,7 @@ interface GeneratorFunctionConstructor {
 declare var GeneratorFunction: GeneratorFunctionConstructor;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 interface Generator<T> extends IterableIterator<T> {
     next(value?: any): IteratorResult<T>;
@@ -1709,6 +1720,8 @@ interface Generator<T> extends IterableIterator<T> {
 }
 
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+>>>>>>> Rebased on master
 interface Math {
     /**
       * Returns the number of leading zero bits in the 32-bit binary representation of a number.
@@ -1899,9 +1912,13 @@ interface Map<K, V> {
 
 interface MapConstructor {
 <<<<<<< HEAD
+<<<<<<< HEAD
     new (): Map<any, any>;
 =======
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+    new (): Map<any, any>;
+>>>>>>> Rebased on master
     new <K, V>(): Map<K, V>;
     new <K, V>(iterable: Iterable<[K, V]>): Map<K, V>;
     prototype: Map<any, any>;
@@ -1919,9 +1936,13 @@ interface WeakMap<K, V> {
 
 interface WeakMapConstructor {
 <<<<<<< HEAD
+<<<<<<< HEAD
     new (): WeakMap<any, any>;
 =======
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+    new (): WeakMap<any, any>;
+>>>>>>> Rebased on master
     new <K, V>(): WeakMap<K, V>;
     new <K, V>(iterable: Iterable<[K, V]>): WeakMap<K, V>;
     prototype: WeakMap<any, any>;
@@ -1944,9 +1965,13 @@ interface Set<T> {
 
 interface SetConstructor {
 <<<<<<< HEAD
+<<<<<<< HEAD
     new (): Set<any>;
 =======
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+    new (): Set<any>;
+>>>>>>> Rebased on master
     new <T>(): Set<T>;
     new <T>(iterable: Iterable<T>): Set<T>;
     prototype: Set<any>;
@@ -1963,9 +1988,13 @@ interface WeakSet<T> {
 
 interface WeakSetConstructor {
 <<<<<<< HEAD
+<<<<<<< HEAD
     new (): WeakSet<any>;
 =======
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+    new (): WeakSet<any>;
+>>>>>>> Rebased on master
     new <T>(): WeakSet<T>;
     new <T>(iterable: Iterable<T>): WeakSet<T>;
     prototype: WeakSet<any>;
@@ -4944,13 +4973,19 @@ declare module Intl {
         currencyDisplay?: string;
         useGrouping?: boolean;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
         minimumintegerDigits?: number;
         minimumFractionDigits?: number;
         maximumFractionDigits?: number;
         minimumSignificantDigits?: number;
         maximumSignificantDigits?: number;
+<<<<<<< HEAD
 =======
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+>>>>>>> Rebased on master
     }
 
     interface ResolvedNumberFormatOptions {
@@ -4973,16 +5008,22 @@ declare module Intl {
     }
     var NumberFormat: {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
         new (locales?: string[], options?: NumberFormatOptions): NumberFormat;
         new (locale?: string, options?: NumberFormatOptions): NumberFormat;
         (locales?: string[], options?: NumberFormatOptions): NumberFormat;
         (locale?: string, options?: NumberFormatOptions): NumberFormat;
+<<<<<<< HEAD
 =======
         new (locales?: string[], options?: NumberFormatOptions): Collator;
         new (locale?: string, options?: NumberFormatOptions): Collator;
         (locales?: string[], options?: NumberFormatOptions): Collator;
         (locale?: string, options?: NumberFormatOptions): Collator;
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+>>>>>>> Rebased on master
         supportedLocalesOf(locales: string[], options?: NumberFormatOptions): string[];
         supportedLocalesOf(locale: string, options?: NumberFormatOptions): string[];
     }
@@ -5021,6 +5062,7 @@ declare module Intl {
 
     interface DateTimeFormat {
 <<<<<<< HEAD
+<<<<<<< HEAD
         format(date?: Date | number): string;
         resolvedOptions(): ResolvedDateTimeFormatOptions;
     }
@@ -5039,6 +5081,16 @@ declare module Intl {
         (locales?: string[], options?: DateTimeFormatOptions): Collator;
         (locale?: string, options?: DateTimeFormatOptions): Collator;
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+        format(date?: Date | number): string;
+        resolvedOptions(): ResolvedDateTimeFormatOptions;
+    }
+    var DateTimeFormat: {
+        new (locales?: string[], options?: DateTimeFormatOptions): DateTimeFormat;
+        new (locale?: string, options?: DateTimeFormatOptions): DateTimeFormat;
+        (locales?: string[], options?: DateTimeFormatOptions): DateTimeFormat;
+        (locale?: string, options?: DateTimeFormatOptions): DateTimeFormat;
+>>>>>>> Rebased on master
         supportedLocalesOf(locales: string[], options?: DateTimeFormatOptions): string[];
         supportedLocalesOf(locale: string, options?: DateTimeFormatOptions): string[];
     }
@@ -18076,6 +18128,7 @@ declare function addEventListener(type: "waiting", listener: (ev: Event) => any,
 declare function addEventListener(type: "wheel", listener: (ev: WheelEvent) => any, useCapture?: boolean): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 <<<<<<< HEAD
+<<<<<<< HEAD
 interface DOMTokenList {
     [Symbol.iterator](): IterableIterator<string>;
 }
@@ -18090,6 +18143,19 @@ interface NodeListOf<TNode extends Node> {
 =======
 
 >>>>>>> update to latest TS and suport lib.es6.d.ts
+=======
+interface DOMTokenList {
+    [Symbol.iterator](): IterableIterator<string>;
+}
+
+interface NodeList {
+    [Symbol.iterator](): IterableIterator<Node>
+}
+
+interface NodeListOf<TNode extends Node> {
+    [Symbol.iterator](): IterableIterator<TNode>
+}
+>>>>>>> Rebased on master
 /////////////////////////////
 /// WorkerGlobalScope APIs 
 /////////////////////////////

@@ -14,10 +14,14 @@ and limitations under the License.
 ***************************************************************************** */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 declare namespace ts {
 =======
 declare module ts {
 >>>>>>> compile into lib folder
+=======
+declare namespace ts {
+>>>>>>> Rebased on master
     interface Map<T> {
         [index: string]: T;
     }
@@ -59,6 +63,9 @@ declare module ts {
         CommaToken = 23,
         LessThanToken = 24,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
         LessThanSlashToken = 25,
         GreaterThanToken = 26,
         LessThanEqualsToken = 27,
@@ -309,6 +316,7 @@ declare module ts {
         LastFutureReservedWord = 111,
         FirstTypeNode = 145,
         LastTypeNode = 153,
+<<<<<<< HEAD
         FirstPunctuation = 14,
         LastPunctuation = 65,
         FirstToken = 0,
@@ -530,11 +538,17 @@ declare module ts {
         LastFutureReservedWord = 110,
         FirstTypeNode = 142,
         LastTypeNode = 150,
+=======
+>>>>>>> Rebased on master
         FirstPunctuation = 14,
-        LastPunctuation = 64,
+        LastPunctuation = 65,
         FirstToken = 0,
+<<<<<<< HEAD
         LastToken = 126,
 >>>>>>> compile into lib folder
+=======
+        LastToken = 128,
+>>>>>>> Rebased on master
         FirstTriviaToken = 2,
         LastTriviaToken = 6,
         FirstLiteralToken = 7,
@@ -543,12 +557,17 @@ declare module ts {
         LastTemplateToken = 13,
         FirstBinaryOperator = 24,
 <<<<<<< HEAD
+<<<<<<< HEAD
         LastBinaryOperator = 65,
         FirstNode = 129,
 =======
         LastBinaryOperator = 64,
         FirstNode = 127,
 >>>>>>> compile into lib folder
+=======
+        LastBinaryOperator = 65,
+        FirstNode = 129,
+>>>>>>> Rebased on master
     }
     const enum NodeFlags {
         Export = 1,
@@ -571,6 +590,9 @@ declare module ts {
         BlockScoped = 12288,
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
     const enum JsxFlags {
         None = 0,
         IntrinsicNamedElement = 1,
@@ -579,8 +601,11 @@ declare module ts {
         UnknownElement = 8,
         IntrinsicElement = 3,
     }
+<<<<<<< HEAD
 =======
 >>>>>>> compile into lib folder
+=======
+>>>>>>> Rebased on master
     interface Node extends TextRange {
         kind: SyntaxKind;
         flags: NodeFlags;
@@ -721,12 +746,18 @@ declare module ts {
         typeArguments?: NodeArray<TypeNode>;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
     interface TypePredicateNode extends TypeNode {
         parameterName: Identifier;
         type: TypeNode;
     }
+<<<<<<< HEAD
 =======
 >>>>>>> compile into lib folder
+=======
+>>>>>>> Rebased on master
     interface TypeQueryNode extends TypeNode {
         exprName: EntityName;
     }
@@ -787,10 +818,14 @@ declare module ts {
     interface YieldExpression extends Expression {
         asteriskToken?: Node;
 <<<<<<< HEAD
+<<<<<<< HEAD
         expression?: Expression;
 =======
         expression: Expression;
 >>>>>>> compile into lib folder
+=======
+        expression?: Expression;
+>>>>>>> Rebased on master
     }
     interface BinaryExpression extends Expression {
         left: Expression;
@@ -861,19 +896,28 @@ declare module ts {
         template: LiteralExpression | TemplateExpression;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
     type CallLikeExpression = CallExpression | NewExpression | TaggedTemplateExpression | Decorator;
     interface AsExpression extends Expression {
         expression: Expression;
         type: TypeNode;
     }
+<<<<<<< HEAD
 =======
     type CallLikeExpression = CallExpression | NewExpression | TaggedTemplateExpression;
 >>>>>>> compile into lib folder
+=======
+>>>>>>> Rebased on master
     interface TypeAssertion extends UnaryExpression {
         type: TypeNode;
         expression: UnaryExpression;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
     type AssertionExpression = TypeAssertion | AsExpression;
     interface JsxElement extends PrimaryExpression {
         openingElement: JsxOpeningElement;
@@ -907,9 +951,12 @@ declare module ts {
     }
     type JsxChild = JsxText | JsxExpression | JsxElement | JsxSelfClosingElement;
     interface Statement extends Node {
+<<<<<<< HEAD
 =======
     interface Statement extends Node, ModuleElement {
 >>>>>>> compile into lib folder
+=======
+>>>>>>> Rebased on master
         _statementBrand: any;
     }
     interface Block extends Statement {
@@ -990,11 +1037,14 @@ declare module ts {
         block: Block;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     interface ModuleElement extends Node {
         _moduleElementBrand: any;
     }
 >>>>>>> compile into lib folder
+=======
+>>>>>>> Rebased on master
     interface ClassLikeDeclaration extends Declaration {
         name?: Identifier;
         typeParameters?: NodeArray<TypeParameterDeclaration>;
@@ -1009,10 +1059,14 @@ declare module ts {
         _classElementBrand: any;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     interface InterfaceDeclaration extends Declaration, Statement {
 =======
     interface InterfaceDeclaration extends Declaration, ModuleElement {
 >>>>>>> compile into lib folder
+=======
+    interface InterfaceDeclaration extends Declaration, Statement {
+>>>>>>> Rebased on master
         name: Identifier;
         typeParameters?: NodeArray<TypeParameterDeclaration>;
         heritageClauses?: NodeArray<HeritageClause>;
@@ -1023,6 +1077,7 @@ declare module ts {
         types?: NodeArray<ExpressionWithTypeArguments>;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     interface TypeAliasDeclaration extends Declaration, Statement {
         name: Identifier;
         typeParameters?: NodeArray<TypeParameterDeclaration>;
@@ -1030,12 +1085,18 @@ declare module ts {
     interface TypeAliasDeclaration extends Declaration, ModuleElement {
         name: Identifier;
 >>>>>>> compile into lib folder
+=======
+    interface TypeAliasDeclaration extends Declaration, Statement {
+        name: Identifier;
+        typeParameters?: NodeArray<TypeParameterDeclaration>;
+>>>>>>> Rebased on master
         type: TypeNode;
     }
     interface EnumMember extends Declaration {
         name: DeclarationName;
         initializer?: Expression;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     interface EnumDeclaration extends Declaration, Statement {
         name: Identifier;
@@ -1051,18 +1112,25 @@ declare module ts {
     interface ImportEqualsDeclaration extends Declaration, Statement {
 =======
     interface EnumDeclaration extends Declaration, ModuleElement {
+=======
+    interface EnumDeclaration extends Declaration, Statement {
+>>>>>>> Rebased on master
         name: Identifier;
         members: NodeArray<EnumMember>;
     }
-    interface ModuleDeclaration extends Declaration, ModuleElement {
+    interface ModuleDeclaration extends Declaration, Statement {
         name: Identifier | LiteralExpression;
         body: ModuleBlock | ModuleDeclaration;
     }
-    interface ModuleBlock extends Node, ModuleElement {
-        statements: NodeArray<ModuleElement>;
+    interface ModuleBlock extends Node, Statement {
+        statements: NodeArray<Statement>;
     }
+<<<<<<< HEAD
     interface ImportEqualsDeclaration extends Declaration, ModuleElement {
 >>>>>>> compile into lib folder
+=======
+    interface ImportEqualsDeclaration extends Declaration, Statement {
+>>>>>>> Rebased on master
         name: Identifier;
         moduleReference: EntityName | ExternalModuleReference;
     }
@@ -1070,10 +1138,14 @@ declare module ts {
         expression?: Expression;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     interface ImportDeclaration extends Statement {
 =======
     interface ImportDeclaration extends ModuleElement {
 >>>>>>> compile into lib folder
+=======
+    interface ImportDeclaration extends Statement {
+>>>>>>> Rebased on master
         importClause?: ImportClause;
         moduleSpecifier: Expression;
     }
@@ -1085,10 +1157,14 @@ declare module ts {
         name: Identifier;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     interface ExportDeclaration extends Declaration, Statement {
 =======
     interface ExportDeclaration extends Declaration, ModuleElement {
 >>>>>>> compile into lib folder
+=======
+    interface ExportDeclaration extends Declaration, Statement {
+>>>>>>> Rebased on master
         exportClause?: NamedExports;
         moduleSpecifier?: Expression;
     }
@@ -1104,10 +1180,14 @@ declare module ts {
     type ImportSpecifier = ImportOrExportSpecifier;
     type ExportSpecifier = ImportOrExportSpecifier;
 <<<<<<< HEAD
+<<<<<<< HEAD
     interface ExportAssignment extends Declaration, Statement {
 =======
     interface ExportAssignment extends Declaration, ModuleElement {
 >>>>>>> compile into lib folder
+=======
+    interface ExportAssignment extends Declaration, Statement {
+>>>>>>> Rebased on master
         isExportEquals?: boolean;
         expression: Expression;
     }
@@ -1119,6 +1199,9 @@ declare module ts {
         kind: SyntaxKind;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
     interface JSDocTypeExpression extends Node {
         type: JSDocType;
     }
@@ -1195,12 +1278,17 @@ declare module ts {
         postParameterName?: Identifier;
         isBracketed: boolean;
     }
+<<<<<<< HEAD
     interface SourceFile extends Declaration {
         statements: NodeArray<Statement>;
 =======
     interface SourceFile extends Declaration {
         statements: NodeArray<ModuleElement>;
 >>>>>>> compile into lib folder
+=======
+    interface SourceFile extends Declaration {
+        statements: NodeArray<Statement>;
+>>>>>>> Rebased on master
         endOfFileToken: Node;
         fileName: string;
         text: string;
@@ -1211,6 +1299,9 @@ declare module ts {
         moduleName: string;
         referencedFiles: FileReference[];
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
         languageVariant: LanguageVariant;
         /**
          * lib.d.ts should have a reference comment like
@@ -1220,8 +1311,11 @@ declare module ts {
          * If any other file has this comment, it signals not to include lib.d.ts
          * because this containing file is intended to act as a default library.
          */
+<<<<<<< HEAD
 =======
 >>>>>>> compile into lib folder
+=======
+>>>>>>> Rebased on master
         hasNoDefaultLib: boolean;
         languageVersion: ScriptTarget;
     }
@@ -1232,10 +1326,14 @@ declare module ts {
     }
     interface ParseConfigHost {
 <<<<<<< HEAD
+<<<<<<< HEAD
         readDirectory(rootDir: string, extension: string, exclude: string[]): string[];
 =======
         readDirectory(rootDir: string, extension: string): string[];
 >>>>>>> compile into lib folder
+=======
+        readDirectory(rootDir: string, extension: string, exclude: string[]): string[];
+>>>>>>> Rebased on master
     }
     interface WriteFileCallback {
         (fileName: string, data: string, writeByteOrderMark: boolean, onError?: (message: string) => void): void;
@@ -1257,6 +1355,7 @@ declare module ts {
          */
         emit(targetSourceFile?: SourceFile, writeFile?: WriteFileCallback): EmitResult;
 <<<<<<< HEAD
+<<<<<<< HEAD
         getOptionsDiagnostics(): Diagnostic[];
         getGlobalDiagnostics(): Diagnostic[];
         getSyntacticDiagnostics(sourceFile?: SourceFile): Diagnostic[];
@@ -1264,6 +1363,11 @@ declare module ts {
         getSyntacticDiagnostics(sourceFile?: SourceFile): Diagnostic[];
         getGlobalDiagnostics(): Diagnostic[];
 >>>>>>> compile into lib folder
+=======
+        getOptionsDiagnostics(): Diagnostic[];
+        getGlobalDiagnostics(): Diagnostic[];
+        getSyntacticDiagnostics(sourceFile?: SourceFile): Diagnostic[];
+>>>>>>> Rebased on master
         getSemanticDiagnostics(sourceFile?: SourceFile): Diagnostic[];
         getDeclarationDiagnostics(sourceFile?: SourceFile): Diagnostic[];
         /**
@@ -1341,10 +1445,15 @@ declare module ts {
         getAliasedSymbol(symbol: Symbol): Symbol;
         getExportsOfModule(moduleSymbol: Symbol): Symbol[];
 <<<<<<< HEAD
+<<<<<<< HEAD
         getJsxElementAttributesType(elementNode: JsxOpeningLikeElement): Type;
         getJsxIntrinsicTagNames(): Symbol[];
 =======
 >>>>>>> compile into lib folder
+=======
+        getJsxElementAttributesType(elementNode: JsxOpeningLikeElement): Type;
+        getJsxIntrinsicTagNames(): Symbol[];
+>>>>>>> Rebased on master
     }
     interface SymbolDisplayBuilder {
         buildTypeDisplay(type: Type, writer: SymbolWriter, enclosingDeclaration?: Node, flags?: TypeFormatFlags): void;
@@ -1388,6 +1497,9 @@ declare module ts {
         UseOnlyExternalAliasing = 2,
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
     interface TypePredicate {
         parameterName: string;
         parameterIndex: number;
@@ -1395,9 +1507,12 @@ declare module ts {
     }
     const enum SymbolFlags {
         None = 0,
+<<<<<<< HEAD
 =======
     const enum SymbolFlags {
 >>>>>>> compile into lib folder
+=======
+>>>>>>> Rebased on master
         FunctionScopedVariable = 1,
         BlockScopedVariable = 2,
         Property = 4,
@@ -1457,6 +1572,7 @@ declare module ts {
         ModuleMember = 8914931,
         ExportHasLocal = 944,
 <<<<<<< HEAD
+<<<<<<< HEAD
         HasExports = 1952,
         HasMembers = 6240,
         BlockScoped = 418,
@@ -1466,6 +1582,11 @@ declare module ts {
         HasMembers = 6240,
         IsContainer = 262128,
 >>>>>>> compile into lib folder
+=======
+        HasExports = 1952,
+        HasMembers = 6240,
+        BlockScoped = 418,
+>>>>>>> Rebased on master
         PropertyOrAccessor = 98308,
         Export = 7340032,
     }
@@ -1473,6 +1594,7 @@ declare module ts {
         flags: SymbolFlags;
         name: string;
         declarations?: Declaration[];
+<<<<<<< HEAD
 <<<<<<< HEAD
         valueDeclaration?: Declaration;
         members?: SymbolTable;
@@ -1482,6 +1604,11 @@ declare module ts {
         exports?: SymbolTable;
         valueDeclaration?: Declaration;
 >>>>>>> compile into lib folder
+=======
+        valueDeclaration?: Declaration;
+        members?: SymbolTable;
+        exports?: SymbolTable;
+>>>>>>> Rebased on master
     }
     interface SymbolTable {
         [index: string]: Symbol;
@@ -1504,6 +1631,7 @@ declare module ts {
         Union = 16384,
         Anonymous = 32768,
 <<<<<<< HEAD
+<<<<<<< HEAD
         Instantiated = 65536,
         ObjectLiteral = 262144,
         ESSymbol = 2097152,
@@ -1511,6 +1639,11 @@ declare module ts {
         ObjectLiteral = 131072,
         ESSymbol = 1048576,
 >>>>>>> compile into lib folder
+=======
+        Instantiated = 65536,
+        ObjectLiteral = 262144,
+        ESSymbol = 2097152,
+>>>>>>> Rebased on master
         StringLike = 258,
         NumberLike = 132,
         ObjectType = 48128,
@@ -1527,15 +1660,21 @@ declare module ts {
     interface InterfaceType extends ObjectType {
         typeParameters: TypeParameter[];
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
         outerTypeParameters: TypeParameter[];
         localTypeParameters: TypeParameter[];
         resolvedBaseConstructorType?: Type;
         resolvedBaseTypes: ObjectType[];
+<<<<<<< HEAD
 =======
     }
     interface InterfaceTypeWithBaseTypes extends InterfaceType {
         baseTypes: ObjectType[];
 >>>>>>> compile into lib folder
+=======
+>>>>>>> Rebased on master
     }
     interface InterfaceTypeWithDeclaredMembers extends InterfaceType {
         declaredProperties: Symbol[];
@@ -1569,9 +1708,13 @@ declare module ts {
         typeParameters: TypeParameter[];
         parameters: Symbol[];
 <<<<<<< HEAD
+<<<<<<< HEAD
         typePredicate?: TypePredicate;
 =======
 >>>>>>> compile into lib folder
+=======
+        typePredicate?: TypePredicate;
+>>>>>>> Rebased on master
     }
     const enum IndexKind {
         String = 0,
@@ -1617,9 +1760,13 @@ declare module ts {
         inlineSourceMap?: boolean;
         inlineSources?: boolean;
 <<<<<<< HEAD
+<<<<<<< HEAD
         jsx?: JsxEmit;
 =======
 >>>>>>> compile into lib folder
+=======
+        jsx?: JsxEmit;
+>>>>>>> Rebased on master
         listFiles?: boolean;
         locale?: string;
         mapRoot?: string;
@@ -1657,13 +1804,19 @@ declare module ts {
         System = 4,
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
     const enum JsxEmit {
         None = 0,
         Preserve = 1,
         React = 2,
     }
+<<<<<<< HEAD
 =======
 >>>>>>> compile into lib folder
+=======
+>>>>>>> Rebased on master
     const enum NewLineKind {
         CarriageReturnLineFeed = 0,
         LineFeed = 1,
@@ -1679,12 +1832,18 @@ declare module ts {
         Latest = 2,
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
     const enum LanguageVariant {
         Standard = 0,
         JSX = 1,
     }
+<<<<<<< HEAD
 =======
 >>>>>>> compile into lib folder
+=======
+>>>>>>> Rebased on master
     interface ParsedCommandLine {
         options: CompilerOptions;
         fileNames: string[];
@@ -1713,10 +1872,14 @@ declare module ts {
     }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 declare namespace ts {
 =======
 declare module ts {
 >>>>>>> compile into lib folder
+=======
+declare namespace ts {
+>>>>>>> Rebased on master
     interface System {
         args: string[];
         newLine: string;
@@ -1732,10 +1895,14 @@ declare module ts {
         getExecutingFilePath(): string;
         getCurrentDirectory(): string;
 <<<<<<< HEAD
+<<<<<<< HEAD
         readDirectory(path: string, extension?: string, exclude?: string[]): string[];
 =======
         readDirectory(path: string, extension?: string): string[];
 >>>>>>> compile into lib folder
+=======
+        readDirectory(path: string, extension?: string, exclude?: string[]): string[];
+>>>>>>> Rebased on master
         getMemoryUsage?(): number;
         exit(exitCode?: number): void;
     }
@@ -1745,10 +1912,14 @@ declare module ts {
     var sys: System;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 declare namespace ts {
 =======
 declare module ts {
 >>>>>>> compile into lib folder
+=======
+declare namespace ts {
+>>>>>>> Rebased on master
     interface ErrorCallback {
         (message: DiagnosticMessage, length: number): void;
     }
@@ -1768,19 +1939,29 @@ declare module ts {
         reScanSlashToken(): SyntaxKind;
         reScanTemplateToken(): SyntaxKind;
 <<<<<<< HEAD
+<<<<<<< HEAD
         scanJsxIdentifier(): SyntaxKind;
         reScanJsxToken(): SyntaxKind;
         scanJsxToken(): SyntaxKind;
 =======
 >>>>>>> compile into lib folder
+=======
+        scanJsxIdentifier(): SyntaxKind;
+        reScanJsxToken(): SyntaxKind;
+        scanJsxToken(): SyntaxKind;
+>>>>>>> Rebased on master
         scan(): SyntaxKind;
         setText(text: string, start?: number, length?: number): void;
         setOnError(onError: ErrorCallback): void;
         setScriptTarget(scriptTarget: ScriptTarget): void;
 <<<<<<< HEAD
+<<<<<<< HEAD
         setLanguageVariant(variant: LanguageVariant): void;
 =======
 >>>>>>> compile into lib folder
+=======
+        setLanguageVariant(variant: LanguageVariant): void;
+>>>>>>> Rebased on master
         setTextPos(textPos: number): void;
         lookAhead<T>(callback: () => T): T;
         tryScan<T>(callback: () => T): T;
@@ -1791,13 +1972,18 @@ declare module ts {
     function isWhiteSpace(ch: number): boolean;
     function isLineBreak(ch: number): boolean;
 <<<<<<< HEAD
+<<<<<<< HEAD
     function couldStartTrivia(text: string, pos: number): boolean;
 =======
 >>>>>>> compile into lib folder
+=======
+    function couldStartTrivia(text: string, pos: number): boolean;
+>>>>>>> Rebased on master
     function getLeadingCommentRanges(text: string, pos: number): CommentRange[];
     function getTrailingCommentRanges(text: string, pos: number): CommentRange[];
     function isIdentifierStart(ch: number, languageVersion: ScriptTarget): boolean;
     function isIdentifierPart(ch: number, languageVersion: ScriptTarget): boolean;
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 declare namespace ts {
@@ -1807,6 +1993,10 @@ declare namespace ts {
 }
 declare module ts {
 >>>>>>> compile into lib folder
+=======
+}
+declare namespace ts {
+>>>>>>> Rebased on master
     function getDefaultLibFileName(options: CompilerOptions): string;
     function textSpanEnd(span: TextSpan): number;
     function textSpanIsEmpty(span: TextSpan): boolean;
@@ -1817,9 +2007,13 @@ declare module ts {
     function textSpanIntersectsWithTextSpan(span: TextSpan, other: TextSpan): boolean;
     function textSpanIntersectsWith(span: TextSpan, start: number, length: number): boolean;
 <<<<<<< HEAD
+<<<<<<< HEAD
     function decodedTextSpanIntersectsWith(start1: number, length1: number, start2: number, length2: number): boolean;
 =======
 >>>>>>> compile into lib folder
+=======
+    function decodedTextSpanIntersectsWith(start1: number, length1: number, start2: number, length2: number): boolean;
+>>>>>>> Rebased on master
     function textSpanIntersectsWithPosition(span: TextSpan, position: number): boolean;
     function textSpanIntersection(span1: TextSpan, span2: TextSpan): TextSpan;
     function createTextSpan(start: number, length: number): TextSpan;
@@ -1838,6 +2032,7 @@ declare module ts {
      */
     function collapseTextChangeRangesAcrossMultipleVersions(changes: TextChangeRange[]): TextChangeRange;
 <<<<<<< HEAD
+<<<<<<< HEAD
     function getTypeParameterOwner(d: Declaration): Declaration;
 }
 declare namespace ts {
@@ -1845,6 +2040,11 @@ declare namespace ts {
 }
 declare module ts {
 >>>>>>> compile into lib folder
+=======
+    function getTypeParameterOwner(d: Declaration): Declaration;
+}
+declare namespace ts {
+>>>>>>> Rebased on master
     function getNodeConstructor(kind: SyntaxKind): new () => Node;
     function createNode(kind: SyntaxKind): Node;
     function forEachChild<T>(node: Node, cbNode: (node: Node) => T, cbNodeArray?: (nodes: Node[]) => T): T;
@@ -1852,10 +2052,14 @@ declare module ts {
     function updateSourceFile(sourceFile: SourceFile, newText: string, textChangeRange: TextChangeRange, aggressiveChecks?: boolean): SourceFile;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 declare namespace ts {
 =======
 declare module ts {
 >>>>>>> compile into lib folder
+=======
+declare namespace ts {
+>>>>>>> Rebased on master
     /** The version of the TypeScript compiler release */
     const version: string;
     function findConfigFile(searchPath: string): string;
@@ -1865,10 +2069,14 @@ declare module ts {
     function createProgram(rootNames: string[], options: CompilerOptions, host?: CompilerHost): Program;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 declare namespace ts {
 =======
 declare module ts {
 >>>>>>> compile into lib folder
+=======
+declare namespace ts {
+>>>>>>> Rebased on master
     function parseCommandLine(commandLine: string[]): ParsedCommandLine;
     /**
       * Read tsconfig.json file
@@ -1896,10 +2104,14 @@ declare module ts {
     function parseConfigFile(json: any, host: ParseConfigHost, basePath: string): ParsedCommandLine;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 declare namespace ts {
 =======
 declare module ts {
 >>>>>>> compile into lib folder
+=======
+declare namespace ts {
+>>>>>>> Rebased on master
     /** The version of the language service API */
     let servicesVersion: string;
     interface Node {
@@ -2031,9 +2243,13 @@ declare module ts {
         getFormattingEditsForDocument(fileName: string, options: FormatCodeOptions): TextChange[];
         getFormattingEditsAfterKeystroke(fileName: string, position: number, key: string, options: FormatCodeOptions): TextChange[];
 <<<<<<< HEAD
+<<<<<<< HEAD
         getDependencies(fileName: string): DependencyInfo;
 =======
 >>>>>>> compile into lib folder
+=======
+        getDependencies(fileName: string): DependencyInfo;
+>>>>>>> Rebased on master
         getEmitOutput(fileName: string): EmitOutput;
         getProgram(): Program;
         getSourceFile(fileName: string): SourceFile;
@@ -2240,6 +2456,9 @@ declare module ts {
         autoCollapse: boolean;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rebased on master
     interface DependencyInfo {
         /** The file name of the dependency information */
         fileName: string;
@@ -2248,8 +2467,11 @@ declare module ts {
         /** The runtime dependencies of a file */
         runtime: string[];
     }
+<<<<<<< HEAD
 =======
 >>>>>>> compile into lib folder
+=======
+>>>>>>> Rebased on master
     interface EmitOutput {
         outputFiles: OutputFile[];
         emitSkipped: boolean;
@@ -2428,9 +2650,13 @@ declare module ts {
         static typeAliasName: string;
         static parameterName: string;
 <<<<<<< HEAD
+<<<<<<< HEAD
         static docCommentTagName: string;
 =======
 >>>>>>> compile into lib folder
+=======
+        static docCommentTagName: string;
+>>>>>>> Rebased on master
     }
     const enum ClassificationType {
         comment = 1,
@@ -2451,9 +2677,13 @@ declare module ts {
         typeAliasName = 16,
         parameterName = 17,
 <<<<<<< HEAD
+<<<<<<< HEAD
         docCommentTagName = 18,
 =======
 >>>>>>> compile into lib folder
+=======
+        docCommentTagName = 18,
+>>>>>>> Rebased on master
     }
     interface DisplayPartsSymbolWriter extends SymbolWriter {
         displayParts(): SymbolDisplayPart[];
@@ -2479,10 +2709,14 @@ declare module ts {
     function createClassifier(): Classifier;
     /**
 <<<<<<< HEAD
+<<<<<<< HEAD
       * Get the path of the default library files (lib.d.ts) as distributed with the typescript
 =======
       * Get the path of the default library file (lib.d.ts) as distributed with the typescript
 >>>>>>> compile into lib folder
+=======
+      * Get the path of the default library files (lib.d.ts) as distributed with the typescript
+>>>>>>> Rebased on master
       * node package.
       * The functionality is not supported if the ts module is consumed outside of a node module.
       */

@@ -58,6 +58,7 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Updated TS service which exposes new dependency API
 =======
@@ -66,6 +67,8 @@ declare namespace ts {
 =======
 >>>>>>> Updated TS service which exposes new dependency API
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+>>>>>>> Rebased on master
         LessThanSlashToken = 25,
         GreaterThanToken = 26,
         LessThanEqualsToken = 27,
@@ -319,6 +322,7 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
 =======
@@ -565,11 +569,13 @@ declare namespace ts {
         FirstTypeNode = 144,
         LastTypeNode = 152,
 >>>>>>> Updated compiler to emitDependencyFile branch
+=======
+>>>>>>> Rebased on master
         FirstPunctuation = 14,
         LastPunctuation = 65,
         FirstToken = 0,
-<<<<<<< HEAD
         LastToken = 128,
+<<<<<<< HEAD
 =======
         LastToken = 127,
 >>>>>>> Updated compiler to emitDependencyFile branch
@@ -588,6 +594,8 @@ declare namespace ts {
 >>>>>>> Updated compiler to emitDependencyFile branch
 =======
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+>>>>>>> Rebased on master
         FirstTriviaToken = 2,
         LastTriviaToken = 6,
         FirstLiteralToken = 7,
@@ -599,6 +607,7 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         LastBinaryOperator = 65,
         FirstNode = 129,
 =======
@@ -626,6 +635,10 @@ declare namespace ts {
         FirstNode = 129,
 >>>>>>> Updated TS service which exposes new dependency API
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+        LastBinaryOperator = 65,
+        FirstNode = 129,
+>>>>>>> Rebased on master
     }
     const enum NodeFlags {
         Export = 1,
@@ -940,6 +953,7 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Updated TS service which exposes new dependency API
 =======
@@ -948,6 +962,8 @@ declare namespace ts {
 =======
 >>>>>>> Updated TS service which exposes new dependency API
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+>>>>>>> Rebased on master
     type AssertionExpression = TypeAssertion | AsExpression;
     interface JsxElement extends PrimaryExpression {
         openingElement: JsxOpeningElement;
@@ -983,6 +999,7 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
 =======
@@ -997,6 +1014,8 @@ declare namespace ts {
 =======
 >>>>>>> Updated TS service which exposes new dependency API
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+>>>>>>> Rebased on master
     interface Statement extends Node {
         _statementBrand: any;
     }
@@ -1255,6 +1274,7 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         languageVariant: LanguageVariant;
 =======
 >>>>>>> Updated compiler to emitDependencyFile branch
@@ -1274,6 +1294,9 @@ declare namespace ts {
         languageVariant: LanguageVariant;
 >>>>>>> Updated TS service which exposes new dependency API
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+        languageVariant: LanguageVariant;
+>>>>>>> Rebased on master
         /**
          * lib.d.ts should have a reference comment like
          *
@@ -1558,6 +1581,7 @@ declare namespace ts {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         resolvedBaseConstructorType?: Type;
         resolvedBaseTypes: ObjectType[];
 =======
@@ -1587,6 +1611,10 @@ declare namespace ts {
         resolvedBaseTypes: ObjectType[];
 >>>>>>> Updated TS service which exposes new dependency API
 >>>>>>> Updated TS service which exposes new dependency API
+=======
+        resolvedBaseConstructorType?: Type;
+        resolvedBaseTypes: ObjectType[];
+>>>>>>> Rebased on master
     }
     interface InterfaceTypeWithDeclaredMembers extends InterfaceType {
         declaredProperties: Symbol[];
