@@ -1165,15 +1165,7 @@ interface ArrayConstructor {
     (arrayLength?: number): any[];
     <T>(arrayLength: number): T[];
     <T>(...items: T[]): T[];
-<<<<<<< HEAD
-<<<<<<< HEAD
     isArray(arg: any): arg is Array<any>;
-=======
-    isArray(arg: any): boolean;
->>>>>>> compile into lib folder
-=======
-    isArray(arg: any): arg is Array<any>;
->>>>>>> Rebased on master
     prototype: Array<any>;
 }
 
@@ -3539,20 +3531,11 @@ declare module Intl {
         currency?: string;
         currencyDisplay?: string;
         useGrouping?: boolean;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Rebased on master
         minimumintegerDigits?: number;
         minimumFractionDigits?: number;
         maximumFractionDigits?: number;
         minimumSignificantDigits?: number;
         maximumSignificantDigits?: number;
-<<<<<<< HEAD
-=======
->>>>>>> compile into lib folder
-=======
->>>>>>> Rebased on master
     }
 
     interface ResolvedNumberFormatOptions {
@@ -3574,23 +3557,10 @@ declare module Intl {
         resolvedOptions(): ResolvedNumberFormatOptions;
     }
     var NumberFormat: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Rebased on master
         new (locales?: string[], options?: NumberFormatOptions): NumberFormat;
         new (locale?: string, options?: NumberFormatOptions): NumberFormat;
         (locales?: string[], options?: NumberFormatOptions): NumberFormat;
         (locale?: string, options?: NumberFormatOptions): NumberFormat;
-<<<<<<< HEAD
-=======
-        new (locales?: string[], options?: NumberFormatOptions): Collator;
-        new (locale?: string, options?: NumberFormatOptions): Collator;
-        (locales?: string[], options?: NumberFormatOptions): Collator;
-        (locale?: string, options?: NumberFormatOptions): Collator;
->>>>>>> compile into lib folder
-=======
->>>>>>> Rebased on master
         supportedLocalesOf(locales: string[], options?: NumberFormatOptions): string[];
         supportedLocalesOf(locale: string, options?: NumberFormatOptions): string[];
     }
@@ -3628,8 +3598,6 @@ declare module Intl {
     }
 
     interface DateTimeFormat {
-<<<<<<< HEAD
-<<<<<<< HEAD
         format(date?: Date | number): string;
         resolvedOptions(): ResolvedDateTimeFormatOptions;
     }
@@ -3638,26 +3606,6 @@ declare module Intl {
         new (locale?: string, options?: DateTimeFormatOptions): DateTimeFormat;
         (locales?: string[], options?: DateTimeFormatOptions): DateTimeFormat;
         (locale?: string, options?: DateTimeFormatOptions): DateTimeFormat;
-=======
-        format(date: number): string;
-        resolvedOptions(): ResolvedDateTimeFormatOptions;
-    }
-    var DateTimeFormat: {
-        new (locales?: string[], options?: DateTimeFormatOptions): Collator;
-        new (locale?: string, options?: DateTimeFormatOptions): Collator;
-        (locales?: string[], options?: DateTimeFormatOptions): Collator;
-        (locale?: string, options?: DateTimeFormatOptions): Collator;
->>>>>>> compile into lib folder
-=======
-        format(date?: Date | number): string;
-        resolvedOptions(): ResolvedDateTimeFormatOptions;
-    }
-    var DateTimeFormat: {
-        new (locales?: string[], options?: DateTimeFormatOptions): DateTimeFormat;
-        new (locale?: string, options?: DateTimeFormatOptions): DateTimeFormat;
-        (locales?: string[], options?: DateTimeFormatOptions): DateTimeFormat;
-        (locale?: string, options?: DateTimeFormatOptions): DateTimeFormat;
->>>>>>> Rebased on master
         supportedLocalesOf(locales: string[], options?: DateTimeFormatOptions): string[];
         supportedLocalesOf(locale: string, options?: DateTimeFormatOptions): string[];
     }
