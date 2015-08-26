@@ -60,14 +60,14 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                 diag.file.fileName,
                 lineAndCh.line + 1,
                 lineAndCh.character + 1,
-                diag.messageText);
+                ts.flattenDiagnosticMessageText(diag.messageText, '\n'));
 
         } else {
             message = JSON.stringify({
                 filename: diag.file.fileName,
                 offset: diag.start,
                 length: diag.length,
-                message: diag.messageText
+                message: ts.flattenDiagnosticMessageText(diag.messageText, '\n')
             });
         }
 
