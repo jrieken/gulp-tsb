@@ -254,7 +254,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                     while (filesWithChangedSignature.length) {
                         let fileName = filesWithChangedSignature.pop();
 
-                        if (true || !isExternalModule(service.getSourceFile(fileName))) {
+                        if (!isExternalModule(service.getSourceFile(fileName))) {
                              _log('[check semantics*]', fileName + ' is an internal module and it has changed shape -> check whatever hasn\'t been checked yet');
                             toBeCheckedSemantically.push(...host.getScriptFileNames());
                             filesWithChangedSignature.length = 0;

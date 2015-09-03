@@ -28,14 +28,14 @@ export function create(configOrName: builder.IConfiguration|string, verbose?: bo
     // add those
     config.verbose = config.verbose || verbose;
     config.json = config.json || json;
-    
+
     if (!onError) {
         onError = (err) => console.log(JSON.stringify(err, null, 4));
     }
 
     var _builder = builder.createTypeScriptBuilder(config);
 
-    function createStream(): Stream {
+    function createStream(token?: builder.CancellationToken): Stream {
 
         return through(function (file: vinyl) {
             // give the file to the compiler
@@ -46,9 +46,9 @@ export function create(configOrName: builder.IConfiguration|string, verbose?: bo
             _builder.file(file);
         }, function () {
             // start the compilation process
-            _builder.build(file => this.queue(file), onError).then(() => this.queue(null));
+            _builder.build(file => this.queue(file), onError, token).then(() => this.queue(null));
         });
     }
 
-    return () => createStream();
+    return (token?: builder.CancellationToken) => createStream(token);
 }
