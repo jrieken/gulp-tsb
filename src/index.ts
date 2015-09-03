@@ -44,11 +44,9 @@ export function create(configOrName: builder.IConfiguration|string, verbose?: bo
                 return;
             }
             _builder.file(file);
-
         }, function () {
             // start the compilation process
-            _builder.build(file => this.queue(file), onError);
-            this.queue(null);
+            _builder.build(file => this.queue(file), onError).then(() => this.queue(null));
         });
     }
 

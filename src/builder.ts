@@ -16,8 +16,18 @@ export interface IConfiguration {
     [option: string]: string | number | boolean;
 }
 
+export interface CancellationToken {
+    isCancellationRequested(): boolean;
+}
+
+export namespace CancellationToken {
+    export const None: CancellationToken = {
+        isCancellationRequested() { return false }
+    };
+}
+
 export interface ITypeScriptBuilder {
-    build(out: (file: Vinyl) => void, onError: (err: any) => void): void;
+    build(out: (file: Vinyl) => void, onError: (err: any) => void, token?: CancellationToken): Promise<any>;
     file(file: Vinyl): void;
 }
 
@@ -76,12 +86,12 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
     function file(file: Vinyl): void {
         if (!file.contents) {
-            host.removeScriptSnapshot(file.path);            
+            host.removeScriptSnapshot(file.path);
         } else {
             host.addScriptSnapshot(file.path, new VinylScriptSnapshot(file));
         }
     }
-    
+
     function baseFor(snapshot: ScriptSnapshot): string {
         if (snapshot instanceof VinylScriptSnapshot) {
             return compilerOptions.outDir || snapshot.getBase();
@@ -90,159 +100,221 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         }
     }
 
-    function build(out: (file: Vinyl) => void, onError: (err: any) => void): void {
+    function isExternalModule(sourceFile: ts.SourceFile): boolean {
+        return !!(<any> sourceFile).externalModuleIndicator;
+    }
 
-        var filenames = host.getScriptFileNames(),
-            newErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null),
-            checkedThisRound: { [path: string]: boolean } = Object.create(null),
-            filesWithShapeChanges: string[] = [],
-            t1 = Date.now();
+    function build(out: (file: Vinyl) => void, onError: (err: any) => void, token = CancellationToken.None): Promise<any> {
 
-        function shouldCheck(filename: string): boolean {
-            if (checkedThisRound[filename]) {
-                return false;
-            } else {
-                checkedThisRound[filename] = true;
-                return true;
+        function checkSyntaxSoon(fileName: string): Promise<ts.Diagnostic[]> {
+            return new Promise<ts.Diagnostic[]>(resolve => {
+                  setTimeout(function () {
+                      resolve(service.getSyntacticDiagnostics(fileName));
+                }, 0);
+            });
+        }
+
+        function checkSemanticsSoon(fileName: string): Promise<ts.Diagnostic[]> {
+            return new Promise<ts.Diagnostic[]>(resolve => {
+                  setTimeout(function () {
+                      resolve(service.getSemanticDiagnostics(fileName));
+                }, 0);
+            });
+        }
+
+        function emitSoon(fileName: string): Promise<{ fileName:string, signature: string, files: Vinyl[] }> {
+
+            return new Promise(resolve => {
+                setTimeout(function () {
+                    let output = service.getEmitOutput(fileName);
+                    let files: Vinyl[] = [];
+                    let signature: string;
+
+                    for (let file of output.outputFiles) {
+                        if (/\.d\.ts$/.test(file.name)) {
+                            signature = crypto.createHash('md5')
+                                .update(file.text)
+                                .digest('base64');
+
+                            if (!userWantsDeclarations) {
+                                // don't leak .d.ts files if users don't want them
+                                continue;
+                            }
+                        }
+                        files.push(new Vinyl({
+                            path: file.name,
+                            contents: new Buffer(file.text),
+                            base: !config._emitWithoutBasePath && baseFor(host.getScriptSnapshot(fileName))
+                        }));
+                    }
+
+                    resolve({
+                        fileName,
+                        signature,
+                        files
+                    });
+                }, 0);
+            });
+        }
+
+        let newErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null);
+        let t1 = Date.now();
+
+        let toBeEmitted: string[] = [];
+        let toBeCheckedSyntactically: string[] = [];
+        let toBeCheckedSemantically: string[] = [];
+        let filesWithChangedSignature: string[] = [];
+        let dependentFiles: string[] = [];
+
+        for (let fileName of host.getScriptFileNames()) {
+            if (lastBuildVersion[fileName] !== host.getScriptVersion(fileName)) {
+                toBeEmitted.push(fileName);
+                toBeCheckedSyntactically.push(fileName);
+                toBeCheckedSemantically.push(fileName);
             }
         }
 
-        function isExternalModule(sourceFile: ts.SourceFile): boolean {
-            return !!(<any> sourceFile).externalModuleIndicator;
-        }
+        return new Promise(resolve => {
 
-        for (var i = 0, len = filenames.length; i < len; i++) {
+            let semanticCheckInfo = new Map<string, number>();
 
-            var filename = filenames[i],
-                version = host.getScriptVersion(filename),
-                snapshot = host.getScriptSnapshot(filename);
+            function workOnNext() {
 
-            if (lastBuildVersion[filename] === version) {
-                // unchanged since the last time
-                continue;
-            }
+                let promise: Promise<any>;
+                let fileName: string;
 
-            var output = service.getEmitOutput(filename),
-                dtsHash: string = undefined;
+                // someone told us to stop this
+                if (token.isCancellationRequested()) {
+                    resolve();
+                    return;
+                }
 
-            // emit output has fast as possible
-            output.outputFiles.forEach(file => {
+                // (1st) emit code
+                else if (toBeEmitted.length) {
+                    fileName = toBeEmitted.pop();
+                    promise = emitSoon(fileName).then(value => {
 
-                if (/\.d\.ts$/.test(file.name)) {
+                        for (let file of value.files) {
+                            _log('[emit code]', file.path);
+                            out(file);
+                        }
 
-                    dtsHash = crypto.createHash('md5')
-                        .update(file.text)
-                        .digest('base64');
+                        // remeber when this was build
+                        lastBuildVersion[fileName] = host.getScriptVersion(fileName);
 
-                    if (!userWantsDeclarations) {
-                        // don't leak .d.ts files if users don't want them
-                        return;
+                        // remeber the signature
+                        if (value.signature && lastDtsHash[fileName] !== value.signature) {
+                            lastDtsHash[fileName] = value.signature;
+                            filesWithChangedSignature.push(fileName);
+                        }
+                     });
+                }
+
+                // (2nd) check syntax
+                else if (toBeCheckedSyntactically.length) {
+                    fileName = toBeCheckedSyntactically.pop();
+                    _log('[check syntax]', fileName);
+                    promise = checkSyntaxSoon(fileName).then(diagnostics => {
+                        delete oldErrors[fileName];
+                        if (diagnostics.length > 0) {
+                            diagnostics.forEach(d => printDiagnostic(d, onError));
+                            newErrors[fileName] = diagnostics;
+
+                            // stop the world when there are syntax errors
+                            toBeCheckedSyntactically.length = 0;
+                            toBeCheckedSemantically.length = 0;
+                            filesWithChangedSignature.length = 0;
+                        }
+                    });
+                }
+
+                // (3rd) check semantics
+                else if (toBeCheckedSemantically.length) {
+
+                    fileName = toBeCheckedSemantically.pop();
+                    while (fileName && semanticCheckInfo.has(fileName)) {
+                        fileName = toBeCheckedSemantically.pop();
+                    }
+
+                    if (fileName) {
+                        _log('[check semantics]', fileName);
+                        promise = checkSemanticsSoon(fileName).then(diagnostics => {
+                            delete oldErrors[fileName];
+                            semanticCheckInfo.set(fileName, diagnostics.length);
+                            if (diagnostics.length > 0) {
+                                diagnostics.forEach(d => printDiagnostic(d, onError));
+                                newErrors[fileName] = diagnostics;
+                            }
+                        });
                     }
                 }
 
-                _log('[emit output]', file.name);
-                
-                out(new Vinyl({
-                    path: file.name,
-                    contents: new Buffer(file.text),
-                    base: !config._emitWithoutBasePath && baseFor(snapshot)
-                }));
-            });
+                // (4th) check dependents
+                else if (filesWithChangedSignature.length) {
+                    while (filesWithChangedSignature.length) {
+                        let fileName = filesWithChangedSignature.pop();
 
-            // print and store syntax and semantic errors
-            delete oldErrors[filename];
-            var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []);
-            diagnostics.push.apply(diagnostics, service.getSyntacticDiagnostics(filename));
-            diagnostics.push.apply(diagnostics, service.getSemanticDiagnostics(filename));
-            diagnostics.forEach(diag => printDiagnostic(diag, onError));
+                        if (!isExternalModule(service.getSourceFile(fileName))) {
+                             _log('[check semantics*!]', fileName + ' is an internal module and it has changed -> check the world');
+                            toBeCheckedSemantically.push(...host.getScriptFileNames());
+                            filesWithChangedSignature.length = 0;
+                            break;
+                        }
 
-            // dts comparing
-            if (dtsHash && lastDtsHash[filename] !== dtsHash) {
-                lastDtsHash[filename] = dtsHash;
-                if (isExternalModule(service.getSourceFile(filename))) {
-                    filesWithShapeChanges.push(filename);
-                } else {
-                    filesWithShapeChanges.unshift(filename);
+                        host.collectDependents(fileName, dependentFiles);
+                    }
                 }
-            }
 
-            lastBuildVersion[filename] = version;
-            checkedThisRound[filename] = true;
-        }
+                // (5th) dependents contd
+                else if (dependentFiles.length) {
+                    fileName = dependentFiles.pop();
+                    let value = semanticCheckInfo.get(fileName);
+                    if (value === 0) {
+                        // already validated successfully -> look at dependents next
+                        host.collectDependents(fileName, dependentFiles);
 
-        if (filesWithShapeChanges.length === 0) {
-            // nothing to do here
+                    } else if (typeof value === 'undefined') {
+                        // first validate -> look at dependents next
+                        dependentFiles.push(fileName);
+                        toBeCheckedSemantically.push(fileName);
+                    }
+                }
 
-        } else if (!isExternalModule(service.getSourceFile(filesWithShapeChanges[0]))) {
-            // at least one internal module changes which means that
-            // we have to type check all others
-            _log('[shape changes]', 'internal module changed → FULL check required');
-            host.getScriptFileNames().forEach(filename => {
-                if (!shouldCheck(filename)) {
+                // (last) done
+                else {
+                    resolve();
                     return;
                 }
-                _log('[semantic check*]', filename);
-                delete oldErrors[filename];
-                var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []);
-                service.getSemanticDiagnostics(filename).forEach(diag => {
-                    diagnostics.push(diag);
-                    printDiagnostic(diag, onError);
-                });
-            });
-        } else {
-            // reverse dependencies
-            _log('[shape changes]', 'external module changed → check REVERSE dependencies');
-            var needsSemanticCheck: string[] = [];
-            filesWithShapeChanges.forEach(filename => host.collectDependents(filename, needsSemanticCheck));
-            while (needsSemanticCheck.length) {
-                var filename = needsSemanticCheck.pop();
-                if (!shouldCheck(filename)) {
-                    continue;
-                }
-                _log('[semantic check*]', filename);
-                delete oldErrors[filename];
-                var diagnostics = utils.collections.lookupOrInsert(newErrors, filename, []),
-                    hasSemanticErrors = false;
 
-                service.getSemanticDiagnostics(filename).forEach(diag => {
-                    diagnostics.push(diag);
-                    printDiagnostic(diag, onError);
-                    hasSemanticErrors = true;
-                });
-
-                if (!hasSemanticErrors) {
-                    host.collectDependents(filename, needsSemanticCheck);
+                if (!promise) {
+                    workOnNext();
+                } else {
+                    promise.then(workOnNext).catch(err => {
+                        console.error(err);
+                    });
                 }
             }
-        }
 
-        // (4) dump old errors
-        utils.collections.forEach(oldErrors, entry => {
-            entry.value.forEach(diag => printDiagnostic(diag, onError));
-            newErrors[entry.key] = entry.value;
-        });
+            workOnNext();
 
-        oldErrors = newErrors;
-
-        if (config._emitLanguageService) {
-            out(<any> {
-                languageService: service,
-                host: host
+        }).then(() => {
+            // print old errors and keep them
+            utils.collections.forEach(oldErrors, entry => {
+                entry.value.forEach(diag => printDiagnostic(diag, onError));
+                newErrors[entry.key] = entry.value;
             });
-        }
+            oldErrors = newErrors;
 
-        if (config.verbose) {
-            var headNow = process.memoryUsage().heapUsed,
-                MB = 1024 * 1024;
-            log(
-                '[tsb]',
-                'time:',
-                colors.yellow((Date.now() - t1) + 'ms'),
-                'mem:',
-                colors.cyan(Math.ceil(headNow / MB) + 'MB'),
-                colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
-            headUsed = headNow;
-        }
+            // print stats
+            if (config.verbose) {
+                var headNow = process.memoryUsage().heapUsed,
+                    MB = 1024 * 1024;
+                log('[tsb]',
+                    'time:', colors.yellow((Date.now() - t1) + 'ms'),
+                    'mem:', colors.cyan(Math.ceil(headNow / MB) + 'MB'), colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
+                headUsed = headNow;
+            }
+        });
     }
 
     return {
