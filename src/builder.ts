@@ -177,6 +177,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         return new Promise(resolve => {
 
             let semanticCheckInfo = new Map<string, number>();
+            let seenAsDependentFile = new Set<string>();
 
             function workOnNext() {
 
@@ -269,15 +270,21 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                 // (5th) dependents contd
                 else if (dependentFiles.length) {
                     fileName = dependentFiles.pop();
-                    let value = semanticCheckInfo.get(fileName);
-                    if (value === 0) {
-                        // already validated successfully -> look at dependents next
-                        host.collectDependents(fileName, dependentFiles);
+                    while (fileName && !seenAsDependentFile.has(fileName)) {
+                        fileName = dependentFiles.pop();
+                    }
+                    if (fileName) {
+                        seenAsDependentFile.add(fileName);
+                        let value = semanticCheckInfo.get(fileName);
+                        if (value === 0) {
+                            // already validated successfully -> look at dependents next
+                            host.collectDependents(fileName, dependentFiles);
 
-                    } else if (typeof value === 'undefined') {
-                        // first validate -> look at dependents next
-                        dependentFiles.push(fileName);
-                        toBeCheckedSemantically.push(fileName);
+                        } else if (typeof value === 'undefined') {
+                            // first validate -> look at dependents next
+                            dependentFiles.push(fileName);
+                            toBeCheckedSemantically.push(fileName);
+                        }
                     }
                 }
 
