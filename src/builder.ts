@@ -165,6 +165,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         let toBeCheckedSemantically: string[] = [];
         let filesWithChangedSignature: string[] = [];
         let dependentFiles: string[] = [];
+        let newLastBuildVersion = new Map<string, string>();
 
         for (let fileName of host.getScriptFileNames()) {
             if (lastBuildVersion[fileName] !== host.getScriptVersion(fileName)) {
@@ -186,6 +187,8 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
                 // someone told us to stop this
                 if (token.isCancellationRequested()) {
+                    _log('[CANCEL]', '>>This compile run was cancelled<<')
+                    newLastBuildVersion.clear();
                     resolve();
                     return;
                 }
@@ -200,8 +203,8 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                             out(file);
                         }
 
-                        // remeber when this was build
-                        lastBuildVersion[fileName] = host.getScriptVersion(fileName);
+                        // remember when this was build
+                        newLastBuildVersion.set(fileName, host.getScriptVersion(fileName));
 
                         // remeber the signature
                         if (value.signature && lastDtsHash[fileName] !== value.signature) {
@@ -270,7 +273,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                 // (5th) dependents contd
                 else if (dependentFiles.length) {
                     fileName = dependentFiles.pop();
-                    while (fileName && !seenAsDependentFile.has(fileName)) {
+                    while (fileName && seenAsDependentFile.has(fileName)) {
                         fileName = dependentFiles.pop();
                     }
                     if (fileName) {
@@ -309,6 +312,11 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
             workOnNext();
 
         }).then(() => {
+            // store the build versions to not rebuilt the next time
+            newLastBuildVersion.forEach((value, key) => {
+                lastBuildVersion[key] = value;
+            });
+
             // print old errors and keep them
             utils.collections.forEach(oldErrors, entry => {
                 entry.value.forEach(diag => printDiagnostic(diag, onError));
