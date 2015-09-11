@@ -1,2 +1,5 @@
 src
 typings
+.vscode
+gulpfile.js
+tsconfig.json
