@@ -44,7 +44,8 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         lastDtsHash: { [path: string]: string } = Object.create(null),
         userWantsDeclarations = compilerOptions.declaration,
         oldErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null),
-        headUsed = process.memoryUsage().heapUsed;
+        headUsed = process.memoryUsage().heapUsed,
+        emitSourceMapsInStream = true;
 
     // always emit declaraction files
     host.getCompilationSettings().declaration = true;
@@ -85,6 +86,11 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
     }
 
     function file(file: Vinyl): void {
+        // support gulp-sourcemaps
+        if ((<any>file).sourceMap) {
+            emitSourceMapsInStream = false;
+        }
+
         if (!file.contents) {
             host.removeScriptSnapshot(file.path);
         } else {
@@ -131,6 +137,10 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                     let signature: string;
 
                     for (let file of output.outputFiles) {
+                        if (!emitSourceMapsInStream && /\.js\.map$/.test(file.name)) {
+                            continue;
+                        }
+
                         if (/\.d\.ts$/.test(file.name)) {
                             signature = crypto.createHash('md5')
                                 .update(file.text)
@@ -141,11 +151,29 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                                 continue;
                             }
                         }
-                        files.push(new Vinyl({
+
+                        let vinyl = new Vinyl({
                             path: file.name,
                             contents: new Buffer(file.text),
                             base: !config._emitWithoutBasePath && baseFor(host.getScriptSnapshot(fileName))
-                        }));
+                        });
+
+                        if (!emitSourceMapsInStream && /\.js$/.test(file.name)) {
+                            let sourcemapFile = output.outputFiles.filter(f => /\.js\.map$/.test(f.name))[0];
+
+                            if (sourcemapFile) {
+                                let extname = path.extname(vinyl.relative);
+                                let basename = path.basename(vinyl.relative, extname);
+                                let dirname = path.dirname(vinyl.relative);
+                                let tsname = (dirname === '.' ? '' : dirname + '/') + basename + '.ts';
+
+                                let sourceMap = JSON.parse(sourcemapFile.text);
+                                sourceMap.sources[0] = tsname;
+                                (<any>vinyl).sourceMap = sourceMap;
+                            }
+                        }
+
+                        files.push(vinyl);
                     }
 
                     resolve({
