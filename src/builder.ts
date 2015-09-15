@@ -513,7 +513,13 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getCancellationToken(): ts.CancellationToken {
-        return { isCancellationRequested: () => false };
+        return {
+            isCancellationRequested: () => false,
+            throwIfCancellationRequested: (): void => {
+                // Do nothing.isCancellationRequested is always
+                // false so this method never throws
+            }
+        };
     }
 
     getCurrentDirectory(): string {
