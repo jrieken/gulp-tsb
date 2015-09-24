@@ -107,7 +107,8 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
     }
 
     function isExternalModule(sourceFile: ts.SourceFile): boolean {
-        return !!(<any> sourceFile).externalModuleIndicator;
+        return (<any>sourceFile).externalModuleIndicator
+            || /declare\s+module\s+('|")(.+)\1/.test(sourceFile.getText())
     }
 
     function build(out: (file: Vinyl) => void, onError: (err: any) => void, token = CancellationToken.None): Promise<any> {
@@ -131,7 +132,22 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
         function emitSoon(fileName: string): Promise<{ fileName:string, signature: string, files: Vinyl[] }> {
 
             return new Promise(resolve => {
-                setTimeout(function () {
+                setTimeout(function() {
+
+                    if (/\.d\.ts$/.test(fileName)) {
+                        // if it's already a d.ts file just emit it signature
+                        let snapshot = host.getScriptSnapshot(fileName);
+                        let signature = crypto.createHash('md5')
+                            .update(snapshot.getText(0, snapshot.getLength()))
+                            .digest('base64');
+
+                        return resolve({
+                            fileName,
+                            signature,
+                            files: []
+                        });
+                    }
+
                     let output = service.getEmitOutput(fileName);
                     let files: Vinyl[] = [];
                     let signature: string;
@@ -448,6 +464,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     private _defaultLib: string;
     private _dependencies: utils.graph.Graph<string>;
     private _dependenciesRecomputeList: string[];
+    private _fileNameToDeclaredModule: { [path: string]: string[] };
 
     constructor(settings: ts.CompilerOptions) {
         this._settings = settings;
@@ -457,6 +474,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
             : 'lib.d.ts'));
         this._dependencies = new utils.graph.Graph<string>(s => s);
         this._dependenciesRecomputeList = [];
+        this._fileNameToDeclaredModule = Object.create(null);
     }
 
     log(s: string): void {
@@ -489,6 +507,8 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         return this._snapshots[filename];
     }
 
+    private static _declareModule = /declare\s+module\s+('|")(.+)\1/g;
+
     addScriptSnapshot(filename: string, snapshot: ScriptSnapshot): ScriptSnapshot {
         filename = normalize(filename);
         var old = this._snapshots[filename];
@@ -498,6 +518,17 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
             if (node) {
                 node.outgoing = Object.create(null);
             }
+
+            // (cheap) check for declare module
+            LanguageServiceHost._declareModule.lastIndex = 0;
+            let match: RegExpExecArray;
+            while ((match = LanguageServiceHost._declareModule.exec(snapshot.getText(0, snapshot.getLength())))) {
+                let declaredModules = this._fileNameToDeclaredModule[filename];
+                if(!declaredModules) {
+                    this._fileNameToDeclaredModule[filename] = declaredModules = [];
+                }
+                declaredModules.push(match[2]);
+            }
         }
         this._snapshots[filename] = snapshot;
         return old;
@@ -505,6 +536,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     removeScriptSnapshot(filename: string): boolean {
         filename = normalize(filename);
+        delete this._fileNameToDeclaredModule[filename];
         return delete this._snapshots[filename];
     }
 
@@ -577,6 +609,14 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
                 } else if (this.getScriptSnapshot(normalizedPath + '.d.ts')) {
                     this._dependencies.inertEdge(filename, normalizedPath + '.d.ts');
                     found = true;
+                }
+            }
+
+            if (!found) {
+                for (let key in this._fileNameToDeclaredModule) {
+                    if(this._fileNameToDeclaredModule[key] && ~this._fileNameToDeclaredModule[key].indexOf(ref.fileName)) {
+                        this._dependencies.inertEdge(filename, key);
+                    }
                 }
             }
         });
