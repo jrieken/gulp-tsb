@@ -406,6 +406,15 @@ function createCompilerOptions(config: IConfiguration): ts.CompilerOptions {
         config['module'] = ts.ModuleKind.AMD;
     }
 
+    // jsx handling
+    if (/none/i.test(String(config['jsx']))) {
+        config['jsx'] = ts.JsxEmit.None;
+    } else if (/preserve/i.test(String(config['jsx']))) {
+        config['jsx'] = ts.JsxEmit.Preserve;
+    } else if (/react/i.test(String(config['jsx']))) {
+        config['jsx'] = ts.JsxEmit.React;
+    }
+
     return <ts.CompilerOptions> config;
 }
 
