@@ -304,7 +304,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
                         if (!isExternalModule(service.getSourceFile(fileName))) {
                              _log('[check semantics*]', fileName + ' is an internal module and it has changed shape -> check whatever hasn\'t been checked yet');
-                            toBeCheckedSemantically.push(...host.getScriptFileNames());
+                            toBeCheckedSemantically.push(...host.getScriptFileNames().filter(filename => path.extname(filename) === '.ts'));
                             filesWithChangedSignature.length = 0;
                             dependentFiles.length = 0;
                             break;
@@ -513,7 +513,21 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     getScriptSnapshot(filename: string): ScriptSnapshot {
         filename = normalize(filename);
-        return this._snapshots[filename];
+        let result = this._snapshots[filename];
+        if (!result) {
+            try {
+                result = new VinylScriptSnapshot(new Vinyl(<any> {
+                    path: filename,
+                    contents: readFileSync(filename),
+                    base: this._settings.outDir,
+                    stat: statSync(filename)
+                }));
+                this.addScriptSnapshot(filename, result);
+            } catch (e) {
+                // ignore
+            }
+        }
+        return result;
     }
 
     private static _declareModule = /declare\s+module\s+('|")(.+)\1/g;
