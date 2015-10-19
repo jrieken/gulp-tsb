@@ -184,7 +184,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                                 let tsname = (dirname === '.' ? '' : dirname + '/') + basename + '.ts';
 
                                 let sourceMap = JSON.parse(sourcemapFile.text);
-                                sourceMap.sources[0] = tsname;
+                                sourceMap.sources[0] = tsname.replace(/\\/g, '/');
                                 (<any>vinyl).sourceMap = sourceMap;
                             }
                         }
