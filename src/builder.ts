@@ -503,7 +503,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getScriptFileNames(): string[] {
-        return Object.keys(this._snapshots).filter(filename => path.extname(filename) === '.ts');
+        return Object.keys(this._snapshots).filter(filename => /\.tsx?/i.test(path.extname(filename)));
     }
 
     getScriptVersion(filename: string): string {
