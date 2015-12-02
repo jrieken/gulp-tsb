@@ -6,6 +6,7 @@ import * as clone from 'clone';
 import * as builder from './builder';
 import {readConfigFile} from './typescript/typescriptServices';
 import {Stream} from 'stream';
+import {readFileSync} from 'fs';
 
 
 export function create(configOrName: builder.IConfiguration|string, verbose?: boolean, json?: boolean, onError?: (message: any) => void): () => Stream {
@@ -13,7 +14,7 @@ export function create(configOrName: builder.IConfiguration|string, verbose?: bo
     var config: builder.IConfiguration;
 
     if (typeof configOrName === 'string') {
-        var parsed = readConfigFile(configOrName);
+        var parsed = readConfigFile(configOrName, (path) => readFileSync(path, undefined));
         if (parsed.error) {
             console.error(parsed.error);
             return () => null;
