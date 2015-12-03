@@ -1,31 +1,32 @@
 {
-  "name": "gulp-tsb",
-  "version": "1.8.0",
-  "author": "Johannes Rieken <johannes.rieken@gmail.com>",
-  "description": "A gulp plugin for very fast TypeScript compilation.",
-  "main": "./lib/index",
-  "license": "MIT",
-  "scripts": {
-    "test": "mocha lib/tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jrieken/gulp-tsb.git"
-  },
-  "keywords": [
-    "gulpplugin",
-    "typescript",
-    "javascript",
-    "incremental"
-  ],
-  "dependencies": {
-    "clone": "^0.2.0",
-    "gulp-util": "^3.0.1",
-    "through": "^2.3.6",
-    "vinyl": "^0.4.3"
-  },
-  "devDependencies": {
-    "gulp": "^3.8.10",
-    "mocha": "*"
-  }
+    "name": "gulp-tsb",
+    "version": "1.8.0",
+    "author": "Johannes Rieken <johannes.rieken@gmail.com>",
+    "description": "A gulp plugin for very fast TypeScript compilation.",
+    "main": "./lib/index",
+    "license": "MIT",
+    "scripts": {
+        "test": "mocha lib/tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jrieken/gulp-tsb.git"
+    },
+    "keywords": [
+        "gulpplugin",
+        "typescript",
+        "javascript",
+        "incremental"
+    ],
+    "dependencies": {
+        "typescript": "^1.7.3",
+        "clone": "^0.2.0",
+        "gulp-util": "^3.0.1",
+        "through": "^2.3.6",
+        "vinyl": "^0.4.3"
+    },
+    "devDependencies": {
+        "gulp": "^3.8.10",
+        "mocha": "*"
+    }
 }

@@ -5,7 +5,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import * as utils from './utils';
 import {log, colors} from 'gulp-util';
-import * as ts from './typescript/typescriptServices';
+import * as ts from 'typescript';
 import Vinyl = require('vinyl');
 
 export interface IConfiguration {
