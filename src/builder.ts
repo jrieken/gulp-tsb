@@ -388,32 +388,38 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
 function createCompilerOptions(config: IConfiguration): ts.CompilerOptions {
 
-    // language version
-    if (!config['target']) {
-        config['target'] = ts.ScriptTarget.ES3;
-    } else if (/ES3/i.test(String(config['target']))) {
-        config['target'] = ts.ScriptTarget.ES3;
-    } else if (/ES5/i.test(String(config['target']))) {
-        config['target'] = ts.ScriptTarget.ES5;
-    } else if (/ES6/i.test(String(config['target']))) {
-        config['target'] = ts.ScriptTarget.ES6;
+    function map<T>(key:any, map:{[key:string]:T}, defaultValue:T):T {
+        let s = String(key).toLowerCase();
+        if (map.hasOwnProperty(s)) {
+            return map[s];
+        }
+        return defaultValue;
     }
+
+    // language version
+    config['target'] = map(config['target'], {
+        es3: ts.ScriptTarget.ES3,
+        es5: ts.ScriptTarget.ES5,
+        es6: ts.ScriptTarget.ES6,
+        es2015: ts.ScriptTarget.ES2015,
+        latest: ts.ScriptTarget.Latest
+    }, ts.ScriptTarget.ES3);
 
     // module generation
-    if (/commonjs/i.test(String(config['module']))) {
-        config['module'] = ts.ModuleKind.CommonJS;
-    } else if (/amd/i.test(String(config['module']))) {
-        config['module'] = ts.ModuleKind.AMD;
-    }
+    config['module'] = map(config['module'], {
+        commonjs: ts.ModuleKind.CommonJS,
+        amd: ts.ModuleKind.AMD,
+        system: ts.ModuleKind.System,
+        umd: ts.ModuleKind.UMD,
+        es6: ts.ModuleKind.ES6,
+        es2015: ts.ModuleKind.ES2015
+    }, ts.ModuleKind.None);
 
     // jsx handling
-    if (/none/i.test(String(config['jsx']))) {
-        config['jsx'] = ts.JsxEmit.None;
-    } else if (/preserve/i.test(String(config['jsx']))) {
-        config['jsx'] = ts.JsxEmit.Preserve;
-    } else if (/react/i.test(String(config['jsx']))) {
-        config['jsx'] = ts.JsxEmit.React;
-    }
+    config['jsx'] = map(config['jsx'], {
+        preserve: ts.JsxEmit.Preserve,
+        react: ts.JsxEmit.React
+    }, ts.JsxEmit.None);
 
     return <ts.CompilerOptions> config;
 }
