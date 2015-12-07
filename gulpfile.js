@@ -9,7 +9,7 @@ var compilation = tsb.create(path.join(__dirname, 'tsconfig.json'), true);
 var sources = [
 	'src/**/*.ts',
 	'typings/**/*.ts',
-	'!src/typescript/lib*.ts'
+	'!node_modules/**/lib*.ts'
 ];
 
 gulp.task('build', function() {

@@ -50,11 +50,6 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
     // always emit declaraction files
     host.getCompilationSettings().declaration = true;
 
-    if (!host.getCompilationSettings().noLib) {
-        var defaultLib = host.getDefaultLibFileName();
-        host.addScriptSnapshot(defaultLib, new DefaultLibScriptSnapshot(defaultLib));
-    }
-
     function _log(topic: string, message: string): void {
         if (config.verbose) {
             log(colors.cyan(topic), message);
@@ -451,13 +446,6 @@ class ScriptSnapshot implements ts.IScriptSnapshot {
     }
 }
 
-class DefaultLibScriptSnapshot extends ScriptSnapshot {
-
-    constructor(defaultLib: string) {
-        super(readFileSync(defaultLib).toString(), statSync(defaultLib).mtime);
-    }
-}
-
 class VinylScriptSnapshot extends ScriptSnapshot {
 
     private _base: string;
@@ -476,7 +464,6 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     private _settings: ts.CompilerOptions;
     private _snapshots: { [path: string]: ScriptSnapshot };
-    private _defaultLib: string;
     private _dependencies: utils.graph.Graph<string>;
     private _dependenciesRecomputeList: string[];
     private _fileNameToDeclaredModule: { [path: string]: string[] };
@@ -484,9 +471,6 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     constructor(settings: ts.CompilerOptions) {
         this._settings = settings;
         this._snapshots = Object.create(null);
-        this._defaultLib = normalize(path.join(__dirname, 'typescript', settings.target === ts.ScriptTarget.ES6
-            ? 'lib.es6.d.ts'
-            : 'lib.d.ts'));
         this._dependencies = new utils.graph.Graph<string>(s => s);
         this._dependenciesRecomputeList = [];
         this._fileNameToDeclaredModule = Object.create(null);
@@ -588,7 +572,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getDefaultLibFileName(): string {
-        return this._defaultLib;
+        return;
     }
 
     // ---- dependency management
