@@ -572,7 +572,8 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getDefaultLibFileName(options: ts.CompilerOptions): string {
-        return path.join(__dirname, '../node_modules/typescript/lib', options.target < ts.ScriptTarget.ES6 ? 'lib.d.ts' : 'lib.es6.d.ts');
+        let libFile = options.target < ts.ScriptTarget.ES6 ? 'lib.d.ts' : 'lib.es6.d.ts';
+        return require.resolve("typescript/lib/" + libFile);
     }
 
     // ---- dependency management
