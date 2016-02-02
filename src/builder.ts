@@ -110,24 +110,24 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
         function checkSyntaxSoon(fileName: string): Promise<ts.Diagnostic[]> {
             return new Promise<ts.Diagnostic[]>(resolve => {
-                  setTimeout(function () {
+                process.nextTick(function () {
                       resolve(service.getSyntacticDiagnostics(fileName));
-                }, 0);
+                });
             });
         }
 
         function checkSemanticsSoon(fileName: string): Promise<ts.Diagnostic[]> {
             return new Promise<ts.Diagnostic[]>(resolve => {
-                  setTimeout(function () {
+                process.nextTick(function () {
                       resolve(service.getSemanticDiagnostics(fileName));
-                }, 0);
+                });
             });
         }
 
         function emitSoon(fileName: string): Promise<{ fileName:string, signature: string, files: Vinyl[] }> {
 
             return new Promise(resolve => {
-                setTimeout(function() {
+                process.nextTick(function() {
 
                     if (/\.d\.ts$/.test(fileName)) {
                         // if it's already a d.ts file just emit it signature
@@ -192,7 +192,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                         signature,
                         files
                     });
-                }, 0);
+                });
             });
         }
 
@@ -342,7 +342,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
                 promise.then(function () {
                     // change to change
-                    setTimeout(workOnNext, 0);
+                    process.nextTick(workOnNext);
                 }).catch(err => {
                     console.error(err);
                 });
