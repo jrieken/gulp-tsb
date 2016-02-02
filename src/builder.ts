@@ -10,6 +10,7 @@ import Vinyl = require('vinyl');
 
 export interface IConfiguration {
     json: boolean;
+    noFilesystemLookup: boolean;
     verbose: boolean;
     _emitWithoutBasePath?: boolean;
     _emitLanguageService?: boolean;
@@ -38,7 +39,7 @@ function normalize(path: string): string {
 export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuilder {
 
     var compilerOptions = createCompilerOptions(config),
-        host = new LanguageServiceHost(compilerOptions),
+        host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
         lastDtsHash: { [path: string]: string } = Object.create(null),
@@ -463,13 +464,15 @@ class VinylScriptSnapshot extends ScriptSnapshot {
 class LanguageServiceHost implements ts.LanguageServiceHost {
 
     private _settings: ts.CompilerOptions;
+    private _noFilesystemLookup: boolean;
     private _snapshots: { [path: string]: ScriptSnapshot };
     private _dependencies: utils.graph.Graph<string>;
     private _dependenciesRecomputeList: string[];
     private _fileNameToDeclaredModule: { [path: string]: string[] };
 
-    constructor(settings: ts.CompilerOptions) {
+    constructor(settings: ts.CompilerOptions, noFilesystemLookup:boolean) {
         this._settings = settings;
+        this._noFilesystemLookup = noFilesystemLookup;
         this._snapshots = Object.create(null);
         this._dependencies = new utils.graph.Graph<string>(s => s);
         this._dependenciesRecomputeList = [];
@@ -504,7 +507,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     getScriptSnapshot(filename: string): ScriptSnapshot {
         filename = normalize(filename);
         let result = this._snapshots[filename];
-        if (!result) {
+        if (!result && !this._noFilesystemLookup) {
             try {
                 result = new VinylScriptSnapshot(new Vinyl(<any> {
                     path: filename,
