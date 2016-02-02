@@ -464,6 +464,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     private _settings: ts.CompilerOptions;
     private _snapshots: { [path: string]: ScriptSnapshot };
+    private _projectVersion: number;
     private _dependencies: utils.graph.Graph<string>;
     private _dependenciesRecomputeList: string[];
     private _fileNameToDeclaredModule: { [path: string]: string[] };
@@ -471,6 +472,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     constructor(settings: ts.CompilerOptions) {
         this._settings = settings;
         this._snapshots = Object.create(null);
+        this._projectVersion = 1;
         this._dependencies = new utils.graph.Graph<string>(s => s);
         this._dependenciesRecomputeList = [];
         this._fileNameToDeclaredModule = Object.create(null);
@@ -490,6 +492,10 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     getCompilationSettings(): ts.CompilerOptions {
         return this._settings;
+    }
+
+    getProjectVersion(): string {
+        return String(this._projectVersion);
     }
 
     getScriptFileNames(): string[] {
@@ -523,6 +529,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     private static _declareModule = /declare\s+module\s+('|")(.+)\1/g;
 
     addScriptSnapshot(filename: string, snapshot: ScriptSnapshot): ScriptSnapshot {
+        this._projectVersion++;
         filename = normalize(filename);
         var old = this._snapshots[filename];
         if (!old || old.getVersion() !== snapshot.getVersion()) {
@@ -548,6 +555,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     removeScriptSnapshot(filename: string): boolean {
+        this._projectVersion++;
         filename = normalize(filename);
         delete this._fileNameToDeclaredModule[filename];
         return delete this._snapshots[filename];
