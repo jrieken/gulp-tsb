@@ -209,6 +209,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
         for (let fileName of host.getScriptFileNames()) {
             if (lastBuildVersion[fileName] !== host.getScriptVersion(fileName)) {
+
                 toBeEmitted.push(fileName);
                 toBeCheckedSyntactically.push(fileName);
                 toBeCheckedSemantically.push(fileName);
@@ -502,7 +503,18 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getScriptFileNames(): string[] {
-        return Object.keys(this._snapshots).filter(filename => /\.tsx?/i.test(path.extname(filename)));
+
+        const result: string[] = [];
+        const defaultLibFileName = this.getDefaultLibFileName(this.getCompilationSettings());
+        for (let fileName in this._snapshots) {
+            if (/\.tsx?/i.test(path.extname(fileName))
+                && fileName !== defaultLibFileName) {
+
+                // only ts-files and not lib.d.ts-like files
+                result.push(fileName)
+            }
+        }
+        return result;
     }
 
     getScriptVersion(filename: string): string {
