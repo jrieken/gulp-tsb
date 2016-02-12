@@ -412,6 +412,18 @@ function createCompilerOptions(config: IConfiguration): ts.CompilerOptions {
         es2015: ts.ModuleKind.ES2015
     }, ts.ModuleKind.None);
 
+    // module resolution
+    config['moduleResolution'] = map(config['moduleResolution'], {
+        classic: ts.ModuleResolutionKind.Classic,
+        node: ts.ModuleResolutionKind.NodeJs
+    }, undefined);
+
+    // new line
+    config['newLine'] = map(config['newLine'], {
+        CRLF: ts.NewLineKind.CarriageReturnLineFeed,
+        LF: ts.NewLineKind.LineFeed
+    }, undefined);
+
     // jsx handling
     config['jsx'] = map(config['jsx'], {
         preserve: ts.JsxEmit.Preserve,
