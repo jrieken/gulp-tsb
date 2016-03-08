@@ -14,7 +14,7 @@ export function create(configOrName: builder.IConfiguration|string, verbose?: bo
 
     var config: builder.IConfiguration;
     if (typeof configOrName === 'string') {
-        var parsed = readConfigFile(configOrName, (path) => readFileSync(path, undefined));
+        var parsed = readConfigFile(configOrName, (path) => readFileSync(path, 'utf-8'));
         if (parsed.error) {
             console.error(parsed.error);
             return () => null;
