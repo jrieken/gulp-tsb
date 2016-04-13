@@ -4,37 +4,46 @@
 
 import vinyl = require('vinyl');
 import * as through from 'through';
-import * as clone from 'clone';
 import * as builder from './builder';
-import {readConfigFile} from 'typescript';
+import * as ts from 'typescript';
 import {Stream} from 'stream';
-import {readFileSync} from 'fs';
+import {readFileSync, existsSync, readdirSync} from 'fs';
+import {extname} from 'path';
 
-export function create(configOrName: builder.IConfiguration|string, verbose?: boolean, json?: boolean, onError?: (message: any) => void): () => Stream {
+const _parseConfigHost: ts.ParseConfigHost = {
+    readFile(fileName: string): string {
+        return readFileSync(fileName, 'utf-8');
+    },
+    fileExists(fileName: string): boolean {
+        return existsSync(fileName);
+    },
+    readDirectory(rootDir: string, extension: string, exclude: string[]): string[] {
+        return []; // don't want to find files!
+    },
+};
 
-    var config: builder.IConfiguration;
+export function create(configOrName: { [option: string]: string | number | boolean; } | string, verbose?: boolean, json?: boolean, onError?: (message: any) => void): () => Stream {
+
+    let options = ts.getDefaultCompilerOptions();
+    let config: builder.IConfiguration = { json, verbose, noFilesystemLookup: false };
+
     if (typeof configOrName === 'string') {
-        var parsed = readConfigFile(configOrName, (path) => readFileSync(path, 'utf-8'));
+        var parsed = ts.readConfigFile(configOrName, (path) => readFileSync(path, 'utf-8'));
+        options = ts.parseJsonConfigFileContent(parsed.config, _parseConfigHost, __dirname).options;
         if (parsed.error) {
             console.error(parsed.error);
             return () => null;
         }
-        config = parsed.config.compilerOptions;
-
     } else {
-        // clone the configuration
-        config = clone(configOrName);
+        options = ts.parseJsonConfigFileContent(configOrName, _parseConfigHost, __dirname).options;
+        Object.assign(config, configOrName);
     }
-
-    // add those
-    config.verbose = config.verbose || verbose;
-    config.json = config.json || json;
 
     if (!onError) {
         onError = (err) => console.log(JSON.stringify(err, null, 4));
     }
 
-    var _builder = builder.createTypeScriptBuilder(config);
+    const _builder = builder.createTypeScriptBuilder(config, options);
 
     function createStream(token?: builder.CancellationToken): Stream {
 

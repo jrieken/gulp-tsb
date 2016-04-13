@@ -19,7 +19,6 @@
     "incremental"
   ],
   "dependencies": {
-    "clone": "^0.2.0",
     "gulp-util": "^3.0.1",
     "through": "^2.3.6",
     "vinyl": "^0.4.3"

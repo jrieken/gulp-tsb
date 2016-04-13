@@ -8,16 +8,16 @@ describe('options - test that', function () {
 
 	it('does not change the config object', function () {
 
-		var config: builder.IConfiguration = {
+		var config:{ [option: string]: string | number | boolean; }  = {
 			json: true,
-            verbose: true,
-            noFilesystemLookup: true
+			verbose: true,
+			noFilesystemLookup: true
 		};
 
 		Object.freeze(config);
 		index.create(config);
 
-		assert.equal(Object.keys(config).length, 2);
+		assert.equal(Object.keys(config).length, 3);
 
 	});
 });
