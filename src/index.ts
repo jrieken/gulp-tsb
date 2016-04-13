@@ -10,12 +10,9 @@ import {Stream} from 'stream';
 import {readFileSync, existsSync, readdirSync} from 'fs';
 import {extname} from 'path';
 
-const _parseConfigHost: ts.ParseConfigHost = {
+const _parseConfigHost = {
     readFile(fileName: string): string {
         return readFileSync(fileName, 'utf-8');
-    },
-    fileExists(fileName: string): boolean {
-        return existsSync(fileName);
     },
     readDirectory(rootDir: string, extension: string, exclude: string[]): string[] {
         return []; // don't want to find files!
