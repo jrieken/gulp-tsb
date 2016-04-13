@@ -6,7 +6,8 @@
   "main": "./lib/index",
   "license": "MIT",
   "scripts": {
-    "test": "mocha lib/tests"
+    "test": "mocha lib/tests",
+    "prepublish": "tsc && mocha lib/tests"
   },
   "repository": {
     "type": "git",
