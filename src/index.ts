@@ -19,7 +19,12 @@ const _parseConfigHost = {
     },
 };
 
-export function create(configOrName: { [option: string]: string | number | boolean; } | string, verbose?: boolean, json?: boolean, onError?: (message: any) => void): () => Stream {
+interface IncrementalCompiler {
+    (): Stream;
+    program?: ts.Program;
+}
+
+export function create(configOrName: { [option: string]: string | number | boolean; } | string, verbose?: boolean, json?: boolean, onError?: (message: any) => void): IncrementalCompiler {
 
     let options = ts.getDefaultCompilerOptions();
     let config: builder.IConfiguration = { json, verbose, noFilesystemLookup: false };
@@ -57,5 +62,8 @@ export function create(configOrName: { [option: string]: string | number | boole
         });
     }
 
-    return (token?: builder.CancellationToken) => createStream(token);
+    let result = (token: builder.CancellationToken) => createStream(token);
+    Object.defineProperty(result, 'program', { get: () => _builder.languageService.getProgram() });
+
+    return <IncrementalCompiler> result;
 }
