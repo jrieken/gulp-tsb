@@ -5,6 +5,7 @@ node_js:
   - "5"
 
 script:
-    - npm install
-    - gulp build
-    - npm run test
+  - npm install
+  - npm install typescript
+  - gulp build
+  - npm run test
