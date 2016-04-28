@@ -19,7 +19,7 @@ const _parseConfigHost = {
     },
 };
 
-interface IncrementalCompiler {
+export interface IncrementalCompiler {
     (): Stream;
     program?: ts.Program;
 }
