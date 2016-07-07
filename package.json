@@ -3,7 +3,8 @@
   "version": "1.10.4",
   "author": "Johannes Rieken <johannes.rieken@gmail.com>",
   "description": "A gulp plugin for very fast TypeScript compilation.",
-  "main": "./lib/index",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "license": "MIT",
   "scripts": {
     "test": "mocha lib/tests",
@@ -22,11 +23,23 @@
   "dependencies": {
     "gulp-util": "^3.0.1",
     "through": "^2.3.6",
-    "vinyl": "^0.4.3"
+    "vinyl": "^0.4.3",
+    "vinyl-fs": "^2.4.3"
   },
   "devDependencies": {
+    "@types/chalk": "^0.4.26-alpha",
+    "@types/glob": "^5.0.26-alpha",
+    "@types/glob-stream": "^3.1.26-alpha",
+    "@types/gulp-util": "^3.0.25-alpha",
+    "@types/minimatch": "^2.0.26-alpha",
+    "@types/mocha": "^2.2.25-alpha",
+    "@types/node": "^4.0.26-alpha",
+    "@types/through": "0.0.25-alpha",
+    "@types/vinyl": "^1.1.25-alpha",
+    "@types/vinyl-fs": "0.0.24-alpha",
     "gulp": "^3.8.10",
-    "mocha": "*"
+    "mocha": "*",
+    "typescript": "next"
   },
   "peerDependencies": {
     "typescript": ">=1.7.3"

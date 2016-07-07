@@ -2,20 +2,13 @@
 
 var gulp = require('gulp');
 var path = require('path');
-var tsb = require('./lib/index');
-
-var compilation = tsb.create(path.join(__dirname, 'tsconfig.json'), true);
-
-var sources = [
-	'src/**/*.ts',
-	'typings/**/*.ts',
-	'!node_modules/**/lib*.ts'
-];
+var tsb = require('./');
+var compilation = tsb.create('.', true);
 
 gulp.task('build', function() {
-	return gulp.src(sources)
+	return compilation.src()
 		.pipe(compilation())
-		.pipe(gulp.dest('lib'));
+		.pipe(compilation.dest());
 });
 
 gulp.task('dev', ['build'], function() {

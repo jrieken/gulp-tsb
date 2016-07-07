@@ -1,12 +1,14 @@
+/// <reference types="node" />
+
 'use strict';
 
-import {Stats, statSync, readFileSync} from 'fs';
+import Vinyl = require('vinyl');
 import * as path from 'path';
 import * as crypto from 'crypto';
 import * as utils from './utils';
-import {log, colors} from 'gulp-util';
 import * as ts from 'typescript';
-import Vinyl = require('vinyl');
+import {log, colors} from 'gulp-util';
+import {Stats, statSync, readFileSync} from 'fs';
 
 export interface IConfiguration {
     json: boolean;
@@ -37,7 +39,6 @@ function normalize(path: string): string {
 }
 
 export function createTypeScriptBuilder(config: IConfiguration, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
-
     let host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
@@ -89,7 +90,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         if (!file.contents) {
             host.removeScriptSnapshot(file.path);
         } else {
-            host.addScriptSnapshot(file.path, new VinylScriptSnapshot(file));
+            host.addScriptSnapshot(file.path, new VinylScriptSnapshot(file), /*isRoot*/ true);
         }
     }
 
@@ -179,6 +180,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                                 let tsname = (dirname === '.' ? '' : dirname + '/') + basename + '.ts';
 
                                 let sourceMap = JSON.parse(sourcemapFile.text);
+                                // TODO: how does this affect sourcemaps for --outFile
                                 sourceMap.sources[0] = tsname.replace(/\\/g, '/');
                                 (<any>vinyl).sourceMap = sourceMap;
                             }
@@ -429,6 +431,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     private _settings: ts.CompilerOptions;
     private _noFilesystemLookup: boolean;
     private _snapshots: { [path: string]: ScriptSnapshot };
+    private _roots: string[];
     private _projectVersion: number;
     private _dependencies: utils.graph.Graph<string>;
     private _dependenciesRecomputeList: string[];
@@ -438,6 +441,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         this._settings = settings;
         this._noFilesystemLookup = noFilesystemLookup;
         this._snapshots = Object.create(null);
+        this._roots = [];
         this._projectVersion = 1;
         this._dependencies = new utils.graph.Graph<string>(s => s);
         this._dependenciesRecomputeList = [];
@@ -465,18 +469,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getScriptFileNames(): string[] {
-
-        const result: string[] = [];
-        const defaultLibFileName = this.getDefaultLibFileName(this.getCompilationSettings());
-        for (let fileName in this._snapshots) {
-            if (/\.tsx?/i.test(path.extname(fileName))
-                && fileName !== defaultLibFileName) {
-
-                // only ts-files and not lib.d.ts-like files
-                result.push(fileName)
-            }
-        }
-        return result;
+        return this._roots.slice(0);
     }
 
     getScriptVersion(filename: string): string {
@@ -505,7 +498,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     private static _declareModule = /declare\s+module\s+('|")(.+)\1/g;
 
-    addScriptSnapshot(filename: string, snapshot: ScriptSnapshot): ScriptSnapshot {
+    addScriptSnapshot(filename: string, snapshot: ScriptSnapshot, isRoot?: boolean): ScriptSnapshot {
         this._projectVersion++;
         filename = normalize(filename);
         var old = this._snapshots[filename];
@@ -528,6 +521,9 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
             }
         }
         this._snapshots[filename] = snapshot;
+        if (isRoot && this._roots.indexOf(filename) === -1) {
+            this._roots.push(filename);
+        }
         return old;
     }
 
@@ -535,6 +531,10 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         this._projectVersion++;
         filename = normalize(filename);
         delete this._fileNameToDeclaredModule[filename];
+        const index = this._roots.indexOf(filename);
+        if (index >= 0) {
+            this._roots.splice(index, 1);
+        }
         return delete this._snapshots[filename];
     }
 
@@ -557,8 +557,8 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getDefaultLibFileName(options: ts.CompilerOptions): string {
-        let libFile = options.target < ts.ScriptTarget.ES6 ? 'lib.d.ts' : 'lib.es6.d.ts';
-        return require.resolve("typescript/lib/" + libFile);
+        const libFile = ts.getDefaultLibFileName(options);
+        return utils.paths.toPosixPath(require.resolve("typescript/lib/" + libFile));
     }
 
     // ---- dependency management
