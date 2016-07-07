@@ -8,7 +8,7 @@ import * as ts from 'typescript';
 import {createTypeScriptBuilder, CancellationToken, IConfiguration, ITypeScriptBuilder} from './builder';
 import {Transform} from 'stream';
 import {readFileSync, existsSync, readdirSync} from 'fs';
-import {extname, dirname, basename, resolve, delimiter} from 'path';
+import {extname, dirname, basename, resolve, sep} from 'path';
 import {strings} from './utils';
 
 declare module "through" {
@@ -163,7 +163,7 @@ export class IncrementalCompiler {
                     return commonRoot;
                 }, undefined);
             if (commonRoot && commonRoot.length > 0) {
-                base = commonRoot.join(delimiter);
+                base = commonRoot.join(sep);
             }
         }
         return vinylfs.src(fileNames, Object.assign({ base }, options));
