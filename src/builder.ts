@@ -209,7 +209,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                                 contents = contents.replace(pattern, "");
 
                                 // adjust the source map to be relative to the source directory.
-                                let sourceMap = JSON.parse(sourcemapFile.text);
+                                sourceMap = JSON.parse(sourcemapFile.text);
                                 sourceMap.file = relative;
                                 sourceMap.sources = sourceMap.sources
                                     .map(source => path.resolve(outDir, source))
