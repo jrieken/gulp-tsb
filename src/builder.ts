@@ -11,9 +11,16 @@ import {log, colors} from 'gulp-util';
 import {Stats, statSync, readFileSync} from 'fs';
 
 export interface IConfiguration {
+    /** Indicates whether to report compiler diagnostics as JSON instead of as a string. */
     json: boolean;
+    /** Indicates whether to avoid filesystem lookups for non-root files. */
     noFilesystemLookup: boolean;
+    /** Indicates whether to report verbose compilation messages. */
     verbose: boolean;
+    /** Provides an explicit instance of the typescript compiler to use. */
+    typescript?: typeof ts;
+    /** Indicates the base path from which a project was loaded or compilation was started. */
+    base?: string;
     _emitWithoutBasePath?: boolean;
     _emitLanguageService?: boolean;
 }
@@ -38,18 +45,25 @@ function normalize(path: string): string {
     return path.replace(/\\/g, '/');
 }
 
+export function getTypeScript(config: IConfiguration) {
+    return config.typescript || ts;
+}
+
 export function createTypeScriptBuilder(config: IConfiguration, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
-    let host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false),
+    const ts = getTypeScript(config);
+
+    let host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false, ts),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
         lastDtsHash: { [path: string]: string } = Object.create(null),
         userWantsDeclarations = compilerOptions.declaration,
         oldErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null),
         headUsed = process.memoryUsage().heapUsed,
-        emitSourceMapsInStream = true;
+        emitSourceMapsInStream = true,
+        emitToSingleFile = !!(compilerOptions.out || compilerOptions.outFile);
 
     // always emit declaraction files
-    host.getCompilationSettings().declaration = true;
+    compilerOptions.declaration = true;
 
     function _log(topic: string, message: string): void {
         if (config.verbose) {
@@ -83,8 +97,16 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
 
     function file(file: Vinyl): void {
         // support gulp-sourcemaps
-        if ((<any>file).sourceMap) {
+        if ((<any>file).sourceMap && emitSourceMapsInStream) {
             emitSourceMapsInStream = false;
+
+            // gulp-sourcemaps expects a "pure" source map.
+            // Disable compiler options that modify the emit of a source map.
+            if (compilerOptions.inlineSourceMap) compilerOptions.sourceMap = true;
+            delete compilerOptions.sourceRoot;
+            delete compilerOptions.mapRoot;
+            delete compilerOptions.inlineSourceMap;
+            delete compilerOptions.inlineSources;
         }
 
         if (!file.contents) {
@@ -105,6 +127,13 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
     function isExternalModule(sourceFile: ts.SourceFile): boolean {
         return (<any>sourceFile).externalModuleIndicator
             || /declare\s+module\s+('|")(.+)\1/.test(sourceFile.getText())
+    }
+
+    function getVinyl(fileName: string) {
+        const snapshot = host.getScriptSnapshot(fileName);
+        if (snapshot instanceof VinylScriptSnapshot) {
+            return snapshot.getFile();
+        }
     }
 
     function build(out: (file: Vinyl) => void, onError: (err: any) => void, token = CancellationToken.None): Promise<any> {
@@ -130,8 +159,9 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
             return new Promise(resolve => {
                 process.nextTick(function() {
 
-                    if (/\.d\.ts$/.test(fileName)) {
-                        // if it's already a d.ts file just emit it signature
+                    if (/\.d\.ts$/.test(fileName) || hasEmittedSingleFileOutput) {
+                        // if it's already a d.ts file or we have already emitted single file outputs,
+                        // just emit its signature
                         let snapshot = host.getScriptSnapshot(fileName);
                         let signature = crypto.createHash('md5')
                             .update(snapshot.getText(0, snapshot.getLength()))
@@ -164,29 +194,45 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                             }
                         }
 
-                        let vinyl = new Vinyl({
-                            path: file.name,
-                            contents: new Buffer(file.text),
-                            base: !config._emitWithoutBasePath && baseFor(host.getScriptSnapshot(fileName))
-                        });
-
+                        // to better support gulp-sourcemaps, output files should be relative to the source directory.
+                        let outFile = emitToSingleFile && path.resolve(config.base, compilerOptions.outFile || compilerOptions.out);
+                        let outDir = emitToSingleFile ? path.dirname(outFile) : path.resolve(config.base, compilerOptions.outDir || ".");
+                        let base = emitToSingleFile ? config.base : getVinyl(fileName).base;
+                        let relative = path.relative(outDir, file.name);
+                        let contents = file.text;
+                        let sourceMap: any;
                         if (!emitSourceMapsInStream && /\.js$/.test(file.name)) {
                             let sourcemapFile = output.outputFiles.filter(f => /\.js\.map$/.test(f.name))[0];
-
                             if (sourcemapFile) {
-                                let extname = path.extname(vinyl.relative);
-                                let basename = path.basename(vinyl.relative, extname);
-                                let dirname = path.dirname(vinyl.relative);
-                                let tsname = (dirname === '.' ? '' : dirname + '/') + basename + '.ts';
+                                // strip the trailing sourceMappingURL comment added by the compiler.
+                                const pattern = /(\r\n?|\n)?\/\/# sourceMappingURL=[^\r\n]+(?=[\r\n\s]*$)/;
+                                contents = contents.replace(pattern, "");
 
+                                // adjust the source map to be relative to the source directory.
                                 let sourceMap = JSON.parse(sourcemapFile.text);
-                                // TODO: how does this affect sourcemaps for --outFile
-                                sourceMap.sources[0] = tsname.replace(/\\/g, '/');
-                                (<any>vinyl).sourceMap = sourceMap;
+                                sourceMap.file = relative;
+                                sourceMap.sources = sourceMap.sources
+                                    .map(source => path.resolve(outDir, source))
+                                    .map(source => getVinyl(source))
+                                    .map(source => source.relative);
                             }
                         }
 
+                        let vinyl = new Vinyl({
+                            path: path.join(base, relative),
+                            contents: new Buffer(contents),
+                            base,
+                        });
+
+                        if (sourceMap) {
+                            (<any>vinyl).sourceMap = sourceMap;
+                        }
+
                         files.push(vinyl);
+                    }
+
+                    if (emitToSingleFile) {
+                        hasEmittedSingleFileOutput = true;
                     }
 
                     resolve({
@@ -207,6 +253,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         let filesWithChangedSignature: string[] = [];
         let dependentFiles: string[] = [];
         let newLastBuildVersion = new Map<string, string>();
+        let hasEmittedSingleFileOutput = false;
 
         for (let fileName of host.getScriptFileNames()) {
             if (lastBuildVersion[fileName] !== host.getScriptVersion(fileName)) {
@@ -413,12 +460,17 @@ class ScriptSnapshot implements ts.IScriptSnapshot {
 }
 
 class VinylScriptSnapshot extends ScriptSnapshot {
-
+    private _file: Vinyl;
     private _base: string;
 
     constructor(file: Vinyl) {
         super(file.contents.toString(), file.stat.mtime);
         this._base = file.base;
+        this._file = file;
+    }
+
+    public getFile(): Vinyl {
+        return this._file;
     }
 
     public getBase(): string {
@@ -428,6 +480,7 @@ class VinylScriptSnapshot extends ScriptSnapshot {
 
 class LanguageServiceHost implements ts.LanguageServiceHost {
 
+    private _typescript: typeof ts;
     private _settings: ts.CompilerOptions;
     private _noFilesystemLookup: boolean;
     private _snapshots: { [path: string]: ScriptSnapshot };
@@ -437,7 +490,8 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     private _dependenciesRecomputeList: string[];
     private _fileNameToDeclaredModule: { [path: string]: string[] };
 
-    constructor(settings: ts.CompilerOptions, noFilesystemLookup:boolean) {
+    constructor(settings: ts.CompilerOptions, noFilesystemLookup: boolean, typescript: typeof ts) {
+        this._typescript = typescript;
         this._settings = settings;
         this._noFilesystemLookup = noFilesystemLookup;
         this._snapshots = Object.create(null);
@@ -557,8 +611,9 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getDefaultLibFileName(options: ts.CompilerOptions): string {
+        const ts = this._typescript;
         const libFile = ts.getDefaultLibFileName(options);
-        return utils.paths.toPosixPath(require.resolve("typescript/lib/" + libFile));
+        return normalize(require.resolve("typescript/lib/" + libFile));
     }
 
     // ---- dependency management
@@ -575,6 +630,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     _processFile(filename: string): void {
+        const ts = this._typescript;
         if (filename.match(/.*\.d\.ts$/)) {
             return;
         }

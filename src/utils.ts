@@ -142,9 +142,3 @@ export module graph {
     }
 
 }
-
-export module paths {
-    export function toPosixPath(text: string) {
-        return text.replace(path.win32.sep, path.posix.sep);
-    }
-}
