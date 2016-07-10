@@ -39,6 +39,27 @@ export module collections {
     export function contains(collection: { [keys: string]: any }, key: string): boolean {
         return hasOwnProperty.call(collection, key);
     }
+
+    export function structuredClone<T>(value: T): T {
+        return structuredCloneRecursive(value, new Map<any, any>());
+    }
+
+    function structuredCloneRecursive(value: any, objects: Map<any, any>) {
+        if (value === undefined) return undefined;
+        if (value === null) return null;
+        if (typeof value !== "object") return value;
+        let clone = objects.get(value);
+        if (clone === undefined) {
+            clone = Array.isArray(value) ? Array<any>(value.length) : {};
+            objects.set(value, clone);
+            for (const key in value) {
+                if (contains(value, key)) {
+                    clone[key] = structuredCloneRecursive(value[key], objects);
+                }
+            }
+        }
+        return clone;
+    }
 }
 
 export module strings {

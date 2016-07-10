@@ -6,10 +6,10 @@ import * as gutil from 'gulp-util';
 import * as through from 'through';
 import * as ts from 'typescript';
 import {createTypeScriptBuilder, CancellationToken, IConfiguration, ITypeScriptBuilder, getTypeScript} from './builder';
-import {Transform} from 'stream';
+import {Transform, Readable} from 'stream';
 import {readFileSync, existsSync, readdirSync} from 'fs';
-import {extname, dirname, basename, resolve, sep} from 'path';
-import {strings} from './utils';
+import {extname, dirname, basename, resolve, sep, join, relative} from 'path';
+import {strings, collections} from './utils';
 
 declare module "through" {
     interface ThroughStream {
@@ -62,11 +62,62 @@ export class IncrementalCompiler {
         throw new Error("Not implemented");
     }
 
-    /**
-     * Gets the Program created for this compilation.
-     */
+    /** Gets the Program created for this compilation. */
     public get program() {
-        return this._getBuilder().languageService.getProgram();
+        return this.builder.languageService.getProgram();
+    }
+
+    /** Gets the current compiler options. */
+    public get compilerOptions() {
+        return this._options || (this._options = this._parseOptions(/*includeFiles*/ false).options);
+    }
+
+    /** Gets the current file names. */
+    public get fileNames() {
+        if (!this._project) {
+            return [];
+        }
+
+        // we do not cache file names between calls to .src() to allow new files to be picked up by
+        // the compiler between compilations.  However, we will cache the compiler options if we
+        // haven't seen them yet.
+        const parsed = this._parseOptions(/*includeFiles*/ true);
+        if (!this._options) {
+            this._options = parsed.options;
+        }
+
+        return parsed.fileNames;
+    }
+
+    /** Gets the expected destination path. */
+    public get destPath() {
+        let destPath = this._base;
+        const compilerOptions = this.compilerOptions;
+        if (compilerOptions.outDir) {
+            destPath = resolve(destPath, compilerOptions.outDir);
+        }
+        else if (compilerOptions.outFile || compilerOptions.out) {
+            const outFile = compilerOptions.outFile || compilerOptions.out;
+            destPath = dirname(resolve(destPath, compilerOptions.outFile || compilerOptions.out));
+        }
+        return relative(process.cwd(), destPath);
+    }
+
+    /** Gets the expected sourcemap path (for use with gulp-sourcemaps). */
+    public get sourcemapPath() {
+        return this.compilerOptions.inlineSourceMap ? undefined : "."
+    }
+
+    /** Gets the sourcemap options (for use with gulp-sourcemaps). */
+    public get sourcemapOptions() {
+        return {
+            includeContent: this.compilerOptions.inlineSources,
+            destPath: this.destPath
+        };
+    }
+
+    private get builder() {
+        return this._builder || (this._builder = createTypeScriptBuilder(this._config, Object.assign({}, this.compilerOptions)));
     }
 
     /**
@@ -81,7 +132,7 @@ export class IncrementalCompiler {
         if (existsSync(possibleProject)) {
             project = possibleProject;
         }
-        return this._create(project, /*options*/ undefined, config, onError);
+        return this._fromProjectAndOptions(project, /*options*/ undefined, config, onError);
     }
 
     /**
@@ -92,10 +143,10 @@ export class IncrementalCompiler {
      * @param onError A custom error handler.
      */
     public static fromOptions(compilerOptions: CompilerOptions, config: IConfiguration, onError?: (message: any) => void) {
-        return this._create(/*project*/ undefined, compilerOptions, config, onError);
+        return this._fromProjectAndOptions(/*project*/ undefined, compilerOptions, config, onError);
     }
 
-    private static _create(project: string | undefined, compilerOptions: CompilerOptions | undefined, config: IConfiguration, onError: (message: any) => void = (err) => console.log(JSON.stringify(err, null, 4))) {
+    private static _fromProjectAndOptions(project: string | undefined, compilerOptions: CompilerOptions | undefined, config: IConfiguration, onError: (message: any) => void = (err) => console.log(JSON.stringify(err, null, 4))) {
         let projectDiagnostic: ts.Diagnostic | undefined;
         let json: any;
         let base = process.cwd();
@@ -115,16 +166,37 @@ export class IncrementalCompiler {
             json = { compilerOptions };
         }
 
-        // Wire up the function's prototype to IncrementalCompiler's prototype
-        const compiler = <IncrementalCompiler>((token?: CancellationToken) => compiler._createStream(token));
+        return IncrementalCompiler._create(
+            project,
+            base,
+            json,
+            Object.assign({ base }, config),
+            onError,
+            projectDiagnostic
+        );
+    }
+
+    private static _create(project: string | undefined, base: string, json: any, config: IConfiguration, onError: (message: any) => void, projectDiagnostic: ts.Diagnostic) {
+        const compiler: IncrementalCompiler = <IncrementalCompiler>((token?: CancellationToken) => compiler._createStream(token));
         Object.setPrototypeOf(compiler, IncrementalCompiler.prototype);
         compiler._project = project;
         compiler._base = base;
         compiler._json = json;
-        compiler._config = Object.assign({ base }, config);
+        compiler._config = config;
         compiler._onError = onError;
         compiler._projectDiagnostic = projectDiagnostic;
         return compiler;
+    }
+
+    /**
+     * Creates a copy of this IncrementalCompiler for the provided TypeScript module object.
+     *
+     * @param typescript A module object for the TypeScript compiler.
+     */
+    public withTypeScript(typescript: typeof ts) {
+        const json = collections.structuredClone(this._json);
+        const config = Object.assign({}, this._config, { typescript });
+        return IncrementalCompiler._create(this._project, this._base, json, config, this._onError, this._projectDiagnostic);
     }
 
     /**
@@ -133,16 +205,19 @@ export class IncrementalCompiler {
      * @param compilerOptions additional compiler options.
      */
     public withCompilerOptions(compilerOptions: CompilerOptions) {
-        const compiler = <IncrementalCompiler>((token?: CancellationToken) => compiler._createStream(token));
-        Object.setPrototypeOf(compiler, IncrementalCompiler.prototype);
-        compiler._project = this._project;
-        compiler._base = this._base;
-        compiler._json = Object.assign({}, this._json);
-        compiler._json.compilerOptions = Object.assign({ }, this._json.compilerOptions, compilerOptions);
-        compiler._config = this._config;
-        compiler._onError = this._onError;
-        compiler._projectDiagnostic = this._projectDiagnostic;
-        return compiler;
+        const json = collections.structuredClone(this._json || {});
+        json.compilerOptions = Object.assign(json.compilerOptions || {}, compilerOptions);
+        const config = Object.assign({}, this._config);
+        return IncrementalCompiler._create(this._project, this._base, json, config, this._onError, this._projectDiagnostic);
+    }
+
+    /**
+     * Creates a copy of this IncrementalCompiler.
+     */
+    public clone() {
+        const json = collections.structuredClone(this._json);
+        const config = Object.assign({}, this._config);
+        return IncrementalCompiler._create(this._project, this._base, json, config, this._onError, this._projectDiagnostic);
     }
 
     /**
@@ -150,35 +225,15 @@ export class IncrementalCompiler {
      *
      * @param options Options to pass to vinyl-fs.
      */
-    public src(options?: vinylfs.ISrcOptions) {
+    public src(options?: vinylfs.ISrcOptions): NodeJS.ReadableStream {
+        if (!this._project) {
+            throw new gutil.PluginError("gulp-tsb", "'src' is only supported for projects.");
+        }
+
         const ts = getTypeScript(this._config);
-        const fileNames = this._getFileNames();
-        const compilerOptions = this._getOptions();
-        let base = this._base;
-        if (compilerOptions.rootDir) {
-            base = resolve(base, compilerOptions.rootDir);
-        }
-        else {
-            const declarationPattern = /\.d\.ts$/i;
-            const commonRoot = fileNames
-                .filter(file => !declarationPattern.test(file))
-                .map(file => file.split(/[\\/]/g))
-                .reduce((commonRoot, segments) => {
-                    segments.pop(); // remove the file name.
-                    if (commonRoot === undefined) {
-                        return segments;
-                    }
-                    for (let i = 0; i < commonRoot.length && i < segments.length; i++) {
-                        if (!strings.equal(commonRoot[i], segments[i], !ts.sys.useCaseSensitiveFileNames)) {
-                            return commonRoot.slice(0, i);
-                        }
-                    }
-                    return commonRoot;
-                }, undefined);
-            if (commonRoot && commonRoot.length > 0) {
-                base = commonRoot.join(sep);
-            }
-        }
+        const fileNames = this.fileNames;
+        const compilerOptions = this.compilerOptions;
+        const base = this._base;
         return vinylfs.src(fileNames, Object.assign({ base }, options));
     }
 
@@ -195,40 +250,19 @@ export class IncrementalCompiler {
      * @param options Options to pass to vinyl-fs.
      */
     public dest(options?: vinylfs.IDestOptions) {
-        const compilerOptions = this._getOptions();
-        let dest = this._base;
-        if (compilerOptions.outDir) {
-            dest = resolve(dest, compilerOptions.outDir);
-        }
-        else if (compilerOptions.out || compilerOptions.outFile) {
-            dest = resolve(dest, dirname(compilerOptions.out || compilerOptions.outFile || ""));
-        }
-        return vinylfs.dest(dest, options);
+        return vinylfs.dest(this.destPath, options);
     }
 
-    private _getOptions() {
-        return this._options || (this._options = this._parseOptions().options);
-    }
-
-    private _getBuilder() {
-        return this._builder || (this._builder = createTypeScriptBuilder(this._config, Object.assign({}, this._getOptions())));
-    }
-
-    private _getFileNames() {
-        // we do not cache file names between calls to .src() to allow new files to be picked up by
-        // the compiler between compilations.  However, we will cache the compiler options if we
-        // haven't seen them yet.
-        const parsed = this._parseOptions();
-        if (!this._options) {
-            this._options = parsed.options;
-        }
-
-        return parsed.fileNames;
-    }
-
-    private _parseOptions() {
+    private _parseOptions(includeFiles: boolean) {
         const ts = getTypeScript(this._config);
-        return ts.parseJsonConfigFileContent(this._json, ts.sys, this._base, /*existingOptions*/ undefined, this._project);
+        let json = this._json;
+        if (!includeFiles) {
+            json = Object.assign({}, json);
+            json.include = [];
+            json.exclude = [];
+            json.files = [];
+        }
+        return ts.parseJsonConfigFileContent(json, ts.sys, this._base, /*existingOptions*/ undefined, this._project);
     }
 
     private _createStream(token?: CancellationToken): Transform | null {
@@ -236,7 +270,7 @@ export class IncrementalCompiler {
             return null;
         }
 
-        const builder = this._getBuilder();
+        const builder = this.builder;
         const onError = this._onError;
         return through(function (this: through.ThroughStream, file: Vinyl) {
             // give the file to the compiler
@@ -262,6 +296,8 @@ export interface CreateOptions {
     verbose?: boolean;
     /** Provides an explicit instance of the typescript compiler to use. */
     typescript?: typeof ts;
+    /** The base path to use for file resolution. */
+    base?: string;
     /** Custom callback used to report compiler diagnostics. */
     onError?: (message: any) => void;
 }
@@ -309,6 +345,7 @@ export function create(compilerOptions: CompilerOptions, verbose?: boolean, json
 export function create(projectOrCompilerOptions: CompilerOptions | string, verboseOrCreateOptions?: boolean | CreateOptions, json?: boolean, onError?: (message: any) => void): IncrementalCompiler {
     let verbose: boolean;
     let typescript: typeof ts;
+    let base: string;
     if (typeof verboseOrCreateOptions === "boolean") {
         verbose = verboseOrCreateOptions;
     }
@@ -317,9 +354,14 @@ export function create(projectOrCompilerOptions: CompilerOptions | string, verbo
         json = verboseOrCreateOptions.json;
         onError = verboseOrCreateOptions.onError;
         typescript = verboseOrCreateOptions.typescript;
+        base = verboseOrCreateOptions.base;
     }
 
     const config: IConfiguration = { json, verbose, noFilesystemLookup: false, typescript };
+    if (base) {
+        config.base = resolve(base);
+    }
+
     if (typeof projectOrCompilerOptions === 'string') {
         return IncrementalCompiler.fromProject(projectOrCompilerOptions, config, onError);
     }

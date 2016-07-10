@@ -52,7 +52,17 @@ export function getTypeScript(config: IConfiguration) {
 export function createTypeScriptBuilder(config: IConfiguration, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
     const ts = getTypeScript(config);
 
-    let host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false, ts),
+    if (compilerOptions.out) {
+        // "out" was not previously resolved as a file path relative to the base path
+        // which is one reason why it was replaced with "outFile". This causes issues
+        // for eventual sourcemap resolution, so we should resolve it here.
+        compilerOptions.out = path.resolve(config.base, compilerOptions.out);
+    }
+
+    // always emit declaraction files
+    compilerOptions.declaration = true;
+
+    let host = new LanguageServiceHost(compilerOptions, config, config.noFilesystemLookup || false, ts),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
         lastDtsHash: { [path: string]: string } = Object.create(null),
@@ -61,9 +71,6 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         headUsed = process.memoryUsage().heapUsed,
         emitSourceMapsInStream = true,
         emitToSingleFile = !!(compilerOptions.out || compilerOptions.outFile);
-
-    // always emit declaraction files
-    compilerOptions.declaration = true;
 
     function _log(topic: string, message: string): void {
         if (config.verbose) {
@@ -211,10 +218,10 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                                 // adjust the source map to be relative to the source directory.
                                 sourceMap = JSON.parse(sourcemapFile.text);
                                 sourceMap.file = relative;
-                                sourceMap.sources = sourceMap.sources
-                                    .map(source => path.resolve(outDir, source))
-                                    .map(source => getVinyl(source))
-                                    .map(source => source.relative);
+                                sourceMap.sources = sourceMap.sources.map(source => {
+                                    const vinyl = getVinyl(path.resolve(outDir, source));
+                                    return vinyl ? vinyl.relative : source;
+                                });
                             }
                         }
 
@@ -482,6 +489,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     private _typescript: typeof ts;
     private _settings: ts.CompilerOptions;
+    private _config: IConfiguration;
     private _noFilesystemLookup: boolean;
     private _snapshots: { [path: string]: ScriptSnapshot };
     private _roots: string[];
@@ -490,9 +498,10 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     private _dependenciesRecomputeList: string[];
     private _fileNameToDeclaredModule: { [path: string]: string[] };
 
-    constructor(settings: ts.CompilerOptions, noFilesystemLookup: boolean, typescript: typeof ts) {
+    constructor(settings: ts.CompilerOptions, config: IConfiguration, noFilesystemLookup: boolean, typescript: typeof ts) {
         this._typescript = typescript;
         this._settings = settings;
+        this._config = config;
         this._noFilesystemLookup = noFilesystemLookup;
         this._snapshots = Object.create(null);
         this._roots = [];
@@ -539,7 +548,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
                 result = new VinylScriptSnapshot(new Vinyl(<any> {
                     path: filename,
                     contents: readFileSync(filename),
-                    base: this._settings.outDir,
+                    base: this._config.base,
                     stat: statSync(filename)
                 }));
                 this.addScriptSnapshot(filename, result);
