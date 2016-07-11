@@ -9,7 +9,6 @@ import * as utils from './utils';
 import * as ts from 'typescript';
 import {EOL} from 'os';
 import {log, colors} from 'gulp-util';
-import convert = require('convert-source-map');
 import {Stats, statSync, readFileSync} from 'fs';
 import structuredClone = utils.collections.structuredClone;
 
