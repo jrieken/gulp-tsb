@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@types/chalk": "^0.4.26-alpha",
+    "@types/convert-source-map": "0.0.28-alpha",
     "@types/glob": "^5.0.26-alpha",
     "@types/glob-stream": "^3.1.26-alpha",
     "@types/gulp-util": "^3.0.25-alpha",
@@ -37,6 +38,7 @@
     "@types/through": "0.0.25-alpha",
     "@types/vinyl": "^1.1.25-alpha",
     "@types/vinyl-fs": "0.0.24-alpha",
+    "convert-source-map": "^1.2.0",
     "gulp": "^3.8.10",
     "mocha": "*",
     "typescript": "next"

@@ -7,8 +7,13 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import * as utils from './utils';
 import * as ts from 'typescript';
+import {EOL} from 'os';
 import {log, colors} from 'gulp-util';
+import convert = require('convert-source-map');
 import {Stats, statSync, readFileSync} from 'fs';
+import structuredClone = utils.collections.structuredClone;
+
+type VinylFile = Vinyl & { sourceMap?: any; };
 
 export interface IConfiguration {
     /** Indicates whether to report compiler diagnostics as JSON instead of as a string. */
@@ -50,27 +55,36 @@ export function getTypeScript(config: IConfiguration) {
 }
 
 export function createTypeScriptBuilder(config: IConfiguration, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
+    // TODO(rbuckton): support url sourceRoot
+    // TODO(rbuckton): support url mapRoot
+    // TODO(rbuckton): support mapRoot
     const ts = getTypeScript(config);
+    const originalCompilerOptions = structuredClone(compilerOptions);
+    compilerOptions = structuredClone(compilerOptions);
 
-    if (compilerOptions.out) {
-        // "out" was not previously resolved as a file path relative to the base path
-        // which is one reason why it was replaced with "outFile". This causes issues
-        // for eventual sourcemap resolution, so we should resolve it here.
-        compilerOptions.out = path.resolve(config.base, compilerOptions.out);
+    if (compilerOptions.outFile || compilerOptions.out) {
+        // always treat out file as relative to the root of the sources.
+        compilerOptions.outFile = path.resolve(config.base, path.basename(compilerOptions.outFile || compilerOptions.out));
     }
 
-    // always emit declaraction files
-    compilerOptions.declaration = true;
+    // clean up compiler options that conflict with gulp
+    if (compilerOptions.inlineSourceMap) compilerOptions.sourceMap = true;
+    delete compilerOptions.inlineSourceMap; // handled by gulp-sourcemaps or explicitly.
+    delete compilerOptions.inlineSources; // handled by gulp-sourcemaps or explicitly.
+    delete compilerOptions.sourceRoot; // incompatible with gulp-sourcemaps
+    delete compilerOptions.mapRoot; // incompatible with gulp-sourcemaps
+    delete compilerOptions.outDir; // always emit relative to source file
+    delete compilerOptions.out; // outFile is preferred, see above
+    compilerOptions.declaration = true; // always emit declaraction files
 
     let host = new LanguageServiceHost(compilerOptions, config, config.noFilesystemLookup || false, ts),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
         lastDtsHash: { [path: string]: string } = Object.create(null),
-        userWantsDeclarations = compilerOptions.declaration,
         oldErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null),
         headUsed = process.memoryUsage().heapUsed,
         emitSourceMapsInStream = true,
-        emitToSingleFile = !!(compilerOptions.out || compilerOptions.outFile);
+        emitToSingleFile = !!compilerOptions.outFile;
 
     function _log(topic: string, message: string): void {
         if (config.verbose) {
@@ -106,25 +120,17 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         // support gulp-sourcemaps
         if ((<any>file).sourceMap && emitSourceMapsInStream) {
             emitSourceMapsInStream = false;
-
-            // gulp-sourcemaps expects a "pure" source map.
-            // Disable compiler options that modify the emit of a source map.
-            if (compilerOptions.inlineSourceMap) compilerOptions.sourceMap = true;
-            delete compilerOptions.sourceRoot;
-            delete compilerOptions.mapRoot;
-            delete compilerOptions.inlineSourceMap;
-            delete compilerOptions.inlineSources;
         }
 
         if (!file.contents) {
             host.removeScriptSnapshot(file.path);
         } else {
-            host.addScriptSnapshot(file.path, new VinylScriptSnapshot(file), /*isRoot*/ true);
+            host.addScriptSnapshot(file.path, new ScriptSnapshot(file), /*isRoot*/ true);
         }
     }
 
     function baseFor(snapshot: ScriptSnapshot): string {
-        if (snapshot instanceof VinylScriptSnapshot) {
+        if (snapshot instanceof ScriptSnapshot) {
             return compilerOptions.outDir || snapshot.getBase();
         } else {
             return '';
@@ -136,10 +142,19 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
             || /declare\s+module\s+('|")(.+)\1/.test(sourceFile.getText())
     }
 
-    function getVinyl(fileName: string) {
+    function getVinyl(fileName: string, base?: string) {
+        if (base) fileName = path.resolve(base, fileName);
         const snapshot = host.getScriptSnapshot(fileName);
-        if (snapshot instanceof VinylScriptSnapshot) {
+        if (snapshot instanceof ScriptSnapshot) {
             return snapshot.getFile();
+        }
+    }
+
+    function getNewLine() {
+        switch (compilerOptions.newLine) {
+            case ts.NewLineKind.CarriageReturnLineFeed: return "\r\n";
+            case ts.NewLineKind.LineFeed: return "\n";
+            default: return EOL;
         }
     }
 
@@ -162,13 +177,10 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         }
 
         function emitSoon(fileName: string): Promise<{ fileName:string, signature: string, files: Vinyl[] }> {
-
             return new Promise(resolve => {
                 process.nextTick(function() {
-
-                    if (/\.d\.ts$/.test(fileName) || hasEmittedSingleFileOutput) {
-                        // if it's already a d.ts file or we have already emitted single file outputs,
-                        // just emit its signature
+                    if (/\.d\.ts$/.test(fileName)) {
+                        // if it's already a d.ts file just emit its signature
                         let snapshot = host.getScriptSnapshot(fileName);
                         let signature = crypto.createHash('md5')
                             .update(snapshot.getText(0, snapshot.getLength()))
@@ -181,65 +193,139 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                         });
                     }
 
-                    let output = service.getEmitOutput(fileName);
-                    let files: Vinyl[] = [];
+                    if (hasEmittedSingleFileOutput) {
+                        // if we have already emitted the single file output, just emit the
+                        // saved signature.
+                        return resolve({
+                            fileName,
+                            signature: singleFileSignature,
+                            files: []
+                        });
+                    }
+
+                    const input = getVinyl(fileName);
+                    const output = service.getEmitOutput(fileName);
+                    const files: Vinyl[] = [];
                     let signature: string;
-
-                    for (let file of output.outputFiles) {
-                        if (!emitSourceMapsInStream && /\.js\.map$/.test(file.name)) {
-                            continue;
+                    let javaScriptFile: VinylFile;
+                    let declarationFile: Vinyl;
+                    let sourceMapFile: Vinyl;
+                    for (const file of output.outputFiles) {
+                        // When gulp-sourcemaps writes out a sourceMap, it uses the path
+                        // information of the associated file. Specifically, it uses the base
+                        // directory and relative path of the file to make decisions on how to
+                        // write the "sources" and "sourceRoot" properties.
+                        //
+                        // To emit the correct paths, we need to have the output files emulate
+                        // a path local to the source location, not the expected output location.
+                        //
+                        // Since gulp.dest sets our output location for us, then all that matters
+                        // to gulp.dest is the relative path for each file. This means that we
+                        // should be able to safely treat output files as local to sources to
+                        // better support gulp-sourcemaps.
+                        const base = emitToSingleFile ? config.base : input.base;
+                        const relative = path.relative(base, file.name);
+                        const name = path.resolve(base, relative);
+                        const contents = new Buffer(file.text);
+                        const vinyl = new Vinyl({path: name, base, contents});
+                        if (/\.js$/.test(vinyl.path)) {
+                            javaScriptFile = vinyl;
                         }
-
-                        if (/\.d\.ts$/.test(file.name)) {
-                            signature = crypto.createHash('md5')
-                                .update(file.text)
-                                .digest('base64');
-
-                            if (!userWantsDeclarations) {
-                                // don't leak .d.ts files if users don't want them
-                                continue;
-                            }
+                        else if (/\.js\.map$/.test(vinyl.path)) {
+                            sourceMapFile = vinyl;
                         }
+                        else if (/\.d\.ts$/.test(vinyl.path)) {
+                            declarationFile = vinyl;
+                        }
+                    }
 
-                        // to better support gulp-sourcemaps, output files should be relative to the source directory.
-                        let outFile = emitToSingleFile && path.resolve(config.base, compilerOptions.outFile || compilerOptions.out);
-                        let outDir = emitToSingleFile ? path.dirname(outFile) : path.resolve(config.base, compilerOptions.outDir || ".");
-                        let base = emitToSingleFile ? config.base : getVinyl(fileName).base;
-                        let relative = path.relative(outDir, file.name);
-                        let contents = file.text;
-                        let sourceMap: any;
-                        if (!emitSourceMapsInStream && /\.js$/.test(file.name)) {
-                            let sourcemapFile = output.outputFiles.filter(f => /\.js\.map$/.test(f.name))[0];
-                            if (sourcemapFile) {
-                                // strip the trailing sourceMappingURL comment added by the compiler.
-                                const pattern = /(\r\n?|\n)?\/\/# sourceMappingURL=[^\r\n]+(?=[\r\n\s]*$)/;
-                                contents = contents.replace(pattern, "");
+                    if (javaScriptFile) {
+                        const sourceMappingURLPattern = /(\r\n?|\n)?\/\/# sourceMappingURL=[^\r\n]+(?=[\r\n\s]*$)/;
+                        const contents = javaScriptFile.contents.toString();
+                        javaScriptFile.contents = new Buffer(contents.replace(sourceMappingURLPattern, ""));
+                        files.push(javaScriptFile);
+                    }
 
-                                // adjust the source map to be relative to the source directory.
-                                sourceMap = JSON.parse(sourcemapFile.text);
-                                sourceMap.file = relative;
-                                sourceMap.sources = sourceMap.sources.map(source => {
-                                    const vinyl = getVinyl(path.resolve(outDir, source));
-                                    return vinyl ? vinyl.relative : source;
+                    if (declarationFile) {
+                        signature = crypto.createHash('md5')
+                            .update(declarationFile.contents)
+                            .digest('base64');
+
+                        if (originalCompilerOptions.declaration) {
+                            // don't leak .d.ts files if users don't want them
+                            files.push(declarationFile);
+                        }
+                    }
+
+                    if (sourceMapFile) {
+                        // adjust the source map to be relative to the source directory.
+                        const sourceMap = JSON.parse(sourceMapFile.contents.toString());
+                        let sourceRoot = sourceMap.sourceRoot;
+                        let sources = emitToSingleFile ? sourceMap.sources : [input.path];
+
+                        const destPath = emitToSingleFile
+                            ? path.dirname(path.resolve(config.base, originalCompilerOptions.outFile || originalCompilerOptions.out))
+                            : path.resolve(config.base, originalCompilerOptions.outDir || ".");
+
+                        // update sourceRoot
+                        sourceRoot = emitSourceMapsInStream ? originalCompilerOptions.sourceRoot : sourceRoot;
+                        sourceMap.sourceRoot = sourceRoot ? normalize(path.relative(destPath, sourceRoot)) : undefined;
+
+                        // make all sources absolute
+                        sources = sources.map(source => path.resolve(sourceMapFile.base, source));
+
+                        if (emitSourceMapsInStream) {
+                            // update sourcesContent
+                            if (originalCompilerOptions.inlineSources) {
+                                sourceMap.sourcesContent = sources.map(source => {
+                                    const vinyl = getVinyl(source);
+                                    return vinyl
+                                        ? vinyl.contents.toString()
+                                        : ts.sys.readFile(source);
                                 });
                             }
+
+                            // make all sources relative to the sourceRoot or destPath
+                            sourceMap.sources = sources.map(source => {
+                                source = path.resolve(sourceMapFile.base, source);
+                                source = path.relative(sourceRoot || destPath, source);
+                                return normalize(source);
+                            });
+
+                            // update the contents for the sourcemap file
+                            sourceMapFile.contents = new Buffer(JSON.stringify(sourceMap));
+
+                            const newLine = getNewLine();
+                            let contents = javaScriptFile.contents.toString();
+                            if (originalCompilerOptions.inlineSourceMap) {
+                                // restore the sourcemap as an inline source map in the javaScript file.
+                                contents += newLine + "//# sourceMappingURL=data:application/json;charset=utf8;base64," + sourceMapFile.contents.toString("base64") + newLine;
+                            }
+                            else {
+                                contents += newLine + "//# sourceMappingURL=" + path.relative(javaScriptFile.path, sourceMapFile.path) + newLine;
+                                files.push(sourceMapFile);
+                            }
+
+                            javaScriptFile.contents = new Buffer(contents);
                         }
+                        else {
+                            // sourceContent is handled by gulp-sourcemaps
+                            sourceMap.sourcesContent = undefined;
 
-                        let vinyl = new Vinyl({
-                            path: path.join(base, relative),
-                            contents: new Buffer(contents),
-                            base,
-                        });
+                            // make all sources relative
+                            sourceMap.sources = sources.map(source => {
+                                const vinyl = emitToSingleFile ? getVinyl(source) : input;
+                                return vinyl ? normalize(vinyl.relative) : source;
+                            });
 
-                        if (sourceMap) {
-                            (<any>vinyl).sourceMap = sourceMap;
+                            // set the javaScriptFile's sourceMap
+                            javaScriptFile.sourceMap = sourceMap;
                         }
-
-                        files.push(vinyl);
                     }
 
                     if (emitToSingleFile) {
                         hasEmittedSingleFileOutput = true;
+                        singleFileSignature = signature;
                     }
 
                     resolve({
@@ -261,6 +347,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         let dependentFiles: string[] = [];
         let newLastBuildVersion = new Map<string, string>();
         let hasEmittedSingleFileOutput = false;
+        let singleFileSignature: string;
 
         for (let fileName of host.getScriptFileNames()) {
             if (lastBuildVersion[fileName] !== host.getScriptVersion(fileName)) {
@@ -440,13 +527,14 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
 }
 
 class ScriptSnapshot implements ts.IScriptSnapshot {
-
+    private _file: VinylFile;
     private _text: string;
     private _mtime: Date;
 
-    constructor(text: string, mtime: Date) {
-        this._text = text;
-        this._mtime = mtime;
+    constructor(file: VinylFile) {
+        this._file = file;
+        this._text = file.contents.toString("utf8");
+        this._mtime = file.stat.mtime;
     }
 
     public getVersion(): string {
@@ -464,24 +552,13 @@ class ScriptSnapshot implements ts.IScriptSnapshot {
     public getChangeRange(oldSnapshot: ts.IScriptSnapshot): ts.TextChangeRange {
         return null;
     }
-}
 
-class VinylScriptSnapshot extends ScriptSnapshot {
-    private _file: Vinyl;
-    private _base: string;
-
-    constructor(file: Vinyl) {
-        super(file.contents.toString(), file.stat.mtime);
-        this._base = file.base;
-        this._file = file;
-    }
-
-    public getFile(): Vinyl {
+    public getFile(): VinylFile {
         return this._file;
     }
 
     public getBase(): string {
-        return this._base;
+        return this._file.base;
     }
 }
 
@@ -545,7 +622,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         let result = this._snapshots[filename];
         if (!result && !this._noFilesystemLookup) {
             try {
-                result = new VinylScriptSnapshot(new Vinyl(<any> {
+                result = new ScriptSnapshot(new Vinyl(<any> {
                     path: filename,
                     contents: readFileSync(filename),
                     base: this._config.base,

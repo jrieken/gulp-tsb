@@ -5,10 +5,11 @@ import * as vinylfs from 'vinyl-fs';
 import * as gutil from 'gulp-util';
 import * as through from 'through';
 import * as ts from 'typescript';
+import {EventEmitter} from 'events';
 import {createTypeScriptBuilder, CancellationToken, IConfiguration, ITypeScriptBuilder, getTypeScript} from './builder';
 import {Transform, Readable} from 'stream';
 import {readFileSync, existsSync, readdirSync} from 'fs';
-import {extname, dirname, basename, resolve, sep, join, relative} from 'path';
+import {extname, dirname, basename, resolve, sep, join, relative, isAbsolute} from 'path';
 import {strings, collections} from './utils';
 
 declare module "through" {
@@ -42,6 +43,21 @@ declare module "vinyl-fs" {
         /** Specify if existing files with the same path should be overwritten or not. Default is true, to always overwrite existing files */
         overwrite?: boolean;
     }
+
+    interface IWatchOptions {
+        interval?: number;
+        debounceDelay?: number;
+        cwd?: string;
+        maxListeners?: Function;
+    }
+
+    interface IWatchEvent {
+        type: any;
+        path: any;
+        old: any;
+    }
+
+    type WatchCallback = (outEvt: IWatchEvent) => void;
 }
 
 export interface IncrementalCompiler {
@@ -57,6 +73,7 @@ export class IncrementalCompiler {
     private _json: any;
     private _base: string;
     private _projectDiagnostic: ts.Diagnostic | undefined;
+    private _globs: string[];
 
     private constructor() {
         throw new Error("Not implemented");
@@ -89,9 +106,46 @@ export class IncrementalCompiler {
         return parsed.fileNames;
     }
 
+    /** Gets glob patterns used to match files in the project. */
+    public get globs() {
+        if (!this._project) {
+            return [];
+        }
+
+        if (this._globs) {
+            return this._globs;
+        }
+
+        const globs: string[] = [];
+        const relativedir = relative(process.cwd(), this._config.base);
+        if (this._json.include) {
+            for (const include of this._json.include) {
+                globs.push(isAbsolute(include) ? include : join(relativedir, include));
+            }
+        }
+        else if (!this._json.files) {
+            globs.push(join(relativedir, "**/*"));
+        }
+
+        if (this._json.exclude) {
+            for (const exclude of this._json.exclude) {
+                globs.push("!" + (isAbsolute(exclude) ? exclude : join(relativedir, exclude)));
+            }
+        }
+        else {
+            globs.push(
+                "!" + join(relativedir, "node_modules/**/*"),
+                "!" + join(relativedir, "bower_components/**/*"),
+                "!" + join(relativedir, "jspm_packages/**/*")
+            );
+        }
+
+        return this._globs = globs;
+    }
+
     /** Gets the expected destination path. */
     public get destPath() {
-        let destPath = this._base;
+        let destPath = this._config.base;
         const compilerOptions = this.compilerOptions;
         if (compilerOptions.outDir) {
             destPath = resolve(destPath, compilerOptions.outDir);
@@ -147,9 +201,9 @@ export class IncrementalCompiler {
     }
 
     private static _fromProjectAndOptions(project: string | undefined, compilerOptions: CompilerOptions | undefined, config: IConfiguration, onError: (message: any) => void = (err) => console.log(JSON.stringify(err, null, 4))) {
+        config = Object.assign({}, config);
         let projectDiagnostic: ts.Diagnostic | undefined;
         let json: any;
-        let base = process.cwd();
         if (project) {
             const ts = getTypeScript(config);
             const parsed = ts.readConfigFile(project, ts.sys.readFile);
@@ -159,28 +213,21 @@ export class IncrementalCompiler {
             }
             else {
                 json = parsed.config;
-                base = resolve(base, dirname(project));
+                if (!config.base) config.base = resolve(dirname(project));
             }
         }
         else {
-            json = { compilerOptions };
+            json = { compilerOptions, files: [], include: [], exclude: [] };
         }
 
-        return IncrementalCompiler._create(
-            project,
-            base,
-            json,
-            Object.assign({ base }, config),
-            onError,
-            projectDiagnostic
-        );
+        if (!config.base) config.base = process.cwd();
+        return IncrementalCompiler._create(project, json, config, onError, projectDiagnostic);
     }
 
-    private static _create(project: string | undefined, base: string, json: any, config: IConfiguration, onError: (message: any) => void, projectDiagnostic: ts.Diagnostic) {
+    private static _create(project: string | undefined, json: any, config: IConfiguration, onError: (message: any) => void, projectDiagnostic: ts.Diagnostic) {
         const compiler: IncrementalCompiler = <IncrementalCompiler>((token?: CancellationToken) => compiler._createStream(token));
         Object.setPrototypeOf(compiler, IncrementalCompiler.prototype);
         compiler._project = project;
-        compiler._base = base;
         compiler._json = json;
         compiler._config = config;
         compiler._onError = onError;
@@ -196,7 +243,7 @@ export class IncrementalCompiler {
     public withTypeScript(typescript: typeof ts) {
         const json = collections.structuredClone(this._json);
         const config = Object.assign({}, this._config, { typescript });
-        return IncrementalCompiler._create(this._project, this._base, json, config, this._onError, this._projectDiagnostic);
+        return IncrementalCompiler._create(this._project, json, config, this._onError, this._projectDiagnostic);
     }
 
     /**
@@ -208,7 +255,7 @@ export class IncrementalCompiler {
         const json = collections.structuredClone(this._json || {});
         json.compilerOptions = Object.assign(json.compilerOptions || {}, compilerOptions);
         const config = Object.assign({}, this._config);
-        return IncrementalCompiler._create(this._project, this._base, json, config, this._onError, this._projectDiagnostic);
+        return IncrementalCompiler._create(this._project, json, config, this._onError, this._projectDiagnostic);
     }
 
     /**
@@ -217,7 +264,7 @@ export class IncrementalCompiler {
     public clone() {
         const json = collections.structuredClone(this._json);
         const config = Object.assign({}, this._config);
-        return IncrementalCompiler._create(this._project, this._base, json, config, this._onError, this._projectDiagnostic);
+        return IncrementalCompiler._create(this._project, json, config, this._onError, this._projectDiagnostic);
     }
 
     /**
@@ -227,13 +274,13 @@ export class IncrementalCompiler {
      */
     public src(options?: vinylfs.ISrcOptions): NodeJS.ReadableStream {
         if (!this._project) {
-            throw new gutil.PluginError("gulp-tsb", "'src' is only supported for projects.");
+            throw new gutil.PluginError("gulp-tsb", "'src()' is only supported for projects.");
         }
 
         const ts = getTypeScript(this._config);
         const fileNames = this.fileNames;
         const compilerOptions = this.compilerOptions;
-        const base = this._base;
+        const base = this._config.base;
         return vinylfs.src(fileNames, Object.assign({ base }, options));
     }
 
@@ -241,7 +288,7 @@ export class IncrementalCompiler {
      * Gets a stream used to compile the project.
      */
     public compile() {
-        return this();
+        return this._createStream();
     }
 
     /**
@@ -262,7 +309,7 @@ export class IncrementalCompiler {
             json.exclude = [];
             json.files = [];
         }
-        return ts.parseJsonConfigFileContent(json, ts.sys, this._base, /*existingOptions*/ undefined, this._project);
+        return ts.parseJsonConfigFileContent(json, ts.sys, this._config.base, /*existingOptions*/ undefined, this._project);
     }
 
     private _createStream(token?: CancellationToken): Transform | null {
@@ -357,10 +404,9 @@ export function create(projectOrCompilerOptions: CompilerOptions | string, verbo
         base = verboseOrCreateOptions.base;
     }
 
-    const config: IConfiguration = { json, verbose, noFilesystemLookup: false, typescript };
-    if (base) {
-        config.base = resolve(base);
-    }
+    const config: IConfiguration = { json, verbose, noFilesystemLookup: false };
+    if (typescript) config.typescript = typescript;
+    if (base) config.base = resolve(base);
 
     if (typeof projectOrCompilerOptions === 'string') {
         return IncrementalCompiler.fromProject(projectOrCompilerOptions, config, onError);
