@@ -280,7 +280,31 @@ export class IncrementalCompiler {
         const ts = getTypeScript(this._config);
         const fileNames = this.fileNames;
         const compilerOptions = this.compilerOptions;
-        const base = this._config.base;
+        let base = this._config.base;
+        if (compilerOptions.rootDir) {
+            base = compilerOptions.rootDir;
+        }
+        else {
+            const declarationPattern = /\.d\.ts$/i;
+            const commonRoot = fileNames
+                .filter(file => !declarationPattern.test(file))
+                .map(file => file.split(/[\\/]/g))
+                .reduce((commonRoot, segments) => {
+                    segments.pop(); // remove the file name.
+                    if (commonRoot === undefined) {
+                        return segments;
+                    }
+                    for (let i = 0; i < commonRoot.length && i < segments.length; i++) {
+                        if (!strings.equal(commonRoot[i], segments[i])) {
+                            return commonRoot.slice(0, i);
+                        }
+                    }
+                    return commonRoot;
+                }, undefined);
+            if (commonRoot && commonRoot.length > 0) {
+                base = commonRoot.join(sep);
+            }
+        }
         return vinylfs.src(fileNames, Object.assign({ base }, options));
     }
 
