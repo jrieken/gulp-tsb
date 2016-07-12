@@ -295,7 +295,7 @@ export class IncrementalCompiler {
                         return segments;
                     }
                     for (let i = 0; i < commonRoot.length && i < segments.length; i++) {
-                        if (!strings.equal(commonRoot[i], segments[i])) {
+                        if (!strings.equal(commonRoot[i], segments[i], !ts.sys.useCaseSensitiveFileNames)) {
                             return commonRoot.slice(0, i);
                         }
                     }

@@ -12,9 +12,11 @@
             "es2015.promise",
             "es2015.collection"
         ],
-        "types": ["node", "mocha"]
+        "types": ["node", "mocha", "chai"]
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "lib",
+        "tests"
     ]
 }

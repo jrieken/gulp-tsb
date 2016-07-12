@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "file": "b.js",
+  "sources": [
+    "b.ts"
+  ],
+  "names": [],
+  "mappings": ";AAAa,SAAC,GAAG,CAAC,CAAC"
+}

@@ -27,9 +27,11 @@
     "vinyl-fs": "^2.4.3"
   },
   "devDependencies": {
+    "@types/chai": "^3.4.27-alpha",
     "@types/chalk": "^0.4.26-alpha",
     "@types/glob": "^5.0.26-alpha",
     "@types/glob-stream": "^3.1.26-alpha",
+    "@types/gulp-sourcemaps": "0.0.27-alpha",
     "@types/gulp-util": "^3.0.25-alpha",
     "@types/minimatch": "^2.0.26-alpha",
     "@types/mocha": "^2.2.25-alpha",
@@ -37,11 +39,16 @@
     "@types/through": "0.0.25-alpha",
     "@types/vinyl": "^1.1.25-alpha",
     "@types/vinyl-fs": "0.0.24-alpha",
+    "chai": "*",
+    "chai-baseline": "^1.0.0",
+    "del": "^2.2.1",
     "gulp": "^3.8.10",
+    "gulp-mocha": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
     "mocha": "*",
     "typescript": "next"
   },
   "peerDependencies": {
-    "typescript": ">=1.7.3 || >=1.9.0-dev || >=2.0.0-dev"
+    "typescript": "*"
   }
 }
