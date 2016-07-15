@@ -306,7 +306,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                                 contents += newLine + "//# sourceMappingURL=data:application/json;charset=utf8;base64," + sourceMapFile.contents.toString("base64") + newLine;
                             }
                             else {
-                                contents += newLine + "//# sourceMappingURL=" + path.relative(javaScriptFile.path, sourceMapFile.path) + newLine;
+                                contents += newLine + "//# sourceMappingURL=" + normalize(path.relative(javaScriptFile.path, sourceMapFile.path)) + newLine;
                                 files.push(sourceMapFile);
                             }
 
