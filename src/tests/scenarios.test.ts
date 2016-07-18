@@ -27,7 +27,6 @@ describe("scenario", () => {
                     const relativedir = path.normalize(path.dirname(file.relative))
                         .replace(/([\\/])\.($|[\\/])/g, "$1dot$2")
                         .replace(/(^|[\\/])\.\.($|[\\/])/g, "$1dotDot$2");
-                    const relative = path.join(name, relativedir, basename);
                     files.push(path.normalize(path.join(relativedir, basename)));
                     participants.push(assert.baseline(file.contents, path.join(name, relativedir, basename), { base: baselinesdir }));
                     if (file.sourceMap) {
@@ -43,8 +42,16 @@ describe("scenario", () => {
                     if (ended) return;
                     ended = true;
                     participants.push(assert.baseline(normalizeLineEndings(JSON.stringify(files.sort(), undefined, "  ")), path.join(name, "files.json"), { base: baselinesdir }));
-                    const waitOne = () => participants.length ? participants.shift().then(waitOne, done) : done();
                     waitOne();
+
+                    function waitOne(): void {
+                        if (participants.length) {
+                            participants.shift()!.then(waitOne, done);
+                        }
+                        else {
+                            done();
+                        }
+                    }
                 }
             });
         }

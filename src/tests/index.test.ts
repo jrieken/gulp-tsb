@@ -1,7 +1,6 @@
 'use strict';
 
 import index = require('../index');
-import builder = require('../builder');
 import assert = require('assert');
 
 describe('options - test that', function () {

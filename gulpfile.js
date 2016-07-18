@@ -37,7 +37,7 @@ gulp.task('accept-baselines', function () {
 // clean local test baselines
 gulp.task('clean-local-baselines', function (cb) {
 	del(["tests/baselines/local"])
-		.then(() => cb(), e => cb(e));
+		.then(function() { return cb() }, function(e) { return cb(e) });
 });
 
 // run tests

@@ -1,11 +1,9 @@
 'use strict';
-import * as path from "path";
-
 export module collections {
 
     var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-    export function lookup<T>(collection: { [keys: string]: T }, key: string): T {
+    export function lookup<T>(collection: { [keys: string]: T }, key: string): T | null {
         if (hasOwnProperty.call(collection, key)) {
             return collection[key];
         }
@@ -74,7 +72,7 @@ export module strings {
     export function format(value: string, ...rest: any[]): string {
         return value.replace(/({\d+})/g, function (match) {
             var index = match.substring(1, match.length - 1);
-            return rest[index] || match;
+            return rest[+index] || match;
         });
     }
 
@@ -157,7 +155,7 @@ export module graph {
             return node;
         }
 
-        public lookup(data: T): Node<T> {
+        public lookup(data: T): Node<T> | null {
             return collections.lookup(this._nodes, this._hashFn(data));
         }
     }

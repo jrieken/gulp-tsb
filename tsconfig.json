@@ -12,7 +12,11 @@
             "es2015.promise",
             "es2015.collection"
         ],
-        "types": ["node", "mocha", "chai"]
+        "types": ["node", "mocha", "chai"],
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true
     },
     "exclude": [
         "node_modules",

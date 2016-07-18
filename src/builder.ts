@@ -9,8 +9,9 @@ import * as utils from './utils';
 import * as ts from 'typescript';
 import {EOL} from 'os';
 import {log, colors} from 'gulp-util';
-import {Stats, statSync, readFileSync} from 'fs';
+import {statSync, readFileSync} from 'fs';
 import structuredClone = utils.collections.structuredClone;
+const PromisePolyfill: typeof Promise = require('pinkie-promise');
 
 type VinylFile = Vinyl & { sourceMap?: any; };
 
@@ -59,10 +60,11 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
     const ts = getTypeScript(config);
     const originalCompilerOptions = structuredClone(compilerOptions);
     compilerOptions = structuredClone(compilerOptions);
+    const outFile = compilerOptions.outFile || compilerOptions.out;
 
-    if (compilerOptions.outFile || compilerOptions.out) {
+    if (outFile) {
         // always treat out file as relative to the root of the sources.
-        compilerOptions.outFile = path.resolve(config.base, path.basename(compilerOptions.outFile || compilerOptions.out));
+        compilerOptions.outFile = path.resolve(config.base, path.basename(outFile));
     }
 
     // clean up compiler options that conflict with gulp
@@ -127,14 +129,6 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         }
     }
 
-    function baseFor(snapshot: ScriptSnapshot): string {
-        if (snapshot instanceof ScriptSnapshot) {
-            return compilerOptions.outDir || snapshot.getBase();
-        } else {
-            return '';
-        }
-    }
-
     function isExternalModule(sourceFile: ts.SourceFile): boolean {
         return (<any>sourceFile).externalModuleIndicator
             || /declare\s+module\s+('|")(.+)\1/.test(sourceFile.getText())
@@ -159,7 +153,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
     function build(out: (file: Vinyl) => void, onError: (err: any) => void, token = CancellationToken.None): Promise<any> {
 
         function checkSyntaxSoon(fileName: string): Promise<ts.Diagnostic[]> {
-            return new Promise<ts.Diagnostic[]>(resolve => {
+            return new PromisePolyfill<ts.Diagnostic[]>(resolve => {
                 process.nextTick(function () {
                     resolve(service.getSyntacticDiagnostics(fileName));
                 });
@@ -167,7 +161,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         }
 
         function checkSemanticsSoon(fileName: string): Promise<ts.Diagnostic[]> {
-            return new Promise<ts.Diagnostic[]>(resolve => {
+            return new PromisePolyfill<ts.Diagnostic[]>(resolve => {
                 process.nextTick(function () {
                     let diagnostics = service.getSemanticDiagnostics(fileName);
                     if (!originalCompilerOptions.declaration) {
@@ -180,7 +174,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         }
 
         function emitSoon(fileName: string): Promise<{ fileName:string, signature: string, files: Vinyl[] }> {
-            return new Promise(resolve => {
+            return new PromisePolyfill(resolve => {
                 process.nextTick(function() {
                     if (/\.d\.ts$/.test(fileName)) {
                         // if it's already a d.ts file just emit its signature
@@ -209,10 +203,13 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                     const input = getVinyl(fileName);
                     const output = service.getEmitOutput(fileName);
                     const files: Vinyl[] = [];
-                    let signature: string;
-                    let javaScriptFile: VinylFile;
-                    let declarationFile: Vinyl;
-                    let sourceMapFile: Vinyl;
+                    let signature: string | undefined;
+                    let javaScriptFile: VinylFile | undefined;
+                    let declarationFile: Vinyl | undefined;
+                    let sourceMapFile: Vinyl | undefined;
+                    if (!input) {
+                        throw new Error('No input file found.');
+                    }
                     for (const file of output.outputFiles) {
                         // When gulp-sourcemaps writes out a sourceMap, it uses the path
                         // information of the associated file. Specifically, it uses the base
@@ -226,7 +223,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                         // to gulp.dest is the relative path for each file. This means that we
                         // should be able to safely treat output files as local to sources to
                         // better support gulp-sourcemaps.
-                        const base = emitToSingleFile ? config.base : input.base;
+                        const base = (emitToSingleFile ? config.base : input.base) || '.';
                         const relative = path.relative(base, file.name);
                         const name = path.resolve(base, relative);
                         const contents = new Buffer(file.text);
@@ -261,10 +258,11 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                     }
 
                     if (sourceMapFile) {
+                        const capturedSourceFile = sourceMapFile;
                         // adjust the source map to be relative to the source directory.
                         const sourceMap = JSON.parse(sourceMapFile.contents.toString());
-                        let sourceRoot = sourceMap.sourceRoot;
-                        let sources = emitToSingleFile ? sourceMap.sources : [input.path];
+                        let sourceRoot: string | undefined = sourceMap.sourceRoot;
+                        let sources: string[] = emitToSingleFile ? sourceMap.sources : [input.path];
 
                         const destPath = emitToSingleFile
                             ? path.dirname(path.resolve(config.base, originalCompilerOptions.outFile || originalCompilerOptions.out))
@@ -275,8 +273,11 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                         sourceMap.sourceRoot = sourceRoot ? normalize(path.relative(destPath, sourceRoot)) : undefined;
 
                         // make all sources absolute
-                        sources = sources.map(source => path.resolve(sourceMapFile.base, source));
+                        sources = sources.map(source => path.resolve(capturedSourceFile.base, source));
 
+                        if (!javaScriptFile) {
+                            throw new Error('Attempted to emit source map without source js file.');
+                        }
                         if (emitSourceMapsInStream) {
                             // update sourcesContent
                             if (originalCompilerOptions.inlineSources) {
@@ -290,16 +291,17 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
 
                             // make all sources relative to the sourceRoot or destPath
                             sourceMap.sources = sources.map(source => {
-                                source = path.resolve(sourceMapFile.base, source);
+                                source = path.resolve(capturedSourceFile.base, source);
                                 source = path.relative(sourceRoot || destPath, source);
                                 source = normalize(source);
                                 return source;
                             });
 
-                            // update the contents for the sourcemap file
-                            sourceMapFile.contents = new Buffer(JSON.stringify(sourceMap));
-
                             const newLine = getNewLine();
+
+                            // update the contents for the sourcemap file
+                            sourceMapFile.contents = new Buffer(JSON.stringify(sourceMap).replace(/\r?\n/, newLine));
+
                             let contents = javaScriptFile.contents.toString();
                             if (originalCompilerOptions.inlineSourceMap) {
                                 // restore the sourcemap as an inline source map in the javaScript file.
@@ -351,7 +353,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         let dependentFiles: string[] = [];
         let newLastBuildVersion = new Map<string, string>();
         let hasEmittedSingleFileOutput = false;
-        let singleFileSignature: string;
+        let singleFileSignature: string | undefined;
 
         for (let fileName of host.getScriptFileNames()) {
             if (lastBuildVersion[fileName] !== host.getScriptVersion(fileName)) {
@@ -362,15 +364,15 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
             }
         }
 
-        return new Promise(resolve => {
+        return new PromisePolyfill(resolve => {
 
             let semanticCheckInfo = new Map<string, number>();
             let seenAsDependentFile = new Set<string>();
 
             function workOnNext() {
 
-                let promise: Promise<any>;
-                let fileName: string;
+                let promise: Promise<any> | undefined;
+                let fileName: string | undefined;
 
                 // someone told us to stop this
                 if (token.isCancellationRequested()) {
@@ -382,8 +384,9 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
 
                 // (1st) emit code
                 else if (toBeEmitted.length) {
-                    fileName = toBeEmitted.pop();
-                    promise = emitSoon(fileName).then(value => {
+                    fileName = toBeEmitted.pop() as string;
+                    const definiteFileName = fileName;
+                    promise = emitSoon(definiteFileName).then(value => {
 
                         for (let file of value.files) {
                             _log('[emit code]', file.path);
@@ -391,25 +394,26 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                         }
 
                         // remember when this was build
-                        newLastBuildVersion.set(fileName, host.getScriptVersion(fileName));
+                        newLastBuildVersion.set(definiteFileName, host.getScriptVersion(definiteFileName));
 
                         // remeber the signature
-                        if (value.signature && lastDtsHash[fileName] !== value.signature) {
-                            lastDtsHash[fileName] = value.signature;
-                            filesWithChangedSignature.push(fileName);
+                        if (value.signature && lastDtsHash[definiteFileName] !== value.signature) {
+                            lastDtsHash[definiteFileName] = value.signature;
+                            filesWithChangedSignature.push(definiteFileName);
                         }
                      });
                 }
 
                 // (2nd) check syntax
                 else if (toBeCheckedSyntactically.length) {
-                    fileName = toBeCheckedSyntactically.pop();
-                    _log('[check syntax]', fileName);
-                    promise = checkSyntaxSoon(fileName).then(diagnostics => {
-                        delete oldErrors[fileName];
+                    fileName = toBeCheckedSyntactically.pop() as string;
+                    const definiteFileName = fileName;
+                    _log('[check syntax]', definiteFileName);
+                    promise = checkSyntaxSoon(definiteFileName).then(diagnostics => {
+                        delete oldErrors[definiteFileName];
                         if (diagnostics.length > 0) {
                             diagnostics.forEach(d => printDiagnostic(d, onError));
-                            newErrors[fileName] = diagnostics;
+                            newErrors[definiteFileName] = diagnostics;
 
                             // stop the world when there are syntax errors
                             toBeCheckedSyntactically.length = 0;
@@ -428,13 +432,14 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                     }
 
                     if (fileName) {
-                        _log('[check semantics]', fileName);
-                        promise = checkSemanticsSoon(fileName).then(diagnostics => {
-                            delete oldErrors[fileName];
-                            semanticCheckInfo.set(fileName, diagnostics.length);
+                        const definiteFileName = fileName;
+                        _log('[check semantics]', definiteFileName);
+                        promise = checkSemanticsSoon(definiteFileName).then(diagnostics => {
+                            delete oldErrors[definiteFileName];
+                            semanticCheckInfo.set(definiteFileName, diagnostics.length);
                             if (diagnostics.length > 0) {
                                 diagnostics.forEach(d => printDiagnostic(d, onError));
-                                newErrors[fileName] = diagnostics;
+                                newErrors[definiteFileName] = diagnostics;
                             }
                         });
                     }
@@ -443,7 +448,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                 // (4th) check dependents
                 else if (filesWithChangedSignature.length) {
                     while (filesWithChangedSignature.length) {
-                        let fileName = filesWithChangedSignature.pop();
+                        let fileName = filesWithChangedSignature.pop() as string;
 
                         if (!isExternalModule(service.getProgram().getSourceFile(fileName))) {
                              _log('[check semantics*]', fileName + ' is an internal module and it has changed shape -> check whatever hasn\'t been checked yet');
@@ -485,7 +490,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                 }
 
                 if (!promise) {
-                    promise = Promise.resolve();
+                    promise = PromisePolyfill.resolve();
                 }
 
                 promise.then(function () {
@@ -552,7 +557,7 @@ class ScriptSnapshot implements ts.IScriptSnapshot {
         return this._text.length;
     }
 
-    public getChangeRange(oldSnapshot: ts.IScriptSnapshot): ts.TextChangeRange {
+    public getChangeRange(oldSnapshot: ts.IScriptSnapshot): any {
         return null;
     }
 
@@ -662,7 +667,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
             // (cheap) check for declare module
             LanguageServiceHost._declareModule.lastIndex = 0;
-            let match: RegExpExecArray;
+            let match: RegExpExecArray | null;
             while ((match = LanguageServiceHost._declareModule.exec(snapshot.getText(0, snapshot.getLength())))) {
                 let declaredModules = this._fileNameToDeclaredModule[filename];
                 if(!declaredModules) {
@@ -716,8 +721,10 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     // ---- dependency management
 
     collectDependents(filename: string, target: string[]): void {
-        while (this._dependenciesRecomputeList.length) {
-            this._processFile(this._dependenciesRecomputeList.pop());
+        let file = this._dependenciesRecomputeList.length && this._dependenciesRecomputeList.pop();
+        while (file) {
+            this._processFile(file);
+            file = this._dependenciesRecomputeList.pop();
         }
         filename = normalize(filename);
         var node = this._dependencies.lookup(filename);
