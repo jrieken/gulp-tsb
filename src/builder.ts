@@ -26,6 +26,8 @@ export interface IConfiguration {
     typescript?: typeof ts;
     /** Indicates the base path from which a project was loaded or compilation was started. */
     base?: string;
+    /** Indicates whether to run the build in a seperate process. */
+    parallel: boolean;
     _emitWithoutBasePath?: boolean;
     _emitLanguageService?: boolean;
 }

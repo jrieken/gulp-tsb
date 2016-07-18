@@ -1,5 +1,7 @@
-'use strict';
-export module collections {
+import Vinyl = require('vinyl');
+import {Stats} from 'fs';
+
+export namespace collections {
 
     var hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -60,7 +62,7 @@ export module collections {
     }
 }
 
-export module strings {
+export namespace strings {
 
 	/**
 	 * The empty string. The one and only.
@@ -83,7 +85,7 @@ export module strings {
     }
 }
 
-export module graph {
+export namespace graph {
 
     export interface Node<T> {
         data: T;
@@ -160,4 +162,67 @@ export module graph {
         }
     }
 
+}
+
+export interface SerializedVinyl {
+    cwd: string;
+    base: string;
+    history: string[];
+    stat: {[index: string]: {kind: string, value: any}};
+    sourceMap?: any;
+    contents: string
+}
+
+export function deserializeVinyl(file: SerializedVinyl): Vinyl {
+    // Rehydrate a bunch of things that got stringified/mangled when converted to json for IPC
+    const statsLookalike: {[index: string]: number | Date | Function} = {};
+    for (const key in file.stat) {
+        const {kind, value} = file.stat[key];
+        if (kind === 'method') {
+            statsLookalike[key] = () => value;
+        }
+        else if (kind === 'date') {
+            statsLookalike[key] = new Date(value);
+        }
+        else {
+            statsLookalike[key] = value;
+        }
+    }
+
+    const args = {
+        cwd: file.cwd,
+        contents: new Buffer(file.contents),
+        base: file.base,
+        history: file.history.slice(),
+        stat: statsLookalike as any as Stats
+    }
+    const newFile = new Vinyl(args);
+    (newFile as (Vinyl & {sourceMap: any})).sourceMap = file.sourceMap;
+    return newFile;
+}
+
+export function serializeVinyl(file: Vinyl): SerializedVinyl {
+    const serialized: SerializedVinyl = {
+        cwd: file.cwd,
+        base: file.base,
+        history: (<any>file).history,
+        stat: {},
+        sourceMap: (file as (Vinyl & {sourceMap: any})).sourceMap,
+        contents: file.contents.toString()
+    };
+
+    const iterableStat = file.stat as Stats & {[index: string]: number | Date | Function};
+    for (const key in iterableStat) {
+        if (typeof iterableStat[key] === 'function') {
+            serialized.stat[key] = {kind: 'method', value: (iterableStat[key] as Function)()};
+        }
+        else if (iterableStat[key] instanceof Date) {
+            serialized.stat[key] = {kind: 'date', value: +iterableStat[key]};
+        }
+        else {
+            serialized.stat[key] = {kind: typeof iterableStat[key], value: iterableStat[key]};
+        }
+    }
+
+    return serialized;
 }
