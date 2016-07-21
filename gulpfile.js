@@ -47,7 +47,7 @@ gulp.task('test', ['build', 'clean-local-baselines'], function() {
 });
 
 // accept built version as lkg
-gulp.task('lkg', function() {
+gulp.task('lkg', ['test'], function() {
 	return gulp.src(["out/**/*.js", "out/**/*.d.ts", "!out/tests/scenarios.test.*"])
 		.pipe(gulp.dest("lib"));
 });
