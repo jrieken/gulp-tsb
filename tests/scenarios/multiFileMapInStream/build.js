@@ -4,7 +4,8 @@ module.exports = function (tsb) {
         module: "commonjs",
         target: "es5",
         declaration: true,
-        sourceMap: true
+        sourceMap: true,
+        newLine: "lf"
     });
     return vfs
         .src("**/*.ts", { cwd: __dirname })

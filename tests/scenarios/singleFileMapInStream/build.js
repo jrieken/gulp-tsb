@@ -5,7 +5,8 @@ module.exports = function (tsb) {
         target: "es5",
         declaration: true,
         sourceMap: true,
-        outFile: "c.js"
+        outFile: "c.js",
+        newLine: "lf"
     });
     return vfs
         .src("**/*.ts", { cwd: __dirname })
