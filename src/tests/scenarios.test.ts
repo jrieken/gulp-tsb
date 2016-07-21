@@ -32,7 +32,7 @@ describe("scenario", () => {
                     participants.push(assert.baseline(file.contents, path.join(name, relativedir, basename), { base: baselinesdir }));
                     if (file.sourceMap) {
                         files.push(path.normalize(path.join(relativedir, basename + ".sourceMap.txt")));
-                        participants.push(assert.baseline(JSON.stringify(file.sourceMap, undefined, "  "), path.join(name, relativedir, basename) + ".sourceMap.txt", { base: baselinesdir }));
+                        participants.push(assert.baseline(normalizeLineEndings(JSON.stringify(file.sourceMap, undefined, "  ")), path.join(name, relativedir, basename) + ".sourceMap.txt", { base: baselinesdir }));
                     }
                 });
                 stream.on("error", done);
@@ -42,7 +42,7 @@ describe("scenario", () => {
                 function onend() {
                     if (ended) return;
                     ended = true;
-                    participants.push(assert.baseline(JSON.stringify(files.sort(), undefined, "  "), path.join(name, "files.json"), { base: baselinesdir }));
+                    participants.push(assert.baseline(normalizeLineEndings(JSON.stringify(files.sort(), undefined, "  ")), path.join(name, "files.json"), { base: baselinesdir }));
                     const waitOne = () => participants.length ? participants.shift().then(waitOne, done) : done();
                     waitOne();
                 }
@@ -50,3 +50,8 @@ describe("scenario", () => {
         }
     }
 });
+
+
+function normalizeLineEndings(text: string) {
+    return text.replace(/\r?\n/g, "\n");
+}
