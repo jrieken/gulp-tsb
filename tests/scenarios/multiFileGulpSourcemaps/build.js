@@ -8,7 +8,7 @@ module.exports = function (tsb) {
         declaration: true,
         sourceMap: true,
         newLine: "lf"
-    });
+    }, { base: __dirname });
     return vfs
         .src("**/*.ts", { cwd: __dirname })
         .pipe(sourcemaps.init())

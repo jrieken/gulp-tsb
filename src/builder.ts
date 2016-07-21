@@ -293,7 +293,8 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                             sourceMap.sources = sources.map(source => {
                                 source = path.resolve(sourceMapFile.base, source);
                                 source = path.relative(sourceRoot || destPath, source);
-                                return normalize(source);
+                                source = normalize(source);
+                                return source;
                             });
 
                             // update the contents for the sourcemap file
@@ -306,7 +307,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                                 contents += newLine + "//# sourceMappingURL=data:application/json;charset=utf8;base64," + sourceMapFile.contents.toString("base64") + newLine;
                             }
                             else {
-                                contents += newLine + "//# sourceMappingURL=" + normalize(path.relative(javaScriptFile.path, sourceMapFile.path)) + newLine;
+                                contents += newLine + "//# sourceMappingURL=" + normalize(path.relative(path.dirname(javaScriptFile.path), sourceMapFile.path)) + newLine;
                                 files.push(sourceMapFile);
                             }
 
@@ -610,6 +611,14 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     getProjectVersion(): string {
         return String(this._projectVersion);
+    }
+
+    getNewLine(): string {
+        const ts = this._typescript;
+        if (this._settings.newLine === ts.NewLineKind.CarriageReturnLineFeed) return "\r\n";
+        if (this._settings.newLine === ts.NewLineKind.LineFeed) return "\n";
+        if (ts.sys) return ts.sys.newLine;
+        return "\r\n";
     }
 
     getScriptFileNames(): string[] {

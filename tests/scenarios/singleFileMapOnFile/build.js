@@ -9,7 +9,7 @@ module.exports = function (tsb) {
         sourceMap: true,
         outFile: "c.js",
         newLine: "lf"
-    });
+    }, { base: __dirname });
     return vfs
         .src("**/*.ts", { cwd: __dirname })
         .pipe(sourcemaps.init())
