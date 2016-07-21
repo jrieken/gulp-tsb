@@ -42,7 +42,6 @@ export namespace CancellationToken {
 export interface ITypeScriptBuilder {
     build(out: (file: Vinyl) => void, onError: (err: any) => void, token?: CancellationToken): Promise<any>;
     file(file: Vinyl): void;
-    languageService: ts.LanguageService;
 }
 
 function normalize(path: string): string {
@@ -526,8 +525,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
 
     return {
         file,
-        build,
-        languageService: service
+        build
     };
 }
 

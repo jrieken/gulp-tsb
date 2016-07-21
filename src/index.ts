@@ -79,11 +79,6 @@ export class IncrementalCompiler {
         throw new Error("Not implemented");
     }
 
-    /** Gets the Program created for this compilation. */
-    public get program() {
-        return this.builder.languageService.getProgram();
-    }
-
     /** Gets the current compiler options. */
     public get compilerOptions() {
         return this._options || (this._options = this._parseOptions(/*includeFiles*/ false).options);
