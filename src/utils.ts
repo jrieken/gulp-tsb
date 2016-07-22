@@ -1,4 +1,5 @@
 'use strict';
+import * as path from "path";
 
 export module collections {
 
@@ -38,10 +39,31 @@ export module collections {
     export function contains(collection: { [keys: string]: any }, key: string): boolean {
         return hasOwnProperty.call(collection, key);
     }
+
+    export function structuredClone<T>(value: T): T {
+        return structuredCloneRecursive(value, new Map<any, any>());
+    }
+
+    function structuredCloneRecursive(value: any, objects: Map<any, any>) {
+        if (value === undefined) return undefined;
+        if (value === null) return null;
+        if (typeof value !== "object") return value;
+        let clone = objects.get(value);
+        if (clone === undefined) {
+            clone = Array.isArray(value) ? Array<any>(value.length) : {};
+            objects.set(value, clone);
+            for (const key in value) {
+                if (contains(value, key)) {
+                    clone[key] = structuredCloneRecursive(value[key], objects);
+                }
+            }
+        }
+        return clone;
+    }
 }
 
 export module strings {
-	
+
 	/**
 	 * The empty string. The one and only.
 	 */
@@ -54,6 +76,12 @@ export module strings {
             var index = match.substring(1, match.length - 1);
             return rest[index] || match;
         });
+    }
+
+    export function equal(left: string, right: string, ignoreCase?: boolean) {
+        return ignoreCase
+            ? left.toUpperCase() === right.toUpperCase()
+            : left === right;
     }
 }
 

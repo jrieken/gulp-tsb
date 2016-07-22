@@ -2,10 +2,21 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
-        "outDir": "lib/",
-        "noLib": true
+        "outDir": "out/",
+        "declaration": true,
+        "sourceMap": true,
+        "lib": [
+            "dom",
+            "es5",
+            "es2015.core",
+            "es2015.promise",
+            "es2015.collection"
+        ],
+        "types": ["node", "mocha", "chai"]
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "lib",
+        "tests"
     ]
 }
