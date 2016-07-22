@@ -43,7 +43,7 @@ gulp.task('clean-local-baselines', function (cb) {
 // run tests
 gulp.task('test', ['build', 'clean-local-baselines'], function() {
 	return gulp.src(["out/tests/**/*.js"], { read: false })
-		.pipe(mocha());
+		.pipe(mocha({ timeout: 3000 }));
 });
 
 // accept built version as lkg
