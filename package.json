@@ -1,13 +1,14 @@
 {
   "name": "gulp-tsb",
-  "version": "1.10.4",
+  "version": "2.0.0",
   "author": "Johannes Rieken <johannes.rieken@gmail.com>",
   "description": "A gulp plugin for very fast TypeScript compilation.",
   "main": "./lib/index",
   "license": "MIT",
   "scripts": {
     "test": "mocha lib/tests",
-    "prepublish": "tsc && mocha lib/tests"
+    "prepublish": "tsc && mocha lib/tests",
+    "compile": "tsc"
   },
   "repository": {
     "type": "git",
@@ -26,9 +27,10 @@
   },
   "devDependencies": {
     "gulp": "^3.8.10",
-    "mocha": "*"
+    "mocha": "*",
+    "typescript": ">=2.0.2"
   },
   "peerDependencies": {
-    "typescript": ">=1.7.3"
+    "typescript": ">=2.0.2"
   }
 }

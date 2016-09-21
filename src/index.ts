@@ -10,12 +10,18 @@ import {Stream} from 'stream';
 import {readFileSync, existsSync, readdirSync} from 'fs';
 import {extname} from 'path';
 
+// We actually only want to read the tsconfig.json file. So all methods
+// to read the FS are 'empty' implementations.
 const _parseConfigHost = {
+    useCaseSensitiveFileNames: false,
+    fileExists(fileName: string): boolean {
+        return existsSync(fileName);
+    },
+    readDirectory(rootDir: string, extensions: string[], excludes: string[], includes: string[]): string[] {
+        return []; // don't want to find files!
+    },
     readFile(fileName: string): string {
         return readFileSync(fileName, 'utf-8');
-    },
-    readDirectory(rootDir: string, extension: string, exclude: string[]): string[] {
-        return []; // don't want to find files!
     },
 };
 
