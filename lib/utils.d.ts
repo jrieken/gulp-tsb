@@ -1,7 +1,9 @@
-export declare module collections {
+/// <reference types="vinyl" />
+import Vinyl = require('vinyl');
+export declare namespace collections {
     function lookup<T>(collection: {
         [keys: string]: T;
-    }, key: string): T;
+    }, key: string): T | null;
     function insert<T>(collection: {
         [keys: string]: T;
     }, key: string, value: T): void;
@@ -19,7 +21,7 @@ export declare module collections {
     }, key: string): boolean;
     function structuredClone<T>(value: T): T;
 }
-export declare module strings {
+export declare namespace strings {
     /**
      * The empty string. The one and only.
      */
@@ -28,7 +30,7 @@ export declare module strings {
     function format(value: string, ...rest: any[]): string;
     function equal(left: string, right: string, ignoreCase?: boolean): boolean;
 }
-export declare module graph {
+export declare namespace graph {
     interface Node<T> {
         data: T;
         incoming: {
@@ -48,6 +50,21 @@ export declare module graph {
         inertEdge(from: T, to: T): void;
         removeNode(data: T): void;
         lookupOrInsertNode(data: T): Node<T>;
-        lookup(data: T): Node<T>;
+        lookup(data: T): Node<T> | null;
     }
 }
+export interface SerializedVinyl {
+    cwd: string;
+    base: string;
+    history: string[];
+    stat: {
+        [index: string]: {
+            kind: string;
+            value: any;
+        };
+    };
+    sourceMap?: any;
+    contents: string;
+}
+export declare function deserializeVinyl(file: SerializedVinyl): Vinyl;
+export declare function serializeVinyl(file: Vinyl): SerializedVinyl;

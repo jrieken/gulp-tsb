@@ -8,39 +8,20 @@ declare module "through" {
         queue(data: any): void;
     }
 }
-declare module "stream" {
-    interface ReadableOptions {
-        read?(size: number): void;
-    }
-}
-declare module "vinyl-fs" {
-    interface IDestOptions {
-        /** Specify the working directory the folder is relative to
-         * Default is process.cwd()
-         */
-        cwd?: string;
-        /** Specify the mode the files should be created with
-         * Default is the mode of the input file (file.stat.mode)
-         * or the process mode if the input file has no mode property
-         */
-        mode?: number | string;
-        /** Specify the mode the directory should be created with. Default is the process mode */
-        dirMode?: number | string;
-        /** Specify if existing files with the same path should be overwritten or not. Default is true, to always overwrite existing files */
-        overwrite?: boolean;
-    }
-    interface IWatchOptions {
-        interval?: number;
-        debounceDelay?: number;
-        cwd?: string;
-        maxListeners?: Function;
-    }
-    interface IWatchEvent {
-        type: any;
-        path: any;
-        old: any;
-    }
-    type WatchCallback = (outEvt: IWatchEvent) => void;
+export interface IVinylDestOptions {
+    /** Specify the working directory the folder is relative to
+     * Default is process.cwd()
+     */
+    cwd?: string;
+    /** Specify the mode the files should be created with
+     * Default is the mode of the input file (file.stat.mode)
+     * or the process mode if the input file has no mode property
+     */
+    mode?: number | string;
+    /** Specify the mode the directory should be created with. Default is the process mode */
+    dirMode?: number | string;
+    /** Specify if existing files with the same path should be overwritten or not. Default is true, to always overwrite existing files */
+    overwrite?: boolean;
 }
 export interface IncrementalCompiler {
     (): Transform;
@@ -52,12 +33,9 @@ export declare class IncrementalCompiler {
     private _builder;
     private _project;
     private _json;
-    private _base;
     private _projectDiagnostic;
     private _globs;
     private constructor();
-    /** Gets the Program created for this compilation. */
-    readonly program: ts.Program;
     /** Gets the current compiler options. */
     readonly compilerOptions: ts.CompilerOptions;
     /** Gets the current file names. */
@@ -67,12 +45,13 @@ export declare class IncrementalCompiler {
     /** Gets the expected destination path. */
     readonly destPath: string;
     /** Gets the expected sourcemap path (for use with gulp-sourcemaps). */
-    readonly sourcemapPath: string;
+    readonly sourcemapPath: string | undefined;
     /** Gets the sourcemap options (for use with gulp-sourcemaps). */
     readonly sourcemapOptions: {
-        includeContent: boolean;
+        includeContent: boolean | undefined;
         destPath: string;
     };
+    private _createBuilderProxy();
     private readonly builder;
     /**
      * Create an IncrementalCompiler from a tsconfig.json file.
@@ -117,13 +96,13 @@ export declare class IncrementalCompiler {
     /**
      * Gets a stream used to compile the project.
      */
-    compile(): Transform;
+    compile(): Transform | null;
     /**
      * Gets a stream used to write the target files to the output directory specified by the project.
      *
      * @param options Options to pass to vinyl-fs.
      */
-    dest(options?: vinylfs.IDestOptions): NodeJS.ReadWriteStream;
+    dest(options?: IVinylDestOptions): NodeJS.ReadWriteStream;
     private _parseOptions(includeFiles);
     private _createStream(token?);
 }
@@ -136,6 +115,8 @@ export interface CreateOptions {
     typescript?: typeof ts;
     /** The base path to use for file resolution. */
     base?: string;
+    /** Indicates whether to run the build in a seperate process. */
+    parallel?: boolean;
     /** Custom callback used to report compiler diagnostics. */
     onError?: (message: any) => void;
 }
