@@ -1,10 +1,11 @@
-'use strict';
+import Vinyl = require('vinyl');
+import {Stats} from 'fs';
 
-export module collections {
+export namespace collections {
 
     var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-    export function lookup<T>(collection: { [keys: string]: T }, key: string): T {
+    export function lookup<T>(collection: { [keys: string]: T }, key: string): T | null {
         if (hasOwnProperty.call(collection, key)) {
             return collection[key];
         }
@@ -38,10 +39,31 @@ export module collections {
     export function contains(collection: { [keys: string]: any }, key: string): boolean {
         return hasOwnProperty.call(collection, key);
     }
+
+    export function structuredClone<T>(value: T): T {
+        return structuredCloneRecursive(value, new Map<any, any>());
+    }
+
+    function structuredCloneRecursive(value: any, objects: Map<any, any>) {
+        if (value === undefined) return undefined;
+        if (value === null) return null;
+        if (typeof value !== "object") return value;
+        let clone = objects.get(value);
+        if (clone === undefined) {
+            clone = Array.isArray(value) ? Array<any>(value.length) : {};
+            objects.set(value, clone);
+            for (const key in value) {
+                if (contains(value, key)) {
+                    clone[key] = structuredCloneRecursive(value[key], objects);
+                }
+            }
+        }
+        return clone;
+    }
 }
 
-export module strings {
-	
+export namespace strings {
+
 	/**
 	 * The empty string. The one and only.
 	 */
@@ -52,12 +74,18 @@ export module strings {
     export function format(value: string, ...rest: any[]): string {
         return value.replace(/({\d+})/g, function (match) {
             var index = match.substring(1, match.length - 1);
-            return rest[index] || match;
+            return rest[+index] || match;
         });
+    }
+
+    export function equal(left: string, right: string, ignoreCase?: boolean) {
+        return ignoreCase
+            ? left.toUpperCase() === right.toUpperCase()
+            : left === right;
     }
 }
 
-export module graph {
+export namespace graph {
 
     export interface Node<T> {
         data: T;
@@ -129,9 +157,72 @@ export module graph {
             return node;
         }
 
-        public lookup(data: T): Node<T> {
+        public lookup(data: T): Node<T> | null {
             return collections.lookup(this._nodes, this._hashFn(data));
         }
     }
 
+}
+
+export interface SerializedVinyl {
+    cwd: string;
+    base: string;
+    history: string[];
+    stat: {[index: string]: {kind: string, value: any}};
+    sourceMap?: any;
+    contents: string
+}
+
+export function deserializeVinyl(file: SerializedVinyl): Vinyl {
+    // Rehydrate a bunch of things that got stringified/mangled when converted to json for IPC
+    const statsLookalike: {[index: string]: number | Date | Function} = {};
+    for (const key in file.stat) {
+        const {kind, value} = file.stat[key];
+        if (kind === 'method') {
+            statsLookalike[key] = () => value;
+        }
+        else if (kind === 'date') {
+            statsLookalike[key] = new Date(value);
+        }
+        else {
+            statsLookalike[key] = value;
+        }
+    }
+
+    const args = {
+        cwd: file.cwd,
+        contents: new Buffer(file.contents),
+        base: file.base,
+        history: file.history.slice(),
+        stat: statsLookalike as any as Stats
+    }
+    const newFile = new Vinyl(args);
+    (newFile as (Vinyl & {sourceMap: any})).sourceMap = file.sourceMap;
+    return newFile;
+}
+
+export function serializeVinyl(file: Vinyl): SerializedVinyl {
+    const serialized: SerializedVinyl = {
+        cwd: file.cwd,
+        base: file.base,
+        history: (<any>file).history,
+        stat: {},
+        sourceMap: (file as (Vinyl & {sourceMap: any})).sourceMap,
+        contents: file.contents.toString()
+    };
+
+    const iterableStat = file.stat as Stats & {[index: string]: number | Date | Function};
+    for (const key in iterableStat) {
+        if (typeof iterableStat[key] === 'function') {
+            serialized.stat[key] = {kind: 'method', value: (iterableStat[key] as Function)()};
+        }
+        else if (iterableStat[key] instanceof Date) {
+            serialized.stat[key] = {kind: 'date', value: +iterableStat[key]};
+        }
+        else {
+            serialized.stat[key] = {kind: typeof iterableStat[key], value: iterableStat[key]};
+        }
+    }
+
+    return serialized;
 }

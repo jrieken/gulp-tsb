@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "c.js",
+  "sources": [
+    "a.ts",
+    "b.ts"
+  ],
+  "names": [],
+  "mappings": "AAAA,IAAM,CAAC,GAAG,CAAC,CAAC;ACAZ,IAAM,CAAC,GAAG,CAAC,CAAC"
+}
