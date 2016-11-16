@@ -28,9 +28,15 @@
   "devDependencies": {
     "gulp": "^3.8.10",
     "mocha": "*",
-    "typescript": "^2.0.3"
+    "typescript": "^2.0.3",
+    "@types/node": "*",
+    "@types/chalk": "*",
+    "@types/gulp-util": "*",
+    "@types/mocha": "*",
+    "@types/through": "*",
+    "@types/vinyl": "*"
   },
   "peerDependencies": {
-    "typescript": "^2.0.3"
+    "typescript": "^2.0.10"
   }
 }
