@@ -5,5 +5,5 @@
     "a.ts"
   ],
   "names": [],
-  "mappings": ";AAAa,SAAC,GAAG,CAAC,CAAC"
+  "mappings": ";AAAa,QAAA,CAAC,GAAG,CAAC,CAAC"
 }

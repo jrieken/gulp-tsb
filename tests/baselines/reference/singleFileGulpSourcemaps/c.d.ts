@@ -1,2 +1,2 @@
-declare const a: number;
-declare const b: number;
+declare const a = 1;
+declare const b = 2;

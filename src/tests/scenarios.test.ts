@@ -24,10 +24,8 @@ describe("scenario", () => {
                 const stream = scenario(tsb);
                 stream.on("data", (file: File & { sourceMap?: any }) => {
                     const basename = path.basename(file.relative);
-                    const relativedir = path.normalize(path.dirname(file.relative))
-                        .replace(/([\\/])\.($|[\\/])/g, "$1dot$2")
-                        .replace(/(^|[\\/])\.\.($|[\\/])/g, "$1dotDot$2");
-                    files.push(path.normalize(path.join(relativedir, basename)));
+                    const relativedir = path.normalize(path.dirname(path.relative(scenariodir, file.path)));
+                    files.push(path.join(relativedir, basename));
                     participants.push(assert.baseline(file.contents, path.join(name, relativedir, basename), { base: baselinesdir }));
                     if (file.sourceMap) {
                         files.push(path.normalize(path.join(relativedir, basename + ".sourceMap.txt")));

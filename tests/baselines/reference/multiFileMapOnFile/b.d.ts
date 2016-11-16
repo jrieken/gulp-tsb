@@ -1,1 +1,1 @@
-export declare const b: number;
+export declare const b = 2;
