@@ -5,6 +5,7 @@ import * as vinylfs from 'vinyl-fs';
 import * as gutil from 'gulp-util';
 import * as through from 'through';
 import * as ts from 'typescript';
+
 import {createTypeScriptBuilder, CancellationToken, IConfiguration, ITypeScriptBuilder, getTypeScript} from './builder';
 import {Transform} from 'stream';
 import {existsSync} from 'fs';
@@ -19,47 +20,25 @@ declare module "through" {
     }
 }
 
-declare module "stream" {
-    interface ReadableOptions {
-        read?(size: number): void;
-    }
+export interface IVinylDestOptions {
+    /** Specify the working directory the folder is relative to
+     * Default is process.cwd()
+     */
+    cwd?: string;
+
+    /** Specify the mode the files should be created with
+     * Default is the mode of the input file (file.stat.mode)
+     * or the process mode if the input file has no mode property
+     */
+    mode?: number|string;
+
+    /** Specify the mode the directory should be created with. Default is the process mode */
+    dirMode?: number|string;
+
+    /** Specify if existing files with the same path should be overwritten or not. Default is true, to always overwrite existing files */
+    overwrite?: boolean;
 }
 
-declare module "vinyl-fs" {
-    interface IDestOptions {
-        /** Specify the working directory the folder is relative to
-         * Default is process.cwd()
-         */
-        cwd?: string;
-
-        /** Specify the mode the files should be created with
-         * Default is the mode of the input file (file.stat.mode)
-         * or the process mode if the input file has no mode property
-         */
-        mode?: number|string;
-
-        /** Specify the mode the directory should be created with. Default is the process mode */
-        dirMode?: number|string;
-
-        /** Specify if existing files with the same path should be overwritten or not. Default is true, to always overwrite existing files */
-        overwrite?: boolean;
-    }
-
-    interface IWatchOptions {
-        interval?: number;
-        debounceDelay?: number;
-        cwd?: string;
-        maxListeners?: Function;
-    }
-
-    interface IWatchEvent {
-        type: any;
-        path: any;
-        old: any;
-    }
-
-    type WatchCallback = (outEvt: IWatchEvent) => void;
-}
 
 export interface IncrementalCompiler {
     (): Transform;
@@ -126,6 +105,7 @@ export class IncrementalCompiler {
         if (!this._project) {
             return [];
         }
+
 
         // we do not cache file names between calls to .src() to allow new files to be picked up by
         // the compiler between compilations.  However, we will cache the compiler options if we
@@ -397,7 +377,7 @@ export class IncrementalCompiler {
      *
      * @param options Options to pass to vinyl-fs.
      */
-    public dest(options?: vinylfs.IDestOptions) {
+    public dest(options?: IVinylDestOptions) {
         return vinylfs.dest(this.destPath, options);
     }
 

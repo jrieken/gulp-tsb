@@ -543,7 +543,7 @@ class ScriptSnapshot implements ts.IScriptSnapshot {
 
     constructor(file: VinylFile) {
         this._file = file;
-        this._text = file.contents.toString("utf8");
+        this._text = file.contents.toString();
         this._mtime = file.stat.mtime;
     }
 

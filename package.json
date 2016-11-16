@@ -1,6 +1,6 @@
 {
   "name": "gulp-tsb",
-  "version": "1.10.4",
+  "version": "2.0.2",
   "author": "Johannes Rieken <johannes.rieken@gmail.com>",
   "description": "A gulp plugin for very fast TypeScript compilation.",
   "main": "lib/index.js",
@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "test": "gulp test",
-    "prepublish": "gulp lkg"
+    "prepublish": "gulp lkg",
+    "compile": "gulp build"
   },
   "repository": {
     "type": "git",
