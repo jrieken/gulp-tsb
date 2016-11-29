@@ -465,13 +465,11 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getScriptFileNames(): string[] {
-
         const result: string[] = [];
-        const defaultLibFileName = this.getDefaultLibFileName(this.getCompilationSettings());
+        const libLocation = this.getDefaultLibLocation();
         for (let fileName in this._snapshots) {
             if (/\.tsx?/i.test(path.extname(fileName))
-                && fileName !== defaultLibFileName) {
-
+                && normalize(path.dirname(fileName)) !== libLocation) {
                 // only ts-files and not lib.d.ts-like files
                 result.push(fileName)
             }
@@ -557,8 +555,12 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getDefaultLibFileName(options: ts.CompilerOptions): string {
-        let libFile = options.target < ts.ScriptTarget.ES6 ? 'lib.d.ts' : 'lib.es6.d.ts';
-        return require.resolve("typescript/lib/" + libFile);
+        return normalize(path.join(this.getDefaultLibLocation(), ts.getDefaultLibFileName(options)));
+    }
+
+    getDefaultLibLocation() {
+        let typescriptInstall = require.resolve('typescript');
+        return normalize(path.dirname(typescriptInstall));
     }
 
     // ---- dependency management
