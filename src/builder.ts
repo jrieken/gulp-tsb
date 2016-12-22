@@ -562,6 +562,20 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         let typescriptInstall = require.resolve('typescript');
         return normalize(path.dirname(typescriptInstall));
     }
+        
+    getNewLine(): string {
+        const newLine = this._settings.newLine;
+        if (newLine === ts.NewLineKind.CarriageReturnLineFeed) {
+            return '\r\n';
+        }
+        else if (newLine === ts.NewLineKind.LineFeed) {
+            return '\r';
+        }
+        else if (ts.sys) {
+            return ts.sys.newLine;
+        }
+        return '\r\n';
+    }
 
     // ---- dependency management
 
