@@ -14,7 +14,6 @@ export interface IConfiguration {
     verbose: boolean;
     _emitWithoutBasePath?: boolean;
     _emitLanguageService?: boolean;
-    [option: string]: string | number | boolean;
 }
 
 export interface CancellationToken {
@@ -30,16 +29,16 @@ export namespace CancellationToken {
 export interface ITypeScriptBuilder {
     build(out: (file: Vinyl) => void, onError: (err: any) => void, token?: CancellationToken): Promise<any>;
     file(file: Vinyl): void;
+    languageService: ts.LanguageService;
 }
 
 function normalize(path: string): string {
     return path.replace(/\\/g, '/');
 }
 
-export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuilder {
+export function createTypeScriptBuilder(config: IConfiguration, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
 
-    var compilerOptions = createCompilerOptions(config),
-        host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false),
+    let host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
         lastDtsHash: { [path: string]: string } = Object.create(null),
@@ -299,7 +298,7 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
                     while (filesWithChangedSignature.length) {
                         let fileName = filesWithChangedSignature.pop();
 
-                        if (!isExternalModule(service.getSourceFile(fileName))) {
+                        if (!isExternalModule(service.getProgram().getSourceFile(fileName))) {
                              _log('[check semantics*]', fileName + ' is an internal module and it has changed shape -> check whatever hasn\'t been checked yet');
                             toBeCheckedSemantically.push(...host.getScriptFileNames());
                             filesWithChangedSignature.length = 0;
@@ -379,58 +378,9 @@ export function createTypeScriptBuilder(config: IConfiguration): ITypeScriptBuil
 
     return {
         file,
-        build
+        build,
+        languageService: service
     };
-}
-
-function createCompilerOptions(config: IConfiguration): ts.CompilerOptions {
-
-    function map<T>(key:any, map:{[key:string]:T}, defaultValue:T):T {
-        let s = String(key).toLowerCase();
-        if (map.hasOwnProperty(s)) {
-            return map[s];
-        }
-        return defaultValue;
-    }
-
-    // language version
-    config['target'] = map(config['target'], {
-        es3: ts.ScriptTarget.ES3,
-        es5: ts.ScriptTarget.ES5,
-        es6: ts.ScriptTarget.ES6,
-        es2015: ts.ScriptTarget.ES2015,
-        latest: ts.ScriptTarget.Latest
-    }, ts.ScriptTarget.ES3);
-
-    // module generation
-    config['module'] = map(config['module'], {
-        commonjs: ts.ModuleKind.CommonJS,
-        amd: ts.ModuleKind.AMD,
-        system: ts.ModuleKind.System,
-        umd: ts.ModuleKind.UMD,
-        es6: ts.ModuleKind.ES6,
-        es2015: ts.ModuleKind.ES2015
-    }, ts.ModuleKind.None);
-
-    // module resolution
-    config['moduleResolution'] = map(config['moduleResolution'], {
-        classic: ts.ModuleResolutionKind.Classic,
-        node: ts.ModuleResolutionKind.NodeJs
-    }, undefined);
-
-    // new line
-    config['newLine'] = map(config['newLine'], {
-        CRLF: ts.NewLineKind.CarriageReturnLineFeed,
-        LF: ts.NewLineKind.LineFeed
-    }, undefined);
-
-    // jsx handling
-    config['jsx'] = map(config['jsx'], {
-        preserve: ts.JsxEmit.Preserve,
-        react: ts.JsxEmit.React
-    }, ts.JsxEmit.None);
-
-    return <ts.CompilerOptions> config;
 }
 
 class ScriptSnapshot implements ts.IScriptSnapshot {
@@ -515,13 +465,11 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getScriptFileNames(): string[] {
-
         const result: string[] = [];
-        const defaultLibFileName = this.getDefaultLibFileName(this.getCompilationSettings());
+        const libLocation = this.getDefaultLibLocation();
         for (let fileName in this._snapshots) {
             if (/\.tsx?/i.test(path.extname(fileName))
-                && fileName !== defaultLibFileName) {
-
+                && normalize(path.dirname(fileName)) !== libLocation) {
                 // only ts-files and not lib.d.ts-like files
                 result.push(fileName)
             }
@@ -607,8 +555,12 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getDefaultLibFileName(options: ts.CompilerOptions): string {
-        let libFile = options.target < ts.ScriptTarget.ES6 ? 'lib.d.ts' : 'lib.es6.d.ts';
-        return require.resolve("typescript/lib/" + libFile);
+        return normalize(path.join(this.getDefaultLibLocation(), ts.getDefaultLibFileName(options)));
+    }
+
+    getDefaultLibLocation() {
+        let typescriptInstall = require.resolve('typescript');
+        return normalize(path.dirname(typescriptInstall));
     }
 
     // ---- dependency management
