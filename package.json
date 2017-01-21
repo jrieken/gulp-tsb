@@ -26,12 +26,15 @@
     "vinyl": "^0.4.3"
   },
   "devDependencies": {
+    "@types/chai": "^3.4.34",
     "@types/chalk": "*",
     "@types/gulp-util": "*",
     "@types/mocha": "*",
     "@types/node": "*",
     "@types/through": "*",
     "@types/vinyl": "*",
+    "chai": "^3.5.0",
+    "chai-baseline": "^1.0.0",
     "del": "^2.2.2",
     "gulp": "^3.8.10",
     "gulp-mocha": "^3.0.1",
