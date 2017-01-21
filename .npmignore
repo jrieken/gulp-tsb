@@ -1,5 +1,7 @@
-src
-typings
 .vscode
+src
+tmp
+out
+typings
 gulpfile.js
 tsconfig.json

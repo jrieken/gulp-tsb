@@ -3,12 +3,12 @@
   "version": "2.0.3",
   "author": "Johannes Rieken <johannes.rieken@gmail.com>",
   "description": "A gulp plugin for very fast TypeScript compilation.",
-  "main": "./lib/index",
+  "main": "./lib",
   "license": "MIT",
   "scripts": {
-    "test": "mocha lib/tests",
-    "prepublish": "tsc && mocha lib/tests",
-    "compile": "tsc"
+    "test": "gulp test",
+    "prepublish": "gulp lkg",
+    "compile": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -26,15 +26,18 @@
     "vinyl": "^0.4.3"
   },
   "devDependencies": {
-    "gulp": "^3.8.10",
-    "mocha": "*",
-    "typescript": "^2.0.3",
-    "@types/node": "*",
     "@types/chalk": "*",
     "@types/gulp-util": "*",
     "@types/mocha": "*",
+    "@types/node": "*",
     "@types/through": "*",
-    "@types/vinyl": "*"
+    "@types/vinyl": "*",
+    "del": "^2.2.2",
+    "gulp": "^3.8.10",
+    "gulp-mocha": "^3.0.1",
+    "mocha": "*",
+    "run-sequence": "^1.2.2",
+    "typescript": "^2.0.3"
   },
   "peerDependencies": {
     "typescript": "^2.0.10"
