@@ -1,6 +1,6 @@
 'use strict';
 
-import {Stats, statSync, readFileSync} from 'fs';
+import {Stats, statSync, readFileSync, existsSync} from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import * as utils from './utils';
@@ -552,6 +552,18 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     getCurrentDirectory(): string {
         return process.cwd();
+    }
+
+    directoryExists(directoryName: string): boolean {
+        return existsSync(directoryName);
+    }
+
+    fileExists(fileName: string): boolean {
+        return existsSync(fileName);
+    }
+
+    readFile(fileName: string): string {
+        return readFileSync(fileName, 'utf8');
     }
 
     getDefaultLibFileName(options: ts.CompilerOptions): string {
