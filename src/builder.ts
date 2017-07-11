@@ -555,11 +555,11 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     fileExists(fileName: string): boolean {
-        return existsSync(fileName);
+        return !this._noFilesystemLookup && existsSync(fileName);
     }
 
     readFile(fileName: string): string {
-        return readFileSync(fileName, 'utf8');
+        return this._noFilesystemLookup ? '' : readFileSync(fileName, 'utf8');
     }
 
     getDefaultLibFileName(options: ts.CompilerOptions): string {
