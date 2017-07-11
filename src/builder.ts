@@ -554,10 +554,6 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         return process.cwd();
     }
 
-    directoryExists(directoryName: string): boolean {
-        return existsSync(directoryName);
-    }
-
     fileExists(fileName: string): boolean {
         return existsSync(fileName);
     }
