@@ -8,7 +8,7 @@ import * as builder from './builder';
 import * as ts from 'typescript';
 import {Stream} from 'stream';
 import {readFileSync, existsSync, readdirSync} from 'fs';
-import {extname, dirname} from 'path';
+import {extname, dirname, resolve} from 'path';
 
 // We actually only want to read the tsconfig.json file. So all methods
 // to read the FS are 'empty' implementations.
@@ -36,12 +36,14 @@ export function create(configOrName: { [option: string]: string | number | boole
     let config: builder.IConfiguration = { json, verbose, noFilesystemLookup: false };
 
     if (typeof configOrName === 'string') {
-        var parsed = ts.readConfigFile(configOrName, _parseConfigHost.readFile);
-        options = ts.parseJsonConfigFileContent(parsed.config, _parseConfigHost, dirname(configOrName)).options;
+        let parsed = ts.readConfigFile(configOrName, _parseConfigHost.readFile);
         if (parsed.error) {
             console.error(parsed.error);
             return () => null;
         }
+
+        options = ts.parseJsonConfigFileContent(parsed.config, _parseConfigHost, dirname(configOrName), undefined, configOrName).options;
+        config.base = resolve(dirname(configOrName));
     } else {
         options = ts.parseJsonConfigFileContent({ compilerOptions: configOrName }, _parseConfigHost, './').options;
         Object.assign(config, configOrName);
@@ -50,6 +52,8 @@ export function create(configOrName: { [option: string]: string | number | boole
     if (!onError) {
         onError = (err) => console.log(JSON.stringify(err, null, 4));
     }
+
+    if (!config.base) config.base = process.cwd();
 
     const _builder = builder.createTypeScriptBuilder(config, options);
 
