@@ -1,7 +1,9 @@
 /* global __dirname */
 
 var gulp = require('gulp');
+var util = require('gulp-util');
 var path = require('path');
+var child_process = require('child_process');
 var mocha = require('gulp-mocha');
 var del = require('del');
 var runSequence = require('run-sequence');
@@ -55,9 +57,29 @@ gulp.task('lkg', function () {
     return runSequence('clean', 'test', 'lkg:copy');
 });
 
-gulp.task('test', ['build'], function () {
+gulp.task('accept-baselines', function () {
+    return gulp.src(["tests/baselines/local/**/*"])
+        .pipe(gulp.dest("tests/baselines/reference"));
+});
+
+gulp.task('clean-local-baselines', function () {
+    return del(["tests/baselines/local"]);
+});
+
+gulp.task('test', ['build', 'clean-local-baselines'], function () {
     return gulp.src(["out/tests/**/*.js"], { read: false })
         .pipe(mocha({ timeout: 3000 }));
+});
+
+gulp.task('diff', function (cb) {
+    getDiffTool(function (e, tool) {
+        if (e) return cb(e);
+        tool = formatDiffTool(tool, "tests/baselines/reference", "tests/baselines/local");
+        util.log(tool);
+        var args = parseCommand(tool);
+        child_process.spawn(args.shift(), args, { detached: true }).unref();
+        cb(null);
+    });
 });
 
 gulp.task('dev', ['test'], function () {
@@ -65,6 +87,37 @@ gulp.task('dev', ['test'], function () {
 });
 
 gulp.task('default', ['dev']);
+
+// get the diff tool either from the 'DIFF' environment variable or from git
+function getDiffTool(cb) {
+    var difftool = process.env['DIFF'];
+    if (difftool) return cb(null, difftool);
+    child_process.exec('git config diff.tool', function (e, stdout) {
+        if (e) return cb(e, null);
+        if (stdout) stdout = stdout.trim();
+        if (!stdout) return cb(new Error("Add the 'DIFF' environment variable to the path of the program you want to use."), null);
+        child_process.exec('git config difftool.' + stdout + '.cmd', function (e, stdout) {
+            if (e) return cb(e, null);
+            if (stdout) stdout = stdout.trim();
+            if (!stdout) return cb(new Error("Add the 'DIFF' environment variable to the path of the program you want to use."), null);
+            return cb(null, stdout);
+        });
+    });
+}
+
+// format the diff tool path with a left and right comparison path
+function formatDiffTool(toolPath, leftPath, rightPath) {
+    return /\$(local|remote)/i.test(toolPath)
+        ? toolPath.replace(/(\$local)|(\$remote)/gi, function (_, left, right) { return left ? leftPath : rightPath; })
+        : '"' + toolPath + '" "' + leftPath + '" "' + rightPath + '"';
+}
+
+// parse a command line string
+function parseCommand(text) {
+    var re = /"([^"]*)"|[^"\s]+/g, args = [], m;
+    while (m = re.exec(text)) args.push(m[1] || m[0]);
+    return args;
+}
 
 // reload a node module and any children beneath the same folder
 function reload(moduleName) {

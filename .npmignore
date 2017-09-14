@@ -3,5 +3,6 @@ src
 tmp
 out
 typings
+tests
 gulpfile.js
 tsconfig.json
