@@ -303,8 +303,11 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         let toCheckSemanticOf: ts.SourceFile | undefined;
         let sourceFilesToCheck: ts.SourceFile[] | undefined;
         let unrecoverableError = false;
+        let rootFileNames: string[];
+        let requireAffectedFileToBeRoot = watch === undefined;
 
         return new Promise(resolve => {
+            rootFileNames = host.getFileNames();
             // Create/update the program
             synchronizeProgram();
 
@@ -329,6 +332,16 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                 headUsed = headNow;
             }
         });
+
+        function setFileToCheck(file: ts.SourceFile, requiresToBeRoot: boolean) {
+            if (!requiresToBeRoot || rootFileNames.findIndex(fileName => fileName === file.fileName) !== -1) {
+                utils.maps.unorderedRemoveItem(rootFileNames, file.fileName);
+                toCheckSyntaxOf = toCheckSemanticOf = file;
+                return true;
+            }
+
+            return false;
+        }
 
         function getNextWork(workOnNext: () => void): Promise<void> | undefined {
             // If unrecoverable error, stop
@@ -376,7 +389,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                     const { affectedFile, diagnostics, files } = emitResult;
                     if (affectedFile && utils.maps.unorderedRemoveItem(sourceFilesToCheck, affectedFile)) {
                         // Set affected file to be checked for syntax and semantics
-                        toCheckSyntaxOf = toCheckSemanticOf = affectedFile
+                        setFileToCheck(affectedFile, /*requiresToBeRoot*/ requireAffectedFileToBeRoot);
                     }
 
                     printDiagnostics(diagnostics, onError);
@@ -389,9 +402,12 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
             }
 
             // Check remaining (non-affected files)
-            if (sourceFilesToCheck.length) {
-                toCheckSyntaxOf = toCheckSemanticOf = sourceFilesToCheck.pop();
-                return getNextWork(workOnNext);
+            while (sourceFilesToCheck.length) {
+                const file = sourceFilesToCheck.pop();
+                // Check only root file names - as thats what earlier happened
+                if (setFileToCheck(file, /*requiresToBeRoot*/ true)) {
+                    return getNextWork(workOnNext);
+                }
             }
 
             // Report global diagnostics
