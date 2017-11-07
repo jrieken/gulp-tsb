@@ -84,25 +84,33 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
     function printDiagnostics(diagnostics: ReadonlyArray<ts.Diagnostic>, onError: (err: any) => void) {
         if (diagnostics.length > 0) {
             diagnostics.forEach(diag => {
-                var lineAndCh = diag.file.getLineAndCharacterOfPosition(diag.start),
-                    message: string;
+                let message: string;
+                if (diag.file) {
+                    let lineAndCh = diag.file.getLineAndCharacterOfPosition(diag.start);
+                    if (!config.json) {
+                        message = utils.strings.format('{0}({1},{2}): {3}',
+                            diag.file.fileName,
+                            lineAndCh.line + 1,
+                            lineAndCh.character + 1,
+                            ts.flattenDiagnosticMessageText(diag.messageText, '\n'));
 
-                if (!config.json) {
-                    message = utils.strings.format('{0}({1},{2}): {3}',
-                        diag.file.fileName,
-                        lineAndCh.line + 1,
-                        lineAndCh.character + 1,
-                        ts.flattenDiagnosticMessageText(diag.messageText, '\n'));
-
-                } else {
-                    message = JSON.stringify({
-                        filename: diag.file.fileName,
-                        offset: diag.start,
-                        length: diag.length,
-                        message: ts.flattenDiagnosticMessageText(diag.messageText, '\n')
-                    });
+                    } else {
+                        message = JSON.stringify({
+                            filename: diag.file.fileName,
+                            offset: diag.start,
+                            length: diag.length,
+                            message: ts.flattenDiagnosticMessageText(diag.messageText, '\n')
+                        });
+                    }
                 }
-
+                else {
+                    message = ts.flattenDiagnosticMessageText(diag.messageText, '\n');
+                    if (config.json) {
+                        message = JSON.stringify({
+                            message
+                        });
+                    }
+                }
                 onError(message);
             });
         }
@@ -386,7 +394,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                 return getNextWork(workOnNext);
             }
 
-            // Report global diagnostics 
+            // Report global diagnostics
             printDiagnostics(program.getOptionsDiagnostics(), onError);
             printDiagnostics(program.getGlobalDiagnostics(), onError);
 
@@ -624,6 +632,6 @@ function createHost(options: ts.CompilerOptions, noFileSystemLookup: boolean): H
     function getExecutingFilePath(): string {
         // Executing from the typescript installation
         const typescriptInstall = require.resolve('typescript');
-        return normalize(path.dirname(typescriptInstall));
+        return normalize(typescriptInstall);
     }
 }
