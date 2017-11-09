@@ -588,12 +588,14 @@ function createHost(options: ts.CompilerOptions, noFileSystemLookup: boolean): H
             return undefined;
         }
         const text = ts.sys.readFile(path, encoding);
-        otherFiles.set(canonicalName, new Vinyl({
-            path,
-            contents: new Buffer(text),
-            base: options.outDir,
-            stat: statSync(path)
-        }));
+        if (text !== undefined) {
+            otherFiles.set(canonicalName, new Vinyl({
+                path,
+                contents: new Buffer(text),
+                base: options.outDir,
+                stat: statSync(path)
+            }));
+        }
         return text;
     }
 
