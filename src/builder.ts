@@ -63,8 +63,11 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
     let fileListChanged = false;
 
     // Program and builder to emit/check files
-    let program: ts.Program, usableOldBuilderState: ts.BuilderState;
-    let toEmitFromBuilderState: ts.BuilderState;
+    let program: ts.Program;
+    const builder = ts.createEmitAndSemanticDiagnosticsBuilder({
+        computeHash: d => host.createHash(d),
+        getCanonicalFileName: d => host.getCanonicalName(d)
+    });
     let headUsed = process.memoryUsage().heapUsed;
     return {
         file,
@@ -135,14 +138,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
 
     function afterProgramCreate(_host: ts.DirectoryStructureHost, updatedProgram: ts.Program) {
         program = updatedProgram;
-        if (toEmitFromBuilderState && toEmitFromBuilderState.canCreateNewStateFrom()) {
-            usableOldBuilderState = toEmitFromBuilderState;
-        }
-
-        toEmitFromBuilderState = ts.createBuilderState(program, {
-            computeHash: d => host.createHash(d),
-            getCanonicalFileName: d => host.getCanonicalName(d)
-        }, usableOldBuilderState);
+        builder.updateProgram(updatedProgram);
     }
 
     function getSyntacticDiagnostics(file: ts.SourceFile) {
@@ -150,21 +146,21 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
     }
 
     function getSemanticDiagnostics(file: ts.SourceFile) {
-        return (toEmitFromBuilderState || usableOldBuilderState).getSemanticDiagnostics(program, file);
+        return builder.getSemanticDiagnostics(program, file);
     }
 
-    function emitNextAffectedFile(builderState: ts.BuilderState) {
+    function emitNextAffectedFile() {
         let files: Vinyl[] = [];
 
         let javaScriptFile: Vinyl;
         let sourceMapFile: Vinyl;
 
-        const result = builderState.emitNextAffectedFile(program, writeFile);
+        const result = builder.emitNextAffectedFile(program, writeFile);
         if (!result) {
             return undefined;
         }
 
-        const { diagnostics, affectedFile } = result;
+        const { result: { diagnostics }, affectedFile } = result;
         if (sourceMapFile) {
             // adjust the source map to be relative to the source directory.
             const sourceMap = JSON.parse(sourceMapFile.contents.toString());
@@ -305,6 +301,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         let unrecoverableError = false;
         let rootFileNames: string[];
         let requireAffectedFileToBeRoot = watch === undefined;
+        let hasPendingEmit = true;
 
         return new Promise(resolve => {
             rootFileNames = host.getFileNames();
@@ -376,13 +373,12 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
             }
 
             // If there are pending files to emit, emit next file
-            if (toEmitFromBuilderState) {
-                return createPromise(toEmitFromBuilderState, emitNextAffectedFile, emitResult => {
+            if (hasPendingEmit) {
+                return createPromise(/*arg*/ undefined, emitNextAffectedFile, emitResult => {
                     if (!emitResult) {
                         // All emits complete, remove the toEmitFromBuilderState and
                         // set it as useOld
-                        usableOldBuilderState = toEmitFromBuilderState;
-                        toEmitFromBuilderState = undefined;
+                        hasPendingEmit = false;
                         return;
                     }
 
