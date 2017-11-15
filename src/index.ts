@@ -6,9 +6,9 @@ import vinyl = require('vinyl');
 import * as through from 'through';
 import * as builder from './builder';
 import * as ts from 'typescript';
-import {Stream} from 'stream';
-import {readFileSync, existsSync, readdirSync} from 'fs';
-import {extname, dirname} from 'path';
+import { Stream } from 'stream';
+import { readFileSync, existsSync, readdirSync } from 'fs';
+import { extname, dirname } from 'path';
 
 // We actually only want to read the tsconfig.json file. So all methods
 // to read the FS are 'empty' implementations.
@@ -43,7 +43,8 @@ export function create(configOrName: { [option: string]: string | number | boole
             return () => null;
         }
     } else {
-        options = ts.parseJsonConfigFileContent({ compilerOptions: configOrName }, _parseConfigHost, './').options;
+        const base = typeof configOrName.base === 'string' ? configOrName.base : './';
+        options = ts.parseJsonConfigFileContent({ compilerOptions: configOrName }, _parseConfigHost, base).options;
         Object.assign(config, configOrName);
     }
 
@@ -71,5 +72,5 @@ export function create(configOrName: { [option: string]: string | number | boole
     let result = (token: builder.CancellationToken) => createStream(token);
     Object.defineProperty(result, 'program', { get: () => _builder.languageService.getProgram() });
 
-    return <IncrementalCompiler> result;
+    return <IncrementalCompiler>result;
 }
