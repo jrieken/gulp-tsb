@@ -160,7 +160,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
             return undefined;
         }
 
-        const { result: { diagnostics }, affectedFile } = result;
+        const { result: { diagnostics }, affected } = result;
         if (sourceMapFile) {
             // adjust the source map to be relative to the source directory.
             const sourceMap = JSON.parse(sourceMapFile.contents.toString());
@@ -218,7 +218,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
             }
         }
 
-        return { affectedFile, files, diagnostics };
+        return { affected, files, diagnostics };
 
         function writeFile(fileName: string, text: string, _writeByteOrderMark: boolean, _onError: (message: string) => void, sourceFiles: ts.SourceFile[]) {
             // When gulp-sourcemaps writes out a sourceMap, it uses the path
@@ -301,6 +301,8 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         let unrecoverableError = false;
         let rootFileNames: string[];
         let requireAffectedFileToBeRoot = watch === undefined;
+        // Check only root file names - as thats what earlier happened
+        let requireRootForOtherFiles = true;
         let hasPendingEmit = true;
 
         return new Promise(resolve => {
@@ -382,10 +384,14 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                         return;
                     }
 
-                    const { affectedFile, diagnostics, files } = emitResult;
-                    if (affectedFile && utils.maps.unorderedRemoveItem(sourceFilesToCheck, affectedFile)) {
+                    const { affected, diagnostics, files } = emitResult;
+                    if (affected === program) {
+                        // Whole program is changed, syntax check for all the files with requireAffectedFileToBeRoot setting
+                        requireRootForOtherFiles = requireAffectedFileToBeRoot;
+                    }
+                    else if(utils.maps.unorderedRemoveItem(sourceFilesToCheck, affected as ts.SourceFile)) {
                         // Set affected file to be checked for syntax and semantics
-                        setFileToCheck(affectedFile, /*requiresToBeRoot*/ requireAffectedFileToBeRoot);
+                        setFileToCheck(affected as ts.SourceFile, /*requiresToBeRoot*/ requireAffectedFileToBeRoot);
                     }
 
                     printDiagnostics(diagnostics, onError);
@@ -401,7 +407,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
             while (sourceFilesToCheck.length) {
                 const file = sourceFilesToCheck.pop();
                 // Check only root file names - as thats what earlier happened
-                if (setFileToCheck(file, /*requiresToBeRoot*/ true)) {
+                if (setFileToCheck(file, requireRootForOtherFiles)) {
                     return getNextWork(workOnNext);
                 }
             }
