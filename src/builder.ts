@@ -23,9 +23,21 @@ export interface CancellationToken {
 }
 
 export namespace CancellationToken {
-    export const None: CancellationToken = {
-        isCancellationRequested() { return false }
+    export const None: ts.CancellationToken = {
+        isCancellationRequested() { return false },
+        throwIfCancellationRequested: () { }
     };
+
+    export function createTsCancellationToken(token: CancellationToken): ts.CancellationToken {
+        return {
+            isCancellationRequested: () => token.isCancellationRequested(),
+            throwIfCancellationRequested: () => {
+                if (token.isCancellationRequested()) {
+                    throw new ts.OperationCanceledException();
+                }
+            }
+        };
+    }
 }
 
 export interface ITypeScriptBuilder {
@@ -141,21 +153,21 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         builder.updateProgram(updatedProgram);
     }
 
-    function getSyntacticDiagnostics(file: ts.SourceFile) {
-        return program.getSyntacticDiagnostics(file);
+    function getSyntacticDiagnostics(file: ts.SourceFile, token: ts.CancellationToken) {
+        return program.getSyntacticDiagnostics(file, token);
     }
 
-    function getSemanticDiagnostics(file: ts.SourceFile) {
-        return builder.getSemanticDiagnostics(program, file);
+    function getSemanticDiagnostics(file: ts.SourceFile, token: ts.CancellationToken) {
+        return builder.getSemanticDiagnostics(program, file, token);
     }
 
-    function emitNextAffectedFile() {
+    function emitNextAffectedFile(_arg: undefined, token: ts.CancellationToken) {
         let files: Vinyl[] = [];
 
         let javaScriptFile: Vinyl;
         let sourceMapFile: Vinyl;
 
-        const result = builder.emitNextAffectedFile(program, writeFile);
+        const result = builder.emitNextAffectedFile(program, writeFile, token);
         if (!result) {
             return undefined;
         }
@@ -258,17 +270,22 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         }
     }
 
-    function createPromise<T, U>(arg: T, action: (arg: T) => U, onfulfilled: (result: U) => void, workOnNext: () => void) {
+    function createPromise<T, U>(arg: T, tsToken: ts.CancellationToken, action: (arg: T, tsToken: ts.CancellationToken) => U, onfulfilled: (result: U) => void, workOnNext: () => void) {
         return new Promise<U>(resolve => {
             process.nextTick(function () {
-                resolve(action(arg));
+                resolve(action(arg, tsToken));
             });
-        }).then(onfulfilled).then(() => {
+        }).then(onfulfilled, err => {
+            if (err instanceof ts.OperationCanceledException) {
+                _log('[CANCEL]', '>>This compile run was cancelled<<');
+            }
+            console.error(err);
+        }).then(() => {
             // After completion, schedule next work
             process.nextTick(workOnNext);
         }).catch(err => {
             console.error(err);
-        });;
+        });
     }
 
     function synchronizeProgram() {
@@ -291,7 +308,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         }
     }
 
-    function build(out: (file: Vinyl) => void, onError: (err: any) => void, token = CancellationToken.None): Promise<any> {
+    function build(out: (file: Vinyl) => void, onError: (err: any) => void, token?: CancellationToken): Promise<any> {
         let t1 = Date.now();
 
         enum Status { None, SyntaxCheck, SemanticCheck }
@@ -304,6 +321,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         // Check only root file names - as thats what earlier happened
         let requireRootForOtherFiles = true;
         let hasPendingEmit = true;
+        const tsToken = token ? CancellationToken.createTsCancellationToken(token) : CancellationToken.None;
 
         return new Promise(resolve => {
             rootFileNames = host.getFileNames();
@@ -360,7 +378,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                 const file = toCheckSyntaxOf;
                 toCheckSyntaxOf = undefined;
                 _log('[check syntax]', file.fileName);
-                return createPromise(file, getSyntacticDiagnostics, diagnostics => {
+                return createPromise(file, tsToken, getSyntacticDiagnostics, diagnostics => {
                     printDiagnostics(diagnostics, onError);
                     unrecoverableError = diagnostics.length > 0;
                 }, workOnNext);
@@ -371,12 +389,12 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                 const file = toCheckSemanticOf;
                 toCheckSemanticOf = undefined;
                 _log('[check semantics]', file.fileName);
-                return createPromise(file, getSemanticDiagnostics, diagnostics => printDiagnostics(diagnostics, onError), workOnNext);
+                return createPromise(file, tsToken, getSemanticDiagnostics, diagnostics => printDiagnostics(diagnostics, onError), workOnNext);
             }
 
             // If there are pending files to emit, emit next file
             if (hasPendingEmit) {
-                return createPromise(/*arg*/ undefined, emitNextAffectedFile, emitResult => {
+                return createPromise(/*arg*/ undefined, tsToken, emitNextAffectedFile, emitResult => {
                     if (!emitResult) {
                         // All emits complete, remove the toEmitFromBuilderState and
                         // set it as useOld
