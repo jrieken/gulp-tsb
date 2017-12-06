@@ -362,7 +362,3 @@ export module maps {
         return undefined;
     }
 }
-
-export module misc {
-    export function noop(): void { }
-}

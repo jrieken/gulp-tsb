@@ -25,7 +25,7 @@ export interface CancellationToken {
 export namespace CancellationToken {
     export const None: ts.CancellationToken = {
         isCancellationRequested() { return false },
-        throwIfCancellationRequested: () { }
+        throwIfCancellationRequested: () => { }
     };
 
     export function createTsCancellationToken(token: CancellationToken): ts.CancellationToken {
@@ -76,18 +76,12 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
 
     // Program and builder to emit/check files
     let program: ts.Program;
-    const builder = ts.createEmitAndSemanticDiagnosticsBuilder({
-        computeHash: d => host.createHash(d),
-        getCanonicalFileName: d => host.getCanonicalName(d)
-    });
+    const builder = ts.createEmitAndSemanticDiagnosticsBuilder(host);
     let headUsed = process.memoryUsage().heapUsed;
     return {
         file,
         build,
-        getProgram: () => {
-            synchronizeProgram();
-            return program;
-        }
+        getProgram
     };
 
     function _log(topic: string, message: string) {
@@ -148,9 +142,8 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         }
     }
 
-    function afterProgramCreate(_host: ts.DirectoryStructureHost, updatedProgram: ts.Program) {
-        program = updatedProgram;
-        builder.updateProgram(updatedProgram);
+    function afterProgramCreate(updatedProgram: ts.Program) {
+
     }
 
     function getSyntacticDiagnostics(file: ts.SourceFile, token: ts.CancellationToken) {
@@ -288,24 +281,18 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         });
     }
 
-    function synchronizeProgram() {
+    function getProgram() {
         // Create/update the program
         if (!watch) {
-            watch = ts.createWatch({
-                system: host,
-                beforeProgramCreate: utils.misc.noop,
-                afterProgramCreate,
-                rootFiles: host.getFileNames(),
-                options: compilerOptions
-            });
+            host.rootFiles = host.getFileNames();
+            host.options = compilerOptions;
+            watch = ts.createWatch(host);
         }
         else if (fileListChanged) {
             fileListChanged = false;
             watch.updateRootFileNames(host.getFileNames());
         }
-        else {
-            watch.synchronizeProgram();
-        }
+        return watch.getProgram();
     }
 
     function build(out: (file: Vinyl) => void, onError: (err: any) => void, token?: CancellationToken): Promise<any> {
@@ -326,10 +313,11 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         return new Promise(resolve => {
             rootFileNames = host.getFileNames();
             // Create/update the program
-            synchronizeProgram();
+            program = getProgram();
+            builder.updateProgram(program);
+            host.updateWithProgram(program);
 
             // Schedule next work
-            host.updateWithProgram(program);
             sourceFilesToCheck = program.getSourceFiles().slice();
             workOnNext();
 
@@ -368,7 +356,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
             }
 
             // someone told us to stop this
-            if (token.isCancellationRequested()) {
+            if (tsToken.isCancellationRequested()) {
                 _log('[CANCEL]', '>>This compile run was cancelled<<')
                 return undefined;
             }
@@ -460,7 +448,7 @@ function createVinylFile(file: Vinyl): VinylFile {
     };
 }
 
-interface Host extends ts.System {
+interface Host extends ts.WatchCompilerHostOfFilesAndCompilerOptions {
     addFile(file: Vinyl): boolean;
     removeFile(filename: string): boolean;
 
@@ -469,7 +457,7 @@ interface Host extends ts.System {
 
     updateWithProgram(program: ts.Program): void;
 
-    getCanonicalName(s: string): string;
+    createHash(s: string): string;
 }
 
 function createHost(options: ts.CompilerOptions, noFileSystemLookup: boolean): Host {
@@ -478,7 +466,7 @@ function createHost(options: ts.CompilerOptions, noFileSystemLookup: boolean): H
     const watchedDirectoriesRecursive = utils.maps.createMultiMap<ts.DirectoryWatcherCallback>();
     const files = utils.maps.createMap<VinylFile>();
     const useCaseSensitiveFileNames = ts.sys.useCaseSensitiveFileNames;
-    const getCanonicalName: (s: string) => string = useCaseSensitiveFileNames ?
+    const getCanonicalFileName: (s: string) => string = useCaseSensitiveFileNames ?
             ((fileName) => fileName) :
         ((fileName) => fileName.toLowerCase());
 
@@ -490,29 +478,28 @@ function createHost(options: ts.CompilerOptions, noFileSystemLookup: boolean): H
         getFile,
         getFileNames,
         updateWithProgram,
-        newLine: ts.sys.newLine,
-        args: undefined,
-        useCaseSensitiveFileNames,
-        write: utils.misc.noop,
-        readFile,
-        writeFile: utils.misc.noop,
-        fileExists,
-        directoryExists,
-        createDirectory: utils.misc.noop,
+        createHash: data => ts.sys.createHash(data),
+
+        useCaseSensitiveFileNames: () => useCaseSensitiveFileNames,
+        getNewLine: () => ts.sys.newLine,
         getCurrentDirectory,
+        getDefaultLibFileName,
+        fileExists,
+        readFile,
+        directoryExists,
         getDirectories,
         readDirectory,
-        exit: utils.misc.noop,
+        realpath: resolvePath,
         watchFile,
         watchDirectory,
-        resolvePath,
-        getExecutingFilePath,
-        createHash: s => ts.sys.createHash(s),
-        getCanonicalName
+
+        // To be filled in later
+        rootFiles: [],
+        options: undefined
     };
 
     function toPath(filename: string) {
-        return resolvePath(getCanonicalName(normalize(filename)));
+        return resolvePath(getCanonicalFileName(normalize(filename)));
     }
 
     function addFile(file: Vinyl) {
@@ -667,9 +654,10 @@ function createHost(options: ts.CompilerOptions, noFileSystemLookup: boolean): H
         return !noFileSystemLookup ? ts.sys.resolvePath(path) : path;
     }
 
-    function getExecutingFilePath(): string {
-        // Executing from the typescript installation
+    function getDefaultLibFileName(options: ts.CompilerOptions) {
         const typescriptInstall = require.resolve('typescript');
-        return normalize(typescriptInstall);
+        const basePathName = path.dirname(typescriptInstall);
+        const libFileName = ts.getDefaultLibFileName(options);
+        return normalize(path.join(basePathName, libFileName));
     }
 }
