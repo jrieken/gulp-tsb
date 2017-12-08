@@ -71,17 +71,15 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
     let emitSourceMapsInStream = true;
 
     // Creates/ synchronizes the program
-    let watch: ts.WatchOfFilesAndCompilerOptions;
+    let watch: ts.WatchOfFilesAndCompilerOptions<ts.EmitAndSemanticDiagnosticsBuilderProgram>;
     let fileListChanged = false;
 
     // Program and builder to emit/check files
-    let program: ts.Program;
-    const builder = ts.createEmitAndSemanticDiagnosticsBuilder(host);
     let headUsed = process.memoryUsage().heapUsed;
     return {
         file,
         build,
-        getProgram
+        getProgram: () => getBuilderProgram().getProgram()
     };
 
     function _log(topic: string, message: string) {
@@ -142,127 +140,6 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         }
     }
 
-    function afterProgramCreate(updatedProgram: ts.Program) {
-
-    }
-
-    function getSyntacticDiagnostics(file: ts.SourceFile, token: ts.CancellationToken) {
-        return program.getSyntacticDiagnostics(file, token);
-    }
-
-    function getSemanticDiagnostics(file: ts.SourceFile, token: ts.CancellationToken) {
-        return builder.getSemanticDiagnostics(program, file, token);
-    }
-
-    function emitNextAffectedFile(_arg: undefined, token: ts.CancellationToken) {
-        let files: Vinyl[] = [];
-
-        let javaScriptFile: Vinyl;
-        let sourceMapFile: Vinyl;
-
-        const result = builder.emitNextAffectedFile(program, writeFile, token);
-        if (!result) {
-            return undefined;
-        }
-
-        const { result: { diagnostics }, affected } = result;
-        if (sourceMapFile) {
-            // adjust the source map to be relative to the source directory.
-            const sourceMap = JSON.parse(sourceMapFile.contents.toString());
-            let sourceRoot = sourceMap.sourceRoot;
-            const sources = sourceMap.sources.map(source => path.resolve(sourceMapFile.base, source));
-            const destPath = path.resolve(config.base, originalCompilerOptions.outDir || ".");
-
-            // update sourceRoot to be relative from the expected destination path
-            sourceRoot = emitSourceMapsInStream ? originalCompilerOptions.sourceRoot : sourceRoot;
-            sourceMap.sourceRoot = sourceRoot ? normalize(path.relative(destPath, sourceRoot)) : undefined;
-
-            if (emitSourceMapsInStream) {
-                // update sourcesContent
-                if (originalCompilerOptions.inlineSources) {
-                    sourceMap.sourcesContent = sources.map(source => {
-                        const vinyl = host.getFile(source);
-                        return vinyl ? (<Buffer>vinyl.contents).toString("utf8") : ts.sys.readFile(source);
-                    });
-                }
-
-                // make all sources relative to the sourceRoot or destPath
-                sourceMap.sources = sources.map(source => {
-                    source = path.resolve(sourceMapFile.base, source);
-                    source = path.relative(sourceRoot || destPath, source);
-                    source = normalize(source);
-                    return source;
-                });
-
-                // update the contents for the sourcemap file
-                sourceMapFile.contents = new Buffer(JSON.stringify(sourceMap));
-
-                let contents = javaScriptFile.contents.toString();
-                if (originalCompilerOptions.inlineSourceMap) {
-                    // restore the sourcemap as an inline source map in the javaScript file.
-                    contents += newLine + "//# sourceMappingURL=data:application/json;charset=utf8;base64," + sourceMapFile.contents.toString("base64") + newLine;
-                }
-                else {
-                    contents += newLine + "//# sourceMappingURL=" + normalize(path.relative(path.dirname(javaScriptFile.path), sourceMapFile.path)) + newLine;
-                    files.push(sourceMapFile);
-                }
-
-                javaScriptFile.contents = new Buffer(contents);
-            }
-            else {
-                // sourcesContent is handled by gulp-sourcemaps
-                sourceMap.sourcesContent = undefined;
-
-                // make all of the sources in the source map relative paths
-                sourceMap.sources = sources.map(source => {
-                    const vinyl = host.getFile(source);
-                    return vinyl ? normalize(vinyl.relative) : source;
-                });
-
-                (<any>javaScriptFile).sourceMap = sourceMap;
-            }
-        }
-
-        return { affected, files, diagnostics };
-
-        function writeFile(fileName: string, text: string, _writeByteOrderMark: boolean, _onError: (message: string) => void, sourceFiles: ts.SourceFile[]) {
-            // When gulp-sourcemaps writes out a sourceMap, it uses the path
-            // information of the associated file. Specifically, it uses the base
-            // directory and relative path of the file to make decisions on how to
-            // write the "sources" and "sourceRoot" properties.
-            //
-            // To emit the correct paths, we need to have the output files emulate
-            // a path local to the source location, not the expected output location.
-            //
-            // Since gulp.dest sets our output location for us, then all that matters
-            // to gulp.dest is the relative path for each file. This means that we
-            // should be able to safely treat output files as local to sources to
-            // better support gulp-sourcemaps.
-
-            let base = sourceFiles.length === 1 && !config._emitWithoutBasePath ? host.getFile(sourceFiles[0].fileName).base : undefined;
-            let relative = base && path.relative(base, fileName);
-            let name = relative ? path.resolve(base, relative) : fileName;
-            let contents = new Buffer(text);
-            let vinyl = new Vinyl({ path: name, base, contents });
-            if (/\.js$/.test(vinyl.path)) {
-                javaScriptFile = vinyl;
-                // gulp-sourcemaps will add an appropriate sourceMappingURL comment, so we need to remove the
-                // one that TypeScript generates.
-                const sourceMappingURLPattern = /(\r\n?|\n)?\/\/# sourceMappingURL=[^\r\n]+(?=[\r\n\s]*$)/;
-                const contents = javaScriptFile.contents.toString();
-                javaScriptFile.contents = new Buffer(contents.replace(sourceMappingURLPattern, ""));
-                files.push(javaScriptFile);
-
-            }
-            else if (/\.js\.map$/.test(vinyl.path)) {
-                sourceMapFile = vinyl;
-            }
-            else if (/\.d\.ts$/.test(vinyl.path)) {
-                files.push(vinyl);
-            }
-        }
-    }
-
     function createPromise<T, U>(arg: T, tsToken: ts.CancellationToken, action: (arg: T, tsToken: ts.CancellationToken) => U, onfulfilled: (result: U) => void, workOnNext: () => void) {
         return new Promise<U>(resolve => {
             process.nextTick(function () {
@@ -281,12 +158,12 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         });
     }
 
-    function getProgram() {
+    function getBuilderProgram() {
         // Create/update the program
         if (!watch) {
             host.rootFiles = host.getFileNames();
             host.options = compilerOptions;
-            watch = ts.createWatch(host);
+            watch = ts.createWatchBuilderProgram(host, ts.createEmitAndSemanticDiagnosticsBuilderProgram);
         }
         else if (fileListChanged) {
             fileListChanged = false;
@@ -309,16 +186,16 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         let requireRootForOtherFiles = true;
         let hasPendingEmit = true;
         const tsToken = token ? CancellationToken.createTsCancellationToken(token) : CancellationToken.None;
+        let builderProgram: ts.EmitAndSemanticDiagnosticsBuilderProgram;
 
         return new Promise(resolve => {
             rootFileNames = host.getFileNames();
             // Create/update the program
-            program = getProgram();
-            builder.updateProgram(program);
-            host.updateWithProgram(program);
+            builderProgram = getBuilderProgram();
+            host.updateWithProgram(builderProgram);
 
             // Schedule next work
-            sourceFilesToCheck = program.getSourceFiles().slice();
+            sourceFilesToCheck = builderProgram.getSourceFiles().slice();
             workOnNext();
 
             function workOnNext() {
@@ -337,6 +214,123 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                 headUsed = headNow;
             }
         });
+
+        function getSyntacticDiagnostics(file: ts.SourceFile, token: ts.CancellationToken) {
+            return builderProgram.getSyntacticDiagnostics(file, token);
+        }
+
+        function getSemanticDiagnostics(file: ts.SourceFile, token: ts.CancellationToken) {
+            return builderProgram.getSemanticDiagnostics(file, token);
+        }
+
+        function emitNextAffectedFile(_arg: undefined, token: ts.CancellationToken) {
+            let files: Vinyl[] = [];
+
+            let javaScriptFile: Vinyl;
+            let sourceMapFile: Vinyl;
+
+            const result = builderProgram.emitNextAffectedFile(writeFile, token);
+            if (!result) {
+                return undefined;
+            }
+
+            const { result: { diagnostics }, affected } = result;
+            if (sourceMapFile) {
+                // adjust the source map to be relative to the source directory.
+                const sourceMap = JSON.parse(sourceMapFile.contents.toString());
+                let sourceRoot = sourceMap.sourceRoot;
+                const sources = sourceMap.sources.map(source => path.resolve(sourceMapFile.base, source));
+                const destPath = path.resolve(config.base, originalCompilerOptions.outDir || ".");
+
+                // update sourceRoot to be relative from the expected destination path
+                sourceRoot = emitSourceMapsInStream ? originalCompilerOptions.sourceRoot : sourceRoot;
+                sourceMap.sourceRoot = sourceRoot ? normalize(path.relative(destPath, sourceRoot)) : undefined;
+
+                if (emitSourceMapsInStream) {
+                    // update sourcesContent
+                    if (originalCompilerOptions.inlineSources) {
+                        sourceMap.sourcesContent = sources.map(source => {
+                            const vinyl = host.getFile(source);
+                            return vinyl ? (<Buffer>vinyl.contents).toString("utf8") : ts.sys.readFile(source);
+                        });
+                    }
+
+                    // make all sources relative to the sourceRoot or destPath
+                    sourceMap.sources = sources.map(source => {
+                        source = path.resolve(sourceMapFile.base, source);
+                        source = path.relative(sourceRoot || destPath, source);
+                        source = normalize(source);
+                        return source;
+                    });
+
+                    // update the contents for the sourcemap file
+                    sourceMapFile.contents = new Buffer(JSON.stringify(sourceMap));
+
+                    let contents = javaScriptFile.contents.toString();
+                    if (originalCompilerOptions.inlineSourceMap) {
+                        // restore the sourcemap as an inline source map in the javaScript file.
+                        contents += newLine + "//# sourceMappingURL=data:application/json;charset=utf8;base64," + sourceMapFile.contents.toString("base64") + newLine;
+                    }
+                    else {
+                        contents += newLine + "//# sourceMappingURL=" + normalize(path.relative(path.dirname(javaScriptFile.path), sourceMapFile.path)) + newLine;
+                        files.push(sourceMapFile);
+                    }
+
+                    javaScriptFile.contents = new Buffer(contents);
+                }
+                else {
+                    // sourcesContent is handled by gulp-sourcemaps
+                    sourceMap.sourcesContent = undefined;
+
+                    // make all of the sources in the source map relative paths
+                    sourceMap.sources = sources.map(source => {
+                        const vinyl = host.getFile(source);
+                        return vinyl ? normalize(vinyl.relative) : source;
+                    });
+
+                    (<any>javaScriptFile).sourceMap = sourceMap;
+                }
+            }
+
+            return { affected, files, diagnostics };
+
+            function writeFile(fileName: string, text: string, _writeByteOrderMark: boolean, _onError: (message: string) => void, sourceFiles: ts.SourceFile[]) {
+                // When gulp-sourcemaps writes out a sourceMap, it uses the path
+                // information of the associated file. Specifically, it uses the base
+                // directory and relative path of the file to make decisions on how to
+                // write the "sources" and "sourceRoot" properties.
+                //
+                // To emit the correct paths, we need to have the output files emulate
+                // a path local to the source location, not the expected output location.
+                //
+                // Since gulp.dest sets our output location for us, then all that matters
+                // to gulp.dest is the relative path for each file. This means that we
+                // should be able to safely treat output files as local to sources to
+                // better support gulp-sourcemaps.
+
+                let base = sourceFiles.length === 1 && !config._emitWithoutBasePath ? host.getFile(sourceFiles[0].fileName).base : undefined;
+                let relative = base && path.relative(base, fileName);
+                let name = relative ? path.resolve(base, relative) : fileName;
+                let contents = new Buffer(text);
+                let vinyl = new Vinyl({ path: name, base, contents });
+                if (/\.js$/.test(vinyl.path)) {
+                    javaScriptFile = vinyl;
+                    // gulp-sourcemaps will add an appropriate sourceMappingURL comment, so we need to remove the
+                    // one that TypeScript generates.
+                    const sourceMappingURLPattern = /(\r\n?|\n)?\/\/# sourceMappingURL=[^\r\n]+(?=[\r\n\s]*$)/;
+                    const contents = javaScriptFile.contents.toString();
+                    javaScriptFile.contents = new Buffer(contents.replace(sourceMappingURLPattern, ""));
+                    files.push(javaScriptFile);
+
+                }
+                else if (/\.js\.map$/.test(vinyl.path)) {
+                    sourceMapFile = vinyl;
+                }
+                else if (/\.d\.ts$/.test(vinyl.path)) {
+                    files.push(vinyl);
+                }
+            }
+        }
 
         function setFileToCheck(file: ts.SourceFile, requiresToBeRoot: boolean) {
             if (!requiresToBeRoot || rootFileNames.findIndex(fileName => fileName === file.fileName) !== -1) {
@@ -391,7 +385,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                     }
 
                     const { affected, diagnostics, files } = emitResult;
-                    if (affected === program) {
+                    if (isAffectedProgram(affected)) {
                         // Whole program is changed, syntax check for all the files with requireAffectedFileToBeRoot setting
                         requireRootForOtherFiles = requireAffectedFileToBeRoot;
                     }
@@ -419,13 +413,17 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
             }
 
             // Report global diagnostics
-            printDiagnostics(program.getOptionsDiagnostics(), onError);
-            printDiagnostics(program.getGlobalDiagnostics(), onError);
+            printDiagnostics(builderProgram.getOptionsDiagnostics(), onError);
+            printDiagnostics(builderProgram.getGlobalDiagnostics(), onError);
 
             // Done
             return undefined;
         }
     }
+}
+
+function isAffectedProgram(affected: ts.SourceFile | ts.Program): affected is ts.Program {
+    return (affected as ts.SourceFile).kind !== ts.SyntaxKind.SourceFile
 }
 
 interface VinylFile {
@@ -455,7 +453,7 @@ interface Host extends ts.WatchCompilerHostOfFilesAndCompilerOptions {
     getFile(filename: string): Vinyl;
     getFileNames(): string[];
 
-    updateWithProgram(program: ts.Program): void;
+    updateWithProgram(program: ts.EmitAndSemanticDiagnosticsBuilderProgram): void;
 
     createHash(s: string): string;
 }
@@ -549,7 +547,7 @@ function createHost(options: ts.CompilerOptions, noFileSystemLookup: boolean): H
         return result;
     }
 
-    function updateWithProgram(program: ts.Program) {
+    function updateWithProgram(program: ts.EmitAndSemanticDiagnosticsBuilderProgram) {
         otherFiles.forEach((file, filename) => {
             if (!program.getSourceFile(file.path)) {
                 otherFiles.delete(filename);
