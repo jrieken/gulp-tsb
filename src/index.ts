@@ -32,7 +32,7 @@ export interface IncrementalCompiler {
 
 export function create(configOrName: { [option: string]: string | number | boolean; } | string, verbose?: boolean, json?: boolean, onError?: (message: any) => void): IncrementalCompiler {
 
-    let options = ts.getDefaultCompilerOptions();
+    let options: ts.CompilerOptions;
     let config: builder.IConfiguration = {
         json,
         verbose,
@@ -80,7 +80,7 @@ export function create(configOrName: { [option: string]: string | number | boole
     }
 
     let result = (token: builder.CancellationToken) => createStream(token);
-    Object.defineProperty(result, 'program', { get: () => _builder.languageService.getProgram() });
+    Object.defineProperty(result, 'program', { get: () => _builder.getProgram() });
 
     return <IncrementalCompiler>result;
 }
