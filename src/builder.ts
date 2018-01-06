@@ -5,7 +5,8 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import * as utils from './utils';
 import { EOL } from "os";
-import { log, colors } from 'gulp-util';
+import * as log from 'fancy-log';
+import * as colors from 'ansi-colors';
 import * as ts from 'typescript';
 import Vinyl = require('vinyl');
 
@@ -464,7 +465,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                     MB = 1024 * 1024;
                 log('[tsb]',
                     'time:', colors.yellow((Date.now() - t1) + 'ms'),
-                    'mem:', colors.cyan(Math.ceil(headNow / MB) + 'MB'), colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
+                    'mem:', colors.cyan(Math.ceil(headNow / MB) + 'MB'), colors.bgcyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
                 headUsed = headNow;
             }
         });
