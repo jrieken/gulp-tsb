@@ -1,10 +1,12 @@
 'use strict';
 
-import {Stats, statSync, readFileSync, existsSync} from 'fs';
+import { Stats, statSync, readFileSync, existsSync } from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import * as utils from './utils';
-import {log, colors} from 'gulp-util';
+import { EOL } from "os";
+import * as log from 'fancy-log';
+import * as colors from 'ansi-colors';
 import * as ts from 'typescript';
 import Vinyl = require('vinyl');
 
@@ -111,7 +113,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         function checkSyntaxSoon(fileName: string): Promise<ts.Diagnostic[]> {
             return new Promise<ts.Diagnostic[]>(resolve => {
                 process.nextTick(function () {
-                      resolve(service.getSyntacticDiagnostics(fileName));
+                    resolve(service.getSyntacticDiagnostics(fileName));
                 });
             });
         }
@@ -119,15 +121,15 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         function checkSemanticsSoon(fileName: string): Promise<ts.Diagnostic[]> {
             return new Promise<ts.Diagnostic[]>(resolve => {
                 process.nextTick(function () {
-                      resolve(service.getSemanticDiagnostics(fileName));
+                    resolve(service.getSemanticDiagnostics(fileName));
                 });
             });
         }
 
-        function emitSoon(fileName: string): Promise<{ fileName:string, signature: string, files: Vinyl[] }> {
+        function emitSoon(fileName: string): Promise<{ fileName: string, signature: string, files: Vinyl[] }> {
 
             return new Promise(resolve => {
-                process.nextTick(function() {
+                process.nextTick(function () {
 
                     if (/\.d\.ts$/.test(fileName)) {
                         // if it's already a d.ts file just emit it signature
@@ -251,7 +253,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                             lastDtsHash[fileName] = value.signature;
                             filesWithChangedSignature.push(fileName);
                         }
-                     });
+                    });
                 }
 
                 // (2nd) check syntax
@@ -299,7 +301,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                         let fileName = filesWithChangedSignature.pop();
 
                         if (!isExternalModule(service.getProgram().getSourceFile(fileName))) {
-                             _log('[check semantics*]', fileName + ' is an internal module and it has changed shape -> check whatever hasn\'t been checked yet');
+                            _log('[check semantics*]', fileName + ' is an internal module and it has changed shape -> check whatever hasn\'t been checked yet');
                             toBeCheckedSemantically.push(...host.getScriptFileNames());
                             filesWithChangedSignature.length = 0;
                             dependentFiles.length = 0;
@@ -370,7 +372,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                     MB = 1024 * 1024;
                 log('[tsb]',
                     'time:', colors.yellow((Date.now() - t1) + 'ms'),
-                    'mem:', colors.cyan(Math.ceil(headNow / MB) + 'MB'), colors.bgCyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
+                    'mem:', colors.cyan(Math.ceil(headNow / MB) + 'MB'), colors.bgcyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
                 headUsed = headNow;
             }
         });
@@ -434,7 +436,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     private _dependenciesRecomputeList: string[];
     private _fileNameToDeclaredModule: { [path: string]: string[] };
 
-    constructor(settings: ts.CompilerOptions, noFilesystemLookup:boolean) {
+    constructor(settings: ts.CompilerOptions, noFilesystemLookup: boolean) {
         this._settings = settings;
         this._noFilesystemLookup = noFilesystemLookup;
         this._snapshots = Object.create(null);
@@ -487,7 +489,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         let result = this._snapshots[filename];
         if (!result && !this._noFilesystemLookup) {
             try {
-                result = new VinylScriptSnapshot(new Vinyl(<any> {
+                result = new VinylScriptSnapshot(new Vinyl(<any>{
                     path: filename,
                     contents: readFileSync(filename),
                     base: this._settings.outDir,
@@ -519,7 +521,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
             let match: RegExpExecArray;
             while ((match = LanguageServiceHost._declareModule.exec(snapshot.getText(0, snapshot.getLength())))) {
                 let declaredModules = this._fileNameToDeclaredModule[filename];
-                if(!declaredModules) {
+                if (!declaredModules) {
                     this._fileNameToDeclaredModule[filename] = declaredModules = [];
                 }
                 declaredModules.push(match[2]);
@@ -623,7 +625,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
             if (!found) {
                 for (let key in this._fileNameToDeclaredModule) {
-                    if(this._fileNameToDeclaredModule[key] && ~this._fileNameToDeclaredModule[key].indexOf(ref.fileName)) {
+                    if (this._fileNameToDeclaredModule[key] && ~this._fileNameToDeclaredModule[key].indexOf(ref.fileName)) {
                         this._dependencies.inertEdge(filename, key);
                     }
                 }
