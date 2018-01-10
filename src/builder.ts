@@ -557,11 +557,12 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     getScriptFileNames(): string[] {
         const result: string[] = [];
         const libLocation = this.getDefaultLibLocation();
+        const filter = this._settings.allowJs ? /^\.?(ts|tsx|js|jsx)$/i : /^\.?(ts|tsx)$/i;
         for (let fileName in this._snapshots) {
-            if (/\.tsx?/i.test(path.extname(fileName))
+            if (filter.test(path.extname(fileName))
                 && normalize(path.dirname(fileName)) !== libLocation) {
                 // only ts-files and not lib.d.ts-like files
-                result.push(fileName)
+                result.push(fileName);
             }
         }
         return result;
