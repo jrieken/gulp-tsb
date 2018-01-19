@@ -8,6 +8,7 @@ import { EOL } from "os";
 import { log, colors } from 'gulp-util';
 import * as ts from 'typescript';
 import Vinyl = require('vinyl');
+import { EmitAndSemanticDiagnosticsBuilderProgram } from 'typescript';
 
 export interface IConfiguration {
     json: boolean;
@@ -163,7 +164,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         if (!watch) {
             host.rootFiles = host.getFileNames();
             host.options = compilerOptions;
-            watch = ts.createWatchBuilderProgram(host, ts.createEmitAndSemanticDiagnosticsBuilderProgram);
+            watch = ts.createWatchProgram(host);
         }
         else if (fileListChanged) {
             fileListChanged = false;
@@ -446,7 +447,7 @@ function createVinylFile(file: Vinyl): VinylFile {
     };
 }
 
-interface Host extends ts.WatchCompilerHostOfFilesAndCompilerOptions {
+interface Host extends ts.WatchCompilerHostOfFilesAndCompilerOptions<ts.EmitAndSemanticDiagnosticsBuilderProgram> {
     addFile(file: Vinyl): boolean;
     removeFile(filename: string): boolean;
 
@@ -454,8 +455,6 @@ interface Host extends ts.WatchCompilerHostOfFilesAndCompilerOptions {
     getFileNames(): string[];
 
     updateWithProgram(program: ts.EmitAndSemanticDiagnosticsBuilderProgram): void;
-
-    createHash(s: string): string;
 }
 
 function createHost(options: ts.CompilerOptions, noFileSystemLookup: boolean): Host {
@@ -491,9 +490,11 @@ function createHost(options: ts.CompilerOptions, noFileSystemLookup: boolean): H
         watchFile,
         watchDirectory,
 
+        createProgram: ts.createEmitAndSemanticDiagnosticsBuilderProgram,
+
         // To be filled in later
         rootFiles: [],
-        options: undefined
+        options: undefined,
     };
 
     function toPath(filename: string) {
