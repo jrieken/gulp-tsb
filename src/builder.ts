@@ -15,6 +15,7 @@ export interface IConfiguration {
     noFilesystemLookup: boolean;
     verbose: boolean;
     base: string;
+    ignoreWatchApi?: boolean;
     _emitWithoutBasePath?: boolean;
     _emitLanguageService?: boolean;
 }
@@ -57,7 +58,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
     const originalCompilerOptions = utils.collections.structuredClone(compilerOptions);
     compilerOptions = fixCompilerOptions(config, utils.collections.structuredClone(compilerOptions));
 
-    if (ts.createWatchProgram) {
+    if (!config.ignoreWatchApi && ts.createWatchProgram) {
         return createTypeScriptBuilderWithWatchApi(config, originalCompilerOptions, compilerOptions);
     }
     else {
@@ -66,7 +67,8 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
 }
 
 export function createTypeScriptBuilderWithWatchApi(config: IConfiguration, originalCompilerOptions: Readonly<ts.CompilerOptions>, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
-    return undefined;
+    // TODO: change this to use watch API later
+    return createTypeScriptBuilderWithLanguageServiceApi(config, originalCompilerOptions, compilerOptions);
 }
 
 export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfiguration, originalCompilerOptions: Readonly<ts.CompilerOptions>, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
