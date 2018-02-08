@@ -1,6 +1,6 @@
 'use strict';
 
-import { Stats, statSync, readFileSync, existsSync } from 'fs';
+import { statSync, readFileSync, existsSync } from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import * as utils from './utils';
@@ -52,8 +52,68 @@ function fixCompilerOptions(config: IConfiguration, compilerOptions: ts.Compiler
     return compilerOptions;
 }
 
-export function createTypeScriptBuilder(config: IConfiguration, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
+function _log(config: IConfiguration, topic: string, message: string): void {
+    if (config.verbose) {
+        log(colors.cyan(topic), message);
+    }
+}
 
+function printDiagnostics(config: IConfiguration, diagnostics: ReadonlyArray<ts.Diagnostic>, onError: (err: any) => void) {
+    if (diagnostics.length > 0) {
+        diagnostics.forEach(diag => {
+            let message: string;
+            if (diag.file) {
+                let lineAndCh = diag.file.getLineAndCharacterOfPosition(diag.start);
+                if (!config.json) {
+                    message = utils.strings.format('{0}({1},{2}): {3}',
+                        diag.file.fileName,
+                        lineAndCh.line + 1,
+                        lineAndCh.character + 1,
+                        ts.flattenDiagnosticMessageText(diag.messageText, '\n'));
+
+                } else {
+                    message = JSON.stringify({
+                        filename: diag.file.fileName,
+                        offset: diag.start,
+                        length: diag.length,
+                        message: ts.flattenDiagnosticMessageText(diag.messageText, '\n')
+                    });
+                }
+            }
+            else {
+                message = ts.flattenDiagnosticMessageText(diag.messageText, '\n');
+                if (config.json) {
+                    message = JSON.stringify({
+                        message
+                    });
+                }
+            }
+            onError(message);
+        });
+    }
+}
+
+function getNewLine(compilerOptions: ts.CompilerOptions) {
+    switch (compilerOptions.newLine) {
+        case ts.NewLineKind.CarriageReturnLineFeed: return "\r\n";
+        case ts.NewLineKind.LineFeed: return "\n";
+        default: return EOL;
+    }
+}
+
+function printStats(config: IConfiguration, existingHeapUsed: number, startTime: number) {
+    // print stats
+    if (config.verbose) {
+        const headNow = process.memoryUsage().heapUsed,
+            MB = 1024 * 1024;
+        log('[tsb]',
+            'time:', colors.yellow((Date.now() - startTime) + 'ms'),
+            'mem:', colors.cyan(Math.ceil(headNow / MB) + 'MB'), colors.bgcyan('Δ' + Math.ceil((headNow - existingHeapUsed) / MB)));
+        return headNow;
+    }
+}
+
+export function createTypeScriptBuilder(config: IConfiguration, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
     // fix compiler options
     const originalCompilerOptions = utils.collections.structuredClone(compilerOptions);
     compilerOptions = fixCompilerOptions(config, utils.collections.structuredClone(compilerOptions));
@@ -66,53 +126,22 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
     }
 }
 
-export function createTypeScriptBuilderWithWatchApi(config: IConfiguration, originalCompilerOptions: Readonly<ts.CompilerOptions>, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
+function createTypeScriptBuilderWithWatchApi(config: IConfiguration, originalCompilerOptions: Readonly<ts.CompilerOptions>, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
     // TODO: change this to use watch API later
     return createTypeScriptBuilderWithLanguageServiceApi(config, originalCompilerOptions, compilerOptions);
 }
 
-export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfiguration, originalCompilerOptions: Readonly<ts.CompilerOptions>, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
+function createTypeScriptBuilderWithLanguageServiceApi(config: IConfiguration, originalCompilerOptions: Readonly<ts.CompilerOptions>, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
     let host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
         lastDtsHash: { [path: string]: string } = Object.create(null),
-        userWantsDeclarations = compilerOptions.declaration,
         oldErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null),
-        headUsed = process.memoryUsage().heapUsed,
+        heapUsed = process.memoryUsage().heapUsed,
         emitSourceMapsInStream = true;
 
     // always emit declaraction files
     host.getCompilationSettings().declaration = true;
-
-    function _log(topic: string, message: string): void {
-        if (config.verbose) {
-            log(colors.cyan(topic), message);
-        }
-    }
-
-    function printDiagnostic(diag: ts.Diagnostic, onError: (err: any) => void): void {
-
-        var lineAndCh = diag.file.getLineAndCharacterOfPosition(diag.start),
-            message: string;
-
-        if (!config.json) {
-            message = utils.strings.format('{0}({1},{2}): {3}',
-                diag.file.fileName,
-                lineAndCh.line + 1,
-                lineAndCh.character + 1,
-                ts.flattenDiagnosticMessageText(diag.messageText, '\n'));
-
-        } else {
-            message = JSON.stringify({
-                filename: diag.file.fileName,
-                offset: diag.start,
-                length: diag.length,
-                message: ts.flattenDiagnosticMessageText(diag.messageText, '\n')
-            });
-        }
-
-        onError(message);
-    }
 
     function file(file: Vinyl): void {
         // support gulp-sourcemaps
@@ -124,14 +153,6 @@ export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfigura
             host.removeScriptSnapshot(file.path);
         } else {
             host.addScriptSnapshot(file.path, new ScriptSnapshot(file));
-        }
-    }
-
-    function getNewLine() {
-        switch (compilerOptions.newLine) {
-            case ts.NewLineKind.CarriageReturnLineFeed: return "\r\n";
-            case ts.NewLineKind.LineFeed: return "\n";
-            default: return EOL;
         }
     }
 
@@ -269,7 +290,7 @@ export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfigura
                             // update the contents for the sourcemap file
                             sourceMapFile.contents = new Buffer(JSON.stringify(sourceMap));
 
-                            const newLine = getNewLine();
+                            const newLine = getNewLine(compilerOptions);
                             let contents = javaScriptFile.contents.toString();
                             if (originalCompilerOptions.inlineSourceMap) {
                                 // restore the sourcemap as an inline source map in the javaScript file.
@@ -307,7 +328,7 @@ export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfigura
         }
 
         let newErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null);
-        let t1 = Date.now();
+        let startTime = Date.now();
 
         let toBeEmitted: string[] = [];
         let toBeCheckedSyntactically: string[] = [];
@@ -337,7 +358,7 @@ export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfigura
 
                 // someone told us to stop this
                 if (token.isCancellationRequested()) {
-                    _log('[CANCEL]', '>>This compile run was cancelled<<')
+                    _log(config, '[CANCEL]', '>>This compile run was cancelled<<')
                     newLastBuildVersion.clear();
                     resolve();
                     return;
@@ -349,7 +370,7 @@ export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfigura
                     promise = emitSoon(fileName).then(value => {
 
                         for (let file of value.files) {
-                            _log('[emit code]', file.path);
+                            _log(config, '[emit code]', file.path);
                             out(file);
                         }
 
@@ -367,11 +388,11 @@ export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfigura
                 // (2nd) check syntax
                 else if (toBeCheckedSyntactically.length) {
                     fileName = toBeCheckedSyntactically.pop();
-                    _log('[check syntax]', fileName);
+                    _log(config, '[check syntax]', fileName);
                     promise = checkSyntaxSoon(fileName).then(diagnostics => {
                         delete oldErrors[fileName];
                         if (diagnostics.length > 0) {
-                            diagnostics.forEach(d => printDiagnostic(d, onError));
+                            printDiagnostics(config, diagnostics, onError);
                             newErrors[fileName] = diagnostics;
 
                             // stop the world when there are syntax errors
@@ -391,12 +412,12 @@ export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfigura
                     }
 
                     if (fileName) {
-                        _log('[check semantics]', fileName);
+                        _log(config, '[check semantics]', fileName);
                         promise = checkSemanticsSoon(fileName).then(diagnostics => {
                             delete oldErrors[fileName];
                             semanticCheckInfo.set(fileName, diagnostics.length);
                             if (diagnostics.length > 0) {
-                                diagnostics.forEach(d => printDiagnostic(d, onError));
+                                printDiagnostics(config, diagnostics, onError);
                                 newErrors[fileName] = diagnostics;
                             }
                         });
@@ -409,7 +430,7 @@ export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfigura
                         let fileName = filesWithChangedSignature.pop();
 
                         if (!isExternalModule(service.getProgram().getSourceFile(fileName))) {
-                            _log('[check semantics*]', fileName + ' is an internal module and it has changed shape -> check whatever hasn\'t been checked yet');
+                            _log(config, '[check semantics*]', fileName + ' is an internal module and it has changed shape -> check whatever hasn\'t been checked yet');
                             toBeCheckedSemantically.push(...host.getScriptFileNames());
                             filesWithChangedSignature.length = 0;
                             dependentFiles.length = 0;
@@ -469,20 +490,13 @@ export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfigura
 
             // print old errors and keep them
             utils.collections.forEach(oldErrors, entry => {
-                entry.value.forEach(diag => printDiagnostic(diag, onError));
+                printDiagnostics(config, entry.value, onError);
                 newErrors[entry.key] = entry.value;
             });
             oldErrors = newErrors;
 
             // print stats
-            if (config.verbose) {
-                var headNow = process.memoryUsage().heapUsed,
-                    MB = 1024 * 1024;
-                log('[tsb]',
-                    'time:', colors.yellow((Date.now() - t1) + 'ms'),
-                    'mem:', colors.cyan(Math.ceil(headNow / MB) + 'MB'), colors.bgcyan('Δ' + Math.ceil((headNow - headUsed) / MB)));
-                headUsed = headNow;
-            }
+            heapUsed = printStats(config, heapUsed, startTime);
         });
     }
 

@@ -7,8 +7,8 @@ import * as through from 'through';
 import * as builder from './builder';
 import * as ts from 'typescript';
 import { Stream } from 'stream';
-import { readFileSync, existsSync, readdirSync } from 'fs';
-import { extname, dirname, resolve } from 'path';
+import { readFileSync, existsSync } from 'fs';
+import { dirname, resolve } from 'path';
 
 // We actually only want to read the tsconfig.json file. So all methods
 // to read the FS are 'empty' implementations.
