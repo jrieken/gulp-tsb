@@ -32,7 +32,7 @@ export namespace CancellationToken {
 export interface ITypeScriptBuilder {
     build(out: (file: Vinyl) => void, onError: (err: any) => void, token?: CancellationToken): Promise<any>;
     file(file: Vinyl): void;
-    languageService: ts.LanguageService;
+    getProgram(): ts.Program;
 }
 
 function normalize(path: string): string {
@@ -57,6 +57,19 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
     const originalCompilerOptions = utils.collections.structuredClone(compilerOptions);
     compilerOptions = fixCompilerOptions(config, utils.collections.structuredClone(compilerOptions));
 
+    if (ts.createWatchProgram) {
+        return createTypeScriptBuilderWithWatchApi(config, originalCompilerOptions, compilerOptions);
+    }
+    else {
+        return createTypeScriptBuilderWithLanguageServiceApi(config, originalCompilerOptions, compilerOptions);
+    }
+}
+
+export function createTypeScriptBuilderWithWatchApi(config: IConfiguration, originalCompilerOptions: Readonly<ts.CompilerOptions>, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
+    return undefined;
+}
+
+export function createTypeScriptBuilderWithLanguageServiceApi(config: IConfiguration, originalCompilerOptions: Readonly<ts.CompilerOptions>, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
     let host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
@@ -474,7 +487,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
     return {
         file,
         build,
-        languageService: service
+        getProgram: () => service.getProgram()
     };
 }
 
