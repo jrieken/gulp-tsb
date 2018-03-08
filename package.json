@@ -38,7 +38,7 @@
     "gulp-mocha": "^5.0.0",
     "mocha": "*",
     "run-sequence": "^2.2.1",
-    "typescript": "^2.0.3"
+    "typescript": "^2.7.2-dev.20180207"
   },
   "peerDependencies": {
     "typescript": "^2.0.10"
