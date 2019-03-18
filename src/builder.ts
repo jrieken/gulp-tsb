@@ -38,9 +38,9 @@ function normalize(path: string): string {
     return path.replace(/\\/g, '/');
 }
 
-export function createTypeScriptBuilder(config: IConfiguration, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
+export function createTypeScriptBuilder(config: IConfiguration, compilerOptions: ts.CompilerOptions, customTransforms?: ts.CustomTransformers): ITypeScriptBuilder {
 
-    let host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false),
+    let host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false, customTransforms),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
         lastDtsHash: { [path: string]: string } = Object.create(null),
@@ -435,8 +435,9 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     private _dependencies: utils.graph.Graph<string>;
     private _dependenciesRecomputeList: string[];
     private _fileNameToDeclaredModule: { [path: string]: string[] };
+    private _customTransforms?: ts.CustomTransformers;
 
-    constructor(settings: ts.CompilerOptions, noFilesystemLookup: boolean) {
+    constructor(settings: ts.CompilerOptions, noFilesystemLookup: boolean, customTransforms?: ts.CustomTransformers) {
         this._settings = settings;
         this._noFilesystemLookup = noFilesystemLookup;
         this._snapshots = Object.create(null);
@@ -444,6 +445,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         this._dependencies = new utils.graph.Graph<string>(s => s);
         this._dependenciesRecomputeList = [];
         this._fileNameToDeclaredModule = Object.create(null);
+        this._customTransforms = customTransforms;
     }
 
     log(s: string): void {
@@ -550,6 +552,10 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
                 // false so this method never throws
             }
         };
+    }
+
+    getCustomTransformers(): ts.CustomTransformers | undefined {
+        return this._customTransforms;
     }
 
     getCurrentDirectory(): string {

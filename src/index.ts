@@ -30,7 +30,7 @@ export interface IncrementalCompiler {
     program?: ts.Program;
 }
 
-export function create(configOrName: { [option: string]: string | number | boolean; } | string, verbose?: boolean, json?: boolean, onError?: (message: any) => void): IncrementalCompiler {
+export function create(configOrName: { [option: string]: string | number | boolean; } | string, customTransformers?: ts.CustomTransformers, verbose?: boolean, json?: boolean, onError?: (message: any) => void): IncrementalCompiler {
 
     let options = ts.getDefaultCompilerOptions();
     let config: builder.IConfiguration = { json, verbose, noFilesystemLookup: false };
@@ -52,7 +52,7 @@ export function create(configOrName: { [option: string]: string | number | boole
         onError = (err) => console.log(JSON.stringify(err, null, 4));
     }
 
-    const _builder = builder.createTypeScriptBuilder(config, options);
+    const _builder = builder.createTypeScriptBuilder(config, options, customTransformers);
 
     function createStream(token?: builder.CancellationToken): Stream {
 
