@@ -13,6 +13,7 @@ import Vinyl = require('vinyl');
 export interface IConfiguration {
     json: boolean;
     noFilesystemLookup: boolean;
+    excludeNodeModulesFromRootNames: boolean
     verbose: boolean;
     base: string;
     _emitWithoutBasePath?: boolean;
@@ -369,16 +370,28 @@ namespace WatchApi {
             fileListChanged = (!file.contents ? host.removeFile(file.path) : host.addFile(file)) || fileListChanged;
         }
 
+        function getRootNames(host: Host) {
+            const fileNames = host.getFileNames();
+            const allowedExtensions = compilerOptions.allowJs ? /(\.d\.ts|\.[tj]sx?)$/ : /(\.d\.ts|\.tsx?)$/;
+            const rootNames: string[] = [];
+            for (const file of fileNames) {
+                if (allowedExtensions.test(file) && (!config.excludeNodeModulesFromRootNames || !/[\\/]node_modules[\\/]/.test(file))) {
+                    rootNames.push(file);
+                }
+            }
+            return rootNames;
+        }
+
         function getBuilderProgram() {
             // Create/update the program
             if (!watch) {
-                host.rootFiles = host.getFileNames();
+                host.rootFiles = getRootNames(host);
                 host.options = compilerOptions;
                 watch = ts.createWatchProgram(host);
             }
             else if (fileListChanged) {
                 fileListChanged = false;
-                watch.updateRootFileNames(host.getFileNames());
+                watch.updateRootFileNames(getRootNames(host));
             }
             return watch.getProgram();
         }
@@ -399,7 +412,7 @@ namespace WatchApi {
             let builderProgram: ts.EmitAndSemanticDiagnosticsBuilderProgram;
 
             return new Promise(resolve => {
-                rootFileNames = host.getFileNames();
+                rootFileNames = getRootNames(host);
                 // Create/update the program
                 builderProgram = getBuilderProgram();
                 host.updateWithProgram(builderProgram);
@@ -615,7 +628,6 @@ namespace WatchApi {
             realpath: resolvePath,
             watchFile,
             watchDirectory,
-
             createProgram: ts.createEmitAndSemanticDiagnosticsBuilderProgram,
 
             // To be filled in later
@@ -748,8 +760,35 @@ namespace WatchApi {
             return process.cwd();
         }
 
-        function getDirectories(path: string): string[] {
-            return !noFileSystemLookup && ts.sys.getDirectories(path);
+        function addTrailingDirectorySeparator(file: string) {
+            return file && file.charAt(file.length - 1) !== '/' ? file + '/' : file;
+        }
+
+        function getDirectories(dir: string): string[] {
+            if (!noFileSystemLookup) {
+                return ts.sys.getDirectories(dir);
+            }
+
+            dir = addTrailingDirectorySeparator(toPath(dir));
+
+            const directories: string[] = [];
+            utils.maps.forEachEntry(files, (_file, filename) => {
+                if (dir === addTrailingDirectorySeparator(toPath(path.dirname(filename)))) {
+                    // files are not directories
+                    return;
+                }
+
+                if (filename.length > dir.length && filename.slice(0, dir.length) === dir) {
+                    // the file's path is beneath the directory
+                    const relative = filename.slice(dir.length);
+                    const name = relative.slice(0, relative.indexOf('/'));
+                    if (name) {
+                        directories.push(name);
+                    }
+                }
+            });
+
+            return directories;
         }
 
         function readDirectory(path: string, extensions?: ReadonlyArray<string>, exclude?: ReadonlyArray<string>, include?: ReadonlyArray<string>, depth?: number): string[] {

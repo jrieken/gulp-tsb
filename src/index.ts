@@ -31,15 +31,24 @@ export interface IncrementalCompiler {
 }
 
 export function create(configOrName: { [option: string]: string | number | boolean; } | string, verbose?: boolean, json?: boolean, onError?: (message: any) => void): IncrementalCompiler {
-
-    let options: ts.CompilerOptions;
     let config: builder.IConfiguration = {
         json,
         verbose,
         noFilesystemLookup: false,
+        excludeNodeModulesFromRootNames: false,
         base: process.cwd()
     };
+    return createWithIConfiguration(configOrName, config, onError);
+}
 
+export function createWithIConfiguration(configOrName: { [option: string]: string | number | boolean; } | string, config: builder.IConfiguration, onError?: (message: any) => void): IncrementalCompiler {
+    // copy the config so as not to possibly mutate shared settings.
+    config = { ...config };
+    if (config.base === undefined) config.base = process.cwd();
+    if (config.noFilesystemLookup === undefined) config.noFilesystemLookup = false;
+    if (config.excludeNodeModulesFromRootNames === undefined) config.excludeNodeModulesFromRootNames = false;
+
+    let options: ts.CompilerOptions;
     if (typeof configOrName === 'string') {
         let parsed = ts.readConfigFile(configOrName, _parseConfigHost.readFile);
         if (parsed.error) {

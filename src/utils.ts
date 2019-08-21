@@ -195,10 +195,29 @@ export module maps {
         map.remove = multiMapRemove;
         return map;
     }
+    export function createUniqueMultiMap<T>(): MultiMap<T> {
+        const map = createMap<T[]>() as MultiMap<T>;
+        map.add = multiMapAddUnique;
+        map.remove = multiMapRemove;
+        return map;
+    }
     function multiMapAdd<T>(this: MultiMap<T>, key: string, value: T) {
         let values = this.get(key);
         if (values) {
             values.push(value);
+        }
+        else {
+            this.set(key, values = [value]);
+        }
+        return values;
+
+    }
+    function multiMapAddUnique<T>(this: MultiMap<T>, key: string, value: T) {
+        let values = this.get(key);
+        if (values) {
+            if (values.indexOf(value) === -1) {
+                values.push(value);
+            }
         }
         else {
             this.set(key, values = [value]);

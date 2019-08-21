@@ -6,11 +6,14 @@ var mocha = require('gulp-mocha');
 var del = require('del');
 var runSequence = require('run-sequence');
 var tsb = require('./lib');
-var compilation = tsb.create('./tsconfig.json', /*verbose*/ true);
+var compilation = tsb.createWithIConfiguration
+    ? tsb.createWithIConfiguration('./tsconfig.json', { excludeNodeModulesFromRootNames: true, verbose: true })
+    : tsb.create('./tsconfig.json', /*verbose*/ true);
 
 var sources = [
     'src/**/*.ts',
-    'node_modules/@types/**/*.ts'
+    'node_modules/@types/**/*.ts',
+    'node_modules/@types/*/package.json', // included to support "typesVersions"
 ];
 
 var latest = [
@@ -29,7 +32,7 @@ gulp.task('pre-build', function() {
 // re-build latest using built version
 gulp.task('build', ['pre-build'], function () {
     var tsb = reload('./tmp');
-    var compilation = tsb.create('./tsconfig.json', /*verbose*/ true);
+    var compilation = tsb.createWithIConfiguration('./tsconfig.json', { excludeNodeModulesFromRootNames: true, verbose: true });
     return gulp.src(sources)
         .pipe(compilation())
         .pipe(gulp.dest('out'));
