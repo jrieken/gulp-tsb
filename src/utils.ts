@@ -2,9 +2,9 @@
 
 export module collections {
 
-    var hasOwnProperty = Object.prototype.hasOwnProperty;
+    const hasOwnProperty = Object.prototype.hasOwnProperty;
 
-    export function lookup<T>(collection: { [keys: string]: T }, key: string): T {
+    export function lookup<T>(collection: { [keys: string]: T }, key: string): T | null {
         if (hasOwnProperty.call(collection, key)) {
             return collection[key];
         }
@@ -25,7 +25,7 @@ export module collections {
     }
 
     export function forEach<T>(collection: { [keys: string]: T }, callback: (entry: { key: string; value: T; }) => void): void {
-        for (var key in collection) {
+        for (let key in collection) {
             if (hasOwnProperty.call(collection, key)) {
                 callback({
                     key: key,
@@ -41,18 +41,18 @@ export module collections {
 }
 
 export module strings {
-	
+
 	/**
 	 * The empty string. The one and only.
 	 */
-    export var empty = '';
+    export const empty = '';
 
-    export var eolUnix = '\r\n';
+    export const eolUnix = '\r\n';
 
     export function format(value: string, ...rest: any[]): string {
         return value.replace(/({\d+})/g, function (match) {
-            var index = match.substring(1, match.length - 1);
-            return rest[index] || match;
+            const index = Number(match.substring(1, match.length - 1));
+            return String(rest[index]) || match;
         });
     }
 }
@@ -81,8 +81,8 @@ export module graph {
             // empty
         }
 
-        public traverse(start: T, inwards: boolean, callback: (data: T) => void): void {
-            var startNode = this.lookup(start);
+        traverse(start: T, inwards: boolean, callback: (data: T) => void): void {
+            const startNode = this.lookup(start);
             if (!startNode) {
                 return;
             }
@@ -90,36 +90,36 @@ export module graph {
         }
 
         private _traverse(node: Node<T>, inwards: boolean, seen: { [key: string]: boolean }, callback: (data: T) => void): void {
-            var key = this._hashFn(node.data);
+            const key = this._hashFn(node.data);
             if (collections.contains(seen, key)) {
                 return;
             }
             seen[key] = true;
             callback(node.data);
-            var nodes = inwards ? node.outgoing : node.incoming;
-            collections.forEach(nodes,(entry) => this._traverse(entry.value, inwards, seen, callback));
+            const nodes = inwards ? node.outgoing : node.incoming;
+            collections.forEach(nodes, (entry) => this._traverse(entry.value, inwards, seen, callback));
         }
 
-        public inertEdge(from: T, to: T): void {
-            var fromNode = this.lookupOrInsertNode(from),
-                toNode = this.lookupOrInsertNode(to);
+        inertEdge(from: T, to: T): void {
+            const fromNode = this.lookupOrInsertNode(from);
+            const toNode = this.lookupOrInsertNode(to);
 
             fromNode.outgoing[this._hashFn(to)] = toNode;
             toNode.incoming[this._hashFn(from)] = fromNode;
         }
 
-        public removeNode(data: T): void {
-            var key = this._hashFn(data);
+        removeNode(data: T): void {
+            const key = this._hashFn(data);
             delete this._nodes[key];
-            collections.forEach(this._nodes,(entry) => {
+            collections.forEach(this._nodes, (entry) => {
                 delete entry.value.outgoing[key];
                 delete entry.value.incoming[key];
             });
         }
 
-        public lookupOrInsertNode(data: T): Node<T> {
-            var key = this._hashFn(data),
-                node = collections.lookup(this._nodes, key);
+        lookupOrInsertNode(data: T): Node<T> {
+            const key = this._hashFn(data);
+            let node = collections.lookup(this._nodes, key);
 
             if (!node) {
                 node = newNode(data);
@@ -129,7 +129,7 @@ export module graph {
             return node;
         }
 
-        public lookup(data: T): Node<T> {
+        lookup(data: T): Node<T> | null {
             return collections.lookup(this._nodes, this._hashFn(data));
         }
     }

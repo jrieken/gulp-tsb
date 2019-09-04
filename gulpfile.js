@@ -1,10 +1,9 @@
-/* global __dirname */
 
 var gulp = require('gulp');
 var path = require('path');
+var util = require('util');
 var mocha = require('gulp-mocha');
-var del = require('del');
-var runSequence = require('run-sequence');
+var rimraf = require('rimraf');
 var tsb = require('./lib');
 var compilation = tsb.create('./tsconfig.json', /*verbose*/ true);
 
@@ -20,51 +19,47 @@ var latest = [
 ];
 
 // build latest using LKG version
-gulp.task('pre-build', function() {
+gulp.task('pre-build', function () {
     return gulp.src(sources)
         .pipe(compilation())
         .pipe(gulp.dest('tmp'));
 })
 
 // re-build latest using built version
-gulp.task('build', ['pre-build'], function () {
+gulp.task('build', gulp.series('pre-build', function () {
     var tsb = reload('./tmp');
     var compilation = tsb.create('./tsconfig.json', /*verbose*/ true);
     return gulp.src(sources)
         .pipe(compilation())
         .pipe(gulp.dest('out'));
-});
+}));
 
 // clean built versions
 gulp.task('clean', function () {
-    return del(['tmp', 'out']);
+    return Promise.all([
+        util.promisify(rimraf)(path.join(__dirname, 'tmp')),
+        util.promisify(rimraf)(path.join(__dirname, 'out'))
+    ]);
 });
 
 // clean the lkg
 gulp.task('lkg:clean', function () {
-    return del(['lib']);
+    return util.promisify(rimraf)(path.join(__dirname, 'lib'))
 });
 
 // copy files for 'lkg' task
-gulp.task('lkg:copy', ['lkg:clean'], function () {
+gulp.task('lkg:copy', gulp.series('lkg:clean', function () {
     return gulp.src(latest).pipe(gulp.dest('lib'));
-});
+}));
 
 // deploy lkg
-gulp.task('lkg', function () {
-    return runSequence('clean', 'test', 'lkg:copy');
-});
 
-gulp.task('test', ['build'], function () {
+gulp.task('test', gulp.series('build', function () {
     return gulp.src(["out/tests/**/*.js"], { read: false })
         .pipe(mocha({ timeout: 3000 }));
-});
+}));
 
-gulp.task('dev', ['test'], function () {
-    return gulp.watch(sources, ['test']);
-});
-
-gulp.task('default', ['dev']);
+gulp.task('lkg', gulp.series('clean', 'test', 'lkg:copy'));
 
 // reload a node module and any children beneath the same folder
 function reload(moduleName) {

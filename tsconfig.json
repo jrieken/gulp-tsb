@@ -1,7 +1,11 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es5",
-        "outDir": "lib/"
+        "target": "es2017",
+        "outDir": "lib/",
+        "strict": true,
+        "types": [
+            "typescript"
+        ]
     }
 }

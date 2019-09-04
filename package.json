@@ -27,20 +27,22 @@
     "vinyl": "^2.1.0"
   },
   "devDependencies": {
+    "@types/gulp": "^4.0.6",
     "@types/chalk": "*",
     "@types/gulp-util": "*",
     "@types/mocha": "*",
     "@types/node": "*",
-    "@types/through": "*",
+    "@types/through": "^0.0.29",
     "@types/vinyl": "*",
-    "del": "^3.0.0",
-    "gulp": "^3.8.10",
+    "@types/rimraf": "2.0.2",
+    "@types/fancy-log": "1.3.0",
+    "rimraf": "2.6.3",
+    "gulp": "^4.0.2",
     "gulp-mocha": "^5.0.0",
     "mocha": "*",
-    "run-sequence": "^2.2.1",
-    "typescript": "^2.0.3"
+    "typescript": "^3.6.2"
   },
   "peerDependencies": {
-    "typescript": "*"
+    "typescript": "^3.0.0"
   }
 }

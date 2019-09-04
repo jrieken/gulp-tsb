@@ -1,5 +1,3 @@
-/// <reference path="../node_modules/typescript/lib/lib.es6.d.ts"/>
-
 'use strict';
 
 import vinyl = require('vinyl');
@@ -7,8 +5,8 @@ import * as through from 'through';
 import * as builder from './builder';
 import * as ts from 'typescript';
 import { Stream } from 'stream';
-import { readFileSync, existsSync, readdirSync } from 'fs';
-import { extname, dirname } from 'path';
+import { readFileSync, existsSync } from 'fs';
+import { dirname } from 'path';
 
 // We actually only want to read the tsconfig.json file. So all methods
 // to read the FS are 'empty' implementations.
@@ -17,7 +15,7 @@ const _parseConfigHost = {
     fileExists(fileName: string): boolean {
         return existsSync(fileName);
     },
-    readDirectory(rootDir: string, extensions: string[], excludes: string[], includes: string[]): string[] {
+    readDirectory(_rootDir: string, _extensions: string[], _excludes: string[], _includes: string[]): string[] {
         return []; // don't want to find files!
     },
     readFile(fileName: string): string {
@@ -26,17 +24,24 @@ const _parseConfigHost = {
 };
 
 export interface IncrementalCompiler {
-    (): Stream;
+    (): Stream | null;
     program?: ts.Program;
 }
 
-export function create(configOrName: { [option: string]: string | number | boolean; } | string, verbose?: boolean, json?: boolean, onError?: (message: any) => void): IncrementalCompiler {
+const _defaultOnError = (err: any) => console.log(JSON.stringify(err, null, 4));
+
+export function create(
+    configOrName: { [option: string]: string | number | boolean; } | string,
+    verbose: boolean = false,
+    json: boolean = false,
+    onError: (message: any) => void = _defaultOnError
+): IncrementalCompiler {
 
     let options = ts.getDefaultCompilerOptions();
     let config: builder.IConfiguration = { json, verbose, noFilesystemLookup: false };
 
     if (typeof configOrName === 'string') {
-        var parsed = ts.readConfigFile(configOrName, _parseConfigHost.readFile);
+        const parsed = ts.readConfigFile(configOrName, _parseConfigHost.readFile);
         options = ts.parseJsonConfigFileContent(parsed.config, _parseConfigHost, dirname(configOrName)).options;
         if (parsed.error) {
             console.error(parsed.error);
@@ -48,22 +53,18 @@ export function create(configOrName: { [option: string]: string | number | boole
         Object.assign(config, configOrName);
     }
 
-    if (!onError) {
-        onError = (err) => console.log(JSON.stringify(err, null, 4));
-    }
-
     const _builder = builder.createTypeScriptBuilder(config, options);
 
     function createStream(token?: builder.CancellationToken): Stream {
 
-        return through(function (file: vinyl) {
+        return through(function (this: through.ThroughStream, file: vinyl) {
             // give the file to the compiler
             if (file.isStream()) {
                 this.emit('error', 'no support for streams');
                 return;
             }
             _builder.file(file);
-        }, function () {
+        }, function (this: { queue(a: any): void }) { //todo@joh not sure...
             // start the compilation process
             _builder.build(file => this.queue(file), onError, token).then(() => this.queue(null));
         });
