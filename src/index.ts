@@ -4,58 +4,65 @@ import vinyl = require('vinyl');
 import * as through from 'through';
 import * as builder from './builder';
 import * as ts from 'typescript';
-import { Stream } from 'stream';
-import { readFileSync, existsSync } from 'fs';
+import { Stream, Readable, Writable, Duplex } from 'stream';
 import { dirname } from 'path';
-
-// We actually only want to read the tsconfig.json file. So all methods
-// to read the FS are 'empty' implementations.
-const _parseConfigHost = {
-    useCaseSensitiveFileNames: false,
-    fileExists(fileName: string): boolean {
-        return existsSync(fileName);
-    },
-    readDirectory(_rootDir: string, _extensions: string[], _excludes: string[], _includes: string[]): string[] {
-        return []; // don't want to find files!
-    },
-    readFile(fileName: string): string {
-        return readFileSync(fileName, 'utf-8');
-    },
-};
+import { strings } from './utils';
+import { readFileSync, statSync } from 'fs';
 
 export interface IncrementalCompiler {
-    (): Stream | null;
-    program?: ts.Program;
+    (): Readable & Writable;
+    src(): Readable;
+}
+
+class EmptyReadable extends Readable {
+    _read() { this.push(null); }
+}
+
+function createNullCompiler(): IncrementalCompiler {
+    const result: IncrementalCompiler = function () { return new Duplex() };
+    result.src = () => new EmptyReadable();
+    return result;
 }
 
 const _defaultOnError = (err: any) => console.log(JSON.stringify(err, null, 4));
 
 export function create(
-    configOrName: { [option: string]: string | number | boolean; } | string,
+    projectPath: string,
+    existingOptions: Partial<ts.CompilerOptions>,
     verbose: boolean = false,
-    json: boolean = false,
     onError: (message: any) => void = _defaultOnError
 ): IncrementalCompiler {
 
-    let options = ts.getDefaultCompilerOptions();
-    let config: builder.IConfiguration = { json, verbose, noFilesystemLookup: false };
+    function printDiagnostic(diag: ts.Diagnostic): void {
 
-    if (typeof configOrName === 'string') {
-        const parsed = ts.readConfigFile(configOrName, _parseConfigHost.readFile);
-        options = ts.parseJsonConfigFileContent(parsed.config, _parseConfigHost, dirname(configOrName)).options;
-        if (parsed.error) {
-            console.error(parsed.error);
-            return () => null;
+        if (!diag.file || !diag.start) {
+            onError(ts.flattenDiagnosticMessageText(diag.messageText, '\n'));
+        } else {
+            const lineAndCh = diag.file.getLineAndCharacterOfPosition(diag.start);
+            onError(strings.format('{0}({1},{2}): {3}',
+                diag.file.fileName,
+                lineAndCh.line + 1,
+                lineAndCh.character + 1,
+                ts.flattenDiagnosticMessageText(diag.messageText, '\n'))
+            );
         }
-    } else {
-        const base = typeof configOrName.base === 'string' ? configOrName.base : './';
-        options = ts.parseJsonConfigFileContent({ compilerOptions: configOrName }, _parseConfigHost, base).options;
-        Object.assign(config, configOrName);
     }
 
-    const _builder = builder.createTypeScriptBuilder(config, options);
+    const parsed = ts.readConfigFile(projectPath, ts.sys.readFile);
+    if (parsed.error) {
+        printDiagnostic(parsed.error);
+        return createNullCompiler();
+    }
 
-    function createStream(token?: builder.CancellationToken): Stream {
+    const cmdLine = ts.parseJsonConfigFileContent(parsed.config, ts.sys, dirname(projectPath), existingOptions);
+    if (cmdLine.errors.length > 0) {
+        cmdLine.errors.forEach(printDiagnostic);
+        return createNullCompiler();
+    }
+
+    const _builder = builder.createTypeScriptBuilder({ verbose }, projectPath, cmdLine);
+
+    function createStream(token?: builder.CancellationToken): Readable & Writable {
 
         return through(function (this: through.ThroughStream, file: vinyl) {
             // give the file to the compiler
@@ -66,12 +73,35 @@ export function create(
             _builder.file(file);
         }, function (this: { queue(a: any): void }) { //todo@joh not sure...
             // start the compilation process
-            _builder.build(file => this.queue(file), onError, token).then(() => this.queue(null));
+            _builder.build(file => this.queue(file), printDiagnostic, token).then(() => this.queue(null));
         });
     }
 
-    let result = (token: builder.CancellationToken) => createStream(token);
-    Object.defineProperty(result, 'program', { get: () => _builder.languageService.getProgram() });
+    const result = (token: builder.CancellationToken) => createStream(token);
+    result.src = () => {
+        let _pos = 0;
+        let _fileNames = cmdLine.fileNames.slice(0);
+        return new class extends Readable {
+            constructor() {
+                super({ objectMode: true });
+            }
+            _read() {
+                let more: boolean = true;
+                let path: string;
+                for (; more && _pos < _fileNames.length; _pos++) {
+                    path = _fileNames[_pos];
+                    more = this.push(new vinyl({
+                        path,
+                        contents: readFileSync(path),
+                        stat: statSync(path)
+                    }))
+                }
+                if (_pos >= _fileNames.length) {
+                    this.push(null);
+                }
+            }
+        }
+    };
 
-    return <IncrementalCompiler>result;
+    return <IncrementalCompiler><unknown>result;
 }

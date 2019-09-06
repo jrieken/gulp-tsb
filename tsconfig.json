@@ -3,9 +3,7 @@
         "module": "commonjs",
         "target": "es2017",
         "outDir": "lib/",
-        "strict": true,
-        "types": [
-            "typescript"
-        ]
+        "declaration": true,
+        "strict": true
     }
 }

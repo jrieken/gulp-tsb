@@ -10,11 +10,8 @@ import * as ts from 'typescript';
 import Vinyl = require('vinyl');
 
 export interface IConfiguration {
-    json: boolean;
-    noFilesystemLookup: boolean;
     verbose: boolean;
     _emitWithoutBasePath?: boolean;
-    _emitLanguageService?: boolean;
 }
 
 export interface CancellationToken {
@@ -28,7 +25,7 @@ export namespace CancellationToken {
 }
 
 export interface ITypeScriptBuilder {
-    build(out: (file: Vinyl) => void, onError: (err: any) => void, token?: CancellationToken): Promise<any>;
+    build(out: (file: Vinyl) => void, onError: (err: ts.Diagnostic) => void, token?: CancellationToken): Promise<any>;
     file(file: Vinyl): void;
     languageService: ts.LanguageService;
 }
@@ -37,13 +34,13 @@ function normalize(path: string): string {
     return path.replace(/\\/g, '/');
 }
 
-export function createTypeScriptBuilder(config: IConfiguration, compilerOptions: ts.CompilerOptions): ITypeScriptBuilder {
+export function createTypeScriptBuilder(config: IConfiguration, projectFile: string, cmd: ts.ParsedCommandLine): ITypeScriptBuilder {
 
-    let host = new LanguageServiceHost(compilerOptions, config.noFilesystemLookup || false),
+    let host = new LanguageServiceHost(cmd, projectFile),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
         lastDtsHash: { [path: string]: string } = Object.create(null),
-        userWantsDeclarations = compilerOptions.declaration,
+        userWantsDeclarations = cmd.options.declaration,
         oldErrors: { [path: string]: ts.Diagnostic[] } = Object.create(null),
         headUsed = process.memoryUsage().heapUsed,
         emitSourceMapsInStream = true;
@@ -55,35 +52,6 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
         if (config.verbose) {
             log(colors.cyan(topic), message);
         }
-    }
-
-    function printDiagnostic(diag: ts.Diagnostic, onError: (err: any) => void): void {
-
-        if (!diag.file || !diag.start) {
-            onError(diag);
-            return;
-        }
-
-        const lineAndCh = diag.file.getLineAndCharacterOfPosition(diag.start);
-        let message: string;
-
-        if (!config.json) {
-            message = utils.strings.format('{0}({1},{2}): {3}',
-                diag.file.fileName,
-                lineAndCh.line + 1,
-                lineAndCh.character + 1,
-                ts.flattenDiagnosticMessageText(diag.messageText, '\n'));
-
-        } else {
-            message = JSON.stringify({
-                filename: diag.file.fileName,
-                offset: diag.start,
-                length: diag.length,
-                message: ts.flattenDiagnosticMessageText(diag.messageText, '\n')
-            });
-        }
-
-        onError(message);
     }
 
     function file(file: Vinyl): void {
@@ -101,7 +69,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
 
     function baseFor(snapshot: ScriptSnapshot): string {
         if (snapshot instanceof VinylScriptSnapshot) {
-            return compilerOptions.outDir || snapshot.getBase();
+            return cmd.options.outDir || snapshot.getBase();
         } else {
             return '';
         }
@@ -171,7 +139,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
 
                         let vinyl = new Vinyl({
                             path: file.name,
-                            contents: new Buffer(file.text),
+                            contents: Buffer.from(file.text),
                             base: !config._emitWithoutBasePath && baseFor(host.getScriptSnapshot(fileName)) || undefined
                         });
 
@@ -267,7 +235,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                     promise = checkSyntaxSoon(fileName).then(diagnostics => {
                         delete oldErrors[fileName];
                         if (diagnostics.length > 0) {
-                            diagnostics.forEach(d => printDiagnostic(d, onError));
+                            diagnostics.forEach(d => onError(d));
                             newErrors[fileName] = diagnostics;
 
                             // stop the world when there are syntax errors
@@ -292,7 +260,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
                             delete oldErrors[fileName!];
                             semanticCheckInfo.set(fileName!, diagnostics.length);
                             if (diagnostics.length > 0) {
-                                diagnostics.forEach(d => printDiagnostic(d, onError));
+                                diagnostics.forEach(d => onError(d));
                                 newErrors[fileName!] = diagnostics;
                             }
                         });
@@ -365,7 +333,7 @@ export function createTypeScriptBuilder(config: IConfiguration, compilerOptions:
 
             // print old errors and keep them
             utils.collections.forEach(oldErrors, entry => {
-                entry.value.forEach(diag => printDiagnostic(diag, onError));
+                entry.value.forEach(diag => onError(diag));
                 newErrors[entry.key] = entry.value;
             });
             oldErrors = newErrors;
@@ -433,8 +401,6 @@ class VinylScriptSnapshot extends ScriptSnapshot {
 
 class LanguageServiceHost implements ts.LanguageServiceHost {
 
-    private readonly _settings: ts.CompilerOptions;
-    private readonly _noFilesystemLookup: boolean;
     private readonly _snapshots: { [path: string]: ScriptSnapshot };
     private readonly _dependencies: utils.graph.Graph<string>;
     private readonly _dependenciesRecomputeList: string[];
@@ -442,9 +408,10 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     private _projectVersion: number;
 
-    constructor(settings: ts.CompilerOptions, noFilesystemLookup: boolean) {
-        this._settings = settings;
-        this._noFilesystemLookup = noFilesystemLookup;
+    constructor(
+        private readonly _cmdLine: ts.ParsedCommandLine,
+        private readonly _projectPath: string
+    ) {
         this._snapshots = Object.create(null);
         this._dependencies = new utils.graph.Graph<string>(s => s);
         this._dependenciesRecomputeList = [];
@@ -454,11 +421,11 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     log(s: string): void {
-        // nothing
+        // console.log(s);
     }
 
     trace(s: string): void {
-        // nothing
+        // console.log(s);
     }
 
     error(s: string): void {
@@ -466,7 +433,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getCompilationSettings(): ts.CompilerOptions {
-        return this._settings;
+        return this._cmdLine.options;
     }
 
     getProjectVersion(): string {
@@ -474,16 +441,21 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getScriptFileNames(): string[] {
-        const result: string[] = [];
-        const libLocation = this.getDefaultLibLocation();
-        for (let fileName in this._snapshots) {
-            if (/\.tsx?/i.test(path.extname(fileName))
-                && normalize(path.dirname(fileName)) !== libLocation) {
-                // only ts-files and not lib.d.ts-like files
-                result.push(fileName)
-            }
-        }
-        return result;
+        // const result: string[] = [];
+        // const libLocation = this.getDefaultLibLocation();
+        // for (let fileName in this._snapshots) {
+        //     if (/\.tsx?/i.test(path.extname(fileName))
+        //         && normalize(path.dirname(fileName)) !== libLocation) {
+        //         // only ts-files and not lib.d.ts-like files
+        //         result.push(fileName)
+        //     }
+        // }
+        // return result;
+
+        // ts.getDefaultLibFilePath(this.getCompilationSettings());
+
+        return Object.keys(this._snapshots);
+        // return this._cmdLine.fileNames;
     }
 
     getScriptVersion(filename: string): string {
@@ -494,12 +466,12 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     getScriptSnapshot(filename: string): ScriptSnapshot {
         filename = normalize(filename);
         let result = this._snapshots[filename];
-        if (!result && !this._noFilesystemLookup) {
+        if (!result) {
             try {
                 result = new VinylScriptSnapshot(new Vinyl(<any>{
                     path: filename,
                     contents: readFileSync(filename),
-                    base: this._settings.outDir,
+                    base: this.getCompilationSettings().outDir,
                     stat: statSync(filename)
                 }));
                 this.addScriptSnapshot(filename, result);
@@ -545,40 +517,25 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         return delete this._snapshots[filename];
     }
 
-    getLocalizedDiagnosticMessages(): any {
-        return null;
-    }
-
-    getCancellationToken(): ts.CancellationToken {
-        return {
-            isCancellationRequested: () => false,
-            throwIfCancellationRequested: (): void => {
-                // Do nothing.isCancellationRequested is always
-                // false so this method never throws
-            }
-        };
-    }
-
     getCurrentDirectory(): string {
-        return process.cwd();
-    }
-
-    fileExists(fileName: string): boolean {
-        return !this._noFilesystemLookup && existsSync(fileName);
-    }
-
-    readFile(fileName: string): string {
-        return this._noFilesystemLookup ? '' : readFileSync(fileName, 'utf8');
+        return path.dirname(this._projectPath);
     }
 
     getDefaultLibFileName(options: ts.CompilerOptions): string {
-        return normalize(path.join(this.getDefaultLibLocation(), ts.getDefaultLibFileName(options)));
+        return ts.getDefaultLibFilePath(options);
     }
 
-    getDefaultLibLocation() {
-        let typescriptInstall = require.resolve('typescript');
-        return normalize(path.dirname(typescriptInstall));
-    }
+    // getDefaultLibLocation() {
+    //     let typescriptInstall = require.resolve('typescript');
+    //     return normalize(path.dirname(typescriptInstall));
+    // }
+
+    // readonly getDefaultLibFileName = (options) => ts.getDefaultLibFilePath(options);
+    readonly directoryExists = ts.sys.directoryExists;
+    readonly getDirectories = ts.sys.getDirectories;
+    readonly fileExists = ts.sys.fileExists;
+    readonly readFile = ts.sys.readFile;
+    readonly readDirectory = ts.sys.readDirectory;
 
     // ---- dependency management
 
