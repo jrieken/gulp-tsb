@@ -14,13 +14,14 @@ export interface IncrementalCompiler {
     src(): Readable;
 }
 
-class EmptyReadable extends Readable {
+class EmptyDuplex extends Duplex {
+    _write(_chunk: any, _encoding: string, callback: (err?: Error) => void): void { callback() }
     _read() { this.push(null); }
 }
 
 function createNullCompiler(): IncrementalCompiler {
-    const result: IncrementalCompiler = function () { return new Duplex() };
-    result.src = () => new EmptyReadable();
+    const result: IncrementalCompiler = function () { return new EmptyDuplex() };
+    result.src = () => new EmptyDuplex();
     return result;
 }
 
