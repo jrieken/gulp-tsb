@@ -441,21 +441,9 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getScriptFileNames(): string[] {
-        // const result: string[] = [];
-        // const libLocation = this.getDefaultLibLocation();
-        // for (let fileName in this._snapshots) {
-        //     if (/\.tsx?/i.test(path.extname(fileName))
-        //         && normalize(path.dirname(fileName)) !== libLocation) {
-        //         // only ts-files and not lib.d.ts-like files
-        //         result.push(fileName)
-        //     }
-        // }
-        // return result;
-
-        // ts.getDefaultLibFilePath(this.getCompilationSettings());
-
-        return Object.keys(this._snapshots);
-        // return this._cmdLine.fileNames;
+        const set = new Set(this._cmdLine.fileNames);
+        const res = Object.keys(this._snapshots).filter(path => set.has(path));
+        return res;
     }
 
     getScriptVersion(filename: string): string {

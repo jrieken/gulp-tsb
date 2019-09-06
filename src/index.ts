@@ -4,13 +4,13 @@ import vinyl = require('vinyl');
 import * as through from 'through';
 import * as builder from './builder';
 import * as ts from 'typescript';
-import { Stream, Readable, Writable, Duplex } from 'stream';
+import { Readable, Writable, Duplex } from 'stream';
 import { dirname } from 'path';
 import { strings } from './utils';
 import { readFileSync, statSync } from 'fs';
 
 export interface IncrementalCompiler {
-    (): Readable & Writable;
+    (token?: any): Readable & Writable;
     src(): Readable;
 }
 
@@ -24,13 +24,13 @@ function createNullCompiler(): IncrementalCompiler {
     return result;
 }
 
-const _defaultOnError = (err: any) => console.log(JSON.stringify(err, null, 4));
+const _defaultOnError = (err: string) => console.log(JSON.stringify(err, null, 4));
 
 export function create(
     projectPath: string,
     existingOptions: Partial<ts.CompilerOptions>,
     verbose: boolean = false,
-    onError: (message: any) => void = _defaultOnError
+    onError: (message: string) => void = _defaultOnError
 ): IncrementalCompiler {
 
     function printDiagnostic(diag: ts.Diagnostic): void {
