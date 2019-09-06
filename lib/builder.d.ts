@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import Vinyl = require('vinyl');
+import * as Vinyl from 'vinyl';
 export interface IConfiguration {
     verbose: boolean;
     _emitWithoutBasePath?: boolean;

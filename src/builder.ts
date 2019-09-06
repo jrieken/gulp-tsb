@@ -7,7 +7,7 @@ import * as utils from './utils';
 import * as log from 'fancy-log';
 import * as colors from 'ansi-colors';
 import * as ts from 'typescript';
-import Vinyl = require('vinyl');
+import * as Vinyl from 'vinyl';
 
 export interface IConfiguration {
     verbose: boolean;

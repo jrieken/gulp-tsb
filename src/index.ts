@@ -1,6 +1,6 @@
 'use strict';
 
-import vinyl = require('vinyl');
+import * as Vinyl from 'vinyl';
 import * as through from 'through';
 import * as builder from './builder';
 import * as ts from 'typescript';
@@ -11,7 +11,7 @@ import { readFileSync, statSync } from 'fs';
 
 export interface IncrementalCompiler {
     (token?: any): Readable & Writable;
-    src(): Readable;
+    src(opts?: { cwd?: string, base?: string }): Readable;
 }
 
 class EmptyDuplex extends Duplex {
@@ -65,7 +65,7 @@ export function create(
 
     function createStream(token?: builder.CancellationToken): Readable & Writable {
 
-        return through(function (this: through.ThroughStream, file: vinyl) {
+        return through(function (this: through.ThroughStream, file: Vinyl) {
             // give the file to the compiler
             if (file.isStream()) {
                 this.emit('error', 'no support for streams');
@@ -84,7 +84,7 @@ export function create(
     }
 
     const result = (token: builder.CancellationToken) => createStream(token);
-    result.src = () => {
+    result.src = (opts?: { cwd?: string, base?: string }) => {
         let _pos = 0;
         let _fileNames = cmdLine.fileNames.slice(0);
         return new class extends Readable {
@@ -96,10 +96,12 @@ export function create(
                 let path: string;
                 for (; more && _pos < _fileNames.length; _pos++) {
                     path = _fileNames[_pos];
-                    more = this.push(new vinyl({
+                    more = this.push(new Vinyl({
                         path,
                         contents: readFileSync(path),
-                        stat: statSync(path)
+                        stat: statSync(path),
+                        cwd: opts && opts.cwd,
+                        base: opts && opts.base || dirname(projectPath)
                     }))
                 }
                 if (_pos >= _fileNames.length) {

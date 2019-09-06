@@ -33,7 +33,7 @@
     "@types/mocha": "*",
     "@types/node": "^8.10.53",
     "@types/through": "^0.0.29",
-    "@types/vinyl": "*",
+    "@types/vinyl": "~2.0.3",
     "@types/rimraf": "2.0.2",
     "@types/fancy-log": "1.3.0",
     "rimraf": "2.6.3",
