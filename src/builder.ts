@@ -513,12 +513,6 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         return ts.getDefaultLibFilePath(options);
     }
 
-    // getDefaultLibLocation() {
-    //     let typescriptInstall = require.resolve('typescript');
-    //     return normalize(path.dirname(typescriptInstall));
-    // }
-
-    // readonly getDefaultLibFileName = (options) => ts.getDefaultLibFilePath(options);
     readonly directoryExists = ts.sys.directoryExists;
     readonly getDirectories = ts.sys.getDirectories;
     readonly fileExists = ts.sys.fileExists;

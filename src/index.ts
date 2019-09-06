@@ -72,9 +72,14 @@ export function create(
                 return;
             }
             _builder.file(file);
-        }, function (this: { queue(a: any): void }) { //todo@joh not sure...
+
+        }, function (this: { queue(a: any): void }) {
             // start the compilation process
-            _builder.build(file => this.queue(file), printDiagnostic, token).then(() => this.queue(null));
+            _builder.build(
+                file => this.queue(file),
+                printDiagnostic,
+                token
+            ).then(() => this.queue(null));
         });
     }
 
