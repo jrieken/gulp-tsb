@@ -1,6 +1,6 @@
 {
   "name": "gulp-tsb",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "author": "Johannes Rieken <johannes.rieken@gmail.com>",
   "description": "A gulp plugin for very fast TypeScript compilation.",
   "main": "./lib",
