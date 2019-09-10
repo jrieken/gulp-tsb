@@ -402,6 +402,8 @@ class VinylScriptSnapshot extends ScriptSnapshot {
 class LanguageServiceHost implements ts.LanguageServiceHost {
 
     private readonly _snapshots: { [path: string]: ScriptSnapshot };
+    private readonly _filesInProject: Set<string>;
+    private readonly _filesAdded: Set<string>;
     private readonly _dependencies: utils.graph.Graph<string>;
     private readonly _dependenciesRecomputeList: string[];
     private readonly _fileNameToDeclaredModule: { [path: string]: string[] };
@@ -413,6 +415,8 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         private readonly _projectPath: string
     ) {
         this._snapshots = Object.create(null);
+        this._filesInProject = new Set(_cmdLine.fileNames);
+        this._filesAdded = new Set();
         this._dependencies = new utils.graph.Graph<string>(s => s);
         this._dependenciesRecomputeList = [];
         this._fileNameToDeclaredModule = Object.create(null);
@@ -441,8 +445,7 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     getScriptFileNames(): string[] {
-        const set = new Set(this._cmdLine.fileNames);
-        const res = Object.keys(this._snapshots).filter(path => set.has(path));
+        const res = Object.keys(this._snapshots).filter(path => this._filesInProject.has(path) || this._filesAdded.has(path));
         return res;
     }
 
@@ -475,7 +478,12 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     addScriptSnapshot(filename: string, snapshot: ScriptSnapshot): ScriptSnapshot {
         this._projectVersion++;
         filename = normalize(filename);
-        var old = this._snapshots[filename];
+        const old = this._snapshots[filename];
+        if (!old && !this._filesInProject.has(filename) && !filename.endsWith('.d.ts')) {
+            //                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+            //                                              not very proper!
+            this._filesAdded.add(filename);
+        }
         if (!old || old.getVersion() !== snapshot.getVersion()) {
             this._dependenciesRecomputeList.push(filename);
             var node = this._dependencies.lookup(filename);
