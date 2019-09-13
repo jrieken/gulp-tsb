@@ -36,7 +36,13 @@ function normalize(path: string): string {
 
 export function createTypeScriptBuilder(config: IConfiguration, projectFile: string, cmd: ts.ParsedCommandLine): ITypeScriptBuilder {
 
-    let host = new LanguageServiceHost(cmd, projectFile),
+    function _log(topic: string, message: string): void {
+        if (config.verbose) {
+            log(colors.cyan(topic), message);
+        }
+    }
+
+    let host = new LanguageServiceHost(cmd, projectFile, _log),
         service = ts.createLanguageService(host, ts.createDocumentRegistry()),
         lastBuildVersion: { [path: string]: string } = Object.create(null),
         lastDtsHash: { [path: string]: string } = Object.create(null),
@@ -48,11 +54,6 @@ export function createTypeScriptBuilder(config: IConfiguration, projectFile: str
     // always emit declaraction files
     host.getCompilationSettings().declaration = true;
 
-    function _log(topic: string, message: string): void {
-        if (config.verbose) {
-            log(colors.cyan(topic), message);
-        }
-    }
 
     function file(file: Vinyl): void {
         // support gulp-sourcemaps
@@ -412,7 +413,8 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     constructor(
         private readonly _cmdLine: ts.ParsedCommandLine,
-        private readonly _projectPath: string
+        private readonly _projectPath: string,
+        private readonly _log: (topic: string, message: string) => void
     ) {
         this._snapshots = Object.create(null);
         this._filesInProject = new Set(_cmdLine.fileNames);
@@ -507,6 +509,8 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
     }
 
     removeScriptSnapshot(filename: string): boolean {
+        this._filesInProject.delete(filename);
+        this._filesAdded.delete(filename);
         this._projectVersion++;
         filename = normalize(filename);
         delete this._fileNameToDeclaredModule[filename];
@@ -546,6 +550,10 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         }
         filename = normalize(filename);
         const snapshot = this.getScriptSnapshot(filename);
+        if (!snapshot) {
+            this._log('processFile', `Missing snapshot for: ${filename}`);
+            return;
+        }
         const info = ts.preProcessFile(snapshot.getText(0, snapshot.getLength()), true);
 
         // (1) ///-references
