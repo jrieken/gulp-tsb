@@ -86,7 +86,11 @@ export function createTypeScriptBuilder(config: IConfiguration, projectFile: str
         function checkSyntaxSoon(fileName: string): Promise<ts.Diagnostic[]> {
             return new Promise<ts.Diagnostic[]>(resolve => {
                 process.nextTick(function () {
-                    resolve(service.getSyntacticDiagnostics(fileName));
+                    if (!host.getScriptSnapshot(fileName, false)) {
+                        resolve([]); // no script, no problems
+                    } else {
+                        resolve(service.getSyntacticDiagnostics(fileName));
+                    }
                 });
             });
         }
@@ -94,7 +98,11 @@ export function createTypeScriptBuilder(config: IConfiguration, projectFile: str
         function checkSemanticsSoon(fileName: string): Promise<ts.Diagnostic[]> {
             return new Promise<ts.Diagnostic[]>(resolve => {
                 process.nextTick(function () {
-                    resolve(service.getSemanticDiagnostics(fileName));
+                    if (!host.getScriptSnapshot(fileName, false)) {
+                        resolve([]); // no script, no problems
+                    } else {
+                        resolve(service.getSemanticDiagnostics(fileName));
+                    }
                 });
             });
         }
@@ -226,6 +234,10 @@ export function createTypeScriptBuilder(config: IConfiguration, projectFile: str
                             lastDtsHash[fileName] = value.signature;
                             filesWithChangedSignature.push(fileName);
                         }
+                    }).catch(e => {
+                        // can't just skip this or make a result up..
+                        host.error(`ERROR emitting ${fileName}`);
+                        host.error(e);
                     });
                 }
 
@@ -456,10 +468,10 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
         return this._snapshots[filename].getVersion();
     }
 
-    getScriptSnapshot(filename: string): ScriptSnapshot {
+    getScriptSnapshot(filename: string, resolve: boolean = true): ScriptSnapshot {
         filename = normalize(filename);
         let result = this._snapshots[filename];
-        if (!result) {
+        if (!result && resolve) {
             try {
                 result = new VinylScriptSnapshot(new Vinyl(<any>{
                     path: filename,
