@@ -79,7 +79,7 @@ export function create(
                 file => this.queue(file),
                 printDiagnostic,
                 token
-            ).then(() => this.queue(null));
+            ).catch(e => console.error(e)).then(() => this.queue(null));
         });
     }
 
