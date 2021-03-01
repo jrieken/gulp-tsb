@@ -198,7 +198,7 @@ export function createTypeScriptBuilder(config: IConfiguration, projectFile: str
             }
         }
 
-        return new Promise(resolve => {
+        return new Promise<void>(resolve => {
 
             let semanticCheckInfo = new Map<string, number>();
             let seenAsDependentFile = new Set<string>();
@@ -465,7 +465,11 @@ class LanguageServiceHost implements ts.LanguageServiceHost {
 
     getScriptVersion(filename: string): string {
         filename = normalize(filename);
-        return this._snapshots[filename].getVersion();
+        const result = this._snapshots[filename];
+        if (result) {
+            return result.getVersion();
+        }
+        return 'UNKNWON_FILE_' + Math.random().toString(16).slice(2);
     }
 
     getScriptSnapshot(filename: string, resolve: boolean = true): ScriptSnapshot {
